@@ -1,5 +1,5 @@
 import { ComponentMeta } from "@storybook/react";
-import { AnalyzeIcon } from "../index";
+import AnalyzeIcon from "../Analyze";
 
 export default {
   title: "Common/Analyze",

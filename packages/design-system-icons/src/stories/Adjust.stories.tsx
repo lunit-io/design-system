@@ -1,5 +1,5 @@
 import { ComponentMeta } from "@storybook/react";
-import { AdjustIcon } from "../index";
+import AdjustIcon from "../Adjust";
 
 export default {
   title: "Common/Adjust",

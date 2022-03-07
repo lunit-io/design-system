@@ -1,2 +1,2 @@
-export { default as AdjustIcon } from "./AdjustIcon/AdjustIcon";
-export { default as AnalyzeIcon } from "./AnalyzeIcon/AnalyzeIcon";
+export { default as Adjust } from "./Adjust/Adjust";
+export { default as Analyze } from "./Analyze/Analyze";
