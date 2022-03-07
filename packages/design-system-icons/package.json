@@ -2,10 +2,11 @@
   "name": "@lunit/design-system-icons",
   "version": "0.1.0",
   "description": "Icons for Lunit design system",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "license": "UNLICENSED",
   "scripts": {
-    "compile": "tsc -p tsconfig.build.json",
+    "build": "webpack",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -24,7 +25,9 @@
     "source-map-loader": "^3.0.1",
     "ts-loader": "^9.2.7",
     "typescript": "^4.6.2",
-    "webpack": "^5.70.0"
+    "webpack": "^5.70.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-node-externals": "^3.0.0"
   },
   "dependencies": {
     "@emotion/react": "^11.8.1",

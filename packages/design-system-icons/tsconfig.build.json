@@ -3,7 +3,13 @@
   "compilerOptions": {
     "importHelpers": true,
     "outDir": "./dist",
+    "declaration": true,
     "jsx": "react-jsx"
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*"],
+  "exclude": [
+    "src/**/*.stories.mdx",
+    "src/**/*.stories.ts",
+    "src/**/*.stories.tsx"
+  ]
 }
