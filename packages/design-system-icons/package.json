@@ -4,6 +4,11 @@
   "description": "Icons for Lunit design system",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "package.json",
+    "README.md"
+  ],
   "license": "UNLICENSED",
   "scripts": {
     "build": "webpack",
