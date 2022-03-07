@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.build.json",
+  "compilerOptions": {
+    "baseUrl": "./packages",
+    "paths": {
+      "@lunit/mui-theme": ["mui-theme/src"],
+      "@lunit/design-system-icons": ["design-system-icons/src"]
+    }
+  }
+}

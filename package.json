@@ -9,6 +9,7 @@
     "build:mui-theme": "lerna run --scope @lunit/mui-theme build"
   },
   "devDependencies": {
+    "@tsconfig/recommended": "^1.0.1",
     "lerna": "^4.0.0",
     "webpack": "^5.66.0"
   }
