@@ -1,0 +1,23 @@
+{
+  "name": "@lunit/design-system-icons",
+  "version": "0.1.0",
+  "description": "Icons for Lunit design system",
+  "main": "index.js",
+  "license": "UNLICENSED",
+  "scripts": {
+    "compile": "tsc -p tsconfig.build.json"
+  },
+  "devDependencies": {
+    "@svgr/webpack": "^6.2.1",
+    "source-map-loader": "^3.0.1",
+    "ts-loader": "^9.2.7",
+    "typescript": "^4.6.2",
+    "webpack": "^5.70.0"
+  },
+  "dependencies": {
+    "@mui/material": "^5.4.4",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "tslib": "^2.3.1"
+  }
+}
