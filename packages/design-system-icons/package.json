@@ -2,16 +2,12 @@
   "name": "@lunit/design-system-icons",
   "version": "0.1.0",
   "description": "Icons for Lunit design system",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist",
-    "package.json",
-    "README.md"
-  ],
+  "main": "index.js",
+  "types": "index.d.ts",
   "license": "UNLICENSED",
   "scripts": {
     "build": "webpack",
+    "postbuild": "cp package.json dist",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },

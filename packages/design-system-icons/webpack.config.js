@@ -3,11 +3,19 @@ const nodeExternals = require("webpack-node-externals");
 
 module.exports = {
   mode: "production",
-  entry: "./src/index.ts",
+  entry: {
+    main: "./src/index.ts",
+    Adjust: "./src/Adjust/index.ts",
+    Analyze: "./src/Analyze/index.ts",
+  },
   output: {
-    filename: "index.js",
+    filename: (pathData) => {
+      return pathData.chunk.name === "main" ? "index.js" : "[name]/index.js";
+    },
     path: path.resolve(__dirname, "dist"),
-    libraryTarget: "umd",
+    library: {
+      type: "commonjs-static",
+    },
     clean: true,
   },
   // Enable sourcemaps for debugging webpack's output.

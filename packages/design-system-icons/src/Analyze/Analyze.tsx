@@ -2,8 +2,8 @@ import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon";
 
 import outlined from "../icons/ic_analyze=outlined_20px.svg";
 
-const AnalyzeIcon: React.FunctionComponent<SvgIconProps> = (props) => {
+const Analyze: React.FunctionComponent<SvgIconProps> = (props) => {
   return <SvgIcon {...props} component={outlined} inheritViewBox />;
 };
 
-export default AnalyzeIcon;
+export default Analyze;
