@@ -46,6 +46,7 @@ Other icons in the design system are in progress.
 - [ ] Add all the design system icons
 - [ ] Support all the variants(outlined, filled, two-tone)
 - [ ] Export SVGs directly
+- [ ] Publish Storybook docs
 - [ ] Automated regression test with the Figma project
 
 ## Support
