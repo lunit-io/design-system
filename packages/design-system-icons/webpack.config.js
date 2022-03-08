@@ -1,13 +1,17 @@
+const glob = require("glob");
 const path = require("path");
 const nodeExternals = require("webpack-node-externals");
 
 module.exports = {
   mode: "production",
-  entry: {
-    main: "./src/index.ts",
-    Adjust: "./src/Adjust/index.ts",
-    Analyze: "./src/Analyze/index.ts",
-  },
+  entry: glob.sync("./src/*/index.ts").reduce(
+    function (obj, el) {
+      const name = el.substring(6, el.lastIndexOf("/"));
+      obj[name] = el;
+      return obj;
+    },
+    { main: "./src/index.ts" }
+  ),
   output: {
     filename: (pathData) => {
       return pathData.chunk.name === "main" ? "index.js" : "[name]/index.js";
