@@ -1,7 +1,6 @@
 {
-  "extends": "@tsconfig/recommended/tsconfig.json",
+  "extends": "../../tsconfig.build.json",
   "compilerOptions": {
     "jsx": "react"
-  },
-  "composite": true
+  }
 }
