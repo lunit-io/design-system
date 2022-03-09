@@ -1,0 +1,57 @@
+name: "Deploy the icons storybook"
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/icons-storybook.yml
+      - packages/design-system-icons/**
+
+jobs:
+  deploy-staging:
+    runs-on: ubuntu-latest
+    env:
+      WORKDIR: ./packages/design-system-icons
+      HOST: design-system-icons.d.lunit.io
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Get Yarn cache directory
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - uses: actions/cache@v2
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install Packages
+        run: yarn install --prefer-offline --frozen-lockfile
+
+      - name: Build package
+        run: yarn build
+        working-directory: ${{ env.WORKDIR }}
+
+      - name: Build storybook
+        run: yarn build-storybook
+        working-directory: ${{ env.WORKDIR }}
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.CDN_FOR_PREVIEW_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.CDN_FOR_PREVIEW_SECRET_KEY }}
+          aws-region: us-east-1
+
+      - name: Deploy
+        run: |
+          aws s3 sync \
+            ./storybook-static s3://lunit-cdn-for-preview-virginia/${{ env.HOST }} \
+            --delete
+        working-directory: ${{ env.WORKDIR }}

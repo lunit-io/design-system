@@ -1,10 +1,26 @@
 import { Canvas, Meta, Story } from "@storybook/addon-docs";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
 import { pink } from "@mui/material/colors";
-import { Brightness } from "../../dist";
+import {
+  Adjust,
+  Analyze,
+  Brightness,
+  Invert,
+  Pan,
+  Redo,
+  Reset,
+  Setting,
+  Undo,
+  ZoomIn,
+  ZoomOut,
+} from "../../dist";
 
-<Meta title="Icons/Introduction" />
+<Meta title="Lunit Design System Icons" />
 
 # Lunit Design System Icons
+
+> This is a collection of icons from the [Lunit Design System](https://www.figma.com/file/ygzUKBGrGxEYzkhUwoOC3U/Lunit-Design-System?node-id=4604%3A96681).
 
 ## Installation
 
@@ -28,7 +44,8 @@ import BrightnessIcon from "@lunit/design-system-icon/Brightness";
 import { Brightness } from "@lunit/design-system-icon";
 
 <Brightness />
-<Brightness color="primary" /> // You can use any of SvgIcon props
+// You can use any of SvgIcon props
+<Brightness color="primary" />
 <Brightness fontSize="large" />
 ```
 
@@ -59,25 +76,83 @@ import { Brightness } from "@lunit/design-system-icon";
 
 ## Icons
 
-Other icons in the design system are in progress.
+<Grid container sx={{ color: "text.primary" }}>
+  <Grid item xs={2}>
+    <Typography>Adjust</Typography>
+  </Grid>
+  <Grid item xs={10}>
+    <Adjust />
+  </Grid>
+  <Grid item xs={2}>
+    <Typography>Analyze</Typography>
+  </Grid>
+  <Grid item xs={10}>
+    <Analyze />
+  </Grid>
+  <Grid item xs={2}>
+    <Typography>Brightness</Typography>
+  </Grid>
+  <Grid item xs={10}>
+    <Brightness />
+  </Grid>
+  <Grid item xs={2}>
+    <Typography>Invert</Typography>
+  </Grid>
+  <Grid item xs={10}>
+    <Invert />
+  </Grid>
+  <Grid item xs={2}>
+    <Typography>Pan</Typography>
+  </Grid>
+  <Grid item xs={10}>
+    <Pan />
+  </Grid>
+  <Grid item xs={2}>
+    <Typography>Redo</Typography>
+  </Grid>
+  <Grid item xs={10}>
+    <Redo />
+  </Grid>
+  <Grid item xs={2}>
+    <Typography>Reset</Typography>
+  </Grid>
+  <Grid item xs={10}>
+    <Reset />
+  </Grid>
+  <Grid item xs={2}>
+    <Typography>Setting</Typography>
+  </Grid>
+  <Grid item xs={10}>
+    <Setting />
+  </Grid>
+  <Grid item xs={2}>
+    <Typography>Undo</Typography>
+  </Grid>
+  <Grid item xs={10}>
+    <Undo />
+  </Grid>
+  <Grid item xs={2}>
+    <Typography>ZoomIn</Typography>
+  </Grid>
+  <Grid item xs={10}>
+    <ZoomIn />
+  </Grid>
+  <Grid item xs={2}>
+    <Typography>ZoomOut</Typography>
+  </Grid>
+  <Grid item xs={10}>
+    <ZoomOut />
+  </Grid>
+</Grid>
 
-- Brightness
-- Analyze
-- Brightness
-- Invert
-- Pan
-- Redo
-- Reset
-- Setting
-- Undo
-- ZoomIn
-- ZoomOut
+Other icons in the design system are in progress.
 
 ## Backlog
 
 - [ ] Add all the design system icons
 - [ ] Support all the variants(outlined, filled, two-tone)
 - [ ] Export SVGs directly
+- [ ] Publish Storybook docs
 - [ ] Automated regression test with the Figma project
 
 ## Support

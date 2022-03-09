@@ -9,7 +9,7 @@
     "build": "webpack",
     "postbuild": "cp package.json README.md dist",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook --docs"
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",
