@@ -1,53 +1,36 @@
 # Lunit Design System Icons
 
-## Installation
+## User Guide
 
-@mui/material v5 is required.
+https://design-system-icons.d.lunit.io/
 
-```shell
-// with npm
-npm install @lunit/design-system-icon
+## Developer Guide
 
-// with yarn
-yarn add @lunit/design-system-icon
-```
+### Figma
 
-## Usage
+Lunit Design System Figma: https://www.figma.com/file/ygzUKBGrGxEYzkhUwoOC3U/Lunit-Design-System?node-id=4604%3A96681
 
-Icons in this package is using [SvgIcon](https://mui.com/components/icons/#svgicon) wrapper.
+You can multi-select icons to export with [Select Layers plugin](https://www.figma.com/community/plugin/799648692768237063/Select-Layers).
 
-```ts
-import AdjustIcon from "@lunit/design-system-icon/Adjust";
-// or
-import { Adjust } from "@lunit/design-system-icon";
+You need [SVG Export plugin](https://www.figma.com/community/plugin/814345141907543603/SVG-Export) to export SVGs with proper settings.
 
-<AdjustIcon />
-<AdjustIcon color="primary" /> // You can use any of SvgIcon props
-```
+- `<svg>` tag must not have any dimensions(width, height) to support `fontSize` props.
+- Any elements inside `<svg>` (like `<path>`) must not have own `fill` to support `color` props.
 
-## Icons
+### Build & Publish
 
-Other icons in the design system are in progress.
+Webpack will detect all `src/**/index.ts` and use them as entry.
 
-- Adjust
-- Analyze
-- Brightness
-- Invert
-- Pan
-- Redo
-- Reset
-- Setting
-- Undo
-- ZoomIn
-- ZoomOut
+You should move to `dist` after builds and run `npm publish --access public`.
 
-## Backlog
+### Roadmap
 
+- [x] Export [SvgIcon](https://mui.com/components/icons/#svgicon) wrapped components
+- [x] Publish Storybook docs
 - [ ] Add all the design system icons
 - [ ] Support all the variants(outlined, filled, two-tone)
 - [ ] Export SVGs directly
-- [ ] Publish Storybook docs
-- [ ] Automated regression test with the Figma project
+- [ ] Automated visual test with the Figma project
 
 ## Support
 
