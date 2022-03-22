@@ -52,6 +52,9 @@ module.exports = {
       },
     ],
   },
-  externalsPresets: { node: true },
-  externals: [nodeExternals()],
+  externals: [
+    nodeExternals({
+      modulesFromFile: true,
+    }),
+  ],
 };
