@@ -1,6 +1,6 @@
 {
   "name": "@lunit/design-system-icons",
-  "version": "0.1.6",
+  "version": "0.1.8",
   "description": "Icons for Lunit design system",
   "main": "index.js",
   "types": "index.d.ts",
@@ -12,8 +12,10 @@
   },
   "homepage": "https://design-system-icons.d.lunit.io/",
   "scripts": {
+    "dev": "yarn build --watch & yarn storybook",
     "build": "webpack",
     "postbuild": "cp package.json README.md dist",
+    "prepublishOnly": "[[ \"$PWD\" == *dist ]] || { exit 1; }",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook --docs"
   },
@@ -42,13 +44,6 @@
     "webpack-node-externals": "^3.0.0"
   },
   "peerDependencies": {
-    "@mui/material": "^5.0.0",
-    "@types/react": "^16.8.6 || ^17.0.0",
-    "react": "^17.0.0"
-  },
-  "peerDependenciesMeta": {
-    "@types/react": {
-      "optional": true
-    }
+    "@mui/material": "^5.0.0"
   }
 }
