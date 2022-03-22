@@ -1,6 +1,6 @@
-export { default as Adjust } from "./Adjust";
 export { default as Analyze } from "./Analyze";
 export { default as Brightness } from "./Brightness";
+export { default as Filter } from "./Filter";
 export { default as Invert } from "./Invert";
 export { default as Pan } from "./Pan";
 export { default as Redo } from "./Redo";
