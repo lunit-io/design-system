@@ -1,5 +1,7 @@
 # Lunit Design System Icons
 
+[![npm (scoped)](https://img.shields.io/npm/v/@lunit/design-system-icons)](https://www.npmjs.com/package/@lunit/design-system-icons)
+
 ## User Guide
 
 https://design-system-icons.d.lunit.io/
