@@ -10,9 +10,11 @@ import {
   Invert,
   Logout,
   Pan,
+  Pen,
   Pointer,
   Redo,
   Reset,
+  Ruler,
   Search,
   Setting,
   Undo,
@@ -85,6 +87,12 @@ import { Brightness } from "@lunit/design-system-icon";
 
 <Grid container sx={{ color: "text.primary" }}>
   <Grid item xs={2}>
+    <Typography>Analyze</Typography>
+  </Grid>
+  <Grid item xs={10}>
+    <Analyze />
+  </Grid>
+  <Grid item xs={2}>
     <Typography>Brightness</Typography>
   </Grid>
   <Grid item xs={10}>
@@ -121,6 +129,12 @@ import { Brightness } from "@lunit/design-system-icon";
     <Pan />
   </Grid>
   <Grid item xs={2}>
+    <Typography>Pen</Typography>
+  </Grid>
+  <Grid item xs={10}>
+    <Pen />
+  </Grid>
+  <Grid item xs={2}>
     <Typography>Pointer</Typography>
   </Grid>
   <Grid item xs={10}>
@@ -137,6 +151,12 @@ import { Brightness } from "@lunit/design-system-icon";
   </Grid>
   <Grid item xs={10}>
     <Reset />
+  </Grid>
+  <Grid item xs={2}>
+    <Typography>Ruler</Typography>
+  </Grid>
+  <Grid item xs={10}>
+    <Ruler />
   </Grid>
   <Grid item xs={2}>
     <Typography>Search</Typography>
