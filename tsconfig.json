@@ -3,8 +3,9 @@
   "compilerOptions": {
     "baseUrl": "./packages",
     "paths": {
+      "@lunit/design-system": ["design-system/src"],
+      "@lunit/design-system-icons": ["design-system-icons/src"],
       "@lunit/mui-theme": ["mui-theme/src"],
-      "@lunit/design-system-icons": ["design-system-icons/src"]
-    }
+    },
   }
 }
