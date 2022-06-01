@@ -1,4 +1,7 @@
 const path = require("path");
+const alias = require("./config/alias");
+
+console.log(path.resolve(__dirname, "src"));
 
 module.exports = {
   mode: "production",
@@ -14,6 +17,7 @@ module.exports = {
     ],
   },
   resolve: {
+    alias,
     extensions: [".tsx", ".ts", ".js"],
   },
   output: {

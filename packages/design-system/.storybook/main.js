@@ -1,4 +1,5 @@
 const path = require("path");
+const alias = require("../config/alias");
 
 module.exports = {
   features: {
@@ -29,5 +30,12 @@ module.exports = {
   framework: "@storybook/react",
   core: {
     builder: "@storybook/builder-webpack5",
+  },
+  webpackFinal: async (config) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      ...alias,
+    };
+    return config;
   },
 };
