@@ -1,10 +1,10 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import Chip from "@/components/Chips/Chip";
+import Chip from "@/components/Chip/Chip";
 
 export default {
-  title: "Components/Chips",
+  title: "Components/Chip",
   component: Chip,
 } as ComponentMeta<typeof Chip>;
 
