@@ -12,5 +12,6 @@ node_modules
 .env.local
 
 # build output
+generated
 dist
 storybook-static
