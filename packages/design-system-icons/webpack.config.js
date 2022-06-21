@@ -4,13 +4,13 @@ const nodeExternals = require("webpack-node-externals");
 
 module.exports = {
   mode: "production",
-  entry: glob.sync("./src/*/index.ts").reduce(
+  entry: glob.sync("./generated/*/index.tsx").reduce(
     function (obj, el) {
-      const name = el.substring(6, el.lastIndexOf("/"));
+      const name = el.substring(12 /* ./generated/ */, el.lastIndexOf("/"));
       obj[name] = el;
       return obj;
     },
-    { main: "./src/index.ts" }
+    { main: "./generated/index.ts" }
   ),
   output: {
     filename: (pathData) => {
@@ -34,7 +34,7 @@ module.exports = {
       {
         test: /\.tsx?$/,
         loader: "ts-loader",
-        include: path.resolve(__dirname, "src"),
+        include: path.resolve(__dirname, "generated"),
         exclude: /node_modules/,
         options: {
           configFile: "tsconfig.build.json",

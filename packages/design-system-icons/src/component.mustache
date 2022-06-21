@@ -1,0 +1,9 @@
+import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon";
+
+import outlined from "../../src/assets/ic_{{name}}=outlined_20px.svg";
+
+const {{componentName}}: React.FunctionComponent<SvgIconProps> = (props) => {
+  return <SvgIcon {...props} component={outlined} inheritViewBox />;
+};
+
+export default {{componentName}};

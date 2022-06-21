@@ -21,7 +21,7 @@ You need [SVG Export plugin](https://www.figma.com/community/plugin/814345141907
 
 ### Build & Publish
 
-Webpack will detect all `src/**/index.ts` and use them as entry.
+Webpack will detect all `src/**/index.tsx` and use them as entry.
 
 You should move to `dist` after builds and run `npm publish --access public`.
 
@@ -29,7 +29,7 @@ You should move to `dist` after builds and run `npm publish --access public`.
 
 - [x] Export [SvgIcon](https://mui.com/components/icons/#svgicon) wrapped components
 - [x] Publish Storybook docs
-- [ ] Add all the design system icons
+- [x] Add all the design system icons
 - [ ] Support all the variants(outlined, filled, two-tone)
 - [ ] Export SVGs directly
 - [ ] Automated visual test with the Figma project
