@@ -3,7 +3,7 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { pink } from "@mui/material/colors";
 import * as Icons from "../../dist";
-import BrightnessIcon from "../../dist/Brightness";
+import SuccessIcon from "../../dist/Success";
 
 <Meta title="Lunit Design System Icons" />
 
@@ -31,31 +31,42 @@ Icons in this package is using [SvgIcon](https://mui.com/components/icons/#svgic
 
 ```ts
 // Option 1
-import BrightnessIcon from "@lunit/design-system-icon/Brightness";
+import SuccessIcon from "@lunit/design-system-icon/Success";
 // Option 2
-import { Brightness } from "@lunit/design-system-icon";
+import { Success } from "@lunit/design-system-icon";
 
-<Brightness />
+<Success />
 // You can use any of SvgIcon props
-<Brightness color="primary" />
-<Brightness fontSize="large" />
+<Success color="primary" />
+<Success fontSize="large" />
 // You can find all the variants from the `.variants` property.
-<Brightness variant="filled" />
+<Success variant="filled" />
 ```
 
 The safest for bundle size is Option 1, but some developers prefer Option 2. Make sure you follow the [minimizing bundle size guide](https://mui.com/material-ui/guides/minimizing-bundle-size/#option-2) before using the second approach.
+
+### Variant
+
+<Canvas>
+  <Story name="variant">
+    <SuccessIcon variant="outlined" />
+    <SuccessIcon variant="filled" />
+  </Story>
+</Canvas>
+
+`variant="outlined"` is default if not set.
 
 ### Color
 
 <Canvas>
   <Story name="color">
-    <BrightnessIcon />
-    <BrightnessIcon color="primary" />
-    <BrightnessIcon color="secondary" />
-    <BrightnessIcon color="success" />
-    <BrightnessIcon color="action" />
-    <BrightnessIcon color="disabled" />
-    <BrightnessIcon sx={{ color: pink[500] }} />
+    <SuccessIcon />
+    <SuccessIcon color="primary" />
+    <SuccessIcon color="secondary" />
+    <SuccessIcon color="success" />
+    <SuccessIcon color="action" />
+    <SuccessIcon color="disabled" />
+    <SuccessIcon sx={{ color: pink[500] }} />
   </Story>
 </Canvas>
 
@@ -63,10 +74,10 @@ The safest for bundle size is Option 1, but some developers prefer Option 2. Mak
 
 <Canvas>
   <Story name="size">
-    <BrightnessIcon fontSize="small" />
-    <BrightnessIcon />
-    <BrightnessIcon fontSize="large" />
-    <BrightnessIcon sx={{ fontSize: 40 }} />
+    <SuccessIcon fontSize="small" />
+    <SuccessIcon />
+    <SuccessIcon fontSize="large" />
+    <SuccessIcon sx={{ fontSize: 40 }} />
   </Story>
 </Canvas>
 
