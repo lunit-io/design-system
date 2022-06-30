@@ -1,9 +1,25 @@
 import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon";
 
-import outlined from "../../src/assets/ic_{{name}}=outlined_20px.svg";
+{{#variants}}
+import {{variant}} from "../../src/assets/ic_{{name}}={{variant}}_20px.svg";
+{{/variants}}
 
-const {{componentName}}: React.FunctionComponent<SvgIconProps> = (props) => {
-  return <SvgIcon {...props} component={outlined} inheritViewBox />;
+const variants = [{{#variants}}'{{variant}}', {{/variants}}] as const;
+type Variant = typeof variants[number];
+type IconProps = SvgIconProps & {
+  variant?: Variant;
 };
+const {{componentName}} = ({variant = 'outlined', ...rest}: IconProps) => {
+  {{#variants}}
+  if (variant === '{{variant}}') {
+    return <SvgIcon {...rest} component={ {{variant}} } inheritViewBox />;
+  }
+  {{/variants}}
+
+  return null;
+};
+
+{{componentName}}.displayName = '{{componentName}}';
+{{componentName}}.variants = variants;
 
 export default {{componentName}};
