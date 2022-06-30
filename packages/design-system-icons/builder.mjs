@@ -20,19 +20,15 @@ export function getComponentName(name) {
 }
 
 export async function handler() {
-  const [svgPaths, componentTemplate, componentIndexTemplate, indexTemplate] =
-    await Promise.all([
-      globAsync("src/assets/*.svg"),
-      fse.readFile(path.join(__dirname, "src/component.mustache"), {
-        encoding: "utf8",
-      }),
-      fse.readFile(path.join(__dirname, "src/componentIndex.mustache"), {
-        encoding: "utf8",
-      }),
-      fse.readFile(path.join(__dirname, "src/index.mustache"), {
-        encoding: "utf8",
-      }),
-    ]);
+  const [svgPaths, componentTemplate, indexTemplate] = await Promise.all([
+    globAsync("src/assets/*.svg"),
+    fse.readFile(path.join(__dirname, "src/component.mustache"), {
+      encoding: "utf8",
+    }),
+    fse.readFile(path.join(__dirname, "src/index.mustache"), {
+      encoding: "utf8",
+    }),
+  ]);
 
   const icons = [];
   for await (let svgPath of svgPaths) {
@@ -45,13 +41,16 @@ export async function handler() {
     const componentName = getComponentName(name);
 
     const iconIndex = icons.findIndex((icon) => icon.name === name);
+    if (variant === "2tone") {
+      continue;
+    }
     if (iconIndex > -1) {
-      icons[iconIndex].variants.push(variant);
+      icons[iconIndex].variants.push({ variant, name });
     } else {
       icons.push({
         name,
         componentName,
-        variants: [variant],
+        variants: [{ variant, name }],
       });
     }
   }
@@ -71,27 +70,17 @@ export async function handler() {
 
   for await (let icon of icons) {
     const { name, componentName, variants } = icon;
-    console.log(name, componentName, variants);
-    if (!variants.includes("outlined")) {
-      continue;
-    }
     const componentString = Mustache.render(componentTemplate, {
       name,
       componentName,
+      variants,
     });
-    // const indexString = Mustache.render(componentIndexTemplate, {
-    //   componentName,
-    // });
 
     await fse.mkdir(path.join(__dirname, "generated", componentName));
     await fse.writeFile(
       path.join(__dirname, "generated", componentName, `index.tsx`),
       componentString
     );
-    // await fse.writeFile(
-    //   path.join(__dirname, "generated", componentName, `index.tsx`),
-    //   indexString
-    // );
   }
 }
 handler();
