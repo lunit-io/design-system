@@ -30,15 +30,20 @@ yarn add @lunit/design-system-icon
 Icons in this package is using [SvgIcon](https://mui.com/components/icons/#svgicon) wrapper.
 
 ```ts
+// Option 1
 import BrightnessIcon from "@lunit/design-system-icon/Brightness";
-// or
+// Option 2
 import { Brightness } from "@lunit/design-system-icon";
 
 <Brightness />
 // You can use any of SvgIcon props
 <Brightness color="primary" />
 <Brightness fontSize="large" />
+// You can find all the variants from the `.variants` property.
+<Brightness variant="filled" />
 ```
+
+The safest for bundle size is Option 1, but some developers prefer Option 2. Make sure you follow the [minimizing bundle size guide](https://mui.com/material-ui/guides/minimizing-bundle-size/#option-2) before using the second approach.
 
 ### Color
 
@@ -83,7 +88,9 @@ import { Brightness } from "@lunit/design-system-icon";
               return 0;
             })
             .map((variant) => (
-              <Icon key={Icon.displayName + variant} variant={variant} />
+              <span title={`${Icon.displayName} ${variant}`}>
+                <Icon key={Icon.displayName + variant} variant={variant} />
+              </span>
             ))}
         </Grid>
       </>
