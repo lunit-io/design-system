@@ -30,7 +30,9 @@ You should move to `dist` after builds and run `npm publish --access public`.
 - [x] Export [SvgIcon](https://mui.com/components/icons/#svgicon) wrapped components
 - [x] Publish Storybook docs
 - [x] Add all the design system icons
-- [ ] Support all the variants(outlined, filled, two-tone)
+- [x] Support basic variants(outlined, filled)
+- [ ] Support responsive icon(for less than 16px)
+- [ ] Support two-tone variant
 - [ ] Export SVGs directly
 - [ ] Automated visual test with the Figma project
 
