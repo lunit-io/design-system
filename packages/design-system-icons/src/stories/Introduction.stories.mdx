@@ -29,7 +29,7 @@ yarn add @lunit/design-system-icon
 
 Icons in this package is using [SvgIcon](https://mui.com/components/icons/#svgicon) wrapper.
 
-```ts
+```tsx
 // Option 1
 import SuccessIcon from "@lunit/design-system-icon/Success";
 // Option 2
@@ -39,7 +39,7 @@ import { Success } from "@lunit/design-system-icon";
 // You can use any of SvgIcon props
 <Success color="primary" />
 <Success fontSize="large" />
-// You can find all the variants from the `.variants` property.
+// You can choose one of variants with `variant` props
 <Success variant="filled" />
 ```
 
@@ -54,7 +54,13 @@ The safest for bundle size is Option 1, but some developers prefer Option 2. Mak
   </Story>
 </Canvas>
 
-`variant="outlined"` is default if not set.
+```tsx
+React.ComponentProps<typeof SuccessIcon>["variant"]; // 'outlined' | 'filled'
+
+SuccessIcon.variants; // ['outlined', 'filled']
+```
+
+The `outlined` is default if not set.
 
 ### Color
 
@@ -116,7 +122,9 @@ Other icons in the design system are in progress.
 - [x] Export [SvgIcon](https://mui.com/components/icons/#svgicon) wrapped components
 - [x] Publish Storybook docs
 - [x] Add all the design system icons
-- [ ] Support all the variants(outlined, filled, two-tone)
+- [x] Support basic variants(outlined, filled)
+- [ ] Support responsive icon(for less than 16px)
+- [ ] Support two-tone variant
 - [ ] Export SVGs directly
 - [ ] Automated visual test with the Figma project
 
