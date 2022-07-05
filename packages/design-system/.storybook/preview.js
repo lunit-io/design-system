@@ -1,3 +1,17 @@
+import { ThemeProvider, CssBaseline } from "@mui/material";
+import theme from "../src/theme";
+
+export const decorators = [
+  (Story) => {
+    return (
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Story />
+      </ThemeProvider>
+    );
+  },
+];
+
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
@@ -8,7 +22,7 @@ export const parameters = {
   },
   options: {
     storySort: {
-      order: ['Getting Started', 'Foundation', 'Components']
+      order: ["Getting Started", "Foundation", "Components"],
     },
   },
-}
+};
