@@ -22,7 +22,7 @@ const createCSSVariables = () => {
 
 export const createColorCSSBaseline = () => {
   return {
-    "*": {
+    ":root": {
       ...createCSSVariables(),
     },
   };
