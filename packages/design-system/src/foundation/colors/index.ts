@@ -20,7 +20,7 @@ const createCSSVariables = () => {
   return cssVars;
 };
 
-export const createColorCSSBaseline = () => {
+export const createColorCssBaseline = () => {
   return {
     ":root": {
       ...createCSSVariables(),

@@ -1,12 +1,12 @@
 import { Components, Theme } from "@mui/material";
 import { deepmerge } from "@mui/utils";
-import paletteOptions, { createColorCSSBaseline } from "./colors";
-import typographyOptions, { createTypographyCSSBaseline } from "./Typography";
+import paletteOptions, { createColorCssBaseline } from "./colors";
+import typographyOptions, { createTypographyCssBaseline } from "./Typography";
 
 export const foundationCssBaseline: Components<Theme>["MuiCssBaseline"] = {
   styleOverrides: deepmerge(
-    createTypographyCSSBaseline(),
-    createColorCSSBaseline()
+    createTypographyCssBaseline(),
+    createColorCssBaseline()
   ),
 };
 

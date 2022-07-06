@@ -24,7 +24,7 @@ const typographyOptions: TypographyOptions = {
   ...Pretendard,
 };
 
-export const createTypographyCSSBaseline = () => {
+export const createTypographyCssBaseline = () => {
   return {
     html: {
       fontFamily: Pretendard,
