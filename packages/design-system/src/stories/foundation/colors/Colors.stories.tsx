@@ -1,8 +1,19 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Box } from "@mui/material";
 
 const Colors = () => {
-  return null;
+  return (
+    <Box
+      sx={{
+        width: "100px",
+        height: "100px",
+        backgroundColor: "var(--lunitTeal-40)",
+      }}
+    >
+      lunitTeal
+    </Box>
+  );
 };
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
