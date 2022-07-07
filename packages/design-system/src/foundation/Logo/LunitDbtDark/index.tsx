@@ -1,6 +1,6 @@
 import React from "react";
 
-const LunitDbtDark = (
+const LunitDBTDark = (
   prop: JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>,
 ) => (
   <svg {...prop} width="373" height="40" viewBox="0 0 373 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -18,6 +18,6 @@ const LunitDbtDark = (
 
 );
 
-export default LunitDbtDark;
+export default LunitDBTDark;
 
 
