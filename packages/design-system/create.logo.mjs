@@ -13,7 +13,11 @@ function getComponentName(name, isDark) {
 
   compoenentName = compoenentName
     .replace("GatewayConfigurationManager", "GCM")
-    .replace("ScopeIo", "ScopeIO");
+    .replace("ScopeIo", "ScopeIO")
+    .replace("Dbt", "DBT")
+    .replace("ChestCt", "ChestCT")
+    .replace("LunitCxr", "LunitCXR")
+    .replace("LunitMmg", "LunitMMG");
 
   if (isDark === "True") {
     compoenentName = `${compoenentName}Dark`;
