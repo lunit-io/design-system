@@ -1,10 +1,10 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import LunitTrademark from "@/components/Logos/LunitTrademark";
+import LunitTrademark from "@/foundation/Logo/LunitTrademark";
 
 export default {
-  title: "Components/Logos",
+  title: "Components/Logo",
   component: LunitTrademark,
 } as ComponentMeta<typeof LunitTrademark>;
 
