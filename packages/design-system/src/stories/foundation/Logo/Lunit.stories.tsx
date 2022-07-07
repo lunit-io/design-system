@@ -1,13 +1,13 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import Lunit from "@/foundation/Logo/Lunit";
+import LunitR from "@/foundation/Logo/LunitR";
 
 export default {
   title: "Components/Logo",
-  component: Lunit,
-} as ComponentMeta<typeof Lunit>;
+  component: LunitR,
+} as ComponentMeta<typeof LunitR>;
 
-const Template: ComponentStory<typeof Lunit> = (args) => <Lunit {...args} />;
+const Template: ComponentStory<typeof LunitR> = (args) => <LunitR {...args} />;
 
 export const LunitLogo = Template.bind({});
