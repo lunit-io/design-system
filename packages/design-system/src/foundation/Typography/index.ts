@@ -137,6 +137,7 @@ export const createTypographyCssBaseline = () => {
   return {
     html: {
       fontFamily: Pretendard,
+      fontFeatureSettings: `'tnum', 'ss01', 'ss02', 'ss08'`,
     },
   };
 };
