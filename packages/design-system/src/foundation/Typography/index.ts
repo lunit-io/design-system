@@ -1,15 +1,61 @@
 import { TypographyOptions } from "@mui/material/styles/createTypography";
 
+declare module "@mui/material/styles" {
+  interface TypographyVariants {
+    body1sb: React.CSSProperties;
+    body1reg: React.CSSProperties;
+    body2b: React.CSSProperties;
+    body2m: React.CSSProperties;
+    body2reg: React.CSSProperties;
+    body3b: React.CSSProperties;
+    body3reg: React.CSSProperties;
+    button1: React.CSSProperties;
+    button2: React.CSSProperties;
+    caption: React.CSSProperties;
+  }
+
+  interface TypographyVariantsOptions {
+    body1sb?: React.CSSProperties;
+    body1reg?: React.CSSProperties;
+    body2b?: React.CSSProperties;
+    body2m?: React.CSSProperties;
+    body2reg?: React.CSSProperties;
+    body3b?: React.CSSProperties;
+    body3reg?: React.CSSProperties;
+    button1?: React.CSSProperties;
+    button2?: React.CSSProperties;
+    caption?: React.CSSProperties;
+  }
+}
+
+declare module "@mui/material/Typography" {
+  interface TypographyPropsVariantOverrides {
+    body1sb: true;
+    body1reg: true;
+    body2b: true;
+    body2m: true;
+    body2reg: true;
+    body3b: true;
+    body3reg: true;
+    button1: true;
+    button2: true;
+    caption: true;
+  }
+}
+
 declare module "@mui/material/styles/createTypography" {
-  // interface Typography {
-  //   subtitle3?: TypographyStyle;
-  //   body3?: TypographyStyle;
-  //   body4?: TypographyStyle;
-  //   body5?: TypographyStyle;
-  //   body6?: TypographyStyle;
-  //   caption?: TypographyStyle;
-  //   button2?: TypographyStyle;
-  // }
+  interface Typography {
+    body1sb?: TypographyStyle;
+    body1reg?: TypographyStyle;
+    body2b?: TypographyStyle;
+    body2m?: TypographyStyle;
+    body2reg?: TypographyStyle;
+    body3b?: TypographyStyle;
+    body3reg?: TypographyStyle;
+    button1?: TypographyStyle;
+    button2?: TypographyStyle;
+    caption?: TypographyStyle;
+  }
 
   interface TypographyOptions {
     body1sb?: TypographyStyleOptions;
@@ -44,7 +90,7 @@ const Pretendard = {
   ].join(","),
 };
 
-const typographyOptions: TypographyOptions = {
+const typoOptions: TypographyOptions = {
   ...Pretendard,
   h1: {
     fontWeight: 600,
@@ -142,4 +188,4 @@ export const createTypographyCssBaseline = () => {
   };
 };
 
-export default typographyOptions;
+export default typoOptions;

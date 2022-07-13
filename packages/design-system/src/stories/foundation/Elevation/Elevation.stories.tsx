@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { Paper } from "@mui/material";
+import { Paper, Typography } from "@mui/material";
 
 const ElevationComponent = () => {
   return (
@@ -10,6 +10,7 @@ const ElevationComponent = () => {
         Elevation 1
       </Paper>
       <Paper elevation={3}>Elevation 2</Paper>
+      <Typography variant="h2">테스트 test 1234567890</Typography>
     </>
   );
 };
@@ -19,6 +20,12 @@ export default {
   component: ElevationComponent,
 } as ComponentMeta<typeof ElevationComponent>;
 
-export const Elevation: ComponentStory<typeof ElevationComponent> = () => (
+// export const Elevation: ComponentStory<typeof ElevationComponent> = () => (
+//   <ElevationComponent />
+// );
+
+const Template: ComponentStory<typeof ElevationComponent> = () => (
   <ElevationComponent />
 );
+
+export const Elevation = Template.bind({});
