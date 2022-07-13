@@ -1,27 +1,73 @@
 import { TypographyOptions } from "@mui/material/styles/createTypography";
 
-declare module "@mui/material/styles/createTypography" {
-  // interface Typography {
-  //   subtitle3?: TypographyStyle;
-  //   body3?: TypographyStyle;
-  //   body4?: TypographyStyle;
-  //   body5?: TypographyStyle;
-  //   body6?: TypographyStyle;
-  //   caption?: TypographyStyle;
-  //   button2?: TypographyStyle;
-  // }
+declare module "@mui/material/styles" {
+  interface TypographyVariants {
+    body1_sb: React.CSSProperties;
+    body1_reg: React.CSSProperties;
+    body2_b: React.CSSProperties;
+    body2_m: React.CSSProperties;
+    body2_reg: React.CSSProperties;
+    body3_reg: React.CSSProperties;
+    body3_b: React.CSSProperties;
+    button1: React.CSSProperties;
+    button2: React.CSSProperties;
+    caption: React.CSSProperties;
+  }
+
+  interface TypographyVariantsOptions {
+    body1_sb?: React.CSSProperties;
+    body1_reg?: React.CSSProperties;
+    body2_b?: React.CSSProperties;
+    body2_m?: React.CSSProperties;
+    body2_reg?: React.CSSProperties;
+    body3_reg?: React.CSSProperties;
+    body3_b?: React.CSSProperties;
+    button1?: React.CSSProperties;
+    button2?: React.CSSProperties;
+    caption?: React.CSSProperties;
+  }
+}
+
+declare module '@mui/material/Typography' {
+  interface TypographyPropsVariantOverrides {
+    body1_sb: true;
+    body1_reg: true;
+    body2_b: true;
+    body2_m: true;
+    body2_reg: true;
+    body3_reg: true;
+    body3_b: true;
+    button1: true;
+    button2: true;
+    caption: true;
+  }
+}
+
+declare module '@mui/material/styles/createTypography' {
+  interface Typography {
+    body1_sb?: TypographyStyle;
+    body1_reg?: TypographyStyle;
+    body2_b?: TypographyStyle;
+    body2_m?: TypographyStyle;
+    body2_reg?: TypographyStyle;
+    body3_reg?: TypographyStyle;
+    body3_b?: TypographyStyle;
+    button1?: TypographyStyle;
+    button2?: TypographyStyle;
+    caption?: TypographyStyle;
+  }
 
   interface TypographyOptions {
-    body1sb?: TypographyStyleOptions;
-    body1reg?: TypographyStyleOptions;
-    body2b?: TypographyStyleOptions;
-    body2m?: TypographyStyleOptions;
-    body2reg?: TypographyStyleOptions;
-    body3b?: TypographyStyleOptions;
-    body3reg?: TypographyStyleOptions;
-    button1?: TypographyStyleOptions;
-    button2?: TypographyStyleOptions;
-    caption?: TypographyStyleOptions;
+    body1_sb?: TypographyStyleOptions
+    body1_reg?: TypographyStyleOptions
+    body2_b?: TypographyStyleOptions
+    body2_m?: TypographyStyleOptions
+    body2_reg?: TypographyStyleOptions
+    body3_reg?: TypographyStyleOptions
+    body3_b?: TypographyStyleOptions
+    button1?: TypographyStyleOptions
+    button2?: TypographyStyleOptions
+    caption?: TypographyStyleOptions
   }
 }
 
@@ -48,87 +94,87 @@ const typographyOptions: TypographyOptions = {
   ...Pretendard,
   h1: {
     fontWeight: 600,
-    fontSize: "52px",
+    fontSize: 52,
     lineHeight: "68px",
   },
   h2: {
     fontWeight: 700,
-    fontSize: "38px",
+    fontSize: 38,
     lineHeight: "48px",
   },
   h3: {
     fontWeight: 600,
-    fontSize: "24px",
+    fontSize: 24,
     lineHeight: "36px",
   },
   h4: {
     fontWeight: 600,
-    fontSize: "20px",
+    fontSize: 20,
     lineHeight: "28px",
   },
   h6: {
     fontWeight: 600,
-    fontSize: "16px",
+    fontSize: 16,
     lineHeight: "24px",
   },
-  body1sb: {
+  body1_sb: {
     fontWeight: 600,
-    fontSize: "16px",
+    fontSize: 16,
     lineHeight: "24px",
   },
-  body1reg: {
+  body1_reg: {
     fontWeight: 400,
-    fontSize: "16px",
+    fontSize: 16,
     lineHeight: "24px",
   },
-  body2b: {
+  body2_b: {
     fontWeight: 700,
-    fontSize: "14px",
+    fontSize: 14,
     lineHeight: "20px",
   },
-  body2m: {
+  body2_m: {
     fontWeight: 500,
-    fontSize: "14px",
+    fontSize: 14,
     lineHeight: "20px",
   },
-  body2reg: {
+  body2_reg: {
     fontWeight: 400,
-    fontSize: "14px",
+    fontSize: 14,
     lineHeight: "20px",
   },
-  body3b: {
+  body3_b: {
     fontWeight: 600,
-    fontSize: "12.4px",
+    fontSize: 12.4,
     lineHeight: "16px",
   },
-  body3reg: {
+  body3_reg: {
     fontWeight: 400,
-    fontSize: "12.4px",
+    fontSize: 12.4,
     lineHeight: "16px",
   },
   overline: {
     fontWeight: 500,
-    fontSize: "14px",
+    fontSize: 14,
     lineHeight: "20px",
     letterSpacing: "1px",
     textTransform: "uppercase",
   },
   button1: {
     fontWeight: 600,
-    fontSize: "16px",
+    fontSize: 16,
     lineHeight: "22px",
     textTransform: "capitalize",
   },
   button2: {
     fontWeight: 600,
-    fontSize: "14px",
+    fontSize: 14,
     lineHeight: "20px",
     letterSpacing: "0.2px",
     textTransform: "capitalize",
   },
   caption: {
     fontWeight: 500,
-    fontSize: "12px",
+    fontSize: 12,
     lineHeight: "16px",
   },
 };
@@ -137,6 +183,7 @@ export const createTypographyCssBaseline = () => {
   return {
     html: {
       fontFamily: Pretendard,
+      fontFeatureSettings: `'tnum', 'ss01', 'ss02', 'ss08'`,
     },
   };
 };
