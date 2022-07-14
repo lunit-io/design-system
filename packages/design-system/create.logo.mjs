@@ -29,9 +29,12 @@ function getComponentName(name, isDark) {
 }
 
 async function handler() {
-  const [svgPaths, componentTemplate] = await Promise.all([
+  const [svgPaths, componentTemplate, storiesTemplate] = await Promise.all([
     globAsync("src/assets/logo/*.svg"),
     fse.readFile(path.join(__dirname, "src/foundation/logo.mustache"), {
+      encoding: "utf8",
+    }),
+    fse.readFile(path.join(__dirname, "src/foundation/logo.stories.mustache"), {
       encoding: "utf8",
     }),
   ]);
@@ -40,12 +43,16 @@ async function handler() {
     recursive: true,
     force: true,
   });
+  await fse.rm(path.join("src/stories/foundation/Logo"), {
+    recursive: true,
+    force: true,
+  });
 
   await fse.mkdir(path.join("src/foundation/Logo"));
+  await fse.mkdir(path.join("src/stories/foundation/Logo"));
 
-  // make logo component
   for await (let svgPath of svgPaths) {
-    // make logo stories
+    // make logo component
     const filePattern = /^src\/assets\/logo\/Logo=(.*), Dark=(\w+).svg/;
     const [_, logoName, isDark] = svgPath.match(filePattern);
 
@@ -64,11 +71,19 @@ async function handler() {
 
     await fse.mkdir(path.join("src/foundation/Logo", componentName));
     await fse.writeFile(
-      path.join("src/foundation/Logo", componentName, `index.tsx`),
+      path.join("src/foundation/Logo", componentName, "index.tsx"),
       componentString
     );
 
-    // make
+    // make logo stories
+    const storiesString = Mustache.render(storiesTemplate, {
+      componentName,
+      dark: isDark === "True",
+    });
+    await fse.writeFile(
+      path.join("src/stories/foundation/Logo", `${componentName}.stories.tsx`),
+      storiesString
+    );
   }
 }
 handler();
