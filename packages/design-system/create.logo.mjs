@@ -16,8 +16,9 @@ function getComponentName(name, isDark) {
     .replace("ScopeIo", "ScopeIO")
     .replace("Dbt", "DBT")
     .replace("ChestCt", "ChestCT")
-    .replace("LunitCxr", "LunitCXR")
-    .replace("LunitMmg", "LunitMMG");
+    .replace("Cxr", "CXR")
+    .replace("Mmg", "MMG")
+    .replace("PdL", "PDL");
 
   if (isDark === "True") {
     compoenentName = `${compoenentName}Dark`;
@@ -42,7 +43,9 @@ async function handler() {
 
   await fse.mkdir(path.join("src/foundation/Logo"));
 
+  // make logo component
   for await (let svgPath of svgPaths) {
+    // make logo stories
     const filePattern = /^src\/assets\/logo\/Logo=(.*), Dark=(\w+).svg/;
     const [_, logoName, isDark] = svgPath.match(filePattern);
 
@@ -64,6 +67,8 @@ async function handler() {
       path.join("src/foundation/Logo", componentName, `index.tsx`),
       componentString
     );
+
+    // make
   }
 }
 handler();

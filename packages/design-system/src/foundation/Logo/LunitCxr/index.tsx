@@ -1,6 +1,6 @@
 import React from "react";
 
-const LunitCxr = (
+const LunitCXR = (
   prop: JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>,
 ) => (
   <svg {...prop} width="375" height="40" viewBox="0 0 375 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -18,6 +18,6 @@ const LunitCxr = (
 
 );
 
-export default LunitCxr;
+export default LunitCXR;
 
 
