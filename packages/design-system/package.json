@@ -13,7 +13,7 @@
   "scripts": {
     "build": "webpack",
     "create:logo-files": "node ./create.logo.mjs && webpack --watch",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "node ./create.logo.mjs && start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
   "devDependencies": {
