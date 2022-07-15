@@ -15,3 +15,8 @@ node_modules
 generated
 dist
 storybook-static
+
+# created logo files
+packages/design-system/src/foundation/Logo
+
+.DS_Store
