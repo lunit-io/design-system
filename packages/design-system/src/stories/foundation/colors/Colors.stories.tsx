@@ -1,4 +1,5 @@
 import React from "react";
+import { lunitTeal } from "@/foundation/colors/base";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { Box } from "@mui/material";
 
@@ -8,7 +9,8 @@ const Colors = () => {
       sx={{
         width: "100px",
         height: "100px",
-        backgroundColor: "var(--lunitTeal-40)",
+        backgroundColor: "var(--lunitTeal-test)",
+        color: "lunit.lunitTeal.40.contrastText",
       }}
     >
       lunitTeal
