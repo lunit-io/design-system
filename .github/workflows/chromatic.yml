@@ -1,0 +1,29 @@
+# Workflow name
+name: "Chromatic Deployment"
+
+# Event for the workflow
+on: push
+
+# List of jobs
+jobs:
+  deploy-staging:
+    # Operating System
+    runs-on: ubuntu-latest
+    env:
+      WORKDIR: ./packages/design-system
+    # Job steps
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Install dependencies
+        run: yarn
+        working-directory: ${{ env.WORKDIR }}
+
+      - name: Publish to Chromatic
+        id: chromatic
+        uses: chromaui/action@v1
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          workingDir: ${{ env.WORKDIR }}
