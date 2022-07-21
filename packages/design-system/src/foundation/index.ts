@@ -13,3 +13,5 @@ export const foundationCssBaseline: Components<Theme>["MuiCssBaseline"] = {
 export const typography = typographyOptions;
 
 export const palette = paletteOptions;
+
+export * from "./spacing";
