@@ -43,13 +43,9 @@ async function handler() {
     recursive: true,
     force: true,
   });
-  await fse.rm(path.join("src/stories/foundation/Logo"), {
-    recursive: true,
-    force: true,
-  });
-
   await fse.mkdir(path.join("src/foundation/Logo"));
-  await fse.mkdir(path.join("src/stories/foundation/Logo"));
+
+  const stories = [];
 
   for await (let svgPath of svgPaths) {
     // make logo component
@@ -75,15 +71,19 @@ async function handler() {
       componentString
     );
 
-    // make logo stories
-    const storiesString = Mustache.render(storiesTemplate, {
-      componentName,
-      dark: isDark === "True",
-    });
-    await fse.writeFile(
-      path.join("src/stories/foundation/Logo", `${componentName}.stories.tsx`),
-      storiesString
-    );
+    stories.push({ componentName, dark: isDark === "True" });
   }
+
+  // make stories
+  await fse.rm(path.join("src/stories/foundation/Logo"), {
+    recursive: true,
+    force: true,
+  });
+  await fse.mkdir(path.join("src/stories/foundation/Logo"));
+  const storiesString = Mustache.render(storiesTemplate, { stories });
+  await fse.writeFile(
+    path.join("src/stories/foundation/Logo", "logo.stories.tsx"),
+    storiesString
+  );
 }
 handler();
