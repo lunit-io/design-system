@@ -18,5 +18,6 @@ storybook-static
 
 # created logo files
 packages/design-system/src/foundation/Logo
+packages/design-system/src/stories/foundation/Logo
 
 .DS_Store

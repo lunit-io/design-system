@@ -1,0 +1,21 @@
+import React from "react";
+{{#stories}}
+import {{componentName}}Logo from "@/foundation/Logo/{{componentName}}";
+{{/stories}}
+
+export default {
+  title: "Foundation/Logo",
+};
+
+const wrapStyle = { display: "grid" };
+const darkStyle = { backgroundColor: "#000" };
+const titleStyle = { paddingBottom: "10px" };
+
+export const logo = () => (
+  <div style={wrapStyle}>
+{{#stories}}
+  <{{componentName}}Logo {{#dark}}style={darkStyle}{{/dark}} />
+  <span style={titleStyle}> {{componentName}}</span>
+{{/stories}}
+</div>
+);
