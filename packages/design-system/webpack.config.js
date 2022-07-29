@@ -1,5 +1,6 @@
 const path = require("path");
 const alias = require("./config/alias");
+const nodeExternals = require("webpack-node-externals");
 
 console.log(path.resolve(__dirname, "src"));
 
@@ -27,4 +28,5 @@ module.exports = {
       type: "commonjs-static",
     },
   },
+  externals: [nodeExternals()],
 };
