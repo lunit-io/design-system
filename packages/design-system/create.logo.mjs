@@ -29,15 +29,22 @@ function getComponentName(name, isDark) {
 }
 
 async function handler() {
-  const [svgPaths, componentTemplate, storiesTemplate] = await Promise.all([
-    globAsync("src/assets/logo/*.svg"),
-    fse.readFile(path.join(__dirname, "src/foundation/logo.mustache"), {
-      encoding: "utf8",
-    }),
-    fse.readFile(path.join(__dirname, "src/foundation/logo.stories.mustache"), {
-      encoding: "utf8",
-    }),
-  ]);
+  const [svgPaths, componentTemplate, storiesTemplate, indexTemplate] =
+    await Promise.all([
+      globAsync("src/assets/logo/*.svg"),
+      fse.readFile(path.join(__dirname, "src/foundation/logo.mustache"), {
+        encoding: "utf8",
+      }),
+      fse.readFile(
+        path.join(__dirname, "src/foundation/logo.stories.mustache"),
+        {
+          encoding: "utf8",
+        }
+      ),
+      fse.readFile(path.join(__dirname, "src/foundation/logo.index.mustache"), {
+        encoding: "utf8",
+      }),
+    ]);
 
   await fse.rm(path.join("src/foundation/Logo"), {
     recursive: true,
@@ -45,10 +52,10 @@ async function handler() {
   });
   await fse.mkdir(path.join("src/foundation/Logo"));
 
-  const stories = [];
+  const logoList = [];
 
   for await (let svgPath of svgPaths) {
-    // make logo component
+    // make logo components
     const filePattern = /^src\/assets\/logo\/Logo=(.*), Dark=(\w+).svg/;
     const [_, logoName, isDark] = svgPath.match(filePattern);
 
@@ -71,8 +78,15 @@ async function handler() {
       componentString
     );
 
-    stories.push({ componentName, dark: isDark === "True" });
+    logoList.push({ componentName, dark: isDark === "True" });
   }
+
+  // make an index file
+  const indexString = Mustache.render(indexTemplate, { logoList });
+  await fse.writeFile(
+    path.join("src/foundation/Logo", "index.ts"),
+    indexString
+  );
 
   // make stories
   await fse.rm(path.join("src/stories/foundation/Logo"), {
@@ -80,7 +94,7 @@ async function handler() {
     force: true,
   });
   await fse.mkdir(path.join("src/stories/foundation/Logo"));
-  const storiesString = Mustache.render(storiesTemplate, { stories });
+  const storiesString = Mustache.render(storiesTemplate, { logoList });
   await fse.writeFile(
     path.join("src/stories/foundation/Logo", "logo.stories.tsx"),
     storiesString
