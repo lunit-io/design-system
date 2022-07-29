@@ -1,7 +1,7 @@
 import React from "react";
-{{#stories}}
+{{#logoList}}
 import {{componentName}}Logo from "@/foundation/Logo/{{componentName}}";
-{{/stories}}
+{{/logoList}}
 
 export default {
   title: "Foundation/Logo",
@@ -13,9 +13,9 @@ const titleStyle = { paddingBottom: "10px" };
 
 export const logo = () => (
   <div style={wrapStyle}>
-{{#stories}}
+{{#logoList}}
   <{{componentName}}Logo {{#dark}}style={darkStyle}{{/dark}} />
   <span style={titleStyle}> {{componentName}}</span>
-{{/stories}}
+{{/logoList}}
 </div>
 );
