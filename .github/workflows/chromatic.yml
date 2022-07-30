@@ -16,11 +16,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
 
+      - name: Get branch name
+        id: branch-name
+        run: |
+          echo "::set-output name=value::$(echo ${GITHUB_REF_NAME} | tr / -)"
+
       - name: Install dependencies
         run: yarn
         working-directory: ${{ env.WORKDIR }}
 
       - name: Publish to Chromatic
+        env:
+          BRANCH_NAME: ${{ steps.branch-name.outputs.value }}
+          CHROMATIC_APP_ID: "62d7d1f2efc8a1e364b5e5e8"
         id: chromatic
         uses: chromaui/action@v1
         with:
