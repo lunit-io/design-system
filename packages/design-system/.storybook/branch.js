@@ -29,4 +29,11 @@ function getBranchName() {
   return branchName ?? head.trim();
 }
 
-module.exports = getBranchName;
+function getChromaticBranchName() {
+  return getBranchName()?.toLowerCase().replace("/g", "-");
+}
+
+module.exports = {
+  getBranchName,
+  getChromaticBranchName,
+};
