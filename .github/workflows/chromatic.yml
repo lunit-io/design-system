@@ -1,0 +1,61 @@
+# Workflow name
+name: "Chromatic Deployment"
+
+env:
+  CHROMATIC_APP_ID: 62d7d1f2efc8a1e364b5e5e8
+
+# Event for the workflow
+on: [push, pull_request]
+
+# List of jobs
+jobs:
+  deploy-staging:
+    # Operating System
+    runs-on: ubuntu-latest
+    env:
+      WORKDIR: ./packages/design-system
+    # Job steps
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Get branch name
+        env:
+          BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
+        id: branch-name
+        run: |
+          echo "::set-output name=value::$(echo $BRANCH_NAME)"
+
+      - name: Get Chromatic branch name
+        env:
+          BRANCH_NAME: ${{ steps.branch-name.outputs.value }}
+        id: chromatic-branch-name
+        run: |
+          echo "::set-output name=value::$(echo $BRANCH_NAME | tr '[:upper:]' '[:lower:]' | tr / -)"
+
+      - name: Install dependencies
+        if: ${{ github.event_name == 'push' }}
+        run: yarn
+        working-directory: ${{ env.WORKDIR }}
+
+      - name: Publish to Chromatic
+        env:
+          BRANCH_NAME: ${{ steps.branch-name.outputs.value }}
+          CHROMATIC_BRANCH_NAME: ${{ steps.chromatic-branch-name.outputs.value }}
+        id: chromatic
+        if: ${{ github.event_name == 'push' }}
+        uses: chromaui/action@v1
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          workingDir: ${{ env.WORKDIR }}
+
+      - name: Comment preview link
+        env:
+          CHROMATIC_BRANCH_NAME: ${{ steps.chromatic-branch-name.outputs.value }}
+        if: ${{ github.event_name == 'pull_request' }}
+        uses: NejcZdovc/comment-pr@v1.1.1
+        with:
+          message: "preview: https://${{ env.CHROMATIC_BRANCH_NAME }}--${{ env.CHROMATIC_APP_ID }}.chromatic.com"
+          identifier: "PREVIEW_LINK_COMMENT"
+          github_token: ${{ secrets.GITHUB_TOKEN }}

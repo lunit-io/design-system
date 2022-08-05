@@ -14,7 +14,8 @@
     "build": "webpack",
     "create:logo-files": "node ./create.logo.mjs && webpack --watch",
     "storybook": "node ./create.logo.mjs && start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "chromatic": "chromatic"
   },
   "devDependencies": {
     "@babel/core": "^7.17.10",
@@ -35,6 +36,7 @@
     "@storybook/testing-library": "^0.0.11",
     "@storybook/theming": "^6.4.22",
     "babel-loader": "^8.2.5",
+    "chromatic": "^6.7.0",
     "mustache": "^4.2.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
