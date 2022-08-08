@@ -8,13 +8,13 @@ export default {
 };
 
 const wrapStyle = { display: "grid" };
-const darkStyle = { backgroundColor: "#000" };
+const darkBgStyle = { backgroundColor: "#000" };
 const titleStyle = { paddingBottom: "10px" };
 
 export const logo = () => (
   <div style={wrapStyle}>
 {{#logoList}}
-  <{{componentName}}Logo {{#dark}}style={darkStyle}{{/dark}} />
+  <{{componentName}}Logo {{#darkBg}}style={darkBgStyle}{{/darkBg}} />
   <span style={titleStyle}> {{componentName}}</span>
 {{/logoList}}
 </div>
