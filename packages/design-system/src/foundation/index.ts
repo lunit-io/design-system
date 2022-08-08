@@ -14,4 +14,4 @@ export const typography = typographyOptions;
 
 export const palette = paletteOptions;
 
-export * from "./spacing";
+export { spacing } from "./spacing";
