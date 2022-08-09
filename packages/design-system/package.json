@@ -12,9 +12,10 @@
   },
   "scripts": {
     "build": "webpack",
-    "create:logo-files": "node ./create.logo.mjs && webpack --watch",
-    "storybook": "node ./create.logo.mjs && start-storybook -p 6006",
-    "build-storybook": "build-storybook",
+    "dev:logo-files": "node ./create.logo.mjs && webpack --watch",
+    "create:logo-files": "node ./create.logo.mjs && webpack",
+    "storybook": "yarn create:logo-files && start-storybook -p 6006",
+    "build-storybook": "yarn create:logo-files && build-storybook",
     "chromatic": "chromatic"
   },
   "devDependencies": {

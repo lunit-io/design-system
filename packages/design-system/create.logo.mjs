@@ -8,7 +8,7 @@ import upperFirst from "lodash/upperFirst.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-function getComponentName(name, isDark) {
+function getComponentName(name, gray, isDark) {
   let compoenentName = upperFirst(camelCase(name));
 
   compoenentName = compoenentName
@@ -18,10 +18,14 @@ function getComponentName(name, isDark) {
     .replace("ChestCt", "ChestCT")
     .replace("Cxr", "CXR")
     .replace("Mmg", "MMG")
-    .replace("PdL", "PDL");
+    .replace("PdL", "PDL")
+    .replace("Her", "HER");
 
   if (isDark === "True") {
     compoenentName = `${compoenentName}Dark`;
+  }
+  if (gray === "On") {
+    compoenentName = `${compoenentName}Gray`;
   }
   return compoenentName.includes("Lunit")
     ? compoenentName
@@ -56,10 +60,11 @@ async function handler() {
 
   for await (let svgPath of svgPaths) {
     // make logo components
-    const filePattern = /^src\/assets\/logo\/Logo=(.*), Dark=(\w+).svg/;
-    const [_, logoName, isDark] = svgPath.match(filePattern);
+    const filePattern =
+      /^src\/assets\/logo\/Logo=([a-zA-Z0-9_-]+),(?: Gray=(\w+),)? Dark=(\w+).svg/;
+    const [_, logoName, gray, isDark] = svgPath.match(filePattern);
 
-    const componentName = getComponentName(logoName, isDark);
+    const componentName = getComponentName(logoName, gray, isDark);
 
     let svgContent = await fse.readFile(path.join(__dirname, svgPath), {
       encoding: "utf8",
@@ -78,7 +83,10 @@ async function handler() {
       componentString
     );
 
-    logoList.push({ componentName, dark: isDark === "True" });
+    logoList.push({
+      componentName,
+      darkBg: gray === "On" || isDark === "True",
+    });
   }
 
   // make an index file
