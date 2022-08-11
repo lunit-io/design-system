@@ -3,11 +3,25 @@
 import { PaletteOptions, PaletteColor } from "@mui/material/styles";
 import * as base from "./base";
 
-type BaseColor = Record<keyof typeof base.blue, PaletteColor>;
-type GreyColor = Record<keyof typeof base.grey, PaletteColor>;
+export type BaseColor = Record<keyof typeof base.blue, PaletteColor>;
+export type GreyColor = Record<keyof typeof base.grey, PaletteColor>;
 
 declare module "@mui/material/styles/createPalette" {
   interface PaletteOptions {
+    lunit: {
+      grey: GreyColor;
+      blue: BaseColor;
+      green: BaseColor;
+      lunitGreen: BaseColor;
+      lunitTeal: BaseColor;
+      magenta: BaseColor;
+      orange: BaseColor;
+      red: BaseColor;
+      yellow: BaseColor;
+    };
+  }
+
+  interface Palette {
     lunit: {
       grey: GreyColor;
       blue: BaseColor;

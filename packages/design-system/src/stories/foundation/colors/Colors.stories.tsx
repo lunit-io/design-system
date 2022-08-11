@@ -1,20 +1,52 @@
 import React from "react";
-import { lunitTeal } from "@/foundation/colors/base";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { Box } from "@mui/material";
+import { Typography, useTheme } from "@mui/material";
+import { Color, ColorContainer, Container, PaletteContainer } from "./styled";
+import map from "lodash/map";
+import lowerCase from "lodash/lowerCase";
+import capitalize from "lodash/capitalize";
+import { BaseColor, GreyColor } from "@/foundation/colors";
 
-const Colors = () => {
+const convertColorPaletteKeyToDisplay = (key: string): string =>
+  lowerCase(key)
+    .split(" ")
+    .map((str) => capitalize(str))
+    .join(" ");
+
+const BaseColors = () => {
+  const theme = useTheme();
   return (
-    <Box
-      sx={{
-        width: "100px",
-        height: "100px",
-        backgroundColor: "var(--lunitTeal-test)",
-        color: "lunit.lunitTeal.40.contrastText",
-      }}
-    >
-      lunitTeal
-    </Box>
+    <Container>
+      {map(
+        theme.palette.lunit,
+        (colors: BaseColor | GreyColor, paletteKey: string) => (
+          <>
+            <Typography
+              variant="h4"
+              sx={{
+                marginBottom: 11,
+                "&:not(:first-child)": { marginTop: 11 },
+              }}
+            >
+              {convertColorPaletteKeyToDisplay(paletteKey)}
+            </Typography>
+            <PaletteContainer>
+              {map(colors, (_: string, colorKey: string) => (
+                <ColorContainer key={colorKey}>
+                  <Color
+                    color={`lunit.${paletteKey}.${colorKey}.contrastText`}
+                    bgcolor={`lunit.${paletteKey}.${colorKey}.main`}
+                  >
+                    <Typography variant="h4">T</Typography>
+                  </Color>
+                  <Typography variant="body2">{`${paletteKey}_${colorKey}`}</Typography>
+                </ColorContainer>
+              ))}
+            </PaletteContainer>
+          </>
+        )
+      )}
+    </Container>
   );
 };
 
@@ -22,18 +54,11 @@ const Colors = () => {
 export default {
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   title: "Foundation/Colors",
-  component: Colors,
-  argTypes: {
-    backgroundColor: { control: "color" },
-  },
-} as ComponentMeta<typeof Colors>;
+  component: BaseColors,
+} as ComponentMeta<typeof BaseColors>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof Colors> = () => <Colors />;
+const BaseTemplate: ComponentStory<typeof BaseColors> = () => <BaseColors />;
 
-export const Main = Template.bind({});
+export const Base = BaseTemplate.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Main.args = {
-  primary: true,
-  label: "Hello World",
-};
