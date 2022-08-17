@@ -1,4 +1,7 @@
-import { TypographyOptions } from "@mui/material/styles/createTypography";
+import {
+  FontStyleOptions,
+  TypographyOptions,
+} from "@mui/material/styles/createTypography";
 
 declare module "@mui/material/styles" {
   interface TypographyVariants {
@@ -26,9 +29,12 @@ declare module "@mui/material/styles" {
     button2?: React.CSSProperties;
     caption?: React.CSSProperties;
   }
+
+  interface TypographyVariantsOptionsWithoutFont
+    extends Omit<TypographyVariantsOptions, keyof FontStyleOptions> {}
 }
 
-declare module '@mui/material/Typography' {
+declare module "@mui/material/Typography" {
   interface TypographyPropsVariantOverrides {
     body1_sb: true;
     body1_reg: true;
@@ -43,7 +49,7 @@ declare module '@mui/material/Typography' {
   }
 }
 
-declare module '@mui/material/styles/createTypography' {
+declare module "@mui/material/styles/createTypography" {
   interface Typography {
     body1_sb?: TypographyStyle;
     body1_reg?: TypographyStyle;
@@ -58,40 +64,40 @@ declare module '@mui/material/styles/createTypography' {
   }
 
   interface TypographyOptions {
-    body1_sb?: TypographyStyleOptions
-    body1_reg?: TypographyStyleOptions
-    body2_b?: TypographyStyleOptions
-    body2_m?: TypographyStyleOptions
-    body2_reg?: TypographyStyleOptions
-    body3_reg?: TypographyStyleOptions
-    body3_b?: TypographyStyleOptions
-    button1?: TypographyStyleOptions
-    button2?: TypographyStyleOptions
-    caption?: TypographyStyleOptions
+    body1_sb?: TypographyStyleOptions;
+    body1_reg?: TypographyStyleOptions;
+    body2_b?: TypographyStyleOptions;
+    body2_m?: TypographyStyleOptions;
+    body2_reg?: TypographyStyleOptions;
+    body3_reg?: TypographyStyleOptions;
+    body3_b?: TypographyStyleOptions;
+    button1?: TypographyStyleOptions;
+    button2?: TypographyStyleOptions;
+    caption?: TypographyStyleOptions;
   }
+
+  interface TypographyOptionsWithoutFont
+    extends Omit<TypographyOptions, keyof FontStyleOptions> {}
 }
 
-const Pretendard = {
-  fontFamily: [
-    "Pretendard",
-    "-apple-system",
-    "BlinkMacSystemFont",
-    "system-ui",
-    "Roboto",
-    '"Helvetica Neue"',
-    '"Segoe UI"',
-    '"Apple SD Gothic Neo"',
-    '"Noto Sans KR"',
-    '"Malgun Gothic"',
-    '"Apple Color Emoji"',
-    '"Segoe UI Emoji"',
-    '"Segoe UI Symbol"',
-    "sans-serif",
-  ].join(","),
-};
+const fontFamily = [
+  "Pretendard",
+  "-apple-system",
+  "BlinkMacSystemFont",
+  "system-ui",
+  "Roboto",
+  '"Helvetica Neue"',
+  '"Segoe UI"',
+  '"Apple SD Gothic Neo"',
+  '"Noto Sans KR"',
+  '"Malgun Gothic"',
+  '"Apple Color Emoji"',
+  '"Segoe UI Emoji"',
+  '"Segoe UI Symbol"',
+  "sans-serif",
+].join(",");
 
-const typographyOptions: TypographyOptions = {
-  ...Pretendard,
+const fontVariants: Omit<TypographyOptions, "fontFamily" | "allVariants"> = {
   h1: {
     fontWeight: 600,
     fontSize: 52,
@@ -179,10 +185,15 @@ const typographyOptions: TypographyOptions = {
   },
 };
 
+const typographyOptions: TypographyOptions = {
+  fontFamily,
+  ...fontVariants,
+};
+
 export const createTypographyCssBaseline = () => {
   return {
     html: {
-      fontFamily: Pretendard,
+      fontFamily,
       fontFeatureSettings: `'tnum', 'ss01', 'ss02', 'ss08'`,
     },
   };
