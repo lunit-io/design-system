@@ -5,7 +5,8 @@
     "paths": {
       "@lunit/design-system": ["design-system/src"],
       "@lunit/design-system-icons": ["design-system-icons/src"],
-      "@lunit/mui-theme": ["mui-theme/src"],
-    },
+      "@lunit/design-system-logo": ["design-system-logo/src"],
+      "@lunit/mui-theme": ["mui-theme/src"]
+    }
   }
 }
