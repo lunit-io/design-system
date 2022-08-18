@@ -2,8 +2,8 @@
   "name": "@lunit/design-system",
   "version": "0.1.0",
   "description": "Lunit Design System",
-  "main": "dist/design-system.js",
-  "module": "src/index.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "license": "MIT",
   "repository": {
     "type": "git",

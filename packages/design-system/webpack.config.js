@@ -2,8 +2,6 @@ const path = require("path");
 const alias = require("./config/alias");
 const nodeExternals = require("webpack-node-externals");
 
-console.log(path.resolve(__dirname, "src"));
-
 module.exports = {
   mode: "production",
   entry: "./src/index.ts",
@@ -12,8 +10,11 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        use: "ts-loader",
+        loader: "ts-loader",
         exclude: /node_modules/,
+        options: {
+          configFile: "tsconfig.build.json",
+        },
       },
     ],
   },
@@ -23,7 +24,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "design-system.js",
+    filename: "index.js",
     library: {
       type: "commonjs-static",
     },
