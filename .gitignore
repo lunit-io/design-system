@@ -17,7 +17,7 @@ dist
 storybook-static
 
 # created logo files
-packages/design-system/src/foundation/Logo
-packages/design-system/src/stories/foundation/Logo
+packages/design-system-logo/src/components
+packages/design-system-logo/src/stories/logo
 
 .DS_Store

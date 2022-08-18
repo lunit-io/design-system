@@ -8,7 +8,7 @@ import upperFirst from "lodash/upperFirst.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-function getComponentName(name, gray, isDark) {
+function getComponentName(name, grey, isDark) {
   let compoenentName = upperFirst(camelCase(name));
 
   compoenentName = compoenentName
@@ -24,8 +24,8 @@ function getComponentName(name, gray, isDark) {
   if (isDark === "True") {
     compoenentName = `${compoenentName}Dark`;
   }
-  if (gray === "On") {
-    compoenentName = `${compoenentName}Gray`;
+  if (grey === "On") {
+    compoenentName = `${compoenentName}grey`;
   }
   return compoenentName.includes("Lunit")
     ? compoenentName
@@ -36,35 +36,32 @@ async function handler() {
   const [svgPaths, componentTemplate, storiesTemplate, indexTemplate] =
     await Promise.all([
       globAsync("src/assets/logo/*.svg"),
-      fse.readFile(path.join(__dirname, "src/foundation/logo.mustache"), {
+      fse.readFile(path.join(__dirname, "src/logo.mustache"), {
         encoding: "utf8",
       }),
-      fse.readFile(
-        path.join(__dirname, "src/foundation/logo.stories.mustache"),
-        {
-          encoding: "utf8",
-        }
-      ),
-      fse.readFile(path.join(__dirname, "src/foundation/logo.index.mustache"), {
+      fse.readFile(path.join(__dirname, "src/logo.stories.mustache"), {
+        encoding: "utf8",
+      }),
+      fse.readFile(path.join(__dirname, "src/logo.index.mustache"), {
         encoding: "utf8",
       }),
     ]);
 
-  await fse.rm(path.join("src/foundation/Logo"), {
+  await fse.rm(path.join("src/components"), {
     recursive: true,
     force: true,
   });
-  await fse.mkdir(path.join("src/foundation/Logo"));
+  await fse.mkdir(path.join("src/components"));
 
   const logoList = [];
 
   for await (let svgPath of svgPaths) {
     // make logo components
     const filePattern =
-      /^src\/assets\/logo\/Logo=([a-zA-Z0-9_-]+),(?: Gray=(\w+),)? Dark=(\w+).svg/;
-    const [_, logoName, gray, isDark] = svgPath.match(filePattern);
+      /^src\/assets\/logo\/logo=([a-zA-Z0-9_-]+),(?: grey=(\w+),)? dark=(\w+).svg/;
+    const [_, logoName, grey, isDark] = svgPath.match(filePattern);
 
-    const componentName = getComponentName(logoName, gray, isDark);
+    const componentName = getComponentName(logoName, grey, isDark);
 
     let svgContent = await fse.readFile(path.join(__dirname, svgPath), {
       encoding: "utf8",
@@ -77,34 +74,31 @@ async function handler() {
       svgContent,
     });
 
-    await fse.mkdir(path.join("src/foundation/Logo", componentName));
+    await fse.mkdir(path.join("src/components", componentName));
     await fse.writeFile(
-      path.join("src/foundation/Logo", componentName, "index.tsx"),
+      path.join("src/components", componentName, "index.tsx"),
       componentString
     );
 
     logoList.push({
       componentName,
-      darkBg: gray === "On" || isDark === "True",
+      darkBg: grey === "On" || isDark === "True",
     });
   }
 
   // make an index file
   const indexString = Mustache.render(indexTemplate, { logoList });
-  await fse.writeFile(
-    path.join("src/foundation/Logo", "index.ts"),
-    indexString
-  );
+  await fse.writeFile(path.join("src/components", "index.ts"), indexString);
 
   // make stories
-  await fse.rm(path.join("src/stories/foundation/Logo"), {
+  await fse.rm(path.join("src/stories/logo"), {
     recursive: true,
     force: true,
   });
-  await fse.mkdir(path.join("src/stories/foundation/Logo"));
+  await fse.mkdir(path.join("src/stories/logo"));
   const storiesString = Mustache.render(storiesTemplate, { logoList });
   await fse.writeFile(
-    path.join("src/stories/foundation/Logo", "logo.stories.tsx"),
+    path.join("src/stories/logo", "logo.stories.tsx"),
     storiesString
   );
 }

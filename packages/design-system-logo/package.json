@@ -2,8 +2,9 @@
   "name": "@lunit/design-system-logo",
   "version": "0.1.0",
   "description": "Lunit Design System Logo",
-  "main": "index.js",
-  "module": "src/index.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "sideEffects": false,
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -12,8 +13,15 @@
   },
   "scripts": {
     "test": "jest",
+    "dev": "node ./create.logo.mjs && webpack --watch",
+    "build": "node ./create.logo.mjs && webpack",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "react": ">=17",
+    "react-dom": ">=17"
   },
   "devDependencies": {
     "@babel/core": "^7.18.10",
@@ -44,10 +52,5 @@
     "webpack": "^5.70.0",
     "webpack-cli": "^4.9.2",
     "webpack-node-externals": "^3.0.0"
-  },
-  "dependencies": {},
-  "peerDependencies": {
-    "react": ">=17",
-    "react-dom": ">=17"
   }
 }
