@@ -15,14 +15,12 @@
     "test": "jest",
     "dev": "node ./create.logo.mjs && webpack --watch",
     "build": "node ./create.logo.mjs && webpack",
+    "postbuild": "cp package.json README.md dist",
+    "prepublishOnly": "[[ \"$PWD\" == *dist ]] || { exit 1; }",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
   "dependencies": {},
-  "peerDependencies": {
-    "react": ">=17",
-    "react-dom": ">=17"
-  },
   "devDependencies": {
     "@babel/core": "^7.18.10",
     "@storybook/addon-actions": "^6.5.10",
@@ -52,5 +50,9 @@
     "webpack": "^5.70.0",
     "webpack-cli": "^4.9.2",
     "webpack-node-externals": "^3.0.0"
+  },
+  "peerDependencies": {
+    "react": ">=17",
+    "react-dom": ">=17"
   }
 }
