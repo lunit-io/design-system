@@ -95,7 +95,7 @@ async function handler() {
     recursive: true,
     force: true,
   });
-  await fse.mkdir(path.join("src/stories/logo"));
+  await fse.mkdir(path.join("src/stories/logo"), { recursive: true });
   const storiesString = Mustache.render(storiesTemplate, { logoList });
   await fse.writeFile(
     path.join("src/stories/logo", "logo.stories.tsx"),
