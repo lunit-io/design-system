@@ -1,0 +1,58 @@
+{
+  "name": "@lunit/design-system-logo",
+  "version": "0.1.0",
+  "description": "Lunit Design System Logo",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "sideEffects": false,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lunit-io/design-system.git",
+    "directory": "packages/design-system-logo"
+  },
+  "scripts": {
+    "test": "jest",
+    "dev": "node ./create.logo.mjs && webpack --watch",
+    "build": "node ./create.logo.mjs && webpack",
+    "postbuild": "cp package.json README.md dist",
+    "prepublishOnly": "[[ \"$PWD\" == *dist ]] || { exit 1; }",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.18.10",
+    "@storybook/addon-actions": "^6.5.10",
+    "@storybook/addon-essentials": "^6.5.10",
+    "@storybook/addon-interactions": "^6.5.10",
+    "@storybook/addon-links": "^6.5.10",
+    "@storybook/builder-webpack4": "^6.5.10",
+    "@storybook/manager-webpack4": "^6.5.10",
+    "@storybook/react": "^6.5.10",
+    "@storybook/testing-library": "^0.0.13",
+    "babel-loader": "^8.2.5",
+    "@svgr/webpack": "^6.2.1",
+    "@testing-library/jest-dom": "^5.16.2",
+    "@testing-library/react": "^12.1.4",
+    "@types/fs-extra": "^9.0.13",
+    "@types/jest": "^27.4.1",
+    "fast-glob": "^3.2.11",
+    "fs-extra": "^10.1.0",
+    "mustache": "^4.2.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "source-map-loader": "^3.0.1",
+    "ts-jest": "^27.1.3",
+    "ts-loader": "^9.2.7",
+    "ts-node": "^10.8.1",
+    "typescript": "^4.6.2",
+    "webpack": "^5.70.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-node-externals": "^3.0.0"
+  },
+  "peerDependencies": {
+    "react": ">=17",
+    "react-dom": ">=17"
+  }
+}

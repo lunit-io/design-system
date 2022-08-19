@@ -1,0 +1,21 @@
+import React from "react";
+{{#logoList}}
+import {{componentName}}Logo from "../../components/{{componentName}}";
+{{/logoList}}
+
+export default {
+  title: "Foundation/Logo",
+};
+
+const wrapStyle = { display: "grid" };
+const darkBgStyle = { backgroundColor: "#000" };
+const titleStyle = { paddingBottom: "10px" };
+
+export const logo = () => (
+  <div style={wrapStyle}>
+{{#logoList}}
+  <{{componentName}}Logo {{#darkBg}}style={darkBgStyle}{{/darkBg}} />
+  <span style={titleStyle}> {{componentName}}</span>
+{{/logoList}}
+</div>
+);
