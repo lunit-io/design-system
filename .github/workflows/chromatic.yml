@@ -5,7 +5,13 @@ env:
   CHROMATIC_APP_ID: 62d7d1f2efc8a1e364b5e5e8
 
 # Event for the workflow
-on: [push, pull_request]
+on: 
+  push:
+    paths-ignore:
+      - '.storybook/Welcome/**'
+  pull_request: 
+    paths-ignore:
+      - '.storybook/Welcome/**'
 
 # List of jobs
 jobs:
