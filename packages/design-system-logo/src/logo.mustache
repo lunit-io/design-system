@@ -1,9 +1,7 @@
-import Svg from "../../../{{{svgPath}}}";
-
-const {{componentName}} = (prop: JSX.IntrinsicAttributes) => (
-  <img {...prop} src={Svg} alt="logo" />
+const {{componentName}} = (
+  prop: JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>,
+) => (
+  {{{svgContent}}}
 );
 
 export default {{componentName}};
-
-

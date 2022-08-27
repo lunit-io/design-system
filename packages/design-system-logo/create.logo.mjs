@@ -63,9 +63,15 @@ async function handler() {
 
     const componentName = getComponentName(logoName, grey, isDark);
 
+    let svgContent = await fse.readFile(path.join(__dirname, svgPath), {
+      encoding: "utf8",
+    });
+
+    svgContent = svgContent.replace("<svg", "<svg {...prop}");
+
     const componentString = Mustache.render(componentTemplate, {
       componentName,
-      svgPath,
+      svgContent,
     });
 
     await fse.mkdir(path.join("src/components", componentName));
