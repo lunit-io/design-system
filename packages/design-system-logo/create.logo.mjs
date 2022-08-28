@@ -3,6 +3,7 @@ import path, { dirname } from "path";
 import { fileURLToPath } from "url";
 import globAsync from "fast-glob";
 import Mustache from "mustache";
+import { transform } from "@svgr/core";
 import camelCase from "lodash/camelCase.js";
 import upperFirst from "lodash/upperFirst.js";
 
@@ -33,19 +34,15 @@ function getComponentName(name, grey, isDark) {
 }
 
 async function handler() {
-  const [svgPaths, componentTemplate, storiesTemplate, indexTemplate] =
-    await Promise.all([
-      globAsync("src/assets/logo/*.svg"),
-      fse.readFile(path.join(__dirname, "src/logo.mustache"), {
-        encoding: "utf8",
-      }),
-      fse.readFile(path.join(__dirname, "src/logo.stories.mustache"), {
-        encoding: "utf8",
-      }),
-      fse.readFile(path.join(__dirname, "src/logo.index.mustache"), {
-        encoding: "utf8",
-      }),
-    ]);
+  const [svgPaths, storiesTemplate, indexTemplate] = await Promise.all([
+    globAsync("src/assets/logo/*.svg"),
+    fse.readFile(path.join(__dirname, "src/logo.stories.mustache"), {
+      encoding: "utf8",
+    }),
+    fse.readFile(path.join(__dirname, "src/logo.index.mustache"), {
+      encoding: "utf8",
+    }),
+  ]);
 
   await fse.rm(path.join("src/components"), {
     recursive: true,
@@ -63,10 +60,18 @@ async function handler() {
 
     const componentName = getComponentName(logoName, grey, isDark);
 
-    const componentString = Mustache.render(componentTemplate, {
-      componentName,
-      svgPath,
+    let svgContent = await fse.readFile(path.join(__dirname, svgPath), {
+      encoding: "utf8",
     });
+
+    const componentString = await transform(
+      svgContent,
+      {
+        typescript: true,
+        jsxRuntime: "automatic",
+      },
+      { componentName }
+    );
 
     await fse.mkdir(path.join("src/components", componentName));
     await fse.writeFile(
