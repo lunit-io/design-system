@@ -18,7 +18,7 @@
     "postbuild": "cp package.json README.md dist",
     "prepublishOnly": "[[ \"$PWD\" == *dist ]] || { exit 1; }",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook --docs"
+    "build-storybook": "build-storybook --docs && npx -y storybook extract "
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",
