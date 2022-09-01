@@ -13,8 +13,8 @@
   },
   "scripts": {
     "test": "jest",
-    "dev": "node ./builder.mjs && webpack --watch",
-    "build": "node ./builder.mjs && webpack",
+    "dev": "node ./generator.mjs && webpack --watch",
+    "build": "node ./generator.mjs && webpack",
     "postbuild": "cp package.json README.md dist",
     "prepublishOnly": "[[ \"$PWD\" == *dist ]] || { exit 1; }",
     "storybook": "yarn build && start-storybook -p 6006",
