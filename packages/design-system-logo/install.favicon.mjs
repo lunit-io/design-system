@@ -11,13 +11,13 @@ async function handler() {
   // check path exist
   if (!fse.existsSync(publicPath)) {
     console.log(
-      "The favicon files aren't installed because the public path does not exist."
+      "The favicon files aren't installed because the public directory does not exist."
     );
     return;
   }
 
   if (!fse.existsSync(faviconPath)) {
-    console.log("The pavicon path does not exist.");
+    console.log("The pavicon directory does not exist.");
     return;
   }
 
@@ -32,7 +32,7 @@ async function handler() {
       fse.rename(path.join(faviconPath, file), path.join(publicPath, file));
     });
 
-    fse.rmdir(faviconPath);
+    fse.rmdir(faviconPath, { recursive: true, force: true });
   });
 }
 
