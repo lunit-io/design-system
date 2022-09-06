@@ -11,7 +11,7 @@ async function handler() {
   // check path exist
   if (!fse.existsSync(publicPath)) {
     console.log(
-      "The favicon files aren't installed because the public directory does not exist."
+      "The favicon files aren't saved because the public directory does not exist."
     );
     return;
   }
