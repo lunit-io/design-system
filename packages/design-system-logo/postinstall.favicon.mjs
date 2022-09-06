@@ -11,13 +11,13 @@ async function handler() {
   // check path exist
   if (!fse.existsSync(publicPath)) {
     console.log(
-      "The favicon files aren't saved because the public directory does not exist."
+      "The favicon files aren't saved because the public directory doesn't exist."
     );
     return;
   }
 
   if (!fse.existsSync(faviconPath)) {
-    console.log("The pavicon directory does not exist.");
+    console.log("The favicon directory doesn't exist.");
     return;
   }
 
@@ -31,9 +31,12 @@ async function handler() {
     files.forEach((file) => {
       fse.rename(path.join(faviconPath, file), path.join(publicPath, file));
     });
-
-    fse.rmdir(faviconPath, { recursive: true, force: true });
   });
 }
 
 handler();
+
+// remove favicon directory
+if (fse.existsSync(faviconPath)) {
+  fse.rmdir(faviconPath, { recursive: true, force: true });
+}
