@@ -7,6 +7,7 @@ import {
   spacing,
 } from "./foundation";
 import { componentsCssBaseline } from "./components";
+import TextFieldStyle from "./components/TextField/TextField.style";
 
 const theme = createTheme({
   typography,
@@ -14,6 +15,7 @@ const theme = createTheme({
   spacing,
   components: {
     MuiCssBaseline: deepmerge(foundationCssBaseline, componentsCssBaseline),
+    MuiTextField: TextFieldStyle,
     // @todo add any MUI components theme exported from ./components/index.ts
   },
 });
