@@ -16,12 +16,18 @@
     "postinstall": "node ./postinstall.favicon.mjs",
     "dev": "node ./generator.mjs && webpack --watch",
     "build": "node ./generator.mjs && webpack",
-    "postbuild": "cp package.json README.md postinstall.favicon.mjs dist && cp -r ./src/assets/favicon dist",
+    "postbuild": "cp package.json README.md favicon.mjs postinstall.favicon.mjs dist && cp -r ./src/assets/favicon dist",
     "prepublishOnly": "[[ \"$PWD\" == *dist ]] || { exit 1; }",
     "storybook": "yarn build && start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
-  "dependencies": {},
+  "bin": "./favicon.mjs",
+  "dependencies": {
+    "chalk": "^5.0.1",
+    "commander": "^9.4.0",
+    "fs-extra": "^10.1.0",
+    "semver": "^7.3.7"
+  },
   "devDependencies": {
     "@babel/core": "^7.18.10",
     "@storybook/addon-actions": "^6.5.10",
