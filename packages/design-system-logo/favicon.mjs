@@ -70,7 +70,7 @@ async function moveToFavicon(faviconPath) {
     console.log(chalk.green("success"), "Saved the favicon");
     console.log();
     console.log(
-      chalk.blue("Info "),
+      chalk.blue("Info"),
       "See README.md for favicon settings: https://github.com/lunit-io/design-system/tree/main/packages/design-system-logo#favicon"
     );
     console.log();
