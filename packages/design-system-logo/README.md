@@ -12,10 +12,10 @@ This package provides logos used in the Lunit projects.
 Install the package in your project directory with:
 
 ```sh
-npx @lunit/design-system-logo --favicon-path=<path>
+npx @lunit/design-system-logo --favicon-path=<relateve path>
 ```
 
-If you want to save the favicon files, please set the path option.
+If you want to save the favicon files, please set the **relateve** path option.
 
 ## Usage
 
