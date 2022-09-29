@@ -20,7 +20,9 @@
     "storybook": "yarn build && start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
-  "bin": "./favicon.mjs",
+  "bin": {
+    "@lunit/design-system-logo": "./favicon.mjs"
+  },
   "dependencies": {
     "chalk": "^5.0.1",
     "commander": "^9.4.0",
