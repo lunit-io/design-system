@@ -43,7 +43,7 @@ function getLatestVersion() {
 
 async function moveToFavicon(faviconPath) {
   if (!fse.existsSync(faviconPath)) {
-    await fse.mkdir(faviconPath);
+    await fse.mkdir(faviconPath, { recursive: true });
   }
 
   if (!fse.existsSync(filePath)) {
