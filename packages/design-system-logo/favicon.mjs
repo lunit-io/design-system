@@ -61,9 +61,9 @@ async function moveToFavicon(faviconPath) {
       return;
     }
 
-    // move favicon files
+    // copy favicon files
     files.forEach((file) => {
-      fse.rename(path.join(filePath, file), path.join(faviconPath, file));
+      fse.copyFile(path.join(filePath, file), path.join(faviconPath, file));
     });
 
     console.log();
