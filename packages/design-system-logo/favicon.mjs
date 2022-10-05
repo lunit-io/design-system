@@ -95,6 +95,7 @@ function installPackage(option) {
         )
       );
       console.log();
+      return;
     }
   }
 
