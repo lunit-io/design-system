@@ -1,6 +1,6 @@
 {
   "name": "@lunit/design-system-logo",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Lunit Design System Logo",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
