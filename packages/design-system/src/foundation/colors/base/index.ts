@@ -7,3 +7,5 @@ export * from "./magenta";
 export * from "./orange";
 export * from "./red";
 export * from "./yellow";
+export * from "./purple";
+export * from "./opacity";
