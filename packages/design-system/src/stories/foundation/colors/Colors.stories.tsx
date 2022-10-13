@@ -63,6 +63,7 @@ const BaseColors = () => {
                 backgroundColor: (theme) => theme.palette.token.core.bg_03,
                 color: (theme) => theme.palette.token.core.text_medium,
               }}
+              // style={{ backgroundColor: theme.palette.token.core.bg_02 }}
             >
               sx 버튼 테스트
             </Button>
