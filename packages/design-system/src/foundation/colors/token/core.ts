@@ -1,4 +1,10 @@
-export const tokenCoreColor = {
+import { ColorTokenValueBySurface } from "./types";
+
+export interface TokenCoreColorValue {
+  [token: string]: ColorTokenValueBySurface;
+}
+
+export const tokenCoreColor: TokenCoreColorValue = {
   bg_02: {
     base00: "--grey-0",
     base10: "--grey-0",

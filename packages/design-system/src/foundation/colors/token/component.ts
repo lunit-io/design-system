@@ -1,4 +1,12 @@
-export const tokenComponentColor = {
+import { ColorTokenValueBySurface } from "./types";
+
+export interface TokenComponentColorValue {
+  [component: string]: {
+    [token: string]: ColorTokenValueBySurface;
+  };
+}
+
+export const tokenComponentColor: TokenComponentColorValue = {
   btn: {
     btn_contained_primary_bg: {
       base00: "--lunitTeal-40",

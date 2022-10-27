@@ -4,6 +4,7 @@ import { PaletteOptions, PaletteColor } from "@mui/material/styles";
 import * as base from "./base";
 import * as token from "./token";
 import { ColorToken } from "./types";
+import { ColorTokenValueBySurface } from "./token/types";
 
 export type BaseColor = Record<keyof typeof base.blue, PaletteColor>;
 export type GreyColor = Record<keyof typeof base.grey, PaletteColor>;
@@ -58,33 +59,27 @@ const createCSSVariables = () => {
   return cssVars;
 };
 
-const createTokenColorVariables = (surface: string) => {
+const createTokenColorVariables = (surface: keyof ColorTokenValueBySurface) => {
   const cssVars: { [name: string]: string } = {};
+
   for (let coreToken in token.tokenCoreColor) {
     if (token.tokenCoreColor.hasOwnProperty(coreToken)) {
       const varName = `--${coreToken}`;
-      const tokenValue =
-        token.tokenCoreColor[coreToken as keyof typeof token.tokenCoreColor];
-      cssVars[varName] = `var(${
-        tokenValue[surface as keyof typeof tokenValue]
-      })`;
+      const tokenValue = token.tokenCoreColor[coreToken];
+      cssVars[varName] = `var(${tokenValue[surface]})`;
     }
   }
 
   for (let componentGroup in token.tokenComponentColor) {
     if (token.tokenComponentColor.hasOwnProperty(componentGroup)) {
-      const componentTokens =
-        token.tokenComponentColor[
-          componentGroup as keyof typeof token.tokenComponentColor
-        ];
-      for (let token in componentTokens) {
-        if (componentTokens.hasOwnProperty(token)) {
-          const varName = `--${token}`;
-          const tokenValue =
-            componentTokens[token as keyof typeof componentTokens];
-          cssVars[varName] = `var(${
-            tokenValue[surface as keyof typeof tokenValue]
-          })`;
+      const componentTokens = token.tokenComponentColor[componentGroup];
+
+      let tokenName: keyof typeof componentTokens;
+      for (tokenName in componentTokens) {
+        if (componentTokens.hasOwnProperty(tokenName)) {
+          const varName = `--${tokenName}`;
+          const tokenValue = componentTokens[tokenName];
+          cssVars[varName] = `var(${tokenValue[surface]})`;
         }
       }
     }
