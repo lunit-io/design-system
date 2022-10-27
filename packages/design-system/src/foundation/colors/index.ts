@@ -3,105 +3,10 @@
 import { PaletteOptions, PaletteColor } from "@mui/material/styles";
 import * as base from "./base";
 import * as token from "./token";
+import { ColorToken } from "./types";
 
 export type BaseColor = Record<keyof typeof base.blue, PaletteColor>;
 export type GreyColor = Record<keyof typeof base.grey, PaletteColor>;
-
-interface ColorToken {
-  core: {
-    bg_02: React.CSSProperties["color"];
-    bg_03: React.CSSProperties["color"];
-    text_primary: React.CSSProperties["color"];
-    text_normal: React.CSSProperties["color"];
-    text_medium: React.CSSProperties["color"];
-    text_light: React.CSSProperties["color"];
-    text_error: React.CSSProperties["color"];
-    text_sucess: React.CSSProperties["color"];
-    text_warning: React.CSSProperties["color"];
-    text_info: React.CSSProperties["color"];
-    link_primary: React.CSSProperties["color"];
-    link_hover: React.CSSProperties["color"];
-    link_visited: React.CSSProperties["color"];
-    icon_primary: React.CSSProperties["color"];
-    icon_normal: React.CSSProperties["color"];
-    icon_medium: React.CSSProperties["color"];
-    icon_light: React.CSSProperties["color"];
-    icon_error_01: React.CSSProperties["color"];
-    icon_sucess_01: React.CSSProperties["color"];
-    icon_warning_01: React.CSSProperties["color"];
-    icon_info_01: React.CSSProperties["color"];
-    icon_error_02: React.CSSProperties["color"];
-    icon_sucess_02: React.CSSProperties["color"];
-    icon_warning_02: React.CSSProperties["color"];
-    icon_info_02: React.CSSProperties["color"];
-    hover: React.CSSProperties["color"];
-    focused: React.CSSProperties["color"];
-    shadow_01: React.CSSProperties["color"];
-    shadow_02: React.CSSProperties["color"];
-    shadow_03: React.CSSProperties["color"];
-    shadow_04: React.CSSProperties["color"];
-  };
-  component: {
-    btn_contained_primary_bg: React.CSSProperties["color"];
-    btn_contained_primary_text: React.CSSProperties["color"];
-    btn_contained_secondary_bg: React.CSSProperties["color"];
-    btn_contained_secondary_text: React.CSSProperties["color"];
-    btn_contained_error_bg: React.CSSProperties["color"];
-    btn_contained_error_text: React.CSSProperties["color"];
-    btn_outlined_primary_border: React.CSSProperties["color"];
-    btn_outlined_primary_text: React.CSSProperties["color"];
-    btn_ghost_primary_text: React.CSSProperties["color"];
-    btn_ghost_secondary_text: React.CSSProperties["color"];
-    btn_ghost_error_text: React.CSSProperties["color"];
-    selectcontrol_on: React.CSSProperties["color"];
-    selectcontrol_off: React.CSSProperties["color"];
-    selectcontrol_handler: React.CSSProperties["color"];
-    selectcontrol_handler_shadow: React.CSSProperties["color"];
-    textfield_bg: React.CSSProperties["color"];
-    textfield_border_error: React.CSSProperties["color"];
-    dropdown_option_selected: React.CSSProperties["color"];
-    dropdown_option_activatied: React.CSSProperties["color"];
-    dropdown_divider_border: React.CSSProperties["color"];
-    datatable_cell_selected: React.CSSProperties["color"];
-    datatable_border_01: React.CSSProperties["color"];
-    datatable_border_02: React.CSSProperties["color"];
-    scrollbars_bg: React.CSSProperties["color"];
-    scrollbars_hover: React.CSSProperties["color"];
-    scrollbars_pressed: React.CSSProperties["color"];
-    modal_overlay: React.CSSProperties["color"];
-    tooltip_bg: React.CSSProperties["color"];
-    tooltip_text_normal: React.CSSProperties["color"];
-    tooltip_text_medium: React.CSSProperties["color"];
-    alert_error_bg: React.CSSProperties["color"];
-    alert_error_border: React.CSSProperties["color"];
-    alert_success_bg: React.CSSProperties["color"];
-    alert_success_border: React.CSSProperties["color"];
-    alert_info_bg: React.CSSProperties["color"];
-    alert_info_border: React.CSSProperties["color"];
-    alert_warning_bg: React.CSSProperties["color"];
-    alert_warning_border: React.CSSProperties["color"];
-    chip_primary_bg: React.CSSProperties["color"];
-    chip_primary_icon: React.CSSProperties["color"];
-    chip_secondary_bg: React.CSSProperties["color"];
-    chip_secondary_icon: React.CSSProperties["color"];
-    chip_error_bg: React.CSSProperties["color"];
-    chip_error_icon: React.CSSProperties["color"];
-    chip_warning_bg: React.CSSProperties["color"];
-    chip_warning_icon: React.CSSProperties["color"];
-    chip_success_bg: React.CSSProperties["color"];
-    chip_success_icon: React.CSSProperties["color"];
-    chip_outlined_primary_border: React.CSSProperties["color"];
-    chip_outlined_primary_text: React.CSSProperties["color"];
-    chip_outlined_secondary_border: React.CSSProperties["color"];
-    chip_outlined_secondary_text: React.CSSProperties["color"];
-    chip_outlined_warning_border: React.CSSProperties["color"];
-    chip_outlined_warning_text: React.CSSProperties["color"];
-    chip_outlined_error_border: React.CSSProperties["color"];
-    chip_outlined_error_text: React.CSSProperties["color"];
-    chip_outlined_success_border: React.CSSProperties["color"];
-    chip_outlined_success_text: React.CSSProperties["color"];
-  };
-}
 
 declare module "@mui/material/styles/createPalette" {
   interface PaletteOptions {
