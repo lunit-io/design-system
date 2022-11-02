@@ -11,8 +11,14 @@ export default {
 } as ComponentMeta<typeof Chip>;
 
 const Template: ComponentStory<typeof Chip> = (args: ChipProps) => (
-  <Box sx={{ margin: 10 }}>
+  <Box sx={{ margin: 10, display: "flex", gap: "1rem" }}>
     <Chip {...args} />
+    <Chip
+      clickable
+      text="static example: clickable"
+      onClick={() => console.log("clicked")}
+    />
+    <Chip clickable={false} text="static example: not clickable" />
   </Box>
 );
 
