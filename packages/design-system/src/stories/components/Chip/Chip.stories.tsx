@@ -3,7 +3,6 @@ import { Box } from "@mui/material";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import Chip from "@/components/Chip/Chip";
-
 import type { ChipProps } from "@/components/Chip/Chip.types";
 
 export default {
