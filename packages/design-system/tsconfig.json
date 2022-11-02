@@ -5,6 +5,9 @@
     "jsx": "react",
     "strict": true,
     "allowSyntheticDefaultImports": true,
+    "lib": ["es6", "dom"],
+    "noImplicitThis": true,
+    "strictNullChecks": true,
     "baseUrl": "./",
     "paths": {
       "@/*": ["./src/*"]

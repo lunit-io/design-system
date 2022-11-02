@@ -1,7 +1,13 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { Typography, useTheme } from "@mui/material";
-import { Color, ColorContainer, Container, PaletteContainer } from "./styled";
+import { Box, Button, Theme, Typography, useTheme } from "@mui/material";
+import {
+  Color,
+  ColorContainer,
+  Container,
+  PaletteContainer,
+  TestButton,
+} from "./styled";
 import map from "lodash/map";
 import lowerCase from "lodash/lowerCase";
 import capitalize from "lodash/capitalize";
@@ -17,10 +23,58 @@ const BaseColors = () => {
   const theme = useTheme();
   return (
     <Container>
+      <div>
+        <Typography
+          variant="h4"
+          sx={{
+            marginBottom: 11,
+            "&:not(:first-child)": { marginTop: 11 },
+          }}
+        >
+          컬러 테스트
+        </Typography>
+        <Box mb={20}>
+          <Box
+            className="base00"
+            width={200}
+            height={200}
+            bgcolor={`lunit.blue.80.main`}
+            display="inline-block"
+          >
+            <Button
+              sx={{
+                backgroundColor: (theme) => theme.palette.token.core.bg_03,
+                color: (theme) => theme.palette.token.core.text_medium,
+              }}
+            >
+              sx 버튼 테스트
+            </Button>
+            <TestButton>버튼 테스트</TestButton>
+          </Box>
+          <Box
+            className="base80"
+            width={200}
+            height={200}
+            bgcolor={`lunit.blue.20.main`}
+            display="inline-block"
+          >
+            <Button
+              sx={{
+                backgroundColor: (theme) => theme.palette.token.core.bg_03,
+                color: (theme) => theme.palette.token.core.text_medium,
+              }}
+              // style={{ backgroundColor: theme.palette.token.core.bg_02 }}
+            >
+              sx 버튼 테스트
+            </Button>
+            <TestButton>버튼 테스트</TestButton>
+          </Box>
+        </Box>
+      </div>
       {map(
         theme.palette.lunit,
         (colors: BaseColor | GreyColor, paletteKey: string) => (
-          <>
+          <div key={paletteKey}>
             <Typography
               variant="h4"
               sx={{
@@ -43,7 +97,7 @@ const BaseColors = () => {
                 </ColorContainer>
               ))}
             </PaletteContainer>
-          </>
+          </div>
         )
       )}
     </Container>
