@@ -17,6 +17,12 @@ const Template: ComponentStory<typeof Chip> = (args: ChipProps) => (
    */
   <Box className="base00">
     <Chip {...args} />
+    <Chip
+      clickable
+      text="static example: clickable"
+      onClick={() => console.log("clicked")}
+    />
+    <Chip clickable={false} text="static example: not clickable" />
   </Box>
 );
 
