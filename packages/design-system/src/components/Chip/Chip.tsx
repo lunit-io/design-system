@@ -45,7 +45,7 @@ const ContainedChip = (props: ContainedChipProps) => {
     <StyledContainedChip
       label={text}
       onClick={onClick}
-      onDelete={onDelete ? onDelete : undefined}
+      onDelete={onDelete}
       icon={
         thumbnail ? (
           <Thumbnail thumbnail={thumbnail} color={color} />
