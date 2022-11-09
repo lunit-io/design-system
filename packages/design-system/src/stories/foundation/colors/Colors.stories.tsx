@@ -33,43 +33,6 @@ const BaseColors = () => {
         >
           컬러 테스트
         </Typography>
-        <Box mb={20}>
-          <Box
-            className="base00"
-            width={200}
-            height={200}
-            bgcolor={`lunit.blue.80.main`}
-            display="inline-block"
-          >
-            <Button
-              sx={{
-                backgroundColor: (theme) => theme.palette.token.core.bg_03,
-                color: (theme) => theme.palette.token.core.text_medium,
-              }}
-            >
-              sx 버튼 테스트
-            </Button>
-            <TestButton>버튼 테스트</TestButton>
-          </Box>
-          <Box
-            className="base80"
-            width={200}
-            height={200}
-            bgcolor={`lunit.blue.20.main`}
-            display="inline-block"
-          >
-            <Button
-              sx={{
-                backgroundColor: (theme) => theme.palette.token.core.bg_03,
-                color: (theme) => theme.palette.token.core.text_medium,
-              }}
-              // style={{ backgroundColor: theme.palette.token.core.bg_02 }}
-            >
-              sx 버튼 테스트
-            </Button>
-            <TestButton>버튼 테스트</TestButton>
-          </Box>
-        </Box>
       </div>
       {map(
         theme.palette.lunit,
