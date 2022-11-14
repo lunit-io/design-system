@@ -1,7 +1,9 @@
 import { CHIP_COLORS } from "./consts";
 
+import type { ChipProps as MuiChipProps } from "@mui/material";
+
 type ColorKeys = keyof typeof CHIP_COLORS;
-export type ChipColor = typeof CHIP_COLORS[ColorKeys];
+type ChipColor = typeof CHIP_COLORS[ColorKeys];
 
 type ColorKeys = keyof typeof CHIP_COLORS;
 type ChipColor = typeof CHIP_COLORS[ColorKeys];
