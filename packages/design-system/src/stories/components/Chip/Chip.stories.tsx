@@ -3,6 +3,7 @@ import { Box } from "@mui/material";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import Chip from "@/components/Chip/Chip";
+
 import type { ChipProps } from "@/components/Chip/Chip.types";
 
 export default {
@@ -11,48 +12,32 @@ export default {
 } as ComponentMeta<typeof Chip>;
 
 const Template: ComponentStory<typeof Chip> = (args: ChipProps) => (
-  <Box sx={{ margin: 10, display: "flex", gap: "1rem" }}>
+  /**
+   * TODO
+   * Since Color Token system will be changed, below className should be changed accordingly
+   */
+  <Box className="base00">
     <Chip {...args} />
-    <Chip
-      clickable
-      text="static example: clickable"
-      onClick={() => console.log("clicked")}
-    />
-    <Chip clickable={false} text="static example: not clickable" />
   </Box>
 );
 
 export const LunitChip = Template.bind({});
 LunitChip.parameters = {
   /**
-   * background colors are set by the rule of Figma's color token
+   * TODO
+   * Below code is just an example before color system is completed
+   * Background colors are set by the rule of Figma's color token
    */
   backgrounds: {
-    default: "base00",
+    default: "Light1",
     values: [
       {
-        name: "base00",
+        name: "Light1",
         value: "#FFFFFF",
       },
       {
-        name: "base10",
-        value: "#FFFFFF",
-      },
-      {
-        name: "base70",
-        value: "#4E4E50",
-      },
-      {
-        name: "base80",
-        value: "#333336",
-      },
-      {
-        name: "base85",
-        value: "#2D2D2F",
-      },
-      {
-        name: "base90",
-        value: "#1F1F21",
+        name: "Dark1",
+        value: "#111113",
       },
     ],
   },
