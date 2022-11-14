@@ -3,6 +3,7 @@ import { Box } from "@mui/material";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import Chip from "@/components/Chip/Chip";
+
 import type { ChipProps } from "@/components/Chip/Chip.types";
 
 export default {
@@ -17,12 +18,6 @@ const Template: ComponentStory<typeof Chip> = (args: ChipProps) => (
    */
   <Box className="base00">
     <Chip {...args} />
-    <Chip
-      clickable
-      text="static example: clickable"
-      onClick={() => console.log("clicked")}
-    />
-    <Chip clickable={false} text="static example: not clickable" />
   </Box>
 );
 
