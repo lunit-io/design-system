@@ -1,12 +1,7 @@
 import { Chip as MuiChip, styled } from "@mui/material";
 import { CHIP_COLORS } from "./consts";
 
-import { ChipProps as MuiChipProps } from "@mui/material";
-import type { BaseChipProps } from "./Chip.types";
-
-interface StyledChipProps extends MuiChipProps {
-  color: BaseChipProps["color"];
-}
+import type { StyledChipProps } from "./Chip.types";
 
 export const StyledOutlinedChip = styled(MuiChip, {
   shouldForwardProp: (prop) => !["color"].includes(prop.toString()),

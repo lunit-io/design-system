@@ -5,7 +5,6 @@ import { StyledOutlinedChip, StyledContainedChip } from "./Chip.styled";
 import { commonStyle } from "./consts";
 
 import type {
-  ChipColor,
   ChipThumbnail,
   OutlinedChipProps,
   ContainedChipProps,
@@ -17,7 +16,7 @@ const Thumbnail = ({
   color = "primary",
 }: {
   thumbnail: ChipThumbnail;
-  color?: ChipColor;
+  color?: ContainedChipProps["color"];
 }) => {
   if (thumbnail === "avatar") return <Box color={color} />;
   if (thumbnail === "logo") return <Box color={color} />;
