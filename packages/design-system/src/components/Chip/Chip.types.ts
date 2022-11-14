@@ -1,17 +1,7 @@
-export type ChipBaseClass =
-  | "base00"
-  | "base10"
-  | "base70"
-  | "base80"
-  | "base85"
-  | "base90";
+import { CHIP_COLORS } from "./consts";
 
-export type ChipColor =
-  | "primary"
-  | "secondary"
-  | "error"
-  | "warning"
-  | "success";
+type ColorKeys = keyof typeof CHIP_COLORS;
+export type ChipColor = typeof CHIP_COLORS[ColorKeys];
 
 export type ChipThumbnail = "logo" | "avatar" | React.ReactElement;
 
@@ -19,7 +9,6 @@ export interface BaseChipProps {
   text: string;
   clickable: boolean;
   color?: ChipColor;
-  baseClass?: ChipBaseClass;
 }
 export interface ContainedChipProps extends BaseChipProps {
   clickable: true;

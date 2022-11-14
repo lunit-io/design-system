@@ -1,63 +1,56 @@
-import { Box, Chip as MuiChip, styled } from "@mui/material";
+import { Chip as MuiChip, styled } from "@mui/material";
+import { CHIP_COLORS } from "./consts";
 
-export const ChipWrapper = styled(Box)(() => ({
-  padding: 0,
-  margin: 0,
-  "& .MuiChip-root": {
-    height: "22px",
-  },
-  "& .MuiChip-label": {
-    fontFamily: "Pretendard",
-    fontStyle: "normal",
-    fontWeight: 500,
-    fontSize: "12px",
-    lineHeight: "16px",
-    display: "flex",
-    alignItems: "center",
-    textAlign: "center",
-    paddingInline: "8px",
-  },
-}));
+import { ChipProps as MuiChipProps } from "@mui/material";
+import type { BaseChipProps } from "./Chip.types";
 
-export const StyledOutlinedChip = styled(MuiChip)(({ theme, color }) => ({
+interface StyledChipProps extends MuiChipProps {
+  color: BaseChipProps["color"];
+}
+
+export const StyledOutlinedChip = styled(MuiChip, {
+  shouldForwardProp: (prop) => !["color"].includes(prop.toString()),
+})<StyledChipProps>(({ theme, color }) => ({
   color:
-    color === "primary"
+    color === CHIP_COLORS.PRIMARY
       ? theme.palette.token.component.chip_primary
-      : color === "secondary"
+      : color === CHIP_COLORS.SECONDARY
       ? theme.palette.token.component.chip_secondary
-      : color === "error"
+      : color === CHIP_COLORS.ERROR
       ? theme.palette.token.component.chip_error
-      : color === "warning"
+      : color === CHIP_COLORS.WARNING
       ? theme.palette.token.component.chip_warning
-      : color === "success"
+      : color === CHIP_COLORS.SUCCESS
       ? theme.palette.token.component.chip_success
       : theme.palette.token.component.chip_primary,
   borderColor:
-    color === "primary"
+    color === CHIP_COLORS.PRIMARY
       ? theme.palette.token.component.chip_primary
-      : color === "secondary"
+      : color === CHIP_COLORS.SECONDARY
       ? theme.palette.token.component.chip_secondary
-      : color === "error"
+      : color === CHIP_COLORS.ERROR
       ? theme.palette.token.component.chip_error
-      : color === "warning"
+      : color === CHIP_COLORS.WARNING
       ? theme.palette.token.component.chip_warning
-      : color === "success"
+      : color === CHIP_COLORS.SUCCESS
       ? theme.palette.token.component.chip_success
       : theme.palette.token.component.chip_primary,
 }));
 
-export const StyledContainedChip = styled(MuiChip)(({ theme, color }) => ({
+export const StyledContainedChip = styled(MuiChip, {
+  shouldForwardProp: (prop) => !["color"].includes(prop.toString()),
+})<StyledChipProps>(({ theme, color }) => ({
   color: theme.palette.token.core.text_normal,
   backgroundColor:
-    color === "primary"
+    color === CHIP_COLORS.PRIMARY
       ? theme.palette.token.component.chip_primary_bg
-      : color === "secondary"
+      : color === CHIP_COLORS.SECONDARY
       ? theme.palette.token.component.chip_secondary_bg
-      : color === "error"
+      : color === CHIP_COLORS.ERROR
       ? theme.palette.token.component.chip_error_bg
-      : color === "warning"
+      : color === CHIP_COLORS.WARNING
       ? theme.palette.token.component.chip_warning_bg
-      : color === "success"
+      : color === CHIP_COLORS.SUCCESS
       ? theme.palette.token.component.chip_success_bg
       : theme.palette.token.component.chip_primary_bg,
   "&:hover": {
@@ -73,15 +66,15 @@ export const StyledContainedChip = styled(MuiChip)(({ theme, color }) => ({
     marginBottom: 0,
     marginRight: 0,
     color:
-      color === "primary"
+      color === CHIP_COLORS.PRIMARY
         ? theme.palette.token.component.chip_primary
-        : color === "secondary"
+        : color === CHIP_COLORS.SECONDARY
         ? theme.palette.token.component.chip_secondary
-        : color === "error"
+        : color === CHIP_COLORS.ERROR
         ? theme.palette.token.component.chip_error
-        : color === "warning"
+        : color === CHIP_COLORS.WARNING
         ? theme.palette.token.component.chip_warning
-        : color === "success"
+        : color === CHIP_COLORS.SUCCESS
         ? theme.palette.token.component.chip_success
         : theme.palette.token.component.chip_primary,
   },

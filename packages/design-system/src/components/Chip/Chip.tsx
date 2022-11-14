@@ -1,11 +1,8 @@
 import React from "react";
 
 import { Box } from "@mui/material";
-import {
-  ChipWrapper,
-  StyledOutlinedChip,
-  StyledContainedChip,
-} from "./Chip.styled";
+import { StyledOutlinedChip, StyledContainedChip } from "./Chip.styled";
+import { commonStyle } from "./consts";
 
 import type {
   ChipColor,
@@ -35,6 +32,7 @@ const OutlinedChip = (props: OutlinedChipProps) => {
       variant="outlined"
       disabled
       color={color}
+      sx={commonStyle}
     />
   );
 };
@@ -52,33 +50,28 @@ const ContainedChip = (props: ContainedChipProps) => {
         ) : undefined
       }
       color={color}
+      sx={commonStyle}
     />
   );
 };
 
 const Chip = (props: ChipProps) => {
-  const { clickable, text, color, baseClass } = props;
+  const { clickable, text, color } = props;
 
   if (clickable) {
     const { onClick, onDelete, thumbnail } = props;
     return (
-      <ChipWrapper className={baseClass ? baseClass : "base00"}>
-        <ContainedChip
-          clickable={clickable}
-          text={text}
-          color={color}
-          onClick={onClick}
-          onDelete={onDelete}
-          thumbnail={thumbnail}
-        />
-      </ChipWrapper>
+      <ContainedChip
+        clickable={clickable}
+        text={text}
+        color={color}
+        onClick={onClick}
+        onDelete={onDelete}
+        thumbnail={thumbnail}
+      />
     );
   } else {
-    return (
-      <ChipWrapper className={baseClass ? baseClass : "base00"}>
-        <OutlinedChip clickable={clickable} text={text} color={color} />
-      </ChipWrapper>
-    );
+    return <OutlinedChip clickable={clickable} text={text} color={color} />;
   }
 };
 
