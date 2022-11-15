@@ -28,7 +28,7 @@ const BaseColors = () => {
           variant="h4"
           sx={{
             marginBottom: 11,
-            "&:not(:first-child)": { marginTop: 11 },
+            "&:not(:first-of-type)": { marginTop: 11 },
           }}
         >
           컬러 테스트
@@ -42,7 +42,7 @@ const BaseColors = () => {
               variant="h4"
               sx={{
                 marginBottom: 11,
-                "&:not(:first-child)": { marginTop: 11 },
+                "&:not(:first-of-type)": { marginTop: 11 },
               }}
             >
               {convertColorPaletteKeyToDisplay(paletteKey)}
