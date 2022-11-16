@@ -20,6 +20,6 @@ export const commonStyle = {
     display: "flex",
     alignItems: "center",
     textAlign: "center",
-    paddingInline: "8px",
+    padding: 0,
   },
 };
