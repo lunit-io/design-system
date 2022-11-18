@@ -1,6 +1,7 @@
 const path = require("path");
 const alias = require("../config/alias");
 const { getBranchName, getChromaticBranchName } = require("./branch");
+const toPath = (filePath) => path.join(process.cwd(), filePath);
 
 module.exports = {
   features: {
@@ -44,6 +45,8 @@ module.exports = {
     config.resolve.alias = {
       ...config.resolve.alias,
       ...alias,
+      "@emotion/core": toPath("node_modules/@emotion/react"),
+      "emotion-theming": toPath("node_modules/@emotion/react"),
     };
     return config;
   },

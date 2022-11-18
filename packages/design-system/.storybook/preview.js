@@ -1,16 +1,16 @@
 import { ThemeProvider, CssBaseline } from "@mui/material";
 import theme from "../src/theme";
-import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import { ThemeProvider as EmotionThemeProvider } from "emotion-theming";
 
 export const decorators = [
   (Story) => {
     return (
-      <ThemeProvider theme={theme}>
-        <EmotionThemeProvider theme={theme}>
+      <EmotionThemeProvider theme={theme}>
+        <ThemeProvider theme={theme}>
           <CssBaseline />
           <Story />
-        </EmotionThemeProvider>
-      </ThemeProvider>
+        </ThemeProvider>
+      </EmotionThemeProvider>
     );
   },
 ];
