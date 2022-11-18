@@ -5,9 +5,6 @@ import type { ChipProps as MuiChipProps, SxProps } from "@mui/material";
 type ColorKeys = keyof typeof CHIP_COLORS;
 type ChipColor = typeof CHIP_COLORS[ColorKeys];
 
-type ColorKeys = keyof typeof CHIP_COLORS;
-type ChipColor = typeof CHIP_COLORS[ColorKeys];
-
 export type ChipThumbnail = "logo" | "avatar" | React.ReactElement;
 
 /**
