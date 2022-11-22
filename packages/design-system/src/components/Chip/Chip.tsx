@@ -49,9 +49,6 @@ const ContainedChip = (props: ContainedChipProps) => {
             marginRight: onDelete ? "4px" : "8px",
           },
           "&:hover": {
-            /**
-             * need to be fixed in color system
-             */
             backgroundColor: (theme) =>
               !thumbnail && !onDelete
                 ? theme.palette.token.core.hover
