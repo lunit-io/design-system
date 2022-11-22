@@ -1,66 +1,72 @@
 # Workflow name
-name: "Chromatic Deployment"
+name: "Chromatic Deployment - Design System"
 
 env:
   CHROMATIC_APP_ID: 62d7d1f2efc8a1e364b5e5e8
 
 # Event for the workflow
-on: 
+on:
   push:
-    paths-ignore:
-      - '.storybook/Welcome/**'
-  pull_request: 
-    paths-ignore:
-      - '.storybook/Welcome/**'
+    branches:
+      - "main"
+    paths:
+      - ".github/workflows/chromatic.yml"
+      - "packages/design-system/**"
+      - "packages/design-system-icons/**"
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - ".github/workflows/chromatic.yml"
+      - "packages/design-system/**"
+      - "packages/design-system-icons/**"
 
 # List of jobs
 jobs:
   deploy-staging:
     # Operating System
     runs-on: ubuntu-latest
-    env:
-      WORKDIR: ./packages/design-system
     # Job steps
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Required to retrieve git history
 
       - name: Get branch name
         env:
           BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
         id: branch-name
         run: |
-          echo "::set-output name=value::$(echo $BRANCH_NAME)"
+          echo "value=$(echo $BRANCH_NAME)" >> $GITHUB_OUTPUT
 
       - name: Get Chromatic branch name
         env:
           BRANCH_NAME: ${{ steps.branch-name.outputs.value }}
         id: chromatic-branch-name
         run: |
-          echo "::set-output name=value::$(echo $BRANCH_NAME | tr '[:upper:]' '[:lower:]' | tr / -)"
+          echo "value=$(echo $BRANCH_NAME | tr '[:upper:]' '[:lower:]' | tr / -)" >> $GITHUB_OUTPUT
 
       - name: Install dependencies
-        if: ${{ github.event_name == 'push' }}
-        run: yarn
-        working-directory: ${{ env.WORKDIR }}
+        run: npx lerna bootstrap --ci --use-workspaces
+
+      - name: Build design-system package and its dependencies
+        run: yarn build:design-system
 
       - name: Publish to Chromatic
         env:
           BRANCH_NAME: ${{ steps.branch-name.outputs.value }}
           CHROMATIC_BRANCH_NAME: ${{ steps.chromatic-branch-name.outputs.value }}
         id: chromatic
-        if: ${{ github.event_name == 'push' }}
         uses: chromaui/action@v1
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-          token: ${{ secrets.GITHUB_TOKEN }}
-          workingDir: ${{ env.WORKDIR }}
+          workingDir: packages/design-system
 
       - name: Comment preview link
         env:
           CHROMATIC_BRANCH_NAME: ${{ steps.chromatic-branch-name.outputs.value }}
         if: ${{ github.event_name == 'pull_request' }}
-        uses: NejcZdovc/comment-pr@v1.1.1
+        uses: NejcZdovc/comment-pr@v2.0.0
         with:
           message: "preview: https://${{ env.CHROMATIC_BRANCH_NAME }}--${{ env.CHROMATIC_APP_ID }}.chromatic.com"
           identifier: "PREVIEW_LINK_COMMENT"
