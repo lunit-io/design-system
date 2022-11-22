@@ -5,7 +5,7 @@ import type { ChipProps as MuiChipProps, SxProps } from "@mui/material";
 type ColorKeys = keyof typeof CHIP_COLORS;
 type ChipColor = typeof CHIP_COLORS[ColorKeys];
 
-export type ChipThumbnail = "logo" | "avatar" | React.ReactElement;
+export type ChipThumbnail = "logo" | "avatar" | JSX.Element;
 
 /**
  * Lunit Chip props do not inherits MuiChipProps

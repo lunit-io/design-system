@@ -1,52 +1,13 @@
 import React from "react";
-
-import { Box } from "@mui/material";
-import Close from "@lunit/design-system-icons/Close";
-/**
- * Below Icons should be replaced with Lunit-icons
- */
-import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-
+import { Close, Avatar, LunitLogo } from "@lunit/design-system-icons";
 import { StyledOutlinedChip, StyledContainedChip } from "./Chip.styled";
 import { commonStyle } from "./consts";
 
 import type {
-  ChipThumbnail,
   OutlinedChipProps,
   ContainedChipProps,
   ChipProps,
 } from "./Chip.types";
-
-const Thumbnail = ({
-  thumbnail,
-  color = "primary",
-}: {
-  thumbnail: ChipThumbnail;
-  color?: ContainedChipProps["color"];
-}) => {
-  const thumbnailStyle = {
-    marginLeft: "3px",
-    marginRight: 0,
-  };
-
-  if (thumbnail === "avatar")
-    return <AccountCircleOutlinedIcon sx={thumbnailStyle} />;
-  if (thumbnail === "logo") return <Box color={color} sx={thumbnailStyle} />;
-  return (
-    <Box
-      sx={{
-        margin: 0,
-        padding: 0,
-        alignSelf: "baseline",
-        svg: {
-          ...thumbnailStyle,
-        },
-      }}
-    >
-      {thumbnail}
-    </Box>
-  );
-};
 
 const OutlinedChip = (props: OutlinedChipProps) => {
   const { label, color, sx } = props;
@@ -71,8 +32,12 @@ const ContainedChip = (props: ContainedChipProps) => {
       onDelete={onDelete}
       deleteIcon={<Close />}
       icon={
-        thumbnail ? (
-          <Thumbnail thumbnail={thumbnail} color={color} />
+        thumbnail === "avatar" ? (
+          <Avatar variant="filled" color={color} />
+        ) : thumbnail === "logo" ? (
+          <LunitLogo color={color} />
+        ) : thumbnail ? (
+          thumbnail
         ) : undefined
       }
       color={color}
