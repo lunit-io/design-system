@@ -87,7 +87,7 @@ export const StyledContainedChip = styled(MuiChip, {
         ? theme.palette.token.component.chip_success
         : theme.palette.token.component.chip_primary,
   },
-  "& 	.MuiChip-icon": {
+  "& .MuiChip-icon": {
     marginLeft: "3px",
     marginRight: 0,
   },
