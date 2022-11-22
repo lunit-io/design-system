@@ -15,8 +15,7 @@ export interface BaseChipProps {
   label: string;
   color?: ChipColor;
   /**
-   * 만약 sx를 넘길 경우 기존 스타일을 덮어쓰게 될 것
-   * 주의하세요
+   * Use sx props only when you need to override the default styles
    */
   sx?: SxProps;
 }
