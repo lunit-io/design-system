@@ -7,7 +7,8 @@ env:
 # Event for the workflow
 on:
   push:
-    branch: main
+    branches:
+      - "main"
     paths:
       - ".github/workflows/chromatic.yml"
       - "packages/design-system/**"
@@ -36,14 +37,14 @@ jobs:
           BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
         id: branch-name
         run: |
-          echo "::set-output name=value::$(echo $BRANCH_NAME)"
+          echo "value=$(echo $BRANCH_NAME)" >> $GITHUB_OUTPUT
 
       - name: Get Chromatic branch name
         env:
           BRANCH_NAME: ${{ steps.branch-name.outputs.value }}
         id: chromatic-branch-name
         run: |
-          echo "::set-output name=value::$(echo $BRANCH_NAME | tr '[:upper:]' '[:lower:]' | tr / -)"
+          echo "value=$(echo $BRANCH_NAME | tr '[:upper:]' '[:lower:]' | tr / -)" >> $GITHUB_OUTPUT
 
       - name: Install dependencies
         run: npx lerna bootstrap --ci --use-workspaces
@@ -65,7 +66,7 @@ jobs:
         env:
           CHROMATIC_BRANCH_NAME: ${{ steps.chromatic-branch-name.outputs.value }}
         if: ${{ github.event_name == 'pull_request' }}
-        uses: NejcZdovc/comment-pr@v1.1.1
+        uses: NejcZdovc/comment-pr@v2.0.0
         with:
           message: "preview: https://${{ env.CHROMATIC_BRANCH_NAME }}--${{ env.CHROMATIC_APP_ID }}.chromatic.com"
           identifier: "PREVIEW_LINK_COMMENT"
