@@ -1,21 +1,14 @@
-// TODO: This code is came from scope-frontend-components without editing. We should change it to fit our design.
-import type {
-  ComponentsOverrides,
-  ComponentsProps,
-} from "@mui/material/styles";
+import MuiInputUnstyled from "@mui/base/InputUnstyled";
+import { styled } from "@mui/system";
 
-const styleOverrides: ComponentsOverrides["MuiTextField"] = {
-  root: {
-    width: "100%",
-    input: {
-      textOverflow: "ellipsis",
-    },
+const BaseTextField = styled(MuiInputUnstyled)(({ theme }) => ({
+  "& input": {
+    border: "1px solid #ccc",
+    borderRadius: "5px",
+    padding: "5px 10px",
+    background: theme.palette.token.component.textfield_bg,
+    overflow: "hidden",
   },
-};
-const defaultProps: ComponentsProps["MuiTextField"] = {
-  variant: "standard",
-};
-export default {
-  styleOverrides,
-  defaultProps,
-};
+}));
+
+export { BaseTextField };
