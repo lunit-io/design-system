@@ -1,9 +1,53 @@
 import React from "react";
+import { Close, Avatar, LunitLogo } from "@lunit/design-system-icons";
+import { StyledOutlinedChip, StyledContainedChip } from "./Chip.styled";
 
-import { Box } from "@mui/material";
+import type {
+  OutlinedChipProps,
+  ContainedChipProps,
+  ChipProps,
+} from "./Chip.types";
 
-const Chip = () => {
-  return <Box>Chip</Box>;
+const OutlinedChip = (props: OutlinedChipProps) => {
+  const { label, color, sx } = props;
+  return (
+    <StyledOutlinedChip
+      label={label}
+      variant="outlined"
+      disabled
+      color={color}
+      sx={{ ...sx }}
+    />
+  );
+};
+
+const ContainedChip = (props: ContainedChipProps) => {
+  const { label, onClick, onDelete, thumbnail, color, sx } = props;
+
+  return (
+    <StyledContainedChip
+      label={label}
+      onClick={onClick}
+      onDelete={onDelete}
+      deleteIcon={<Close />}
+      icon={
+        thumbnail === "avatar" ? (
+          <Avatar variant="filled" color={color} />
+        ) : thumbnail === "logo" ? (
+          <LunitLogo color={color} />
+        ) : thumbnail ? (
+          thumbnail
+        ) : undefined
+      }
+      color={color}
+      sx={{ ...sx }}
+    />
+  );
+};
+
+const Chip = (props: ChipProps) => {
+  if (props.style === "outlined") return <OutlinedChip {...props} />;
+  return <ContainedChip {...props} />;
 };
 
 export default Chip;
