@@ -28,7 +28,6 @@ export default {
         function: action("onClick"),
         undefined: undefined,
       },
-      defaultValue: undefined,
     },
     onDelete: {
       type: "select",
@@ -37,7 +36,7 @@ export default {
         function: action("onDelete"),
         undefined: undefined,
       },
-      defaultValue: undefined,
+      defaultValue: null,
     },
   },
   parameters: {
