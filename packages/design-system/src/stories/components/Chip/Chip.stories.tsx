@@ -28,24 +28,6 @@ export default {
         see [Material-UI Chip](https://mui.com/components/chips/)`,
       },
     },
-    /**
-     * Todo
-     * below background color is a temporary solution for showing the color code
-     * after the color system is updated, it will be removed
-     */
-    backgrounds: {
-      default: "Dark1",
-      values: [
-        {
-          name: "Light1",
-          value: "#FFFFFF",
-        },
-        {
-          name: "Dark1",
-          value: "#111113",
-        },
-      ],
-    },
   },
   decorators: [
     /**
