@@ -6,7 +6,19 @@ import type { StyledChipProps } from "./Chip.types";
 export const StyledOutlinedChip = styled(MuiChip, {
   shouldForwardProp: (prop) => !["color"].includes(prop.toString()),
 })<StyledChipProps>(({ theme, color }) => ({
+  "&.MuiChip-root": {
+    height: "22px",
+  },
   "& .MuiChip-label": {
+    height: "16px",
+    fontStyle: "normal",
+    fontWeight: 500,
+    fontSize: "12px",
+    lineHeight: "14.32px",
+    display: "flex",
+    alignItems: "center",
+    textAlign: "center",
+    padding: 0,
     marginInline: "8px",
   },
   color:
@@ -37,7 +49,23 @@ export const StyledOutlinedChip = styled(MuiChip, {
 
 export const StyledContainedChip = styled(MuiChip, {
   shouldForwardProp: (prop) => !["color"].includes(prop.toString()),
-})<StyledChipProps>(({ theme, color }) => ({
+})<StyledChipProps>(({ theme, color, thumbnail, onDelete }) => ({
+  "&.MuiChip-root": {
+    height: "22px",
+  },
+  "& .MuiChip-label": {
+    height: "16px",
+    fontStyle: "normal",
+    fontWeight: 500,
+    fontSize: "12px",
+    lineHeight: "14.32px",
+    display: "flex",
+    alignItems: "center",
+    textAlign: "center",
+    padding: 0,
+    marginLeft: thumbnail ? "4px" : "8px",
+    marginRight: onDelete ? "4px" : "8px",
+  },
   "& .MuiChip-deleteIcon": {
     marginLeft: 0,
     marginRight: "3px",

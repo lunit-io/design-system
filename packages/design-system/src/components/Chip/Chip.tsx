@@ -1,7 +1,6 @@
 import React from "react";
 import { Close, Avatar, LunitLogo } from "@lunit/design-system-icons";
 import { StyledOutlinedChip, StyledContainedChip } from "./Chip.styled";
-import { commonStyle } from "./consts";
 
 import type {
   OutlinedChipProps,
@@ -17,7 +16,7 @@ const OutlinedChip = (props: OutlinedChipProps) => {
       variant="outlined"
       disabled
       color={color}
-      sx={{ ...commonStyle, ...sx }}
+      sx={{ ...sx }}
     />
   );
 };
@@ -41,28 +40,7 @@ const ContainedChip = (props: ContainedChipProps) => {
         ) : undefined
       }
       color={color}
-      sx={{
-        ...commonStyle,
-        ...{
-          "& span": {
-            marginLeft: thumbnail ? "4px" : "8px",
-            marginRight: onDelete ? "4px" : "8px",
-          },
-          "&:hover": {
-            backgroundColor: (theme) =>
-              !thumbnail && !onDelete
-                ? theme.palette.token.core.hover
-                : "primary",
-            "& svg": {
-              color: (theme) =>
-                thumbnail || onDelete
-                  ? theme.palette.token.core.hover
-                  : "primary",
-            },
-          },
-        },
-        ...sx,
-      }}
+      sx={{ ...sx }}
     />
   );
 };

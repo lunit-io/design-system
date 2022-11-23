@@ -35,4 +35,6 @@ export type ChipProps = ContainedChipProps | OutlinedChipProps;
 
 export interface StyledChipProps extends MuiChipProps {
   color: MuiChipProps["color"];
+  thumbnail?: ChipThumbnail;
+  onDelete?: () => void;
 }
