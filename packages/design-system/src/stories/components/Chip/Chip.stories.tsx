@@ -1,9 +1,17 @@
 import React from "react";
 import { Box } from "@mui/material";
 import { Error } from "@lunit/design-system-icons";
+
 import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { action } from "@storybook/addon-actions";
 
 import Chip from "@/components/Chip/Chip";
+import {
+  ChipProps,
+  OutlinedChipProps,
+  ContainedChipProps,
+  ChipThumbnail,
+} from "@/components/Chip/Chip.types";
 
 export default {
   title: "Components/Chips",
@@ -12,6 +20,24 @@ export default {
     thumbnail: {
       type: "select",
       options: ["avatar", "logo", undefined],
+    },
+    onClick: {
+      type: "select",
+      options: ["function", undefined],
+      mapping: {
+        function: action("onClick"),
+        undefined: undefined,
+      },
+      defaultValue: undefined,
+    },
+    onDelete: {
+      type: "select",
+      options: ["function", undefined],
+      mapping: {
+        function: action("onDelete"),
+        undefined: undefined,
+      },
+      defaultValue: undefined,
     },
   },
   parameters: {
@@ -53,15 +79,10 @@ Outlined.args = {
 };
 
 export const Contained = Template.bind({});
-Contained.argTypes = {
-  onClick: { action: "onClick" },
-  onDelete: { action: "onDelete" },
-};
 Contained.args = {
   label: "Label",
   color: "primary",
   style: "contained",
-  onDelete: undefined,
 };
 
 export const ContainedWithAvatar = Template.bind({});
