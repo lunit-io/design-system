@@ -350,10 +350,10 @@ export const tokenComponentColor: TokenComponentColorValue = {
     chip_primary_icon: {
       base00: "--lunitTeal-50",
       base10: "--lunitTeal-50",
-      base70: "--lunitTeal-50",
-      base80: "--lunitTeal-50",
-      base85: "--lunitTeal-50",
-      base90: "--lunitTeal-50",
+      base70: "--lunitTeal-40",
+      base80: "--lunitTeal-40",
+      base85: "--lunitTeal-40",
+      base90: "--lunitTeal-40",
     },
     chip_secondary: {
       base00: "--grey-40",
@@ -364,8 +364,8 @@ export const tokenComponentColor: TokenComponentColorValue = {
       base90: "--grey-30",
     },
     chip_secondary_bg: {
-      base00: "--grey-60",
-      base10: "--grey-60",
+      base00: "--grey-15",
+      base10: "--grey-15",
       base70: "--grey-60",
       base80: "--grey-60",
       base85: "--grey-60",
@@ -374,10 +374,10 @@ export const tokenComponentColor: TokenComponentColorValue = {
     chip_secondary_icon: {
       base00: "--grey-40",
       base10: "--grey-40",
-      base70: "--grey-40",
-      base80: "--grey-40",
-      base85: "--grey-40",
-      base90: "--grey-40",
+      base70: "--grey-30",
+      base80: "--grey-30",
+      base85: "--grey-30",
+      base90: "--grey-30",
     },
     chip_error: {
       base00: "--red-40",
@@ -398,10 +398,10 @@ export const tokenComponentColor: TokenComponentColorValue = {
     chip_error_icon: {
       base00: "--red-40",
       base10: "--red-40",
-      base70: "--red-40",
-      base80: "--red-40",
-      base85: "--red-40",
-      base90: "--red-40",
+      base70: "--red-30",
+      base80: "--red-30",
+      base85: "--red-30",
+      base90: "--red-30",
     },
     chip_warning: {
       base00: "--orange-40",
