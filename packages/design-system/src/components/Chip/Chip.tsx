@@ -68,26 +68,8 @@ const ContainedChip = (props: ContainedChipProps) => {
 };
 
 const Chip = (props: ChipProps) => {
-  const { label, color, sx } = props;
-
-  if (props.clickable) {
-    const { onClick, onDelete, thumbnail, sx } = props;
-    return (
-      <ContainedChip
-        clickable
-        label={label}
-        color={color}
-        onClick={onClick}
-        onDelete={onDelete}
-        thumbnail={thumbnail}
-        sx={sx}
-      />
-    );
-  } else {
-    return (
-      <OutlinedChip clickable={false} label={label} color={color} sx={sx} />
-    );
-  }
+  if (props.style === "outlined") return <OutlinedChip {...props} />;
+  return <ContainedChip {...props} />;
 };
 
 export default Chip;

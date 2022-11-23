@@ -9,11 +9,6 @@ export default {
   title: "Components/Chips",
   component: Chip,
   argTypes: {
-    clickable: {
-      control: {
-        type: "boolean",
-      },
-    },
     thumbnail: {
       control: {
         type: "select",
@@ -56,7 +51,7 @@ Outlined.parameters = {
 Outlined.args = {
   label: "Label",
   color: "primary",
-  clickable: false,
+  style: "outlined",
 };
 
 export const Contained = Template.bind({});
@@ -67,7 +62,7 @@ Contained.argTypes = {
 Contained.args = {
   label: "Label",
   color: "primary",
-  clickable: true,
+  style: "contained",
   onDelete: undefined,
 };
 
