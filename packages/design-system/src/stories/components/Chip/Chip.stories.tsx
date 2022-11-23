@@ -10,10 +10,8 @@ export default {
   component: Chip,
   argTypes: {
     thumbnail: {
-      control: {
-        type: "select",
-        options: ["avatar", "logo", undefined],
-      },
+      type: "select",
+      options: ["avatar", "logo", undefined],
     },
   },
   parameters: {
