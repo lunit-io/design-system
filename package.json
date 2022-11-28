@@ -6,7 +6,8 @@
     "docs"
   ],
   "scripts": {
-    "build:mui-theme": "lerna run --scope @lunit/mui-theme build"
+    "build:mui-theme": "lerna run --scope @lunit/mui-theme build",
+    "build:design-system": "lerna run --scope @lunit/design-system --include-dependencies build"
   },
   "devDependencies": {
     "@tsconfig/recommended": "^1.0.1",
