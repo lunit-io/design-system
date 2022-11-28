@@ -23,17 +23,6 @@ const BaseColors = () => {
   const theme = useTheme();
   return (
     <Container>
-      <div>
-        <Typography
-          variant="h4"
-          sx={{
-            marginBottom: 11,
-            "&:not(:first-of-type)": { marginTop: 11 },
-          }}
-        >
-          컬러 테스트
-        </Typography>
-      </div>
       {map(
         theme.palette.lunit,
         (colors: BaseColor | GreyColor, paletteKey: string) => (
