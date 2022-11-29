@@ -1,6 +1,6 @@
 import { styled, Switch as MuiSwitch } from "@mui/material";
 
-
+// TODO: CSS refactoring
 const ToggleCommon = styled(MuiSwitch)(({ theme }) => ({
   backgroundColor: theme.palette.lunit.grey[40].main,
   "&:focus": {

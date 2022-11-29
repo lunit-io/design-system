@@ -1,18 +1,7 @@
 import React from 'react'
-import type {SwitchProps, } from '@mui/material'
 import { IndeterminateLargeToggle, IndeterminateMiddleToggle, LargeToggle, MiddleToggle } from './Toggle.styled'
+import type { ToggleProps } from './Toggle.types'
 
-
-interface ToggleProps extends Omit<SwitchProps, "size" > {
-  /**
-  * @default medium
-  */
-  size?: 'medium' | 'large'
-  /**
-  * @default false
-  */
-  indeterminate?: boolean
-}
 
 const Toggle = (props: ToggleProps) => {
   const { size = "medium", indeterminate = false, disableRipple = false, ...switchProps } = props
