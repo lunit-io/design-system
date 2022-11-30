@@ -9,5 +9,13 @@ export default {
 } as ComponentMeta<typeof Button>;
 
 const Template: ComponentStory<typeof Button> = () => <Button />;
+// 예제 코드이기 떄문에 지워도 상관없습니다.
+export const Primary = () => (
+    <Button/>
+)
 
-export const Primary = Template.bind({});
+Primary.parameters = {
+  pseudo: {
+    hover: [".one", ".three"],
+  },
+}
