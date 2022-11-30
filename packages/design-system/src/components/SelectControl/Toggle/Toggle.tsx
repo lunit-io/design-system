@@ -18,7 +18,7 @@ const Toggle = (props: ToggleProps) => {
   if (size === 'large') {
     return <LargeToggle disableRipple={disableRipple} {...switchProps}/>;
   }
-  console.log(switchProps.checked)
+
   return <MiddleToggle  disableRipple={disableRipple} {...switchProps}/>;
 }
 
