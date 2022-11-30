@@ -34,7 +34,6 @@ const ToggleCommon = styled(MuiSwitch)(({ theme }) => ({
       }
     },
   },
-
 }));
 
 const ToggleBase = styled(ToggleCommon)(({ theme }) => ({
