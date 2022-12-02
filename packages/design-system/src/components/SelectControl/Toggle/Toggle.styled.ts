@@ -1,14 +1,35 @@
 import { styled, Switch as MuiSwitch } from "@mui/material";
 
 // TODO: CSS refactoring
-const ToggleCommon = styled(MuiSwitch)(({ theme }) => ({
+const CommonToggle = styled(MuiSwitch)(({ theme }) => ({
+  display: 'flex',
+  padding: 0,
+  overflow: "visible",
   backgroundColor: theme.palette.lunit.grey[40].main,
-  "&:focus": {
-    outline: `1px solid ${theme.palette.lunit.lunitTeal[40].main}`,
-    outlineOffset: 2,
+  "&:focus-within::after": {
+    position: "absolute",
+    content: '""',
+    boxSizing: "border-box",
+    top: -2,
+    left: -2,
+    border: `1px solid ${theme.palette.lunit.lunitTeal[40].main}`,
+  },
+  '& .MuiSwitch-track': {
+    backgroundColor: theme.palette.lunit.grey[40].main,
+    opacity: 1,
+    borderRadius: 16,
   },
   '& .MuiSwitch-switchBase': {
+    padding: 2,
+    opacity: 1,
+    '&.Mui-focusVisible': {
+      boxShadow: "none",
+      background: "transparent",
+      borderColor: "transparent",
+      outline: "1px solid transparent",
+    },
     '&.Mui-checked': {
+      opacity: 1,
       color: '#fff',
       '& + .MuiSwitch-track': {
         opacity: 1,
@@ -34,29 +55,35 @@ const ToggleCommon = styled(MuiSwitch)(({ theme }) => ({
       }
     },
   },
-}));
-
-const ToggleBase = styled(ToggleCommon)(({ theme }) => ({
-  display: 'flex',
-  padding: 0,
-  '& .MuiSwitch-switchBase': {
-    padding: 2,
-    opacity: 1,
-  },
   '& .MuiSwitch-thumb': {
-    boxShadow: "0px 1px 1px rgba(0, 0, 0, 0.05)",
-    transition: "200ms",
-  },
-  '& .MuiSwitch-track': {
-    backgroundColor: theme.palette.lunit.grey[40].main,
-    opacity: 1,
+    boxShadow: "none",
   },
 }));
 
-export const LargeToggle= styled(ToggleBase)(({ theme }) => ({
+const MediumSize = {
+  width: 28,
+  height: 18,
+  borderRadius: 9,
+  "&:focus-within::after": {
+    width: 32,
+    height: 22,
+    borderRadius: 12,
+  },
+}
+
+const LargeSize = {
   width: 44,
   height: 24,
   borderRadius: 12,
+  "&:focus-within::after": {
+    width: 48,
+    height: 28,
+    borderRadius: 14,
+  },
+}
+
+export const LargeToggle= styled(CommonToggle)({
+  ...LargeSize,
   '& .MuiSwitch-switchBase.Mui-checked': {
     transform: 'translateX(20px)',
   },
@@ -64,12 +91,10 @@ export const LargeToggle= styled(ToggleBase)(({ theme }) => ({
     width: 20,
     height: 20,
   },
-}));
+});
 
-export const MiddleToggle = styled(ToggleBase)(({ theme }) => ({
-  width: 28,
-  height: 18,
-  borderRadius: 9,
+export const MiddleToggle = styled(CommonToggle)({
+  ...MediumSize,
   '& .MuiSwitch-switchBase.Mui-checked': {
     transform: 'translateX(10px)',
   },
@@ -77,19 +102,16 @@ export const MiddleToggle = styled(ToggleBase)(({ theme }) => ({
     width: 14,
     height: 14,
   },
-}));
+});
 
-const IndeterminateToggleBase = styled(ToggleCommon)(({ theme }) => ({
+const CommonIndeterminateToggle = styled(CommonToggle)({
   display: 'flex',
   padding: 0,
-  backgroundColor: theme.palette.lunit.lunitTeal[40].main,
   cursor: "pointer",
   '& .MuiSwitch-switchBase': {
-    padding: 2,
     '&.Mui-checked': {
-      color: '#fff',
       '& + .MuiSwitch-track': {
-        backgroundColor: theme.palette.lunit.lunitTeal[40].main,
+        borderRadius: 9,
       },
     },
   },
@@ -97,30 +119,33 @@ const IndeterminateToggleBase = styled(ToggleCommon)(({ theme }) => ({
     height: 2,
     width: 12,
     borderRadius: 2,
-    boxShadow: "none",
   },
-}));
+});
 
-export const IndeterminateMiddleToggle = styled(IndeterminateToggleBase)(({ theme }) => ({
-  width: 28,
-  height: 18,
-  borderRadius: 9,
+export const IndeterminateMiddleToggle = styled(CommonIndeterminateToggle)({
+  ...MediumSize,
   '& .MuiSwitch-switchBase': {
     '&.Mui-checked': {
-      transform: "translate(6px, 6px)",
+      top: 6,
+      left: -14,
     },
   },
-}));
+});
 
-export const IndeterminateLargeToggle = styled(IndeterminateToggleBase)(({ theme }) => ({
-  width: 44,
-  height: 24,
-  borderRadius: 12,
-  cursor: "pointer",
+export const IndeterminateLargeToggle = styled(CommonIndeterminateToggle)({
+  ...LargeSize,
   '& .MuiSwitch-switchBase': {
     '&.Mui-checked': {
-      color: '#fff',
-      transform: "translate(14px, 9px)",
+      top: 8,
+      left: -8,
+      '& + .MuiSwitch-track': {
+        borderRadius: 12,
+      },
     },
   },
-}));
+  '& .MuiSwitch-thumb': {
+    height: 4,
+    width: 16,
+    borderRadius: 2,
+  },
+});
