@@ -2,10 +2,10 @@
 
 ## Development
 
-- At `/` location
-  - (`npx lerna bootstrap --use-workspaces` : Install lerna. If you haven't installed lerna at this location, you have to excute this command.)
+- At `repository root` location
+  - `yarn` : Install node modules and set lerna environment
   - `yarn build:design-system` : Build dependencies packages to run for 'design-system'
-- At `/packages/design-system` location
+- At `repository root/packages/design-system` location
   - `yarn storybook` : Runs [storybook](http://localhost:6006) local dev server on http://localhost:6006
 
 ## Usage
