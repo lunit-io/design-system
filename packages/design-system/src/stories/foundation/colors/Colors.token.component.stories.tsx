@@ -65,14 +65,11 @@ const ColorTokenInComponents = () => {
   );
 };
 
-// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   title: "Foundation/Colors/ColorToken",
   component: ColorTokenInComponents,
 } as ComponentMeta<typeof ColorTokenInComponents>;
 
-// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const TokenInComponent: ComponentStory<typeof ColorTokenInComponents> = () => (
   <ColorTokenInComponents />
 );
