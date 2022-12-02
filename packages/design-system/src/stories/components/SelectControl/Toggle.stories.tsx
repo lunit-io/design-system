@@ -11,23 +11,8 @@ export default {
     size: "medium",
     indeterminate: false,
   },
-  argTypes: {
-    label: {
-
-    }
-    // size: {
-    //   control: 'select',
-    //   options: ['medium', 'large', undefined],
-    //   defaultValue: { summary: 'medium'},
-    //   description: 'The size of the toggle component.',
-    // },
-    // indeterminate: {
-    //   control: "boolean",
-    //   description: "If `true`, the component has consistent 'checked' value and change shape.",
-    //   defaultValue: { summary: 'false'},
-    // },
-  },
   parameters: {
+    controls: { include: ['size', 'indeterminate'] },
     pseudo: {
       focusWithin: [".focus-test"],
     },
