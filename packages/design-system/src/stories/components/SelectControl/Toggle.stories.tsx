@@ -53,6 +53,17 @@ const Template: ComponentStory<typeof Toggle> = (args) => <>
   <Toggle {...args} className="focus-test" indeterminate />
   <Toggle {...args} className="focus-test" />
 </>;
+
+const DisabledTemplate: ComponentStory<typeof Toggle> = (args) => <>
+  <p></p>
+  <p>ON</p>
+  <p>Indeterminate</p>
+  <p>OFF</p>
+  <div>DEFAULT</div>
+  <Toggle {...args} checked/>
+  <Toggle {...args} indeterminate />
+  <Toggle {...args} />
+</>;
 const TemplateWithLabel: ComponentStory<typeof Toggle> = (args) => <>
 <p></p>
 <p>ON</p>
@@ -77,7 +88,7 @@ ToggleEnabled.parameters = {
     },
   },
 };
-export const ToggleDisabled = Template.bind({});
+export const ToggleDisabled = DisabledTemplate.bind({});
 ToggleDisabled.parameters = {
   docs: {
     description: {
@@ -99,7 +110,7 @@ ToggleEnabledLarge.parameters = {
     },
   },
 };
-export const ToggleDisabledLarge = Template.bind({});
+export const ToggleDisabledLarge = DisabledTemplate.bind({});
 ToggleDisabledLarge.parameters = {
   docs: {
     description: {
