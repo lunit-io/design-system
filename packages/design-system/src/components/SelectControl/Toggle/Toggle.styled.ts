@@ -10,8 +10,8 @@ const CommonToggle = styled(MuiSwitch)(({ theme }) => ({
     position: "absolute",
     content: '""',
     boxSizing: "border-box",
-    top: -2,
-    left: -2,
+    top: -3,
+    left: -3,
     border: `1px solid ${theme.palette.lunit.lunitTeal[40].main}`,
   },
   '& .MuiSwitch-track': {
@@ -65,8 +65,8 @@ const MediumSize = {
   height: 18,
   borderRadius: 9,
   "&:focus-within::after": {
-    width: 32,
-    height: 22,
+    width: 34,
+    height: 24,
     borderRadius: 12,
   },
 }
@@ -76,8 +76,8 @@ const LargeSize = {
   height: 24,
   borderRadius: 12,
   "&:focus-within::after": {
-    width: 48,
-    height: 28,
+    width: 50,
+    height: 30,
     borderRadius: 14,
   },
 }
@@ -93,7 +93,7 @@ export const LargeToggle= styled(CommonToggle)({
   },
 });
 
-export const MiddleToggle = styled(CommonToggle)({
+export const MediumToggle = styled(CommonToggle)({
   ...MediumSize,
   '& .MuiSwitch-switchBase.Mui-checked': {
     transform: 'translateX(10px)',
@@ -122,7 +122,7 @@ const CommonIndeterminateToggle = styled(CommonToggle)({
   },
 });
 
-export const IndeterminateMiddleToggle = styled(CommonIndeterminateToggle)({
+export const IndeterminateMediumToggle = styled(CommonIndeterminateToggle)({
   ...MediumSize,
   '& .MuiSwitch-switchBase': {
     '&.Mui-checked': {
