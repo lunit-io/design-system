@@ -10,24 +10,19 @@ export default {
   args: {
     size: "medium",
     indeterminate: false,
+    checked: false,
   },
   argTypes: {
-    label: {
-
+    checked: {
+      control: {
+        type: "boolean",
+      },
+      defaultValue: { summary: 'false'},
+      description: "If true, the component is checked. But if indeterminate is true, it will be unchecked.",
     }
-    // size: {
-    //   control: 'select',
-    //   options: ['medium', 'large', undefined],
-    //   defaultValue: { summary: 'medium'},
-    //   description: 'The size of the toggle component.',
-    // },
-    // indeterminate: {
-    //   control: "boolean",
-    //   description: "If `true`, the component has consistent 'checked' value and change shape.",
-    //   defaultValue: { summary: 'false'},
-    // },
   },
   parameters: {
+    controls: { include: ['size', 'indeterminate', "checked"] },
     pseudo: {
       focusWithin: [".focus-test"],
     },
@@ -53,7 +48,7 @@ export default {
 
 } as ComponentMeta<typeof Toggle>;
 
-const BaseTemplate: ComponentStory<typeof Toggle> = (args) => <><Toggle {...args} /><Toggle className="focus-test" {...args} /></>;
+const BaseTemplate: ComponentStory<typeof Toggle> = (args) => <Toggle {...args} />;
 const Template: ComponentStory<typeof Toggle> = (args) => <>
   <p></p>
   <p>ON</p>
