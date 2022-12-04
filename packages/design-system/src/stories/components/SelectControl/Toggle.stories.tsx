@@ -102,30 +102,9 @@ const TemplateWithLabel: ComponentStory<typeof Toggle> = (args) => <>
 
 export const ToggleBase = BaseTemplate.bind({});
 export const ToggleEnabled = Template.bind({});
-ToggleEnabled.parameters = {
-  docs: {
-    description: {
-      story: `Enabled toggle`,
-    },
-  },
-};
 export const ToggleDisabled = DisabledTemplate.bind({});
-ToggleDisabled.parameters = {
-  docs: {
-    description: {
-      story: `Disabled toggle`,
-    },
-  },
-};
 ToggleDisabled.args = {
   disabled: true,
 }
 
 export const ToggleWithLabel = TemplateWithLabel.bind({});
-ToggleWithLabel.parameters = {
-  docs: {
-    description: {
-      story: `Toggle with label`,
-    },
-  },
-};
