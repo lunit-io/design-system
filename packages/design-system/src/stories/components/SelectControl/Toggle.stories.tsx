@@ -105,7 +105,7 @@ export const ToggleEnabled = Template.bind({});
 ToggleEnabled.parameters = {
   docs: {
     description: {
-      story: `Medium size toggle`,
+      story: `Enabled toggle`,
     },
   },
 };
@@ -113,7 +113,7 @@ export const ToggleDisabled = DisabledTemplate.bind({});
 ToggleDisabled.parameters = {
   docs: {
     description: {
-      story: `Medium size toggle but disabled`,
+      story: `Disabled toggle`,
     },
   },
 };
