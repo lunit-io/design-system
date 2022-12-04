@@ -1,164 +1,174 @@
-import { styled, Switch as MuiSwitch, Theme } from "@mui/material";
-
-const MediumSize = {
-  width: 28,
-  height: 18,
-  borderRadius: 9,
-  "&:focus-within::after": {
-    width: 34,
-    height: 24,
-    borderRadius: 12,
-  },
+import { styled, Switch as MuiSwitch, SwitchProps } from "@mui/material";
+interface ToggleProps extends SwitchProps {
+  toggleSize: 'medium' | 'large'
 }
 
-const LargeSize = {
-  width: 44,
-  height: 24,
-  borderRadius: 12,
-  "&:focus-within::after": {
-    width: 50,
-    height: 30,
-    borderRadius: 14,
-  },
-}
-
-const useToggleColor = (theme: Theme) => ({
-    checked: theme.palette.lunit.lunitTeal[40].main,
-    unchecked: theme.palette.lunit.grey[40].main,
-})
-
-const CommonToggle = styled(MuiSwitch)(({ theme }) => {
-  const {checked, unchecked} = useToggleColor(theme)
-
-  return({
-  display: 'flex',
-  padding: 0,
-  overflow: "visible",
-  backgroundColor: "transparent",
-  "&:focus-within::after": {
-    position: "absolute",
-    content: '""',
-    boxSizing: "border-box",
-    top: -3, // border 1px + offset 2px
-    left: -3, // border 1px + offset 2px
-    border: `1px solid ${checked}`,
-  },
-  '& .MuiSwitch-track': {
-    backgroundColor: unchecked,
-    opacity: 1,
-    borderRadius: 16,
-  },
-  '& .MuiSwitch-switchBase': {
-    padding: 2,
-    opacity: 1,
-    '&.Mui-focusVisible': {
-      boxShadow: "none",
-      background: "transparent",
-      borderColor: "transparent",
-      outline: "1px solid transparent",
+const toggleStyles = {
+  medium: {
+    root: {
+      width: 28,
+      height: 18,
+      borderRadius: 9,
     },
-    '&.Mui-checked': {
+    focus: {
+      width: 34,
+      height: 24,
+      borderRadius: 12,
+    },
+    switch: {
+      transition: "all 100ms ease-in-out",
+    },
+    switchChecked: {
+      transform: 'translateX(10px)',
+    },
+    thumb: {
+        width: 14,
+        height: 14,
+    }
+  },
+  large: {
+    root:{
+      width: 44,
+      height: 24,
+      borderRadius: 12,
+    },
+    focus: {
+      width: 50,
+      height: 30,
+      borderRadius: 14,
+    },
+    switch: {
+      transition: "all 150ms ease-in-out",
+    },
+    switchChecked: {
+      transform: 'translateX(20px)',
+    },
+    thumb: {
+      width: 20,
+      height: 20,
+    }
+  },
+}
+
+const indeterminateStyles = {
+  large: {
+    switchChecked: {
+        top: 8,
+        left: -8,
+    },
+    track: {
+      borderRadius: 12,
+    },
+    thumb: {
+      height: 4,
+      width: 16,
+      borderRadius: 2,
+    },
+  },
+  medium: {
+    switchChecked: {
+        top: 6,
+        left: -4,
+    },
+    track: {
+      borderRadius: 12,
+    },
+    thumb: {
+      height: 2,
+      width: 12,
+      borderRadius: 2,
+    },
+  }
+}
+
+export const CommonToggle = styled(MuiSwitch, {
+  shouldForwardProp: (props) => props !== 'toggleSize',
+})<ToggleProps>(({ theme, toggleSize }) => {
+  const checked = theme.palette.lunit.lunitTeal[40].main;
+  const unchecked = theme.palette.lunit.grey[40].main;
+  const toggleStyle = toggleStyles[toggleSize];
+
+  return {
+    ...toggleStyle.root,
+    display: 'flex',
+    padding: 0,
+    overflow: "visible",
+    backgroundColor: "transparent",
+    "&:focus-within::after": {
+      ...toggleStyle.focus,
+      position: "absolute",
+      content: '""',
+      boxSizing: "border-box",
+      top: -3, // border 1px + offset 2px
+      left: -3, // border 1px + offset 2px
+      border: `1px solid ${checked}`,
+    },
+    '& .MuiSwitch-track': {
+      backgroundColor: unchecked,
       opacity: 1,
-      color: '#fff',
-      '& + .MuiSwitch-track': {
+      borderRadius: 16,
+    },
+    '& .MuiSwitch-switchBase': {
+      ...toggleStyle.switch,
+      padding: 2,
+      opacity: 1,
+      '&.Mui-focusVisible': {
+        boxShadow: "none",
+        background: "transparent",
+        borderColor: "transparent",
+        outline: "none",
+      },
+      '&.Mui-checked': {
+        ...toggleStyle.switchChecked,
         opacity: 1,
-        backgroundColor: checked,
+        color: '#fff',
+        '& + .MuiSwitch-track': {
+          opacity: 1,
+          backgroundColor: checked,
+        },
+        '&.Mui-disabled': {
+          opacity: 1,
+          color: "#fff",
+        },
       },
       '&.Mui-disabled': {
         opacity: 1,
-        color: "#fff",
-      },
-    },
-    '&.Mui-disabled': {
-      opacity: 1,
-      color: "fff",
-      '& + .MuiSwitch-track': {
-        opacity: 0.38,
-        backgroundColor: unchecked,
-      },
-      "&.Mui-checked": {
+        color: "fff",
         '& + .MuiSwitch-track': {
           opacity: 0.38,
-          backgroundColor: checked,
+          backgroundColor: unchecked,
         },
-      }
+        "&.Mui-checked": {
+          '& + .MuiSwitch-track': {
+            opacity: 0.38,
+            backgroundColor: checked,
+          },
+        }
+      },
     },
-  },
-  '& .MuiSwitch-thumb': {
-    boxShadow: "none",
-  },
-})});
-
-export const LargeToggle= styled(CommonToggle)({
-  ...LargeSize,
-  '& .MuiSwitch-switchBase': {
-    transition: "all 150ms ease-in-out",
-    "&.Mui-checked": {
-      transform: 'translateX(20px)',
+    '& .MuiSwitch-thumb': {
+      ...toggleStyle.thumb,
+      boxShadow: "none",
     },
-  },
-  '& .MuiSwitch-thumb': {
-    width: 20,
-    height: 20,
-  },
-});
+  }});
 
-export const MediumToggle = styled(CommonToggle)({
-  ...MediumSize,
-  '& .MuiSwitch-switchBase': {
-    transition: "all 100ms ease-in-out",
-    "&.Mui-checked": {
-      transform: 'translateX(10px)',
-    },
-  },
-  '& .MuiSwitch-thumb': {
-    width: 14,
-    height: 14,
-  },
-});
+export const CommonIndeterminateToggle = styled(CommonToggle, {
+  shouldForwardProp: (props) => props !== 'toggleSize',
+})(({ toggleSize }) => {
+  const indeterminateStyle = indeterminateStyles[toggleSize];
 
-const CommonIndeterminateToggle = styled(CommonToggle)({
-  display: 'flex',
+  return {
   padding: 0,
   cursor: "pointer",
   '& .MuiSwitch-switchBase': {
     '&.Mui-checked': {
+      ...indeterminateStyle.switchChecked,
       '& + .MuiSwitch-track': {
-        borderRadius: 9,
+        ...indeterminateStyle.track,
       },
     },
   },
   '& .MuiSwitch-thumb': {
-    height: 2,
-    width: 12,
-    borderRadius: 2,
+    ...indeterminateStyle.thumb,
   },
-});
-
-export const IndeterminateMediumToggle = styled(CommonIndeterminateToggle)({
-  ...MediumSize,
-  '& .MuiSwitch-switchBase': {
-    '&.Mui-checked': {
-      top: 6,
-      left: -14,
-    },
-  },
-});
-
-export const IndeterminateLargeToggle = styled(CommonIndeterminateToggle)({
-  ...LargeSize,
-  '& .MuiSwitch-switchBase': {
-    '&.Mui-checked': {
-      top: 8,
-      left: -8,
-      '& + .MuiSwitch-track': {
-        borderRadius: 12,
-      },
-    },
-  },
-  '& .MuiSwitch-thumb': {
-    height: 4,
-    width: 16,
-    borderRadius: 2,
-  },
-});
+}});
