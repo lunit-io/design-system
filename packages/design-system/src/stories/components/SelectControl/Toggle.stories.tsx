@@ -44,14 +44,22 @@ const Template: ComponentStory<typeof Toggle> = (args) => <>
   <p>ON</p>
   <p>Indeterminate</p>
   <p>OFF</p>
-  <div>DEFAULT</div>
+  <div>MEDIUM DEFAULT</div>
   <Toggle {...args} checked/>
   <Toggle {...args} indeterminate />
   <Toggle {...args} />
-  <div>FOCUS</div>
+  <div>MEDIUM FOCUS</div>
   <Toggle {...args} className="focus-test" checked/>
   <Toggle {...args} className="focus-test" indeterminate />
   <Toggle {...args} className="focus-test" />
+  <div>LARGE DEFAULT</div>
+  <Toggle {...args} size="large" checked/>
+  <Toggle {...args} size="large" indeterminate />
+  <Toggle {...args} size="large" />
+  <div>LARGE FOCUS</div>
+  <Toggle {...args} size="large" className="focus-test" checked/>
+  <Toggle {...args} size="large" className="focus-test" indeterminate />
+  <Toggle {...args} size="large" className="focus-test"/>
 </>;
 
 const DisabledTemplate: ComponentStory<typeof Toggle> = (args) => <>
@@ -59,24 +67,37 @@ const DisabledTemplate: ComponentStory<typeof Toggle> = (args) => <>
   <p>ON</p>
   <p>Indeterminate</p>
   <p>OFF</p>
-  <div>DEFAULT</div>
+  <div>MEDIUM DEFAULT</div>
   <Toggle {...args} checked/>
   <Toggle {...args} indeterminate />
   <Toggle {...args} />
+  <div>LARGE DEFAULT</div>
+  <Toggle {...args} size="large" checked/>
+  <Toggle {...args} size="large" indeterminate />
+  <Toggle {...args} size="large" />
 </>;
+
 const TemplateWithLabel: ComponentStory<typeof Toggle> = (args) => <>
 <p></p>
 <p>ON</p>
 <p>Indeterminate</p>
 <p>OFF</p>
-<div>DEFAULT</div>
+<div>MEDIUM DEFAULT</div>
 <ToggleFormLabel label="Label 1" control={<Toggle {...args} checked />}/>
 <ToggleFormLabel label={<input placeholder="Label 2"/>} control={<Toggle {...args} indeterminate />}/>
 <ToggleFormLabel label={<TextField placeholder="Label 3"/>} control={<Toggle {...args} />}/>
-<div>FOCUS</div>
+<div>MEDIUM FOCUS</div>
 <ToggleFormLabel className="focus-test" label="Label 1" control={<Toggle {...args} checked />}/>
 <ToggleFormLabel className="focus-test" label={<input placeholder="Label 2"/>} control={<Toggle {...args} indeterminate />}/>
 <ToggleFormLabel className="focus-test" label={<TextField placeholder="Label 3"/>} control={<Toggle {...args} />}/>
+<div>LARGE DEFAULT</div>
+<ToggleFormLabel label="Label 1" control={<Toggle {...args} size="large" checked />}/>
+<ToggleFormLabel label={<input placeholder="Label 2"/>} control={<Toggle {...args} size="large" indeterminate />}/>
+<ToggleFormLabel label={<TextField placeholder="Label 3"/>} control={<Toggle {...args} size="large" />}/>
+<div>LARGE FOCUS</div>
+<ToggleFormLabel className="focus-test" label="Label 1" control={<Toggle {...args} size="large" checked />}/>
+<ToggleFormLabel className="focus-test" label={<input placeholder="Label 2"/>} control={<Toggle {...args} size="large" indeterminate />}/>
+<ToggleFormLabel className="focus-test" label={<TextField placeholder="Label 3"/>} control={<Toggle {...args} size="large" />}/>
 </>;
 
 export const ToggleBase = BaseTemplate.bind({});
@@ -99,29 +120,7 @@ ToggleDisabled.parameters = {
 ToggleDisabled.args = {
   disabled: true,
 }
-export const ToggleEnabledLarge = Template.bind({});
-ToggleEnabledLarge.args = {
-  size: "large",
-}
-ToggleEnabledLarge.parameters = {
-  docs: {
-    description: {
-      story: `Large size toggle`,
-    },
-  },
-};
-export const ToggleDisabledLarge = DisabledTemplate.bind({});
-ToggleDisabledLarge.parameters = {
-  docs: {
-    description: {
-      story: `Large size toggle but disabled`,
-    },
-  },
-};
-ToggleDisabledLarge.args = {
-  size: "large",
-  disabled: true,
-}
+
 export const ToggleWithLabel = TemplateWithLabel.bind({});
 ToggleWithLabel.parameters = {
   docs: {
