@@ -10,21 +10,20 @@ export default {
   component: Toggle,
   argTypes: {
     checked: {
-      name: "checked",
       control: {
         type: 'select',
-        options: [true, false, undefined],
       },
-      description: "If `true`, the component is checked.",
+      options: [true, false, undefined],
+      description: "If `true`, the component is checked. Indeterminate state doesn't supported `checked` prop.",
     },
     onChange: {
       control: {
         type: "select",
-        options: ["function", undefined],
-        mapping: {
-          function: action("onClick"),
-          undefined: undefined,
-        },
+      },
+      options: ["function", undefined],
+      mapping: {
+        function: action("onClick"),
+        undefined: undefined,
       },
       description: '(() => void)'
     },
