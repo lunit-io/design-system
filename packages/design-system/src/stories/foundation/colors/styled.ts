@@ -1,4 +1,4 @@
-import { Box, Button, styled } from "@mui/material";
+import { Box, styled } from "@mui/material";
 
 export const Container = styled(Box)({
   display: "flex",
@@ -31,8 +31,3 @@ export const Color = styled(Box)({
   alignItems: "center",
   border: "1px solid rgba(0, 0, 0, 0.03)",
 });
-
-export const TestButton = styled(Button)(({ theme }) => ({
-  backgroundColor: theme.palette.token.core.bg_02,
-  color: theme.palette.token.core.text_normal,
-}));

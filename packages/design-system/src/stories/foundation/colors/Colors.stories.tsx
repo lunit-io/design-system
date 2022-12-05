@@ -1,13 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { Box, Button, Theme, Typography, useTheme } from "@mui/material";
-import {
-  Color,
-  ColorContainer,
-  Container,
-  PaletteContainer,
-  TestButton,
-} from "./styled";
+import { Typography, useTheme } from "@mui/material";
+import { Color, ColorContainer, Container, PaletteContainer } from "./styled";
 import map from "lodash/map";
 import lowerCase from "lodash/lowerCase";
 import capitalize from "lodash/capitalize";
