@@ -40,32 +40,6 @@ export default {
   ],
 } as ComponentMeta<typeof InComponentWithStyled>;
 
-interface BaseBoxProps {
-  theme: "light" | "dark";
-  children: ReactNode;
-}
-
-const BaseBox = ({ theme, children }: BaseBoxProps) => {
-  return (
-    <Box
-      className={theme === "light" ? "base00" : "base80"}
-      width={500}
-      height={200}
-      bgcolor={theme === "light" ? `lunit.grey.0.main` : `lunit.grey.80.main`}
-      border="1px solid"
-      p={2}
-    >
-      <Typography
-        variant="body1"
-        color={(theme) => theme.palette.token.core.text_normal}
-      >
-        {theme === "light" ? "= base00 =" : "= base 80 ="}
-      </Typography>
-      {children}
-    </Box>
-  );
-};
-
 export const InComponentWithSx = () => {
   return (
     <>
@@ -131,5 +105,31 @@ export const InComponentWithInlineStyle = () => {
         />
       </BaseBox>
     </>
+  );
+};
+
+interface BaseBoxProps {
+  theme: "light" | "dark";
+  children: ReactNode;
+}
+
+const BaseBox = ({ theme, children }: BaseBoxProps) => {
+  return (
+    <Box
+      className={theme === "light" ? "base00" : "base80"}
+      width={500}
+      height={200}
+      bgcolor={theme === "light" ? `lunit.grey.0.main` : `lunit.grey.80.main`}
+      border="1px solid"
+      p={2}
+    >
+      <Typography
+        variant="body1"
+        color={(theme) => theme.palette.token.core.text_normal}
+      >
+        {theme === "light" ? "= base00 =" : "= base 80 ="}
+      </Typography>
+      {children}
+    </Box>
   );
 };
