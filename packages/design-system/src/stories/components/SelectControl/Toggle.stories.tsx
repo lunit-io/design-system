@@ -1,25 +1,48 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import Toggle from "@/components/SelectControl/Toggle/Toggle";
-import { Box, TextField } from "@mui/material";
+import { Table, TableBody, TableCell, TableHead, TableRow, TextField } from "@mui/material";
 import ToggleFormLabel from "@/components/SelectControl/ToggleFormLabel/ToggleFormLabel";
+import { action } from "@storybook/addon-actions";
 
 export default {
   title: "Components/Toggle",
   component: Toggle,
+  argTypes: {
+    checked: {
+      name: "checked",
+      control: {
+        type: 'select',
+        options: [true, false, undefined],
+      },
+      description: "If `true`, the component is checked.",
+    },
+    onChange: {
+      control: {
+        type: "select",
+        options: ["function", undefined],
+        mapping: {
+          function: action("onClick"),
+          undefined: undefined,
+        },
+      },
+      description: '(() => void)'
+    },
+  },
   args: {
     size: "medium",
     indeterminate: false,
   },
   parameters: {
-    controls: { include: ['size', 'indeterminate'] },
+    controls: { include: ["checked", 'size', 'indeterminate', "onChange"] },
     pseudo: {
       focusWithin: [".focus-test"],
     },
     docs: {
       description: {
         component: `Switches toggle the state of a single setting on or off.
-        see [Material-UI Switch](https://mui.com/material-ui/react-switch/)`,
+        see [Material-UI Switch](https://mui.com/material-ui/react-switch/).
+        \nIn order to use Button, [checked] value have to be undefined`,
       },
     },
   },
@@ -30,74 +53,126 @@ export default {
      * Also, the hover color will be set again with the color token system completion
      */
     (Story) => (
-      <Box className="base90" sx={{ margin: "3em", display: "grid", gridTemplateColumns: "repeat(4, 1fr)" ,gap: 15}}>
+      <Table className="base90" >
         {Story()}
-      </Box>
+      </Table>
     ),
   ],
 
 } as ComponentMeta<typeof Toggle>;
 
-const BaseTemplate: ComponentStory<typeof Toggle> = (args) => <><Toggle {...args} /><Toggle className="focus-test" {...args} /></>;
+const BaseTemplate: ComponentStory<typeof Toggle> = (args) => <>
+  <TableHead>
+    <TableRow>
+      <TableCell>DEFAULT</TableCell>
+      <TableCell>FOCUS</TableCell>
+    </TableRow>
+  </TableHead>
+  <TableBody>
+    <TableRow>
+      <TableCell><Toggle {...args} /></TableCell>
+      <TableCell><Toggle className="focus-test" {...args} /></TableCell>
+    </TableRow>
+  </TableBody>
+</>;
+
 const Template: ComponentStory<typeof Toggle> = (args) => <>
-  <p></p>
-  <p>ON</p>
-  <p>Indeterminate</p>
-  <p>OFF</p>
-  <div>MEDIUM DEFAULT</div>
-  <Toggle {...args} checked/>
-  <Toggle {...args} indeterminate />
-  <Toggle {...args} />
-  <div>MEDIUM FOCUS</div>
-  <Toggle {...args} className="focus-test" checked/>
-  <Toggle {...args} className="focus-test" indeterminate />
-  <Toggle {...args} className="focus-test" />
-  <div>LARGE DEFAULT</div>
-  <Toggle {...args} size="large" checked/>
-  <Toggle {...args} size="large" indeterminate />
-  <Toggle {...args} size="large" />
-  <div>LARGE FOCUS</div>
-  <Toggle {...args} size="large" className="focus-test" checked/>
-  <Toggle {...args} size="large" className="focus-test" indeterminate />
-  <Toggle {...args} size="large" className="focus-test"/>
+  <TableHead>
+    <TableRow>
+      <TableCell></TableCell>
+      <TableCell>ON</TableCell>
+      <TableCell>Indeterminate</TableCell>
+      <TableCell>OFF</TableCell>
+    </TableRow>
+  </TableHead>
+  <TableBody>
+    <TableRow>
+      <TableCell>MEDIUM DEFAULT</TableCell>
+      <TableCell><Toggle {...args} checked/></TableCell>
+      <TableCell><Toggle {...args} indeterminate /></TableCell>
+      <TableCell><Toggle {...args} /></TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>MEDIUM FOCUS</TableCell>
+      <TableCell><Toggle {...args} className="focus-test" checked/></TableCell>
+      <TableCell><Toggle {...args} className="focus-test" indeterminate /></TableCell>
+      <TableCell><Toggle {...args} className="focus-test" /></TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>LARGE DEFAULT</TableCell>
+      <TableCell><Toggle {...args} size="large" checked/></TableCell>
+      <TableCell><Toggle {...args} size="large" indeterminate /></TableCell>
+      <TableCell><Toggle {...args} size="large" /></TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>LARGE FOCUS</TableCell>
+      <TableCell><Toggle {...args} size="large" className="focus-test" checked/></TableCell>
+      <TableCell><Toggle {...args} size="large" className="focus-test" indeterminate /></TableCell>
+      <TableCell><Toggle {...args} size="large" className="focus-test"/></TableCell>
+    </TableRow>
+  </TableBody>
 </>;
 
 const DisabledTemplate: ComponentStory<typeof Toggle> = (args) => <>
-  <p></p>
-  <p>ON</p>
-  <p>Indeterminate</p>
-  <p>OFF</p>
-  <div>MEDIUM DEFAULT</div>
-  <Toggle {...args} checked/>
-  <Toggle {...args} indeterminate />
-  <Toggle {...args} />
-  <div>LARGE DEFAULT</div>
-  <Toggle {...args} size="large" checked/>
-  <Toggle {...args} size="large" indeterminate />
-  <Toggle {...args} size="large" />
+  <TableHead>
+    <TableRow>
+      <TableCell></TableCell>
+      <TableCell>ON</TableCell>
+      <TableCell>Indeterminate</TableCell>
+      <TableCell>OFF</TableCell>
+    </TableRow>
+  </TableHead>
+  <TableBody>
+    <TableRow>
+      <TableCell>MEDIUM DEFAULT</TableCell>
+      <TableCell><Toggle {...args} checked/></TableCell>
+      <TableCell><Toggle {...args} indeterminate /></TableCell>
+      <TableCell><Toggle {...args} /></TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>LARGE DEFAULT</TableCell>
+      <TableCell><Toggle {...args} size="large" checked/></TableCell>
+      <TableCell><Toggle {...args} size="large" indeterminate /></TableCell>
+      <TableCell><Toggle {...args} size="large" /></TableCell>
+    </TableRow>
+  </TableBody>
 </>;
 
 const TemplateWithLabel: ComponentStory<typeof Toggle> = (args) => <>
-<p></p>
-<p>ON</p>
-<p>Indeterminate</p>
-<p>OFF</p>
-<div>MEDIUM DEFAULT</div>
-<ToggleFormLabel label="Label 1" control={<Toggle {...args} checked />}/>
-<ToggleFormLabel label={<input placeholder="Label 2"/>} control={<Toggle {...args} indeterminate />}/>
-<ToggleFormLabel label={<TextField placeholder="Label 3"/>} control={<Toggle {...args} />}/>
-<div>MEDIUM FOCUS</div>
-<ToggleFormLabel className="focus-test" label="Label 1" control={<Toggle {...args} checked />}/>
-<ToggleFormLabel className="focus-test" label={<input placeholder="Label 2"/>} control={<Toggle {...args} indeterminate />}/>
-<ToggleFormLabel className="focus-test" label={<TextField placeholder="Label 3"/>} control={<Toggle {...args} />}/>
-<div>LARGE DEFAULT</div>
-<ToggleFormLabel label="Label 1" control={<Toggle {...args} size="large" checked />}/>
-<ToggleFormLabel label={<input placeholder="Label 2"/>} control={<Toggle {...args} size="large" indeterminate />}/>
-<ToggleFormLabel label={<TextField placeholder="Label 3"/>} control={<Toggle {...args} size="large" />}/>
-<div>LARGE FOCUS</div>
-<ToggleFormLabel className="focus-test" label="Label 1" control={<Toggle {...args} size="large" checked />}/>
-<ToggleFormLabel className="focus-test" label={<input placeholder="Label 2"/>} control={<Toggle {...args} size="large" indeterminate />}/>
-<ToggleFormLabel className="focus-test" label={<TextField placeholder="Label 3"/>} control={<Toggle {...args} size="large" />}/>
+  <TableHead>
+    <TableRow>
+      <TableCell></TableCell>
+      <TableCell>ON</TableCell>
+      <TableCell>Indeterminate</TableCell>
+      <TableCell>OFF</TableCell>
+    </TableRow>
+  </TableHead>
+  <TableBody>
+    <TableRow>
+      <TableCell>MEDIUM DEFAULT</TableCell>
+      <TableCell><ToggleFormLabel label="Label 1" control={<Toggle {...args} checked />}/></TableCell>
+      <TableCell><ToggleFormLabel label={<input placeholder="Label 2"/>} control={<Toggle {...args} indeterminate />}/></TableCell>
+      <TableCell><ToggleFormLabel label={<TextField placeholder="Label 3"/>} control={<Toggle {...args} />}/></TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>MEDIUM FOCUS</TableCell>
+      <TableCell><ToggleFormLabel className="focus-test" label="Label 1" control={<Toggle {...args} checked />}/></TableCell>
+      <TableCell><ToggleFormLabel className="focus-test" label={<input placeholder="Label 2"/>} control={<Toggle {...args} indeterminate />}/></TableCell>
+      <TableCell><ToggleFormLabel className="focus-test" label={<TextField placeholder="Label 3"/>} control={<Toggle {...args} />}/></TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>LARGE DEFAULT</TableCell>
+      <TableCell><ToggleFormLabel label="Label 1" control={<Toggle {...args} size="large" checked />}/></TableCell>
+      <TableCell><ToggleFormLabel label={<input placeholder="Label 2"/>} control={<Toggle {...args} size="large" indeterminate />}/></TableCell>
+      <TableCell><ToggleFormLabel label={<TextField placeholder="Label 3"/>} control={<Toggle {...args} size="large" />}/></TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>LARGE FOCUS</TableCell>
+      <TableCell><ToggleFormLabel className="focus-test" label="Label 1" control={<Toggle {...args} size="large" checked />}/></TableCell>
+      <TableCell><ToggleFormLabel className="focus-test" label={<input placeholder="Label 2"/>} control={<Toggle {...args} size="large" indeterminate />}/></TableCell>
+      <TableCell><ToggleFormLabel className="focus-test" label={<TextField placeholder="Label 3"/>} control={<Toggle {...args} size="large" />}/></TableCell>
+    </TableRow>
+  </TableBody>
 </>;
 
 export const ToggleBase = BaseTemplate.bind({});
