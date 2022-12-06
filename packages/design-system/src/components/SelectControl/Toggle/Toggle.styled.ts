@@ -148,7 +148,7 @@ export const CommonToggle = styled(MuiSwitch, {
     },
     '& .MuiSwitch-thumb': {
       ...toggleStyle.thumb,
-      boxShadow: "none",
+      boxShadow: "0px 0px 1px rgba(0, 0, 0, 0.4)",
     },
   }});
 
