@@ -263,8 +263,9 @@ const TemplateWithLabel: ComponentStory<typeof Toggle> = (args) => (
 const IndeterminateTemplate: ComponentStory<typeof Toggle> = (args) => {
   const [checked, setChecked] = useState([true, false, false]);
 
-  const handleChange1 = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setChecked([event.target.checked, event.target.checked, event.target.checked]);
+  const handleChange1 = () => {
+    const result = !(checked[0] && checked[1])
+    setChecked([result, result, result]);
   };
 
   const handleChange2 = (event: React.ChangeEvent<HTMLInputElement>) => {
