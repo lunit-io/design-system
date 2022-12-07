@@ -8,11 +8,18 @@ import type {
 } from "./TextField.types";
 
 const SingleTextField = ({ sx }: SingleTextFieldProps) => {
-  return <BaseTextField sx={sx} />;
+  return <BaseTextField placeholder="Please typing..." sx={sx} />;
 };
 
 const MultiTextField = ({ sx, rows }: MultiTextFieldProps) => {
-  return <BaseTextField sx={sx} rows={rows} multiline />;
+  return (
+    <BaseTextField
+      placeholder="Please typing..."
+      sx={sx}
+      rows={rows}
+      multiline
+    />
+  );
 };
 
 const TextField = ({ sx, rows, isMultiline }: TextFieldProps) => {
