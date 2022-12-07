@@ -1,1 +1,2 @@
-export { default as Switch } from "./Switch";
+export { Toggle } from "./Toggle";
+export { ToggleFormLabel } from "./ToggleFormLabel";
