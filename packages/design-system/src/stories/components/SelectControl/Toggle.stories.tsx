@@ -34,9 +34,6 @@ export default {
   },
   parameters: {
     controls: { include: ['checked', 'size', 'indeterminate', 'onChange'] },
-    pseudo: {
-      focusWithin: ['.focus-test'],
-    },
     docs: {
       description: {
         component: `Switches toggle the state of a single setting on or off.
@@ -60,16 +57,12 @@ const BaseTemplate: ComponentStory<typeof Toggle> = (args) => (
     <TableHead>
       <TableRow>
         <TableCell>DEFAULT</TableCell>
-        <TableCell>FOCUS</TableCell>
       </TableRow>
     </TableHead>
     <TableBody>
       <TableRow>
         <TableCell>
           <Toggle {...args} />
-        </TableCell>
-        <TableCell>
-          <Toggle className="focus-test" {...args} />
         </TableCell>
       </TableRow>
     </TableBody>
