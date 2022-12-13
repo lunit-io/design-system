@@ -84,8 +84,8 @@ const indeterminateStyles = {
 export const CommonToggle = styled(MuiSwitch, {
   shouldForwardProp: (props) => props !== 'toggleSize',
 })<ToggleProps>(({ theme, toggleSize }) => {
-  const checked = theme.palette.lunit.lunitTeal[40].main;
-  const unchecked = theme.palette.lunit.grey[40].main;
+  const checkedColor = theme.palette.lunit.lunitTeal[40].main;
+  const uncheckedColor = theme.palette.lunit.grey[40].main;
   const toggleStyle = toggleStyles[toggleSize];
 
   return {
@@ -94,17 +94,19 @@ export const CommonToggle = styled(MuiSwitch, {
     padding: 0,
     overflow: "visible",
     backgroundColor: "transparent",
-    "&:focus-within::after": {
-      ...toggleStyle.focus,
-      position: "absolute",
-      content: '""',
-      boxSizing: "border-box",
-      top: -3, // border 1px + offset 2px
-      left: -3, // border 1px + offset 2px
-      border: `1px solid ${checked}`,
+    "&:has(.Mui-focusVisible)": {
+      "&::after":{
+        ...toggleStyle.focus,
+        content: '""',
+        position: "absolute",
+        border: `1px solid ${checkedColor}`,
+        boxSizing: "border-box",
+        top: -3, // border 1px + offset 2px
+        left: -3, // border 1px + offset 2px
+      },
     },
     '& .MuiSwitch-track': {
-      backgroundColor: unchecked,
+      backgroundColor: uncheckedColor,
       opacity: 1,
       borderRadius: 16,
     },
@@ -124,7 +126,7 @@ export const CommonToggle = styled(MuiSwitch, {
         color: '#fff',
         '& + .MuiSwitch-track': {
           opacity: 1,
-          backgroundColor: checked,
+          backgroundColor: checkedColor,
         },
         '&.Mui-disabled': {
           opacity: 1,
@@ -136,12 +138,12 @@ export const CommonToggle = styled(MuiSwitch, {
         color: "fff",
         '& + .MuiSwitch-track': {
           opacity: 0.38,
-          backgroundColor: unchecked,
+          backgroundColor: uncheckedColor,
         },
         "&.Mui-checked": {
           '& + .MuiSwitch-track': {
             opacity: 0.38,
-            backgroundColor: checked,
+            backgroundColor: checkedColor,
           },
         }
       },
