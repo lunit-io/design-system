@@ -1,7 +1,13 @@
 import React from "react";
-import { StyledAlert, StyledAlertTitle } from "./Alert.styled";
+import {
+  StyledAlert,
+  StyledAlertTitle,
+  StyledBottomAction,
+  StyledIconButton,
+} from "./Alert.styled";
 import { StyledAlertProps } from "./Alert.types";
 import {
+  Close,
   Success,
   Error,
   Warning,
@@ -13,7 +19,6 @@ const Alert = (props: StyledAlertProps) => {
   return (
     <StyledAlert
       severity={severity}
-      onClose={onClose}
       sx={{ ...sx }}
       iconMapping={{
         success: <Success variant="filled" />,
@@ -21,10 +26,17 @@ const Alert = (props: StyledAlertProps) => {
         warning: <Warning variant="filled" />,
         error: <Error variant="filled" />,
       }}
+      action={
+        onClose && (
+          <StyledIconButton aria-label="close" onClick={() => onClose()}>
+            <Close />
+          </StyledIconButton>
+        )
+      }
     >
       {title && <StyledAlertTitle>{title}</StyledAlertTitle>}
       {children}
-      {bottomAction && bottomAction}
+      {bottomAction && <StyledBottomAction>{bottomAction}</StyledBottomAction>}
     </StyledAlert>
   );
 };
