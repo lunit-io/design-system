@@ -9,13 +9,25 @@ export default {
   title: "Components/TextField",
   component: TextField,
   argTypes: {
-    isMultiline: {
+    multiline: {
       type: "boolean",
       defauleValue: false,
     },
     rows: {
       type: "number",
       defaultValue: 1,
+    },
+    error: {
+      type: "boolean",
+      defaultValue: false,
+    },
+    placeholder: {
+      type: "string",
+      defaultValue: "Please typing...",
+    },
+    disabled: {
+      type: "boolean",
+      defaultValue: false,
     },
   },
   decorators: [
