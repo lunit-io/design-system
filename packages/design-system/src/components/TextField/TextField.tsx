@@ -7,26 +7,40 @@ import type {
   SingleTextFieldProps,
 } from "./TextField.types";
 
-const SingleTextField = ({ sx }: SingleTextFieldProps) => {
-  return <BaseTextField placeholder="Please typing..." sx={sx} />;
+const SingleTextField = (props: SingleTextFieldProps) => {
+  const { helperText, error } = props;
+
+  return (
+    <BaseTextField {...props} helperText={error ? helperText : undefined} />
+  );
 };
 
-const MultiTextField = ({ sx, rows }: MultiTextFieldProps) => {
+const MultiTextField = (props: MultiTextFieldProps) => {
+  const { helperText, error } = props;
+
   return (
     <BaseTextField
-      placeholder="Please typing..."
-      sx={sx}
-      rows={rows}
+      {...props}
       multiline
+      helperText={error ? helperText : undefined}
     />
   );
 };
 
-const TextField = ({ sx, rows, isMultiline }: TextFieldProps) => {
-  return isMultiline ? (
-    <MultiTextField sx={sx} rows={rows} />
+const TextField = (props: TextFieldProps) => {
+  const { rows = 1, multiline = false, ...restProps } = props;
+
+  return multiline ? (
+    <MultiTextField
+      {...props}
+      rows={rows}
+      helperText={<p style={{ margin: 0 }}>Error Text</p>}
+    />
   ) : (
-    <SingleTextField sx={sx} />
+    <SingleTextField
+      {...restProps}
+      helperText={<p style={{ margin: 0 }}>Error Text</p>}
+    />
   );
 };
 
