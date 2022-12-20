@@ -2,6 +2,7 @@ type CSSPropertyColor = React.CSSProperties["color"];
 
 export interface ColorToken {
   core: {
+    bg_01: CSSPropertyColor;
     bg_02: CSSPropertyColor;
     bg_03: CSSPropertyColor;
     text_primary: CSSPropertyColor;
@@ -58,6 +59,7 @@ export interface ColorToken {
     datatable_cell_selected: CSSPropertyColor;
     datatable_border_01: CSSPropertyColor;
     datatable_border_02: CSSPropertyColor;
+    datatable_zebra: CSSPropertyColor;
     scrollbars_bg: CSSPropertyColor;
     scrollbars_hover: CSSPropertyColor;
     scrollbars_pressed: CSSPropertyColor;
@@ -73,30 +75,15 @@ export interface ColorToken {
     alert_info_border: CSSPropertyColor;
     alert_warning_bg: CSSPropertyColor;
     alert_warning_border: CSSPropertyColor;
-    chip_primary: CSSPropertyColor;
     chip_primary_bg: CSSPropertyColor;
-    chip_primary_icon: CSSPropertyColor;
-    chip_secondary: CSSPropertyColor;
+    chip_primary: CSSPropertyColor;
     chip_secondary_bg: CSSPropertyColor;
-    chip_secondary_icon: CSSPropertyColor;
-    chip_error: CSSPropertyColor;
+    chip_secondary: CSSPropertyColor;
     chip_error_bg: CSSPropertyColor;
-    chip_error_icon: CSSPropertyColor;
-    chip_warning: CSSPropertyColor;
+    chip_error: CSSPropertyColor;
     chip_warning_bg: CSSPropertyColor;
-    chip_warning_icon: CSSPropertyColor;
-    chip_success: CSSPropertyColor;
+    chip_warning: CSSPropertyColor;
     chip_success_bg: CSSPropertyColor;
-    chip_success_icon: CSSPropertyColor;
-    chip_outlined_primary_border: CSSPropertyColor;
-    chip_outlined_primary_text: CSSPropertyColor;
-    chip_outlined_secondary_border: CSSPropertyColor;
-    chip_outlined_secondary_text: CSSPropertyColor;
-    chip_outlined_warning_border: CSSPropertyColor;
-    chip_outlined_warning_text: CSSPropertyColor;
-    chip_outlined_error_border: CSSPropertyColor;
-    chip_outlined_error_text: CSSPropertyColor;
-    chip_outlined_success_border: CSSPropertyColor;
-    chip_outlined_success_text: CSSPropertyColor;
+    chip_success: CSSPropertyColor;
   };
 }
