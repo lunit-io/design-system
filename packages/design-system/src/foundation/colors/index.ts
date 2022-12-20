@@ -92,23 +92,23 @@ export const createColorCssBaseline = () => {
     ":root": {
       ...createCSSVariables(),
     },
-    ".base00 *": {
-      ...createTokenColorVariables("base00"),
+    ".light1 *": {
+      ...createTokenColorVariables("light1"),
     },
-    ".base10 *": {
-      ...createTokenColorVariables("base10"),
+    ".light2 *": {
+      ...createTokenColorVariables("light2"),
     },
-    ".base70 *": {
-      ...createTokenColorVariables("base70"),
+    ".dark4 *": {
+      ...createTokenColorVariables("dark4"),
     },
-    ".base80 *": {
-      ...createTokenColorVariables("base80"),
+    ".dark3 *": {
+      ...createTokenColorVariables("dark3"),
     },
-    ".base85 *": {
-      ...createTokenColorVariables("base85"),
+    ".dark2 *": {
+      ...createTokenColorVariables("dark2"),
     },
-    ".base90 *": {
-      ...createTokenColorVariables("base90"),
+    ".dark1 *": {
+      ...createTokenColorVariables("dark1"),
     },
   };
 };

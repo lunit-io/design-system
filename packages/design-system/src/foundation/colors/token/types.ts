@@ -1,8 +1,8 @@
 export interface ColorTokenValueBySurface {
-  base00: string;
-  base10: string;
-  base70: string;
-  base80: string;
-  base85: string;
-  base90: string;
+  light1: string;
+  light2: string;
+  dark1: string;
+  dark2: string;
+  dark3: string;
+  dark4: string;
 }
