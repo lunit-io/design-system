@@ -25,7 +25,7 @@ export const StyledAlert = styled(MuiAlert)<StyledAlertProps>(
       minWidth: "320px",
       borderRadius: "8px",
       border: `1px solid ${getBorderColor(severity)}`,
-      backgroundColor: getBackgroundColor(severity),
+      // backgroundColor: getBackgroundColor(severity),
     },
     "& .MuiAlert-icon": {
       padding: 0,
