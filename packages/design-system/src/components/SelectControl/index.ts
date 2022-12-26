@@ -1,2 +1,2 @@
 export { Toggle } from "./Toggle";
-export { ToggleFormLabel } from "./ToggleFormLabel";
+export { FormLabel } from "./FormLabel";
