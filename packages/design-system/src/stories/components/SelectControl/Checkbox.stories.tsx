@@ -64,7 +64,6 @@ export default {
     controls: {
       expanded: true,
       include: [
-        "label",
         "disabled",
         "indeterminate",
         "onChange",
@@ -95,7 +94,7 @@ const BasicCheckboxTemplate: ComponentStory<typeof Checkbox> = (args) => {
   const [checked, setChecked] = useState(false);
 
   useEffect(() => {
-    setChecked(args.checked);
+    setChecked(Boolean(args.checked));
   }, [args.checked]);
 
   return (
@@ -117,7 +116,7 @@ const LabelTemplate: ComponentStory<typeof Checkbox> = (args) => {
 
   return (
     <FormLabel
-      label={args.label}
+      label="with label"
       control={
         <Checkbox
           {...args}
@@ -130,19 +129,6 @@ const LabelTemplate: ComponentStory<typeof Checkbox> = (args) => {
 };
 
 export const Label = LabelTemplate.bind({});
-
-Label.argTypes = {
-  label: {
-    control: "text",
-    table: { type: { summary: "node" } },
-    description:
-      "You can use the `FormControlLabel` component to provide label.",
-  },
-};
-
-Label.args = {
-  label: "with label",
-};
 
 const StatusTemplate: ComponentStory<typeof Checkbox> = (args) => (
   <Table sx={{ width: 650 }}>
