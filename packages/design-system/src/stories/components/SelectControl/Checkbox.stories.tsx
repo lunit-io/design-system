@@ -111,7 +111,7 @@ export const BasicCheckbox = BasicCheckboxTemplate.bind({});
 const LabelTemplate: ComponentStory<typeof Checkbox> = (args) => {
   const [checked, setChecked] = useState(false);
   useEffect(() => {
-    setChecked(args.checked);
+    setChecked(Boolean(args.checked));
   }, [args.checked]);
 
   return (
