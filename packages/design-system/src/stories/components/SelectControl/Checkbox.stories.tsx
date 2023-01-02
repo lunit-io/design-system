@@ -86,7 +86,11 @@ export default {
      * Since Color Token system will be changed, below className should be changed accordingly
      * Also, the hover color will be set again with the color token system completion
      */
-    (Story) => <Box className="base90">{Story()}</Box>,
+    (Story) => (
+      <Box className="base90" sx={{ display: "flex", alignItems: "center" }}>
+        {Story()}
+      </Box>
+    ),
   ],
 } as ComponentMeta<typeof Checkbox>;
 
