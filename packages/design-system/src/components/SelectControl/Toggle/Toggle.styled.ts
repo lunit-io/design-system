@@ -84,8 +84,8 @@ const indeterminateStyles = {
 export const CommonToggle = styled(MuiSwitch, {
   shouldForwardProp: (props) => props !== 'toggleSize',
 })<ToggleProps>(({ theme, toggleSize }) => {
-  const checkedColor = theme.palette.lunit.lunitTeal[40].main;
-  const uncheckedColor = theme.palette.lunit.grey[40].main;
+  const checkedColor = theme.palette.token.component.selectcontrol_on;
+  const uncheckedColor = theme.palette.token.component.selectcontrol_off;
   const toggleStyle = toggleStyles[toggleSize];
 
   return {
