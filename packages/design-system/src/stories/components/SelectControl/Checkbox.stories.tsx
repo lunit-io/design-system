@@ -130,6 +130,14 @@ const LabelTemplate: ComponentStory<typeof Checkbox> = (args) => {
 
 export const Label = LabelTemplate.bind({});
 
+Label.parameters = {
+  docs: {
+    description: {
+      story: "You can use the `FormControlLabel` component to provide label.",
+    },
+  },
+};
+
 const StatusTemplate: ComponentStory<typeof Checkbox> = (args) => (
   <Table sx={{ width: 650 }}>
     <TableHead>
