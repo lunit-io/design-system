@@ -1,6 +1,9 @@
 import React from "react";
+import { Bell } from "@lunit/design-system-icons";
 
+import TextFieldIcon from "./TextFieldIcon";
 import { BaseTextField } from "./TextField.style";
+
 import type {
   TextFieldProps,
   MultiTextFieldProps,
@@ -8,22 +11,32 @@ import type {
 } from "./TextField.types";
 
 const SingleTextField = (props: SingleTextFieldProps) => {
-  const { helperText, error } = props;
+  const {
+    leftIcon,
+    rightIcon,
+    handleLeftIconClick,
+    handleRightIconClick,
+    ...restProps
+  } = props;
 
   return (
-    <BaseTextField {...props} helperText={error ? helperText : undefined} />
+    <BaseTextField
+      {...restProps}
+      InputProps={{
+        startAdornment: leftIcon && (
+          <TextFieldIcon icon={leftIcon} onIconClick={handleLeftIconClick} />
+        ),
+        endAdornment: rightIcon && (
+          <TextFieldIcon icon={rightIcon} onIconClick={handleRightIconClick} />
+        ),
+      }}
+    />
   );
 };
 
 const MultiTextField = (props: MultiTextFieldProps) => {
-  const { helperText, error } = props;
-
   return (
-    <BaseTextField
-      {...props}
-      multiline
-      helperText={error ? helperText : undefined}
-    />
+    <BaseTextField {...props} multiline />
   );
 };
 
@@ -32,14 +45,15 @@ const TextField = (props: TextFieldProps) => {
 
   return multiline ? (
     <MultiTextField
-      {...props}
+      {...restProps}
       rows={rows}
-      helperText={<p style={{ margin: 0 }}>Error Text</p>}
     />
   ) : (
     <SingleTextField
       {...restProps}
-      helperText={<p style={{ margin: 0 }}>Error Text</p>}
+      leftIcon={<Bell />}
+      handleLeftIconClick={() => console.log("handleLeftIconClick")}
+      rightIcon={<Bell />}
     />
   );
 };

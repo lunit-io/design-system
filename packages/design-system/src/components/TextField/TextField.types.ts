@@ -1,11 +1,19 @@
 import type { BaseTextFieldProps } from "@mui/material/TextField";
 
 export interface TextFieldProps
-  extends Omit<BaseTextFieldProps, "variant" | "focused"> {
+  extends Omit<BaseTextFieldProps, "variant" | "focused" | 'helperText'> {
   /**
    * The design system TextField variable is outlined fixed.
    */
   variant: "outlined";
+
+  helperText?: string;
+
+  leftIcon?: JSX.Element;
+  rightIcon?: JSX.Element;
+
+  handleLeftIconClick?: () => void;
+  handleRightIconClick?: () => void;
 }
 
 export interface SingleTextFieldProps
