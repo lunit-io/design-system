@@ -38,12 +38,17 @@ const MultiTextField = (props: MultiTextFieldProps) => {
 };
 
 const TextField = (props: TextFieldProps) => {
-  const { rows = 1, multiline = false, ...restProps } = props;
+  const {
+    rows = 1,
+    multiline = false,
+    variant = "outlined",
+    ...restProps
+  } = props;
 
   return multiline ? (
-    <MultiTextField {...restProps} rows={rows} />
+    <MultiTextField {...restProps} variant={variant} rows={rows} />
   ) : (
-    <SingleTextField {...restProps} />
+    <SingleTextField {...restProps} variant={variant} />
   );
 };
 
