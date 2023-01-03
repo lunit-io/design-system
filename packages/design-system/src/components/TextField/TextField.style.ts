@@ -3,6 +3,7 @@ import { styled } from "@mui/system";
 
 const BaseTextField = styled(MuiTextField)(({ theme }) => ({
   "& .MuiOutlinedInput-root": {
+    height: "100%",
     "& fieldset": {
       border: "none",
     },
@@ -15,12 +16,12 @@ const BaseTextField = styled(MuiTextField)(({ theme }) => ({
     "&.Mui-disabled fieldset": {
       opacity: 0.38,
     },
-    padding: "5px 10px",
     background: theme.palette.token.component.textfield_bg,
     overflow: "hidden",
     color: theme.palette.token.core.text_normal,
   },
   "& .MuiFormHelperText-root": {
+    color: theme.palette.token.core.text_medium,
     "&.Mui-error": {
       color: theme.palette.token.core.text_error,
     },
@@ -29,11 +30,25 @@ const BaseTextField = styled(MuiTextField)(({ theme }) => ({
     paddingLeft: "4px",
   },
   "& input, textarea": {
-    padding: 0,
+    padding: "5px 10px",
     "&::placeholder": {
       color: theme.palette.token.core.text_medium,
     },
   },
 }));
 
-export { BaseTextField };
+const IconWrapper = styled("div")({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  minWidth: "28px",
+  width: "28px",
+  height: "28px",
+
+  "& svg": {
+    width: "20px",
+    height: "20px",
+  },
+});
+
+export { BaseTextField, IconWrapper };
