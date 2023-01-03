@@ -1,12 +1,16 @@
 import type { OutlinedTextFieldProps } from "@mui/material/TextField";
 
 export interface BaseTextFieldProps
-  extends Omit<OutlinedTextFieldProps, "focused" | "helperText" | "variant"> {
+  extends Omit<
+    OutlinedTextFieldProps,
+    "value" | "focused" | "helperText" | "variant"
+  > {
   /**
    * The design system TextField variable is outlined fixed.
    */
   variant?: "outlined";
 
+  value?: string;
   helperText?: string;
 }
 

@@ -43,7 +43,7 @@ const Search = (props: SearchProps) => {
       variant={variant}
       value={inputText}
       leftIcon={searchIcon}
-      rightIcon={resetIcon}
+      rightIcon={inputText.length > 0 ? resetIcon : undefined}
       onChange={handleTextFieldChange}
       handleRightIconClick={handleResetIconClick}
     />
