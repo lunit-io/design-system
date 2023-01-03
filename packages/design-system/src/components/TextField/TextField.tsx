@@ -1,5 +1,4 @@
 import React from "react";
-import { Bell } from "@lunit/design-system-icons";
 
 import TextFieldIcon from "./TextFieldIcon";
 import { BaseTextField } from "./TextField.style";
@@ -35,26 +34,16 @@ const SingleTextField = (props: SingleTextFieldProps) => {
 };
 
 const MultiTextField = (props: MultiTextFieldProps) => {
-  return (
-    <BaseTextField {...props} multiline />
-  );
+  return <BaseTextField {...props} multiline />;
 };
 
 const TextField = (props: TextFieldProps) => {
   const { rows = 1, multiline = false, ...restProps } = props;
 
   return multiline ? (
-    <MultiTextField
-      {...restProps}
-      rows={rows}
-    />
+    <MultiTextField {...restProps} rows={rows} />
   ) : (
-    <SingleTextField
-      {...restProps}
-      leftIcon={<Bell />}
-      handleLeftIconClick={() => console.log("handleLeftIconClick")}
-      rightIcon={<Bell />}
-    />
+    <SingleTextField {...restProps} />
   );
 };
 

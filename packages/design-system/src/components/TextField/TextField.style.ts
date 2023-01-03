@@ -33,11 +33,12 @@ const BaseTextField = styled(MuiTextField)(({ theme }) => ({
     padding: "5px 10px",
     "&::placeholder": {
       color: theme.palette.token.core.text_medium,
+      opacity: 1,
     },
   },
 }));
 
-const IconWrapper = styled("div")({
+const IconWrapper = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
@@ -48,7 +49,8 @@ const IconWrapper = styled("div")({
   "& svg": {
     width: "20px",
     height: "20px",
+    color: theme.palette.token.core.icon_normal,
   },
-});
+}));
 
 export { BaseTextField, IconWrapper };
