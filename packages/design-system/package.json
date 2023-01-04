@@ -21,7 +21,7 @@
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
     "@mui/lab": "^5.0.0-alpha.83",
-    "@mui/material": "^5.5.0",
+    "@mui/material": "^5.11.3",
     "@mui/x-data-grid": "^5.11.1",
     "@storybook/addon-actions": "^6.4.22",
     "@storybook/addon-essentials": "^6.4.22",
