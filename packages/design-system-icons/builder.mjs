@@ -4,6 +4,7 @@ import { fileURLToPath } from "url";
 import globAsync from "fast-glob";
 import Mustache from "mustache";
 
+const deprecatedIcons = ["LunitLogo"];
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 /**
@@ -55,6 +56,7 @@ export async function handler() {
         name,
         componentName,
         variants: [{ variant, name, size }],
+        isDeprecated: deprecatedIcons.includes(componentName),
       });
     }
   }
@@ -73,12 +75,8 @@ export async function handler() {
   );
 
   for await (let icon of icons) {
-    const { name, componentName, variants } = icon;
-    const componentString = Mustache.render(componentTemplate, {
-      name,
-      componentName,
-      variants,
-    });
+    const { componentName } = icon;
+    const componentString = Mustache.render(componentTemplate, icon);
 
     await fse.mkdir(path.join(__dirname, "generated", componentName));
     await fse.writeFile(

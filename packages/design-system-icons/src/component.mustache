@@ -9,6 +9,11 @@ type Variant = typeof variants[number];
 type IconProps = SvgIconProps & {
   variant?: Variant;
 };
+{{#isDeprecated}}
+/**
+ * @deprecated
+ */
+{{/isDeprecated}}
 const {{componentName}} = ({variant = 'outlined', ...rest}: IconProps) => {
   {{#variants}}
   if (variant === '{{variant}}') {
