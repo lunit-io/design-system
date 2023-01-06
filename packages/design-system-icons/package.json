@@ -1,6 +1,6 @@
 {
   "name": "@lunit/design-system-icons",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Icons for Lunit design system",
   "main": "dist/index.js",
   "exports": {

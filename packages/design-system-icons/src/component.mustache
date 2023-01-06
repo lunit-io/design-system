@@ -1,7 +1,7 @@
 import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon";
 
 {{#variants}}
-import {{variant}} from "../../src/assets/ic_{{name}}={{variant}}_20px.svg";
+import {{variant}} from "../../src/assets/ic_{{name}}={{variant}}_{{size}}px.svg";
 {{/variants}}
 
 const variants = [{{#variants}}'{{variant}}', {{/variants}}] as const;
@@ -9,6 +9,11 @@ type Variant = typeof variants[number];
 type IconProps = SvgIconProps & {
   variant?: Variant;
 };
+{{#isDeprecated}}
+/**
+ * @deprecated
+ */
+{{/isDeprecated}}
 const {{componentName}} = ({variant = 'outlined', ...rest}: IconProps) => {
   {{#variants}}
   if (variant === '{{variant}}') {
