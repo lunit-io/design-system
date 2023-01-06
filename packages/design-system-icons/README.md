@@ -21,9 +21,9 @@ You need [SVG Export plugin](https://www.figma.com/community/plugin/814345141907
 
 ### Build & Publish
 
-Webpack will detect all `src/**/index.tsx` and use them as entry.
+The `yarn build` command generates components and stores them in `generated/**/index.tsx` files. These files are then used as entry points by Webpack.
 
-You should move to `dist` after builds and run `npm publish --access public`.
+You can publish the package with `npm publish --access public`.
 
 ### Roadmap
 
