@@ -10,7 +10,7 @@ https://design-system-icons.d.lunit.io/
 
 ### Figma
 
-Lunit Design System Figma: https://www.figma.com/file/ygzUKBGrGxEYzkhUwoOC3U/Lunit-Design-System?node-id=4604%3A96681
+Lunit Design System Figma: https://www.figma.com/file/l2f0f9phsDwoz4sRr9kYXx/Lunit_Foundation?node-id=12135%3A6326&t=UkUMrZ7Wwkj92Wy6-1
 
 You can multi-select icons to export with [Select Layers plugin](https://www.figma.com/community/plugin/799648692768237063/Select-Layers).
 
