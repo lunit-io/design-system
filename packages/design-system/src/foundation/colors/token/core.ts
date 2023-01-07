@@ -201,4 +201,12 @@ export const tokenCoreColor: TokenCoreColorValue = {
     dark2: "rgba(0, 0, 0, 0.48)", // "--grey-100 48%",
     dark1: "rgba(0, 0, 0, 0.48)", // "--grey-100 48%",
   },
+  shadow_color_04: {
+    base00: "rgba(0, 0, 0, 0.18)",
+    base10: "rgba(0, 0, 0, 0.18)",
+    base70: "rgba(0, 0, 0, 0.48)",
+    base80: "rgba(0, 0, 0, 0.48)",
+    base85: "rgba(0, 0, 0, 0.48)",
+    base90: "rgba(0, 0, 0, 0.48)",
+  },
 };
