@@ -70,9 +70,10 @@ export const StyledContainedChip = styled(MuiChip, {
   },
   "& .MuiChip-avatar": {
     ...ICON_STYLES,
-    fontSize: "5px", // TODO: 디자인 피드백 필요
+    fontSize: "5px", // TODO: Need Design feedback
     color: theme.palette.token.core.text_normal,
-    // 현재 룰과 상이한 듯? 다시 확인
+    // TODO: Currently, the color names of Figma and Design system's color component's name don't match
+    // Need to be Fixed after the color system is completed
     backgroundColor:
       color === CHIP_COLORS.PRIMARY
         ? theme.palette.token.component.chip_primary
