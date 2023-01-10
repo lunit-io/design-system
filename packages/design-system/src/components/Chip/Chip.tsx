@@ -93,8 +93,7 @@ const EnableContainedChip = (props: EnableContainedChipProps) => {
         },
         "&:hover": {
           // TODO: Below is a temporary color until the hover color is completed in our Design system
-          backgroundColor: "red",
-          // backgroundColor: theme.palette.token.core.hover,
+          backgroundColor: theme.palette.token.core.hover,
         },
         ...restProps.sx,
       }}

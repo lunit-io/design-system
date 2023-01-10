@@ -94,7 +94,6 @@ export const StyledContainedChip = styled(MuiChip, {
   },
   "& .MuiChip-deleteIcon:hover": {
     // TODO: Below is a temporary color until the hover color is completed in our Design system
-    color: "red",
-    // color: theme.palette.token.core.hover,
+    color: theme.palette.token.core.hover,
   },
 }));
