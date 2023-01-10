@@ -1,26 +1,13 @@
 import { Chip as MuiChip, styled } from "@mui/material";
-import { CHIP_COLORS } from "./consts";
+import { CHIP_COLORS, COMMON_STYLES, ICON_STYLES } from "./consts";
 
-import type { StyledChipProps } from "./Chip.types";
+import type { ChipProps } from "@mui/material";
 
 export const StyledOutlinedChip = styled(MuiChip, {
   shouldForwardProp: (prop) => !["color"].includes(prop.toString()),
-})<StyledChipProps>(({ theme, color }) => ({
-  "&.MuiChip-root": {
-    height: "22px",
-  },
-  "& .MuiChip-label": {
-    height: "16px",
-    fontStyle: "normal",
-    fontWeight: 500,
-    fontSize: "12px",
-    lineHeight: "14.32px",
-    display: "flex",
-    alignItems: "center",
-    textAlign: "center",
-    padding: 0,
-    marginInline: "8px",
-  },
+})<ChipProps>(({ theme, color }) => ({
+  ...COMMON_STYLES,
+
   color:
     color === CHIP_COLORS.PRIMARY
       ? theme.palette.token.component.chip_primary
@@ -49,27 +36,9 @@ export const StyledOutlinedChip = styled(MuiChip, {
 
 export const StyledContainedChip = styled(MuiChip, {
   shouldForwardProp: (prop) => !["color"].includes(prop.toString()),
-})<StyledChipProps>(({ theme, color, thumbnail, onDelete }) => ({
-  "&.MuiChip-root": {
-    height: "22px",
-  },
-  "& .MuiChip-label": {
-    height: "16px",
-    fontStyle: "normal",
-    fontWeight: 500,
-    fontSize: "12px",
-    lineHeight: "14.32px",
-    display: "flex",
-    alignItems: "center",
-    textAlign: "center",
-    padding: 0,
-    marginLeft: thumbnail ? "4px" : "8px",
-    marginRight: onDelete ? "4px" : "8px",
-  },
-  "& .MuiChip-deleteIcon": {
-    marginLeft: 0,
-    marginRight: "3px",
-  },
+})<ChipProps>(() => ({ theme, color }) => ({
+  ...COMMON_STYLES,
+
   color: theme.palette.token.core.text_normal,
   backgroundColor:
     color === CHIP_COLORS.PRIMARY
@@ -83,25 +52,9 @@ export const StyledContainedChip = styled(MuiChip, {
       : color === CHIP_COLORS.SUCCESS
       ? theme.palette.token.component.chip_success_bg
       : theme.palette.token.component.chip_primary_bg,
-  "&:hover": {
-    backgroundColor:
-      color === CHIP_COLORS.PRIMARY
-        ? theme.palette.token.component.chip_primary_bg
-        : color === CHIP_COLORS.SECONDARY
-        ? theme.palette.token.component.chip_secondary_bg
-        : color === CHIP_COLORS.ERROR
-        ? theme.palette.token.component.chip_error_bg
-        : color === CHIP_COLORS.WARNING
-        ? theme.palette.token.component.chip_warning_bg
-        : color === CHIP_COLORS.SUCCESS
-        ? theme.palette.token.component.chip_success_bg
-        : theme.palette.token.component.chip_primary_bg,
-  },
+
   "& .MuiSvgIcon-root": {
-    height: "16px",
-    width: "16px",
-    marginTop: 3,
-    marginBottom: 3,
+    ...ICON_STYLES,
     color:
       color === CHIP_COLORS.PRIMARY
         ? theme.palette.token.component.chip_primary
@@ -115,8 +68,32 @@ export const StyledContainedChip = styled(MuiChip, {
         ? theme.palette.token.component.chip_success
         : theme.palette.token.component.chip_primary,
   },
-  "& .MuiChip-icon": {
-    marginLeft: "3px",
-    marginRight: 0,
+  "& .MuiChip-avatar": {
+    ...ICON_STYLES,
+    fontSize: "5px", // TODO: 디자인 피드백 필요
+    color: theme.palette.token.core.text_normal,
+    // 현재 룰과 상이한 듯? 다시 확인
+    backgroundColor:
+      color === CHIP_COLORS.PRIMARY
+        ? theme.palette.token.component.chip_primary
+        : color === CHIP_COLORS.SECONDARY
+        ? theme.palette.token.component.chip_secondary
+        : color === CHIP_COLORS.ERROR
+        ? theme.palette.token.component.chip_error
+        : color === CHIP_COLORS.WARNING
+        ? theme.palette.token.component.chip_warning
+        : color === CHIP_COLORS.SUCCESS
+        ? theme.palette.token.component.chip_success
+        : theme.palette.token.component.chip_primary,
+  },
+
+  "& .MuiChip-deleteIcon": {
+    marginLeft: "4px",
+    marginRight: "3px",
+  },
+  "& .MuiChip-deleteIcon:hover": {
+    // TODO: Below is a temporary color until the hover color is completed in our Design system
+    color: "red",
+    // color: theme.palette.token.core.hover,
   },
 }));

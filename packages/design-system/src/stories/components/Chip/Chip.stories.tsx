@@ -1,16 +1,26 @@
 import React from "react";
 import { Box } from "@mui/material";
-import { Error } from "@lunit/design-system-icons";
+import {
+  Logo16,
+  Avatar16,
+  Success16,
+  Error16,
+  Information16,
+  Warning16,
+} from "@lunit/design-system-icons";
 
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 
 import Chip from "@/components/Chip/Chip";
 import {
-  ChipProps,
+  // ChipThumbnail,
+  // BaseChipProps,
   OutlinedChipProps,
   ContainedChipProps,
-  ChipThumbnail,
+  UnDeletableContainedChipProps,
+  DeletableContainedChipProps,
+  ChipProps,
 } from "@/components/Chip/Chip.types";
 
 export default {
@@ -19,31 +29,30 @@ export default {
   argTypes: {
     thumbnail: {
       type: "select",
-      options: ["avatar", "logo", undefined],
+      options: ["string", undefined],
     },
-    onClick: {
-      type: "select",
-      options: ["function", undefined],
-      mapping: {
-        function: action("onClick"),
-        undefined: undefined,
-      },
-    },
-    onDelete: {
-      type: "select",
-      options: ["function", undefined],
-      mapping: {
-        function: action("onDelete"),
-        undefined: undefined,
-      },
-      defaultValue: null,
-    },
+    // onClick: {
+    //   type: "select",
+    //   options: ["function", undefined],
+    //   mapping: {
+    //     function: action("onClick"),
+    //     undefined: undefined,
+    //   },
+    // },
+    // onDelete: {
+    //   type: "select",
+    //   options: ["function", undefined],
+    //   mapping: {
+    //     function: action("onDelete"),
+    //     undefined: undefined,
+    //   },
+    //   defaultValue: null,
+    // },
   },
   parameters: {
     docs: {
       description: {
-        component: `Chips are compact elements that represent an input, attribute, or action.
-        see [Material-UI Chip](https://mui.com/components/chips/)`,
+        component: `Chips are compact elements that represent an input, attribute, or action.`,
       },
     },
   },
@@ -74,17 +83,19 @@ Outlined.parameters = {
 Outlined.args = {
   label: "Label",
   color: "primary",
-  style: "outlined",
+  kind: "outlined",
 };
 
 export const Contained = Template.bind({});
 Contained.args = {
   label: "Label",
   color: "primary",
-  style: "contained",
+  kind: "contained",
 };
 
-export const ContainedWithAvatar = Template.bind({});
+export const ContainedWithAvatar: ComponentStory<typeof Chip> = (args) => (
+  <Chip label="hey" color="error" kind="contained" thumbnail={<Avatar16 />} />
+);
 ContainedWithAvatar.parameters = {
   docs: {
     description: {
@@ -92,55 +103,51 @@ ContainedWithAvatar.parameters = {
     },
   },
 };
-ContainedWithAvatar.args = {
-  ...Contained.args,
-  thumbnail: "avatar",
-};
 
-export const ContainedWithLogo = Template.bind({});
-ContainedWithLogo.parameters = {
-  docs: {
-    description: {
-      story: `Contained chip can have thumbnail as "logo"`,
-    },
-  },
-};
-ContainedWithLogo.args = {
-  ...Contained.args,
-  thumbnail: "logo",
-};
+// export const ContainedWithLogo = Template.bind({});
+// ContainedWithLogo.parameters = {
+//   docs: {
+//     description: {
+//       story: `Contained chip can have thumbnail as "logo"`,
+//     },
+//   },
+// };
+// ContainedWithLogo.args = {
+//   ...Contained.args,
+//   thumbnail: "logo",
+// };
 
-export const ContainedWithIcon = Template.bind({});
-ContainedWithIcon.parameters = {
-  docs: {
-    description: {
-      story: `Contained chip can have thumbnail as props, but it should be styled like below.`,
-    },
-  },
-};
-ContainedWithIcon.args = {
-  ...Contained.args,
-  thumbnail: (
-    <Error
-      variant="filled"
-      sx={{
-        "&.MuiChip-icon": {
-          marginLeft: "6px",
-        },
-      }}
-    />
-  ),
-};
+// export const ContainedWithIcon = Template.bind({});
+// ContainedWithIcon.parameters = {
+//   docs: {
+//     description: {
+//       story: `Contained chip can have thumbnail as props, but it should be styled like below.`,
+//     },
+//   },
+// };
+// ContainedWithIcon.args = {
+//   ...Contained.args,
+//   thumbnail: (
+//     <Error
+//       variant="filled"
+//       sx={{
+//         "&.MuiChip-icon": {
+//           marginLeft: "6px",
+//         },
+//       }}
+//     />
+//   ),
+// };
 
-export const ContainedWithDelete = Template.bind({});
-ContainedWithDelete.parameters = {
-  docs: {
-    description: {
-      story: `Contained chip can have delete button.`,
-    },
-  },
-};
-ContainedWithDelete.args = {
-  ...Contained.args,
-  onDelete: () => {},
-};
+// export const ContainedWithDelete = Template.bind({});
+// ContainedWithDelete.parameters = {
+//   docs: {
+//     description: {
+//       story: `Contained chip can have delete button.`,
+//     },
+//   },
+// };
+// ContainedWithDelete.args = {
+//   ...Contained.args,
+//   onDelete: () => {},
+// };

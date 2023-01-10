@@ -1,53 +1,126 @@
 import React from "react";
-import { Close, Avatar, LunitLogo } from "@lunit/design-system-icons";
+import { Avatar } from "@mui/material";
+import { Close16 } from "@lunit/design-system-icons";
 import { StyledOutlinedChip, StyledContainedChip } from "./Chip.styled";
+import { useTheme } from "@mui/material/styles";
 
 import type {
   OutlinedChipProps,
-  ContainedChipProps,
+  ReadOnlyContainedChipProps,
+  EnableContainedChipProps,
+  DeletableContainedChipProps,
   ChipProps,
+  ChipThumbnail,
 } from "./Chip.types";
 
+const Chip = (props: ChipProps) => {
+  const { kind, onDelete, onClick, ...restProps } = props;
+  if (kind === "outlined") return <OutlinedChip {...props} />;
+  else if (onClick) return <EnableContainedChip {...props} />;
+  else if (onDelete) return <DeletableContainedChip {...props} />;
+
+  return <ReadOnlyContainedChip {...restProps} />;
+};
+
 const OutlinedChip = (props: OutlinedChipProps) => {
-  const { label, color, sx } = props;
+  const { color = "primary", ...restProps } = props;
+
   return (
     <StyledOutlinedChip
-      label={label}
+      {...restProps}
       variant="outlined"
       disabled
       color={color}
-      sx={{ ...sx }}
     />
   );
 };
 
-const ContainedChip = (props: ContainedChipProps) => {
-  const { label, onClick, onDelete, thumbnail, color, sx } = props;
+const getAvatar = (thumbnail: ChipThumbnail | undefined) => {
+  if (thumbnail && typeof thumbnail === "string")
+    return <Avatar>{thumbnail.slice(0, 1).toLocaleUpperCase()}</Avatar>;
+  if (thumbnail && typeof thumbnail === "string" && thumbnail.length === 0)
+    <Avatar></Avatar>;
+  return undefined;
+};
+const getIcon = (thumbnail: ChipThumbnail | undefined) => {
+  if (thumbnail && typeof thumbnail !== "string") return thumbnail;
+  return undefined;
+};
+const getLabelMargin = (
+  thumbnail: ChipThumbnail | undefined,
+  deletable?: boolean
+) => {
+  return {
+    marginLeft: thumbnail ? "0px" : "8px",
+    marginRight: deletable ? "0px" : "8px",
+  };
+};
+
+const ReadOnlyContainedChip = (props: ReadOnlyContainedChipProps) => {
+  const { color = "primary", thumbnail, ...restProps } = props;
 
   return (
     <StyledContainedChip
-      label={label}
-      onClick={onClick}
-      onDelete={onDelete}
-      deleteIcon={<Close />}
-      icon={
-        thumbnail === "avatar" ? (
-          <Avatar variant="filled" color={color} />
-        ) : thumbnail === "logo" ? (
-          <LunitLogo color={color} />
-        ) : thumbnail ? (
-          thumbnail
-        ) : undefined
-      }
+      {...restProps}
+      disabled
+      avatar={getAvatar(thumbnail)}
+      icon={getIcon(thumbnail)}
       color={color}
-      sx={{ ...sx }}
+      sx={{
+        "& .MuiChip-label": {
+          ...getLabelMargin(thumbnail),
+        },
+        ...restProps.sx,
+      }}
     />
   );
 };
 
-const Chip = (props: ChipProps) => {
-  if (props.style === "outlined") return <OutlinedChip {...props} />;
-  return <ContainedChip {...props} />;
+const EnableContainedChip = (props: EnableContainedChipProps) => {
+  const { color = "primary", thumbnail, onClick, ...restProps } = props;
+  const theme = useTheme();
+
+  return (
+    <StyledContainedChip
+      {...restProps}
+      onClick={onClick}
+      avatar={getAvatar(thumbnail)}
+      icon={getIcon(thumbnail)}
+      color={color}
+      sx={{
+        "& .MuiChip-label": {
+          ...getLabelMargin(thumbnail),
+        },
+        "&:hover": {
+          // TODO: Below is a temporary color until the hover color is completed in our Design system
+          backgroundColor: "red",
+          // backgroundColor: theme.palette.token.core.hover,
+        },
+        ...restProps.sx,
+      }}
+    />
+  );
+};
+
+const DeletableContainedChip = (props: DeletableContainedChipProps) => {
+  const { color = "primary", thumbnail, onDelete, ...restProps } = props;
+
+  return (
+    <StyledContainedChip
+      {...restProps}
+      color={color}
+      onDelete={onDelete}
+      deleteIcon={<Close16 />}
+      avatar={getAvatar(thumbnail)}
+      icon={getIcon(thumbnail)}
+      sx={{
+        "& .MuiChip-label": {
+          ...getLabelMargin(thumbnail, Boolean(onDelete)),
+        },
+        ...restProps.sx,
+      }}
+    />
+  );
 };
 
 export default Chip;
