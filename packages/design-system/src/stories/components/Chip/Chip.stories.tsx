@@ -1,5 +1,8 @@
 import React from "react";
+import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { action } from "@storybook/addon-actions";
 import { Box } from "@mui/material";
+import Chip from "@/components/Chip/Chip";
 import {
   Logo16,
   Avatar16,
@@ -9,18 +12,13 @@ import {
   Warning16,
 } from "@lunit/design-system-icons";
 
-import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { action } from "@storybook/addon-actions";
-
-import Chip from "@/components/Chip/Chip";
-import {
-  // ChipThumbnail,
-  // BaseChipProps,
+import type {
   OutlinedChipProps,
-  ContainedChipProps,
-  UnDeletableContainedChipProps,
+  ReadOnlyContainedChipProps,
+  EnableContainedChipProps,
   DeletableContainedChipProps,
   ChipProps,
+  ChipThumbnail,
 } from "@/components/Chip/Chip.types";
 
 export default {
@@ -28,26 +26,53 @@ export default {
   component: Chip,
   argTypes: {
     thumbnail: {
-      type: "select",
-      options: ["string", undefined],
+      control: {
+        type: "select",
+      },
+      options: [
+        "Initial",
+        "Logo16",
+        "Avatar16",
+        "Success16",
+        "Error16",
+        "Information16",
+        "Warning16",
+      ],
+      mapping: {
+        Initial: "W as initial",
+        Logo16: <Logo16 />,
+        Avatar16: <Avatar16 variant="filled" />,
+        Success16: <Success16 variant="filled" />,
+        Error16: <Error16 variant="filled" />,
+        Information16: <Information16 variant="filled" />,
+        Warning16: <Warning16 variant="filled" />,
+      },
     },
-    // onClick: {
-    //   type: "select",
-    //   options: ["function", undefined],
-    //   mapping: {
-    //     function: action("onClick"),
-    //     undefined: undefined,
-    //   },
-    // },
-    // onDelete: {
-    //   type: "select",
-    //   options: ["function", undefined],
-    //   mapping: {
-    //     function: action("onDelete"),
-    //     undefined: undefined,
-    //   },
-    //   defaultValue: null,
-    // },
+    onClick: {
+      control: {
+        type: "select",
+      },
+      options: ["function", undefined],
+      mapping: {
+        function: action("onClick"),
+        undefined: undefined,
+      },
+    },
+    onDelete: {
+      control: {
+        type: "select",
+      },
+      options: ["function", undefined],
+      mapping: {
+        function: action("onDelete"),
+        undefined: undefined,
+      },
+      defaultValue: null,
+    },
+  },
+  args: {
+    kind: "contained",
+    label: "label@lunit.io",
   },
   parameters: {
     docs: {
@@ -81,21 +106,23 @@ Outlined.parameters = {
   },
 };
 Outlined.args = {
-  label: "Label",
+  label: "outlined@lunit.io",
   color: "primary",
   kind: "outlined",
 };
 
 export const Contained = Template.bind({});
 Contained.args = {
-  label: "Label",
+  label: "contained@lunit.io",
   color: "primary",
   kind: "contained",
 };
 
-export const ContainedWithAvatar: ComponentStory<typeof Chip> = (args) => (
-  <Chip label="hey" color="error" kind="contained" thumbnail={<Avatar16 />} />
-);
+export const ContainedWithAvatar = Template.bind({});
+ContainedWithAvatar.args = {
+  ...Contained.args,
+  thumbnail: "Initial",
+};
 ContainedWithAvatar.parameters = {
   docs: {
     description: {
@@ -104,50 +131,45 @@ ContainedWithAvatar.parameters = {
   },
 };
 
-// export const ContainedWithLogo = Template.bind({});
-// ContainedWithLogo.parameters = {
-//   docs: {
-//     description: {
-//       story: `Contained chip can have thumbnail as "logo"`,
-//     },
-//   },
-// };
-// ContainedWithLogo.args = {
-//   ...Contained.args,
-//   thumbnail: "logo",
-// };
+export const ContainedWithLogo = Template.bind({});
+ContainedWithLogo.parameters = {
+  docs: {
+    description: {
+      story: `Contained chip can have thumbnail as "logo"`,
+    },
+  },
+};
+ContainedWithLogo.args = {
+  ...Contained.args,
+  thumbnail: <Logo16 />,
+};
 
-// export const ContainedWithIcon = Template.bind({});
-// ContainedWithIcon.parameters = {
-//   docs: {
-//     description: {
-//       story: `Contained chip can have thumbnail as props, but it should be styled like below.`,
-//     },
-//   },
-// };
-// ContainedWithIcon.args = {
-//   ...Contained.args,
-//   thumbnail: (
-//     <Error
-//       variant="filled"
-//       sx={{
-//         "&.MuiChip-icon": {
-//           marginLeft: "6px",
-//         },
-//       }}
-//     />
-//   ),
-// };
+export const ContainedWithIcon = Template.bind({});
+ContainedWithIcon.parameters = {
+  docs: {
+    description: {
+      story: `Contained chip can have icon thumbnails`,
+    },
+  },
+};
+ContainedWithIcon.args = {
+  ...Contained.args,
+  thumbnail: <Error16 />,
+};
 
-// export const ContainedWithDelete = Template.bind({});
-// ContainedWithDelete.parameters = {
-//   docs: {
-//     description: {
-//       story: `Contained chip can have delete button.`,
-//     },
-//   },
-// };
-// ContainedWithDelete.args = {
-//   ...Contained.args,
-//   onDelete: () => {},
-// };
+export const ContainedWithDelete: ComponentStory<typeof Chip> = (args) => (
+  <Chip
+    {...args}
+    label="contained@lunit.io"
+    kind="contained"
+    onClick={undefined}
+    onDelete={() => {}}
+  />
+);
+ContainedWithDelete.parameters = {
+  docs: {
+    description: {
+      story: `Contained chip can have delete button. When Chip is deletable, onClick is disabled.`,
+    },
+  },
+};
