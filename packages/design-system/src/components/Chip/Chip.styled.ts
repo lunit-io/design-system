@@ -70,7 +70,14 @@ export const StyledContainedChip = styled(MuiChip, {
   },
   "& .MuiChip-avatar": {
     ...ICON_STYLES,
-    fontSize: "5px", // TODO: Need Design feedback
+    "& div": {
+      width: "14px",
+      height: "14px",
+    },
+    fontSize: "11px",
+    fontWeight: 500,
+    lineHeight: "16px",
+    textAlign: "center",
     color: theme.palette.token.core.text_normal,
     // TODO: Currently, the color names of Figma and Design system's color component's name don't match
     // Need to be Fixed after the color system is completed
