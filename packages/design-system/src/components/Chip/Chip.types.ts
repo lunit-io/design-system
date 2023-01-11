@@ -26,7 +26,10 @@ export interface OutlinedChipProps extends BaseChipProps {
 
 export interface BaseContainedChipProps
   extends BaseChipProps,
-    Omit<MuiChipProps, "color" | "size" | "variant" | "avatar" | "deleteIcon"> {
+    Omit<
+      MuiChipProps,
+      "color" | "size" | "variant" | "avatar" | "deleteIcon" | "icon"
+    > {
   kind?: "contained";
   thumbnail?: ChipThumbnail;
   onClick?: () => void;
