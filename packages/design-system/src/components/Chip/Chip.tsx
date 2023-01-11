@@ -39,7 +39,7 @@ const getAvatar = (thumbnail: ChipThumbnail | undefined) => {
   if (thumbnail && typeof thumbnail === "string")
     return <Avatar>{thumbnail.slice(0, 1).toLocaleUpperCase()}</Avatar>;
   if (thumbnail && typeof thumbnail === "string" && thumbnail.length === 0)
-    <Avatar></Avatar>;
+    return <Avatar></Avatar>;
   return undefined;
 };
 const getIcon = (thumbnail: ChipThumbnail | undefined) => {
@@ -57,7 +57,7 @@ const getLabelMargin = (
 };
 
 const ReadOnlyContainedChip = (props: ReadOnlyContainedChipProps) => {
-  const { color = "primary", thumbnail, ...restProps } = props;
+  const { color = "primary", thumbnail, sx, ...restProps } = props;
 
   return (
     <StyledContainedChip
@@ -70,14 +70,14 @@ const ReadOnlyContainedChip = (props: ReadOnlyContainedChipProps) => {
         "& .MuiChip-label": {
           ...getLabelMargin(thumbnail),
         },
-        ...restProps.sx,
+        ...sx,
       }}
     />
   );
 };
 
 const EnableContainedChip = (props: EnableContainedChipProps) => {
-  const { color = "primary", thumbnail, onClick, ...restProps } = props;
+  const { color = "primary", thumbnail, onClick, sx, ...restProps } = props;
   const theme = useTheme();
 
   return (
@@ -95,14 +95,14 @@ const EnableContainedChip = (props: EnableContainedChipProps) => {
           // TODO: Below is a temporary color until the hover color is completed in our Design system
           backgroundColor: theme.palette.token.core.hover,
         },
-        ...restProps.sx,
+        ...sx,
       }}
     />
   );
 };
 
 const DeletableContainedChip = (props: DeletableContainedChipProps) => {
-  const { color = "primary", thumbnail, onDelete, ...restProps } = props;
+  const { color = "primary", thumbnail, onDelete, sx, ...restProps } = props;
 
   return (
     <StyledContainedChip
@@ -116,7 +116,7 @@ const DeletableContainedChip = (props: DeletableContainedChipProps) => {
         "& .MuiChip-label": {
           ...getLabelMargin(thumbnail, Boolean(onDelete)),
         },
-        ...restProps.sx,
+        ...sx,
       }}
     />
   );
