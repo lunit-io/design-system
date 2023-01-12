@@ -9,6 +9,8 @@ export const CHIP_COLORS = {
 export const COMMON_STYLES = {
   "&.MuiChip-root": {
     height: "22px",
+    width: "auto",
+    minWidth: "22px",
   },
   "&.Mui-disabled": {
     opacity: 1,
