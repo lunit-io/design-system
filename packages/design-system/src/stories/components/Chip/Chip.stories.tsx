@@ -88,7 +88,7 @@ export default {
      * Also, the hover color will be set again with the color token system completion
      */
     (Story) => (
-      <Box className="base90" sx={{ margin: "3em" }}>
+      <Box className="base10" sx={{ margin: "3em" }}>
         {Story()}
       </Box>
     ),
@@ -106,14 +106,12 @@ Outlined.parameters = {
   },
 };
 Outlined.args = {
-  label: "outlined@lunit.io",
   color: "primary",
   kind: "outlined",
 };
 
 export const Contained = Template.bind({});
 Contained.args = {
-  label: "contained@lunit.io",
   color: "primary",
   kind: "contained",
 };
@@ -158,13 +156,7 @@ ContainedWithIcon.args = {
 };
 
 export const ContainedWithDelete: ComponentStory<typeof Chip> = (args) => (
-  <Chip
-    {...args}
-    label="contained@lunit.io"
-    kind="contained"
-    onClick={undefined}
-    onDelete={() => {}}
-  />
+  <Chip {...args} kind="contained" onClick={undefined} onDelete={() => {}} />
 );
 ContainedWithDelete.parameters = {
   docs: {
