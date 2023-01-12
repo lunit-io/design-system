@@ -26,11 +26,3 @@ export const COMMON_STYLES = {
     marginInline: "8px",
   },
 };
-
-export const ICON_STYLES = {
-  height: "16px",
-  width: "16px",
-  marginLeft: "3px",
-  marginRight: "4px",
-  marginBlock: "3px",
-};

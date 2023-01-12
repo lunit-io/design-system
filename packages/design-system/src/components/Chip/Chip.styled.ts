@@ -1,5 +1,5 @@
 import { Chip as MuiChip, styled } from "@mui/material";
-import { CHIP_COLORS, COMMON_STYLES, ICON_STYLES } from "./consts";
+import { CHIP_COLORS, COMMON_STYLES } from "./consts";
 
 import type { ChipProps } from "@mui/material";
 
@@ -54,7 +54,11 @@ export const StyledContainedChip = styled(MuiChip, {
       : theme.palette.token.component.chip_primary_bg,
 
   "& .MuiSvgIcon-root": {
-    ...ICON_STYLES,
+    marginBlock: "3px",
+    marginLeft: "3px",
+    marginRight: "4px",
+    height: "16px",
+    width: "16px",
     color:
       color === CHIP_COLORS.PRIMARY
         ? theme.palette.token.component.chip_primary
@@ -69,15 +73,17 @@ export const StyledContainedChip = styled(MuiChip, {
         : theme.palette.token.component.chip_primary,
   },
   "& .MuiChip-avatar": {
-    ...ICON_STYLES,
-    "& div": {
-      width: "14px",
-      height: "14px",
-    },
+    marginBlock: "3px",
+    marginLeft: "4px",
+    marginRight: "5px",
+    height: "14px",
+    width: "14px",
     fontSize: "11px",
     fontWeight: 500,
     lineHeight: "16px",
+    display: "flex",
     textAlign: "center",
+    alignItems: "center",
     color: theme.palette.token.core.text_normal,
     // TODO: Currently, the color names of Figma and Design system's color component's name don't match
     // Need to be Fixed after the color system is completed
