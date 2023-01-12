@@ -84,9 +84,20 @@ export const StyledContainedChip = styled(MuiChip, {
     display: "flex",
     textAlign: "center",
     alignItems: "center",
-    color: theme.palette.token.core.text_normal,
     // TODO: Currently, the color names of Figma and Design system's color component's name don't match
     // Need to be Fixed after the color system is completed
+    color:
+      color === CHIP_COLORS.PRIMARY
+        ? theme.palette.token.component.chip_primary_bg
+        : color === CHIP_COLORS.SECONDARY
+        ? theme.palette.token.component.chip_secondary_bg
+        : color === CHIP_COLORS.ERROR
+        ? theme.palette.token.component.chip_error_bg
+        : color === CHIP_COLORS.WARNING
+        ? theme.palette.token.component.chip_warning_bg
+        : color === CHIP_COLORS.SUCCESS
+        ? theme.palette.token.component.chip_success_bg
+        : theme.palette.token.component.chip_primary_bg,
     backgroundColor:
       color === CHIP_COLORS.PRIMARY
         ? theme.palette.token.component.chip_primary
