@@ -100,4 +100,4 @@ const RadioTemplate: ComponentStory<typeof Radio> = (args) => {
   );
 };
 
-export const Radio_ = RadioTemplate.bind({});
+export const Status = RadioTemplate.bind({});
