@@ -22,10 +22,10 @@ export const StyledAlert = styled(MuiAlert)<StyledAlertProps>(
   ({ severity }) => ({
     "&.MuiAlert-root": {
       padding: "16px",
-      minWidth: "320px",
+      minWidth: "374px",
       borderRadius: "8px",
       border: `1px solid ${getBorderColor(severity)}`,
-      // backgroundColor: getBackgroundColor(severity),
+      backgroundColor: getBackgroundColor(severity),
     },
     "& .MuiAlert-icon": {
       padding: 0,
@@ -51,6 +51,10 @@ export const StyledIconButton = styled(MuiIconButton)(({ theme }) => ({
   height: "28px",
   width: "28px",
   marginLeft: "16px",
+  color: theme.palette.token.core.text_normal,
+}));
+
+export const StyledAlertChildren = styled("div")(({ theme }) => ({
   color: theme.palette.token.core.text_normal,
 }));
 

@@ -2,6 +2,7 @@ import React from "react";
 import {
   StyledAlert,
   StyledAlertTitle,
+  StyledAlertChildren,
   StyledBottomAction,
   StyledIconButton,
 } from "./Alert.styled";
@@ -27,15 +28,15 @@ const Alert = (props: StyledAlertProps) => {
         error: <Error variant="filled" />,
       }}
       action={
-        onClose && (
+        onClose ? (
           <StyledIconButton aria-label="close" onClick={() => onClose()}>
             <Close />
           </StyledIconButton>
-        )
+        ) : null
       }
     >
       {title && <StyledAlertTitle>{title}</StyledAlertTitle>}
-      {children}
+      {children && <StyledAlertChildren>{children}</StyledAlertChildren>}
       {bottomAction && <StyledBottomAction>{bottomAction}</StyledBottomAction>}
     </StyledAlert>
   );

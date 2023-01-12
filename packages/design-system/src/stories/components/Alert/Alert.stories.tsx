@@ -11,13 +11,14 @@ export default {
     severity: {
       control: "radio",
       options: ["success", "info", "warning", "error"],
+      description: `\`success\`, \`info\`, \`warning\`, \`error\``,
     },
   },
   parameters: {
     docs: {
       description: {
-        component: `Chips are compact elements that represent an input, attribute, or action.
-        see [Material-UI Chip](https://mui.com/components/chips/)`,
+        component: `An alert displays a short, important message in a way that attracts the user's attention without interrupting the user's task.
+        see [Material-UI Alert](https://mui.com/components/alert/)`,
       },
     },
   },
@@ -60,7 +61,7 @@ LunitAlert.args = {
   severity: "success",
   title: "Danger alert title",
   children: (
-    <Typography sx={{ fontSize: "14px", fontWeight: 400, lineHeight: "20px" }}>
+    <Typography variant="body2_reg">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
       tempor incididunt ut <u>labore et dolore</u> magna aliqua. A diam
       sollicitudin tempor id eu nisl nunc mi. Auctor augue mauris augue neque
