@@ -36,11 +36,9 @@ const OutlinedChip = (props: OutlinedChipProps) => {
 };
 
 const getAvatar = (thumbnail: ChipThumbnail | undefined) => {
-  if (thumbnail && typeof thumbnail === "string")
-    return <Avatar>{thumbnail.slice(0, 1).toLocaleUpperCase()}</Avatar>;
-  if (thumbnail && typeof thumbnail === "string" && thumbnail.length === 0)
-    return <Avatar></Avatar>;
-  return undefined;
+  if (!thumbnail || typeof thumbnail !== "string") return;
+  if (thumbnail.length === 0) return <Avatar />;
+  return <Avatar>{thumbnail.slice(0, 1).toLocaleUpperCase()}</Avatar>;
 };
 const getIcon = (thumbnail: ChipThumbnail | undefined) => {
   if (thumbnail && typeof thumbnail !== "string") return thumbnail;
