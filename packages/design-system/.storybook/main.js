@@ -8,6 +8,14 @@ module.exports = {
     // https://github.com/mui-org/material-ui/issues/24282#issuecomment-967747802
     emotionAlias: false,
   },
+  core: {
+    builder: "@storybook/builder-webpack5",
+  },
+  babel: async (options) => ({
+    // Update your babel configuration here
+    // presets: ["@babel/preset-env", "@babel/preset-react"],
+    ...options,
+  }),
   stories: [
     "./Welcome/Welcome.stories.tsx",
     "../src/**/*.stories.mdx",
@@ -24,8 +32,12 @@ module.exports = {
         rule: {
           include: [path.resolve(__dirname, "../src")], // You can specify directories
         },
+
         loaderOptions: {
-          prettierConfig: { printWidth: 80, singleQuote: false },
+          prettierConfig: {
+            printWidth: 80,
+            singleQuote: false,
+          },
         },
       },
     },
@@ -38,9 +50,9 @@ module.exports = {
     CHROMATIC_BRANCH_NAME:
       process.env.CHROMATIC_BRANCH_NAME ?? getChromaticBranchName(),
   }),
-  framework: "@storybook/react",
-  core: {
-    builder: "@storybook/builder-webpack5",
+  framework: {
+    name: "@storybook/react-webpack5",
+    options: {},
   },
   webpackFinal: async (config) => {
     config.resolve.alias = {
@@ -51,4 +63,8 @@ module.exports = {
     };
     return config;
   },
+  docs: {
+    autodocs: true,
+  },
+  managerEntries: [require.resolve("./manager")],
 };
