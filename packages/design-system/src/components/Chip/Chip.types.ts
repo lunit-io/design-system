@@ -4,37 +4,53 @@ import type { ChipProps as MuiChipProps, SxProps } from "@mui/material";
 
 type ColorKeys = keyof typeof CHIP_COLORS;
 type ChipColor = typeof CHIP_COLORS[ColorKeys];
+export type ChipThumbnail = string | JSX.Element;
 
-export type ChipThumbnail = "logo" | "avatar" | JSX.Element;
-
-export interface BaseChipProps {
-  label: string;
-  /**
-   * @default contained
-   */
-  style?: "outlined" | "contained";
-  /**
-   * @default primary
-   */
+/**
+ * Mui Chip's variant is 'kind' in our design system
+ */
+export interface BaseChipProps
+  extends Pick<
+    MuiChipProps,
+    "label" | "sx" | "style" | "classes" | "onDelete"
+  > {
+  kind?: "outlined" | "contained";
   color?: ChipColor;
-  /**
-   * Use sx props only when you need to override the default styles
-   */
-  sx?: SxProps;
 }
 
-export interface ContainedChipProps extends BaseChipProps {
+export interface OutlinedChipProps extends BaseChipProps {
+  kind?: "outlined";
+  onClick?: never;
+  onDelete?: never;
+}
+
+export interface BaseContainedChipProps
+  extends BaseChipProps,
+    Omit<
+      MuiChipProps,
+      "color" | "size" | "variant" | "avatar" | "deleteIcon" | "icon"
+    > {
+  kind?: "contained";
+  thumbnail?: ChipThumbnail;
   onClick?: () => void;
-  onDelete?: () => void;
-  thumbnail?: ChipThumbnail;
 }
 
-export interface OutlinedChipProps extends BaseChipProps {}
-
-export type ChipProps = ContainedChipProps | OutlinedChipProps;
-
-export interface StyledChipProps extends MuiChipProps {
-  color: MuiChipProps["color"];
-  thumbnail?: ChipThumbnail;
-  onDelete?: () => void;
+export interface ReadOnlyContainedChipProps extends BaseContainedChipProps {
+  onClick?: never;
+  onDelete?: never;
 }
+export interface EnableContainedChipProps extends BaseContainedChipProps {
+  onClick: () => void;
+  onDelete?: never;
+}
+export interface DeletableContainedChipProps extends BaseContainedChipProps {
+  onClick?: never;
+  onDelete: () => void;
+}
+
+export type ContainedChipProps =
+  | EnableContainedChipProps
+  | ReadOnlyContainedChipProps
+  | DeletableContainedChipProps;
+
+export type ChipProps = OutlinedChipProps | ContainedChipProps;
