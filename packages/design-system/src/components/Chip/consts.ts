@@ -20,7 +20,7 @@ export const COMMON_STYLES = {
     fontStyle: "normal",
     fontWeight: 500,
     fontSize: "12px",
-    lineHeight: "14.32px",
+    lineHeight: "14px",
     display: "flex",
     alignItems: "center",
     textAlign: "center",
