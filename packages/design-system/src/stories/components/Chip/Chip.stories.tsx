@@ -167,8 +167,16 @@ ContainedWithIcon.args = {
   thumbnail: <Error16 />,
 };
 
+/**
+ * Change args after storybook ver7 update
+ */
 export const ContainedWithDelete: ComponentStory<typeof Chip> = (args) => (
-  <Chip {...args} kind="contained" onClick={undefined} onDelete={() => {}} />
+  <Chip
+    {...args}
+    kind="contained"
+    onClick={undefined}
+    onDelete={action("delete")}
+  />
 );
 ContainedWithDelete.parameters = {
   docs: {
