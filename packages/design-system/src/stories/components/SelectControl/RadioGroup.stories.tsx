@@ -24,6 +24,9 @@ export default {
     },
   },
   parameters: {
+    actions: {
+      handles: ["change"],
+    },
     controls: {
       expanded: true,
       include: ["value", "onChange"],
