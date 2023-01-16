@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import Toggle from "@/components/SelectControl/Toggle/Toggle";
 import {
@@ -61,22 +61,33 @@ export default {
   ],
 } as ComponentMeta<typeof Toggle>;
 
-const BaseTemplate: ComponentStory<typeof Toggle> = (args) => (
-  <Table>
-    <TableHead>
-      <TableRow>
-        <TableCell>DEFAULT</TableCell>
-      </TableRow>
-    </TableHead>
-    <TableBody>
-      <TableRow>
-        <TableCell>
-          <Toggle {...args} />
-        </TableCell>
-      </TableRow>
-    </TableBody>
-  </Table>
-);
+const BaseTemplate: ComponentStory<typeof Toggle> = (args) => {
+  const [checked, setChecked] = useState(false);
+  useEffect(() => {
+    setChecked(Boolean(args.checked));
+  }, [args.checked]);
+
+  return (
+    <Table>
+      <TableHead>
+        <TableRow>
+          <TableCell>DEFAULT</TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        <TableRow>
+          <TableCell>
+            <Toggle
+              {...args}
+              checked={checked}
+              onChange={() => setChecked(!checked)}
+            />
+          </TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+  );
+};
 
 const Template: ComponentStory<typeof Toggle> = (args) => (
   <Table>
