@@ -13,7 +13,7 @@ export default {
         type: "select",
       },
       table: { type: { summary: "any" } },
-      options: ["First", "Second"],
+      options: ["On", "Off"],
       description:
         "Value of the selected radio button. The DOM API casts this to a string.",
     },
@@ -24,9 +24,6 @@ export default {
     },
   },
   parameters: {
-    actions: {
-      handles: ["change"],
-    },
     controls: {
       expanded: true,
       include: ["value", "onChange"],
@@ -52,7 +49,7 @@ export default {
 } as ComponentMeta<typeof RadioGroup>;
 
 const RadioGroupTemplate: ComponentStory<typeof RadioGroup> = (args) => {
-  const [value, setValue] = React.useState("First");
+  const [value, setValue] = React.useState("On");
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue((event.target as HTMLInputElement).value);
   };
@@ -67,8 +64,8 @@ const RadioGroupTemplate: ComponentStory<typeof RadioGroup> = (args) => {
       value={value}
       onChange={handleChange}
     >
-      <FormLabel value="First" control={<Radio />} label="First" />
-      <FormLabel value="Second" control={<Radio />} label="Second" />
+      <FormLabel value="On" control={<Radio />} label="On" />
+      <FormLabel value="Off" control={<Radio />} label="Off" />
       <FormLabel
         value="(Disabled option)"
         control={<Radio disabled />}
