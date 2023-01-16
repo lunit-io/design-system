@@ -30,6 +30,7 @@ const BaseTextField = styled(MuiTextField)(({ theme }) => ({
     paddingLeft: "4px",
   },
   "& input, textarea": {
+    textOverflow: "ellipsis",
     padding: "5px 10px",
     "&::placeholder": {
       color: theme.palette.token.core.text_medium,
