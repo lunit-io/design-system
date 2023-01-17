@@ -149,7 +149,6 @@ const lunitColors: PaletteOptions["lunit"] = ((): PaletteOptions["lunit"] => {
 })();
 
 const paletteOptions = {
-  // @todo define palette options
   lunit: lunitColors,
   token: {
     core: {
@@ -161,22 +160,14 @@ const paletteOptions = {
       text_medium: "var(--text_medium)",
       text_light: "var(--text_light)",
       text_error: "var(--text_error)",
-      text_sucess: "var(--text_sucess)",
+      text_success: "var(--text_success)",
       text_warning: "var(--text_warning)",
       text_info: "var(--text_info)",
       link_primary: "var(--link_primary)",
       link_hover: "var(--link_hover)",
       link_visited: "var(--link_visited)",
-      icon_primary: "var(--icon_primary)",
-      icon_normal: "var(--icon_normal)",
-      icon_medium: "var(--icon_medium)",
-      icon_light: "var(--icon_light)",
-      icon_error_01: "var(--icon_error_01)",
-      icon_sucess_01: "var(--icon_sucess_01)",
-      icon_warning_01: "var(--icon_warning_01)",
-      icon_info_01: "var(--icon_info_01)",
       icon_error_02: "var(--icon_error_02)",
-      icon_sucess_02: "var(--icon_sucess_02)",
+      icon_success_02: "var(--icon_success_02)",
       icon_warning_02: "var(--icon_warning_02)",
       icon_info_02: "var(--icon_info_02)",
       hover: "var(--hover)",
@@ -198,6 +189,10 @@ const paletteOptions = {
       btn_ghost_primary_text: "var(--btn_ghost_primary_text)",
       btn_ghost_secondary_text: "var(--btn_ghost_secondary_text)",
       btn_ghost_error_text: "var(--btn_ghost_error_text)",
+      btn_selected_primary_bg: "var(--btn_selected_primary_bg)",
+      btn_selected_primary_text: "var(--btn_selected_primary_text)",
+      btn_selected_secondary_bg: "var(--btn_selected_secondary_bg)",
+      btn_selected_secondary_text: "var(--btn_selected_secondary_text)",
       selectcontrol_on: "var(--selectcontrol_on)",
       selectcontrol_off: "var(--selectcontrol_off)",
       selectcontrol_handler: "var(--selectcontrol_handler)",
@@ -205,8 +200,8 @@ const paletteOptions = {
       textfield_bg: "var(--textfield_bg)",
       textfield_border_error: "var(--textfield_border_error)",
       dropdown_option_selected: "var(--dropdown_option_selected)",
-      dropdown_option_activatied: "var(--dropdown_option_activatied)",
       dropdown_divider_border: "var(--dropdown_divider_border)",
+      dropdown_option_activatied: "var(--dropdown_option_activatied)",
       datatable_cell_selected: "var(--datatable_cell_selected)",
       datatable_border_01: "var(--datatable_border_01)",
       datatable_border_02: "var(--datatable_border_02)",
