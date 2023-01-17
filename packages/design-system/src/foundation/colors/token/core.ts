@@ -7,7 +7,7 @@ export interface TokenCoreColorValue {
 export const tokenCoreColor: TokenCoreColorValue = {
   bg_01: {
     light1: "--grey-0",
-    light2: "--grey-0",
+    light2: "--grey-10",
     dark1: "--grey-90",
     dark2: "--grey-85",
     dark3: "--grey-80",
@@ -30,7 +30,7 @@ export const tokenCoreColor: TokenCoreColorValue = {
     dark4: "--grey-85",
   },
   text_primary: {
-    light1: "--lunitTeal-50", // TODO: lunitTeal 컬러 이름 나중에 다시 확인하기
+    light1: "--lunitTeal-50",
     light2: "--lunitTeal-50",
     dark1: "--lunitTeal-40",
     dark2: "--lunitTeal-40",
@@ -69,8 +69,8 @@ export const tokenCoreColor: TokenCoreColorValue = {
     dark3: "--red-30",
     dark4: "--red-30",
   },
-  text_sucess: {
-    // TODO: 새 피그마에서 token 이름 오타 수정되었는지 다시 확인
+  text_success: {
+    // TODO: sucess -> success 로 바뀌었으니 코드 내 사용되는 부분 확인해서 업데이트. 개발자들에게도 공지할것.
     light1: "--green-40",
     light2: "--green-40",
     dark1: "--green-40",
@@ -118,70 +118,6 @@ export const tokenCoreColor: TokenCoreColorValue = {
     dark3: "--purple-40",
     dark4: "--purple-40",
   },
-  icon_primary: {
-    light1: "--lunitTeal-50",
-    light2: "--lunitTeal-50",
-    dark1: "--lunitTeal-40",
-    dark2: "--lunitTeal-40",
-    dark3: "--lunitTeal-40",
-    dark4: "--lunitTeal-40",
-  },
-  icon_normal: {
-    light1: "--grey-95",
-    light2: "--grey-95",
-    dark1: "--grey-5",
-    dark2: "--grey-5",
-    dark3: "--grey-5",
-    dark4: "--grey-5",
-  },
-  icon_medium: {
-    light1: "--grey-60",
-    light2: "--grey-60",
-    dark1: "--grey-40",
-    dark2: "--grey-40",
-    dark3: "--grey-40",
-    dark4: "--grey-40",
-  },
-  icon_light: {
-    light1: "--grey-40",
-    light2: "--grey-40",
-    dark1: "--grey-50",
-    dark2: "--grey-50",
-    dark3: "--grey-50",
-    dark4: "--grey-50",
-  },
-  icon_error_01: {
-    light1: "--red-40",
-    light2: "--red-40",
-    dark1: "--red-40",
-    dark2: "--red-40",
-    dark3: "--red-30",
-    dark4: "--red-30",
-  },
-  icon_sucess_01: {
-    light1: "--green-40",
-    light2: "--green-40",
-    dark1: "--green-40",
-    dark2: "--green-40",
-    dark3: "--green-30",
-    dark4: "--green-30",
-  },
-  icon_warning_01: {
-    light1: "--orange-40",
-    light2: "--orange-40",
-    dark1: "--orange-40",
-    dark2: "--orange-40",
-    dark3: "--orange-30",
-    dark4: "--orange-30",
-  },
-  icon_info_01: {
-    light1: "--blue-40",
-    light2: "--blue-40",
-    dark1: "--blue-40",
-    dark2: "--blue-40",
-    dark3: "--blue-30",
-    dark4: "--blue-30",
-  },
   icon_error_02: {
     light1: "--red-40",
     light2: "--red-40",
@@ -190,7 +126,9 @@ export const tokenCoreColor: TokenCoreColorValue = {
     dark3: "--red-30",
     dark4: "--red-30",
   },
-  icon_sucess_02: {
+  icon_success_02: {
+    // TODO: sucess -> success 로 바뀌었으니 코드 내 사용되는 부분 확인해서 업데이트. 개발자들에게도 공지할것.
+    // TODO: 피그마에 오타 수정 요청한 상태. 확인되면 todo 지우기
     light1: "--green-40",
     light2: "--green-40",
     dark1: "--green-30",
@@ -215,13 +153,13 @@ export const tokenCoreColor: TokenCoreColorValue = {
     dark4: "--blue-30",
   },
   hover: {
-    // TODO: opcity 관련 값은 다음에 정리
-    light1: "--grey-100 6%",
-    light2: "--grey-100 6%",
-    dark1: "--grey-0 6%",
-    dark2: "--grey-0 6%",
-    dark3: "--grey-0 6%",
-    dark4: "--grey-0 6%",
+    // TODO: 알파값 적용 코드는 일단 하드코딩. 나중에 수정할것
+    light1: "rgba(0, 0, 0, 0.06)", // grey_100 6% // TODO: 10%로 수정 예정이라고 하니 다시 확인하기
+    light2: "rgba(0, 0, 0, 0.06)", // grey_100 6%
+    dark1: "rgba(255, 255, 255, 0.06)", // grey_00 6%
+    dark2: "rgba(255, 255, 255, 0.06)", // grey_00 6%
+    dark3: "rgba(255, 255, 255, 0.06)", // grey_00 6%
+    dark4: "rgba(255, 255, 255, 0.06)", // grey_00 6%
   },
   focused: {
     light1: "--lunitTeal-40",
@@ -232,35 +170,35 @@ export const tokenCoreColor: TokenCoreColorValue = {
     dark4: "--lunitTeal-40",
   },
   shadow_01: {
-    light1: "--grey-100 12%",
-    light2: "--grey-100 12%",
-    dark4: "--grey-100 32%",
-    dark3: "--grey-100 32%",
-    dark2: "--grey-100 32%",
-    dark1: "--grey-100 32%",
+    light1: "rgba(0, 0, 0, 0.12)", // "--grey-100 12%",
+    light2: "rgba(0, 0, 0, 0.12)", // "--grey-100 12%",
+    dark4: "rgba(0, 0, 0, 0.32)", // "--grey-100 32%",
+    dark3: "rgba(0, 0, 0, 0.32)", // "--grey-100 32%",
+    dark2: "rgba(0, 0, 0, 0.32)", // "--grey-100 32%",
+    dark1: "rgba(0, 0, 0, 0.32)", // "--grey-100 32%",
   },
   shadow_02: {
-    light1: "--grey-100 18%",
-    light2: "--grey-100 18%",
-    dark4: "--grey-100 40%",
-    dark3: "--grey-100 40%",
-    dark2: "--grey-100 40%",
-    dark1: "--grey-100 40%",
+    light1: "rgba(0, 0, 0, 0.18)", // "--grey-100 18%",
+    light2: "rgba(0, 0, 0, 0.18)", // "--grey-100 18%",
+    dark4: "rgba(0, 0, 0, 0.4)", // "--grey-100 40%",
+    dark3: "rgba(0, 0, 0, 0.4)", // "--grey-100 40%",
+    dark2: "rgba(0, 0, 0, 0.4)", // "--grey-100 40%",
+    dark1: "rgba(0, 0, 0, 0.4)", // "--grey-100 40%",
   },
   shadow_03: {
-    light1: "--grey-100 12%",
-    light2: "--grey-100 12%",
-    dark4: "--grey-100 36%",
-    dark3: "--grey-100 36%",
-    dark2: "--grey-100 36%",
-    dark1: "--grey-100 36%",
+    light1: "rgba(0, 0, 0, 0.12)", // "--grey-100 12%",
+    light2: "rgba(0, 0, 0, 0.12)", // "--grey-100 12%",
+    dark4: "rgba(0, 0, 0, 0.36)", // "--grey-100 36%",
+    dark3: "rgba(0, 0, 0, 0.36)", // "--grey-100 36%",
+    dark2: "rgba(0, 0, 0, 0.36)", // "--grey-100 36%",
+    dark1: "rgba(0, 0, 0, 0.36)", // "--grey-100 36%",
   },
   shadow_04: {
-    light1: "--grey-100 18%",
-    light2: "--grey-100 18%",
-    dark4: "--grey-100 48%",
-    dark3: "--grey-100 48%",
-    dark2: "--grey-100 48%",
-    dark1: "--grey-100 48%",
+    light1: "rgba(0, 0, 0, 0.18)", // "--grey-100 18%",
+    light2: "rgba(0, 0, 0, 0.18)", // "--grey-100 18%",
+    dark4: "rgba(0, 0, 0, 0.48)", // "--grey-100 48%",
+    dark3: "rgba(0, 0, 0, 0.48)", // "--grey-100 48%",
+    dark2: "rgba(0, 0, 0, 0.48)", // "--grey-100 48%",
+    dark1: "rgba(0, 0, 0, 0.48)", // "--grey-100 48%",
   },
 };
