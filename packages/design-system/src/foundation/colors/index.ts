@@ -65,8 +65,12 @@ const createTokenColorVariables = (surface: keyof ColorTokenValueBySurface) => {
   for (let coreToken in token.tokenCoreColor) {
     if (token.tokenCoreColor.hasOwnProperty(coreToken)) {
       const varName = `--${coreToken}`;
-      const tokenValue = token.tokenCoreColor[coreToken];
-      cssVars[varName] = `var(${tokenValue[surface]})`;
+      const tokenValue = token.tokenCoreColor[coreToken][surface];
+      if (tokenValue.charAt(0) === "-") {
+        cssVars[varName] = `var(${tokenValue})`;
+      } else {
+        cssVars[varName] = `${tokenValue}`;
+      }
     }
   }
 
@@ -78,8 +82,12 @@ const createTokenColorVariables = (surface: keyof ColorTokenValueBySurface) => {
       for (tokenName in componentTokens) {
         if (componentTokens.hasOwnProperty(tokenName)) {
           const varName = `--${tokenName}`;
-          const tokenValue = componentTokens[tokenName];
-          cssVars[varName] = `var(${tokenValue[surface]})`;
+          const tokenValue = componentTokens[tokenName][surface];
+          if (tokenValue.charAt(0) === "-") {
+            cssVars[varName] = `var(${tokenValue})`;
+          } else {
+            cssVars[varName] = `${tokenValue}`;
+          }
         }
       }
     }
