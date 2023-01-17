@@ -1,16 +1,16 @@
 import { grey } from "./grey";
 
 export const blue = {
-  5: "#EDF5FF",
+  5: "#DAECFF",
   10: "#D0E2FF",
-  20: "#A6C8FF",
+  20: "#9DCEFF",
   30: "#78A9FF",
   40: "#4589FF",
   50: "#0F62FE",
   60: "#0043CE",
-  70: "#002D9C",
+  70: "#0055AB",
   80: "#001D6C",
-  90: "#001141",
+  90: "#002041",
 };
 
 export const blueText = {
