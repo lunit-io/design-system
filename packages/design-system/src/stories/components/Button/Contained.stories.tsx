@@ -13,6 +13,11 @@ import Button from "@/components/Button/Button";
 export default {
   title: "Components/Button",
   component: Button,
+  parameters: {
+    pseudo: {
+      hover: ["#hover"],
+    },
+  },
   decorators: [
     /**
      * TODO
@@ -51,13 +56,19 @@ const ButtonTemplate: ComponentStory<typeof Button> = (args) => {
           <TableRow>
             <TableCell>Hover</TableCell>
             <TableCell>
-              <Button kind="contained1st">Text</Button>
+              <Button id="hover" kind="contained1st">
+                Text
+              </Button>
             </TableCell>
             <TableCell>
-              <Button kind="contained2nd">Text</Button>
+              <Button id="hover" kind="contained2nd">
+                Text
+              </Button>
             </TableCell>
             <TableCell>
-              <Button kind="containedError">Text</Button>
+              <Button id="hover" kind="containedError">
+                Text
+              </Button>
             </TableCell>
           </TableRow>
           <TableRow>
