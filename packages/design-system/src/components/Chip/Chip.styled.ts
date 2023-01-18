@@ -10,28 +10,28 @@ export const StyledOutlinedChip = styled(MuiChip, {
 
   color:
     color === CHIP_COLORS.PRIMARY
-      ? theme.palette.token.component.chip_primary
+      ? theme.palette.token.component.chip_primary_text
       : color === CHIP_COLORS.SECONDARY
-      ? theme.palette.token.component.chip_secondary
+      ? theme.palette.token.component.chip_secondary_text
       : color === CHIP_COLORS.ERROR
-      ? theme.palette.token.component.chip_error
+      ? theme.palette.token.component.chip_error_text
       : color === CHIP_COLORS.WARNING
-      ? theme.palette.token.component.chip_warning
+      ? theme.palette.token.component.chip_warning_text
       : color === CHIP_COLORS.SUCCESS
-      ? theme.palette.token.component.chip_success
-      : theme.palette.token.component.chip_primary,
+      ? theme.palette.token.component.chip_success_text
+      : theme.palette.token.component.chip_primary_text,
   borderColor:
     color === CHIP_COLORS.PRIMARY
-      ? theme.palette.token.component.chip_primary
+      ? theme.palette.token.component.chip_primary_text
       : color === CHIP_COLORS.SECONDARY
-      ? theme.palette.token.component.chip_secondary
+      ? theme.palette.token.component.chip_secondary_text
       : color === CHIP_COLORS.ERROR
-      ? theme.palette.token.component.chip_error
+      ? theme.palette.token.component.chip_error_text
       : color === CHIP_COLORS.WARNING
-      ? theme.palette.token.component.chip_warning
+      ? theme.palette.token.component.chip_warning_text
       : color === CHIP_COLORS.SUCCESS
-      ? theme.palette.token.component.chip_success
-      : theme.palette.token.component.chip_primary,
+      ? theme.palette.token.component.chip_success_text
+      : theme.palette.token.component.chip_primary_text,
 }));
 
 export const StyledContainedChip = styled(MuiChip, {
@@ -61,16 +61,16 @@ export const StyledContainedChip = styled(MuiChip, {
     width: "16px",
     color:
       color === CHIP_COLORS.PRIMARY
-        ? theme.palette.token.component.chip_primary
+        ? theme.palette.token.component.chip_primary_text
         : color === CHIP_COLORS.SECONDARY
-        ? theme.palette.token.component.chip_secondary
+        ? theme.palette.token.component.chip_secondary_text
         : color === CHIP_COLORS.ERROR
-        ? theme.palette.token.component.chip_error
+        ? theme.palette.token.component.chip_error_text
         : color === CHIP_COLORS.WARNING
-        ? theme.palette.token.component.chip_warning
+        ? theme.palette.token.component.chip_warning_text
         : color === CHIP_COLORS.SUCCESS
-        ? theme.palette.token.component.chip_success
-        : theme.palette.token.component.chip_primary,
+        ? theme.palette.token.component.chip_success_text
+        : theme.palette.token.component.chip_primary_text,
   },
   "& .MuiChip-avatar": {
     marginBlock: "3px",
@@ -100,16 +100,16 @@ export const StyledContainedChip = styled(MuiChip, {
         : theme.palette.token.component.chip_primary_bg,
     backgroundColor:
       color === CHIP_COLORS.PRIMARY
-        ? theme.palette.token.component.chip_primary
+        ? theme.palette.token.component.chip_primary_text
         : color === CHIP_COLORS.SECONDARY
-        ? theme.palette.token.component.chip_secondary
+        ? theme.palette.token.component.chip_secondary_text
         : color === CHIP_COLORS.ERROR
-        ? theme.palette.token.component.chip_error
+        ? theme.palette.token.component.chip_error_text
         : color === CHIP_COLORS.WARNING
-        ? theme.palette.token.component.chip_warning
+        ? theme.palette.token.component.chip_warning_text
         : color === CHIP_COLORS.SUCCESS
-        ? theme.palette.token.component.chip_success
-        : theme.palette.token.component.chip_primary,
+        ? theme.palette.token.component.chip_success_text
+        : theme.palette.token.component.chip_primary_text,
   },
 
   "& .MuiChip-deleteIcon": {

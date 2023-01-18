@@ -100,7 +100,7 @@ export default {
      * Also, the hover color will be set again with the color token system completion
      */
     (Story) => (
-      <Box className="base10" sx={{ margin: "3em" }}>
+      <Box className="dark1" sx={{ margin: "3em" }}>
         {Story()}
       </Box>
     ),
@@ -110,6 +110,7 @@ export default {
 const Template: ComponentStory<typeof Chip> = (args) => <Chip {...args} />;
 
 export const Outlined = Template.bind({});
+
 Outlined.parameters = {
   docs: {
     description: {
