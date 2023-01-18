@@ -8,7 +8,8 @@ import {
   TableCell,
 } from "@mui/material";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import Button, { ButtonProps } from "@/components/Button/Button";
+import Button from "@/components/Button/Button";
+import { ButtonProps } from "@/components/Button/Button.types";
 
 type Size = Pick<ButtonProps, "size">;
 type SizeValues = Size[keyof Size];
