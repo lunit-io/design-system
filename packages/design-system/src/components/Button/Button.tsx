@@ -59,6 +59,17 @@ const kindStyle = ({ kind, token }: KindStyleParams) => ({
       color: token.component.btn_contained_error_text,
     },
   }),
+  ...(kind === "outlined1st" && {
+    color: token.component.btn_outlined_primary_text,
+    border: `1px solid ${token.component.btn_outlined_primary_border}`,
+    "&:hover": {
+      backgroundColor: "rgba(0, 0, 0, 0.06)", // TODO: color merge후 확인필요
+    },
+    "&.Mui-disabled": {
+      opacity: 0.38,
+      color: token.component.btn_outlined_primary_text,
+    },
+  }),
 });
 
 export const CustomButton = styled(MuiButton, {
