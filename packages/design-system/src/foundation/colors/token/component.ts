@@ -380,7 +380,7 @@ export const tokenComponentColor: TokenComponentColorValue = {
       dark3: "--lunitTeal-60",
       dark4: "--lunitTeal-60",
     },
-    chip_primary: {
+    chip_primary_text: {
       light1: "--lunitTeal-50",
       light2: "--lunitTeal-50",
       dark1: "--lunitTeal-40",
@@ -396,7 +396,7 @@ export const tokenComponentColor: TokenComponentColorValue = {
       dark3: "--grey-60",
       dark4: "--grey-60",
     },
-    chip_secondary: {
+    chip_secondary_text: {
       light1: "--grey-40",
       light2: "--grey-40",
       dark1: "--grey-30",
@@ -412,7 +412,7 @@ export const tokenComponentColor: TokenComponentColorValue = {
       dark3: "--red-60",
       dark4: "--red-60",
     },
-    chip_error: {
+    chip_error_text: {
       light1: "--red-40",
       light2: "--red-40",
       dark1: "--red-30",
@@ -428,7 +428,7 @@ export const tokenComponentColor: TokenComponentColorValue = {
       dark3: "--orange-60",
       dark4: "--orange-60",
     },
-    chip_warning: {
+    chip_warning_text: {
       light1: "--orange-40",
       light2: "--orange-40",
       dark1: "--orange-30",
@@ -444,7 +444,7 @@ export const tokenComponentColor: TokenComponentColorValue = {
       dark3: "--green-60",
       dark4: "--green-60",
     },
-    chip_success: {
+    chip_success_text: {
       light1: "--green-40",
       light2: "--green-40",
       dark1: "--green-30",

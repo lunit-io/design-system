@@ -72,14 +72,14 @@ export interface ColorToken {
     alert_warning_bg: CSSPropertyColor;
     alert_warning_border: CSSPropertyColor;
     chip_primary_bg: CSSPropertyColor;
-    chip_primary: CSSPropertyColor;
+    chip_primary_text: CSSPropertyColor;
     chip_secondary_bg: CSSPropertyColor;
-    chip_secondary: CSSPropertyColor;
+    chip_secondary_text: CSSPropertyColor;
     chip_error_bg: CSSPropertyColor;
-    chip_error: CSSPropertyColor;
+    chip_error_text: CSSPropertyColor;
     chip_warning_bg: CSSPropertyColor;
-    chip_warning: CSSPropertyColor;
+    chip_warning_text: CSSPropertyColor;
     chip_success_bg: CSSPropertyColor;
-    chip_success: CSSPropertyColor;
+    chip_success_text: CSSPropertyColor;
   };
 }
