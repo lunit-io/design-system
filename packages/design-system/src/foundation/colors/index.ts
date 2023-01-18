@@ -66,6 +66,8 @@ const createTokenColorVariables = (surface: keyof ColorTokenValueBySurface) => {
     if (token.tokenCoreColor.hasOwnProperty(coreToken)) {
       const varName = `--${coreToken}`;
       const tokenValue = token.tokenCoreColor[coreToken][surface];
+      // 현재 tokenValue는 cssVariable과 rgba 값 2종류가 존재함. 이 종류에 따라서 var 사용 여부를 결정해주기 위해 if문을 추가하였으나,
+      // 차후 피그마에서 json 파일을 넘겨준 것을 스크립트화하는 작업이 끝나면 if문 자체가 사라질 예정.
       if (tokenValue.charAt(0) === "-") {
         cssVars[varName] = `var(${tokenValue})`;
       } else {
