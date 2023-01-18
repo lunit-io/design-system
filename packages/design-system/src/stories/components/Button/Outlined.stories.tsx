@@ -71,8 +71,6 @@ const ButtonTemplate: ComponentStory<typeof Button> = (args) => {
           </TableRow>
         </TableBody>
       </Table>
-      <br />
-      <br />
     </>
   );
 };
