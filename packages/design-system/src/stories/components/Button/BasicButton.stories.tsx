@@ -6,11 +6,6 @@ import Button from "@/components/Button/Button";
 export default {
   title: "Components/Button",
   component: Button,
-  parameters: {
-    pseudo: {
-      hover: ["#hover"],
-    },
-  },
   decorators: [
     /**
      * TODO
