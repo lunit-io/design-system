@@ -65,8 +65,14 @@ const createTokenColorVariables = (surface: keyof ColorTokenValueBySurface) => {
   for (let coreToken in token.tokenCoreColor) {
     if (token.tokenCoreColor.hasOwnProperty(coreToken)) {
       const varName = `--${coreToken}`;
-      const tokenValue = token.tokenCoreColor[coreToken];
-      cssVars[varName] = `var(${tokenValue[surface]})`;
+      const tokenValue = token.tokenCoreColor[coreToken][surface];
+      // 현재 tokenValue는 cssVariable과 rgba 값 2종류가 존재함. 이 종류에 따라서 var 사용 여부를 결정해주기 위해 if문을 추가하였으나,
+      // 차후 피그마에서 json 파일을 넘겨준 것을 스크립트화하는 작업이 끝나면 if문 자체가 사라질 예정.
+      if (tokenValue.charAt(0) === "-") {
+        cssVars[varName] = `var(${tokenValue})`;
+      } else {
+        cssVars[varName] = `${tokenValue}`;
+      }
     }
   }
 
@@ -78,8 +84,12 @@ const createTokenColorVariables = (surface: keyof ColorTokenValueBySurface) => {
       for (tokenName in componentTokens) {
         if (componentTokens.hasOwnProperty(tokenName)) {
           const varName = `--${tokenName}`;
-          const tokenValue = componentTokens[tokenName];
-          cssVars[varName] = `var(${tokenValue[surface]})`;
+          const tokenValue = componentTokens[tokenName][surface];
+          if (tokenValue.charAt(0) === "-") {
+            cssVars[varName] = `var(${tokenValue})`;
+          } else {
+            cssVars[varName] = `${tokenValue}`;
+          }
         }
       }
     }
@@ -92,23 +102,23 @@ export const createColorCssBaseline = () => {
     ":root": {
       ...createCSSVariables(),
     },
-    ".base00 *": {
-      ...createTokenColorVariables("base00"),
+    ".light1": {
+      ...createTokenColorVariables("light1"),
     },
-    ".base10 *": {
-      ...createTokenColorVariables("base10"),
+    ".light2": {
+      ...createTokenColorVariables("light2"),
     },
-    ".base70 *": {
-      ...createTokenColorVariables("base70"),
+    ".dark1": {
+      ...createTokenColorVariables("dark1"),
     },
-    ".base80 *": {
-      ...createTokenColorVariables("base80"),
+    ".dark2": {
+      ...createTokenColorVariables("dark2"),
     },
-    ".base85 *": {
-      ...createTokenColorVariables("base85"),
+    ".dark3": {
+      ...createTokenColorVariables("dark3"),
     },
-    ".base90 *": {
-      ...createTokenColorVariables("base90"),
+    ".dark4": {
+      ...createTokenColorVariables("dark4"),
     },
   };
 };
@@ -141,10 +151,10 @@ const lunitColors: PaletteOptions["lunit"] = ((): PaletteOptions["lunit"] => {
 })();
 
 const paletteOptions = {
-  // @todo define palette options
   lunit: lunitColors,
   token: {
     core: {
+      bg_01: "var(--bg_01)",
       bg_02: "var(--bg_02)",
       bg_03: "var(--bg_03)",
       text_primary: "var(--text_primary)",
@@ -152,22 +162,14 @@ const paletteOptions = {
       text_medium: "var(--text_medium)",
       text_light: "var(--text_light)",
       text_error: "var(--text_error)",
-      text_sucess: "var(--text_sucess)",
+      text_success: "var(--text_success)",
       text_warning: "var(--text_warning)",
       text_info: "var(--text_info)",
       link_primary: "var(--link_primary)",
       link_hover: "var(--link_hover)",
       link_visited: "var(--link_visited)",
-      icon_primary: "var(--icon_primary)",
-      icon_normal: "var(--icon_normal)",
-      icon_medium: "var(--icon_medium)",
-      icon_light: "var(--icon_light)",
-      icon_error_01: "var(--icon_error_01)",
-      icon_sucess_01: "var(--icon_sucess_01)",
-      icon_warning_01: "var(--icon_warning_01)",
-      icon_info_01: "var(--icon_info_01)",
       icon_error_02: "var(--icon_error_02)",
-      icon_sucess_02: "var(--icon_sucess_02)",
+      icon_success_02: "var(--icon_success_02)",
       icon_warning_02: "var(--icon_warning_02)",
       icon_info_02: "var(--icon_info_02)",
       hover: "var(--hover)",
@@ -189,6 +191,10 @@ const paletteOptions = {
       btn_ghost_primary_text: "var(--btn_ghost_primary_text)",
       btn_ghost_secondary_text: "var(--btn_ghost_secondary_text)",
       btn_ghost_error_text: "var(--btn_ghost_error_text)",
+      btn_selected_primary_bg: "var(--btn_selected_primary_bg)",
+      btn_selected_primary_text: "var(--btn_selected_primary_text)",
+      btn_selected_secondary_bg: "var(--btn_selected_secondary_bg)",
+      btn_selected_secondary_text: "var(--btn_selected_secondary_text)",
       selectcontrol_on: "var(--selectcontrol_on)",
       selectcontrol_off: "var(--selectcontrol_off)",
       selectcontrol_handler: "var(--selectcontrol_handler)",
@@ -196,11 +202,12 @@ const paletteOptions = {
       textfield_bg: "var(--textfield_bg)",
       textfield_border_error: "var(--textfield_border_error)",
       dropdown_option_selected: "var(--dropdown_option_selected)",
-      dropdown_option_activatied: "var(--dropdown_option_activatied)",
       dropdown_divider_border: "var(--dropdown_divider_border)",
+      dropdown_option_activatied: "var(--dropdown_option_activatied)",
       datatable_cell_selected: "var(--datatable_cell_selected)",
       datatable_border_01: "var(--datatable_border_01)",
       datatable_border_02: "var(--datatable_border_02)",
+      datatable_zebra: "var(--datatable_zebra)",
       scrollbars_bg: "var(--scrollbars_bg)",
       scrollbars_hover: "var(--scrollbars_hover)",
       scrollbars_pressed: "var(--scrollbars_pressed)",
@@ -216,31 +223,16 @@ const paletteOptions = {
       alert_info_border: "var(--alert_info_border)",
       alert_warning_bg: "var(--alert_warning_bg)",
       alert_warning_border: "var(--alert_warning_border)",
-      chip_primary: "var(--chip_primary)",
       chip_primary_bg: "var(--chip_primary_bg)",
-      chip_primary_icon: "var(--chip_primary_icon)",
-      chip_secondary: "var(--chip_secondary)",
+      chip_primary_text: "var(--chip_primary_text)",
       chip_secondary_bg: "var(--chip_secondary_bg)",
-      chip_secondary_icon: "var(--chip_secondary_icon)",
-      chip_error: "var(--chip_error)",
+      chip_secondary_text: "var(--chip_secondary_text)",
       chip_error_bg: "var(--chip_error_bg)",
-      chip_error_icon: "var(--chip_error_icon)",
-      chip_warning: "var(--chip_warning)",
+      chip_error_text: "var(--chip_error_text)",
       chip_warning_bg: "var(--chip_warning_bg)",
-      chip_warning_icon: "var(--chip_warning_icon)",
-      chip_success: "var(--chip_success)",
+      chip_warning_text: "var(--chip_warning_text)",
       chip_success_bg: "var(--chip_success_bg)",
-      chip_success_icon: "var(--chip_success_icon)",
-      chip_outlined_primary_border: "var(--chip_outlined_primary_border)",
-      chip_outlined_primary_text: "var(--chip_outlined_primary_text)",
-      chip_outlined_secondary_border: "var(--chip_outlined_secondary_border)",
-      chip_outlined_secondary_text: "var(--chip_outlined_secondary_text)",
-      chip_outlined_warning_border: "var(--chip_outlined_warning_border)",
-      chip_outlined_warning_text: "var(--chip_outlined_warning_text)",
-      chip_outlined_error_border: "var(--chip_outlined_error_border)",
-      chip_outlined_error_text: "var(--chip_outlined_error_text)",
-      chip_outlined_success_border: "var(--chip_outlined_success_border)",
-      chip_outlined_success_text: "var(--chip_outlined_success_text)",
+      chip_success_text: "var(--chip_success_text)",
     },
   },
 };

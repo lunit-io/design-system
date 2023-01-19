@@ -60,6 +60,22 @@ export const InComponentWithSx = () => {
             },
           }}
         />
+        <Box width={150} height={50} bgcolor="#DFDFE2" mt={3}>
+          Hello!
+          <Box
+            sx={{
+              backgroundColor: (theme) =>
+                theme.palette.token.component.alert_info_bg,
+              color: (theme) => theme.palette.token.component.alert_info_border,
+              boxShadow: (theme) =>
+                `20px -10px 5px ${theme.palette.token.core.shadow_01}`,
+              width: 300,
+              height: 80,
+            }}
+          >
+            - with alpha value
+          </Box>
+        </Box>
       </BaseBox>
       <BaseBox theme="dark">
         <TextField
@@ -78,6 +94,22 @@ export const InComponentWithSx = () => {
             },
           }}
         />
+        <Box width={150} height={50} bgcolor="#DFDFE2" mt={3}>
+          Hello!
+          <Box
+            sx={{
+              backgroundColor: (theme) =>
+                theme.palette.token.component.alert_info_bg,
+              color: (theme) => theme.palette.token.component.alert_info_border,
+              boxShadow: (theme) =>
+                `20px -10px 5px ${theme.palette.token.core.shadow_01}`,
+              width: 300,
+              height: 80,
+            }}
+          >
+            - with alpha value
+          </Box>
+        </Box>
       </BaseBox>
     </>
   );
@@ -116,7 +148,7 @@ interface BaseBoxProps {
 const BaseBox = ({ theme, children }: BaseBoxProps) => {
   return (
     <Box
-      className={theme === "light" ? "base00" : "base80"}
+      className={theme === "light" ? "light1" : "dark1"}
       width={500}
       height={200}
       bgcolor={theme === "light" ? `lunit.grey.0.main` : `lunit.grey.80.main`}
@@ -127,7 +159,7 @@ const BaseBox = ({ theme, children }: BaseBoxProps) => {
         variant="body1"
         color={(theme) => theme.palette.token.core.text_normal}
       >
-        {theme === "light" ? "= base00 =" : "= base 80 ="}
+        {theme === "light" ? "= light1 =" : "= dark1 ="}
       </Typography>
       {children}
     </Box>
