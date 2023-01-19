@@ -46,7 +46,7 @@ const kindStyle = ({ kind, token }: KindStyleParams) => ({
       color: token.component.btn_contained_error_text,
     },
   }),
-  // kind: container
+  // kind: outlined
   ...(kind === "outlined1st" && {
     color: token.component.btn_outlined_primary_text,
     border: `1px solid ${token.component.btn_outlined_primary_border}`,
