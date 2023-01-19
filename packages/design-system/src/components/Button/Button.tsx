@@ -4,8 +4,9 @@ import { ButtonProps } from "./Button.types";
 
 const Button = (props: ButtonProps) => {
   const {
-    kind = "contained1st",
+    kind = "contained",
     size = "small",
+    color = "primary",
     className,
     ...buttonProps
   } = props;
@@ -13,6 +14,7 @@ const Button = (props: ButtonProps) => {
     <CustomButton
       className={`${kind} ${className ?? className}`}
       kind={kind}
+      color={color}
       size={size}
       disableFocusRipple
       {...buttonProps}
