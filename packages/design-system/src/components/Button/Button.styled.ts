@@ -51,7 +51,7 @@ const kindStyle = ({ kind, token }: KindStyleParams) => ({
     color: token.component.btn_outlined_primary_text,
     border: `1px solid ${token.component.btn_outlined_primary_border}`,
     "&:hover": {
-      backgroundColor: "rgba(0, 0, 0, 0.06)", // TODO: color merge후 확인필요
+      backgroundColor: "rgba(0, 0, 0, 0.06)", // TODO: color util function 추가 후 변경
     },
     "&.Mui-disabled": {
       opacity: 0.38,
