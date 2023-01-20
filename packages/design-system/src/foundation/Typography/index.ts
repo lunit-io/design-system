@@ -166,13 +166,13 @@ const fontVariants: Omit<TypographyOptions, "fontFamily" | "allVariants"> = {
     textTransform: "uppercase",
   },
   button1: {
-    fontWeight: 600,
+    fontWeight: 500,
     fontSize: 16,
     lineHeight: "22px",
     textTransform: "capitalize",
   },
   button2: {
-    fontWeight: 600,
+    fontWeight: 500,
     fontSize: 14,
     lineHeight: "20px",
     letterSpacing: "0.2px",
