@@ -35,8 +35,8 @@ const ButtonTemplate: ComponentStory<typeof Button> = (args) => {
         <TableHead>
           <TableRow>
             <TableCell></TableCell>
-            <TableCell>Contained 1st</TableCell>
-            <TableCell>Contained 2nd</TableCell>
+            <TableCell>Contained Primary</TableCell>
+            <TableCell>Contained Secondary</TableCell>
             <TableCell>Contained Error</TableCell>
           </TableRow>
         </TableHead>
@@ -44,29 +44,33 @@ const ButtonTemplate: ComponentStory<typeof Button> = (args) => {
           <TableRow>
             <TableCell>Enable</TableCell>
             <TableCell>
-              <Button kind="contained1st">Text</Button>
+              <Button kind="contained">Text</Button>
             </TableCell>
             <TableCell>
-              <Button kind="contained2nd">Text</Button>
+              <Button kind="contained" color="secondary">
+                Text
+              </Button>
             </TableCell>
             <TableCell>
-              <Button kind="containedError">Text</Button>
+              <Button kind="contained" color="error">
+                Text
+              </Button>
             </TableCell>
           </TableRow>
           <TableRow>
             <TableCell>Hover</TableCell>
             <TableCell>
-              <Button id="hover" kind="contained1st">
+              <Button id="hover" kind="contained">
                 Text
               </Button>
             </TableCell>
             <TableCell>
-              <Button id="hover" kind="contained2nd">
+              <Button id="hover" kind="contained" color="secondary">
                 Text
               </Button>
             </TableCell>
             <TableCell>
-              <Button id="hover" kind="containedError">
+              <Button id="hover" kind="contained" color="error">
                 Text
               </Button>
             </TableCell>
@@ -74,17 +78,25 @@ const ButtonTemplate: ComponentStory<typeof Button> = (args) => {
           <TableRow>
             <TableCell>Focus</TableCell>
             <TableCell>
-              <Button kind="contained1st" className="Mui-focusVisible">
+              <Button kind="contained" className="Mui-focusVisible">
                 Text
               </Button>
             </TableCell>
             <TableCell>
-              <Button kind="contained2nd" className="Mui-focusVisible">
+              <Button
+                kind="contained"
+                color="secondary"
+                className="Mui-focusVisible"
+              >
                 Text
               </Button>
             </TableCell>
             <TableCell>
-              <Button kind="containedError" className="Mui-focusVisible">
+              <Button
+                kind="contained"
+                color="error"
+                className="Mui-focusVisible"
+              >
                 Text
               </Button>
             </TableCell>
@@ -92,17 +104,17 @@ const ButtonTemplate: ComponentStory<typeof Button> = (args) => {
           <TableRow>
             <TableCell>Disabled</TableCell>
             <TableCell>
-              <Button kind="contained1st" disabled>
+              <Button kind="contained" disabled>
                 Text
               </Button>
             </TableCell>
             <TableCell>
-              <Button kind="contained2nd" disabled>
+              <Button kind="contained" color="secondary" disabled>
                 Text
               </Button>
             </TableCell>
             <TableCell>
-              <Button kind="containedError" disabled>
+              <Button kind="contained" color="error" disabled>
                 Text
               </Button>
             </TableCell>

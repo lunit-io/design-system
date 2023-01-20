@@ -31,24 +31,24 @@ export default {
 const ButtonTemplate: ComponentStory<typeof Button> = (args) => {
   return (
     <>
-      <Table sx={{ width: 220 }}>
+      <Table sx={{ width: 250 }}>
         <TableHead>
           <TableRow>
             <TableCell></TableCell>
-            <TableCell>Outlined 1st</TableCell>
+            <TableCell>Outlined Primary</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           <TableRow>
             <TableCell>Enable</TableCell>
             <TableCell>
-              <Button kind="outlined1st">Text</Button>
+              <Button kind="outlined">Text</Button>
             </TableCell>
           </TableRow>
           <TableRow>
             <TableCell>Hover</TableCell>
             <TableCell>
-              <Button id="hover" kind="outlined1st">
+              <Button id="hover" kind="outlined">
                 Text
               </Button>
             </TableCell>
@@ -56,7 +56,7 @@ const ButtonTemplate: ComponentStory<typeof Button> = (args) => {
           <TableRow>
             <TableCell>Focus</TableCell>
             <TableCell>
-              <Button kind="outlined1st" className="Mui-focusVisible">
+              <Button kind="outlined" className="Mui-focusVisible">
                 Text
               </Button>
             </TableCell>
@@ -64,7 +64,7 @@ const ButtonTemplate: ComponentStory<typeof Button> = (args) => {
           <TableRow>
             <TableCell>Disabled</TableCell>
             <TableCell>
-              <Button kind="outlined1st" disabled>
+              <Button kind="outlined" disabled>
                 Text
               </Button>
             </TableCell>

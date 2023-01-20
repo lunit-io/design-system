@@ -8,9 +8,9 @@ type KindStyleParams = Pick<ButtonProps, "kind" | "color"> & {
 };
 
 const sizeStyle = ({ size }: Pick<ButtonProps, "size">) => ({
-  ...(size === "small" && { padding: "4px 8px", fontSize: "14px" }),
-  ...(size === "medium" && { padding: "8px 12px", fontSize: "14px" }),
-  ...(size === "large" && { padding: "10px 12px", fontSize: "16px" }),
+  ...(size === "small" && { padding: "4px 8px", minWidth: "28px" }),
+  ...(size === "medium" && { padding: "8px 12px", minWidth: "36px" }),
+  ...(size === "large" && { padding: "10px 12px", minWidth: "44px" }),
 });
 
 const kindStyle = ({ kind, color, token }: KindStyleParams) => ({

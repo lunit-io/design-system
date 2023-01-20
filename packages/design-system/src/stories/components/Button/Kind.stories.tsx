@@ -37,11 +37,9 @@ const ButtonTemplate: ComponentStory<typeof Button> = (args) => {
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell sx={{ width: "33.33333%" }}>
-              Contained 1st(deault)
-            </TableCell>
-            <TableCell>Outlined 1st</TableCell>
-            <TableCell>Ghost 1st</TableCell>
+            <TableCell sx={{ width: "33.33333%" }}>Contained(deault)</TableCell>
+            <TableCell>Outlined</TableCell>
+            <TableCell>Ghost</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -50,10 +48,10 @@ const ButtonTemplate: ComponentStory<typeof Button> = (args) => {
               <Button>Text</Button>
             </TableCell>
             <TableCell>
-              <Button kind="outlined1st">Text</Button>
+              <Button kind="outlined">Text</Button>
             </TableCell>
             <TableCell>
-              <Button kind="ghost1st">Text</Button>
+              <Button kind="ghost">Text</Button>
             </TableCell>
           </TableRow>
         </TableBody>
