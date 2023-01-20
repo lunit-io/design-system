@@ -6,6 +6,7 @@ import {
   TableRow,
   TableBody,
   TableCell,
+  Typography,
 } from "@mui/material";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import Button from "@/components/Button/Button";
@@ -33,13 +34,19 @@ const ButtonTemplate: ComponentStory<typeof Button> = (args) => {
               colSpan={3}
               sx={{ fontWeight: "bold", fontSize: "16px" }}
             >
-              Kind
+              <Typography variant="body1_sb">Kind</Typography>
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell sx={{ width: "33.33333%" }}>Contained(deault)</TableCell>
-            <TableCell>Outlined</TableCell>
-            <TableCell>Ghost</TableCell>
+            <TableCell sx={{ width: "33.33333%" }}>
+              <Typography variant="body2_m">Contained(deault)</Typography>
+            </TableCell>
+            <TableCell>
+              <Typography variant="body2_m">Outlined</Typography>
+            </TableCell>
+            <TableCell>
+              <Typography variant="body2_m">Ghost</Typography>
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

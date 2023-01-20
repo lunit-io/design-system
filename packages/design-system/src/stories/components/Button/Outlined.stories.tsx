@@ -6,6 +6,7 @@ import {
   TableRow,
   TableBody,
   TableCell,
+  Typography,
 } from "@mui/material";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import Button from "@/components/Button/Button";
@@ -35,18 +36,24 @@ const ButtonTemplate: ComponentStory<typeof Button> = (args) => {
         <TableHead>
           <TableRow>
             <TableCell></TableCell>
-            <TableCell>Outlined Primary</TableCell>
+            <TableCell>
+              <Typography variant="body2_m">Outlined Primary</Typography>
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           <TableRow>
-            <TableCell>Enable</TableCell>
+            <TableCell>
+              <Typography variant="body2_reg">Enable</Typography>
+            </TableCell>
             <TableCell>
               <Button kind="outlined">Text</Button>
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>Hover</TableCell>
+            <TableCell>
+              <Typography variant="body2_reg">Hover</Typography>
+            </TableCell>
             <TableCell>
               <Button id="hover" kind="outlined">
                 Text
@@ -54,7 +61,9 @@ const ButtonTemplate: ComponentStory<typeof Button> = (args) => {
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>Focus</TableCell>
+            <TableCell>
+              <Typography variant="body2_reg">Focus</Typography>
+            </TableCell>
             <TableCell>
               <Button kind="outlined" className="Mui-focusVisible">
                 Text
@@ -62,7 +71,9 @@ const ButtonTemplate: ComponentStory<typeof Button> = (args) => {
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>Disabled</TableCell>
+            <TableCell>
+              <Typography variant="body2_reg">Disabled</Typography>
+            </TableCell>
             <TableCell>
               <Button kind="outlined" disabled>
                 Text
