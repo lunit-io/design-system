@@ -3,6 +3,8 @@ import { styled } from "@mui/material/styles";
 import { Button as MuiButton } from "@mui/material";
 import { ButtonProps } from "./Button.types";
 
+const PADDING_OF_FOCUS = 6; // TODO: focus 시 padding 고정값, size 별 차이 여부 확인 필요
+
 type KindStyleParams = Pick<ButtonProps, "kind" | "color"> & {
   token: ColorToken;
 };
@@ -102,11 +104,23 @@ const kindStyle = ({ kind, color, token }: KindStyleParams) => ({
     }),
 });
 
-const commonStyle = {
-  fontWeight: "500",
-  borderRadius: "8px",
-  textTransform: "initial",
-} as const;
+const commonStyle = ({ token }: { token: ColorToken }) =>
+  ({
+    fontWeight: "500",
+    borderRadius: "8px",
+    textTransform: "initial",
+    "&:focus": {
+      "&.MuiButtonBase-root::after": {
+        position: "absolute",
+        width: `calc(100% + ${PADDING_OF_FOCUS}px)`,
+        height: `calc(100% + ${PADDING_OF_FOCUS}px)`,
+        content: '""',
+        borderRadius: "11px",
+        border: `1px solid ${token.core.focused}`,
+        boxSizing: "border-box",
+      },
+    },
+  } as const);
 
 export const CustomButton = styled(MuiButton, {
   shouldForwardProp: (prop: string) => {
@@ -121,7 +135,7 @@ export const CustomButton = styled(MuiButton, {
     size,
     color,
   }) => ({
-    ...commonStyle,
+    ...commonStyle({ token }),
     ...sizeStyle({ size }),
     ...kindStyle({ kind, color, token }),
   })
