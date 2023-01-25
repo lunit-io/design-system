@@ -143,4 +143,4 @@ const ButtonTemplate: ComponentStory<typeof Button> = (args) => {
   );
 };
 
-export const Containd = ButtonTemplate.bind({});
+export const Contained = ButtonTemplate.bind({});
