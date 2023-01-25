@@ -10,8 +10,10 @@ const Button = (props: ButtonProps) => {
     color = "primary",
     className,
     children,
+    hasIconOnly,
     ...buttonProps
   } = props;
+
   return (
     <>
       {kind === "contained" || kind === "ghost" ? (
@@ -20,11 +22,12 @@ const Button = (props: ButtonProps) => {
           kind={kind}
           color={color}
           size={size}
+          hasIconOnly={hasIconOnly}
           disableFocusRipple
           {...buttonProps}
         >
           <Typography variant={size === "large" ? "button1" : "button2"}>
-            {children}
+            {hasIconOnly ? null : children}
           </Typography>
         </CustomButton>
       ) : (
@@ -33,11 +36,12 @@ const Button = (props: ButtonProps) => {
           kind="outlined"
           color="primary"
           size={size}
+          hasIconOnly={hasIconOnly}
           disableFocusRipple
           {...buttonProps}
         >
           <Typography variant={size === "large" ? "button1" : "button2"}>
-            {children}
+            {hasIconOnly ? null : children}
           </Typography>
         </CustomButton>
       )}
