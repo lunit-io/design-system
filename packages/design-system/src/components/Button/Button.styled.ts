@@ -18,14 +18,17 @@ const sizeStyle = ({
   ...(size === "small" && {
     padding: `${hasIconOnly ? "4px" : "4px 8px"}`,
     minWidth: "28px",
+    minHeight: "28px",
   }),
   ...(size === "medium" && {
     padding: `${hasIconOnly ? "8px" : "8px 12px"}`,
     minWidth: "36px",
+    minHeight: "36px",
   }),
   ...(size === "large" && {
     padding: `${hasIconOnly ? "12px" : "10px 12px"}`,
     minWidth: "44px",
+    minHeight: "44px",
   }),
 });
 
