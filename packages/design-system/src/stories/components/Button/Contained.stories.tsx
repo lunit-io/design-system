@@ -8,6 +8,7 @@ import {
   TableCell,
   Typography,
 } from "@mui/material";
+import { action } from "@storybook/addon-actions";
 
 import Button from "@/components/Button/Button";
 
@@ -16,10 +17,49 @@ import type { ComponentStory, ComponentMeta } from "@storybook/react";
 export default {
   title: "Components/Button",
   component: Button,
+  argTypes: {
+    children: {
+      type: "string",
+      defaultValue: "Text",
+    },
+    size: {
+      control: {
+        type: "select",
+      },
+      options: ["small", "medium", "large"],
+      defaultValue: "small",
+      table: {
+        defaultValue: { summary: "small" },
+      },
+    },
+    onClick: {
+      type: "function",
+      control: {
+        type: "select",
+      },
+      options: ["function", undefined],
+      mapping: {
+        function: action("onClick"),
+        undefined: undefined,
+      },
+      defaultValue: "function",
+      description:
+        "It is a callback function that is called when the button is clicked.",
+    },
+  },
   parameters: {
     pseudo: {
       hover: ["#hover"],
       focus: [".Mui-focusVisible"],
+    },
+    controls: {
+      include: ["onClick", "children", "size"],
+    },
+    docs: {
+      description: {
+        component: `It is a Contained kind Button. For more details, please
+				see [Material-UI Button](https://mui.com/material-ui/react-button/).`,
+      },
     },
   },
   decorators: [
@@ -56,16 +96,18 @@ const ButtonTemplate: ComponentStory<typeof Button> = (args) => {
               <Typography variant="body2_reg">Enable</Typography>
             </TableCell>
             <TableCell>
-              <Button kind="contained">Text</Button>
-            </TableCell>
-            <TableCell>
-              <Button kind="contained" color="secondary">
-                Text
+              <Button {...args} kind="contained">
+                {args.children}
               </Button>
             </TableCell>
             <TableCell>
-              <Button kind="contained" color="error">
-                Text
+              <Button {...args} kind="contained" color="secondary">
+                {args.children}
+              </Button>
+            </TableCell>
+            <TableCell>
+              <Button {...args} kind="contained" color="error">
+                {args.children}
               </Button>
             </TableCell>
           </TableRow>
@@ -74,18 +116,18 @@ const ButtonTemplate: ComponentStory<typeof Button> = (args) => {
               <Typography variant="body2_reg">Hover</Typography>
             </TableCell>
             <TableCell>
-              <Button id="hover" kind="contained">
-                Text
+              <Button {...args} id="hover" kind="contained">
+                {args.children}
               </Button>
             </TableCell>
             <TableCell>
-              <Button id="hover" kind="contained" color="secondary">
-                Text
+              <Button {...args} id="hover" kind="contained" color="secondary">
+                {args.children}
               </Button>
             </TableCell>
             <TableCell>
-              <Button id="hover" kind="contained" color="error">
-                Text
+              <Button {...args} id="hover" kind="contained" color="error">
+                {args.children}
               </Button>
             </TableCell>
           </TableRow>
@@ -94,26 +136,28 @@ const ButtonTemplate: ComponentStory<typeof Button> = (args) => {
               <Typography variant="body2_reg">Focus</Typography>
             </TableCell>
             <TableCell>
-              <Button kind="contained" className="Mui-focusVisible">
-                Text
+              <Button {...args} kind="contained" className="Mui-focusVisible">
+                {args.children}
               </Button>
             </TableCell>
             <TableCell>
               <Button
+                {...args}
                 kind="contained"
                 color="secondary"
                 className="Mui-focusVisible"
               >
-                Text
+                {args.children}
               </Button>
             </TableCell>
             <TableCell>
               <Button
+                {...args}
                 kind="contained"
                 color="error"
                 className="Mui-focusVisible"
               >
-                Text
+                {args.children}
               </Button>
             </TableCell>
           </TableRow>
@@ -122,18 +166,18 @@ const ButtonTemplate: ComponentStory<typeof Button> = (args) => {
               <Typography variant="body2_reg">Disabled</Typography>
             </TableCell>
             <TableCell>
-              <Button kind="contained" disabled>
-                Text
+              <Button {...args} kind="contained" disabled>
+                {args.children}
               </Button>
             </TableCell>
             <TableCell>
-              <Button kind="contained" color="secondary" disabled>
-                Text
+              <Button {...args} kind="contained" color="secondary" disabled>
+                {args.children}
               </Button>
             </TableCell>
             <TableCell>
-              <Button kind="contained" color="error" disabled>
-                Text
+              <Button {...args} kind="contained" color="error" disabled>
+                {args.children}
               </Button>
             </TableCell>
           </TableRow>
