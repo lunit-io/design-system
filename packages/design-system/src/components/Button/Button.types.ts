@@ -1,6 +1,7 @@
 import type { ButtonProps as MuiButtonProps } from "@mui/material";
 
 interface BaseButtonProps extends MuiButtonProps {
+  // Add type for distinction only because only the style of the icon button is different
   hasIconOnly?: true;
 }
 
