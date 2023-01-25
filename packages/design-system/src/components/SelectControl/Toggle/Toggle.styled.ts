@@ -46,7 +46,7 @@ const toggleStyles = {
     thumb: {
       width: 20,
       height: 20,
-    }
+    },
   },
 }
 
@@ -83,10 +83,13 @@ const indeterminateStyles = {
 
 export const CommonToggle = styled(MuiSwitch, {
   shouldForwardProp: (props) => props !== 'toggleSize',
-})<ToggleProps>(({ theme, toggleSize }) => {
+})<ToggleProps>(({ theme, toggleSize, disabled }) => {
   const checkedColor = theme.palette.token.component.selectcontrol_on;
   const uncheckedColor = theme.palette.token.component.selectcontrol_off;
+  const handlerColor = theme.palette.token.component.selectcontrol_handler;
+
   const toggleStyle = toggleStyles[toggleSize];
+  const opacity = disabled ? 0.38 : 1;
 
   return {
     ...toggleStyle.root,
@@ -94,21 +97,27 @@ export const CommonToggle = styled(MuiSwitch, {
     padding: 0,
     overflow: "visible",
     backgroundColor: "transparent",
-    "&:has(.Mui-focusVisible)": {
-      "&::after":{
+    opacity,
+    "& .Mui-focusVisible": {
+      "& + .MuiSwitch-track::after": {
         ...toggleStyle.focus,
         content: '""',
         position: "absolute",
-        border: `1px solid ${checkedColor}`,
+        // border: `1px solid ${checkedColor}`,
         boxSizing: "border-box",
         top: -3, // border 1px + offset 2px
         left: -3, // border 1px + offset 2px
-      },
+        backgroundImage: `url("data:image/svg+xml,%3Csvg width='34' height='24' viewBox='0 0 34 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0.5' y='0.5' width='33' height='23' rx='11.5' stroke='%2300C9EA'/%3E%3C/svg%3E%0A")`
+      }
     },
     '& .MuiSwitch-track': {
-      backgroundColor: uncheckedColor,
       opacity: 1,
-      borderRadius: 16,
+      borderRadius: 12,
+      backgroundColor: uncheckedColor,
+    },
+    '& .MuiSwitch-thumb': {
+      ...toggleStyle.thumb,
+      boxShadow: "0px 0px 1px rgba(0, 0, 0, 0.4)",
     },
     '& .MuiSwitch-switchBase': {
       ...toggleStyle.switch,
@@ -122,35 +131,22 @@ export const CommonToggle = styled(MuiSwitch, {
       },
       '&.Mui-checked': {
         ...toggleStyle.switchChecked,
-        opacity: 1,
-        color: '#fff',
+        color: handlerColor,
         '& + .MuiSwitch-track': {
           opacity: 1,
           backgroundColor: checkedColor,
         },
-        '&.Mui-disabled': {
-          opacity: 1,
-          color: "#fff",
-        },
       },
       '&.Mui-disabled': {
-        opacity: 1,
-        color: "fff",
         '& + .MuiSwitch-track': {
-          opacity: 0.38,
-          backgroundColor: uncheckedColor,
+          opacity: 1,
         },
-        "&.Mui-checked": {
-          '& + .MuiSwitch-track': {
-            opacity: 0.38,
-            backgroundColor: checkedColor,
-          },
-        }
       },
-    },
-    '& .MuiSwitch-thumb': {
-      ...toggleStyle.thumb,
-      boxShadow: "0px 0px 1px rgba(0, 0, 0, 0.4)",
+      "&.Mui-checked.Mui-disabled": {
+        '& + .MuiSwitch-track': {
+          backgroundColor: checkedColor,
+        },
+      },
     },
   }});
 
