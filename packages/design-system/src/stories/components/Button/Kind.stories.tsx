@@ -8,8 +8,10 @@ import {
   TableCell,
   Typography,
 } from "@mui/material";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+
 import Button from "@/components/Button/Button";
+
+import type { ComponentStory, ComponentMeta } from "@storybook/react";
 
 export default {
   title: "Components/Button",

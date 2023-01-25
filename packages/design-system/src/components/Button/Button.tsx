@@ -1,7 +1,9 @@
-import Typography from "@mui/material/Typography";
 import React from "react";
+import Typography from "@mui/material/Typography";
+
 import { CustomButton } from "./Button.styled";
-import { ButtonProps } from "./Button.types";
+
+import type { ButtonProps } from "./Button.types";
 
 const Button = (props: ButtonProps) => {
   const {

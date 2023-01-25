@@ -9,9 +9,11 @@ import {
   Typography,
 } from "@mui/material";
 import { Bell } from "@lunit/design-system-icons";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+
 import Button from "@/components/Button/Button";
-import { ButtonProps } from "@/components/Button/Button.types";
+
+import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import type { ButtonProps } from "@/components/Button/Button.types";
 
 type Size = Pick<ButtonProps, "size">;
 type SizeValues = Size[keyof Size];

@@ -1,7 +1,9 @@
-import { ColorToken } from "@/foundation/colors/types";
 import { styled } from "@mui/material/styles";
 import { Button as MuiButton } from "@mui/material";
-import { ButtonProps } from "./Button.types";
+
+import { ColorToken } from "@/foundation/colors/types";
+
+import type { ButtonProps } from "./Button.types";
 
 const PADDING_OF_FOCUS = 6; // TODO: focus 시 padding 고정값, size 별 차이 여부 확인 필요
 
