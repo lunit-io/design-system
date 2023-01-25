@@ -51,6 +51,42 @@ const kindStyle = ({ kind, color, token }: KindStyleParams) => ({
         color: token.component.btn_contained_error_text,
       },
     }),
+  // kind: ghost
+  ...(kind === "ghost" &&
+    color === "primary" && {
+      color: token.component.btn_ghost_primary_text,
+      border: "none",
+      "&:hover": {
+        backgroundColor: "rgba(0, 0, 0, 0.06)",
+      },
+      "&.Mui-disabled": {
+        opacity: 0.38,
+        color: token.component.btn_ghost_primary_text,
+      },
+    }),
+  ...(kind === "ghost" &&
+    color === "secondary" && {
+      color: token.component.btn_ghost_secondary_text,
+      border: "none",
+      "&:hover": {
+        backgroundColor: "rgba(0, 0, 0, 0.06)",
+      },
+      "&.Mui-disabled": {
+        opacity: 0.38,
+        color: token.component.btn_ghost_secondary_text,
+      },
+    }),
+  ...(kind === "ghost" &&
+    color === "error" && {
+      color: token.component.btn_ghost_error_text,
+      "&:hover": {
+        backgroundColor: "rgba(0, 0, 0, 0.06)",
+      },
+      "&.Mui-disabled": {
+        opacity: 0.38,
+        color: token.component.btn_ghost_error_text,
+      },
+    }),
   // kind: outlined
   ...(kind === "outlined" &&
     color === "primary" && {
