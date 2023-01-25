@@ -8,6 +8,7 @@ import {
   TableCell,
   Typography,
 } from "@mui/material";
+import { Bell } from "@lunit/design-system-icons";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import Button from "@/components/Button/Button";
 import { ButtonProps } from "@/components/Button/Button.types";
@@ -61,7 +62,10 @@ const ButtonTemplate: ComponentStory<typeof Button> = (args) => {
                 key={size}
                 sx={{ "& button": { marginRight: "10px" } }}
               >
-                <Button size={size}>Icon</Button>
+                <Button hasIconOnly startIcon={<Bell />} size={size} />
+                <Button startIcon={<Bell />} size={size}>
+                  Icon
+                </Button>
                 <Button size={size}>Text</Button>
                 <Button size={size}>Text</Button>
               </TableCell>
