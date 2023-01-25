@@ -9,6 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import { Bell } from "@lunit/design-system-icons";
+import { action } from "@storybook/addon-actions";
 
 import Button from "@/components/Button/Button";
 
@@ -22,6 +23,46 @@ const sizeList: SizeValues[] = ["small", "medium", "large"];
 export default {
   title: "Components/Button",
   component: Button,
+  argTypes: {
+    children: {
+      type: "string",
+      defaultValue: "Text",
+    },
+    disabled: {
+      control: {
+        type: "boolean",
+      },
+      defaultValue: false,
+      table: {
+        defaultValue: { summary: "false" },
+      },
+    },
+    onClick: {
+      type: "function",
+      control: {
+        type: "select",
+      },
+      options: ["function", undefined],
+      mapping: {
+        function: action("onClick"),
+        undefined: undefined,
+      },
+      defaultValue: "function",
+      description:
+        "It is a callback function that is called when the button is clicked.",
+    },
+  },
+  parameters: {
+    controls: {
+      include: ["onClick", "children", "disabled"],
+    },
+    docs: {
+      description: {
+        component: `It is size of Button docs. For more details, please
+				see [Material-UI Button](https://mui.com/material-ui/react-button/).`,
+      },
+    },
+  },
   decorators: [
     /**
      * TODO
@@ -64,12 +105,21 @@ const ButtonTemplate: ComponentStory<typeof Button> = (args) => {
                 key={size}
                 sx={{ "& button": { marginRight: "10px" } }}
               >
-                <Button hasIconOnly startIcon={<Bell />} size={size} />
-                <Button startIcon={<Bell />} size={size}>
-                  Icon
+                <Button
+                  {...args}
+                  hasIconOnly
+                  startIcon={<Bell />}
+                  size={size}
+                />
+                <Button {...args} startIcon={<Bell />} size={size}>
+                  {args.children}
                 </Button>
-                <Button size={size}>Text</Button>
-                <Button size={size}>Text</Button>
+                <Button {...args} size={size}>
+                  {args.children}
+                </Button>
+                <Button {...args} size={size}>
+                  {args.children}
+                </Button>
               </TableCell>
             ))}
           </TableRow>

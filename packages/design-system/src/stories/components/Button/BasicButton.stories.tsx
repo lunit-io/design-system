@@ -19,6 +19,9 @@ export default {
         type: "boolean",
       },
       defaultValue: false,
+      table: {
+        defaultValue: { summary: "false" },
+      },
     },
     size: {
       control: {
@@ -26,6 +29,9 @@ export default {
       },
       options: ["small", "medium", "large"],
       defaultValue: "small",
+      table: {
+        defaultValue: { summary: "small" },
+      },
     },
     onClick: {
       type: "function",
