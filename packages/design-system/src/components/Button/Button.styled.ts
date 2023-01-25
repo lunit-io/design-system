@@ -9,10 +9,22 @@ type KindStyleParams = Pick<ButtonProps, "kind" | "color"> & {
   token: ColorToken;
 };
 
-const sizeStyle = ({ size }: Pick<ButtonProps, "size">) => ({
-  ...(size === "small" && { padding: "4px 8px", minWidth: "28px" }),
-  ...(size === "medium" && { padding: "8px 12px", minWidth: "36px" }),
-  ...(size === "large" && { padding: "10px 12px", minWidth: "44px" }),
+const sizeStyle = ({
+  size,
+  hasIconOnly,
+}: Pick<ButtonProps, "size" | "hasIconOnly">) => ({
+  ...(size === "small" && {
+    padding: `${hasIconOnly ? "4px" : "4px 8px"}`,
+    minWidth: "28px",
+  }),
+  ...(size === "medium" && {
+    padding: `${hasIconOnly ? "8px" : "8px 12px"}`,
+    minWidth: "36px",
+  }),
+  ...(size === "large" && {
+    padding: `${hasIconOnly ? "12px" : "10px 12px"}`,
+    minWidth: "44px",
+  }),
 });
 
 const kindStyle = ({ kind, color, token }: KindStyleParams) => ({
@@ -122,6 +134,18 @@ const commonStyle = ({ token }: { token: ColorToken }) =>
     },
   } as const);
 
+const iconStyle = ({
+  size,
+  hasIconOnly,
+}: Pick<ButtonProps, "size" | "hasIconOnly">) => ({
+  "& .MuiButton-startIcon": {
+    width: "20px",
+    height: "20px",
+    margin: 0,
+    marginRight: hasIconOnly ? "0px" : size === "large" ? "8px" : "4px",
+  },
+});
+
 export const CustomButton = styled(MuiButton, {
   shouldForwardProp: (prop: string) => {
     return !["kind", "size", "color"].includes(prop);
@@ -134,9 +158,11 @@ export const CustomButton = styled(MuiButton, {
     kind,
     size,
     color,
+    hasIconOnly,
   }) => ({
     ...commonStyle({ token }),
-    ...sizeStyle({ size }),
+    ...iconStyle({ size, hasIconOnly }),
+    ...sizeStyle({ size, hasIconOnly }),
     ...kindStyle({ kind, color, token }),
   })
 );
