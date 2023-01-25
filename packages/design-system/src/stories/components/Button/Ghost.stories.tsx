@@ -8,6 +8,7 @@ import {
   TableCell,
   Typography,
 } from "@mui/material";
+import { action } from "@storybook/addon-actions";
 
 import Button from "@/components/Button/Button";
 
@@ -16,10 +17,53 @@ import type { ComponentStory, ComponentMeta } from "@storybook/react";
 export default {
   title: "Components/Button",
   component: Button,
+  argTypes: {
+    children: {
+      type: "string",
+      defaultValue: "Text",
+    },
+    size: {
+      control: {
+        type: "select",
+      },
+      options: ["small", "medium", "large"],
+      defaultValue: "small",
+      /**
+       * field for setting default value in storybook docs
+       * Reference - https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#no-longer-inferring-default-values-of-args
+       */
+      table: {
+        defaultValue: { summary: "small" },
+      },
+    },
+    onClick: {
+      type: "function",
+      control: {
+        type: "select",
+      },
+      options: ["function", undefined],
+      mapping: {
+        function: action("onClick"),
+        undefined: undefined,
+      },
+      defaultValue: "function",
+      description:
+        "It is a callback function that is called when the button is clicked.",
+    },
+  },
   parameters: {
     pseudo: {
       hover: ["#hover"],
       focus: [".Mui-focusVisible"],
+    },
+    controls: {
+      include: ["onClick", "children", "size"],
+    },
+    docs: {
+      description: {
+        component: `It is a Ghost kind Button. For more details, please
+				see [Material-UI Button](https://mui.com/material-ui/react-button/).`,
+      },
     },
   },
   decorators: [
@@ -56,16 +100,18 @@ const ButtonTemplate: ComponentStory<typeof Button> = (args) => {
               <Typography variant="body2_reg">Enable</Typography>
             </TableCell>
             <TableCell>
-              <Button kind="ghost">Text</Button>
-            </TableCell>
-            <TableCell>
-              <Button kind="ghost" color="secondary">
-                Text
+              <Button {...args} kind="ghost">
+                {args.children}
               </Button>
             </TableCell>
             <TableCell>
-              <Button kind="ghost" color="error">
-                Text
+              <Button {...args} kind="ghost" color="secondary">
+                {args.children}
+              </Button>
+            </TableCell>
+            <TableCell>
+              <Button {...args} kind="ghost" color="error">
+                {args.children}
               </Button>
             </TableCell>
           </TableRow>
@@ -74,18 +120,18 @@ const ButtonTemplate: ComponentStory<typeof Button> = (args) => {
               <Typography variant="body2_reg">Hover</Typography>
             </TableCell>
             <TableCell>
-              <Button id="hover" kind="ghost">
-                Text
+              <Button {...args} id="hover" kind="ghost">
+                {args.children}
               </Button>
             </TableCell>
             <TableCell>
-              <Button id="hover" kind="ghost" color="secondary">
-                Text
+              <Button {...args} id="hover" kind="ghost" color="secondary">
+                {args.children}
               </Button>
             </TableCell>
             <TableCell>
-              <Button id="hover" kind="ghost" color="error">
-                Text
+              <Button {...args} id="hover" kind="ghost" color="error">
+                {args.children}
               </Button>
             </TableCell>
           </TableRow>
@@ -94,22 +140,28 @@ const ButtonTemplate: ComponentStory<typeof Button> = (args) => {
               <Typography variant="body2_reg">Focus</Typography>
             </TableCell>
             <TableCell>
-              <Button kind="ghost" className="Mui-focusVisible">
-                Text
+              <Button {...args} kind="ghost" className="Mui-focusVisible">
+                {args.children}
               </Button>
             </TableCell>
             <TableCell>
               <Button
+                {...args}
                 kind="ghost"
                 color="secondary"
                 className="Mui-focusVisible"
               >
-                Text
+                {args.children}
               </Button>
             </TableCell>
             <TableCell>
-              <Button kind="ghost" color="error" className="Mui-focusVisible">
-                Text
+              <Button
+                {...args}
+                kind="ghost"
+                color="error"
+                className="Mui-focusVisible"
+              >
+                {args.children}
               </Button>
             </TableCell>
           </TableRow>
@@ -118,18 +170,18 @@ const ButtonTemplate: ComponentStory<typeof Button> = (args) => {
               <Typography variant="body2_reg">Disabled</Typography>
             </TableCell>
             <TableCell>
-              <Button kind="ghost" disabled>
-                Text
+              <Button {...args} kind="ghost" disabled>
+                {args.children}
               </Button>
             </TableCell>
             <TableCell>
-              <Button kind="ghost" color="secondary" disabled>
-                Text
+              <Button {...args} kind="ghost" color="secondary" disabled>
+                {args.children}
               </Button>
             </TableCell>
             <TableCell>
-              <Button kind="ghost" color="error" disabled>
-                Text
+              <Button {...args} kind="ghost" color="error" disabled>
+                {args.children}
               </Button>
             </TableCell>
           </TableRow>
