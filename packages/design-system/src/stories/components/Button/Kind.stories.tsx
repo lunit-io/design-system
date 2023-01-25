@@ -41,7 +41,7 @@ const ButtonTemplate: ComponentStory<typeof Button> = (args) => {
           </TableRow>
           <TableRow>
             <TableCell sx={{ width: "33.33333%" }}>
-              <Typography variant="body2_m">Contained(deault)</Typography>
+              <Typography variant="body2_m">Contained(default)</Typography>
             </TableCell>
             <TableCell>
               <Typography variant="body2_m">Outlined</Typography>
