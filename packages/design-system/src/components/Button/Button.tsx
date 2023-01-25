@@ -26,9 +26,11 @@ const Button = (props: ButtonProps) => {
           disableFocusRipple
           {...buttonProps}
         >
-          <Typography variant={size === "large" ? "button1" : "button2"}>
-            {hasIconOnly ? null : children}
-          </Typography>
+          {!hasIconOnly && (
+            <Typography variant={size === "large" ? "button1" : "button2"}>
+              {children}
+            </Typography>
+          )}
         </CustomButton>
       ) : (
         <CustomButton
@@ -40,9 +42,11 @@ const Button = (props: ButtonProps) => {
           disableFocusRipple
           {...buttonProps}
         >
-          <Typography variant={size === "large" ? "button1" : "button2"}>
-            {hasIconOnly ? null : children}
-          </Typography>
+          {!hasIconOnly && (
+            <Typography variant={size === "large" ? "button1" : "button2"}>
+              {children}
+            </Typography>
+          )}
         </CustomButton>
       )}
     </>
