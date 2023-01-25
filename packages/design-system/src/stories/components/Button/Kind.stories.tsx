@@ -8,6 +8,7 @@ import {
   TableCell,
   Typography,
 } from "@mui/material";
+import { action } from "@storybook/addon-actions";
 
 import Button from "@/components/Button/Button";
 
@@ -16,6 +17,67 @@ import type { ComponentStory, ComponentMeta } from "@storybook/react";
 export default {
   title: "Components/Button",
   component: Button,
+  argTypes: {
+    children: {
+      type: "string",
+      defaultValue: "Text",
+    },
+    disabled: {
+      control: {
+        type: "boolean",
+      },
+      defaultValue: false,
+      table: {
+        defaultValue: { summary: "false" },
+      },
+    },
+    size: {
+      control: {
+        type: "select",
+      },
+      options: ["small", "medium", "large"],
+      defaultValue: "small",
+      table: {
+        defaultValue: { summary: "small" },
+      },
+    },
+    onClick: {
+      type: "function",
+      control: {
+        type: "select",
+      },
+      options: ["function", undefined],
+      mapping: {
+        function: action("onClick"),
+        undefined: undefined,
+      },
+      defaultValue: "function",
+      description:
+        "It is a callback function that is called when the button is clicked.",
+    },
+    color: {
+      control: {
+        type: "select",
+      },
+      options: ["primary", "secondary", "error"],
+      defaultValue: "primary",
+      description: "Button has three Kinds Contained, Ghost, error",
+      table: {
+        defaultValue: { summary: "primary" },
+      },
+    },
+  },
+  parameters: {
+    controls: {
+      include: ["onClick", "children", "size", "color", "disabled"],
+    },
+    docs: {
+      description: {
+        component: `It is a kind Button docs. For more details, please
+				see [Material-UI Button](https://mui.com/material-ui/react-button/).`,
+      },
+    },
+  },
   decorators: [
     /**
      * TODO
@@ -26,7 +88,12 @@ export default {
   ],
 } as ComponentMeta<typeof Button>;
 
-const ButtonTemplate: ComponentStory<typeof Button> = (args) => {
+const ButtonTemplate: ComponentStory<typeof Button> = ({
+  kind,
+  color,
+  children,
+  ...restProps
+}) => {
   return (
     <>
       <Table sx={{ width: 600 }}>
@@ -54,13 +121,19 @@ const ButtonTemplate: ComponentStory<typeof Button> = (args) => {
         <TableBody>
           <TableRow>
             <TableCell>
-              <Button>Text</Button>
+              <Button color={color} {...restProps}>
+                {children}
+              </Button>
             </TableCell>
             <TableCell>
-              <Button kind="outlined">Text</Button>
+              <Button kind="outlined" color="primary" {...restProps}>
+                {children}
+              </Button>
             </TableCell>
             <TableCell>
-              <Button kind="ghost">Text</Button>
+              <Button kind="ghost" color={color} {...restProps}>
+                {children}
+              </Button>
             </TableCell>
           </TableRow>
         </TableBody>
