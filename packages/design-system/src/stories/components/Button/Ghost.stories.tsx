@@ -17,6 +17,7 @@ export default {
   parameters: {
     pseudo: {
       hover: ["#hover"],
+      focus: [".Mui-focusVisible"],
     },
   },
   decorators: [
