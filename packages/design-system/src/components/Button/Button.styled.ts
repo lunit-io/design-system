@@ -2,10 +2,10 @@ import { styled } from "@mui/material/styles";
 import { Button as MuiButton } from "@mui/material";
 
 import { ColorToken } from "@/foundation/colors/types";
+import { PADDING_OF_FOCUS, OUTLINED_BORDER_WIDTH } from "./const";
+import { getButtonPaddingBySizeAndKind } from "./utils/getButtonPaddingBySizeAndKind";
 
 import type { ButtonProps } from "./Button.types";
-
-const PADDING_OF_FOCUS = 6; // TODO: focus 시 padding 고정값, size 별 차이 여부 확인 필요
 
 type KindStyleParams = Pick<ButtonProps, "kind" | "color"> & {
   token: ColorToken;
@@ -13,20 +13,27 @@ type KindStyleParams = Pick<ButtonProps, "kind" | "color"> & {
 
 const sizeStyle = ({
   size,
+  kind,
   hasIconOnly,
-}: Pick<ButtonProps, "size" | "hasIconOnly">) => ({
+}: Pick<ButtonProps, "size" | "hasIconOnly" | "kind">) => ({
   ...(size === "small" && {
-    padding: `${hasIconOnly ? "4px" : "4px 8px"}`,
+    padding: `${
+      hasIconOnly ? "4px" : getButtonPaddingBySizeAndKind({ kind, size })
+    }`,
     minWidth: "28px",
     minHeight: "28px",
   }),
   ...(size === "medium" && {
-    padding: `${hasIconOnly ? "8px" : "8px 12px"}`,
+    padding: `${
+      hasIconOnly ? "8px" : getButtonPaddingBySizeAndKind({ kind, size })
+    }`,
     minWidth: "36px",
     minHeight: "36px",
   }),
   ...(size === "large" && {
-    padding: `${hasIconOnly ? "12px" : "10px 12px"}`,
+    padding: `${
+      hasIconOnly ? "12px" : getButtonPaddingBySizeAndKind({ kind, size })
+    }`,
     minWidth: "44px",
     minHeight: "44px",
   }),
@@ -110,7 +117,7 @@ const kindStyle = ({ kind, color, token }: KindStyleParams) => ({
   ...(kind === "outlined" &&
     color === "primary" && {
       color: token.component.btn_outlined_primary_text,
-      border: `1px solid ${token.component.btn_outlined_primary_border}`,
+      border: `${OUTLINED_BORDER_WIDTH}px solid ${token.component.btn_outlined_primary_border}`,
       "&:hover": {
         backgroundColor: "rgba(0, 0, 0, 0.06)", // TODO: color util function 추가 후 변경
       },
@@ -167,7 +174,7 @@ export const CustomButton = styled(MuiButton, {
   }) => ({
     ...commonStyle({ token }),
     ...iconStyle({ size, hasIconOnly }),
-    ...sizeStyle({ size, hasIconOnly }),
+    ...sizeStyle({ size, kind, hasIconOnly }),
     ...kindStyle({ kind, color, token }),
   })
 );
