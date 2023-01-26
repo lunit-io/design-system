@@ -25,7 +25,7 @@ export default {
     },
     size: {
       control: {
-        type: "select",
+        type: "radio",
       },
       options: ["small", "medium", "large"],
       defaultValue: "small",
@@ -36,7 +36,7 @@ export default {
     onClick: {
       type: "function",
       control: {
-        type: "select",
+        type: "radio",
       },
       options: ["function", undefined],
       mapping: {

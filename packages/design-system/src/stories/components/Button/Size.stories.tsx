@@ -40,7 +40,7 @@ export default {
     onClick: {
       type: "function",
       control: {
-        type: "select",
+        type: "radio",
       },
       options: ["function", undefined],
       mapping: {
