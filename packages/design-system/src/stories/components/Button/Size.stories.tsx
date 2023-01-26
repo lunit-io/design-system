@@ -75,56 +75,41 @@ export default {
 
 const ButtonTemplate: ComponentStory<typeof Button> = (args) => {
   return (
-    <>
-      <Table sx={{ width: 900 }}>
-        <TableHead>
-          <TableRow>
-            <TableCell
-              colSpan={3}
-              sx={{ fontWeight: "bold", fontSize: "16px" }}
-            >
-              <Typography variant="body1_sb">Size</Typography>
+    <Table sx={{ width: 900 }}>
+      <TableHead>
+        <TableRow>
+          <TableCell colSpan={3} sx={{ fontWeight: "bold", fontSize: "16px" }}>
+            <Typography variant="body1_sb">Size</Typography>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>
+            <Typography variant="body2_m">Small</Typography>
+          </TableCell>
+          <TableCell>
+            <Typography variant="body2_m">Medium</Typography>
+          </TableCell>
+          <TableCell>
+            <Typography variant="body2_m">Large</Typography>
+          </TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        <TableRow>
+          {sizeList.map((size) => (
+            <TableCell key={size} sx={{ "& button": { marginRight: "10px" } }}>
+              <Button {...args} hasIconOnly startIcon={<Bell />} size={size} />
+              <Button {...args} size={size}>
+                {args.children}
+              </Button>
+              <Button {...args} startIcon={<Bell />} size={size}>
+                {args.children}
+              </Button>
             </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>
-              <Typography variant="body2_m">Small</Typography>
-            </TableCell>
-            <TableCell>
-              <Typography variant="body2_m">Medium</Typography>
-            </TableCell>
-            <TableCell>
-              <Typography variant="body2_m">Large</Typography>
-            </TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          <TableRow>
-            {sizeList.map((size) => (
-              <TableCell
-                key={size}
-                sx={{ "& button": { marginRight: "10px" } }}
-              >
-                <Button
-                  {...args}
-                  hasIconOnly
-                  startIcon={<Bell />}
-                  size={size}
-                />
-                <Button {...args} size={size}>
-                  {args.children}
-                </Button>
-                <Button {...args} startIcon={<Bell />} size={size}>
-                  {args.children}
-                </Button>
-              </TableCell>
-            ))}
-          </TableRow>
-        </TableBody>
-      </Table>
-      <br />
-      <br />
-    </>
+          ))}
+        </TableRow>
+      </TableBody>
+    </Table>
   );
 };
 
