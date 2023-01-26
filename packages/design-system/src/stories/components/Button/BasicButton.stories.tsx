@@ -14,6 +14,27 @@ export default {
       type: "string",
       defaultValue: "Text",
     },
+    kind: {
+      control: {
+        type: "radio",
+      },
+      options: ["contained", "outlined", "ghost"],
+      defaultValue: "contained",
+      table: {
+        defaultValue: { summary: "contained" },
+      },
+    },
+    color: {
+      control: {
+        type: "radio",
+      },
+      options: ["primary", "secondary", "error"],
+      defaultValue: "primary",
+      description: "Button has three Kinds Contained, Ghost, error",
+      table: {
+        defaultValue: { summary: "primary" },
+      },
+    },
     disabled: {
       control: {
         type: "boolean",
@@ -50,7 +71,7 @@ export default {
   },
   parameters: {
     controls: {
-      include: ["onClick", "children", "disabled", "size"],
+      include: ["onClick", "children", "disabled", "size", "kind", "color"],
     },
     docs: {
       description: {
