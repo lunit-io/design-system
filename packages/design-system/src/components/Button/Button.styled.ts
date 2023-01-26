@@ -11,7 +11,7 @@ type KindStyleParams = Pick<ButtonProps, "kind" | "color"> & {
   token: ColorToken;
 };
 
-const sizeStyle = ({
+export const sizeStyle = ({
   size,
   kind,
   hasIconOnly,
@@ -39,7 +39,7 @@ const sizeStyle = ({
   }),
 });
 
-const kindStyle = ({ kind, color, token }: KindStyleParams) => ({
+export const kindStyle = ({ kind, color, token }: KindStyleParams) => ({
   // kind: container
   ...(kind === "contained" &&
     color === "primary" && {
@@ -128,7 +128,7 @@ const kindStyle = ({ kind, color, token }: KindStyleParams) => ({
     }),
 });
 
-const commonStyle = ({ token }: { token: ColorToken }) =>
+export const commonStyle = ({ token }: { token: ColorToken }) =>
   ({
     fontWeight: "500",
     borderRadius: "8px",
