@@ -25,6 +25,7 @@ const Button = (props: ButtonProps) => {
           color={color}
           size={size}
           hasIconOnly={hasIconOnly}
+          disableRipple
           disableFocusRipple
           {...buttonProps}
         >
@@ -41,6 +42,7 @@ const Button = (props: ButtonProps) => {
           color="primary"
           size={size}
           hasIconOnly={hasIconOnly}
+          disableRipple
           disableFocusRipple
           {...buttonProps}
         >
