@@ -194,3 +194,4 @@ const ButtonTemplate: ComponentStory<typeof Button> = (args) => {
 };
 
 export const KindGhost = ButtonTemplate.bind({});
+KindGhost.storyName = "Kind: Ghost";

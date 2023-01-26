@@ -151,3 +151,4 @@ const ButtonTemplate: ComponentStory<typeof Button> = ({
 };
 
 export const KindOutlined = ButtonTemplate.bind({});
+KindOutlined.storyName = "Kind: Outlined";

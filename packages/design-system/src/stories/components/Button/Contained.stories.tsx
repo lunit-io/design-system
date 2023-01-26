@@ -190,3 +190,4 @@ const ButtonTemplate: ComponentStory<typeof Button> = (args) => {
 };
 
 export const KindContained = ButtonTemplate.bind({});
+KindContained.storyName = "Kind: Contained";
