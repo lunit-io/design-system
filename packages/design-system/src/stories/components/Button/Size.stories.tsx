@@ -111,13 +111,10 @@ const ButtonTemplate: ComponentStory<typeof Button> = (args) => {
                   startIcon={<Bell />}
                   size={size}
                 />
+                <Button {...args} size={size}>
+                  {args.children}
+                </Button>
                 <Button {...args} startIcon={<Bell />} size={size}>
-                  {args.children}
-                </Button>
-                <Button {...args} size={size}>
-                  {args.children}
-                </Button>
-                <Button {...args} size={size}>
                   {args.children}
                 </Button>
               </TableCell>
