@@ -133,7 +133,7 @@ const commonStyle = ({ token }: { token: ColorToken }) =>
         height: `calc(100% + ${PADDING_OF_FOCUS}px)`,
         content: '""',
         borderRadius: "11px",
-        border: `1px solid ${token.core.focused}`,
+        outline: `1px solid ${token.core.focused}`,
         boxSizing: "border-box",
       },
     },
