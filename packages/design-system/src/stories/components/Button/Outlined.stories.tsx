@@ -62,7 +62,7 @@ export default {
   parameters: {
     pseudo: {
       hover: ["#hover"],
-      focus: [".Mui-focusVisible"],
+      focusVisible: [".Mui-focusVisible"],
     },
     controls: {
       include: ["onClick", "children", "size", "color"],
@@ -150,4 +150,4 @@ const ButtonTemplate: ComponentStory<typeof Button> = ({
   );
 };
 
-export const Outlined = ButtonTemplate.bind({});
+export const KindOutlined = ButtonTemplate.bind({});

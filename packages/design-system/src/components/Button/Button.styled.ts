@@ -126,7 +126,7 @@ const commonStyle = ({ token }: { token: ColorToken }) =>
     fontWeight: "500",
     borderRadius: "8px",
     textTransform: "initial",
-    "&:focus": {
+    "&:focus-visible": {
       "&.MuiButtonBase-root::after": {
         position: "absolute",
         width: `calc(100% + ${PADDING_OF_FOCUS}px)`,

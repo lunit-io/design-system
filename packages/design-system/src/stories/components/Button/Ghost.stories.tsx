@@ -54,7 +54,7 @@ export default {
   parameters: {
     pseudo: {
       hover: ["#hover"],
-      focus: [".Mui-focusVisible"],
+      focusVisible: [".Mui-focusVisible"],
     },
     controls: {
       include: ["onClick", "children", "size"],
@@ -193,4 +193,4 @@ const ButtonTemplate: ComponentStory<typeof Button> = (args) => {
   );
 };
 
-export const Ghost = ButtonTemplate.bind({});
+export const KindGhost = ButtonTemplate.bind({});
