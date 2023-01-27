@@ -10,9 +10,9 @@ const Button = (props: ButtonProps) => {
     kind = "contained",
     size = "small",
     color = "primary",
+    hasIconOnly = false,
     className,
     children,
-    hasIconOnly,
     ...buttonProps
   } = props;
 
