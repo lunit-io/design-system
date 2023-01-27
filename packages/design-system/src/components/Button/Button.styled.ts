@@ -4,6 +4,7 @@ import { Button as MuiButton } from "@mui/material";
 import { ColorToken } from "@/foundation/colors/types";
 import { PADDING_OF_FOCUS, OUTLINED_BORDER_WIDTH } from "./const";
 import { getButtonPaddingBySizeAndKind } from "./utils/getButtonPaddingBySizeAndKind";
+import { getIconButtonPaddingBySizeAndKind } from "./utils/getIconButtonPaddingBySizeAndKind";
 
 import type { ButtonProps } from "./Button.types";
 import { ToggleButtonProps } from "../ToggleButton/ToggleButton.types";
@@ -22,7 +23,7 @@ export const sizeStyle = ({
   ...(size === "small" && {
     padding: `${
       hasIconOnly
-        ? "4px"
+        ? getIconButtonPaddingBySizeAndKind({ kind, size, selected })
         : getButtonPaddingBySizeAndKind({ kind, size, selected })
     }`,
     minWidth: "28px",
@@ -31,7 +32,7 @@ export const sizeStyle = ({
   ...(size === "medium" && {
     padding: `${
       hasIconOnly
-        ? "8px"
+        ? getIconButtonPaddingBySizeAndKind({ kind, size, selected })
         : getButtonPaddingBySizeAndKind({ kind, size, selected })
     }`,
     minWidth: "36px",
@@ -40,7 +41,7 @@ export const sizeStyle = ({
   ...(size === "large" && {
     padding: `${
       hasIconOnly
-        ? "12px"
+        ? getIconButtonPaddingBySizeAndKind({ kind, size, selected })
         : getButtonPaddingBySizeAndKind({ kind, size, selected })
     }`,
     minWidth: "44px",
