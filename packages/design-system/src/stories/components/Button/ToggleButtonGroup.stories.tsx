@@ -140,7 +140,6 @@ const ToggleButtonTemplate: ComponentStory<typeof ToggleButton> = (arg) => {
     <ToggleButtonGroup
       value={alignment}
       exclusive
-      size="small"
       onChange={handleAlignment}
       aria-label="text alignment"
       sx={{

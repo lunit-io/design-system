@@ -1,16 +1,9 @@
 import React from "react";
-import {
-  Box,
-  Table,
-  TableHead,
-  TableRow,
-  TableBody,
-  TableCell,
-  Typography,
-} from "@mui/material";
+import { Box } from "@mui/material";
 import { action } from "@storybook/addon-actions";
 
 import ToggleButton from "@/components/ToggleButton";
+import ToggleButtonGroup from "@/components/ToggleButtonGroup";
 
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
 
@@ -23,15 +16,15 @@ export default {
       table: { type: { summary: "any" } },
     },
     selected: {
-      control: {
-        type: "boolean",
-      },
+      control: false,
       table: {
         defaultValue: { summary: "false" },
       },
     },
     selectedColor: {
-      control: false,
+      control: {
+        type: "radio",
+      },
       options: ["primary", "secondary"],
       description:
         "The color of the button when it is in an select state. It has nothing to do with active button",
@@ -86,7 +79,7 @@ export default {
     onClick: {
       type: "function",
       control: {
-        type: "select",
+        type: "radio",
       },
       options: ["function", undefined],
       mapping: {
@@ -99,8 +92,8 @@ export default {
     },
   },
   args: {
-    selected: true,
     kind: "contained",
+    selectedColor: "primary",
   },
   parameters: {
     controls: {
@@ -133,40 +126,42 @@ export default {
   ],
 } as ComponentMeta<typeof ToggleButton>;
 
-const Template: ComponentStory<typeof ToggleButton> = (arg) => (
-  <Table sx={{ width: 330 }}>
-    <TableHead>
-      <TableRow>
-        <TableCell>
-          <Typography variant="body2_m">Selected color</Typography>
-        </TableCell>
-        <TableCell>
-          <Typography variant="body2_m">Primary</Typography>
-        </TableCell>
-        <TableCell>
-          <Typography variant="body2_m">Secondary</Typography>
-        </TableCell>
-      </TableRow>
-    </TableHead>
-    <TableBody>
-      <TableRow>
-        <TableCell>
-          <Typography variant="body2_m">Selected</Typography>
-        </TableCell>
-        <TableCell>
-          <ToggleButton {...arg} value="first">
-            {arg.children}
-          </ToggleButton>
-        </TableCell>
-        <TableCell>
-          <ToggleButton {...arg} selectedColor="secondary" value="second">
-            {arg.children}
-          </ToggleButton>
-        </TableCell>
-      </TableRow>
-    </TableBody>
-  </Table>
-);
+const ToggleButtonTemplate: ComponentStory<typeof ToggleButton> = (arg) => {
+  const [alignments, setAlignments] = React.useState(() => ["left", "center"]);
 
-export const ToggleButtonStory = Template.bind({});
-ToggleButtonStory.storyName = "ToggleButton: Color";
+  const handleAlignments = (
+    event: React.MouseEvent<HTMLElement>,
+    newAlignment: string[]
+  ) => {
+    setAlignments(newAlignment);
+  };
+
+  return (
+    <ToggleButtonGroup
+      value={alignments}
+      onChange={handleAlignments}
+      aria-label="text alignment"
+      sx={{
+        "& button": {
+          marginRight: "7px",
+        },
+      }}
+    >
+      <ToggleButton {...arg} value="left">
+        left
+      </ToggleButton>
+      <ToggleButton {...arg} value="center">
+        center
+      </ToggleButton>
+      <ToggleButton {...arg} value="right">
+        right
+      </ToggleButton>
+      <ToggleButton {...arg} value="justify" disabled>
+        justify
+      </ToggleButton>
+    </ToggleButtonGroup>
+  );
+};
+
+export const ToggleButtonMultiple = ToggleButtonTemplate.bind({});
+ToggleButtonMultiple.storyName = "ToggleButton: Multiple";
