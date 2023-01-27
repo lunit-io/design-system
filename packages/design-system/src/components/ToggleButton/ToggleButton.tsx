@@ -10,6 +10,7 @@ const ToggleButton = (props: ToggleButtonProps) => {
     color = "primary",
     selectedColor = "primary",
     className,
+    selected,
     children,
     ...buttonProps
   } = props;
@@ -18,6 +19,7 @@ const ToggleButton = (props: ToggleButtonProps) => {
       {kind === "contained" || kind === "ghost" ? (
         <CustomToggleButton
           className={`${kind} ${className ? className : ""}`}
+          selected={selected}
           kind={kind}
           color={color}
           size={size}
@@ -33,6 +35,7 @@ const ToggleButton = (props: ToggleButtonProps) => {
       ) : (
         <CustomToggleButton
           className={`outlined ${className ? className : ""}`}
+          selected={selected}
           kind="outlined"
           color="primary"
           size={size}
