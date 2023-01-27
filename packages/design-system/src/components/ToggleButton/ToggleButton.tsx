@@ -1,5 +1,5 @@
-import Typography from "@mui/material/Typography";
 import React from "react";
+import Typography from "@mui/material/Typography";
 import { CustomToggleButton } from "./ToggleButton.styled";
 import { ToggleButtonProps } from "./ToggleButton.types";
 
@@ -9,16 +9,21 @@ const ToggleButton = (props: ToggleButtonProps) => {
     size = "small",
     color = "primary",
     selectedColor = "primary",
-    className,
+    className = "",
     selected,
     children,
     ...buttonProps
   } = props;
+
+  const excludeToggleGroupClass = className
+    .replace("MuiToggleButtonGroup-grouped", "")
+    .replace("MuiToggleButtonGroup-groupedHorizontal", "");
+
   return (
     <>
       {kind === "contained" || kind === "ghost" ? (
         <CustomToggleButton
-          className={`${kind} ${className ? className : ""}`}
+          className={`${kind} ${excludeToggleGroupClass}`}
           selected={selected}
           kind={kind}
           color={color}
@@ -34,7 +39,7 @@ const ToggleButton = (props: ToggleButtonProps) => {
         </CustomToggleButton>
       ) : (
         <CustomToggleButton
-          className={`outlined ${className ? className : ""}`}
+          className={`outlined ${excludeToggleGroupClass}`}
           selected={selected}
           kind="outlined"
           color="primary"
