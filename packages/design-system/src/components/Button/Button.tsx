@@ -20,7 +20,7 @@ const Button = (props: ButtonProps) => {
     <>
       {kind === "contained" || kind === "ghost" ? (
         <CustomButton
-          className={`${kind} ${className ?? className}`}
+          className={`${kind} ${className ? className : ""}`}
           kind={kind}
           color={color}
           size={size}
@@ -37,7 +37,7 @@ const Button = (props: ButtonProps) => {
         </CustomButton>
       ) : (
         <CustomButton
-          className={`outlined ${className ?? className}`}
+          className={`outlined ${className ? className : ""}`}
           kind="outlined"
           color="primary"
           size={size}
