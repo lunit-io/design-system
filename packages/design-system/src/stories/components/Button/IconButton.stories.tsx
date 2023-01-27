@@ -11,6 +11,17 @@ export default {
   title: "Components/Button",
   component: Button,
   argTypes: {
+    hasIconOnly: {
+      control: {
+        type: "boolean",
+      },
+      description: `Option to handle so that only icons can be inserted
+          \n If set to false, you can add Text.`,
+      defaultValue: "true",
+      table: {
+        defaultValue: { summary: "false" },
+      },
+    },
     kind: {
       control: {
         type: "radio",
@@ -68,7 +79,7 @@ export default {
   },
   parameters: {
     controls: {
-      include: ["onClick", "disabled", "size", "kind", "color"],
+      include: ["onClick", "hasIconOnly", "disabled", "size", "kind", "color"],
     },
     docs: {
       description: {
@@ -88,7 +99,7 @@ export default {
 } as ComponentMeta<typeof Button>;
 
 export const IconButton: ComponentStory<typeof Button> = (arg) => (
-  <Button startIcon={<Bell />} hasIconOnly {...arg}>
-    {arg.children}
+  <Button startIcon={<Bell />} {...arg}>
+    Icon
   </Button>
 );
