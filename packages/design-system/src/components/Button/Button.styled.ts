@@ -6,6 +6,7 @@ import { PADDING_OF_FOCUS, OUTLINED_BORDER_WIDTH } from "./const";
 import { getButtonPaddingBySizeAndKind } from "./utils/getButtonPaddingBySizeAndKind";
 
 import type { ButtonProps } from "./Button.types";
+import { ToggleButtonProps } from "../ToggleButton/ToggleButton.types";
 
 type KindStyleParams = Pick<ButtonProps, "kind" | "color"> & {
   token: ColorToken;
@@ -15,24 +16,32 @@ export const sizeStyle = ({
   size,
   kind,
   hasIconOnly,
-}: Pick<ButtonProps, "size" | "hasIconOnly" | "kind">) => ({
+  selected = false,
+}: Pick<ButtonProps, "size" | "hasIconOnly" | "kind"> &
+  Pick<ToggleButtonProps, "selected">) => ({
   ...(size === "small" && {
     padding: `${
-      hasIconOnly ? "4px" : getButtonPaddingBySizeAndKind({ kind, size })
+      hasIconOnly
+        ? "4px"
+        : getButtonPaddingBySizeAndKind({ kind, size, selected })
     }`,
     minWidth: "28px",
     minHeight: "28px",
   }),
   ...(size === "medium" && {
     padding: `${
-      hasIconOnly ? "8px" : getButtonPaddingBySizeAndKind({ kind, size })
+      hasIconOnly
+        ? "8px"
+        : getButtonPaddingBySizeAndKind({ kind, size, selected })
     }`,
     minWidth: "36px",
     minHeight: "36px",
   }),
   ...(size === "large" && {
     padding: `${
-      hasIconOnly ? "12px" : getButtonPaddingBySizeAndKind({ kind, size })
+      hasIconOnly
+        ? "12px"
+        : getButtonPaddingBySizeAndKind({ kind, size, selected })
     }`,
     minWidth: "44px",
     minHeight: "44px",
@@ -50,6 +59,7 @@ export const kindStyle = ({ kind, color, token }: KindStyleParams) => ({
       },
       "&.Mui-disabled": {
         opacity: 0.38,
+        border: "none",
         color: token.component.btn_contained_primary_text,
       },
     }),
@@ -62,6 +72,7 @@ export const kindStyle = ({ kind, color, token }: KindStyleParams) => ({
       },
       "&.Mui-disabled": {
         opacity: 0.38,
+        border: "none",
         color: token.component.btn_contained_secondary_text,
       },
     }),
@@ -74,6 +85,7 @@ export const kindStyle = ({ kind, color, token }: KindStyleParams) => ({
       },
       "&.Mui-disabled": {
         opacity: 0.38,
+        border: "none",
         color: token.component.btn_contained_error_text,
       },
     }),
@@ -87,6 +99,7 @@ export const kindStyle = ({ kind, color, token }: KindStyleParams) => ({
       },
       "&.Mui-disabled": {
         opacity: 0.38,
+        border: "none",
         color: token.component.btn_ghost_primary_text,
       },
     }),
@@ -99,6 +112,7 @@ export const kindStyle = ({ kind, color, token }: KindStyleParams) => ({
       },
       "&.Mui-disabled": {
         opacity: 0.38,
+        border: "none",
         color: token.component.btn_ghost_secondary_text,
       },
     }),
@@ -110,6 +124,7 @@ export const kindStyle = ({ kind, color, token }: KindStyleParams) => ({
       },
       "&.Mui-disabled": {
         opacity: 0.38,
+        border: "none",
         color: token.component.btn_ghost_error_text,
       },
     }),
@@ -146,7 +161,7 @@ export const commonStyle = ({ token }: { token: ColorToken }) =>
     },
   } as const);
 
-const iconStyle = ({
+export const iconStyle = ({
   size,
   hasIconOnly,
 }: Pick<ButtonProps, "size" | "hasIconOnly">) => ({
