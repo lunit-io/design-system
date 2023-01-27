@@ -58,6 +58,22 @@ export default {
         defaultValue: { summary: "primary" },
       },
     },
+    kind: {
+      control: false,
+      options: ["contained", "outlined", "ghost"],
+      description: "Button has three Kinds Contained, Outlined, Ghost",
+      defaultValue: "contained",
+      table: {
+        defaultValue: { summary: "contained" },
+      },
+    },
+    disabled: {
+      control: false,
+      defaultValue: false,
+      table: {
+        defaultValue: { summary: "false" },
+      },
+    },
   },
   parameters: {
     pseudo: {
@@ -65,7 +81,15 @@ export default {
       focusVisible: [".Mui-focusVisible"],
     },
     controls: {
-      include: ["onClick", "children", "size", "color"],
+      include: [
+        "onClick",
+        "children",
+        "size",
+        "color",
+        "kind",
+        "color",
+        "disabled",
+      ],
     },
     docs: {
       description: {

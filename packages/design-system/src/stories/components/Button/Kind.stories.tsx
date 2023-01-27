@@ -65,10 +65,19 @@ export default {
         defaultValue: { summary: "primary" },
       },
     },
+    kind: {
+      control: false,
+      options: ["contained", "outlined", "ghost"],
+      description: "Button has three Kinds Contained, Outlined, Ghost",
+      defaultValue: "contained",
+      table: {
+        defaultValue: { summary: "contained" },
+      },
+    },
   },
   parameters: {
     controls: {
-      include: ["onClick", "children", "size", "color", "disabled"],
+      include: ["onClick", "children", "size", "color", "disabled", "kind"],
     },
     docs: {
       description: {

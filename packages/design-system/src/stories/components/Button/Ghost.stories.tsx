@@ -50,6 +50,30 @@ export default {
       description:
         "It is a callback function that is called when the button is clicked.",
     },
+    kind: {
+      control: false,
+      options: ["contained", "outlined", "ghost"],
+      description: "Button has three Kinds Contained, Outlined, Ghost",
+      defaultValue: "contained",
+      table: {
+        defaultValue: { summary: "contained" },
+      },
+    },
+    color: {
+      control: false,
+      options: ["primary", "secondary", "error"],
+      defaultValue: "primary",
+      table: {
+        defaultValue: { summary: "primary" },
+      },
+    },
+    disabled: {
+      control: false,
+      defaultValue: false,
+      table: {
+        defaultValue: { summary: "false" },
+      },
+    },
   },
   parameters: {
     pseudo: {
@@ -57,7 +81,7 @@ export default {
       focusVisible: [".Mui-focusVisible"],
     },
     controls: {
-      include: ["onClick", "children", "size"],
+      include: ["onClick", "children", "size", "kind", "color", "disabled"],
     },
     docs: {
       description: {
