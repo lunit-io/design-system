@@ -88,14 +88,6 @@ export default {
       },
     },
   },
-  decorators: [
-    /**
-     * TODO
-     * Since Color Token system will be changed, below className should be changed accordingly
-     * Also, the hover color will be set again with the color token system completion
-     */
-    (Story) => <Box className="dark4">{Story()}</Box>,
-  ],
 } as ComponentMeta<typeof Button>;
 
 export const IconButton: ComponentStory<typeof Button> = (arg) => (

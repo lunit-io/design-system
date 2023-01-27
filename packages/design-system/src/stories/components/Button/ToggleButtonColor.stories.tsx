@@ -123,14 +123,6 @@ export default {
       },
     },
   },
-  decorators: [
-    /**
-     * TODO
-     * Since Color Token system will be changed, below className should be changed accordingly
-     * Also, the hover color will be set again with the color token system completion
-     */
-    (Story) => <Box className="light1">{Story()}</Box>,
-  ],
 } as ComponentMeta<typeof ToggleButton>;
 
 const Template: ComponentStory<typeof ToggleButton> = (arg) => (
