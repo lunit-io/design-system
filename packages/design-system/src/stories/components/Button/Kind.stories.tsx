@@ -61,7 +61,6 @@ export default {
       },
       options: ["primary", "secondary", "error"],
       defaultValue: "primary",
-      description: "Button has three Kinds Contained, Ghost, error",
       table: {
         defaultValue: { summary: "primary" },
       },

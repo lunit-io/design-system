@@ -19,6 +19,7 @@ export default {
         type: "radio",
       },
       options: ["contained", "outlined", "ghost"],
+      description: "Button has three Kinds Contained, Outlined, Ghost",
       defaultValue: "contained",
       table: {
         defaultValue: { summary: "contained" },
@@ -30,7 +31,6 @@ export default {
       },
       options: ["primary", "secondary", "error"],
       defaultValue: "primary",
-      description: "Button has three Kinds Contained, Ghost, error",
       table: {
         defaultValue: { summary: "primary" },
       },
