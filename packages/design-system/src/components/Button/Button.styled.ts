@@ -171,12 +171,17 @@ export const iconStyle = ({
     height: "20px",
     margin: 0,
     marginRight: hasIconOnly ? "0px" : size === "large" ? "8px" : "4px",
+
+    // This style was added for Mui Button Svg Icon handling
+    "*:nth-of-type(1)": {
+      fontSize: "20px",
+    },
   },
 });
 
 export const CustomButton = styled(MuiButton, {
   shouldForwardProp: (prop: string) => {
-    return !["kind", "size", "color", "hasIconOnly"].includes(prop);
+    return !["kind", "hasIconOnly"].includes(prop);
   },
 })<ButtonProps>(
   ({

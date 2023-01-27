@@ -11,9 +11,7 @@ import {
 
 export const CustomToggleButton = styled(MuiToggleButton, {
   shouldForwardProp: (prop: string) => {
-    return !["kind", "size", "color", "selectedColor", "hasIconOnly"].includes(
-      prop
-    );
+    return !["kind", "selectedColor", "hasIconOnly"].includes(prop);
   },
 })<ToggleButtonProps>(
   ({
