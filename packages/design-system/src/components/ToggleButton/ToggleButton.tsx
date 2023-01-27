@@ -9,6 +9,7 @@ const ToggleButton = (props: ToggleButtonProps) => {
     size = "small",
     color = "primary",
     selectedColor = "primary",
+    hasIconOnly = false,
     className = "",
     selected,
     children,
@@ -28,14 +29,17 @@ const ToggleButton = (props: ToggleButtonProps) => {
           kind={kind}
           color={color}
           size={size}
+          hasIconOnly={hasIconOnly}
           selectedColor={selectedColor}
           disableRipple
           disableFocusRipple
           {...buttonProps}
         >
-          <Typography variant={size === "large" ? "button1" : "button2"}>
-            {children}
-          </Typography>
+          {!hasIconOnly && (
+            <Typography variant={size === "large" ? "button1" : "button2"}>
+              {children}
+            </Typography>
+          )}
         </CustomToggleButton>
       ) : (
         <CustomToggleButton
@@ -44,14 +48,17 @@ const ToggleButton = (props: ToggleButtonProps) => {
           kind="outlined"
           color="primary"
           size={size}
+          hasIconOnly={hasIconOnly}
           selectedColor={selectedColor}
           disableRipple
           disableFocusRipple
           {...buttonProps}
         >
-          <Typography variant={size === "large" ? "button1" : "button2"}>
-            {children}
-          </Typography>
+          {!hasIconOnly && (
+            <Typography variant={size === "large" ? "button1" : "button2"}>
+              {children}
+            </Typography>
+          )}
         </CustomToggleButton>
       )}
     </>
