@@ -39,7 +39,7 @@ const ToggleButton = (props: ToggleButtonProps) => {
           disableFocusRipple
           {...buttonProps}
         >
-          {!hasIconOnly && (
+          {!hasIconOnly ? (
             <Typography variant={size === "large" ? "button1" : "button2"}>
               {icon ? (
                 <IconAndChildrenWrapper>
@@ -50,6 +50,8 @@ const ToggleButton = (props: ToggleButtonProps) => {
                 children
               )}
             </Typography>
+          ) : (
+            icon
           )}
         </CustomToggleButton>
       ) : (
@@ -65,7 +67,7 @@ const ToggleButton = (props: ToggleButtonProps) => {
           disableFocusRipple
           {...buttonProps}
         >
-          {!hasIconOnly && (
+          {!hasIconOnly ? (
             <Typography variant={size === "large" ? "button1" : "button2"}>
               {icon ? (
                 <IconAndChildrenWrapper>
@@ -76,6 +78,8 @@ const ToggleButton = (props: ToggleButtonProps) => {
                 children
               )}
             </Typography>
+          ) : (
+            icon
           )}
         </CustomToggleButton>
       )}
