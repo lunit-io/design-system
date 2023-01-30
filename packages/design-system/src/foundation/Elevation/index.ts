@@ -2,19 +2,18 @@ import paletteOptions from "../colors";
 import { createCSSVarNames, createCSSVars } from "./utils";
 
 export const shadows = {
-  shadow_00: paletteOptions.token.core.shadow_color_00,
-  shadow_01: `0px 4px 8px ${paletteOptions.token.core.shadow_color_01}`,
-  shadow_02: `0px 3px 12px ${paletteOptions.token.core.shadow_color_02}`,
-  shadow_03: `0px 12px 24px ${paletteOptions.token.core.shadow_color_03}`,
-  shadow_04: `0px 12px 44px ${paletteOptions.token.core.shadow_color_04}`,
+  shadow1: `0px 4px 8px ${paletteOptions.token.core.shadow_01}`,
+  shadow2: `0px 3px 12px ${paletteOptions.token.core.shadow_02}`,
+  shadow3: `0px 12px 24px ${paletteOptions.token.core.shadow_03}`,
+  shadow4: `0px 12px 44px ${paletteOptions.token.core.shadow_04}`,
 };
 
 const shadowVars = createCSSVarNames(shadows);
 
 export const elevations = {
   elevation_00: "none",
-  elevation_01: `${shadowVars.shadow_01}, ${shadowVars.shadow_02}`,
-  elevation_02: `${shadowVars.shadow_03}, ${shadowVars.shadow_04}`,
+  elevation_01: `${shadowVars.shadow1}, ${shadowVars.shadow2}`,
+  elevation_02: `${shadowVars.shadow3}, ${shadowVars.shadow4}`,
 };
 
 export const elevationOptions = {
@@ -24,8 +23,8 @@ export const elevationOptions = {
 
 export const createElevationCssBaseline = () => {
   return {
-    // :root에 모든 theme이 정의되어 있지 않으므로 .base*에서 찾아야 함
-    ".base00, .base10, .base70, .base80, .base85, .base90": {
+    // :root에 모든 theme이 정의되어 있지 않으므로 surface*에서 찾아야 함
+    ".light1, .light2, .dark1, .dark2, .dark3, .dark4": {
       ...createCSSVars(shadows),
       ...createCSSVars(elevations),
       // `--elevation-shadow`가 정의되지 않아도 `box-shadow: var(--elevation-shadow)` 구문을 해석하려면 필요함
