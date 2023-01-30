@@ -11,7 +11,7 @@ import {
 
 export const CustomToggleButton = styled(MuiToggleButton, {
   shouldForwardProp: (prop: string) => {
-    return !["kind", "selectedColor", "hasIconOnly"].includes(prop);
+    return !["icon", "kind", "selectedColor", "hasIconOnly"].includes(prop);
   },
 })<ToggleButtonProps>(
   ({
@@ -48,3 +48,8 @@ export const CustomToggleButton = styled(MuiToggleButton, {
     };
   }
 );
+
+export const IconAndChildrenWrapper = styled("div")({
+  display: "flex",
+  alignItems: "center",
+});

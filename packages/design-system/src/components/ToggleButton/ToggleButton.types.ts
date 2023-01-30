@@ -4,6 +4,7 @@ interface ToggleButtonBaseProps extends MuiToggleButtonProps {
   selectedColor?: "primary" | "secondary";
   // Add type for distinction only because only the style of the icon button is different
   hasIconOnly?: boolean;
+  icon?: React.ReactNode;
 }
 interface ContainedToggleButtonProps
   extends Omit<ToggleButtonBaseProps, "variant"> {
