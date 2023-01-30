@@ -15,7 +15,7 @@ import ToggleButton from "@/components/ToggleButton";
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
 
 export default {
-  title: "Components/Button",
+  title: "Components/ToggleButton",
   component: ToggleButton,
   argTypes: {
     icon: {
@@ -26,15 +26,6 @@ export default {
       table: {
         defaultValue: { summary: "undefined" },
         type: { summary: "React.ReactNode" },
-      },
-    },
-    hasIconOnly: {
-      control: false,
-      description: `Option to handle so that only icons can be inserted
-          \n If set to false, you can add Text.`,
-      defaultValue: "true",
-      table: {
-        defaultValue: { summary: "false" },
       },
     },
     value: {
@@ -128,7 +119,6 @@ export default {
         "value",
         "kind",
         "selectedColor",
-        "hasIconOnly",
         "onClick",
         "children",
         "disabled",
@@ -139,8 +129,8 @@ export default {
     },
     docs: {
       description: {
-        component: `It is a Clickable default Button. For more details, please
-				see [Material-UI Button](https://mui.com/material-ui/react-button/).`,
+        component: `A Toggle Button can be used to group related options. please
+				see [Material-UI Toggle Button](https://mui.com/material-ui/react-toggle-button/).`,
       },
     },
   },
@@ -167,7 +157,7 @@ const Template: ComponentStory<typeof ToggleButton> = (arg) => (
           <Typography variant="body2_m">Selected</Typography>
         </TableCell>
         <TableCell>
-          <ToggleButton {...arg} hasIconOnly icon={<Bell />} value="first">
+          <ToggleButton {...arg} icon={<Bell />} value="first">
             {arg.children}
           </ToggleButton>
         </TableCell>
@@ -175,7 +165,6 @@ const Template: ComponentStory<typeof ToggleButton> = (arg) => (
           <ToggleButton
             {...arg}
             icon={<Bell />}
-            hasIconOnly
             selectedColor="secondary"
             value="second"
           >
@@ -187,5 +176,5 @@ const Template: ComponentStory<typeof ToggleButton> = (arg) => (
   </Table>
 );
 
-export const ToggleButtonWithIconOnlyStory = Template.bind({});
-ToggleButtonWithIconOnlyStory.storyName = "ToggleButton: With Icon only";
+export const ToggleButtonWithIconStory = Template.bind({});
+ToggleButtonWithIconStory.storyName = "Icon";
