@@ -177,6 +177,12 @@ export const iconStyle = ({
       fontSize: "20px",
     },
   },
+  svg: {
+    width: "20px",
+    height: "20px",
+    margin: 0,
+    marginRight: hasIconOnly ? "0px" : size === "large" ? "8px" : "4px",
+  },
 });
 
 export const CustomButton = styled(MuiButton, {
