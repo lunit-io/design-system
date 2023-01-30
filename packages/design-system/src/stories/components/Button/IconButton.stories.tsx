@@ -1,5 +1,4 @@
 import React from "react";
-import { Box } from "@mui/material";
 import { Bell } from "@lunit/design-system-icons";
 import { action } from "@storybook/addon-actions";
 
@@ -11,6 +10,16 @@ export default {
   title: "Components/Button",
   component: Button,
   argTypes: {
+    icon: {
+      control: false,
+      description: `Use this prop when you want to add icon.
+        \n It is added to the left of the text criteria,
+        \n and only Icon can be checked when used with hasIconOnly.`,
+      table: {
+        defaultValue: { summary: "undefined" },
+        type: { summary: "React.ReactNode" },
+      },
+    },
     hasIconOnly: {
       control: {
         type: "boolean",
@@ -79,7 +88,15 @@ export default {
   },
   parameters: {
     controls: {
-      include: ["onClick", "hasIconOnly", "disabled", "size", "kind", "color"],
+      include: [
+        "icon",
+        "onClick",
+        "hasIconOnly",
+        "disabled",
+        "size",
+        "kind",
+        "color",
+      ],
     },
     docs: {
       description: {
