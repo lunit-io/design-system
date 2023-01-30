@@ -90,11 +90,11 @@ const ButtonTemplate: ComponentStory<typeof Button> = (args) => {
         <TableRow>
           {sizeList.map((size) => (
             <TableCell key={size} sx={{ "& button": { marginRight: "10px" } }}>
-              <Button {...args} hasIconOnly startIcon={<Bell />} size={size} />
+              <Button {...args} hasIconOnly icon={<Bell />} size={size} />
               <Button {...args} size={size}>
                 {args.children}
               </Button>
-              <Button {...args} startIcon={<Bell />} size={size}>
+              <Button {...args} icon={<Bell />} size={size}>
                 {args.children}
               </Button>
             </TableCell>

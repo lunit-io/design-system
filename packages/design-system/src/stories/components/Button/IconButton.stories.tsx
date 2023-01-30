@@ -108,7 +108,7 @@ export default {
 } as ComponentMeta<typeof Button>;
 
 export const IconButton: ComponentStory<typeof Button> = (arg) => (
-  <Button startIcon={<Bell />} {...arg}>
+  <Button icon={<Bell />} {...arg}>
     Icon
   </Button>
 );

@@ -11,6 +11,7 @@ const Button = (props: ButtonProps) => {
     size = "small",
     color = "primary",
     hasIconOnly = false,
+    icon,
     className,
     children,
     ...buttonProps
@@ -24,6 +25,7 @@ const Button = (props: ButtonProps) => {
           kind={kind}
           color={color}
           size={size}
+          startIcon={icon}
           hasIconOnly={hasIconOnly}
           disableRipple
           disableFocusRipple
