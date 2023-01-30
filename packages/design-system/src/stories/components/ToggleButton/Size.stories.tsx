@@ -11,7 +11,7 @@ import {
 import { Bell } from "@lunit/design-system-icons";
 import { action } from "@storybook/addon-actions";
 
-import Button from "@/components/Button";
+import ToggleButton from "@/components/ToggleButton";
 
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
 import type { ButtonProps } from "@/components/Button/Button.types";
@@ -21,8 +21,8 @@ type SizeValues = Size[keyof Size];
 const sizeList: SizeValues[] = ["small", "medium", "large"];
 
 export default {
-  title: "Components/Button",
-  component: Button,
+  title: "Components/ToggleButton",
+  component: ToggleButton,
   argTypes: {
     children: {
       type: "string",
@@ -37,19 +37,27 @@ export default {
         defaultValue: { summary: "false" },
       },
     },
-    onClick: {
+    onChange: {
       type: "function",
-      control: {
-        type: "radio",
-      },
+      control: false,
       options: ["function", undefined],
       mapping: {
-        function: action("onClick"),
+        function: action("onChange"),
         undefined: undefined,
       },
       defaultValue: "function",
-      description:
-        "It is a callback function that is called when the button is clicked.",
+    },
+  },
+  selectedColor: {
+    control: {
+      type: "radio",
+    },
+    defaultValue: "primary",
+    options: ["primary", "secondary"],
+    description:
+      "The color of the button when it is in an select state. It has nothing to do with active button",
+    table: {
+      defaultValue: { summary: "primary" },
     },
   },
   size: {
@@ -62,7 +70,7 @@ export default {
   },
   parameters: {
     controls: {
-      include: ["onClick", "children", "disabled", "size"],
+      include: ["onChange", "children", "disabled", "size", "selectedColor"],
     },
     docs: {
       description: {
@@ -71,9 +79,9 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof Button>;
+} as ComponentMeta<typeof ToggleButton>;
 
-const ButtonTemplate: ComponentStory<typeof Button> = (args) => {
+const ButtonTemplate: ComponentStory<typeof ToggleButton> = (args) => {
   return (
     <Table sx={{ width: 900 }}>
       <TableHead>
@@ -98,13 +106,19 @@ const ButtonTemplate: ComponentStory<typeof Button> = (args) => {
         <TableRow>
           {sizeList.map((size) => (
             <TableCell key={size} sx={{ "& button": { marginRight: "10px" } }}>
-              <Button {...args} hasIconOnly icon={<Bell />} size={size} />
-              <Button {...args} size={size}>
+              <ToggleButton
+                {...args}
+                hasIconOnly
+                icon={<Bell />}
+                size={size}
+                value="text1"
+              />
+              <ToggleButton {...args} size={size}>
                 {args.children}
-              </Button>
-              <Button {...args} icon={<Bell />} size={size}>
+              </ToggleButton>
+              <ToggleButton {...args} icon={<Bell />} size={size} value="text2">
                 {args.children}
-              </Button>
+              </ToggleButton>
             </TableCell>
           ))}
         </TableRow>

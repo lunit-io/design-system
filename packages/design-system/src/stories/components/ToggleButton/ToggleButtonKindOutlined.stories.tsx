@@ -23,7 +23,9 @@ export default {
       table: { type: { summary: "any" } },
     },
     selected: {
-      control: false,
+      control: {
+        type: "boolean",
+      },
       table: {
         defaultValue: { summary: "false" },
       },
@@ -55,6 +57,7 @@ export default {
       control: {
         type: "radio",
       },
+      defaultValue: "primary",
       options: ["primary", "secondary"],
       description:
         "The color of the button when it is in an select state. It has nothing to do with active button",

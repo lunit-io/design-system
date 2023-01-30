@@ -32,7 +32,7 @@ export default {
       control: false,
       description: `Option to handle so that only icons can be inserted
           \n If set to false, you can add Text.`,
-      defaultValue: "true",
+      defaultValue: false,
       table: {
         defaultValue: { summary: "false" },
       },
