@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { action } from "@storybook/addon-actions";
 
-import Button from "@/components/Button/Button";
+import Button from "@/components/Button";
 
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
 
