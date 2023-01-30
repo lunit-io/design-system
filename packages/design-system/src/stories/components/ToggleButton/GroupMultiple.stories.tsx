@@ -8,7 +8,7 @@ import ToggleButtonGroup from "@/components/ToggleButtonGroup";
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
 
 export default {
-  title: "Components/Button",
+  title: "Components/ToggleButton",
   component: ToggleButton,
   argTypes: {
     value: {
@@ -111,8 +111,8 @@ export default {
     },
     docs: {
       description: {
-        component: `It is a Clickable default Button. For more details, please
-				see [Material-UI Button](https://mui.com/material-ui/react-button/).`,
+        component: `A Toggle Button can be used to group related options. please
+				see [Material-UI Toggle Button](https://mui.com/material-ui/react-toggle-button/).`,
       },
     },
   },
@@ -156,4 +156,4 @@ const ToggleButtonTemplate: ComponentStory<typeof ToggleButton> = (arg) => {
 };
 
 export const ToggleButtonMultiple = ToggleButtonTemplate.bind({});
-ToggleButtonMultiple.storyName = "ToggleButton: Multiple";
+ToggleButtonMultiple.storyName = "Group: Multiple selection";

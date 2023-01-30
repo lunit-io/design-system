@@ -1,14 +1,21 @@
 import React from "react";
-import { Box } from "@mui/material";
+import {
+  Box,
+  Table,
+  TableHead,
+  TableRow,
+  TableBody,
+  TableCell,
+  Typography,
+} from "@mui/material";
 import { action } from "@storybook/addon-actions";
 
 import ToggleButton from "@/components/ToggleButton";
-import ToggleButtonGroup from "@/components/ToggleButtonGroup";
 
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
 
 export default {
-  title: "Components/Button",
+  title: "Components/ToggleButton",
   component: ToggleButton,
   argTypes: {
     value: {
@@ -16,15 +23,15 @@ export default {
       table: { type: { summary: "any" } },
     },
     selected: {
-      control: false,
+      control: {
+        type: "boolean",
+      },
       table: {
         defaultValue: { summary: "false" },
       },
     },
     selectedColor: {
-      control: {
-        type: "radio",
-      },
+      control: false,
       options: ["primary", "secondary"],
       description:
         "The color of the button when it is in an select state. It has nothing to do with active button",
@@ -79,7 +86,7 @@ export default {
     onClick: {
       type: "function",
       control: {
-        type: "radio",
+        type: "select",
       },
       options: ["function", undefined],
       mapping: {
@@ -92,8 +99,8 @@ export default {
     },
   },
   args: {
+    selected: true,
     kind: "contained",
-    selectedColor: "primary",
   },
   parameters: {
     controls: {
@@ -111,50 +118,46 @@ export default {
     },
     docs: {
       description: {
-        component: `It is a Clickable default Button. For more details, please
-				see [Material-UI Button](https://mui.com/material-ui/react-button/).`,
+        component: `A Toggle Button can be used to group related options. please
+				see [Material-UI Toggle Button](https://mui.com/material-ui/react-toggle-button/).`,
       },
     },
   },
 } as ComponentMeta<typeof ToggleButton>;
 
-const ToggleButtonTemplate: ComponentStory<typeof ToggleButton> = (arg) => {
-  const [alignment, setAlignment] = React.useState<string | null>("left");
+const Template: ComponentStory<typeof ToggleButton> = (arg) => (
+  <Table sx={{ width: 330 }}>
+    <TableHead>
+      <TableRow>
+        <TableCell>
+          <Typography variant="body2_m">Selected color</Typography>
+        </TableCell>
+        <TableCell>
+          <Typography variant="body2_m">Primary</Typography>
+        </TableCell>
+        <TableCell>
+          <Typography variant="body2_m">Secondary</Typography>
+        </TableCell>
+      </TableRow>
+    </TableHead>
+    <TableBody>
+      <TableRow>
+        <TableCell>
+          <Typography variant="body2_m">Selected</Typography>
+        </TableCell>
+        <TableCell>
+          <ToggleButton {...arg} value="first">
+            {arg.children}
+          </ToggleButton>
+        </TableCell>
+        <TableCell>
+          <ToggleButton {...arg} selectedColor="secondary" value="second">
+            {arg.children}
+          </ToggleButton>
+        </TableCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+);
 
-  const handleAlignment = (
-    event: React.MouseEvent<HTMLElement>,
-    newAlignment: string | null
-  ) => {
-    setAlignment(newAlignment);
-  };
-
-  return (
-    <ToggleButtonGroup
-      value={alignment}
-      exclusive
-      onChange={handleAlignment}
-      aria-label="text alignment"
-      sx={{
-        "& button": {
-          marginRight: "7px",
-        },
-      }}
-    >
-      <ToggleButton {...arg} value="left">
-        left
-      </ToggleButton>
-      <ToggleButton {...arg} value="center">
-        center
-      </ToggleButton>
-      <ToggleButton {...arg} value="right">
-        right
-      </ToggleButton>
-      <ToggleButton {...arg} value="justify" disabled>
-        justify
-      </ToggleButton>
-    </ToggleButtonGroup>
-  );
-};
-
-export const ToggleButtonBaseStory = ToggleButtonTemplate.bind({});
-ToggleButtonBaseStory.storyName = "ToggleButton: Group";
+export const SelectedColor = Template.bind({});
