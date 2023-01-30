@@ -1,6 +1,9 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
-import { CustomToggleButton } from "./ToggleButton.styled";
+import {
+  CustomToggleButton,
+  IconAndChildrenWrapper,
+} from "./ToggleButton.styled";
 import { ToggleButtonProps } from "./ToggleButton.types";
 
 const ToggleButton = (props: ToggleButtonProps) => {
@@ -11,6 +14,7 @@ const ToggleButton = (props: ToggleButtonProps) => {
     selectedColor = "primary",
     hasIconOnly = false,
     className = "",
+    icon,
     selected,
     children,
     ...buttonProps
@@ -37,7 +41,14 @@ const ToggleButton = (props: ToggleButtonProps) => {
         >
           {!hasIconOnly && (
             <Typography variant={size === "large" ? "button1" : "button2"}>
-              {children}
+              {icon ? (
+                <IconAndChildrenWrapper>
+                  {icon}
+                  {children}
+                </IconAndChildrenWrapper>
+              ) : (
+                children
+              )}
             </Typography>
           )}
         </CustomToggleButton>
@@ -56,7 +67,14 @@ const ToggleButton = (props: ToggleButtonProps) => {
         >
           {!hasIconOnly && (
             <Typography variant={size === "large" ? "button1" : "button2"}>
-              {children}
+              {icon ? (
+                <IconAndChildrenWrapper>
+                  {icon}
+                  {children}
+                </IconAndChildrenWrapper>
+              ) : (
+                children
+              )}
             </Typography>
           )}
         </CustomToggleButton>
