@@ -93,18 +93,6 @@ export default {
       },
     },
   },
-  decorators: [
-    /**
-     * TODO
-     * Since Color Token system will be changed, below className should be changed accordingly
-     * Also, the hover color will be set again with the color token system completion
-     */
-    (Story) => (
-      <Box className="dark1" sx={{ margin: "3em" }}>
-        {Story()}
-      </Box>
-    ),
-  ],
 } as ComponentMeta<typeof Chip>;
 
 const Template: ComponentStory<typeof Chip> = (args) => <Chip {...args} />;
