@@ -18,9 +18,28 @@ export default {
   title: "Components/ToggleButton",
   component: ToggleButton,
   argTypes: {
+    value: {
+      control: false,
+      table: { type: { summary: "any" } },
+    },
+    selected: {
+      control: false,
+      table: {
+        defaultValue: { summary: "false" },
+      },
+    },
     children: {
       type: "string",
       defaultValue: "Text",
+    },
+    disabled: {
+      control: {
+        type: "boolean",
+      },
+      defaultValue: false,
+      table: {
+        defaultValue: { summary: "false" },
+      },
     },
     size: {
       control: {
@@ -31,6 +50,27 @@ export default {
       table: {
         defaultValue: { summary: "small" },
       },
+    },
+    selectedColor: {
+      control: {
+        type: "radio",
+      },
+      options: ["primary", "secondary"],
+      description:
+        "The color of the button when it is in an select state. It has nothing to do with active button",
+      table: {
+        defaultValue: { summary: "primary" },
+      },
+    },
+    onChange: {
+      type: "function",
+      control: false,
+      options: ["function", undefined],
+      mapping: {
+        function: action("onChange"),
+        undefined: undefined,
+      },
+      defaultValue: "function",
     },
     onClick: {
       type: "function",
@@ -50,11 +90,9 @@ export default {
       control: {
         type: "radio",
       },
-      options: ["primary"],
+      options: ["primary", "secondary"],
       defaultValue: "primary",
-      description: "Outlined Button has only one color primary",
       table: {
-        type: { summary: "primary" },
         defaultValue: { summary: "primary" },
       },
     },
@@ -67,28 +105,20 @@ export default {
         defaultValue: { summary: "contained" },
       },
     },
-    disabled: {
-      control: false,
-      defaultValue: false,
-      table: {
-        defaultValue: { summary: "false" },
-      },
-    },
   },
   parameters: {
-    pseudo: {
-      hover: ["#hover"],
-      focusVisible: [".Mui-focusVisible"],
-    },
     controls: {
       include: [
+        "value",
+        "kind",
+        "selectedColor",
         "onClick",
         "children",
-        "size",
-        "color",
-        "kind",
-        "color",
         "disabled",
+        "size",
+        "selected",
+        "color",
+        "onChange",
       ],
     },
     docs: {
@@ -121,7 +151,7 @@ const ButtonTemplate: ComponentStory<typeof ToggleButton> = ({
               <Typography variant="body2_reg">Enable</Typography>
             </TableCell>
             <TableCell>
-              <ToggleButton {...restProps} kind="outlined">
+              <ToggleButton {...restProps} kind="outlined" value="text1">
                 Text
               </ToggleButton>
             </TableCell>
@@ -131,7 +161,12 @@ const ButtonTemplate: ComponentStory<typeof ToggleButton> = ({
               <Typography variant="body2_reg">Hover</Typography>
             </TableCell>
             <TableCell>
-              <ToggleButton {...restProps} id="hover" kind="outlined">
+              <ToggleButton
+                {...restProps}
+                id="hover"
+                kind="outlined"
+                value="text2"
+              >
                 Text
               </ToggleButton>
             </TableCell>
@@ -145,6 +180,7 @@ const ButtonTemplate: ComponentStory<typeof ToggleButton> = ({
                 {...restProps}
                 kind="outlined"
                 className="Mui-focusVisible"
+                value="text3"
               >
                 Text
               </ToggleButton>
@@ -155,7 +191,12 @@ const ButtonTemplate: ComponentStory<typeof ToggleButton> = ({
               <Typography variant="body2_reg">Disabled</Typography>
             </TableCell>
             <TableCell>
-              <ToggleButton {...restProps} kind="outlined" disabled>
+              <ToggleButton
+                {...restProps}
+                kind="outlined"
+                disabled
+                value="text4"
+              >
                 Text
               </ToggleButton>
             </TableCell>

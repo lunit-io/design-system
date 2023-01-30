@@ -116,6 +116,16 @@ export default {
       description:
         "It is a callback function that is called when the button is clicked.",
     },
+    onChange: {
+      type: "function",
+      control: false,
+      options: ["function", undefined],
+      mapping: {
+        function: action("onChange"),
+        undefined: undefined,
+      },
+      defaultValue: "function",
+    },
   },
   args: {
     selected: true,
@@ -135,6 +145,7 @@ export default {
         "size",
         "selected",
         "color",
+        "onChange",
       ],
     },
     docs: {

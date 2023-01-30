@@ -28,6 +28,15 @@ export default {
         type: { summary: "React.ReactNode" },
       },
     },
+    hasIconOnly: {
+      control: false,
+      description: `Option to handle so that only icons can be inserted
+          \n If set to false, you can add Text.`,
+      defaultValue: "true",
+      table: {
+        defaultValue: { summary: "false" },
+      },
+    },
     value: {
       control: false,
       table: { type: { summary: "any" } },
@@ -107,6 +116,16 @@ export default {
       description:
         "It is a callback function that is called when the button is clicked.",
     },
+    onChange: {
+      type: "function",
+      control: false,
+      options: ["function", undefined],
+      mapping: {
+        function: action("onChange"),
+        undefined: undefined,
+      },
+      defaultValue: "function",
+    },
   },
   args: {
     selected: true,
@@ -125,6 +144,8 @@ export default {
         "size",
         "selected",
         "color",
+        "onChange",
+        "hasIconOnly",
       ],
     },
     docs: {

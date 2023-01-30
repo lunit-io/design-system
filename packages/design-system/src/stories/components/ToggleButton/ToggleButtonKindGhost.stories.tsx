@@ -18,9 +18,28 @@ export default {
   title: "Components/ToggleButton",
   component: ToggleButton,
   argTypes: {
+    value: {
+      control: false,
+      table: { type: { summary: "any" } },
+    },
+    selected: {
+      control: false,
+      table: {
+        defaultValue: { summary: "false" },
+      },
+    },
     children: {
       type: "string",
       defaultValue: "Text",
+    },
+    disabled: {
+      control: {
+        type: "boolean",
+      },
+      defaultValue: false,
+      table: {
+        defaultValue: { summary: "false" },
+      },
     },
     size: {
       control: {
@@ -28,13 +47,30 @@ export default {
       },
       options: ["small", "medium", "large"],
       defaultValue: "small",
-      /**
-       * field for setting default value in storybook docs
-       * Reference - https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#no-longer-inferring-default-values-of-args
-       */
       table: {
         defaultValue: { summary: "small" },
       },
+    },
+    selectedColor: {
+      control: {
+        type: "radio",
+      },
+      options: ["primary", "secondary"],
+      description:
+        "The color of the button when it is in an select state. It has nothing to do with active button",
+      table: {
+        defaultValue: { summary: "primary" },
+      },
+    },
+    onChange: {
+      type: "function",
+      control: false,
+      options: ["function", undefined],
+      mapping: {
+        function: action("onChange"),
+        undefined: undefined,
+      },
+      defaultValue: "function",
     },
     onClick: {
       type: "function",
@@ -50,6 +86,16 @@ export default {
       description:
         "It is a callback function that is called when the button is clicked.",
     },
+    color: {
+      control: {
+        type: "radio",
+      },
+      options: ["primary", "secondary"],
+      defaultValue: "primary",
+      table: {
+        defaultValue: { summary: "primary" },
+      },
+    },
     kind: {
       control: false,
       options: ["contained", "outlined", "ghost"],
@@ -59,29 +105,21 @@ export default {
         defaultValue: { summary: "contained" },
       },
     },
-    color: {
-      control: false,
-      options: ["primary", "secondary"],
-      defaultValue: "primary",
-      table: {
-        defaultValue: { summary: "primary" },
-      },
-    },
-    disabled: {
-      control: false,
-      defaultValue: false,
-      table: {
-        defaultValue: { summary: "false" },
-      },
-    },
   },
   parameters: {
-    pseudo: {
-      hover: ["#hover"],
-      focusVisible: [".Mui-focusVisible"],
-    },
     controls: {
-      include: ["onClick", "children", "size", "kind", "color", "disabled"],
+      include: [
+        "value",
+        "kind",
+        "selectedColor",
+        "onClick",
+        "children",
+        "disabled",
+        "size",
+        "selected",
+        "color",
+        "onChange",
+      ],
     },
     docs: {
       description: {
@@ -113,12 +151,17 @@ const ButtonTemplate: ComponentStory<typeof ToggleButton> = (args) => {
               <Typography variant="body2_reg">Enable</Typography>
             </TableCell>
             <TableCell>
-              <ToggleButton {...args} kind="ghost">
+              <ToggleButton {...args} kind="ghost" value="text1">
                 {args.children}
               </ToggleButton>
             </TableCell>
             <TableCell>
-              <ToggleButton {...args} kind="ghost" color="secondary">
+              <ToggleButton
+                {...args}
+                kind="ghost"
+                color="secondary"
+                value="text2"
+              >
                 {args.children}
               </ToggleButton>
             </TableCell>
@@ -128,12 +171,18 @@ const ButtonTemplate: ComponentStory<typeof ToggleButton> = (args) => {
               <Typography variant="body2_reg">Hover</Typography>
             </TableCell>
             <TableCell>
-              <ToggleButton {...args} id="hover" kind="ghost">
+              <ToggleButton {...args} id="hover" kind="ghost" value="text3">
                 {args.children}
               </ToggleButton>
             </TableCell>
             <TableCell>
-              <ToggleButton {...args} id="hover" kind="ghost" color="secondary">
+              <ToggleButton
+                {...args}
+                id="hover"
+                kind="ghost"
+                color="secondary"
+                value="text4"
+              >
                 {args.children}
               </ToggleButton>
             </TableCell>
@@ -143,7 +192,12 @@ const ButtonTemplate: ComponentStory<typeof ToggleButton> = (args) => {
               <Typography variant="body2_reg">Focus</Typography>
             </TableCell>
             <TableCell>
-              <ToggleButton {...args} kind="ghost" className="Mui-focusVisible">
+              <ToggleButton
+                {...args}
+                kind="ghost"
+                className="Mui-focusVisible"
+                value="text5"
+              >
                 {args.children}
               </ToggleButton>
             </TableCell>
@@ -153,6 +207,7 @@ const ButtonTemplate: ComponentStory<typeof ToggleButton> = (args) => {
                 kind="ghost"
                 color="secondary"
                 className="Mui-focusVisible"
+                value="text6"
               >
                 {args.children}
               </ToggleButton>
@@ -163,12 +218,18 @@ const ButtonTemplate: ComponentStory<typeof ToggleButton> = (args) => {
               <Typography variant="body2_reg">Disabled</Typography>
             </TableCell>
             <TableCell>
-              <ToggleButton {...args} kind="ghost" disabled>
+              <ToggleButton {...args} kind="ghost" disabled value="text7">
                 {args.children}
               </ToggleButton>
             </TableCell>
             <TableCell>
-              <ToggleButton {...args} kind="ghost" color="secondary" disabled>
+              <ToggleButton
+                {...args}
+                kind="ghost"
+                color="secondary"
+                disabled
+                value="text8"
+              >
                 {args.children}
               </ToggleButton>
             </TableCell>

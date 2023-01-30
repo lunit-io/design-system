@@ -26,7 +26,7 @@ export default {
       },
       description: `Option to handle so that only icons can be inserted
           \n If set to false, you can add Text.`,
-      defaultValue: "true",
+      defaultValue: true,
       table: {
         defaultValue: { summary: "false" },
       },

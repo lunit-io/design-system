@@ -1,9 +1,7 @@
-import React from "react";
-import { Box } from "@mui/material";
+import React, { useEffect, useState } from "react";
 import { action } from "@storybook/addon-actions";
 
 import ToggleButton from "@/components/ToggleButton";
-import ToggleButtonGroup from "@/components/ToggleButtonGroup";
 
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
 
@@ -34,8 +32,15 @@ export default {
       control: false,
       table: { type: { summary: "any" } },
     },
+    children: {
+      type: "string",
+      defaultValue: "Text",
+    },
     selected: {
-      control: false,
+      control: {
+        type: "boolean",
+      },
+      defaultValue: false,
       table: {
         defaultValue: { summary: "false" },
       },
@@ -45,19 +50,9 @@ export default {
         type: "radio",
       },
       options: ["primary", "secondary"],
+      defaultValue: "primary",
       description:
         "The color of the button when it is in an select state. It has nothing to do with active button",
-      table: {
-        defaultValue: { summary: "primary" },
-      },
-    },
-    color: {
-      control: {
-        type: "radio",
-      },
-      options: ["primary", "secondary"],
-      defaultValue: "primary",
-      description: "Button has three Kinds Contained, Ghost",
       table: {
         defaultValue: { summary: "primary" },
       },
@@ -67,14 +62,21 @@ export default {
         type: "radio",
       },
       options: ["contained", "outlined", "ghost"],
+      description: "Button has three Kinds Contained, Outlined, Ghost",
       defaultValue: "contained",
       table: {
         defaultValue: { summary: "contained" },
       },
     },
-    children: {
-      type: "string",
-      defaultValue: "Text",
+    color: {
+      control: {
+        type: "radio",
+      },
+      options: ["primary", "secondary"],
+      defaultValue: "primary",
+      table: {
+        defaultValue: { summary: "primary" },
+      },
     },
     disabled: {
       control: {
@@ -95,20 +97,6 @@ export default {
         defaultValue: { summary: "small" },
       },
     },
-    onClick: {
-      type: "function",
-      control: {
-        type: "radio",
-      },
-      options: ["function", undefined],
-      mapping: {
-        function: action("onClick"),
-        undefined: undefined,
-      },
-      defaultValue: "function",
-      description:
-        "It is a callback function that is called when the button is clicked.",
-    },
     onChange: {
       type: "function",
       control: false,
@@ -119,24 +107,32 @@ export default {
       },
       defaultValue: "function",
     },
-  },
-  args: {
-    kind: "contained",
-    selectedColor: "primary",
+    onClick: {
+      type: "function",
+      control: false,
+      options: ["function", undefined],
+      mapping: {
+        function: action("onClick"),
+        undefined: undefined,
+      },
+      defaultValue: "function",
+      description:
+        "It is a callback function that is called when the button is clicked.",
+    },
   },
   parameters: {
     controls: {
       include: [
-        "value",
-        "kind",
-        "selectedColor",
+        "onChange",
         "onClick",
         "children",
         "disabled",
         "size",
-        "selected",
+        "kind",
         "color",
-        "onChange",
+        "selectedColor",
+        "selected",
+        "value",
         "icon",
         "hasIconOnly",
       ],
@@ -150,42 +146,25 @@ export default {
   },
 } as ComponentMeta<typeof ToggleButton>;
 
-const ToggleButtonTemplate: ComponentStory<typeof ToggleButton> = (arg) => {
-  const [alignments, setAlignments] = React.useState(() => ["left", "center"]);
-
-  const handleAlignments = (
-    event: React.MouseEvent<HTMLElement>,
-    newAlignment: string[]
-  ) => {
-    setAlignments(newAlignment);
-  };
+const BasicToggleButtonTemplate: ComponentStory<typeof ToggleButton> = (
+  arg
+) => {
+  const [selected, setSelected] = useState(false);
+  useEffect(() => {
+    setSelected(Boolean(arg.selected));
+  }, [arg.selected]);
 
   return (
-    <ToggleButtonGroup
-      value={alignments}
-      onChange={handleAlignments}
-      aria-label="text alignment"
-      sx={{
-        "& button": {
-          marginRight: "7px",
-        },
-      }}
+    <ToggleButton
+      {...arg}
+      value="test"
+      selected={selected}
+      onChange={() => setSelected(!selected)}
     >
-      <ToggleButton {...arg} value="left">
-        left
-      </ToggleButton>
-      <ToggleButton {...arg} value="center">
-        center
-      </ToggleButton>
-      <ToggleButton {...arg} value="right">
-        right
-      </ToggleButton>
-      <ToggleButton {...arg} value="justify" disabled>
-        justify
-      </ToggleButton>
-    </ToggleButtonGroup>
+      {arg.children}
+    </ToggleButton>
   );
 };
 
-export const ToggleButtonMultiple = ToggleButtonTemplate.bind({});
-ToggleButtonMultiple.storyName = "Group: Multiple selection";
+export const BasicToggleButton = BasicToggleButtonTemplate.bind({});
+BasicToggleButton.storyName = "Basic ToggleButton";

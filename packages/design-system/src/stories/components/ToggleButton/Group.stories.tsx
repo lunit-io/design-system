@@ -11,6 +11,25 @@ export default {
   title: "Components/ToggleButton",
   component: ToggleButton,
   argTypes: {
+    icon: {
+      control: false,
+      description: `Use this prop when you want to add icon.
+        \n It is added to the left of the text criteria,
+        \n and only Icon can be checked when used with hasIconOnly.`,
+      table: {
+        defaultValue: { summary: "undefined" },
+        type: { summary: "React.ReactNode" },
+      },
+    },
+    hasIconOnly: {
+      control: false,
+      defaultValue: false,
+      description: `Option to handle so that only icons can be inserted
+          \n If set to false, you can add Text.`,
+      table: {
+        defaultValue: { summary: "false" },
+      },
+    },
     value: {
       control: false,
       table: { type: { summary: "any" } },
@@ -76,6 +95,16 @@ export default {
         defaultValue: { summary: "small" },
       },
     },
+    onChange: {
+      type: "function",
+      control: false,
+      options: ["function", undefined],
+      mapping: {
+        function: action("onChange"),
+        undefined: undefined,
+      },
+      defaultValue: "function",
+    },
     onClick: {
       type: "function",
       control: {
@@ -107,6 +136,9 @@ export default {
         "size",
         "selected",
         "color",
+        "onChange",
+        "icon",
+        "hasIconOnly",
       ],
     },
     docs: {

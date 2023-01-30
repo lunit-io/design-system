@@ -52,6 +52,14 @@ export default {
         "It is a callback function that is called when the button is clicked.",
     },
   },
+  size: {
+    control: false,
+    options: ["small", "medium", "large"],
+    defaultValue: "small",
+    table: {
+      defaultValue: { summary: "small" },
+    },
+  },
   parameters: {
     controls: {
       include: ["onClick", "children", "disabled"],

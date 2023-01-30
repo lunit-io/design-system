@@ -18,9 +18,28 @@ export default {
   title: "Components/ToggleButton",
   component: ToggleButton,
   argTypes: {
+    value: {
+      control: false,
+      table: { type: { summary: "any" } },
+    },
+    selected: {
+      control: false,
+      table: {
+        defaultValue: { summary: "false" },
+      },
+    },
     children: {
       type: "string",
       defaultValue: "Text",
+    },
+    disabled: {
+      control: {
+        type: "boolean",
+      },
+      defaultValue: false,
+      table: {
+        defaultValue: { summary: "false" },
+      },
     },
     size: {
       control: {
@@ -31,6 +50,27 @@ export default {
       table: {
         defaultValue: { summary: "small" },
       },
+    },
+    selectedColor: {
+      control: {
+        type: "radio",
+      },
+      options: ["primary", "secondary"],
+      description:
+        "The color of the button when it is in an select state. It has nothing to do with active button",
+      table: {
+        defaultValue: { summary: "primary" },
+      },
+    },
+    onChange: {
+      type: "function",
+      control: false,
+      options: ["function", undefined],
+      mapping: {
+        function: action("onChange"),
+        undefined: undefined,
+      },
+      defaultValue: "function",
     },
     onClick: {
       type: "function",
@@ -46,6 +86,16 @@ export default {
       description:
         "It is a callback function that is called when the button is clicked.",
     },
+    color: {
+      control: {
+        type: "radio",
+      },
+      options: ["primary", "secondary"],
+      defaultValue: "primary",
+      table: {
+        defaultValue: { summary: "primary" },
+      },
+    },
     kind: {
       control: false,
       options: ["contained", "outlined", "ghost"],
@@ -55,29 +105,21 @@ export default {
         defaultValue: { summary: "contained" },
       },
     },
-    color: {
-      control: false,
-      options: ["primary", "secondary"],
-      defaultValue: "primary",
-      table: {
-        defaultValue: { summary: "primary" },
-      },
-    },
-    disabled: {
-      control: false,
-      defaultValue: false,
-      table: {
-        defaultValue: { summary: "false" },
-      },
-    },
   },
   parameters: {
-    pseudo: {
-      hover: ["#hover"],
-      focusVisible: [".Mui-focusVisible"],
-    },
     controls: {
-      include: ["onClick", "children", "size", "kind", "color", "disabled"],
+      include: [
+        "value",
+        "kind",
+        "selectedColor",
+        "onClick",
+        "children",
+        "disabled",
+        "size",
+        "selected",
+        "color",
+        "onChange",
+      ],
     },
     docs: {
       description: {
@@ -109,12 +151,17 @@ const ButtonTemplate: ComponentStory<typeof ToggleButton> = (args) => {
               <Typography variant="body2_reg">Enable</Typography>
             </TableCell>
             <TableCell>
-              <ToggleButton {...args} kind="contained">
+              <ToggleButton {...args} kind="contained" value="text1">
                 {args.children}
               </ToggleButton>
             </TableCell>
             <TableCell>
-              <ToggleButton {...args} kind="contained" color="secondary">
+              <ToggleButton
+                {...args}
+                kind="contained"
+                color="secondary"
+                value="text2"
+              >
                 {args.children}
               </ToggleButton>
             </TableCell>
@@ -124,7 +171,7 @@ const ButtonTemplate: ComponentStory<typeof ToggleButton> = (args) => {
               <Typography variant="body2_reg">Hover</Typography>
             </TableCell>
             <TableCell>
-              <ToggleButton {...args} id="hover" kind="contained">
+              <ToggleButton {...args} id="hover" kind="contained" value="text3">
                 {args.children}
               </ToggleButton>
             </TableCell>
@@ -134,6 +181,7 @@ const ButtonTemplate: ComponentStory<typeof ToggleButton> = (args) => {
                 id="hover"
                 kind="contained"
                 color="secondary"
+                value="text4"
               >
                 {args.children}
               </ToggleButton>
@@ -148,6 +196,7 @@ const ButtonTemplate: ComponentStory<typeof ToggleButton> = (args) => {
                 {...args}
                 kind="contained"
                 className="Mui-focusVisible"
+                value="text5"
               >
                 {args.children}
               </ToggleButton>
@@ -158,6 +207,7 @@ const ButtonTemplate: ComponentStory<typeof ToggleButton> = (args) => {
                 kind="contained"
                 color="secondary"
                 className="Mui-focusVisible"
+                value="text6"
               >
                 {args.children}
               </ToggleButton>
@@ -168,7 +218,7 @@ const ButtonTemplate: ComponentStory<typeof ToggleButton> = (args) => {
               <Typography variant="body2_reg">Disabled</Typography>
             </TableCell>
             <TableCell>
-              <ToggleButton {...args} kind="contained" disabled>
+              <ToggleButton {...args} kind="contained" disabled value="text7">
                 {args.children}
               </ToggleButton>
             </TableCell>
@@ -178,6 +228,7 @@ const ButtonTemplate: ComponentStory<typeof ToggleButton> = (args) => {
                 kind="contained"
                 color="secondary"
                 disabled
+                value="text8"
               >
                 {args.children}
               </ToggleButton>

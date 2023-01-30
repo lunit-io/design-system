@@ -1,8 +1,7 @@
 import React from "react";
-import { Box } from "@mui/material";
 import { action } from "@storybook/addon-actions";
 
-import Button from "@/components/Button/Button";
+import Button from "@/components/Button";
 
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
 
@@ -10,6 +9,27 @@ export default {
   title: "Components/Button",
   component: Button,
   argTypes: {
+    icon: {
+      control: false,
+      description: `Use this prop when you want to add icon.
+        \n It is added to the left of the text criteria,
+        \n and only Icon can be checked when used with hasIconOnly.`,
+      table: {
+        defaultValue: { summary: "undefined" },
+        type: { summary: "React.ReactNode" },
+      },
+    },
+    hasIconOnly: {
+      control: {
+        type: "boolean",
+      },
+      description: `Option to handle so that only icons can be inserted
+          \n If set to false, you can add Text.`,
+      defaultValue: false,
+      table: {
+        defaultValue: { summary: "false" },
+      },
+    },
     children: {
       type: "string",
       defaultValue: "Text",
@@ -71,7 +91,16 @@ export default {
   },
   parameters: {
     controls: {
-      include: ["onClick", "children", "disabled", "size", "kind", "color"],
+      include: [
+        "onClick",
+        "children",
+        "disabled",
+        "size",
+        "kind",
+        "color",
+        "icon",
+        "hasIconOnly",
+      ],
     },
     docs: {
       description: {

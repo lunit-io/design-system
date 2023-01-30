@@ -18,6 +18,16 @@ export default {
   title: "Components/ToggleButton",
   component: ToggleButton,
   argTypes: {
+    value: {
+      control: false,
+      table: { type: { summary: "any" } },
+    },
+    selected: {
+      control: false,
+      table: {
+        defaultValue: { summary: "false" },
+      },
+    },
     children: {
       type: "string",
       defaultValue: "Text",
@@ -40,6 +50,27 @@ export default {
       table: {
         defaultValue: { summary: "small" },
       },
+    },
+    selectedColor: {
+      control: {
+        type: "radio",
+      },
+      options: ["primary", "secondary"],
+      description:
+        "The color of the button when it is in an select state. It has nothing to do with active button",
+      table: {
+        defaultValue: { summary: "primary" },
+      },
+    },
+    onChange: {
+      type: "function",
+      control: false,
+      options: ["function", undefined],
+      mapping: {
+        function: action("onChange"),
+        undefined: undefined,
+      },
+      defaultValue: "function",
     },
     onClick: {
       type: "function",
@@ -77,7 +108,18 @@ export default {
   },
   parameters: {
     controls: {
-      include: ["onClick", "children", "size", "color", "disabled", "kind"],
+      include: [
+        "value",
+        "kind",
+        "selectedColor",
+        "onClick",
+        "children",
+        "disabled",
+        "size",
+        "selected",
+        "color",
+        "onChange",
+      ],
     },
     docs: {
       description: {
@@ -121,17 +163,27 @@ const ButtonTemplate: ComponentStory<typeof ToggleButton> = ({
         <TableBody>
           <TableRow>
             <TableCell>
-              <ToggleButton color={color} {...restProps}>
+              <ToggleButton color={color} {...restProps} value="text1">
                 {children}
               </ToggleButton>
             </TableCell>
             <TableCell>
-              <ToggleButton kind="outlined" color="primary" {...restProps}>
+              <ToggleButton
+                kind="outlined"
+                color="primary"
+                {...restProps}
+                value="text2"
+              >
                 {children}
               </ToggleButton>
             </TableCell>
             <TableCell>
-              <ToggleButton kind="ghost" color={color} {...restProps}>
+              <ToggleButton
+                kind="ghost"
+                color={color}
+                {...restProps}
+                value="text3"
+              >
                 {children}
               </ToggleButton>
             </TableCell>
