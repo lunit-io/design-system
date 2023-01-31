@@ -32,7 +32,6 @@ export default {
       control: false,
       description: `Option to handle so that only icons can be inserted
           \n If set to false, you can add Text.`,
-      defaultValue: false,
       table: {
         defaultValue: { summary: "false" },
       },
@@ -197,5 +196,49 @@ const Template: ComponentStory<typeof ToggleButton> = (arg) => (
   </Table>
 );
 
-export const ToggleButtonWithIconStory = Template.bind({});
-ToggleButtonWithIconStory.storyName = "Icon";
+export const IconStory = Template.bind({});
+IconStory.storyName = "Icon";
+
+const IconOnlyTemplate: ComponentStory<typeof ToggleButton> = (arg) => (
+  <Table sx={{ width: 330 }}>
+    <TableHead>
+      <TableRow>
+        <TableCell>
+          <Typography variant="body2_m">Selected color</Typography>
+        </TableCell>
+        <TableCell>
+          <Typography variant="body2_m">Primary</Typography>
+        </TableCell>
+        <TableCell>
+          <Typography variant="body2_m">Secondary</Typography>
+        </TableCell>
+      </TableRow>
+    </TableHead>
+    <TableBody>
+      <TableRow>
+        <TableCell>
+          <Typography variant="body2_m">Selected</Typography>
+        </TableCell>
+        <TableCell>
+          <ToggleButton {...arg} hasIconOnly icon={<Bell />} value="first">
+            {arg.children}
+          </ToggleButton>
+        </TableCell>
+        <TableCell>
+          <ToggleButton
+            {...arg}
+            icon={<Bell />}
+            hasIconOnly
+            selectedColor="secondary"
+            value="second"
+          >
+            {arg.children}
+          </ToggleButton>
+        </TableCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+);
+
+export const WithIconOnlyStory = IconOnlyTemplate.bind({});
+WithIconOnlyStory.storyName = "Icon only";
