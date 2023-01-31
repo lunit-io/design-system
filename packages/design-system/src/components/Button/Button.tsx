@@ -43,6 +43,7 @@ const Button = (props: ButtonProps) => {
           kind="outlined"
           color="primary"
           size={size}
+          startIcon={icon}
           hasIconOnly={hasIconOnly}
           disableRipple
           disableFocusRipple
