@@ -99,15 +99,20 @@ export const CommonToggle = styled(MuiSwitch, {
     backgroundColor: "transparent",
     opacity,
     "& .Mui-focusVisible": {
+       // remove default focus style
+      boxShadow: "none",
+      background: "transparent",
+      borderColor: "transparent",
+      outline: "none",
       "& + .MuiSwitch-track::after": {
         ...toggleStyle.focus,
         content: '""',
         position: "absolute",
-        // border: `1px solid ${checkedColor}`,
+        border: `1px solid ${checkedColor}`,
         boxSizing: "border-box",
         top: -3, // border 1px + offset 2px
         left: -3, // border 1px + offset 2px
-        backgroundImage: `url("data:image/svg+xml,%3Csvg width='34' height='24' viewBox='0 0 34 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0.5' y='0.5' width='33' height='23' rx='11.5' stroke='%2300C9EA'/%3E%3C/svg%3E%0A")`
+        // backgroundImage: `url("data:image/svg+xml,%3Csvg width='34' height='24' viewBox='0 0 34 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0.5' y='0.5' width='33' height='23' rx='11.5' stroke='%2300C9EA'/%3E%3C/svg%3E%0A")`
       }
     },
     '& .MuiSwitch-track': {
@@ -123,12 +128,6 @@ export const CommonToggle = styled(MuiSwitch, {
       ...toggleStyle.switch,
       padding: 2,
       opacity: 1,
-      '&.Mui-focusVisible': {
-        boxShadow: "none",
-        background: "transparent",
-        borderColor: "transparent",
-        outline: "none",
-      },
       '&.Mui-checked': {
         ...toggleStyle.switchChecked,
         color: handlerColor,
@@ -137,15 +136,10 @@ export const CommonToggle = styled(MuiSwitch, {
           backgroundColor: checkedColor,
         },
       },
-      '&.Mui-disabled': {
-        '& + .MuiSwitch-track': {
-          opacity: 1,
-        },
-      },
-      "&.Mui-checked.Mui-disabled": {
-        '& + .MuiSwitch-track': {
-          backgroundColor: checkedColor,
-        },
+    },
+    '& .Mui-disabled': {
+      '& + .MuiSwitch-track': {
+        opacity: 1,
       },
     },
   }});
