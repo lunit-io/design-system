@@ -26,6 +26,7 @@ export default {
       control: {
         type: "boolean",
       },
+      defaultValue: false,
       table: {
         defaultValue: { summary: "false" },
       },
