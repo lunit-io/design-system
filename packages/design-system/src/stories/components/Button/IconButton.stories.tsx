@@ -20,17 +20,6 @@ export default {
         type: { summary: "React.ReactNode" },
       },
     },
-    hasIconOnly: {
-      control: {
-        type: "boolean",
-      },
-      description: `Option to handle so that only icons can be inserted
-          \n If set to false, you can add Text.`,
-      defaultValue: true,
-      table: {
-        defaultValue: { summary: "false" },
-      },
-    },
     kind: {
       control: {
         type: "radio",
@@ -89,6 +78,7 @@ export default {
   parameters: {
     controls: {
       include: [
+        "children",
         "icon",
         "onClick",
         "hasIconOnly",
@@ -107,8 +97,51 @@ export default {
   },
 } as ComponentMeta<typeof Button>;
 
-export const IconButton: ComponentStory<typeof Button> = (arg) => (
-  <Button icon={<Bell />} {...arg}>
-    Icon
+const IconButtonTemplate: ComponentStory<typeof Button> = (args) => (
+  <Button icon={<Bell />} {...args}>
+    {args.children}
   </Button>
 );
+
+export const IconOnlyButton = IconButtonTemplate.bind({});
+IconOnlyButton.argTypes = {
+  children: {
+    control: false,
+    type: "string",
+    defaultValue: "Text",
+    table: {
+      defaultValue: { summary: "undefined" },
+    },
+  },
+  hasIconOnly: {
+    control: false,
+    description: `Option to handle so that only icons can be inserted
+        \n If set to false, you can add Text.`,
+    defaultValue: true,
+    table: {
+      defaultValue: { summary: "false" },
+    },
+  },
+};
+IconOnlyButton.storyName = "Icon only";
+
+export const IconWithTextButton = IconButtonTemplate.bind({});
+IconWithTextButton.argTypes = {
+  children: {
+    type: "string",
+    defaultValue: "Text",
+    table: {
+      defaultValue: { summary: "undefined" },
+    },
+  },
+  hasIconOnly: {
+    control: false,
+    description: `Option to handle so that only icons can be inserted
+        \n If set to false, you can add Text.`,
+    defaultValue: false,
+    table: {
+      defaultValue: { summary: "false" },
+    },
+  },
+};
+IconWithTextButton.storyName = "Icon";
