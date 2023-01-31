@@ -29,7 +29,6 @@ export default {
       },
     },
     hasIconOnly: {
-      control: false,
       description: `Option to handle so that only icons can be inserted
           \n If set to false, you can add Text.`,
       table: {
@@ -198,6 +197,14 @@ const Template: ComponentStory<typeof ToggleButton> = (arg) => (
 
 export const IconStory = Template.bind({});
 IconStory.storyName = "Icon";
+IconStory.argTypes = {
+  hasIconOnly: {
+    defaultValue: false,
+    control: {
+      type: "boolean",
+    },
+  },
+};
 
 const IconOnlyTemplate: ComponentStory<typeof ToggleButton> = (arg) => (
   <Table sx={{ width: 330 }}>
@@ -242,3 +249,8 @@ const IconOnlyTemplate: ComponentStory<typeof ToggleButton> = (arg) => (
 
 export const WithIconOnlyStory = IconOnlyTemplate.bind({});
 WithIconOnlyStory.storyName = "Icon only";
+WithIconOnlyStory.argTypes = {
+  hasIconOnly: {
+    control: false,
+  },
+};
