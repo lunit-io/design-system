@@ -1,9 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { action } from "@storybook/addon-actions";
-
+import {
+  Table,
+  TableHead,
+  TableRow,
+  TableBody,
+  TableCell,
+  Typography,
+} from "@mui/material";
+import { Bell } from "@lunit/design-system-icons";
 import ToggleButton from "@/components/ToggleButton";
 
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import type { ButtonProps } from "@/components/Button/Button.types";
+
+type Size = Pick<ButtonProps, "size">;
+type SizeValues = Size[keyof Size];
+const sizeList: SizeValues[] = ["small", "medium", "large"];
 
 export default {
   title: "Components/ToggleButton",
@@ -37,9 +50,6 @@ export default {
       defaultValue: "Text",
     },
     selected: {
-      control: {
-        type: "boolean",
-      },
       defaultValue: false,
       table: {
         defaultValue: { summary: "false" },
@@ -88,9 +98,6 @@ export default {
       },
     },
     size: {
-      control: {
-        type: "radio",
-      },
       options: ["small", "medium", "large"],
       defaultValue: "small",
       table: {
@@ -147,7 +154,7 @@ export default {
 } as ComponentMeta<typeof ToggleButton>;
 
 const BasicToggleButtonTemplate: ComponentStory<typeof ToggleButton> = (
-  arg
+  arg,
 ) => {
   const [selected, setSelected] = useState(false);
   useEffect(() => {
@@ -168,3 +175,104 @@ const BasicToggleButtonTemplate: ComponentStory<typeof ToggleButton> = (
 
 export const BasicToggleButton = BasicToggleButtonTemplate.bind({});
 BasicToggleButton.storyName = "Basic ToggleButton";
+
+const SizeTemplate: ComponentStory<typeof ToggleButton> = (args) => {
+  return (
+    <Table sx={{ width: 900 }}>
+      <TableHead>
+        <TableRow>
+          <TableCell colSpan={3} sx={{ fontWeight: "bold", fontSize: "16px" }}>
+            <Typography variant="body1_sb">Size</Typography>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>
+            <Typography variant="body2_m">Small</Typography>
+          </TableCell>
+          <TableCell>
+            <Typography variant="body2_m">Medium</Typography>
+          </TableCell>
+          <TableCell>
+            <Typography variant="body2_m">Large</Typography>
+          </TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        <TableRow>
+          {sizeList.map((size) => (
+            <TableCell key={size} sx={{ "& button": { marginRight: "10px" } }}>
+              <ToggleButton
+                {...args}
+                hasIconOnly
+                icon={<Bell />}
+                size={size}
+                value="text1"
+              />
+              <ToggleButton {...args} size={size}>
+                {args.children}
+              </ToggleButton>
+              <ToggleButton {...args} icon={<Bell />} size={size} value="text2">
+                {args.children}
+              </ToggleButton>
+            </TableCell>
+          ))}
+        </TableRow>
+      </TableBody>
+    </Table>
+  );
+};
+
+export const Size = SizeTemplate.bind({});
+Size.argTypes = {
+  size: {
+    control: false,
+  },
+};
+
+const SelectedColorTemplate: ComponentStory<typeof ToggleButton> = (arg) => (
+  <Table sx={{ width: 330 }}>
+    <TableHead>
+      <TableRow>
+        <TableCell>
+          <Typography variant="body2_m">Selected color</Typography>
+        </TableCell>
+        <TableCell>
+          <Typography variant="body2_m">Primary</Typography>
+        </TableCell>
+        <TableCell>
+          <Typography variant="body2_m">Secondary</Typography>
+        </TableCell>
+      </TableRow>
+    </TableHead>
+    <TableBody>
+      <TableRow>
+        <TableCell>
+          <Typography variant="body2_m">Selected</Typography>
+        </TableCell>
+        <TableCell>
+          <ToggleButton {...arg} value="first" selected>
+            {arg.children}
+          </ToggleButton>
+        </TableCell>
+        <TableCell>
+          <ToggleButton
+            {...arg}
+            selectedColor="secondary"
+            value="second"
+            selected
+          >
+            {arg.children}
+          </ToggleButton>
+        </TableCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+);
+
+export const SelectedColor = SelectedColorTemplate.bind({});
+
+SelectedColor.argTypes = {
+  selectedColor: {
+    control: false,
+  },
+};
