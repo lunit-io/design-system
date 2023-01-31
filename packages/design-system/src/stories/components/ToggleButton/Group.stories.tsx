@@ -150,12 +150,12 @@ export default {
   },
 } as ComponentMeta<typeof ToggleButton>;
 
-const ToggleButtonTemplate: ComponentStory<typeof ToggleButton> = (arg) => {
+const GroupTemplate: ComponentStory<typeof ToggleButton> = (arg) => {
   const [alignment, setAlignment] = React.useState<string | null>("left");
 
   const handleAlignment = (
     event: React.MouseEvent<HTMLElement>,
-    newAlignment: string | null
+    newAlignment: string | null,
   ) => {
     setAlignment(newAlignment);
   };
@@ -188,5 +188,45 @@ const ToggleButtonTemplate: ComponentStory<typeof ToggleButton> = (arg) => {
   );
 };
 
-export const ToggleButtonBaseStory = ToggleButtonTemplate.bind({});
-ToggleButtonBaseStory.storyName = "Group";
+export const Group = GroupTemplate.bind({});
+Group.storyName = "Group";
+
+const GroupMultipleTemplate: ComponentStory<typeof ToggleButton> = (arg) => {
+  const [alignments, setAlignments] = React.useState(() => ["left", "center"]);
+
+  const handleAlignments = (
+    event: React.MouseEvent<HTMLElement>,
+    newAlignment: string[],
+  ) => {
+    setAlignments(newAlignment);
+  };
+
+  return (
+    <ToggleButtonGroup
+      value={alignments}
+      onChange={handleAlignments}
+      aria-label="text alignment"
+      sx={{
+        "& button": {
+          marginRight: "7px",
+        },
+      }}
+    >
+      <ToggleButton {...arg} value="left">
+        left
+      </ToggleButton>
+      <ToggleButton {...arg} value="center">
+        center
+      </ToggleButton>
+      <ToggleButton {...arg} value="right">
+        right
+      </ToggleButton>
+      <ToggleButton {...arg} value="justify" disabled>
+        justify
+      </ToggleButton>
+    </ToggleButtonGroup>
+  );
+};
+
+export const GroupMultiple = GroupMultipleTemplate.bind({});
+GroupMultiple.storyName = "Group: Multiple selection";
