@@ -250,17 +250,12 @@ const SelectedColorTemplate: ComponentStory<typeof ToggleButton> = (arg) => (
           <Typography variant="body2_m">Selected</Typography>
         </TableCell>
         <TableCell>
-          <ToggleButton {...arg} value="first" selected>
+          <ToggleButton {...arg} value="first">
             {arg.children}
           </ToggleButton>
         </TableCell>
         <TableCell>
-          <ToggleButton
-            {...arg}
-            selectedColor="secondary"
-            value="second"
-            selected
-          >
+          <ToggleButton {...arg} selectedColor="secondary" value="second">
             {arg.children}
           </ToggleButton>
         </TableCell>
@@ -275,4 +270,8 @@ SelectedColor.argTypes = {
   selectedColor: {
     control: false,
   },
+};
+
+SelectedColor.args = {
+  selected: true,
 };
