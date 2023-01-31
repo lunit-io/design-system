@@ -90,9 +90,6 @@ export default {
         "It is a callback function that is called when the button is clicked.",
     },
     color: {
-      control: {
-        type: "radio",
-      },
       options: ["primary", "secondary"],
       defaultValue: "primary",
       table: {
@@ -200,3 +197,335 @@ const ButtonTemplate: ComponentStory<typeof ToggleButton> = ({
 };
 
 export const Kind = ButtonTemplate.bind({});
+
+Kind.argTypes = {
+  color: {
+    control: {
+      type: "radio",
+    },
+  },
+};
+
+const ContainedTemplate: ComponentStory<typeof ToggleButton> = (args) => {
+  return (
+    <Table sx={{ width: 450 }}>
+      <TableHead>
+        <TableRow>
+          <TableCell></TableCell>
+          <TableCell>
+            <Typography variant="body2_m">Contained Primary</Typography>
+          </TableCell>
+          <TableCell>
+            <Typography variant="body2_m">Contained Secondary</Typography>
+          </TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        <TableRow>
+          <TableCell>
+            <Typography variant="body2_reg">Enable</Typography>
+          </TableCell>
+          <TableCell>
+            <ToggleButton {...args} kind="contained" value="text1">
+              {args.children}
+            </ToggleButton>
+          </TableCell>
+          <TableCell>
+            <ToggleButton
+              {...args}
+              kind="contained"
+              color="secondary"
+              value="text2"
+            >
+              {args.children}
+            </ToggleButton>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>
+            <Typography variant="body2_reg">Hover</Typography>
+          </TableCell>
+          <TableCell>
+            <ToggleButton {...args} id="hover" kind="contained" value="text3">
+              {args.children}
+            </ToggleButton>
+          </TableCell>
+          <TableCell>
+            <ToggleButton
+              {...args}
+              id="hover"
+              kind="contained"
+              color="secondary"
+              value="text4"
+            >
+              {args.children}
+            </ToggleButton>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>
+            <Typography variant="body2_reg">Focus</Typography>
+          </TableCell>
+          <TableCell>
+            <ToggleButton
+              {...args}
+              kind="contained"
+              className="Mui-focusVisible"
+              value="text5"
+            >
+              {args.children}
+            </ToggleButton>
+          </TableCell>
+          <TableCell>
+            <ToggleButton
+              {...args}
+              kind="contained"
+              color="secondary"
+              className="Mui-focusVisible"
+              value="text6"
+            >
+              {args.children}
+            </ToggleButton>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>
+            <Typography variant="body2_reg">Disabled</Typography>
+          </TableCell>
+          <TableCell>
+            <ToggleButton {...args} kind="contained" disabled value="text7">
+              {args.children}
+            </ToggleButton>
+          </TableCell>
+          <TableCell>
+            <ToggleButton
+              {...args}
+              kind="contained"
+              color="secondary"
+              disabled
+              value="text8"
+            >
+              {args.children}
+            </ToggleButton>
+          </TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+  );
+};
+
+export const KindContained = ContainedTemplate.bind({});
+KindContained.storyName = "Kind: Contained";
+
+KindContained.argTypes = {
+  color: {
+    control: false,
+  },
+};
+
+const GhostTemplate: ComponentStory<typeof ToggleButton> = (args) => {
+  return (
+    <>
+      <Table sx={{ width: 450 }}>
+        <TableHead>
+          <TableRow>
+            <TableCell></TableCell>
+            <TableCell>
+              <Typography variant="body2_m">Ghost Primary</Typography>
+            </TableCell>
+            <TableCell>
+              <Typography variant="body2_m">Ghost Secondary</Typography>
+            </TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          <TableRow>
+            <TableCell>
+              <Typography variant="body2_reg">Enable</Typography>
+            </TableCell>
+            <TableCell>
+              <ToggleButton {...args} kind="ghost" value="text1">
+                {args.children}
+              </ToggleButton>
+            </TableCell>
+            <TableCell>
+              <ToggleButton
+                {...args}
+                kind="ghost"
+                color="secondary"
+                value="text2"
+              >
+                {args.children}
+              </ToggleButton>
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>
+              <Typography variant="body2_reg">Hover</Typography>
+            </TableCell>
+            <TableCell>
+              <ToggleButton {...args} id="hover" kind="ghost" value="text3">
+                {args.children}
+              </ToggleButton>
+            </TableCell>
+            <TableCell>
+              <ToggleButton
+                {...args}
+                id="hover"
+                kind="ghost"
+                color="secondary"
+                value="text4"
+              >
+                {args.children}
+              </ToggleButton>
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>
+              <Typography variant="body2_reg">Focus</Typography>
+            </TableCell>
+            <TableCell>
+              <ToggleButton
+                {...args}
+                kind="ghost"
+                className="Mui-focusVisible"
+                value="text5"
+              >
+                {args.children}
+              </ToggleButton>
+            </TableCell>
+            <TableCell>
+              <ToggleButton
+                {...args}
+                kind="ghost"
+                color="secondary"
+                className="Mui-focusVisible"
+                value="text6"
+              >
+                {args.children}
+              </ToggleButton>
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>
+              <Typography variant="body2_reg">Disabled</Typography>
+            </TableCell>
+            <TableCell>
+              <ToggleButton {...args} kind="ghost" disabled value="text7">
+                {args.children}
+              </ToggleButton>
+            </TableCell>
+            <TableCell>
+              <ToggleButton
+                {...args}
+                kind="ghost"
+                color="secondary"
+                disabled
+                value="text8"
+              >
+                {args.children}
+              </ToggleButton>
+            </TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+      <br />
+      <br />
+    </>
+  );
+};
+
+export const KindGhost = GhostTemplate.bind({});
+KindGhost.storyName = "Kind: Ghost";
+
+KindGhost.argTypes = {
+  color: {
+    control: false,
+  },
+};
+
+const OutlinedTemplate: ComponentStory<typeof ToggleButton> = ({
+  color,
+  ...restProps
+}) => {
+  return (
+    <>
+      <Table sx={{ width: 250 }}>
+        <TableHead>
+          <TableRow>
+            <TableCell></TableCell>
+            <TableCell>
+              <Typography variant="body2_m">Outlined Primary</Typography>
+            </TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          <TableRow>
+            <TableCell>
+              <Typography variant="body2_reg">Enable</Typography>
+            </TableCell>
+            <TableCell>
+              <ToggleButton {...restProps} kind="outlined" value="text1">
+                Text
+              </ToggleButton>
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>
+              <Typography variant="body2_reg">Hover</Typography>
+            </TableCell>
+            <TableCell>
+              <ToggleButton
+                {...restProps}
+                id="hover"
+                kind="outlined"
+                value="text2"
+              >
+                Text
+              </ToggleButton>
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>
+              <Typography variant="body2_reg">Focus</Typography>
+            </TableCell>
+            <TableCell>
+              <ToggleButton
+                {...restProps}
+                kind="outlined"
+                className="Mui-focusVisible"
+                value="text3"
+              >
+                Text
+              </ToggleButton>
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>
+              <Typography variant="body2_reg">Disabled</Typography>
+            </TableCell>
+            <TableCell>
+              <ToggleButton
+                {...restProps}
+                kind="outlined"
+                disabled
+                value="text4"
+              >
+                Text
+              </ToggleButton>
+            </TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+    </>
+  );
+};
+
+export const KindOutlined = OutlinedTemplate.bind({});
+KindOutlined.storyName = "Kind: Outlined";
+
+KindOutlined.argTypes = {
+  color: {
+    control: false,
+  },
+};
