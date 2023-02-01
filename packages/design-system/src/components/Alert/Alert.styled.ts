@@ -4,7 +4,7 @@ import {
   IconButton as MuiIconButton,
   styled,
 } from "@mui/material";
-import { StyledAlertProps } from "./Alert.types";
+import { AlertProps } from "./Alert.types";
 import { getBorderColor, getBackgroundColor, getIconColor } from "./consts";
 
 export const StyledAlertTitle = styled(MuiAlertTitle)(({ theme }) => ({
@@ -18,9 +18,10 @@ export const StyledAlertTitle = styled(MuiAlertTitle)(({ theme }) => ({
   },
 }));
 
-export const StyledAlert = styled(MuiAlert)<StyledAlertProps>(
-  ({ severity }) => ({
+export const StyledAlert = styled(MuiAlert)<AlertProps>(
+  ({ severity, width }) => ({
     "&.MuiAlert-root": {
+      width: width,
       padding: "16px",
       minWidth: "374px",
       borderRadius: "8px",

@@ -9,11 +9,11 @@ export interface AlertIconProps extends IconProps {
   severity?: AlertColor;
 }
 
-export interface StyledAlertProps extends MuiAlertProps {
+export interface AlertProps extends MuiAlertProps {
   width?: number;
   title?: string;
   action?: ReactNode;
-  children?: ReactNode;
+  children: ReactNode;
   bottomAction?: ReactNode;
   onClose?: () => void;
 }

@@ -36,6 +36,6 @@ export const getIconColor = (severity: AlertColor | undefined) => {
     case "error":
       return theme.palette.token.core.icon_error_02;
     default:
-      return theme.palette.token.core.icon_sucess_02;
+      return theme.palette.token.core.icon_success_02;
   }
 };

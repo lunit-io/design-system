@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import {
   StyledAlert,
   StyledAlertTitle,
@@ -6,7 +6,7 @@ import {
   StyledBottomAction,
   StyledIconButton,
 } from "./Alert.styled";
-import { StyledAlertProps } from "./Alert.types";
+import { AlertProps } from "./Alert.types";
 import {
   Close,
   Success,
@@ -15,12 +15,22 @@ import {
   Information,
 } from "@lunit/design-system-icons";
 
-const Alert = (props: StyledAlertProps) => {
-  const { title, severity, children, sx, bottomAction, onClose } = props;
+const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
+  const {
+    title,
+    severity,
+    children,
+    sx,
+    bottomAction,
+    width = 620,
+    onClose,
+  } = props;
   return (
     <StyledAlert
-      severity={severity}
+      ref={ref}
       sx={{ ...sx }}
+      width={width}
+      severity={severity}
       iconMapping={{
         success: <Success variant="filled" />,
         info: <Information variant="filled" />,
@@ -36,10 +46,10 @@ const Alert = (props: StyledAlertProps) => {
       }
     >
       {title && <StyledAlertTitle>{title}</StyledAlertTitle>}
-      {children && <StyledAlertChildren>{children}</StyledAlertChildren>}
+      <StyledAlertChildren>{children}</StyledAlertChildren>
       {bottomAction && <StyledBottomAction>{bottomAction}</StyledBottomAction>}
     </StyledAlert>
   );
-};
+});
 
 export default Alert;
