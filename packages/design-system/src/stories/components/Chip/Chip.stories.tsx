@@ -1,8 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
-import { Box } from "@mui/material";
-import Chip from "@/components/Chip/Chip";
+import Chip from "@/components/Chip";
 import {
   Logo16,
   Avatar16,
