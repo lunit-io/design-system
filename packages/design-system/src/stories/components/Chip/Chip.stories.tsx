@@ -1,8 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
-import { Box } from "@mui/material";
-import Chip from "@/components/Chip/Chip";
+import Chip from "@/components/Chip";
 import {
   Logo16,
   Avatar16,
@@ -93,18 +92,6 @@ export default {
       },
     },
   },
-  decorators: [
-    /**
-     * TODO
-     * Since Color Token system will be changed, below className should be changed accordingly
-     * Also, the hover color will be set again with the color token system completion
-     */
-    (Story) => (
-      <Box className="dark1" sx={{ margin: "3em" }}>
-        {Story()}
-      </Box>
-    ),
-  ],
 } as ComponentMeta<typeof Chip>;
 
 const Template: ComponentStory<typeof Chip> = (args) => <Chip {...args} />;

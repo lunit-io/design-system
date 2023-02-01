@@ -2,7 +2,6 @@ import React from "react";
 import { Avatar } from "@mui/material";
 import { Close16 } from "@lunit/design-system-icons";
 import { StyledOutlinedChip, StyledContainedChip } from "./Chip.styled";
-import { useTheme } from "@mui/material/styles";
 
 import type {
   OutlinedChipProps,
@@ -76,7 +75,6 @@ const ReadOnlyContainedChip = (props: ReadOnlyContainedChipProps) => {
 
 const EnableContainedChip = (props: EnableContainedChipProps) => {
   const { color = "primary", thumbnail, onClick, sx, ...restProps } = props;
-  const theme = useTheme();
 
   return (
     <StyledContainedChip
@@ -91,7 +89,7 @@ const EnableContainedChip = (props: EnableContainedChipProps) => {
         },
         "&:hover": {
           // TODO: Below is a temporary color until the hover color is completed in our Design system
-          backgroundColor: theme.palette.token.core.hover,
+          backgroundColor: (theme) => theme.palette.token.core.hover,
         },
         ...sx,
       }}
