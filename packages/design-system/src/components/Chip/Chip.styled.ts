@@ -108,8 +108,8 @@ export const StyledContainedChip = styled(MuiChip, {
     alignItems: "center",
     // TODO: Currently, the color names of Figma and Design system's color component's name don't match
     // Need to be Fixed after the color system is completed
-    color: getColorToken("text", theme, color),
-    backgroundColor: getColorToken("bg", theme, color),
+    color: getColorToken("bg", theme, color),
+    backgroundColor: getColorToken("text", theme, color),
   },
 
   "& .MuiChip-deleteIcon": {
