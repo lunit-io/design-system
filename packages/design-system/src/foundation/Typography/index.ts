@@ -5,26 +5,26 @@ import {
 
 declare module "@mui/material/styles" {
   interface TypographyVariants {
-    body1_sb: React.CSSProperties;
-    body1_reg: React.CSSProperties;
-    body2_b: React.CSSProperties;
-    body2_m: React.CSSProperties;
-    body2_reg: React.CSSProperties;
-    body3_reg: React.CSSProperties;
-    body3_b: React.CSSProperties;
+    body16_semibold: React.CSSProperties;
+    body16_regular: React.CSSProperties;
+    body14_bold: React.CSSProperties;
+    body14_medium: React.CSSProperties;
+    body14_regular: React.CSSProperties;
+    body12_semibold: React.CSSProperties;
+    body12_regular: React.CSSProperties;
     button1: React.CSSProperties;
     button2: React.CSSProperties;
     caption: React.CSSProperties;
   }
 
   interface TypographyVariantsOptions {
-    body1_sb?: React.CSSProperties;
-    body1_reg?: React.CSSProperties;
-    body2_b?: React.CSSProperties;
-    body2_m?: React.CSSProperties;
-    body2_reg?: React.CSSProperties;
-    body3_reg?: React.CSSProperties;
-    body3_b?: React.CSSProperties;
+    body16_semibold?: React.CSSProperties;
+    body16_regular?: React.CSSProperties;
+    body14_bold?: React.CSSProperties;
+    body14_medium?: React.CSSProperties;
+    body14_regular?: React.CSSProperties;
+    body12_semibold?: React.CSSProperties;
+    body12_regular?: React.CSSProperties;
     button1?: React.CSSProperties;
     button2?: React.CSSProperties;
     caption?: React.CSSProperties;
@@ -36,13 +36,13 @@ declare module "@mui/material/styles" {
 
 declare module "@mui/material/Typography" {
   interface TypographyPropsVariantOverrides {
-    body1_sb: true;
-    body1_reg: true;
-    body2_b: true;
-    body2_m: true;
-    body2_reg: true;
-    body3_reg: true;
-    body3_b: true;
+    body16_semibold: true;
+    body16_regular: true;
+    body14_bold: true;
+    body14_medium: true;
+    body14_regular: true;
+    body12_semibold: true;
+    body12_regular: true;
     button1: true;
     button2: true;
     caption: true;
@@ -51,26 +51,26 @@ declare module "@mui/material/Typography" {
 
 declare module "@mui/material/styles/createTypography" {
   interface Typography {
-    body1_sb?: TypographyStyle;
-    body1_reg?: TypographyStyle;
-    body2_b?: TypographyStyle;
-    body2_m?: TypographyStyle;
-    body2_reg?: TypographyStyle;
-    body3_reg?: TypographyStyle;
-    body3_b?: TypographyStyle;
+    body16_semibold?: TypographyStyle;
+    body16_regular?: TypographyStyle;
+    body14_bold?: TypographyStyle;
+    body14_medium?: TypographyStyle;
+    body14_regular?: TypographyStyle;
+    body12_semibold?: TypographyStyle;
+    body12_regular?: TypographyStyle;
     button1?: TypographyStyle;
     button2?: TypographyStyle;
     caption?: TypographyStyle;
   }
 
   interface TypographyOptions {
-    body1_sb?: TypographyStyleOptions;
-    body1_reg?: TypographyStyleOptions;
-    body2_b?: TypographyStyleOptions;
-    body2_m?: TypographyStyleOptions;
-    body2_reg?: TypographyStyleOptions;
-    body3_reg?: TypographyStyleOptions;
-    body3_b?: TypographyStyleOptions;
+    body16_semibold?: TypographyStyleOptions;
+    body16_regular?: TypographyStyleOptions;
+    body14_bold?: TypographyStyleOptions;
+    body14_medium?: TypographyStyleOptions;
+    body14_regular?: TypographyStyleOptions;
+    body12_semibold?: TypographyStyleOptions;
+    body12_regular?: TypographyStyleOptions;
     button1?: TypographyStyleOptions;
     button2?: TypographyStyleOptions;
     caption?: TypographyStyleOptions;
@@ -123,37 +123,37 @@ const fontVariants: Omit<TypographyOptions, "fontFamily" | "allVariants"> = {
     fontSize: 16,
     lineHeight: "24px",
   },
-  body1_sb: {
+  body16_semibold: {
     fontWeight: 600,
     fontSize: 16,
     lineHeight: "24px",
   },
-  body1_reg: {
+  body16_regular: {
     fontWeight: 400,
     fontSize: 16,
     lineHeight: "24px",
   },
-  body2_b: {
+  body14_bold: {
     fontWeight: 700,
     fontSize: 14,
     lineHeight: "20px",
   },
-  body2_m: {
+  body14_medium: {
     fontWeight: 500,
     fontSize: 14,
     lineHeight: "20px",
   },
-  body2_reg: {
+  body14_regular: {
     fontWeight: 400,
     fontSize: 14,
     lineHeight: "20px",
   },
-  body3_b: {
+  body12_semibold: {
     fontWeight: 600,
     fontSize: 12.4,
     lineHeight: "16px",
   },
-  body3_reg: {
+  body12_regular: {
     fontWeight: 400,
     fontSize: 12.4,
     lineHeight: "16px",

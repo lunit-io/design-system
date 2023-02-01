@@ -16,13 +16,13 @@ type ReadableArray<T> = Array<T> | ReadonlyArray<T>;
 
 const headline = ["h1", "h2", "h3", "h4", "h6"] as const;
 const body = [
-  "body1_reg",
-  "body1_sb",
-  "body2_b",
-  "body2_m",
-  "body2_reg",
-  "body3_b",
-  "body3_reg",
+  "body16_semibold",
+  "body16_regular",
+  "body14_bold",
+  "body14_medium",
+  "body14_regular",
+  "body12_semibold",
+  "body12_regular",
 ] as const;
 const etc = ["button1", "button2", "caption", "overline"] as const;
 
@@ -49,15 +49,11 @@ const TypographyGroup = ({
             theme.typography[variant] ?? {};
           return (
             <TypogrpahyItem key={variant}>
-              <TypographyTitle
-                variant="body1_sb"
-              >
+              <TypographyTitle variant="body16_semibold">
                 {variant}
               </TypographyTitle>
-              <TypographyDummy variant={variant}>
-                {dummy}
-              </TypographyDummy>
-              <TypographyStyles variant="body2_m">
+              <TypographyDummy variant={variant}>{dummy}</TypographyDummy>
+              <TypographyStyles variant="body14_medium">
                 <Box>fontWeight: {fontWeight}</Box>
                 <Box>fontSize: {fontSize}</Box>
                 <Box>lineHeight: {lineHeight}</Box>
