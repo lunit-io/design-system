@@ -14,7 +14,6 @@ declare module "@mui/material/styles" {
     body12_regular: React.CSSProperties;
     button1: React.CSSProperties;
     button2: React.CSSProperties;
-    caption: React.CSSProperties;
   }
 
   interface TypographyVariantsOptions {
@@ -27,7 +26,6 @@ declare module "@mui/material/styles" {
     body12_regular?: React.CSSProperties;
     button1?: React.CSSProperties;
     button2?: React.CSSProperties;
-    caption?: React.CSSProperties;
   }
 
   interface TypographyVariantsOptionsWithoutFont
@@ -45,7 +43,6 @@ declare module "@mui/material/Typography" {
     body12_regular: true;
     button1: true;
     button2: true;
-    caption: true;
   }
 }
 
@@ -60,7 +57,6 @@ declare module "@mui/material/styles/createTypography" {
     body12_regular?: TypographyStyle;
     button1?: TypographyStyle;
     button2?: TypographyStyle;
-    caption?: TypographyStyle;
   }
 
   interface TypographyOptions {
@@ -73,7 +69,6 @@ declare module "@mui/material/styles/createTypography" {
     body12_regular?: TypographyStyleOptions;
     button1?: TypographyStyleOptions;
     button2?: TypographyStyleOptions;
-    caption?: TypographyStyleOptions;
   }
 
   interface TypographyOptionsWithoutFont
