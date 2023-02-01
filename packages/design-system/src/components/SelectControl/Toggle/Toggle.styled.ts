@@ -89,7 +89,7 @@ export const CommonToggle = styled(MuiSwitch, {
   const handlerColor = theme.palette.token.component.selectcontrol_handler;
 
   const toggleStyle = toggleStyles[toggleSize];
-  const opacity = disabled ? 0.38 : 1;
+  const toggleOpacity = disabled ? 0.38 : 1;
 
   return {
     ...toggleStyle.root,
@@ -97,9 +97,9 @@ export const CommonToggle = styled(MuiSwitch, {
     padding: 0,
     overflow: "visible",
     backgroundColor: "transparent",
-    opacity,
+    opacity: toggleOpacity,
     "& .Mui-focusVisible": {
-       // remove default focus style
+       // clear default focus style
       boxShadow: "none",
       background: "transparent",
       borderColor: "transparent",
@@ -112,7 +112,6 @@ export const CommonToggle = styled(MuiSwitch, {
         boxSizing: "border-box",
         top: -3, // border 1px + offset 2px
         left: -3, // border 1px + offset 2px
-        // backgroundImage: `url("data:image/svg+xml,%3Csvg width='34' height='24' viewBox='0 0 34 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0.5' y='0.5' width='33' height='23' rx='11.5' stroke='%2300C9EA'/%3E%3C/svg%3E%0A")`
       }
     },
     '& .MuiSwitch-track': {
@@ -137,10 +136,8 @@ export const CommonToggle = styled(MuiSwitch, {
         },
       },
     },
-    '& .Mui-disabled': {
-      '& + .MuiSwitch-track': {
-        opacity: 1,
-      },
+    '& .Mui-disabled + .MuiSwitch-track': {
+      opacity: 1,
     },
   }});
 
@@ -152,15 +149,14 @@ export const CommonIndeterminateToggle = styled(CommonToggle, {
   return {
   padding: 0,
   cursor: "pointer",
-  '& .MuiSwitch-switchBase': {
-    '&.Mui-checked': {
+  '& .MuiSwitch-switchBase.Mui-checked': {
       ...indeterminateStyle.switchChecked,
       '& + .MuiSwitch-track': {
         ...indeterminateStyle.track,
-      },
     },
   },
   '& .MuiSwitch-thumb': {
     ...indeterminateStyle.thumb,
+    boxShadow: "none",
   },
 }});
