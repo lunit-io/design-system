@@ -13,15 +13,15 @@ export const TypographyItem = styled(Box)({
   marginBottom: "24px",
 });
 
-export const TypographyTitle = styled(Typography)({
-  width: "120px",
-  color: "#AFAFB1",
-});
+export const TypographyTitle = styled(Typography)(({ theme }) => ({
+  width: "160px",
+  color: theme.palette.token.core.text_light,
+}));
 
 export const TypographyDummy = styled(Typography)({
   flex: "1 120px",
 });
 
-export const TypographyStyles = styled(Typography)({
-  color: "#99999B",
-});
+export const TypographyStyles = styled(Typography)(({ theme }) => ({
+  color: theme.palette.token.core.text_light,
+}));
