@@ -6,7 +6,7 @@ import { TypographyVariantsOptionsWithoutFont } from "@mui/material/styles";
 
 import {
   TypographyContent,
-  TypogrpahyItem,
+  TypographyItem,
   TypographyTitle,
   TypographyDummy,
   TypographyStyles,
@@ -48,7 +48,7 @@ const TypographyGroup = ({
           const { fontWeight, fontSize, lineHeight } =
             theme.typography[variant] ?? {};
           return (
-            <TypogrpahyItem key={variant}>
+            <TypographyItem key={variant}>
               <TypographyTitle variant="body16_semibold">
                 {variant}
               </TypographyTitle>
@@ -58,7 +58,7 @@ const TypographyGroup = ({
                 <Box>fontSize: {fontSize}</Box>
                 <Box>lineHeight: {lineHeight}</Box>
               </TypographyStyles>
-            </TypogrpahyItem>
+            </TypographyItem>
           );
         })}
       </TypographyContent>

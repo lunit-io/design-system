@@ -6,7 +6,7 @@ export const TypographyContent = styled(Box)({
   width: "100%",
 });
 
-export const TypogrpahyItem = styled(Box)({
+export const TypographyItem = styled(Box)({
   display: "flex",
   flexWrap: "wrap",
   width: "100%",
@@ -14,14 +14,14 @@ export const TypogrpahyItem = styled(Box)({
 });
 
 export const TypographyTitle = styled(Typography)({
-    width: "120px",
-    color: "#AFAFB1",
-})
+  width: "120px",
+  color: "#AFAFB1",
+});
 
 export const TypographyDummy = styled(Typography)({
-    flex: "1 120px",
-})
+  flex: "1 120px",
+});
 
 export const TypographyStyles = styled(Typography)({
-    color: "#99999B",
-})
+  color: "#99999B",
+});
