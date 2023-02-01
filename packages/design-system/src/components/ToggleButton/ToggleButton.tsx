@@ -12,7 +12,6 @@ const ToggleButton = (props: ToggleButtonProps) => {
     size = "small",
     color = "primary",
     selectedColor = "primary",
-    hasIconOnly = false,
     className = "",
     icon,
     selected,
@@ -20,6 +19,7 @@ const ToggleButton = (props: ToggleButtonProps) => {
     ...buttonProps
   } = props;
 
+  const hasIconOnly = Boolean(icon && !children);
   const excludeToggleGroupClass = className
     .replace("MuiToggleButtonGroup-grouped", "")
     .replace("MuiToggleButtonGroup-groupedHorizontal", "");

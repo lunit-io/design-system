@@ -9,11 +9,13 @@ import {
   iconStyle,
 } from "../Button/Button.styled";
 
+type CustomToggleButtonProps = ToggleButtonProps & { hasIconOnly: boolean };
+
 export const CustomToggleButton = styled(MuiToggleButton, {
   shouldForwardProp: (prop: string) => {
     return !["icon", "kind", "selectedColor", "hasIconOnly"].includes(prop);
   },
-})<ToggleButtonProps>(
+})<CustomToggleButtonProps>(
   ({
     theme: {
       palette: { token },
