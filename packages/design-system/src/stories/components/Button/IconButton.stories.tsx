@@ -108,18 +108,8 @@ IconOnlyButton.argTypes = {
   children: {
     control: false,
     type: "string",
-    defaultValue: "Text",
     table: {
       defaultValue: { summary: "undefined" },
-    },
-  },
-  hasIconOnly: {
-    control: false,
-    description: `Option to handle so that only icons can be inserted
-        \n If set to false, you can add Text.`,
-    defaultValue: true,
-    table: {
-      defaultValue: { summary: "false" },
     },
   },
 };
@@ -132,15 +122,6 @@ IconWithTextButton.argTypes = {
     defaultValue: "Text",
     table: {
       defaultValue: { summary: "undefined" },
-    },
-  },
-  hasIconOnly: {
-    control: false,
-    description: `Option to handle so that only icons can be inserted
-        \n If set to false, you can add Text.`,
-    defaultValue: false,
-    table: {
-      defaultValue: { summary: "false" },
     },
   },
 };

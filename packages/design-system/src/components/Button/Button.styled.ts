@@ -13,12 +13,14 @@ type KindStyleParams = Pick<ButtonProps, "kind" | "color"> & {
   token: ColorToken;
 };
 
+type CustomButtonProps = ButtonProps & { hasIconOnly: boolean };
+
 export const sizeStyle = ({
   size,
   kind,
   hasIconOnly,
   selected = false,
-}: Pick<ButtonProps, "size" | "hasIconOnly" | "kind"> &
+}: Pick<CustomButtonProps, "size" | "hasIconOnly" | "kind"> &
   Pick<ToggleButtonProps, "selected">) => ({
   ...(size === "small" && {
     padding: `${
@@ -165,7 +167,7 @@ export const commonStyle = ({ token }: { token: ColorToken }) =>
 export const iconStyle = ({
   size,
   hasIconOnly,
-}: Pick<ButtonProps, "size" | "hasIconOnly">) => ({
+}: Pick<CustomButtonProps, "size" | "hasIconOnly">) => ({
   "& .MuiButton-startIcon": {
     width: "20px",
     height: "20px",
@@ -189,7 +191,7 @@ export const CustomButton = styled(MuiButton, {
   shouldForwardProp: (prop: string) => {
     return !["kind", "hasIconOnly"].includes(prop);
   },
-})<ButtonProps>(
+})<CustomButtonProps>(
   ({
     theme: {
       palette: { token },

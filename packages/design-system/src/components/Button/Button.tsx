@@ -5,17 +5,17 @@ import { CustomButton } from "./Button.styled";
 
 import type { ButtonProps } from "./Button.types";
 
-const Button = (props: ButtonProps) => {
+const Button = (props: Omit<ButtonProps, "hasIconOnly">) => {
   const {
     kind = "contained",
     size = "small",
     color = "primary",
-    hasIconOnly = false,
     icon,
     className,
     children,
     ...buttonProps
   } = props;
+  const hasIconOnly = Boolean(icon && !children);
 
   return (
     <>
