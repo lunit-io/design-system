@@ -8,10 +8,29 @@ export default {
   title: "Components/Alert",
   component: Alert,
   argTypes: {
-    severity: {
-      control: "radio",
-      options: ["success", "info", "warning", "error"],
-      description: `\`success\`, \`info\`, \`warning\`, \`error\``,
+    title: {
+      control: "text",
+    },
+    width: {
+      control: {
+        type: "number",
+        min: 374,
+      },
+    },
+    elevation: {
+      table: {
+        disable: true,
+      },
+    },
+    square: {
+      table: {
+        disable: true,
+      },
+    },
+    onClose: {
+      table: {
+        disable: true,
+      },
     },
   },
   parameters: {
@@ -28,37 +47,28 @@ export default {
         sx={{
           display: "flex",
           flexDirection: "column",
+          padding: "3em",
           gap: "1em",
         }}
       >
-        <Box
-          className="base10"
-          bgcolor={"lunit.grey.00.main"}
-          sx={{
-            padding: "3em",
-          }}
-        >
-          {Story()}
-        </Box>
-        <Box
-          className="base90"
-          bgcolor={"lunit.grey.90.main"}
-          sx={{
-            padding: "3em",
-          }}
-        >
-          {Story()}
-        </Box>
+        {Story()}
       </Box>
     ),
   ],
 } as ComponentMeta<typeof Alert>;
 
-const Template: ComponentStory<typeof Alert> = (args) => <Alert {...args} />;
+const Template: ComponentStory<typeof Alert> = (args) => (
+  <>
+    <Alert severity={"error"} {...args} />
+    <Alert severity={"success"} {...args} />
+    <Alert severity={"info"} {...args} />
+    <Alert severity={"warning"} {...args} />
+  </>
+);
 
 export const LunitAlert = Template.bind({});
 LunitAlert.args = {
-  severity: "success",
+  width: 620,
   title: "Danger alert title",
   children: (
     <Typography variant="body2_reg">
