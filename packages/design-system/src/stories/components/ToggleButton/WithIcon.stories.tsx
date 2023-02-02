@@ -79,7 +79,6 @@ export default {
     },
     children: {
       type: "string",
-      defaultValue: "Text",
     },
     disabled: {
       control: {
@@ -196,6 +195,12 @@ const Template: ComponentStory<typeof ToggleButton> = (arg) => (
 
 export const IconStory = Template.bind({});
 IconStory.storyName = "Icon";
+IconStory.argTypes = {
+  children: {
+    type: "string",
+    defaultValue: "text",
+  },
+};
 
 const IconOnlyTemplate: ComponentStory<typeof ToggleButton> = (arg) => (
   <Table sx={{ width: 330 }}>
@@ -239,3 +244,9 @@ const IconOnlyTemplate: ComponentStory<typeof ToggleButton> = (arg) => (
 
 export const WithIconOnlyStory = IconOnlyTemplate.bind({});
 WithIconOnlyStory.storyName = "Icon only";
+WithIconOnlyStory.argTypes = {
+  children: {
+    type: "string",
+    controls: false,
+  },
+};
