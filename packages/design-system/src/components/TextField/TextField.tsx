@@ -11,6 +11,7 @@ import type {
 
 const SingleTextField = (props: SingleTextFieldProps) => {
   const {
+    size,
     leftIcon,
     rightIcon,
     handleLeftIconClick,
@@ -21,6 +22,7 @@ const SingleTextField = (props: SingleTextFieldProps) => {
   return (
     <BaseTextField
       {...restProps}
+      textFieldSize={size}
       InputProps={{
         startAdornment: leftIcon && (
           <TextFieldIcon icon={leftIcon} onIconClick={handleLeftIconClick} />
@@ -33,22 +35,23 @@ const SingleTextField = (props: SingleTextFieldProps) => {
   );
 };
 
-const MultiTextField = (props: MultiTextFieldProps) => {
-  return <BaseTextField {...props} multiline />;
+const MultiTextField = ({ size, ...restProps }: MultiTextFieldProps) => {
+  return <BaseTextField {...restProps} textFieldSize={size} multiline />;
 };
 
 const TextField = (props: TextFieldProps) => {
   const {
     rows = 1,
+    size = "small",
     multiline = false,
     variant = "outlined",
     ...restProps
   } = props;
 
   return multiline ? (
-    <MultiTextField {...restProps} variant={variant} rows={rows} />
+    <MultiTextField {...restProps} size={size} variant={variant} rows={rows} />
   ) : (
-    <SingleTextField {...restProps} variant={variant} />
+    <SingleTextField {...restProps} size={size} variant={variant} />
   );
 };
 

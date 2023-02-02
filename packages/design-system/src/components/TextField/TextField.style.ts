@@ -1,29 +1,36 @@
 import MuiTextField from "@mui/material/TextField";
-import { styled } from "@mui/system";
+import { styled } from "@mui/material/styles";
 
-const BaseTextField = styled(MuiTextField)(({ theme }) => ({
+import type { ColorToken } from "@/foundation/colors/types";
+import type { TextFieldProps, TextFieldSize } from "./TextField.types";
+
+type BaseTextFieldProps = Omit<TextFieldProps, "size"> & {
+  textFieldSize: TextFieldSize;
+};
+
+const commonStyle = ({ token }: { token: ColorToken }) => ({
   "& .MuiOutlinedInput-root": {
     height: "100%",
     "& fieldset": {
       border: "none",
     },
     "&.Mui-error fieldset": {
-      border: `1px solid ${theme.palette.token.component.textfield_border_error}`,
+      border: `1px solid ${token.component.textfield_border_error}`,
     },
     "&.Mui-focused fieldset": {
-      border: `1px solid ${theme.palette.token.core.focused}`,
+      border: `1px solid ${token.core.focused}`,
     },
     "&.Mui-disabled fieldset": {
       opacity: 0.38,
     },
-    background: theme.palette.token.component.textfield_bg,
+    background: token.component.textfield_bg,
     overflow: "hidden",
-    color: theme.palette.token.core.text_normal,
+    color: token.core.text_normal,
   },
   "& .MuiFormHelperText-root": {
-    color: theme.palette.token.core.text_medium,
+    color: token.core.text_medium,
     "&.Mui-error": {
-      color: theme.palette.token.core.text_error,
+      color: token.core.text_error,
     },
     margin: 0,
     marginTop: "4px",
@@ -31,13 +38,47 @@ const BaseTextField = styled(MuiTextField)(({ theme }) => ({
   },
   "& input, textarea": {
     textOverflow: "ellipsis",
-    padding: "5px 10px",
     "&::placeholder": {
-      color: theme.palette.token.core.text_medium,
+      color: token.core.text_medium,
       opacity: 1,
     },
   },
-}));
+});
+
+const sizeStyle = ({ size }: Pick<TextFieldProps, "size">) => ({
+  ...(size === "small" && {
+    "& input, textarea": {
+      padding: "4px 12px",
+      fontSize: "14px",
+    },
+  }),
+  ...(size === "medium" && {
+    "& input, textarea": {
+      padding: "8px 16px",
+      fontSize: "14px",
+    },
+  }),
+  ...(size === "large" && {
+    "& input, textarea": {
+      padding: "10px 16px",
+      fontSize: "16px",
+    },
+  }),
+});
+
+const BaseTextField = styled(MuiTextField, {
+  shouldForwardProp: (prop) => prop !== "textFieldSize",
+})<BaseTextFieldProps>(
+  ({
+    theme: {
+      palette: { token },
+    },
+    textFieldSize,
+  }) => ({
+    ...commonStyle({ token }),
+    ...sizeStyle({ size: textFieldSize }),
+  })
+);
 
 const IconWrapper = styled("div")(({ theme }) => ({
   display: "flex",
