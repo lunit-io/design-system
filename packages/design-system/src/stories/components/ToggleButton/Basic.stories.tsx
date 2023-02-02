@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import { Bell } from "@lunit/design-system-icons";
 import ToggleButton from "@/components/ToggleButton";
+import ToggleButtonGroup from "@/components/ToggleButtonGroup";
 
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
 import type { ButtonProps } from "@/components/Button/Button.types";
@@ -50,7 +51,7 @@ export default {
       defaultValue: "Text",
     },
     selected: {
-      defaultValue: false,
+      control: false,
       table: {
         defaultValue: { summary: "false" },
       },
@@ -154,7 +155,7 @@ export default {
 } as ComponentMeta<typeof ToggleButton>;
 
 const BasicToggleButtonTemplate: ComponentStory<typeof ToggleButton> = (
-  arg,
+  arg
 ) => {
   const [selected, setSelected] = useState(false);
   useEffect(() => {
@@ -177,6 +178,35 @@ export const BasicToggleButton = BasicToggleButtonTemplate.bind({});
 BasicToggleButton.storyName = "Basic ToggleButton";
 
 const SizeTemplate: ComponentStory<typeof ToggleButton> = (args) => {
+  const [values, setValues] = React.useState({
+    small: "",
+    medium: "",
+    large: "",
+  });
+
+  const handleChange = (
+    _: React.MouseEvent<HTMLElement>,
+    value: string | null,
+    size: SizeValues
+  ) => {
+    if (size) {
+      setValues({
+        ...values,
+        [size]: value,
+      });
+    }
+  };
+
+  const group = sizeList.map((size) => {
+    if (size) {
+      return {
+        size: size,
+        handler: (_: React.MouseEvent<HTMLElement>, value: string | null) =>
+          handleChange(_, value, size),
+      };
+    }
+  });
+
   return (
     <Table sx={{ width: 900 }}>
       <TableHead>
@@ -199,23 +229,53 @@ const SizeTemplate: ComponentStory<typeof ToggleButton> = (args) => {
       </TableHead>
       <TableBody>
         <TableRow>
-          {sizeList.map((size) => (
-            <TableCell key={size} sx={{ "& button": { marginRight: "10px" } }}>
-              <ToggleButton
-                {...args}
-                hasIconOnly
-                icon={<Bell />}
-                size={size}
-                value="text1"
-              />
-              <ToggleButton {...args} size={size}>
-                {args.children}
-              </ToggleButton>
-              <ToggleButton {...args} icon={<Bell />} size={size} value="text2">
-                {args.children}
-              </ToggleButton>
-            </TableCell>
-          ))}
+          {group.map((item) => {
+            if (item) {
+              const { size, handler } = item;
+              console.log("value", values[size]);
+              return (
+                <TableCell
+                  key={size}
+                  sx={{ "& button": { marginRight: "10px" } }}
+                >
+                  <ToggleButtonGroup
+                    value={values[size]}
+                    exclusive
+                    onChange={handler}
+                    aria-label="text alignment"
+                    sx={{
+                      "& button": {
+                        marginRight: "7px",
+                      },
+                    }}
+                  >
+                    <ToggleButton
+                      {...args}
+                      hasIconOnly
+                      icon={<Bell />}
+                      size={size}
+                      value={String(size) + 1}
+                    />
+                    <ToggleButton
+                      {...args}
+                      size={size}
+                      value={String(size) + 2}
+                    >
+                      {args.children}
+                    </ToggleButton>
+                    <ToggleButton
+                      {...args}
+                      icon={<Bell />}
+                      size={size}
+                      value={String(size) + 3}
+                    >
+                      {args.children}
+                    </ToggleButton>
+                  </ToggleButtonGroup>
+                </TableCell>
+              );
+            }
+          })}
         </TableRow>
       </TableBody>
     </Table>
@@ -229,40 +289,56 @@ Size.argTypes = {
   },
 };
 
-const SelectedColorTemplate: ComponentStory<typeof ToggleButton> = (arg) => (
-  <Table sx={{ width: 330 }}>
-    <TableHead>
-      <TableRow>
-        <TableCell>
-          <Typography variant="body2_m">Selected color</Typography>
-        </TableCell>
-        <TableCell>
-          <Typography variant="body2_m">Primary</Typography>
-        </TableCell>
-        <TableCell>
-          <Typography variant="body2_m">Secondary</Typography>
-        </TableCell>
-      </TableRow>
-    </TableHead>
-    <TableBody>
-      <TableRow>
-        <TableCell>
-          <Typography variant="body2_m">Selected</Typography>
-        </TableCell>
-        <TableCell>
-          <ToggleButton {...arg} value="first">
-            {arg.children}
-          </ToggleButton>
-        </TableCell>
-        <TableCell>
-          <ToggleButton {...arg} selectedColor="secondary" value="second">
-            {arg.children}
-          </ToggleButton>
-        </TableCell>
-      </TableRow>
-    </TableBody>
-  </Table>
-);
+const SelectedColorTemplate: ComponentStory<typeof ToggleButton> = (arg) => {
+  const [selected1, setSelected1] = useState(true);
+  const [selected2, setSelected2] = useState(true);
+
+  return (
+    <Table sx={{ width: 330 }}>
+      <TableHead>
+        <TableRow>
+          <TableCell>
+            <Typography variant="body2_m">Selected color</Typography>
+          </TableCell>
+          <TableCell>
+            <Typography variant="body2_m">Primary</Typography>
+          </TableCell>
+          <TableCell>
+            <Typography variant="body2_m">Secondary</Typography>
+          </TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        <TableRow>
+          <TableCell>
+            <Typography variant="body2_m">Selected</Typography>
+          </TableCell>
+          <TableCell>
+            <ToggleButton
+              {...arg}
+              value="first"
+              selected={selected1}
+              onChange={() => setSelected1(!selected1)}
+            >
+              {arg.children}
+            </ToggleButton>
+          </TableCell>
+          <TableCell>
+            <ToggleButton
+              {...arg}
+              selectedColor="secondary"
+              value="second"
+              selected={selected2}
+              onChange={() => setSelected2(!selected2)}
+            >
+              {arg.children}
+            </ToggleButton>
+          </TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+  );
+};
 
 export const SelectedColor = SelectedColorTemplate.bind({});
 
