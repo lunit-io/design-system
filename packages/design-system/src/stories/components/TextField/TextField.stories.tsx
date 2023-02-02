@@ -47,6 +47,7 @@ const SingleTemplate: ComponentStory<typeof TextField> = (args) => (
       <TableRow>
         <TableCell>Default</TableCell>
         <TableCell>Error</TableCell>
+        <TableCell>focused</TableCell>
         <TableCell>Disabled</TableCell>
       </TableRow>
     </TableHead>
@@ -57,6 +58,9 @@ const SingleTemplate: ComponentStory<typeof TextField> = (args) => (
         </TableCell>
         <TableCell>
           <TextField error {...args} />
+        </TableCell>
+        <TableCell>
+          <TextField focused {...args} />
         </TableCell>
         <TableCell>
           <TextField disabled {...args} />
@@ -72,6 +76,7 @@ const MultiTemplate: ComponentStory<typeof TextField> = (args) => (
       <TableRow>
         <TableCell>Default</TableCell>
         <TableCell>Error</TableCell>
+        <TableCell>focused</TableCell>
         <TableCell>Disabled</TableCell>
       </TableRow>
     </TableHead>
@@ -82,6 +87,9 @@ const MultiTemplate: ComponentStory<typeof TextField> = (args) => (
         </TableCell>
         <TableCell>
           <TextField multiline error {...args} />
+        </TableCell>
+        <TableCell>
+          <TextField multiline focused {...args} />
         </TableCell>
         <TableCell>
           <TextField multiline disabled {...args} />
@@ -98,6 +106,7 @@ const SingleWithIconTemplate: ComponentStory<typeof TextField> = (args) => (
         <TableCell></TableCell>
         <TableCell>Default</TableCell>
         <TableCell>Error</TableCell>
+        <TableCell>focused</TableCell>
         <TableCell>Disabled</TableCell>
       </TableRow>
     </TableHead>
@@ -109,6 +118,9 @@ const SingleWithIconTemplate: ComponentStory<typeof TextField> = (args) => (
         </TableCell>
         <TableCell>
           <TextField error leftIcon={<Bell />} {...args} />
+        </TableCell>
+        <TableCell>
+          <TextField focused {...args} />
         </TableCell>
         <TableCell>
           <TextField disabled leftIcon={<Bell />} {...args} />
@@ -123,6 +135,9 @@ const SingleWithIconTemplate: ComponentStory<typeof TextField> = (args) => (
           <TextField error rightIcon={<Bell />} {...args} />
         </TableCell>
         <TableCell>
+          <TextField focused rightIcon={<Bell />} {...args} />
+        </TableCell>
+        <TableCell>
           <TextField disabled rightIcon={<Bell />} {...args} />
         </TableCell>
       </TableRow>
@@ -133,6 +148,14 @@ const SingleWithIconTemplate: ComponentStory<typeof TextField> = (args) => (
         </TableCell>
         <TableCell>
           <TextField error leftIcon={<Bell />} rightIcon={<Bell />} {...args} />
+        </TableCell>
+        <TableCell>
+          <TextField
+            focused
+            leftIcon={<Bell />}
+            rightIcon={<Bell />}
+            {...args}
+          />
         </TableCell>
         <TableCell>
           <TextField
