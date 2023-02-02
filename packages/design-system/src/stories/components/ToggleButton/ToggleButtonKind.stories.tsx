@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
 import {
-  Box,
   Table,
   TableHead,
   TableRow,
@@ -23,10 +22,7 @@ export default {
       table: { type: { summary: "any" } },
     },
     selected: {
-      control: {
-        type: "boolean",
-      },
-      defaultValue: false,
+      control: false,
       table: {
         defaultValue: { summary: "false" },
       },
@@ -137,6 +133,16 @@ const ButtonTemplate: ComponentStory<typeof ToggleButton> = ({
   children,
   ...restProps
 }) => {
+  const [values, setValues] = useState({
+    contained: false,
+    outlined: false,
+    ghost: false,
+  });
+
+  const handleChange = (value: keyof typeof values) => {
+    setValues({ ...values, [value]: !values[value] });
+  };
+
   return (
     <>
       <Table sx={{ width: 600 }}>
@@ -164,7 +170,13 @@ const ButtonTemplate: ComponentStory<typeof ToggleButton> = ({
         <TableBody>
           <TableRow>
             <TableCell>
-              <ToggleButton color={color} {...restProps} value="text1">
+              <ToggleButton
+                color={color}
+                {...restProps}
+                value="contained"
+                onChange={() => handleChange("contained")}
+                selected={values.contained}
+              >
                 {children}
               </ToggleButton>
             </TableCell>
@@ -173,7 +185,9 @@ const ButtonTemplate: ComponentStory<typeof ToggleButton> = ({
                 kind="outlined"
                 color="primary"
                 {...restProps}
-                value="text2"
+                value="outlined"
+                onChange={() => handleChange("outlined")}
+                selected={values.outlined}
               >
                 {children}
               </ToggleButton>
@@ -183,7 +197,9 @@ const ButtonTemplate: ComponentStory<typeof ToggleButton> = ({
                 kind="ghost"
                 color={color}
                 {...restProps}
-                value="text3"
+                value="ghost"
+                onChange={() => handleChange("ghost")}
+                selected={values.ghost}
               >
                 {children}
               </ToggleButton>
@@ -208,6 +224,32 @@ Kind.argTypes = {
 };
 
 const ContainedTemplate: ComponentStory<typeof ToggleButton> = (args) => {
+  const [values, setValues] = useState({
+    primary: {
+      enable: false,
+      hover: false,
+      focus: false,
+    },
+    secondary: {
+      enable: false,
+      hover: false,
+      focus: false,
+    },
+  });
+
+  const handleChange = (
+    color: keyof typeof values,
+    value: keyof typeof values[keyof typeof values]
+  ) => {
+    setValues({
+      ...values,
+      [color]: {
+        ...values[color],
+        [value]: !values[color][value],
+      },
+    });
+  };
+
   return (
     <Table sx={{ width: 450 }}>
       <TableHead>
@@ -227,7 +269,13 @@ const ContainedTemplate: ComponentStory<typeof ToggleButton> = (args) => {
             <Typography variant="body2_reg">Enable</Typography>
           </TableCell>
           <TableCell>
-            <ToggleButton {...args} kind="contained" value="text1">
+            <ToggleButton
+              {...args}
+              kind="contained"
+              value="enable"
+              onChange={() => handleChange("primary", "enable")}
+              selected={values.primary.enable}
+            >
               {args.children}
             </ToggleButton>
           </TableCell>
@@ -236,7 +284,9 @@ const ContainedTemplate: ComponentStory<typeof ToggleButton> = (args) => {
               {...args}
               kind="contained"
               color="secondary"
-              value="text2"
+              value="enable"
+              onChange={() => handleChange("secondary", "enable")}
+              selected={values.secondary.enable}
             >
               {args.children}
             </ToggleButton>
@@ -247,7 +297,14 @@ const ContainedTemplate: ComponentStory<typeof ToggleButton> = (args) => {
             <Typography variant="body2_reg">Hover</Typography>
           </TableCell>
           <TableCell>
-            <ToggleButton {...args} id="hover" kind="contained" value="text3">
+            <ToggleButton
+              {...args}
+              id="hover"
+              kind="contained"
+              value="hover"
+              onChange={() => handleChange("primary", "hover")}
+              selected={values.primary.hover}
+            >
               {args.children}
             </ToggleButton>
           </TableCell>
@@ -257,7 +314,9 @@ const ContainedTemplate: ComponentStory<typeof ToggleButton> = (args) => {
               id="hover"
               kind="contained"
               color="secondary"
-              value="text4"
+              value="hover"
+              onChange={() => handleChange("secondary", "hover")}
+              selected={values.secondary.hover}
             >
               {args.children}
             </ToggleButton>
@@ -272,7 +331,9 @@ const ContainedTemplate: ComponentStory<typeof ToggleButton> = (args) => {
               {...args}
               kind="contained"
               className="Mui-focusVisible"
-              value="text5"
+              value="focus"
+              onChange={() => handleChange("primary", "focus")}
+              selected={values.primary.focus}
             >
               {args.children}
             </ToggleButton>
@@ -283,7 +344,9 @@ const ContainedTemplate: ComponentStory<typeof ToggleButton> = (args) => {
               kind="contained"
               color="secondary"
               className="Mui-focusVisible"
-              value="text6"
+              value="focus"
+              onChange={() => handleChange("secondary", "focus")}
+              selected={values.secondary.focus}
             >
               {args.children}
             </ToggleButton>
@@ -294,7 +357,7 @@ const ContainedTemplate: ComponentStory<typeof ToggleButton> = (args) => {
             <Typography variant="body2_reg">Disabled</Typography>
           </TableCell>
           <TableCell>
-            <ToggleButton {...args} kind="contained" disabled value="text7">
+            <ToggleButton {...args} kind="contained" disabled value="disabled">
               {args.children}
             </ToggleButton>
           </TableCell>
@@ -325,6 +388,32 @@ KindContained.argTypes = {
 };
 
 const GhostTemplate: ComponentStory<typeof ToggleButton> = (args) => {
+  const [values, setValues] = useState({
+    primary: {
+      enable: false,
+      hover: false,
+      focus: false,
+    },
+    secondary: {
+      enable: false,
+      hover: false,
+      focus: false,
+    },
+  });
+
+  const handleChange = (
+    color: keyof typeof values,
+    value: keyof typeof values[keyof typeof values]
+  ) => {
+    setValues({
+      ...values,
+      [color]: {
+        ...values[color],
+        [value]: !values[color][value],
+      },
+    });
+  };
+
   return (
     <>
       <Table sx={{ width: 450 }}>
@@ -345,7 +434,13 @@ const GhostTemplate: ComponentStory<typeof ToggleButton> = (args) => {
               <Typography variant="body2_reg">Enable</Typography>
             </TableCell>
             <TableCell>
-              <ToggleButton {...args} kind="ghost" value="text1">
+              <ToggleButton
+                {...args}
+                kind="ghost"
+                value="enable"
+                onChange={() => handleChange("primary", "enable")}
+                selected={values.primary.enable}
+              >
                 {args.children}
               </ToggleButton>
             </TableCell>
@@ -354,7 +449,9 @@ const GhostTemplate: ComponentStory<typeof ToggleButton> = (args) => {
                 {...args}
                 kind="ghost"
                 color="secondary"
-                value="text2"
+                value="enable"
+                onChange={() => handleChange("secondary", "enable")}
+                selected={values.secondary.enable}
               >
                 {args.children}
               </ToggleButton>
@@ -365,7 +462,14 @@ const GhostTemplate: ComponentStory<typeof ToggleButton> = (args) => {
               <Typography variant="body2_reg">Hover</Typography>
             </TableCell>
             <TableCell>
-              <ToggleButton {...args} id="hover" kind="ghost" value="text3">
+              <ToggleButton
+                {...args}
+                id="hover"
+                kind="ghost"
+                value="hover"
+                onChange={() => handleChange("primary", "hover")}
+                selected={values.primary.hover}
+              >
                 {args.children}
               </ToggleButton>
             </TableCell>
@@ -375,7 +479,9 @@ const GhostTemplate: ComponentStory<typeof ToggleButton> = (args) => {
                 id="hover"
                 kind="ghost"
                 color="secondary"
-                value="text4"
+                value="hover"
+                onChange={() => handleChange("secondary", "hover")}
+                selected={values.secondary.hover}
               >
                 {args.children}
               </ToggleButton>
@@ -390,7 +496,9 @@ const GhostTemplate: ComponentStory<typeof ToggleButton> = (args) => {
                 {...args}
                 kind="ghost"
                 className="Mui-focusVisible"
-                value="text5"
+                value="focus"
+                onChange={() => handleChange("primary", "focus")}
+                selected={values.primary.focus}
               >
                 {args.children}
               </ToggleButton>
@@ -401,7 +509,9 @@ const GhostTemplate: ComponentStory<typeof ToggleButton> = (args) => {
                 kind="ghost"
                 color="secondary"
                 className="Mui-focusVisible"
-                value="text6"
+                value="focus"
+                onChange={() => handleChange("secondary", "focus")}
+                selected={values.secondary.focus}
               >
                 {args.children}
               </ToggleButton>
@@ -412,7 +522,7 @@ const GhostTemplate: ComponentStory<typeof ToggleButton> = (args) => {
               <Typography variant="body2_reg">Disabled</Typography>
             </TableCell>
             <TableCell>
-              <ToggleButton {...args} kind="ghost" disabled value="text7">
+              <ToggleButton {...args} kind="ghost" disabled value="disabled">
                 {args.children}
               </ToggleButton>
             </TableCell>
@@ -422,7 +532,7 @@ const GhostTemplate: ComponentStory<typeof ToggleButton> = (args) => {
                 kind="ghost"
                 color="secondary"
                 disabled
-                value="text8"
+                value="disabled"
               >
                 {args.children}
               </ToggleButton>
@@ -449,6 +559,27 @@ const OutlinedTemplate: ComponentStory<typeof ToggleButton> = ({
   color,
   ...restProps
 }) => {
+  const [values, setValues] = useState({
+    primary: {
+      enable: false,
+      hover: false,
+      focus: false,
+    },
+  });
+
+  const handleChange = (
+    color: keyof typeof values,
+    value: keyof typeof values[keyof typeof values]
+  ) => {
+    setValues({
+      ...values,
+      [color]: {
+        ...values[color],
+        [value]: !values[color][value],
+      },
+    });
+  };
+
   return (
     <>
       <Table sx={{ width: 250 }}>
@@ -466,7 +597,13 @@ const OutlinedTemplate: ComponentStory<typeof ToggleButton> = ({
               <Typography variant="body2_reg">Enable</Typography>
             </TableCell>
             <TableCell>
-              <ToggleButton {...restProps} kind="outlined" value="text1">
+              <ToggleButton
+                {...restProps}
+                kind="outlined"
+                value="enable"
+                onChange={() => handleChange("primary", "enable")}
+                selected={values.primary.enable}
+              >
                 Text
               </ToggleButton>
             </TableCell>
@@ -480,7 +617,9 @@ const OutlinedTemplate: ComponentStory<typeof ToggleButton> = ({
                 {...restProps}
                 id="hover"
                 kind="outlined"
-                value="text2"
+                value="hover"
+                onChange={() => handleChange("primary", "hover")}
+                selected={values.primary.hover}
               >
                 Text
               </ToggleButton>
@@ -495,7 +634,9 @@ const OutlinedTemplate: ComponentStory<typeof ToggleButton> = ({
                 {...restProps}
                 kind="outlined"
                 className="Mui-focusVisible"
-                value="text3"
+                value="focus"
+                onChange={() => handleChange("primary", "focus")}
+                selected={values.primary.focus}
               >
                 Text
               </ToggleButton>
@@ -510,7 +651,7 @@ const OutlinedTemplate: ComponentStory<typeof ToggleButton> = ({
                 {...restProps}
                 kind="outlined"
                 disabled
-                value="text4"
+                value="disabled"
               >
                 Text
               </ToggleButton>
