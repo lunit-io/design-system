@@ -91,7 +91,7 @@ const IconWrapper = styled("div")(({ theme }) => ({
   "& svg": {
     width: "20px",
     height: "20px",
-    color: theme.palette.token.core.icon_normal,
+    color: theme.palette.token.core.text_normal,
   },
 }));
 
