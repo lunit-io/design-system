@@ -10,8 +10,12 @@ import {
   MenuItem,
   Paper,
   Select,
+  TextField,
   Tooltip,
 } from "@mui/material";
+import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { Dayjs } from "dayjs";
 import { Container, Title } from "./styled";
 
 interface ElevationProps {
@@ -29,6 +33,8 @@ const Elevation = ({ surface, isBase = false }: ElevationProps) => {
   const handleClickOpen = () => {
     setOpen(true);
   };
+
+  const [value, setValue] = React.useState<Dayjs | null>(null);
 
   if (isBase) {
     return (
@@ -88,7 +94,23 @@ const Elevation = ({ surface, isBase = false }: ElevationProps) => {
             <MenuItem value="option2">Option 2</MenuItem>
             <MenuItem value="option3">Option 3</MenuItem>
           </Select>
-          {/** @todo DatePicker */}
+        </Container>
+
+        <Title>Date Picker</Title>
+        <Container>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DatePicker
+              label="Basic example"
+              value={value}
+              onChange={(newValue) => {
+                setValue(newValue);
+              }}
+              renderInput={(params) => <TextField {...params} />}
+              PaperProps={{
+                className: surface,
+              }}
+            />
+          </LocalizationProvider>
         </Container>
 
         <Title>Alert</Title>
