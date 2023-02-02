@@ -16,24 +16,44 @@ export default {
   title: "Components/TextField",
   component: TextField,
   argTypes: {
+    size: {
+      control: false,
+      defaultValue: "small",
+      description: "The size of the text field.",
+      table: {
+        defaultValue: { summary: "small" },
+        type: { summary: ["small", "medium", "large"] },
+      },
+    },
     placeholder: {
       type: "string",
       defaultValue: "Please typing...",
+      description: "The placeholder content.",
+      table: {
+        defaultValue: { summary: "undefined" },
+        type: { summary: "string" },
+      },
     },
     helperText: {
       type: "string",
       defaultValue: "Helper Text",
+      description:
+        'The helper text content, use "error " or "sub text " to display helper text.',
+      table: {
+        defaultValue: { summary: "undefined" },
+        type: { summary: "string" },
+      },
     },
   },
   parameters: {
     controls: {
-      include: [
-        "rows",
-        "helperText",
-        "placeholder",
-        "handleLeftIconClick",
-        "handleRightIconClick",
-      ],
+      include: ["size", "helperText", "placeholder"],
+    },
+    docs: {
+      description: {
+        component: `The size of the text field.
+          \n The default value is "small" and can be set to "medium" or "large".`,
+      },
     },
   },
   decorators: [(Story) => <Box className="base00">{Story()}</Box>],

@@ -21,21 +21,38 @@ export default {
     placeholder: {
       type: "string",
       defaultValue: "Please typing...",
+      description: "The placeholder content.",
+      table: {
+        defaultValue: { summary: "undefined" },
+        type: { summary: "string" },
+      },
     },
     helperText: {
       type: "string",
       defaultValue: "Helper Text",
+      description:
+        'The helper text content, use "error " or "sub text " to display helper text.',
+      table: {
+        defaultValue: { summary: "undefined" },
+        type: { summary: "string" },
+      },
     },
   },
   parameters: {
     controls: {
       include: [
-        "rows",
         "helperText",
         "placeholder",
         "handleLeftIconClick",
         "handleRightIconClick",
       ],
+    },
+    docs: {
+      description: {
+        component: `It is a text field that allows users to enter and edit text.
+          \n It is usually used in forms. It can be used as a single line or multi-line text field.
+          \n It can be used with an icon on the left or right side.`,
+      },
     },
   },
   decorators: [(Story) => <Box className="base00">{Story()}</Box>],
@@ -64,35 +81,6 @@ const SingleTemplate: ComponentStory<typeof TextField> = (args) => (
         </TableCell>
         <TableCell>
           <TextField {...args} disabled />
-        </TableCell>
-      </TableRow>
-    </TableBody>
-  </Table>
-);
-
-const MultiTemplate: ComponentStory<typeof TextField> = (args) => (
-  <Table>
-    <TableHead>
-      <TableRow>
-        <TableCell>Default</TableCell>
-        <TableCell>Error</TableCell>
-        <TableCell>focused</TableCell>
-        <TableCell>Disabled</TableCell>
-      </TableRow>
-    </TableHead>
-    <TableBody>
-      <TableRow>
-        <TableCell>
-          <TextField {...args} multiline />
-        </TableCell>
-        <TableCell>
-          <TextField {...args} multiline error />
-        </TableCell>
-        <TableCell>
-          <TextField {...args} multiline focused />
-        </TableCell>
-        <TableCell>
-          <TextField {...args} multiline disabled />
         </TableCell>
       </TableRow>
     </TableBody>
@@ -171,16 +159,37 @@ const SingleWithIconTemplate: ComponentStory<typeof TextField> = (args) => (
 );
 
 export const TextFieldWithSingle = SingleTemplate.bind({});
-TextFieldWithSingle.storyName = "Single Line";
-
-export const TextFieldWithMulti = MultiTemplate.bind({});
-TextFieldWithMulti.argTypes = {
-  rows: {
-    type: "number",
-    defaultValue: 3,
+TextFieldWithSingle.argTypes = {
+  handleLeftIconClick: {
+    control: false,
+    defaultValue: "function",
+    options: ["function", undefined],
+    mapping: {
+      function: action("handleLeftIconClick"),
+      undefined: undefined,
+    },
+    description: "The left icon click event call back function.",
+    table: {
+      defaultValue: { summary: "undefined" },
+      type: { summary: "function" },
+    },
+  },
+  handleRightIconClick: {
+    control: false,
+    defaultValue: "function",
+    options: ["function", undefined],
+    mapping: {
+      function: action("handleRightIconClick"),
+      undefined: undefined,
+    },
+    description: "The right icon click event call back function.",
+    table: {
+      defaultValue: { summary: "undefined" },
+      type: { summary: "function" },
+    },
   },
 };
-TextFieldWithMulti.storyName = "Multi Line";
+TextFieldWithSingle.storyName = "Single Line";
 
 export const TextFieldWithIcon = SingleWithIconTemplate.bind({});
 TextFieldWithIcon.argTypes = {
@@ -188,20 +197,32 @@ TextFieldWithIcon.argTypes = {
     control: {
       type: "select",
     },
+    defaultValue: "function",
     options: ["function", undefined],
     mapping: {
       function: action("handleLeftIconClick"),
       undefined: undefined,
+    },
+    description: "The left icon click event call back function.",
+    table: {
+      defaultValue: { summary: "undefined" },
+      type: { summary: "function" },
     },
   },
   handleRightIconClick: {
     control: {
       type: "select",
     },
+    defaultValue: "function",
     options: ["function", undefined],
     mapping: {
       function: action("handleRightIconClick"),
       undefined: undefined,
+    },
+    description: "The right icon click event call back function.",
+    table: {
+      defaultValue: { summary: "undefined" },
+      type: { summary: "function" },
     },
   },
 };
