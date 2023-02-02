@@ -57,13 +57,13 @@ const SingleTemplate: ComponentStory<typeof TextField> = (args) => (
           <TextField {...args} />
         </TableCell>
         <TableCell>
-          <TextField error {...args} />
+          <TextField {...args} error />
         </TableCell>
         <TableCell>
-          <TextField focused {...args} />
+          <TextField {...args} focused />
         </TableCell>
         <TableCell>
-          <TextField disabled {...args} />
+          <TextField {...args} disabled />
         </TableCell>
       </TableRow>
     </TableBody>
@@ -83,16 +83,16 @@ const MultiTemplate: ComponentStory<typeof TextField> = (args) => (
     <TableBody>
       <TableRow>
         <TableCell>
-          <TextField multiline {...args} />
+          <TextField {...args} multiline />
         </TableCell>
         <TableCell>
-          <TextField multiline error {...args} />
+          <TextField {...args} multiline error />
         </TableCell>
         <TableCell>
-          <TextField multiline focused {...args} />
+          <TextField {...args} multiline focused />
         </TableCell>
         <TableCell>
-          <TextField multiline disabled {...args} />
+          <TextField {...args} multiline disabled />
         </TableCell>
       </TableRow>
     </TableBody>
@@ -114,55 +114,55 @@ const SingleWithIconTemplate: ComponentStory<typeof TextField> = (args) => (
       <TableRow>
         <TableCell>Left Icon</TableCell>
         <TableCell>
-          <TextField leftIcon={<Bell />} {...args} />
+          <TextField {...args} leftIcon={<Bell />} />
         </TableCell>
         <TableCell>
-          <TextField error leftIcon={<Bell />} {...args} />
+          <TextField {...args} error leftIcon={<Bell />} />
         </TableCell>
         <TableCell>
-          <TextField focused {...args} />
+          <TextField {...args} focused />
         </TableCell>
         <TableCell>
-          <TextField disabled leftIcon={<Bell />} {...args} />
+          <TextField {...args} disabled leftIcon={<Bell />} />
         </TableCell>
       </TableRow>
       <TableRow>
         <TableCell>Right Icon</TableCell>
         <TableCell>
-          <TextField rightIcon={<Bell />} {...args} />
+          <TextField {...args} rightIcon={<Bell />} />
         </TableCell>
         <TableCell>
-          <TextField error rightIcon={<Bell />} {...args} />
+          <TextField {...args} error rightIcon={<Bell />} />
         </TableCell>
         <TableCell>
-          <TextField focused rightIcon={<Bell />} {...args} />
+          <TextField {...args} focused rightIcon={<Bell />} />
         </TableCell>
         <TableCell>
-          <TextField disabled rightIcon={<Bell />} {...args} />
+          <TextField {...args} disabled rightIcon={<Bell />} />
         </TableCell>
       </TableRow>
       <TableRow>
         <TableCell>Left Right Both Icon</TableCell>
         <TableCell>
-          <TextField leftIcon={<Bell />} rightIcon={<Bell />} {...args} />
+          <TextField {...args} leftIcon={<Bell />} rightIcon={<Bell />} />
         </TableCell>
         <TableCell>
-          <TextField error leftIcon={<Bell />} rightIcon={<Bell />} {...args} />
+          <TextField {...args} error leftIcon={<Bell />} rightIcon={<Bell />} />
         </TableCell>
         <TableCell>
           <TextField
+            {...args}
             focused
             leftIcon={<Bell />}
             rightIcon={<Bell />}
-            {...args}
           />
         </TableCell>
         <TableCell>
           <TextField
+            {...args}
             disabled
             leftIcon={<Bell />}
             rightIcon={<Bell />}
-            {...args}
           />
         </TableCell>
       </TableRow>
@@ -171,6 +171,7 @@ const SingleWithIconTemplate: ComponentStory<typeof TextField> = (args) => (
 );
 
 export const TextFieldWithSingle = SingleTemplate.bind({});
+TextFieldWithSingle.storyName = "Single Line";
 
 export const TextFieldWithMulti = MultiTemplate.bind({});
 TextFieldWithMulti.argTypes = {
@@ -179,6 +180,7 @@ TextFieldWithMulti.argTypes = {
     defaultValue: 3,
   },
 };
+TextFieldWithMulti.storyName = "Multi Line";
 
 export const TextFieldWithIcon = SingleWithIconTemplate.bind({});
 TextFieldWithIcon.argTypes = {
@@ -203,3 +205,4 @@ TextFieldWithIcon.argTypes = {
     },
   },
 };
+TextFieldWithIcon.storyName = "With Icon";
