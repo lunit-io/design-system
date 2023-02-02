@@ -36,13 +36,22 @@ export default {
       },
       description: "(() => void)",
     },
+    disabled: {
+      control: {
+        type: "boolean",
+      },
+      description: "If `true`, the component is disabled.",
+      defaultValue: false,
+      options: [true, false],
+    },
   },
   args: {
     size: "medium",
     indeterminate: false,
+    disabled: false,
   },
   parameters: {
-    controls: { include: ["checked", "size", "indeterminate", "onChange"] },
+    controls: { include: ["disabled", "checked", "size", "indeterminate", "onChange"] },
     docs: {
       description: {
         component: `Switches toggle the state of a single setting on or off.
@@ -57,7 +66,7 @@ export default {
      * Since Color Token system will be changed, below className should be changed accordingly
      * Also, the hover color will be set again with the color token system completion
      */
-    (Story) => <Box className="base90">{Story()}</Box>,
+    (Story) => <>{Story()}</>,
   ],
 } as ComponentMeta<typeof Toggle>;
 
