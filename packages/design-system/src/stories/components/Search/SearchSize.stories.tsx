@@ -17,9 +17,7 @@ export default {
   component: Search,
   argTypes: {
     size: {
-      control: {
-        type: "radio",
-      },
+      control: false,
       options: ["small", "medium", "large"],
       defaultValue: "small",
       description: "The size of the text field.",
@@ -76,14 +74,13 @@ export default {
   ],
 } as ComponentMeta<typeof Search>;
 
-const SearchTemplate: ComponentStory<typeof Search> = (args) => (
+const SearchSizeTemplate: ComponentStory<typeof Search> = (args) => (
   <Table>
     <TableHead>
       <TableRow>
-        <TableCell>Default</TableCell>
-        <TableCell>Error</TableCell>
-        <TableCell>focused</TableCell>
-        <TableCell>Disabled</TableCell>
+        <TableCell>Small</TableCell>
+        <TableCell>Medium</TableCell>
+        <TableCell>Large</TableCell>
       </TableRow>
     </TableHead>
     <TableBody>
@@ -92,21 +89,18 @@ const SearchTemplate: ComponentStory<typeof Search> = (args) => (
           <Search {...args} />
         </TableCell>
         <TableCell>
-          <Search {...args} error />
+          <Search {...args} size="medium" />
         </TableCell>
         <TableCell>
-          <Search {...args} focused />
-        </TableCell>
-        <TableCell>
-          <Search {...args} disabled />
+          <Search {...args} size="large" />
         </TableCell>
       </TableRow>
     </TableBody>
   </Table>
 );
 
-export const TextFieldWithSearch = SearchTemplate.bind({});
-TextFieldWithSearch.argTypes = {
+export const SearchWithSize = SearchSizeTemplate.bind({});
+SearchWithSize.argTypes = {
   size: {
     control: {
       type: "radio",
@@ -120,4 +114,4 @@ TextFieldWithSearch.argTypes = {
     },
   },
 };
-TextFieldWithSearch.storyName = "Default Search";
+SearchWithSize.storyName = "Size";
