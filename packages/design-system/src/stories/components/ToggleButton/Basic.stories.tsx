@@ -174,11 +174,7 @@ const SizeTemplate: ComponentStory<typeof ToggleButton> = (args) => {
     large: "",
   });
 
-  const handleChange = (
-    _: React.MouseEvent<HTMLElement>,
-    value: string | null,
-    size: SizeValues
-  ) => {
+  const handleChange = (value: string | null, size: SizeValues) => {
     if (size) {
       setValues({
         ...values,
@@ -192,7 +188,7 @@ const SizeTemplate: ComponentStory<typeof ToggleButton> = (args) => {
       return {
         size: size,
         handler: (_: React.MouseEvent<HTMLElement>, value: string | null) =>
-          handleChange(_, value, size),
+          handleChange(value, size),
       };
     }
   });
@@ -222,7 +218,6 @@ const SizeTemplate: ComponentStory<typeof ToggleButton> = (args) => {
           {group.map((item) => {
             if (item) {
               const { size, handler } = item;
-              console.log("value", values[size]);
               return (
                 <TableCell
                   key={size}

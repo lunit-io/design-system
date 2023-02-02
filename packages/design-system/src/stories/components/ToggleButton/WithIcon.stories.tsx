@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Table,
   TableHead,
@@ -40,9 +40,7 @@ export default {
       table: { type: { summary: "any" } },
     },
     selected: {
-      control: {
-        type: "boolean",
-      },
+      control: false,
       table: {
         defaultValue: { summary: "false" },
       },
@@ -153,45 +151,67 @@ export default {
   },
 } as ComponentMeta<typeof ToggleButton>;
 
-const Template: ComponentStory<typeof ToggleButton> = (arg) => (
-  <Table sx={{ width: 330 }}>
-    <TableHead>
-      <TableRow>
-        <TableCell>
-          <Typography variant="body2_m">Selected color</Typography>
-        </TableCell>
-        <TableCell>
-          <Typography variant="body2_m">Primary</Typography>
-        </TableCell>
-        <TableCell>
-          <Typography variant="body2_m">Secondary</Typography>
-        </TableCell>
-      </TableRow>
-    </TableHead>
-    <TableBody>
-      <TableRow>
-        <TableCell>
-          <Typography variant="body2_m">Selected</Typography>
-        </TableCell>
-        <TableCell>
-          <ToggleButton {...arg} icon={<Bell />} value="first">
-            {arg.children}
-          </ToggleButton>
-        </TableCell>
-        <TableCell>
-          <ToggleButton
-            {...arg}
-            icon={<Bell />}
-            selectedColor="secondary"
-            value="second"
-          >
-            {arg.children}
-          </ToggleButton>
-        </TableCell>
-      </TableRow>
-    </TableBody>
-  </Table>
-);
+const Template: ComponentStory<typeof ToggleButton> = (arg) => {
+  const [values, setValues] = useState({
+    primary: true,
+    secondary: true,
+  });
+
+  const handleChange = (value: keyof typeof values) => {
+    setValues({
+      ...values,
+      [value]: !values[value],
+    });
+  };
+
+  return (
+    <Table sx={{ width: 330 }}>
+      <TableHead>
+        <TableRow>
+          <TableCell>
+            <Typography variant="body2_m">Selected color</Typography>
+          </TableCell>
+          <TableCell>
+            <Typography variant="body2_m">Primary</Typography>
+          </TableCell>
+          <TableCell>
+            <Typography variant="body2_m">Secondary</Typography>
+          </TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        <TableRow>
+          <TableCell>
+            <Typography variant="body2_m">Selected</Typography>
+          </TableCell>
+          <TableCell>
+            <ToggleButton
+              {...arg}
+              icon={<Bell />}
+              value="primary"
+              onChange={() => handleChange("primary")}
+              selected={values.primary}
+            >
+              {arg.children}
+            </ToggleButton>
+          </TableCell>
+          <TableCell>
+            <ToggleButton
+              {...arg}
+              icon={<Bell />}
+              selectedColor="secondary"
+              value="secondary"
+              onChange={() => handleChange("secondary")}
+              selected={values.secondary}
+            >
+              {arg.children}
+            </ToggleButton>
+          </TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+  );
+};
 
 export const IconStory = Template.bind({});
 IconStory.storyName = "Icon";
@@ -202,45 +222,67 @@ IconStory.argTypes = {
   },
 };
 
-const IconOnlyTemplate: ComponentStory<typeof ToggleButton> = (arg) => (
-  <Table sx={{ width: 330 }}>
-    <TableHead>
-      <TableRow>
-        <TableCell>
-          <Typography variant="body2_m">Selected color</Typography>
-        </TableCell>
-        <TableCell>
-          <Typography variant="body2_m">Primary</Typography>
-        </TableCell>
-        <TableCell>
-          <Typography variant="body2_m">Secondary</Typography>
-        </TableCell>
-      </TableRow>
-    </TableHead>
-    <TableBody>
-      <TableRow>
-        <TableCell>
-          <Typography variant="body2_m">Selected</Typography>
-        </TableCell>
-        <TableCell>
-          <ToggleButton {...arg} icon={<Bell />} value="first">
-            {arg.children}
-          </ToggleButton>
-        </TableCell>
-        <TableCell>
-          <ToggleButton
-            {...arg}
-            icon={<Bell />}
-            selectedColor="secondary"
-            value="second"
-          >
-            {arg.children}
-          </ToggleButton>
-        </TableCell>
-      </TableRow>
-    </TableBody>
-  </Table>
-);
+const IconOnlyTemplate: ComponentStory<typeof ToggleButton> = (arg) => {
+  const [values, setValues] = useState({
+    primary: true,
+    secondary: true,
+  });
+
+  const handleChange = (value: keyof typeof values) => {
+    setValues({
+      ...values,
+      [value]: !values[value],
+    });
+  };
+
+  return (
+    <Table sx={{ width: 330 }}>
+      <TableHead>
+        <TableRow>
+          <TableCell>
+            <Typography variant="body2_m">Selected color</Typography>
+          </TableCell>
+          <TableCell>
+            <Typography variant="body2_m">Primary</Typography>
+          </TableCell>
+          <TableCell>
+            <Typography variant="body2_m">Secondary</Typography>
+          </TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        <TableRow>
+          <TableCell>
+            <Typography variant="body2_m">Selected</Typography>
+          </TableCell>
+          <TableCell>
+            <ToggleButton
+              {...arg}
+              icon={<Bell />}
+              value="primary"
+              onChange={() => handleChange("primary")}
+              selected={values.primary}
+            >
+              {arg.children}
+            </ToggleButton>
+          </TableCell>
+          <TableCell>
+            <ToggleButton
+              {...arg}
+              icon={<Bell />}
+              selectedColor="secondary"
+              value="secondary"
+              onChange={() => handleChange("secondary")}
+              selected={values.secondary}
+            >
+              {arg.children}
+            </ToggleButton>
+          </TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+  );
+};
 
 export const WithIconOnlyStory = IconOnlyTemplate.bind({});
 WithIconOnlyStory.storyName = "Icon only";
