@@ -2,6 +2,7 @@ import {
   FontStyleOptions,
   TypographyOptions,
 } from "@mui/material/styles/createTypography";
+import tokens from "./tokens";
 
 declare module "@mui/material/styles" {
   interface TypographyVariants {
@@ -94,89 +95,89 @@ const fontFamily = [
 
 const fontVariants: Omit<TypographyOptions, "fontFamily" | "allVariants"> = {
   h1: {
-    fontWeight: 600,
-    fontSize: 52,
-    lineHeight: "68px",
+    fontWeight: "var(--52-semibold-font-weight)",
+    fontSize: "var(--52-semibold-font-size)",
+    lineHeight: "var(--52-semibold-line-height)",
   },
   h2: {
-    fontWeight: 700,
-    fontSize: 38,
-    lineHeight: "48px",
+    fontWeight: "var(--38-bold-font-weight)",
+    fontSize: "var(--38-bold-font-size)",
+    lineHeight: "var(--38-bold-line-height)",
   },
   h3: {
-    fontWeight: 600,
-    fontSize: 24,
-    lineHeight: "36px",
+    fontWeight: "var(--24-semibold-font-weight)",
+    fontSize: "var(--24-semibold-font-size)",
+    lineHeight: "var(--24-semibold-line-height)",
   },
   h4: {
-    fontWeight: 600,
-    fontSize: 20,
-    lineHeight: "28px",
+    fontWeight: "var(--20-semibold-font-weight)",
+    fontSize: "var(--20-semibold-font-size)",
+    lineHeight: "var(--20-semibold-line-height)",
   },
   h6: {
-    fontWeight: 600,
-    fontSize: 16,
-    lineHeight: "24px",
+    fontWeight: "var(--16-semibold-font-weight)",
+    fontSize: "var(--16-semibold-font-size)",
+    lineHeight: "var(--16-semibold-line-height)",
   },
   body16_semibold: {
-    fontWeight: 600,
-    fontSize: 16,
-    lineHeight: "24px",
+    fontWeight: "var(--16-semibold-font-weight)",
+    fontSize: "var(--16-semibold-font-size)",
+    lineHeight: "var(--16-semibold-line-height)",
   },
   body16_regular: {
-    fontWeight: 400,
-    fontSize: 16,
-    lineHeight: "24px",
+    fontWeight: "var(--16-regular-font-weight)",
+    fontSize: "var(--16-regular-font-size)",
+    lineHeight: "var(--16-regular-line-height)",
   },
   body14_bold: {
-    fontWeight: 700,
-    fontSize: 14,
-    lineHeight: "20px",
+    fontWeight: "var(--14-bold-font-weight)",
+    fontSize: "var(--14-bold-font-size)",
+    lineHeight: "var(--14-bold-line-height)",
   },
   body14_medium: {
-    fontWeight: 500,
-    fontSize: 14,
-    lineHeight: "20px",
+    fontWeight: "var(--14-medium-font-weight)",
+    fontSize: "var(--14-medium-font-size)",
+    lineHeight: "var(--14-medium-line-height)",
   },
   body14_regular: {
-    fontWeight: 400,
-    fontSize: 14,
-    lineHeight: "20px",
+    fontWeight: "var(--14-regular-font-weight)",
+    fontSize: "var(--14-regular-font-size)",
+    lineHeight: "var(--14-regular-line-height)",
   },
   body12_semibold: {
-    fontWeight: 600,
-    fontSize: 12.4,
-    lineHeight: "16px",
+    fontWeight: "var(--12-semibold-font-weight)",
+    fontSize: "var(--12-semibold-font-size)",
+    lineHeight: "var(--12-semibold-line-height)",
   },
   body12_regular: {
-    fontWeight: 400,
-    fontSize: 12.4,
-    lineHeight: "16px",
+    fontWeight: "var(--12-regular-font-weight)",
+    fontSize: "var(--12-regular-font-size)",
+    lineHeight: "var(--12-regular-line-height)",
   },
   overline: {
-    fontWeight: 500,
-    fontSize: 14,
-    lineHeight: "20px",
+    fontWeight: "var(--overline-font-weight)",
+    fontSize: "var(--overline-font-size)",
+    lineHeight: "var(--overline-line-height)",
     letterSpacing: "1px",
     textTransform: "uppercase",
   },
   button1: {
-    fontWeight: 600,
-    fontSize: 16,
-    lineHeight: "22px",
+    fontWeight: "var(--button1-font-weight)",
+    fontSize: "var(--button1-font-size)",
+    lineHeight: "var(--button1-line-height)",
     textTransform: "capitalize",
   },
   button2: {
-    fontWeight: 600,
-    fontSize: 14,
-    lineHeight: "20px",
+    fontWeight: "var(--button2-font-weight)",
+    fontSize: "var(--button2-font-size)",
+    lineHeight: "var(--button2-line-height)",
     letterSpacing: "0.2px",
     textTransform: "capitalize",
   },
   caption: {
-    fontWeight: 500,
-    fontSize: 12,
-    lineHeight: "16px",
+    fontWeight: "var(--caption-font-weight)",
+    fontSize: "var(--caption-font-size)",
+    lineHeight: "var(--caption-line-height)",
   },
 };
 
@@ -190,6 +191,9 @@ export const createTypographyCssBaseline = () => {
     html: {
       fontFamily,
       fontFeatureSettings: `'tnum', 'ss01', 'ss02', 'ss08'`,
+    },
+    ":root": {
+      ...tokens,
     },
   };
 };
