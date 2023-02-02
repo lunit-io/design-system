@@ -33,15 +33,6 @@ export default {
         type: { summary: "React.ReactNode" },
       },
     },
-    hasIconOnly: {
-      control: false,
-      description: `Option to handle so that only icons can be inserted
-          \n If set to false, you can add Text.`,
-      defaultValue: false,
-      table: {
-        defaultValue: { summary: "false" },
-      },
-    },
     value: {
       control: false,
       table: { type: { summary: "any" } },
@@ -142,7 +133,6 @@ export default {
         "selected",
         "value",
         "icon",
-        "hasIconOnly",
       ],
     },
     docs: {
@@ -251,7 +241,6 @@ const SizeTemplate: ComponentStory<typeof ToggleButton> = (args) => {
                   >
                     <ToggleButton
                       {...args}
-                      hasIconOnly
                       icon={<Bell />}
                       size={size}
                       value={String(size) + 1}

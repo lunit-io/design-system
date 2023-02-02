@@ -143,7 +143,6 @@ export default {
         "selected",
         "color",
         "onChange",
-        "hasIconOnly",
       ],
     },
     docs: {
@@ -197,14 +196,6 @@ const Template: ComponentStory<typeof ToggleButton> = (arg) => (
 
 export const IconStory = Template.bind({});
 IconStory.storyName = "Icon";
-IconStory.argTypes = {
-  hasIconOnly: {
-    defaultValue: false,
-    control: {
-      type: "boolean",
-    },
-  },
-};
 
 const IconOnlyTemplate: ComponentStory<typeof ToggleButton> = (arg) => (
   <Table sx={{ width: 330 }}>
@@ -227,7 +218,7 @@ const IconOnlyTemplate: ComponentStory<typeof ToggleButton> = (arg) => (
           <Typography variant="body2_m">Selected</Typography>
         </TableCell>
         <TableCell>
-          <ToggleButton {...arg} hasIconOnly icon={<Bell />} value="first">
+          <ToggleButton {...arg} icon={<Bell />} value="first">
             {arg.children}
           </ToggleButton>
         </TableCell>
@@ -235,7 +226,6 @@ const IconOnlyTemplate: ComponentStory<typeof ToggleButton> = (arg) => (
           <ToggleButton
             {...arg}
             icon={<Bell />}
-            hasIconOnly
             selectedColor="secondary"
             value="second"
           >
@@ -249,8 +239,3 @@ const IconOnlyTemplate: ComponentStory<typeof ToggleButton> = (arg) => (
 
 export const WithIconOnlyStory = IconOnlyTemplate.bind({});
 WithIconOnlyStory.storyName = "Icon only";
-WithIconOnlyStory.argTypes = {
-  hasIconOnly: {
-    control: false,
-  },
-};

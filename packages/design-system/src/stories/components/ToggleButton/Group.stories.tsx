@@ -21,15 +21,6 @@ export default {
         type: { summary: "React.ReactNode" },
       },
     },
-    hasIconOnly: {
-      control: false,
-      defaultValue: false,
-      description: `Option to handle so that only icons can be inserted
-          \n If set to false, you can add Text.`,
-      table: {
-        defaultValue: { summary: "false" },
-      },
-    },
     value: {
       control: false,
       table: { type: { summary: "any" } },
@@ -138,7 +129,6 @@ export default {
         "color",
         "onChange",
         "icon",
-        "hasIconOnly",
       ],
     },
     docs: {
@@ -155,7 +145,7 @@ const GroupTemplate: ComponentStory<typeof ToggleButton> = (arg) => {
 
   const handleAlignment = (
     event: React.MouseEvent<HTMLElement>,
-    newAlignment: string | null,
+    newAlignment: string | null
   ) => {
     setAlignment(newAlignment);
   };
@@ -196,7 +186,7 @@ const GroupMultipleTemplate: ComponentStory<typeof ToggleButton> = (arg) => {
 
   const handleAlignments = (
     event: React.MouseEvent<HTMLElement>,
-    newAlignment: string[],
+    newAlignment: string[]
   ) => {
     setAlignments(newAlignment);
   };
