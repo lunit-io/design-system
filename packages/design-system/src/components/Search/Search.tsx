@@ -9,6 +9,7 @@ import type { SearchProps } from "./Search.types";
 const Search = (props: SearchProps) => {
   const {
     value = "",
+    size = "small",
     searchIcon = <SearchT1 />,
     resetIcon = <Reset />,
     variant = "outlined",
@@ -40,6 +41,7 @@ const Search = (props: SearchProps) => {
   return (
     <TextField
       {...restProps}
+      size={size}
       variant={variant}
       value={inputText}
       leftIcon={searchIcon}
