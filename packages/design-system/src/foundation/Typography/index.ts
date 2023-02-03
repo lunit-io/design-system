@@ -1,4 +1,7 @@
-import { TypographyOptions } from "@mui/material/styles/createTypography";
+import type {
+  TypographyOptions,
+  TypographyStyleOptions,
+} from "@mui/material/styles/createTypography";
 import tokens from "./tokens";
 
 declare module "@mui/material/styles" {
@@ -73,7 +76,7 @@ const fontFamily = [
   "sans-serif",
 ].join(",");
 
-const fontVariants: TypographyOptions = {
+let fontVariants: Record<string, TypographyStyleOptions> = {
   headline1: {
     fontWeight: "var(--headline1-font-weight)",
     fontSize: "var(--headline1-font-size)",
@@ -159,6 +162,20 @@ const fontVariants: TypographyOptions = {
     fontSize: "var(--caption-font-size)",
     lineHeight: "var(--caption-line-height)",
   },
+};
+
+// alias Mui Typography variants
+fontVariants = {
+  ...fontVariants,
+  h1: fontVariants.headline1,
+  h2: fontVariants.headline2,
+  h3: fontVariants.headline3,
+  h4: fontVariants.headline4,
+  h5: fontVariants.headline5,
+  h6: fontVariants.headline5,
+  body1: fontVariants.body1_16_regular,
+  body2: fontVariants.body2_14_regular,
+  button: fontVariants.button2,
 };
 
 const typographyOptions: TypographyOptions = {
