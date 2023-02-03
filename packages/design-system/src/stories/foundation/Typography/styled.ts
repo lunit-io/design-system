@@ -9,19 +9,19 @@ export const TypographyContent = styled(Box)({
 export const TypographyItem = styled(Box)({
   display: "flex",
   flexWrap: "wrap",
-  width: "100%",
   marginBottom: "24px",
 });
 
 export const TypographyTitle = styled(Typography)(({ theme }) => ({
-  width: "160px",
+  width: 160,
   color: theme.palette.token.core.text_light,
 }));
 
 export const TypographyDummy = styled(Typography)({
-  flex: "1 120px",
+  width: 560,
 });
 
 export const TypographyStyles = styled(Typography)(({ theme }) => ({
+  width: 320,
   color: theme.palette.token.core.text_light,
 }));

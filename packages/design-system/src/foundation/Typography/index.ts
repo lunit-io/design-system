@@ -1,79 +1,59 @@
-import {
-  FontStyleOptions,
-  TypographyOptions,
-} from "@mui/material/styles/createTypography";
+import { TypographyOptions } from "@mui/material/styles/createTypography";
 import tokens from "./tokens";
 
 declare module "@mui/material/styles" {
   interface TypographyVariants {
-    body16_semibold: React.CSSProperties;
-    body16_regular: React.CSSProperties;
-    body14_bold: React.CSSProperties;
-    body14_medium: React.CSSProperties;
-    body14_regular: React.CSSProperties;
-    body12_semibold: React.CSSProperties;
-    body12_regular: React.CSSProperties;
+    headline1: React.CSSProperties;
+    headline2: React.CSSProperties;
+    headline3: React.CSSProperties;
+    headline4: React.CSSProperties;
+    headline5: React.CSSProperties;
+    body1_16_semibold: React.CSSProperties;
+    body1_16_regular: React.CSSProperties;
+    body2_14_bold: React.CSSProperties;
+    body2_14_medium: React.CSSProperties;
+    body2_14_regular: React.CSSProperties;
+    body3_12_semibold: React.CSSProperties;
+    body3_12_regular: React.CSSProperties;
     button1: React.CSSProperties;
     button2: React.CSSProperties;
   }
 
   interface TypographyVariantsOptions {
-    body16_semibold?: React.CSSProperties;
-    body16_regular?: React.CSSProperties;
-    body14_bold?: React.CSSProperties;
-    body14_medium?: React.CSSProperties;
-    body14_regular?: React.CSSProperties;
-    body12_semibold?: React.CSSProperties;
-    body12_regular?: React.CSSProperties;
+    headline1?: React.CSSProperties;
+    headline2?: React.CSSProperties;
+    headline3?: React.CSSProperties;
+    headline4?: React.CSSProperties;
+    headline5?: React.CSSProperties;
+    body1_16_semibold?: React.CSSProperties;
+    body1_16_regular?: React.CSSProperties;
+    body2_14_bold?: React.CSSProperties;
+    body2_14_medium?: React.CSSProperties;
+    body2_14_regular?: React.CSSProperties;
+    body3_12_semibold?: React.CSSProperties;
+    body3_12_regular?: React.CSSProperties;
     button1?: React.CSSProperties;
     button2?: React.CSSProperties;
   }
-
-  interface TypographyVariantsOptionsWithoutFont
-    extends Omit<TypographyVariantsOptions, keyof FontStyleOptions> {}
 }
 
 declare module "@mui/material/Typography" {
   interface TypographyPropsVariantOverrides {
-    body16_semibold: true;
-    body16_regular: true;
-    body14_bold: true;
-    body14_medium: true;
-    body14_regular: true;
-    body12_semibold: true;
-    body12_regular: true;
+    headline1: true;
+    headline2: true;
+    headline3: true;
+    headline4: true;
+    headline5: true;
+    body1_16_semibold: true;
+    body1_16_regular: true;
+    body2_14_bold: true;
+    body2_14_medium: true;
+    body2_14_regular: true;
+    body3_12_semibold: true;
+    body3_12_regular: true;
     button1: true;
     button2: true;
   }
-}
-
-declare module "@mui/material/styles/createTypography" {
-  interface Typography {
-    body16_semibold?: TypographyStyle;
-    body16_regular?: TypographyStyle;
-    body14_bold?: TypographyStyle;
-    body14_medium?: TypographyStyle;
-    body14_regular?: TypographyStyle;
-    body12_semibold?: TypographyStyle;
-    body12_regular?: TypographyStyle;
-    button1?: TypographyStyle;
-    button2?: TypographyStyle;
-  }
-
-  interface TypographyOptions {
-    body16_semibold?: TypographyStyleOptions;
-    body16_regular?: TypographyStyleOptions;
-    body14_bold?: TypographyStyleOptions;
-    body14_medium?: TypographyStyleOptions;
-    body14_regular?: TypographyStyleOptions;
-    body12_semibold?: TypographyStyleOptions;
-    body12_regular?: TypographyStyleOptions;
-    button1?: TypographyStyleOptions;
-    button2?: TypographyStyleOptions;
-  }
-
-  interface TypographyOptionsWithoutFont
-    extends Omit<TypographyOptions, keyof FontStyleOptions> {}
 }
 
 const fontFamily = [
@@ -93,66 +73,66 @@ const fontFamily = [
   "sans-serif",
 ].join(",");
 
-const fontVariants: Omit<TypographyOptions, "fontFamily" | "allVariants"> = {
-  h1: {
-    fontWeight: "var(--52-semibold-font-weight)",
-    fontSize: "var(--52-semibold-font-size)",
-    lineHeight: "var(--52-semibold-line-height)",
+const fontVariants: TypographyOptions = {
+  headline1: {
+    fontWeight: "var(--headline1-font-weight)",
+    fontSize: "var(--headline1-font-size)",
+    lineHeight: "var(--headline1-line-height)",
   },
-  h2: {
-    fontWeight: "var(--38-bold-font-weight)",
-    fontSize: "var(--38-bold-font-size)",
-    lineHeight: "var(--38-bold-line-height)",
+  headline2: {
+    fontWeight: "var(--headline2-font-weight)",
+    fontSize: "var(--headline2-font-size)",
+    lineHeight: "var(--headline2-line-height)",
   },
-  h3: {
-    fontWeight: "var(--24-semibold-font-weight)",
-    fontSize: "var(--24-semibold-font-size)",
-    lineHeight: "var(--24-semibold-line-height)",
+  headline3: {
+    fontWeight: "var(--headline3-font-weight)",
+    fontSize: "var(--headline3-font-size)",
+    lineHeight: "var(--headline3-line-height)",
   },
-  h4: {
-    fontWeight: "var(--20-semibold-font-weight)",
-    fontSize: "var(--20-semibold-font-size)",
-    lineHeight: "var(--20-semibold-line-height)",
+  headline4: {
+    fontWeight: "var(--headline4-font-weight)",
+    fontSize: "var(--headline4-font-size)",
+    lineHeight: "var(--headline4-line-height)",
   },
-  h6: {
-    fontWeight: "var(--16-semibold-font-weight)",
-    fontSize: "var(--16-semibold-font-size)",
-    lineHeight: "var(--16-semibold-line-height)",
+  headline5: {
+    fontWeight: "var(--headline5-font-weight)",
+    fontSize: "var(--headline5-font-size)",
+    lineHeight: "var(--headline5-line-height)",
   },
-  body16_semibold: {
-    fontWeight: "var(--16-semibold-font-weight)",
-    fontSize: "var(--16-semibold-font-size)",
-    lineHeight: "var(--16-semibold-line-height)",
+  body1_16_semibold: {
+    fontWeight: "var(--body1-16-semibold-font-weight)",
+    fontSize: "var(--body1-16-semibold-font-size)",
+    lineHeight: "var(--body1-16-semibold-line-height)",
   },
-  body16_regular: {
-    fontWeight: "var(--16-regular-font-weight)",
-    fontSize: "var(--16-regular-font-size)",
-    lineHeight: "var(--16-regular-line-height)",
+  body1_16_regular: {
+    fontWeight: "var(--body1-16-regular-font-weight)",
+    fontSize: "var(--body1-16-regular-font-size)",
+    lineHeight: "var(--body1-16-regular-line-height)",
   },
-  body14_bold: {
-    fontWeight: "var(--14-bold-font-weight)",
-    fontSize: "var(--14-bold-font-size)",
-    lineHeight: "var(--14-bold-line-height)",
+  body2_14_bold: {
+    fontWeight: "var(--body2-14-bold-font-weight)",
+    fontSize: "var(--body2-14-bold-font-size)",
+    lineHeight: "var(--body2-14-bold-line-height)",
   },
-  body14_medium: {
-    fontWeight: "var(--14-medium-font-weight)",
-    fontSize: "var(--14-medium-font-size)",
-    lineHeight: "var(--14-medium-line-height)",
+  body2_14_medium: {
+    fontWeight: "var(--body2-14-medium-font-weight)",
+    fontSize: "var(--body2-14-medium-font-size)",
+    lineHeight: "var(--body2-14-medium-line-height)",
   },
-  body14_regular: {
-    fontWeight: "var(--14-regular-font-weight)",
-    fontSize: "var(--14-regular-font-size)",
-    lineHeight: "var(--14-regular-line-height)",
+  body2_14_regular: {
+    fontWeight: "var(--body2-14-regular-font-weight)",
+    fontSize: "var(--body2-14-regular-font-size)",
+    lineHeight: "var(--body2-14-regular-line-height)",
   },
-  body12_semibold: {
-    fontWeight: "var(--12-semibold-font-weight)",
-    fontSize: "var(--12-semibold-font-size)",
-    lineHeight: "var(--12-semibold-line-height)",
+  body3_12_semibold: {
+    fontWeight: "var(--body3-12-semibold-font-weight)",
+    fontSize: "var(--body3-12-semibold-font-size)",
+    lineHeight: "var(--body3-12-semibold-line-height)",
   },
-  body12_regular: {
-    fontWeight: "var(--12-regular-font-weight)",
-    fontSize: "var(--12-regular-font-size)",
-    lineHeight: "var(--12-regular-line-height)",
+  body3_12_regular: {
+    fontWeight: "var(--body3-12-regular-font-weight)",
+    fontSize: "var(--body3-12-regular-font-size)",
+    lineHeight: "var(--body3-12-regular-line-height)",
   },
   overline: {
     fontWeight: "var(--overline-font-weight)",

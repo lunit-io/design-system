@@ -2,7 +2,7 @@ import React from "react";
 
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { Box, Typography, useTheme } from "@mui/material";
-import { TypographyVariantsOptionsWithoutFont } from "@mui/material/styles";
+import { TypographyProps } from "@mui/material/Typography";
 
 import {
   TypographyContent,
@@ -14,22 +14,30 @@ import {
 
 type ReadableArray<T> = Array<T> | ReadonlyArray<T>;
 
-const headline = ["h1", "h2", "h3", "h4", "h6"] as const;
+const headline = [
+  "headline1",
+  "headline2",
+  "headline3",
+  "headline4",
+  "headline5",
+] as const;
 const body = [
-  "body16_semibold",
-  "body16_regular",
-  "body14_bold",
-  "body14_medium",
-  "body14_regular",
-  "body12_semibold",
-  "body12_regular",
+  "body1_16_semibold",
+  "body1_16_regular",
+  "body2_14_bold",
+  "body2_14_medium",
+  "body2_14_regular",
+  "body3_12_semibold",
+  "body3_12_regular",
 ] as const;
 const etc = ["button1", "button2", "caption", "overline"] as const;
 
 interface TypographyGroupProps {
   heading: React.ReactNode;
   dummy: React.ReactNode;
-  variants: ReadableArray<keyof TypographyVariantsOptionsWithoutFont>;
+  variants: ReadableArray<
+    Exclude<TypographyProps["variant"], "inherit" | undefined>
+  >;
 }
 
 const TypographyGroup = ({
@@ -49,11 +57,11 @@ const TypographyGroup = ({
             theme.typography[variant] ?? {};
           return (
             <TypographyItem key={variant}>
-              <TypographyTitle variant="body16_semibold">
+              <TypographyTitle variant="body1_16_semibold">
                 {variant}
               </TypographyTitle>
               <TypographyDummy variant={variant}>{dummy}</TypographyDummy>
-              <TypographyStyles variant="body14_medium">
+              <TypographyStyles variant="body2_14_medium">
                 <Box>fontWeight: {fontWeight}</Box>
                 <Box>fontSize: {fontSize}</Box>
                 <Box>lineHeight: {lineHeight}</Box>

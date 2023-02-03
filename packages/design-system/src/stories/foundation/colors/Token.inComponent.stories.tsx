@@ -156,7 +156,7 @@ const BaseBox = ({ theme, children }: BaseBoxProps) => {
       p={2}
     >
       <Typography
-        variant="body16_semibold"
+        variant="body1_16_semibold"
         color={(theme) => theme.palette.token.core.text_normal}
       >
         {theme === "light" ? "= light1 =" : "= dark1 ="}
