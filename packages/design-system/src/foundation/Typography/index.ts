@@ -195,4 +195,21 @@ export const createTypographyCssBaseline = () => {
   };
 };
 
+export const typographyDefaultProps = {
+  variantMapping: {
+    headline1: "h1",
+    headline2: "h2",
+    headline3: "h3",
+    headline4: "h4",
+    headline5: "h6",
+    body1_16_semibold: "p",
+    body1_16_regular: "p",
+    body2_14_bold: "p",
+    body2_14_medium: "p",
+    body2_14_regular: "p",
+    body3_12_semibold: "p",
+    body3_12_regular: "p",
+  },
+};
+
 export default typographyOptions;
