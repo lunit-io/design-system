@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { Box } from "@mui/material";
-import { Radio, RadioGroup } from "@/components/SelectControl/Radio";
+import Radio from "@/components/Radio";
+import RadioGroup from "@/components/RadioGroup";
+import FormLabel from "@/components/FormLabel";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { FormLabel } from "@/components/SelectControl/FormLabel";
 
 export default {
   title: "Components/Radio",
@@ -34,18 +35,6 @@ export default {
       component: "This component is identical to the MUI RadioGroup component.",
     },
   },
-  decorators: [
-    /**
-     * TODO
-     * Since Color Token system will be changed, below className should be changed accordingly
-     * Also, the hover color will be set again with the color token system completion
-     */
-    (Story) => (
-      <Box className="base90" sx={{ display: "flex", alignItems: "center" }}>
-        {Story()}
-      </Box>
-    ),
-  ],
 } as ComponentMeta<typeof RadioGroup>;
 
 const RadioGroupTemplate: ComponentStory<typeof RadioGroup> = (args) => {

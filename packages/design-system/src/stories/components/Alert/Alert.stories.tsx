@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import Alert from "@/components/Alert/Alert";
+import Alert from "@/components/Alert";
 
 export default {
   title: "Components/Alert",

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import Toggle from "@/components/SelectControl/Toggle/Toggle";
+import Toggle from "@/components/Toggle/Toggle";
 import {
   Box,
   Table,
@@ -10,7 +10,7 @@ import {
   TableRow,
   TextField,
 } from "@mui/material";
-import FormLabel from "@/components/SelectControl/FormLabel/FormLabel";
+import FormLabel from "@/components/FormLabel";
 import { action } from "@storybook/addon-actions";
 
 export default {
@@ -51,7 +51,9 @@ export default {
     disabled: false,
   },
   parameters: {
-    controls: { include: ["disabled", "checked", "size", "indeterminate", "onChange"] },
+    controls: {
+      include: ["disabled", "checked", "size", "indeterminate", "onChange"],
+    },
     docs: {
       description: {
         component: `Switches toggle the state of a single setting on or off.
@@ -60,14 +62,6 @@ export default {
       },
     },
   },
-  decorators: [
-    /**
-     * TODO
-     * Since Color Token system will be changed, below className should be changed accordingly
-     * Also, the hover color will be set again with the color token system completion
-     */
-    (Story) => <>{Story()}</>,
-  ],
 } as ComponentMeta<typeof Toggle>;
 
 const BaseTemplate: ComponentStory<typeof Toggle> = (args) => {
