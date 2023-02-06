@@ -16,6 +16,17 @@ export default {
   title: "Components/TextField",
   component: TextField,
   argTypes: {
+    size: {
+      control: {
+        type: "radio",
+      },
+      defaultValue: "small",
+      description: "The size of the text field.",
+      table: {
+        defaultValue: { summary: "small" },
+        type: { summary: ["small", "medium", "large"] },
+      },
+    },
     rows: {
       type: "number",
       defaultValue: 1,
@@ -57,7 +68,7 @@ export default {
   },
   parameters: {
     controls: {
-      include: ["rows", "multiline", "helperText", "placeholder"],
+      include: ["size", "rows", "multiline", "helperText", "placeholder"],
     },
     docs: {
       description: {
