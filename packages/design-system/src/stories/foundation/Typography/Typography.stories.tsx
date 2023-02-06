@@ -62,9 +62,11 @@ const TypographyGroup = ({
               </TypographyTitle>
               <TypographyDummy variant={variant}>{dummy}</TypographyDummy>
               <TypographyStyles variant="body2_14_medium">
-                <Box>fontWeight: {fontWeight}</Box>
-                <Box>fontSize: {fontSize}</Box>
-                <Box>lineHeight: {lineHeight}</Box>
+                <span>fontWeight: {fontWeight}</span>
+                <br />
+                <span>fontSize: {fontSize}</span>
+                <br />
+                <span>lineHeight: {lineHeight}</span>
               </TypographyStyles>
             </TypographyItem>
           );
