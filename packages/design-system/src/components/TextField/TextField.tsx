@@ -14,6 +14,8 @@ const SingleTextField = (props: SingleTextFieldProps) => {
     size,
     leftIcon,
     rightIcon,
+    leftIconSx,
+    rightIconSx,
     handleLeftIconClick,
     handleRightIconClick,
     ...restProps
@@ -27,10 +29,18 @@ const SingleTextField = (props: SingleTextFieldProps) => {
       hasRightIcon={Boolean(rightIcon)}
       InputProps={{
         startAdornment: leftIcon && (
-          <TextFieldIcon icon={leftIcon} onIconClick={handleLeftIconClick} />
+          <TextFieldIcon
+            sx={leftIconSx}
+            icon={leftIcon}
+            onIconClick={handleLeftIconClick}
+          />
         ),
         endAdornment: rightIcon && (
-          <TextFieldIcon icon={rightIcon} onIconClick={handleRightIconClick} />
+          <TextFieldIcon
+            sx={rightIconSx}
+            icon={rightIcon}
+            onIconClick={handleRightIconClick}
+          />
         ),
       }}
     />

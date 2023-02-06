@@ -1,3 +1,4 @@
+import type { SxProps } from "@mui/material";
 import type { OutlinedTextFieldProps } from "@mui/material/TextField";
 
 export type TextFieldSize = "small" | "medium" | "large";
@@ -20,9 +21,11 @@ export interface BaseTextFieldProps
 }
 
 export interface SingleTextFieldProps extends BaseTextFieldProps {
+  size: TextFieldSize;
   leftIcon?: JSX.Element;
   rightIcon?: JSX.Element;
-  size: TextFieldSize;
+  leftIconSx?: SxProps;
+  rightIconSx?: SxProps;
   handleLeftIconClick?: () => void;
   handleRightIconClick?: () => void;
 }

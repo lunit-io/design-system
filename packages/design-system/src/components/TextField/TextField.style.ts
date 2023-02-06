@@ -144,6 +144,8 @@ const sizeStyle = ({
 const BaseTextField = styled(MuiTextField, {
   shouldForwardProp: (prop: string) =>
     ![
+      "leftIconSx",
+      "rightIconSx",
       "leftIcon",
       "rightIcon",
       "textFieldSize",
