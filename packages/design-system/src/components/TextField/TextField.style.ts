@@ -6,6 +6,35 @@ import type { TextFieldProps, TextFieldSize } from "./TextField.types";
 
 type BaseTextFieldProps = Omit<TextFieldProps, "size"> & {
   textFieldSize: TextFieldSize;
+  hasLeftIcon?: boolean;
+  hasRightIcon?: boolean;
+};
+
+interface GetTextFieldPaddingBySizeParams {
+  size: TextFieldSize;
+  hasLeftIcon?: boolean;
+  hasRightIcon?: boolean;
+}
+
+const getTextFieldPaddingBySize = ({
+  size,
+  hasLeftIcon,
+  hasRightIcon,
+}: GetTextFieldPaddingBySizeParams) => {
+  switch (size) {
+    case "small":
+      return `0px ${hasRightIcon ? "6px" : "12px"} 0px ${
+        hasLeftIcon ? "6px" : "12px"
+      }}`;
+    case "medium":
+      return `0px ${hasRightIcon ? "10px" : "16px"} 0px ${
+        hasLeftIcon ? "10px" : "16px"
+      }}`;
+    case "large":
+      return `0px ${hasRightIcon ? "10px" : "16px"} 0px ${
+        hasLeftIcon ? "10px" : "16px"
+      }}`;
+  }
 };
 
 const commonStyle = ({ token }: { token: ColorToken }) => ({
@@ -45,38 +74,95 @@ const commonStyle = ({ token }: { token: ColorToken }) => ({
   },
 });
 
-const sizeStyle = ({ size }: Pick<TextFieldProps, "size">) => ({
-  ...(size === "small" && {
+const sizeStyle = ({
+  textFieldSize,
+  hasLeftIcon,
+  hasRightIcon,
+}: Pick<
+  BaseTextFieldProps,
+  "textFieldSize" | "hasLeftIcon" | "hasRightIcon"
+>) => ({
+  ...(textFieldSize === "small" && {
+    "& .MuiInputBase-root": {
+      padding: getTextFieldPaddingBySize({
+        size: textFieldSize,
+        hasLeftIcon,
+        hasRightIcon,
+      }),
+    },
     "& input, textarea": {
-      padding: "4px 12px",
+      padding: "4px 0px",
       fontSize: "14px",
     },
-  }),
-  ...(size === "medium" && {
-    "& input, textarea": {
-      padding: "8px 16px",
-      fontSize: "14px",
+    "& input": {
+      height: "20px",
+    },
+    "& textarea": {
+      minHeight: "92px",
     },
   }),
-  ...(size === "large" && {
+  ...(textFieldSize === "medium" && {
+    "& .MuiInputBase-root": {
+      padding: getTextFieldPaddingBySize({
+        size: textFieldSize,
+        hasLeftIcon,
+        hasRightIcon,
+      }),
+    },
     "& input, textarea": {
-      padding: "10px 16px",
+      padding: "8px 0px",
+      fontSize: "14px",
+    },
+    "& input": {
+      height: "20px",
+    },
+    "& textarea": {
+      minHeight: "84px",
+    },
+  }),
+  ...(textFieldSize === "large" && {
+    "& .MuiInputBase-root": {
+      padding: getTextFieldPaddingBySize({
+        size: textFieldSize,
+        hasLeftIcon,
+        hasRightIcon,
+      }),
+    },
+    "& input, textarea": {
+      padding: "10px 0px",
       fontSize: "16px",
+    },
+    "& input": {
+      height: "24px",
+    },
+    "& textarea": {
+      minHeight: "80px",
     },
   }),
 });
 
 const BaseTextField = styled(MuiTextField, {
-  shouldForwardProp: (prop) => prop !== "textFieldSize",
+  shouldForwardProp: (prop: string) =>
+    ![
+      "leftIcon",
+      "rightIcon",
+      "textFieldSize",
+      "hasLeftIcon",
+      "hasRightIcon",
+      "handleLeftIconClick",
+      "handleRightIconClick",
+    ].includes(prop),
 })<BaseTextFieldProps>(
   ({
     theme: {
       palette: { token },
     },
     textFieldSize,
+    hasLeftIcon,
+    hasRightIcon,
   }) => ({
     ...commonStyle({ token }),
-    ...sizeStyle({ size: textFieldSize }),
+    ...sizeStyle({ textFieldSize, hasLeftIcon, hasRightIcon }),
   })
 );
 
@@ -85,8 +171,8 @@ const IconWrapper = styled("div")(({ theme }) => ({
   alignItems: "center",
   justifyContent: "center",
   minWidth: "28px",
-  width: "28px",
-  height: "28px",
+  minHeight: "28px",
+  marginRight: "2px",
 
   "& svg": {
     width: "20px",
