@@ -4,59 +4,33 @@ import type {
 } from "@mui/material/styles/createTypography";
 import tokens from "./tokens";
 
-declare module "@mui/material/styles" {
-  interface TypographyVariants {
-    headline1: React.CSSProperties;
-    headline2: React.CSSProperties;
-    headline3: React.CSSProperties;
-    headline4: React.CSSProperties;
-    headline5: React.CSSProperties;
-    body1_16_semibold: React.CSSProperties;
-    body1_16_regular: React.CSSProperties;
-    body2_14_bold: React.CSSProperties;
-    body2_14_medium: React.CSSProperties;
-    body2_14_regular: React.CSSProperties;
-    body3_12_semibold: React.CSSProperties;
-    body3_12_regular: React.CSSProperties;
-    button1: React.CSSProperties;
-    button2: React.CSSProperties;
-  }
+type DSVariants =
+  | "headline1"
+  | "headline2"
+  | "headline3"
+  | "headline4"
+  | "headline5"
+  | "body1_16_semibold"
+  | "body1_16_regular"
+  | "body2_14_bold"
+  | "body2_14_medium"
+  | "body2_14_regular"
+  | "body3_12_semibold"
+  | "body3_12_regular"
+  | "button1"
+  | "button2";
 
-  interface TypographyVariantsOptions {
-    headline1?: React.CSSProperties;
-    headline2?: React.CSSProperties;
-    headline3?: React.CSSProperties;
-    headline4?: React.CSSProperties;
-    headline5?: React.CSSProperties;
-    body1_16_semibold?: React.CSSProperties;
-    body1_16_regular?: React.CSSProperties;
-    body2_14_bold?: React.CSSProperties;
-    body2_14_medium?: React.CSSProperties;
-    body2_14_regular?: React.CSSProperties;
-    body3_12_semibold?: React.CSSProperties;
-    body3_12_regular?: React.CSSProperties;
-    button1?: React.CSSProperties;
-    button2?: React.CSSProperties;
-  }
+type DSVariantsType = Record<DSVariants, React.CSSProperties>;
+
+declare module "@mui/material/styles" {
+  interface TypographyVariants extends DSVariantsType {}
+  interface TypographyVariantsOptions extends Partial<DSVariantsType> {}
 }
 
+type TypographyPropsVariantOverridesType = Record<DSVariants, true>;
 declare module "@mui/material/Typography" {
-  interface TypographyPropsVariantOverrides {
-    headline1: true;
-    headline2: true;
-    headline3: true;
-    headline4: true;
-    headline5: true;
-    body1_16_semibold: true;
-    body1_16_regular: true;
-    body2_14_bold: true;
-    body2_14_medium: true;
-    body2_14_regular: true;
-    body3_12_semibold: true;
-    body3_12_regular: true;
-    button1: true;
-    button2: true;
-  }
+  interface TypographyPropsVariantOverrides
+    extends TypographyPropsVariantOverridesType {}
 }
 
 const fontFamily = [
