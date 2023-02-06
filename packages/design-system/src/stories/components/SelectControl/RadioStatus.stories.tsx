@@ -7,7 +7,7 @@ import {
   TableBody,
   TableCell,
 } from "@mui/material";
-import { Radio } from "@/components/SelectControl/Radio";
+import Radio from "@/components/Radio";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 
 export default {
@@ -40,18 +40,6 @@ export default {
       include: ["checked", "disabled", "onChange"],
     },
   },
-  decorators: [
-    /**
-     * TODO
-     * Since Color Token system will be changed, below className should be changed accordingly
-     * Also, the hover color will be set again with the color token system completion
-     */
-    (Story) => (
-      <Box className="base90" sx={{ display: "flex", alignItems: "center" }}>
-        {Story()}
-      </Box>
-    ),
-  ],
   docs: {
     description: {
       component: "This component base is Material UI Radio component.",

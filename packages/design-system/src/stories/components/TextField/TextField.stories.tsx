@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import TextField from "@/components/TextField/TextField";
+import TextField from "@/components/TextField";
 
 export default {
   title: "Components/TextField",

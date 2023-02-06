@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import DataTable from "@/components/DataTable/DataTable";
+import DataTable from "@/components/DataTable";
 
 export default {
   title: "Components/DataTable",

@@ -7,8 +7,8 @@ import {
   TableBody,
   TableCell,
 } from "@mui/material";
-import { Checkbox } from "@/components/SelectControl/Checkbox";
-import FormLabel from "@/components/SelectControl/FormLabel/FormLabel";
+import Checkbox from "@/components/Checkbox";
+import FormLabel from "@/components/FormLabel";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 
 export default {
@@ -80,18 +80,6 @@ export default {
       },
     },
   },
-  decorators: [
-    /**
-     * TODO
-     * Since Color Token system will be changed, below className should be changed accordingly
-     * Also, the hover color will be set again with the color token system completion
-     */
-    (Story) => (
-      <Box className="base90" sx={{ display: "flex", alignItems: "center" }}>
-        {Story()}
-      </Box>
-    ),
-  ],
 } as ComponentMeta<typeof Checkbox>;
 
 const BasicCheckboxTemplate: ComponentStory<typeof Checkbox> = (args) => {
