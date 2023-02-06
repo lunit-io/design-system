@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { SearchT1, Reset } from "@lunit/design-system-icons";
+import { SearchT1, Close } from "@lunit/design-system-icons";
 
 import { TextField } from "../TextField";
 
@@ -12,7 +12,7 @@ const Search = (props: SearchProps) => {
     value = "",
     size = "small",
     searchIcon = <SearchT1 />,
-    resetIcon = <Reset />,
+    resetIcon = <Close />,
     variant = "outlined",
     resetIconSx,
     onChange,
