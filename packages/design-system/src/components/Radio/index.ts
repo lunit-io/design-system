@@ -1,2 +1,2 @@
-export { default as Radio } from "./Radio";
+export { default } from "./Radio";
 export { RadioGroup } from "@mui/material";
