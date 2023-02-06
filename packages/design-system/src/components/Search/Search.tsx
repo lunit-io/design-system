@@ -8,11 +8,13 @@ import type { SearchProps } from "./Search.types";
 
 const Search = (props: SearchProps) => {
   const {
+    sx,
     value = "",
     size = "small",
     searchIcon = <SearchT1 />,
     resetIcon = <Reset />,
     variant = "outlined",
+    resetIconSx,
     onChange,
     handleResetIconClick: _handleResetIconClick,
     ...restProps
@@ -41,11 +43,15 @@ const Search = (props: SearchProps) => {
   return (
     <TextField
       {...restProps}
+      rightIconSx={{
+        visibility: inputText ? "visible" : "hidden",
+        ...resetIconSx,
+      }}
       size={size}
       variant={variant}
       value={inputText}
       leftIcon={searchIcon}
-      rightIcon={inputText.length > 0 ? resetIcon : undefined}
+      rightIcon={resetIcon}
       onChange={handleTextFieldChange}
       handleRightIconClick={handleResetIconClick}
     />
