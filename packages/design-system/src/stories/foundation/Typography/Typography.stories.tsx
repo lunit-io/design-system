@@ -1,118 +1,117 @@
 import React from "react";
 
-import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { Box, Typography, useTheme } from "@mui/material";
-import { TypographyProps } from "@mui/material/Typography";
+import { ComponentStory } from "@storybook/react";
+import { Box, Typography } from "@mui/material";
+import { styled } from "@mui/material/styles";
 
-import {
-  TypographyContent,
-  TypographyItem,
-  TypographyTitle,
-  TypographyDummy,
-  TypographyStyles,
-} from "./styled";
-
-type ReadableArray<T> = Array<T> | ReadonlyArray<T>;
-
-const headline = [
-  "headline1",
-  "headline2",
-  "headline3",
-  "headline4",
-  "headline5",
-] as const;
-const body = [
-  "body1_16_semibold",
-  "body1_16_regular",
-  "body2_14_bold",
-  "body2_14_medium",
-  "body2_14_regular",
-  "body3_12_semibold",
-  "body3_12_regular",
-] as const;
-const etc = ["button1", "button2", "caption", "overline"] as const;
-
-interface TypographyGroupProps {
-  heading: React.ReactNode;
-  dummy: React.ReactNode;
-  variants: ReadableArray<
-    Exclude<TypographyProps["variant"], "inherit" | undefined>
-  >;
-}
-
-const TypographyGroup = ({
-  heading,
-  dummy,
-  variants,
-}: TypographyGroupProps) => {
-  const theme = useTheme();
-  return (
-    <>
-      <Typography variant="h4" component="h2" sx={{ mb: 5 }}>
-        {heading}
-      </Typography>
-      <TypographyContent>
-        {variants.map((variant) => {
-          const { fontWeight, fontSize, lineHeight } =
-            theme.typography[variant] ?? {};
-          return (
-            <TypographyItem key={variant}>
-              <TypographyTitle variant="body1_16_semibold">
-                {variant}
-              </TypographyTitle>
-              <TypographyDummy variant={variant}>{dummy}</TypographyDummy>
-              <TypographyStyles variant="body2_14_medium">
-                <span>fontWeight: {fontWeight}</span>
-                <br />
-                <span>fontSize: {fontSize}</span>
-                <br />
-                <span>lineHeight: {lineHeight}</span>
-              </TypographyStyles>
-            </TypographyItem>
-          );
-        })}
-      </TypographyContent>
-    </>
-  );
-};
-
-const BaseTypography = () => {
-  return (
-    <>
-      <TypographyGroup
-        heading="Headline"
-        dummy="Headline 123456789"
-        variants={headline}
-      />
-      <TypographyGroup
-        heading="Body"
-        dummy={
-          <>
-            AI will be the new standard of care. 123456789
-            <br />
-            By Lunit. With AI, we aim to make data-driven medicine
-            <br />
-            the new standard of care.
-          </>
-        }
-        variants={body}
-      />
-      <TypographyGroup
-        heading="etc"
-        dummy="NEWS & UPDATE 71456"
-        variants={etc}
-      />
-    </>
-  );
-};
+import { variants, variantArray } from "./const";
+import TypographyGroup from "./TypographyGroup";
 
 export default {
   title: "Foundation/Typography",
-  component: BaseTypography,
-} as ComponentMeta<typeof BaseTypography>;
+  component: Typography,
+  argTypes: {
+    variant: {
+      control: "select",
+      options: variantArray,
+    },
+  },
+};
 
-const BaseTemplate: ComponentStory<typeof BaseTypography> = () => (
-  <BaseTypography />
+export const AllVariants = () => (
+  <>
+    <TypographyGroup
+      heading="Headline"
+      dummy="Headline 123456789"
+      variants={variants.headline}
+    />
+    <TypographyGroup
+      heading="Body"
+      dummy={
+        <>
+          AI will be the new standard of care. 123456789
+          <br />
+          By Lunit. With AI, we aim to make data-driven medicine
+          <br />
+          the new standard of care.
+        </>
+      }
+      variants={variants.body}
+    />
+    <TypographyGroup
+      heading="etc"
+      dummy="NEWS & UPDATE 71456"
+      variants={variants.etc}
+    />
+  </>
 );
 
-export const Base = BaseTemplate.bind({});
+const TypographyTemplate: ComponentStory<typeof Typography> = (args) => {
+  const { variant, children } = args;
+  return (
+    <Typography variant={variant} sx={{ whiteSpace: "pre-line" }}>
+      {children}
+    </Typography>
+  );
+};
+
+export const TypographyComponent = TypographyTemplate.bind({});
+TypographyComponent.args = {
+  variant: "body1_16_regular",
+  children:
+    "AI will be the new standard of care. 123456789\nBy Lunit. With AI, we aim to make data-driven medicine\nthe new standard of care.",
+};
+
+const SXTemplate: ComponentStory<typeof Typography> = (args) => {
+  const { variant, children } = args;
+  return (
+    <Box sx={{ typography: variant, whiteSpace: "pre-line" }}>{children}</Box>
+  );
+};
+
+export const SXProps = SXTemplate.bind({});
+SXProps.args = {
+  variant: "body1_16_regular",
+  children:
+    "AI will be the new standard of care. 123456789\nBy Lunit. With AI, we aim to make data-driven medicine\nthe new standard of care.",
+};
+
+const StyledBox = styled(Box, {
+  shouldForwardProp: (prop) => !["variant"].includes(prop.toString()),
+})<{ variant: typeof variantArray[number] }>(({ theme, variant }) => ({
+  ...theme.typography[variant],
+  whiteSpace: "pre-line",
+}));
+
+const StyledTemplate: ComponentStory<typeof StyledBox> = (args) => {
+  /**
+
+  */
+  const { variant, children } = args;
+  return <StyledBox variant={variant}>{children}</StyledBox>;
+};
+
+export const Styled = StyledTemplate.bind({});
+Styled.args = {
+  variant: "body1_16_regular",
+  children:
+    "AI will be the new standard of care. 123456789\nBy Lunit. With AI, we aim to make data-driven medicine\nthe new standard of care.",
+};
+Styled.parameters = {
+  docs: {
+    source: {
+      code: `
+const StyledBox = styled(Box)(({ theme, variant }) => ({
+  ...theme.typography.body1_16_regular,
+  whiteSpace: "pre-line",
+}));
+...
+return (
+  <StyledBox>AI will be the new standard of care. 123456789\nBy Lunit. With AI, we aim to make data-driven medicine\nthe new standard of care.</StyledBox>
+);
+      `,
+      language: "tsx",
+      type: "code",
+    },
+  },
+};
