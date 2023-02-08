@@ -1,3 +1,5 @@
+import type { TypographyStyleOptions } from "@mui/material/styles/createTypography";
+
 const fontWeights = {
   "--font-weight-bold": 700,
   "--font-weight-semibold": 600,
@@ -62,9 +64,99 @@ const etc = {
   "--caption-line-height": "16px",
 } as const;
 
-export default {
+const fontVariants: Record<string, TypographyStyleOptions> = {
+  headline1: {
+    fontWeight: "var(--headline1-font-weight)",
+    fontSize: "var(--headline1-font-size)",
+    lineHeight: "var(--headline1-line-height)",
+  },
+  headline2: {
+    fontWeight: "var(--headline2-font-weight)",
+    fontSize: "var(--headline2-font-size)",
+    lineHeight: "var(--headline2-line-height)",
+  },
+  headline3: {
+    fontWeight: "var(--headline3-font-weight)",
+    fontSize: "var(--headline3-font-size)",
+    lineHeight: "var(--headline3-line-height)",
+  },
+  headline4: {
+    fontWeight: "var(--headline4-font-weight)",
+    fontSize: "var(--headline4-font-size)",
+    lineHeight: "var(--headline4-line-height)",
+  },
+  headline5: {
+    fontWeight: "var(--headline5-font-weight)",
+    fontSize: "var(--headline5-font-size)",
+    lineHeight: "var(--headline5-line-height)",
+  },
+  body1_16_semibold: {
+    fontWeight: "var(--body1-16-semibold-font-weight)",
+    fontSize: "var(--body1-16-semibold-font-size)",
+    lineHeight: "var(--body1-16-semibold-line-height)",
+  },
+  body1_16_regular: {
+    fontWeight: "var(--body1-16-regular-font-weight)",
+    fontSize: "var(--body1-16-regular-font-size)",
+    lineHeight: "var(--body1-16-regular-line-height)",
+  },
+  body2_14_bold: {
+    fontWeight: "var(--body2-14-bold-font-weight)",
+    fontSize: "var(--body2-14-bold-font-size)",
+    lineHeight: "var(--body2-14-bold-line-height)",
+  },
+  body2_14_medium: {
+    fontWeight: "var(--body2-14-medium-font-weight)",
+    fontSize: "var(--body2-14-medium-font-size)",
+    lineHeight: "var(--body2-14-medium-line-height)",
+  },
+  body2_14_regular: {
+    fontWeight: "var(--body2-14-regular-font-weight)",
+    fontSize: "var(--body2-14-regular-font-size)",
+    lineHeight: "var(--body2-14-regular-line-height)",
+  },
+  body3_12_semibold: {
+    fontWeight: "var(--body3-12-semibold-font-weight)",
+    fontSize: "var(--body3-12-semibold-font-size)",
+    lineHeight: "var(--body3-12-semibold-line-height)",
+  },
+  body3_12_regular: {
+    fontWeight: "var(--body3-12-regular-font-weight)",
+    fontSize: "var(--body3-12-regular-font-size)",
+    lineHeight: "var(--body3-12-regular-line-height)",
+  },
+  overline: {
+    fontWeight: "var(--overline-font-weight)",
+    fontSize: "var(--overline-font-size)",
+    lineHeight: "var(--overline-line-height)",
+    letterSpacing: "1px",
+    textTransform: "uppercase",
+  },
+  button1: {
+    fontWeight: "var(--button1-font-weight)",
+    fontSize: "var(--button1-font-size)",
+    lineHeight: "var(--button1-line-height)",
+    textTransform: "capitalize",
+  },
+  button2: {
+    fontWeight: "var(--button2-font-weight)",
+    fontSize: "var(--button2-font-size)",
+    lineHeight: "var(--button2-line-height)",
+    letterSpacing: "0.2px",
+    textTransform: "capitalize",
+  },
+  caption: {
+    fontWeight: "var(--caption-font-weight)",
+    fontSize: "var(--caption-font-size)",
+    lineHeight: "var(--caption-line-height)",
+  },
+};
+
+export const cssVariables = {
   ...fontWeights,
   ...headline,
   ...body,
   ...etc,
 };
+
+export { fontVariants };

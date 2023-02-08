@@ -1,8 +1,5 @@
-import type {
-  TypographyOptions,
-  TypographyStyleOptions,
-} from "@mui/material/styles/createTypography";
-import tokens from "./tokens";
+import type { TypographyOptions } from "@mui/material/styles/createTypography";
+import { fontVariants, cssVariables } from "./tokens";
 
 type DSVariants =
   | "headline1"
@@ -50,123 +47,21 @@ const fontFamily = [
   "sans-serif",
 ].join(",");
 
-let fontVariants: Record<string, TypographyStyleOptions> = {
-  headline1: {
-    fontWeight: "var(--headline1-font-weight)",
-    fontSize: "var(--headline1-font-size)",
-    lineHeight: "var(--headline1-line-height)",
-  },
-  headline2: {
-    fontWeight: "var(--headline2-font-weight)",
-    fontSize: "var(--headline2-font-size)",
-    lineHeight: "var(--headline2-line-height)",
-  },
-  headline3: {
-    fontWeight: "var(--headline3-font-weight)",
-    fontSize: "var(--headline3-font-size)",
-    lineHeight: "var(--headline3-line-height)",
-  },
-  headline4: {
-    fontWeight: "var(--headline4-font-weight)",
-    fontSize: "var(--headline4-font-size)",
-    lineHeight: "var(--headline4-line-height)",
-  },
-  headline5: {
-    fontWeight: "var(--headline5-font-weight)",
-    fontSize: "var(--headline5-font-size)",
-    lineHeight: "var(--headline5-line-height)",
-  },
-  body1_16_semibold: {
-    fontWeight: "var(--body1-16-semibold-font-weight)",
-    fontSize: "var(--body1-16-semibold-font-size)",
-    lineHeight: "var(--body1-16-semibold-line-height)",
-  },
-  body1_16_regular: {
-    fontWeight: "var(--body1-16-regular-font-weight)",
-    fontSize: "var(--body1-16-regular-font-size)",
-    lineHeight: "var(--body1-16-regular-line-height)",
-  },
-  body2_14_bold: {
-    fontWeight: "var(--body2-14-bold-font-weight)",
-    fontSize: "var(--body2-14-bold-font-size)",
-    lineHeight: "var(--body2-14-bold-line-height)",
-  },
-  body2_14_medium: {
-    fontWeight: "var(--body2-14-medium-font-weight)",
-    fontSize: "var(--body2-14-medium-font-size)",
-    lineHeight: "var(--body2-14-medium-line-height)",
-  },
-  body2_14_regular: {
-    fontWeight: "var(--body2-14-regular-font-weight)",
-    fontSize: "var(--body2-14-regular-font-size)",
-    lineHeight: "var(--body2-14-regular-line-height)",
-  },
-  body3_12_semibold: {
-    fontWeight: "var(--body3-12-semibold-font-weight)",
-    fontSize: "var(--body3-12-semibold-font-size)",
-    lineHeight: "var(--body3-12-semibold-line-height)",
-  },
-  body3_12_regular: {
-    fontWeight: "var(--body3-12-regular-font-weight)",
-    fontSize: "var(--body3-12-regular-font-size)",
-    lineHeight: "var(--body3-12-regular-line-height)",
-  },
-  overline: {
-    fontWeight: "var(--overline-font-weight)",
-    fontSize: "var(--overline-font-size)",
-    lineHeight: "var(--overline-line-height)",
-    letterSpacing: "1px",
-    textTransform: "uppercase",
-  },
-  button1: {
-    fontWeight: "var(--button1-font-weight)",
-    fontSize: "var(--button1-font-size)",
-    lineHeight: "var(--button1-line-height)",
-    textTransform: "capitalize",
-  },
-  button2: {
-    fontWeight: "var(--button2-font-weight)",
-    fontSize: "var(--button2-font-size)",
-    lineHeight: "var(--button2-line-height)",
-    letterSpacing: "0.2px",
-    textTransform: "capitalize",
-  },
-  caption: {
-    fontWeight: "var(--caption-font-weight)",
-    fontSize: "var(--caption-font-size)",
-    lineHeight: "var(--caption-line-height)",
-  },
-};
-
-// alias Mui Typography variants
-fontVariants = {
-  ...fontVariants,
-  h1: fontVariants.headline1,
-  h2: fontVariants.headline2,
-  h3: fontVariants.headline3,
-  h4: fontVariants.headline4,
-  h5: fontVariants.headline5,
-  h6: fontVariants.headline5,
-  body1: fontVariants.body1_16_regular,
-  body2: fontVariants.body2_14_regular,
-  button: fontVariants.button2,
-};
-
 const typographyOptions: TypographyOptions = {
   fontFamily,
-  ...fontVariants,
-};
-
-export const createTypographyCssBaseline = () => {
-  return {
-    html: {
-      fontFamily,
-      fontFeatureSettings: `'tnum', 'ss01', 'ss02', 'ss08'`,
-    },
-    ":root": {
-      ...tokens,
-    },
-  };
+  ...{
+    ...fontVariants,
+    // alias Mui Typography variants
+    h1: fontVariants.headline1,
+    h2: fontVariants.headline2,
+    h3: fontVariants.headline3,
+    h4: fontVariants.headline4,
+    h5: fontVariants.headline5,
+    h6: fontVariants.headline5,
+    body1: fontVariants.body1_16_regular,
+    body2: fontVariants.body2_14_regular,
+    button: fontVariants.button2,
+  },
 };
 
 export const typographyDefaultProps = {
@@ -184,6 +79,18 @@ export const typographyDefaultProps = {
     body3_12_semibold: "p",
     body3_12_regular: "p",
   },
+};
+
+export const createTypographyCssBaseline = () => {
+  return {
+    html: {
+      fontFamily,
+      fontFeatureSettings: `'tnum', 'ss01', 'ss02', 'ss08'`,
+    },
+    ":root": {
+      ...cssVariables,
+    },
+  };
 };
 
 export default typographyOptions;
