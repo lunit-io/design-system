@@ -1,0 +1,71 @@
+import { Meta, Canvas, Story } from "@storybook/addon-docs";
+
+import { Typography } from "@mui/material";
+
+import { variants } from "./const";
+
+import TypographyGroup from "./TypographyGroup";
+
+<Meta title="Foundation/Typography/All Variants" component={Typography} />
+
+export const Template = (args) => <Typography {...args} />;
+
+## Types
+
+The typography component comes with variants below:
+
+export const AllVariants = () => (
+  <>
+    <TypographyGroup
+      heading="Headline"
+      dummy="Headline 123456789"
+      variants={variants.headline}
+    />
+    <TypographyGroup
+      heading="Body"
+      dummy={
+        <>
+          AI will be the new standard of care. 123456789
+          <br />
+          By Lunit. With AI, we aim to make data-driven medicine
+          <br />
+          the new standard of care.
+        </>
+      }
+      variants={variants.body}
+    />
+    <TypographyGroup
+      heading="etc"
+      dummy="NEWS & UPDATE 71456"
+      variants={variants.etc}
+    />
+  </>
+);
+
+<Story name="all variants">
+  <AllVariants />
+</Story>
+
+## Usage
+
+### Typography component
+
+<Canvas>
+  <Story id="foundation-typography--typography-component" />
+</Canvas>
+
+### With styled utility
+
+In some situations you might not be able to use the Typography component. Hopefully, you might be able to take advantage of the [typography](https://mui.com/material-ui/react-typography/#theme) keys of the theme.
+
+<Canvas>
+  <Story id="foundation-typography--styled" />
+</Canvas>
+
+### With the sx props
+
+You can use all the variants with [the `sx` props](https://mui.com/system/getting-started/the-sx-prop/#typography).
+
+<Canvas>
+  <Story id="foundation-typography--sx-props" />
+</Canvas>

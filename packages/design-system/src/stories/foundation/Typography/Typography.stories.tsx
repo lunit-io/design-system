@@ -4,8 +4,7 @@ import { ComponentStory } from "@storybook/react";
 import { Box, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
-import { variants, variantArray } from "./const";
-import TypographyGroup from "./TypographyGroup";
+import { variantArray } from "./const";
 
 export default {
   title: "Foundation/Typography",
@@ -17,34 +16,6 @@ export default {
     },
   },
 };
-
-export const AllVariants = () => (
-  <>
-    <TypographyGroup
-      heading="Headline"
-      dummy="Headline 123456789"
-      variants={variants.headline}
-    />
-    <TypographyGroup
-      heading="Body"
-      dummy={
-        <>
-          AI will be the new standard of care. 123456789
-          <br />
-          By Lunit. With AI, we aim to make data-driven medicine
-          <br />
-          the new standard of care.
-        </>
-      }
-      variants={variants.body}
-    />
-    <TypographyGroup
-      heading="etc"
-      dummy="NEWS & UPDATE 71456"
-      variants={variants.etc}
-    />
-  </>
-);
 
 const TypographyTemplate: ComponentStory<typeof Typography> = (args) => {
   const { variant, children } = args;
@@ -85,7 +56,10 @@ const StyledBox = styled(Box, {
 
 const StyledTemplate: ComponentStory<typeof StyledBox> = (args) => {
   /**
-
+const StyledBox = styled(Box)(({ theme, variant }) => ({
+  ...theme.typography.body1_16_regular,
+  whiteSpace: "pre-line",
+}));
   */
   const { variant, children } = args;
   return <StyledBox variant={variant}>{children}</StyledBox>;

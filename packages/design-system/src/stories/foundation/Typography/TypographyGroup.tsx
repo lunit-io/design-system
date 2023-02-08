@@ -1,6 +1,12 @@
 import React from "react";
 
-import { Box, Typography, styled, useTheme, TypographyProps } from "@mui/material";
+import {
+  Box,
+  Typography,
+  styled,
+  useTheme,
+  TypographyProps,
+} from "@mui/material";
 
 export const TypographyContent = styled(Box)({
   display: "flex",
@@ -22,11 +28,6 @@ export const TypographyTitle = styled(Typography)(({ theme }) => ({
 export const TypographyDummy = styled(Typography)({
   width: 560,
 });
-
-export const TypographyStyles = styled(Typography)(({ theme }) => ({
-  width: 320,
-  color: theme.palette.token.core.text_light,
-}));
 
 type ReadableArray<T> = Array<T> | ReadonlyArray<T>;
 
@@ -59,13 +60,6 @@ const TypographyGroup = ({
                 {variant}
               </TypographyTitle>
               <TypographyDummy variant={variant}>{dummy}</TypographyDummy>
-              <TypographyStyles variant="body2_14_medium">
-                <span>fontWeight: {fontWeight}</span>
-                <br />
-                <span>fontSize: {fontSize}</span>
-                <br />
-                <span>lineHeight: {lineHeight}</span>
-              </TypographyStyles>
             </TypographyItem>
           );
         })}
