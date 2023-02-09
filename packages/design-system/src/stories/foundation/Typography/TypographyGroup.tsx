@@ -21,7 +21,7 @@ export const TypographyItem = styled(Box)({
 });
 
 export const TypographyTitle = styled(Typography)(({ theme }) => ({
-  width: 160,
+  width: 200,
   color: theme.palette.token.core.text_light,
 }));
 

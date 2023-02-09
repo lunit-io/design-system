@@ -56,7 +56,7 @@ const StyledBox = styled(Box, {
 
 const StyledTemplate: ComponentStory<typeof StyledBox> = (args) => {
   /**
-const StyledBox = styled(Box)(({ theme, variant }) => ({
+const StyledBox = styled(Box)(({ theme }) => ({
   ...theme.typography.body1_16_regular,
   whiteSpace: "pre-line",
 }));
@@ -75,7 +75,7 @@ Styled.parameters = {
   docs: {
     source: {
       code: `
-const StyledBox = styled(Box)(({ theme, variant }) => ({
+const StyledBox = styled(Box)(({ theme }) => ({
   ...theme.typography.body1_16_regular,
   whiteSpace: "pre-line",
 }));
