@@ -1,5 +1,5 @@
 import { deepmerge } from "@mui/utils";
-import { createTheme } from "@mui/material";
+import { ComponentsOverrides, createTheme } from "@mui/material";
 import {
   foundationCssBaseline,
   palette,
@@ -14,7 +14,22 @@ const theme = createTheme({
   spacing,
   components: {
     MuiCssBaseline: deepmerge(foundationCssBaseline, componentsCssBaseline),
-    // @todo add any MUI components theme exported from ./components/index.ts
+    MuiPaper: {
+      styleOverrides: {
+        // css-in-js이기 때문에 MuiPaper-root class에만 추가해도
+        // Paper 컴포넌트를 쓰는 모든 스타일에서 명시도 역전이 발생하지 않음
+        root: {
+          boxShadow: "var(--elevation-shadow)",
+        },
+      },
+    },
+    MuiTooltip: {
+      styleOverrides: {
+        tooltip: {
+          boxShadow: "var(--elevation-shadow)",
+        },
+      },
+    },
   },
 });
 
