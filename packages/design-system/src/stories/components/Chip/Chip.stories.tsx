@@ -25,7 +25,7 @@ export default {
   component: Chip,
   argTypes: {
     kind: {
-      description: `Default status of Contained or Outlined Chip is readOnly. You can only pass onClick, onDelete or thumbnail to Contained Chip.`,
+      description: `Default status of Contained or Outlined Chip is readOnly. You can pass onClick, onDelete or thumbnail to Contained Chip only.`,
     },
     onClick: {
       description: `Contained chip can have onClick event. When Chip is clickable, onDelete is disabled.`,
@@ -154,13 +154,16 @@ Contained.parameters = {
     ],
   },
 };
-
 Contained.args = {
   color: "primary",
   kind: "contained",
 };
 
 export const ContainedWithClick = Template.bind({});
+ContainedWithClick.args = {
+  onClick: action("onClick"),
+  onDelete: undefined,
+};
 ContainedWithClick.parameters = {
   docs: {
     description: {
@@ -177,6 +180,11 @@ ContainedWithClick.parameters = {
 };
 
 export const ContainedWithDelete = Template.bind({});
+ContainedWithDelete.args = {
+  ...Contained.args,
+  onClick: undefined,
+  onDelete: action("onDelete"),
+};
 ContainedWithDelete.parameters = {
   docs: {
     description: {
@@ -193,6 +201,9 @@ ContainedWithDelete.parameters = {
 };
 
 export const ContainedWithThumbnail = Template.bind({});
+ContainedWithThumbnail.args = {
+  thumbnail: "Initial",
+};
 ContainedWithThumbnail.parameters = {
   docs: {
     description: {
