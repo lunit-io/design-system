@@ -5,11 +5,12 @@ import typographyOptions, {
   createTypographyCssBaseline,
   typographyDefaultProps,
 } from "./Typography";
+import { createElevationCssBaseline, elevationOptions } from "./Elevation";
 
 export const foundationCssBaseline: Components<Theme>["MuiCssBaseline"] = {
   styleOverrides: deepmerge(
-    createTypographyCssBaseline(),
-    createColorCssBaseline()
+    deepmerge(createTypographyCssBaseline(), createColorCssBaseline()),
+    createElevationCssBaseline()
   ),
 };
 
@@ -18,5 +19,7 @@ export const typography = typographyOptions;
 export { typographyDefaultProps };
 
 export const palette = paletteOptions;
+
+export const elevation = elevationOptions;
 
 export { spacing } from "./spacing";
