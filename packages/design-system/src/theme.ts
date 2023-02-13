@@ -4,6 +4,7 @@ import {
   foundationCssBaseline,
   palette,
   typography,
+  typographyDefaultProps,
   spacing,
 } from "./foundation";
 import { componentsCssBaseline } from "./components";
@@ -30,6 +31,10 @@ const theme = createTheme({
         },
       },
     },
+    MuiTypography: {
+      defaultProps: typographyDefaultProps,
+    },
+    // @todo add any MUI components theme exported from ./components/index.ts
   },
 });
 
