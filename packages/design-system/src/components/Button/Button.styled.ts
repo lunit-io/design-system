@@ -7,7 +7,8 @@ import { getButtonPaddingBySizeAndKind } from "./utils/getButtonPaddingBySizeAnd
 import { getIconButtonPaddingBySizeAndKind } from "./utils/getIconButtonPaddingBySizeAndKind";
 
 import type { ButtonProps } from "./Button.types";
-import { ToggleButtonProps } from "../ToggleButton/ToggleButton.types";
+import type { ToggleButtonProps } from "../ToggleButton/ToggleButton.types";
+import type { Typography } from "@mui/material/styles/createTypography";
 
 type KindStyleParams = Pick<ButtonProps, "kind" | "color"> & {
   token: ColorToken;
@@ -15,14 +16,21 @@ type KindStyleParams = Pick<ButtonProps, "kind" | "color"> & {
 
 type CustomButtonProps = ButtonProps & { hasIconOnly: boolean };
 
+type sizeStyleParams = Pick<
+  CustomButtonProps,
+  "size" | "hasIconOnly" | "kind"
+> &
+  Pick<ToggleButtonProps, "selected"> & { typography: Typography };
+
 export const sizeStyle = ({
   size,
   kind,
   hasIconOnly,
+  typography,
   selected = false,
-}: Pick<CustomButtonProps, "size" | "hasIconOnly" | "kind"> &
-  Pick<ToggleButtonProps, "selected">) => ({
+}: sizeStyleParams) => ({
   ...(size === "small" && {
+    ...typography.button2,
     padding: `${
       hasIconOnly
         ? getIconButtonPaddingBySizeAndKind({ kind, size, selected })
@@ -32,6 +40,7 @@ export const sizeStyle = ({
     minHeight: "28px",
   }),
   ...(size === "medium" && {
+    ...typography.button2,
     padding: `${
       hasIconOnly
         ? getIconButtonPaddingBySizeAndKind({ kind, size, selected })
@@ -41,6 +50,7 @@ export const sizeStyle = ({
     minHeight: "36px",
   }),
   ...(size === "large" && {
+    ...typography.button1,
     padding: `${
       hasIconOnly
         ? getIconButtonPaddingBySizeAndKind({ kind, size, selected })
@@ -194,6 +204,7 @@ export const CustomButton = styled(MuiButton, {
 })<CustomButtonProps>(
   ({
     theme: {
+      typography,
       palette: { token },
     },
     kind,
@@ -203,7 +214,7 @@ export const CustomButton = styled(MuiButton, {
   }) => ({
     ...commonStyle({ token }),
     ...iconStyle({ size, hasIconOnly }),
-    ...sizeStyle({ size, kind, hasIconOnly }),
+    ...sizeStyle({ size, kind, hasIconOnly, typography }),
     ...kindStyle({ kind, color, token }),
   })
 );

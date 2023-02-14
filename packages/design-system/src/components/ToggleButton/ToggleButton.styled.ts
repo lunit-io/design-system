@@ -18,6 +18,7 @@ export const CustomToggleButton = styled(MuiToggleButton, {
 })<CustomToggleButtonProps>(
   ({
     theme: {
+      typography,
       palette: { token },
     },
     kind,
@@ -31,7 +32,7 @@ export const CustomToggleButton = styled(MuiToggleButton, {
       border: "none",
       ...commonStyle({ token }),
       ...iconStyle({ size, hasIconOnly }),
-      ...sizeStyle({ size, kind, hasIconOnly, selected }),
+      ...sizeStyle({ size, kind, hasIconOnly, selected, typography }),
       ...kindStyle({ kind, color, token }),
       ...(selectedColor === "primary" && {
         "&.Mui-selected, &.Mui-selected:hover": {

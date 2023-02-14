@@ -1,5 +1,4 @@
 import React from "react";
-import Typography from "@mui/material/Typography";
 
 import { CustomButton } from "./Button.styled";
 
@@ -31,11 +30,7 @@ const Button = (props: Omit<ButtonProps, "hasIconOnly">) => {
           disableFocusRipple
           {...buttonProps}
         >
-          {!hasIconOnly && (
-            <Typography variant={size === "large" ? "button1" : "button2"}>
-              {children}
-            </Typography>
-          )}
+          {!hasIconOnly && <>{children}</>}
         </CustomButton>
       ) : (
         <CustomButton
@@ -49,11 +44,7 @@ const Button = (props: Omit<ButtonProps, "hasIconOnly">) => {
           disableFocusRipple
           {...buttonProps}
         >
-          {!hasIconOnly && (
-            <Typography variant={size === "large" ? "button1" : "button2"}>
-              {children}
-            </Typography>
-          )}
+          {!hasIconOnly && <>{children}</>}
         </CustomButton>
       )}
     </>
