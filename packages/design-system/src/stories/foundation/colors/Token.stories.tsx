@@ -47,7 +47,7 @@ const CoreTokenColors = () => {
           {Object.entries(theme.palette.token.core).map(
             ([paletteKey, _colorVariable]) => (
               <TableRow key={paletteKey}>
-                <TableCell>
+                <TableCell sx={{ height: "72px" }}>
                   <DarkTypography>core.{paletteKey}</DarkTypography>
                 </TableCell>
                 <TableCell
