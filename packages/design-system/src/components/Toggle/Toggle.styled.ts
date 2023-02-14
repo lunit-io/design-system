@@ -46,7 +46,7 @@ const toggleStyles = {
     thumb: {
       width: 20,
       height: 20,
-    }
+    },
   },
 }
 
@@ -83,10 +83,13 @@ const indeterminateStyles = {
 
 export const CommonToggle = styled(MuiSwitch, {
   shouldForwardProp: (props) => props !== 'toggleSize',
-})<ToggleProps>(({ theme, toggleSize }) => {
+})<ToggleProps>(({ theme, toggleSize, disabled }) => {
   const checkedColor = theme.palette.token.component.selectcontrol_on;
   const uncheckedColor = theme.palette.token.component.selectcontrol_off;
+  const handlerColor = theme.palette.token.component.selectcontrol_handler;
+
   const toggleStyle = toggleStyles[toggleSize];
+  const toggleOpacity = disabled ? 0.38 : 1;
 
   return {
     ...toggleStyle.root,
@@ -94,8 +97,14 @@ export const CommonToggle = styled(MuiSwitch, {
     padding: 0,
     overflow: "visible",
     backgroundColor: "transparent",
-    "&:has(.Mui-focusVisible)": {
-      "&::after":{
+    opacity: toggleOpacity,
+    "& .Mui-focusVisible": {
+       // clear default focus style
+      boxShadow: "none",
+      background: "transparent",
+      borderColor: "transparent",
+      outline: "none",
+      "& + .MuiSwitch-track::after": {
         ...toggleStyle.focus,
         content: '""',
         position: "absolute",
@@ -103,54 +112,32 @@ export const CommonToggle = styled(MuiSwitch, {
         boxSizing: "border-box",
         top: -3, // border 1px + offset 2px
         left: -3, // border 1px + offset 2px
-      },
+      }
     },
     '& .MuiSwitch-track': {
-      backgroundColor: uncheckedColor,
       opacity: 1,
-      borderRadius: 16,
+      borderRadius: 12,
+      backgroundColor: uncheckedColor,
+    },
+    '& .MuiSwitch-thumb': {
+      ...toggleStyle.thumb,
+      boxShadow: "0px 0px 1px rgba(0, 0, 0, 0.4)",
     },
     '& .MuiSwitch-switchBase': {
       ...toggleStyle.switch,
       padding: 2,
       opacity: 1,
-      '&.Mui-focusVisible': {
-        boxShadow: "none",
-        background: "transparent",
-        borderColor: "transparent",
-        outline: "none",
-      },
       '&.Mui-checked': {
         ...toggleStyle.switchChecked,
-        opacity: 1,
-        color: '#fff',
+        color: handlerColor,
         '& + .MuiSwitch-track': {
           opacity: 1,
           backgroundColor: checkedColor,
         },
-        '&.Mui-disabled': {
-          opacity: 1,
-          color: "#fff",
-        },
-      },
-      '&.Mui-disabled': {
-        opacity: 1,
-        color: "fff",
-        '& + .MuiSwitch-track': {
-          opacity: 0.38,
-          backgroundColor: uncheckedColor,
-        },
-        "&.Mui-checked": {
-          '& + .MuiSwitch-track': {
-            opacity: 0.38,
-            backgroundColor: checkedColor,
-          },
-        }
       },
     },
-    '& .MuiSwitch-thumb': {
-      ...toggleStyle.thumb,
-      boxShadow: "0px 0px 1px rgba(0, 0, 0, 0.4)",
+    '& .Mui-disabled + .MuiSwitch-track': {
+      opacity: 1,
     },
   }});
 
@@ -162,15 +149,14 @@ export const CommonIndeterminateToggle = styled(CommonToggle, {
   return {
   padding: 0,
   cursor: "pointer",
-  '& .MuiSwitch-switchBase': {
-    '&.Mui-checked': {
+  '& .MuiSwitch-switchBase.Mui-checked': {
       ...indeterminateStyle.switchChecked,
       '& + .MuiSwitch-track': {
         ...indeterminateStyle.track,
-      },
     },
   },
   '& .MuiSwitch-thumb': {
     ...indeterminateStyle.thumb,
+    boxShadow: "none",
   },
 }});
