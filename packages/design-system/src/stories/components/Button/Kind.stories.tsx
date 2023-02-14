@@ -91,20 +91,29 @@ const ButtonTemplate: ComponentStory<typeof Button> = ({
           <TableRow>
             <TableCell
               colSpan={3}
-              sx={{ fontWeight: "bold", fontSize: "16px" }}
+              sx={{
+                typography: "body1_16_semibold",
+                color: "inherit",
+              }}
             >
-              <Typography variant="body1_sb">Kind</Typography>
+              Kind
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell sx={{ width: "33.33333%" }}>
-              <Typography variant="body2_m">Contained(default)</Typography>
+            <TableCell
+              sx={{
+                width: "33.33333%",
+                typography: "body2_14_medium",
+                color: "inherit",
+              }}
+            >
+              Contained(default)
             </TableCell>
-            <TableCell>
-              <Typography variant="body2_m">Outlined</Typography>
+            <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+              Outlined
             </TableCell>
-            <TableCell>
-              <Typography variant="body2_m">Ghost</Typography>
+            <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+              Ghost
             </TableCell>
           </TableRow>
         </TableHead>
@@ -128,8 +137,6 @@ const ButtonTemplate: ComponentStory<typeof Button> = ({
           </TableRow>
         </TableBody>
       </Table>
-      <br />
-      <br />
     </>
   );
 };
@@ -143,21 +150,23 @@ const ContainedButtonTemplate: ComponentStory<typeof Button> = (args) => {
         <TableHead>
           <TableRow>
             <TableCell></TableCell>
-            <TableCell>
-              <Typography variant="body2_m">Contained Primary</Typography>
+            <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+              Contained Primary
             </TableCell>
-            <TableCell>
-              <Typography variant="body2_m">Contained Secondary</Typography>
+            <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+              Contained Secondary
             </TableCell>
-            <TableCell>
-              <Typography variant="body2_m">Contained Error</Typography>
+            <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+              Contained Error
             </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           <TableRow>
-            <TableCell>
-              <Typography variant="body2_reg">Enable</Typography>
+            <TableCell
+              sx={{ typography: "body2_14_regular", color: "inherit" }}
+            >
+              Enable
             </TableCell>
             <TableCell>
               <Button {...args} kind="contained">
@@ -176,8 +185,10 @@ const ContainedButtonTemplate: ComponentStory<typeof Button> = (args) => {
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>
-              <Typography variant="body2_reg">Hover</Typography>
+            <TableCell
+              sx={{ typography: "body2_14_regular", color: "inherit" }}
+            >
+              Hover
             </TableCell>
             <TableCell>
               <Button {...args} id="hover" kind="contained">
@@ -196,8 +207,10 @@ const ContainedButtonTemplate: ComponentStory<typeof Button> = (args) => {
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>
-              <Typography variant="body2_reg">Focus</Typography>
+            <TableCell
+              sx={{ typography: "body2_14_regular", color: "inherit" }}
+            >
+              Focus
             </TableCell>
             <TableCell>
               <Button {...args} kind="contained" className="Mui-focusVisible">
@@ -226,8 +239,10 @@ const ContainedButtonTemplate: ComponentStory<typeof Button> = (args) => {
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>
-              <Typography variant="body2_reg">Disabled</Typography>
+            <TableCell
+              sx={{ typography: "body2_14_regular", color: "inherit" }}
+            >
+              Disabled
             </TableCell>
             <TableCell>
               <Button {...args} kind="contained" disabled>
@@ -247,8 +262,6 @@ const ContainedButtonTemplate: ComponentStory<typeof Button> = (args) => {
           </TableRow>
         </TableBody>
       </Table>
-      <br />
-      <br />
     </>
   );
 };
@@ -276,21 +289,23 @@ const GhostButtonTemplate: ComponentStory<typeof Button> = (args) => {
         <TableHead>
           <TableRow>
             <TableCell></TableCell>
-            <TableCell>
-              <Typography variant="body2_m">Ghost Primary</Typography>
+            <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+              Ghost Primary
             </TableCell>
-            <TableCell>
-              <Typography variant="body2_m">Ghost Secondary</Typography>
+            <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+              Ghost Secondary
             </TableCell>
-            <TableCell>
-              <Typography variant="body2_m">Ghost Error</Typography>
+            <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+              Ghost Error
             </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           <TableRow>
-            <TableCell>
-              <Typography variant="body2_reg">Enable</Typography>
+            <TableCell
+              sx={{ typography: "body2_14_regular", color: "inherit" }}
+            >
+              Enable
             </TableCell>
             <TableCell>
               <Button {...args} kind="ghost">
@@ -309,8 +324,10 @@ const GhostButtonTemplate: ComponentStory<typeof Button> = (args) => {
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>
-              <Typography variant="body2_reg">Hover</Typography>
+            <TableCell
+              sx={{ typography: "body2_14_regular", color: "inherit" }}
+            >
+              Hover
             </TableCell>
             <TableCell>
               <Button {...args} id="hover" kind="ghost">
@@ -329,8 +346,10 @@ const GhostButtonTemplate: ComponentStory<typeof Button> = (args) => {
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>
-              <Typography variant="body2_reg">Focus</Typography>
+            <TableCell
+              sx={{ typography: "body2_14_regular", color: "inherit" }}
+            >
+              Focus
             </TableCell>
             <TableCell>
               <Button {...args} kind="ghost" className="Mui-focusVisible">
@@ -359,8 +378,10 @@ const GhostButtonTemplate: ComponentStory<typeof Button> = (args) => {
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>
-              <Typography variant="body2_reg">Disabled</Typography>
+            <TableCell
+              sx={{ typography: "body2_14_regular", color: "inherit" }}
+            >
+              Disabled
             </TableCell>
             <TableCell>
               <Button {...args} kind="ghost" disabled>
@@ -412,15 +433,17 @@ const OutlinedButtonTemplate: ComponentStory<typeof Button> = ({
         <TableHead>
           <TableRow>
             <TableCell></TableCell>
-            <TableCell>
-              <Typography variant="body2_m">Outlined Primary</Typography>
+            <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+              Outlined Primary
             </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           <TableRow>
-            <TableCell>
-              <Typography variant="body2_reg">Enable</Typography>
+            <TableCell
+              sx={{ typography: "body2_14_regular", color: "inherit" }}
+            >
+              Enable
             </TableCell>
             <TableCell>
               <Button {...restProps} kind="outlined">
@@ -429,8 +452,10 @@ const OutlinedButtonTemplate: ComponentStory<typeof Button> = ({
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>
-              <Typography variant="body2_reg">Hover</Typography>
+            <TableCell
+              sx={{ typography: "body2_14_regular", color: "inherit" }}
+            >
+              Hover
             </TableCell>
             <TableCell>
               <Button {...restProps} id="hover" kind="outlined">
@@ -439,8 +464,10 @@ const OutlinedButtonTemplate: ComponentStory<typeof Button> = ({
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>
-              <Typography variant="body2_reg">Focus</Typography>
+            <TableCell
+              sx={{ typography: "body2_14_regular", color: "inherit" }}
+            >
+              Focus
             </TableCell>
             <TableCell>
               <Button
@@ -453,8 +480,10 @@ const OutlinedButtonTemplate: ComponentStory<typeof Button> = ({
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>
-              <Typography variant="body2_reg">Disabled</Typography>
+            <TableCell
+              sx={{ typography: "body2_14_regular", color: "inherit" }}
+            >
+              Disabled
             </TableCell>
             <TableCell>
               <Button {...restProps} kind="outlined" disabled>

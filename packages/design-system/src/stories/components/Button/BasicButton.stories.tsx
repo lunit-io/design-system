@@ -134,19 +134,25 @@ const SizeButtonTemplate: ComponentStory<typeof Button> = (args) => {
     <Table sx={{ width: 900 }}>
       <TableHead>
         <TableRow>
-          <TableCell colSpan={3} sx={{ fontWeight: "bold", fontSize: "16px" }}>
-            <Typography variant="body1_sb">Size</Typography>
+          <TableCell
+            colSpan={3}
+            sx={{
+              typography: "body1_16_semibold",
+              color: "inherit",
+            }}
+          >
+            Size
           </TableCell>
         </TableRow>
         <TableRow>
-          <TableCell>
-            <Typography variant="body2_m">Small</Typography>
+          <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+            Small
           </TableCell>
-          <TableCell>
-            <Typography variant="body2_m">Medium</Typography>
+          <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+            Medium
           </TableCell>
-          <TableCell>
-            <Typography variant="body2_m">Large</Typography>
+          <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+            Large
           </TableCell>
         </TableRow>
       </TableHead>

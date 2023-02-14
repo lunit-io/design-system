@@ -197,19 +197,25 @@ const SizeTemplate: ComponentStory<typeof ToggleButton> = (args) => {
     <Table sx={{ width: 900 }}>
       <TableHead>
         <TableRow>
-          <TableCell colSpan={3} sx={{ fontWeight: "bold", fontSize: "16px" }}>
-            <Typography variant="body1_sb">Size</Typography>
+          <TableCell
+            colSpan={3}
+            sx={{
+              typography: "body1_16_semibold",
+              color: "inherit",
+            }}
+          >
+            Size
           </TableCell>
         </TableRow>
         <TableRow>
-          <TableCell>
-            <Typography variant="body2_m">Small</Typography>
+          <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+            Small
           </TableCell>
-          <TableCell>
-            <Typography variant="body2_m">Medium</Typography>
+          <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+            Medium
           </TableCell>
-          <TableCell>
-            <Typography variant="body2_m">Large</Typography>
+          <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+            Large
           </TableCell>
         </TableRow>
       </TableHead>
@@ -281,21 +287,21 @@ const SelectedColorTemplate: ComponentStory<typeof ToggleButton> = (arg) => {
     <Table sx={{ width: 330 }}>
       <TableHead>
         <TableRow>
-          <TableCell>
-            <Typography variant="body2_m">Selected color</Typography>
+          <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+            Selected color
           </TableCell>
-          <TableCell>
-            <Typography variant="body2_m">Primary</Typography>
+          <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+            Primary
           </TableCell>
-          <TableCell>
-            <Typography variant="body2_m">Secondary</Typography>
+          <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+            Secondary
           </TableCell>
         </TableRow>
       </TableHead>
       <TableBody>
         <TableRow>
-          <TableCell>
-            <Typography variant="body2_m">Selected</Typography>
+          <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+            Selected
           </TableCell>
           <TableCell>
             <ToggleButton
