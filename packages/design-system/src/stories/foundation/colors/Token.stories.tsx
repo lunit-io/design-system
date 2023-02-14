@@ -10,7 +10,7 @@ import {
   TableContainer,
   TableCell,
 } from "@mui/material";
-import { DarkTypography, LightTypography } from "./styled";
+import { StyledTypography } from "./styled";
 import { tokenCoreColor } from "@/foundation/colors/token/core";
 import type { ColorToken } from "@/foundation/colors/types";
 
@@ -48,7 +48,7 @@ const CoreTokenColors = () => {
             ([paletteKey, _colorVariable]) => (
               <TableRow key={paletteKey}>
                 <TableCell sx={{ height: "72px" }}>
-                  <DarkTypography>core.{paletteKey}</DarkTypography>
+                  <StyledTypography>core.{paletteKey}</StyledTypography>
                 </TableCell>
                 <TableCell
                   className="light1"
@@ -67,9 +67,9 @@ const CoreTokenColors = () => {
                       ...colorBoxStyle,
                     }}
                   ></Box>
-                  <DarkTypography>
+                  <StyledTypography>
                     {tokenCoreColor[paletteKey]["light1"]}
-                  </DarkTypography>
+                  </StyledTypography>
                 </TableCell>
                 <TableCell
                   className="light2"
@@ -84,9 +84,9 @@ const CoreTokenColors = () => {
                       ...colorBoxStyle,
                     }}
                   ></Box>
-                  <DarkTypography>
+                  <StyledTypography>
                     {tokenCoreColor[paletteKey]["light2"]}
-                  </DarkTypography>
+                  </StyledTypography>
                 </TableCell>
                 <TableCell
                   className="dark1"
@@ -104,9 +104,9 @@ const CoreTokenColors = () => {
                       ...colorBoxStyle,
                     }}
                   ></Box>
-                  <LightTypography>
+                  <StyledTypography>
                     {tokenCoreColor[paletteKey]["dark1"]}
-                  </LightTypography>
+                  </StyledTypography>
                 </TableCell>
                 <TableCell
                   className="dark2"
@@ -125,9 +125,9 @@ const CoreTokenColors = () => {
                     }}
                   ></Box>
 
-                  <LightTypography>
+                  <StyledTypography>
                     {tokenCoreColor[paletteKey]["dark2"]}
-                  </LightTypography>
+                  </StyledTypography>
                 </TableCell>
                 <TableCell
                   className="dark3"
@@ -145,9 +145,9 @@ const CoreTokenColors = () => {
                       ...colorBoxStyle,
                     }}
                   ></Box>
-                  <LightTypography>
+                  <StyledTypography>
                     {tokenCoreColor[paletteKey]["dark3"]}
-                  </LightTypography>
+                  </StyledTypography>
                 </TableCell>
                 <TableCell
                   className="dark4"
@@ -165,9 +165,9 @@ const CoreTokenColors = () => {
                       ...colorBoxStyle,
                     }}
                   ></Box>
-                  <LightTypography>
+                  <StyledTypography>
                     {tokenCoreColor[paletteKey]["dark4"]}
-                  </LightTypography>
+                  </StyledTypography>
                 </TableCell>
               </TableRow>
             )

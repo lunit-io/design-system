@@ -32,14 +32,8 @@ export const Color = styled(Box)({
   border: "1px solid rgba(0, 0, 0, 0.03)",
 });
 
-export const LightTypography = styled(Typography)({
-  color: "white",
+export const StyledTypography = styled(Typography)(({ theme }) => ({
+  color: theme.palette.token.core.text_normal,
   marginLeft: 8,
   fontSize: "12px",
-});
-
-export const DarkTypography = styled(Typography)({
-  color: "black",
-  marginLeft: 8,
-  fontSize: "12px",
-});
+}));
