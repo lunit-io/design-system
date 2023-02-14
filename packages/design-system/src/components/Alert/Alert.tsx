@@ -22,7 +22,8 @@ const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
     children,
     sx,
     bottomAction,
-    width = 620,
+    width = 512,
+    inSnackbar = true,
     onClose,
   } = props;
   return (
@@ -31,6 +32,7 @@ const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
       sx={{ ...sx }}
       width={width}
       severity={severity}
+      inSnackbar={inSnackbar}
       iconMapping={{
         success: <Success variant="filled" />,
         info: <Information variant="filled" />,
