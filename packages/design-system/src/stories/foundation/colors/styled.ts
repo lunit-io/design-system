@@ -1,4 +1,4 @@
-import { Box, styled } from "@mui/material";
+import { Box, styled, Typography } from "@mui/material";
 
 export const Container = styled(Box)({
   display: "flex",
@@ -30,4 +30,16 @@ export const Color = styled(Box)({
   justifyContent: "center",
   alignItems: "center",
   border: "1px solid rgba(0, 0, 0, 0.03)",
+});
+
+export const LightTypography = styled(Typography)({
+  color: "white",
+  marginLeft: 8,
+  fontSize: "12px",
+});
+
+export const DarkTypography = styled(Typography)({
+  color: "black",
+  marginLeft: 8,
+  fontSize: "12px",
 });
