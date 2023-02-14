@@ -59,7 +59,7 @@ const etc = {
   "--button2-font-weight": "var(--font-weight-medium)",
   "--button2-font-size": "14px",
   "--button2-line-height": "20px",
-  "--caption-font-weight": "var(--font-weight-regular)",
+  "--caption-font-weight": "var(--font-weight-medium)",
   "--caption-font-size": "12px",
   "--caption-line-height": "16px",
 } as const;
