@@ -6,7 +6,6 @@ import {
   TableRow,
   TableBody,
   TableCell,
-  Typography,
 } from "@mui/material";
 import { Bell } from "@lunit/design-system-icons";
 

@@ -1,5 +1,4 @@
 import React from "react";
-import { Box } from "@mui/material";
 import { action } from "@storybook/addon-actions";
 
 import ToggleButton from "@/components/ToggleButton";
