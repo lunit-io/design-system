@@ -16,13 +16,16 @@ export default {
   title: "Components/TextField",
   component: TextField,
   argTypes: {
-    value: {
-      type: "string",
-      defaultValue: "",
-      description: "The value of the text field.",
+    disabled: {
+      control: {
+        type: "radio",
+      },
+      options: [true, false],
+      defaultValue: false,
+      description: "If true, the text field will be disabled.",
       table: {
-        defaultValue: { summary: "" },
-        type: { summary: "string" },
+        defaultValue: { summary: false },
+        type: { summary: [true, false] },
       },
     },
     size: {
@@ -56,7 +59,7 @@ export default {
   },
   parameters: {
     controls: {
-      include: ["value", "size", "helperText", "placeholder"],
+      include: ["size", "disabled", "helperText", "placeholder"],
     },
     docs: {
       description: {

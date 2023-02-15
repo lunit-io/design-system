@@ -16,13 +16,16 @@ export default {
   title: "Components/TextField",
   component: TextField,
   argTypes: {
-    value: {
-      type: "string",
-      defaultValue: "",
-      description: "The value of the text field.",
+    disabled: {
+      control: {
+        type: "radio",
+      },
+      options: [true, false],
+      defaultValue: false,
+      description: "If true, the text field will be disabled.",
       table: {
-        defaultValue: { summary: "" },
-        type: { summary: "string" },
+        defaultValue: { summary: false },
+        type: { summary: [true, false] },
       },
     },
     size: {
@@ -40,7 +43,7 @@ export default {
       type: "number",
       defaultValue: undefined,
       description: `The number of rows to display when multiline option is set to "true"
-        \n the rows default value is 3.`,
+        \n the rows default value is undefined.`,
       table: {
         defaultValue: { summary: "undefined" },
         type: { summary: ["number", "string", "undefined"] },
@@ -78,9 +81,9 @@ export default {
   parameters: {
     controls: {
       include: [
-        "value",
         "size",
         "rows",
+        "disabled",
         "multiline",
         "helperText",
         "placeholder",
