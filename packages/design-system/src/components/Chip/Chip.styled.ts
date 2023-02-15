@@ -1,122 +1,123 @@
 import { Chip as MuiChip, styled } from "@mui/material";
 import { CHIP_COLORS } from "./consts";
 
-import type { StyledChipProps } from "./Chip.types";
+import type { Theme } from "@mui/material/styles";
+import type {
+  ChipColor,
+  OutlinedChipProps,
+  BaseContainedChipProps,
+} from "./Chip.types";
 
-export const StyledOutlinedChip = styled(MuiChip, {
-  shouldForwardProp: (prop) => !["color"].includes(prop.toString()),
-})<StyledChipProps>(({ theme, color }) => ({
+const COMMON_STYLES = {
   "&.MuiChip-root": {
     height: "22px",
+    width: "auto",
+    minWidth: "22px",
+  },
+  "&.Mui-disabled": {
+    opacity: 1,
   },
   "& .MuiChip-label": {
     height: "16px",
     fontStyle: "normal",
     fontWeight: 500,
     fontSize: "12px",
-    lineHeight: "14.32px",
+    lineHeight: "16px",
     display: "flex",
     alignItems: "center",
     textAlign: "center",
     padding: 0,
     marginInline: "8px",
   },
-  color:
-    color === CHIP_COLORS.PRIMARY
-      ? theme.palette.token.component.chip_primary
-      : color === CHIP_COLORS.SECONDARY
-      ? theme.palette.token.component.chip_secondary
-      : color === CHIP_COLORS.ERROR
-      ? theme.palette.token.component.chip_error
-      : color === CHIP_COLORS.WARNING
-      ? theme.palette.token.component.chip_warning
-      : color === CHIP_COLORS.SUCCESS
-      ? theme.palette.token.component.chip_success
-      : theme.palette.token.component.chip_primary,
-  borderColor:
-    color === CHIP_COLORS.PRIMARY
-      ? theme.palette.token.component.chip_primary
-      : color === CHIP_COLORS.SECONDARY
-      ? theme.palette.token.component.chip_secondary
-      : color === CHIP_COLORS.ERROR
-      ? theme.palette.token.component.chip_error
-      : color === CHIP_COLORS.WARNING
-      ? theme.palette.token.component.chip_warning
-      : color === CHIP_COLORS.SUCCESS
-      ? theme.palette.token.component.chip_success
-      : theme.palette.token.component.chip_primary,
+};
+
+const getColorToken = (
+  token: "text" | "bg",
+  theme: Theme,
+  color?: ChipColor
+) => {
+  if (token === "text") {
+    switch (color) {
+      case CHIP_COLORS.PRIMARY:
+        return theme.palette.token.component.chip_primary_text;
+      case CHIP_COLORS.SECONDARY:
+        return theme.palette.token.component.chip_secondary_text;
+      case CHIP_COLORS.ERROR:
+        return theme.palette.token.component.chip_error_text;
+      case CHIP_COLORS.WARNING:
+        return theme.palette.token.component.chip_warning_text;
+      case CHIP_COLORS.SUCCESS:
+        return theme.palette.token.component.chip_success_text;
+      default:
+        return theme.palette.token.component.chip_primary_text;
+    }
+  } else {
+    switch (color) {
+      case CHIP_COLORS.PRIMARY:
+        return theme.palette.token.component.chip_primary_bg;
+      case CHIP_COLORS.SECONDARY:
+        return theme.palette.token.component.chip_secondary_bg;
+      case CHIP_COLORS.ERROR:
+        return theme.palette.token.component.chip_error_bg;
+      case CHIP_COLORS.WARNING:
+        return theme.palette.token.component.chip_warning_bg;
+      case CHIP_COLORS.SUCCESS:
+        return theme.palette.token.component.chip_success_bg;
+      default:
+        return theme.palette.token.component.chip_primary_bg;
+    }
+  }
+};
+
+export const StyledOutlinedChip = styled(MuiChip, {
+  shouldForwardProp: (prop) => !["color"].includes(prop.toString()),
+})<OutlinedChipProps>(({ theme, color }) => ({
+  ...COMMON_STYLES,
+
+  color: getColorToken("text", theme, color),
+  borderColor: getColorToken("bg", theme, color),
 }));
 
 export const StyledContainedChip = styled(MuiChip, {
   shouldForwardProp: (prop) => !["color"].includes(prop.toString()),
-})<StyledChipProps>(({ theme, color, thumbnail, onDelete }) => ({
-  "&.MuiChip-root": {
-    height: "22px",
-  },
-  "& .MuiChip-label": {
-    height: "16px",
-    fontStyle: "normal",
-    fontWeight: 500,
-    fontSize: "12px",
-    lineHeight: "14.32px",
-    display: "flex",
-    alignItems: "center",
-    textAlign: "center",
-    padding: 0,
-    marginLeft: thumbnail ? "4px" : "8px",
-    marginRight: onDelete ? "4px" : "8px",
-  },
-  "& .MuiChip-deleteIcon": {
-    marginLeft: 0,
-    marginRight: "3px",
-  },
+})<BaseContainedChipProps>(() => ({ theme, color }) => ({
+  ...COMMON_STYLES,
+
   color: theme.palette.token.core.text_normal,
-  backgroundColor:
-    color === CHIP_COLORS.PRIMARY
-      ? theme.palette.token.component.chip_primary_bg
-      : color === CHIP_COLORS.SECONDARY
-      ? theme.palette.token.component.chip_secondary_bg
-      : color === CHIP_COLORS.ERROR
-      ? theme.palette.token.component.chip_error_bg
-      : color === CHIP_COLORS.WARNING
-      ? theme.palette.token.component.chip_warning_bg
-      : color === CHIP_COLORS.SUCCESS
-      ? theme.palette.token.component.chip_success_bg
-      : theme.palette.token.component.chip_primary_bg,
-  "&:hover": {
-    backgroundColor:
-      color === CHIP_COLORS.PRIMARY
-        ? theme.palette.token.component.chip_primary_bg
-        : color === CHIP_COLORS.SECONDARY
-        ? theme.palette.token.component.chip_secondary_bg
-        : color === CHIP_COLORS.ERROR
-        ? theme.palette.token.component.chip_error_bg
-        : color === CHIP_COLORS.WARNING
-        ? theme.palette.token.component.chip_warning_bg
-        : color === CHIP_COLORS.SUCCESS
-        ? theme.palette.token.component.chip_success_bg
-        : theme.palette.token.component.chip_primary_bg,
-  },
+  backgroundColor: getColorToken("bg", theme, color),
+
   "& .MuiSvgIcon-root": {
+    marginBlock: "3px",
+    marginLeft: "3px",
+    marginRight: "4px",
     height: "16px",
     width: "16px",
-    marginTop: 3,
-    marginBottom: 3,
-    color:
-      color === CHIP_COLORS.PRIMARY
-        ? theme.palette.token.component.chip_primary
-        : color === CHIP_COLORS.SECONDARY
-        ? theme.palette.token.component.chip_secondary
-        : color === CHIP_COLORS.ERROR
-        ? theme.palette.token.component.chip_error
-        : color === CHIP_COLORS.WARNING
-        ? theme.palette.token.component.chip_warning
-        : color === CHIP_COLORS.SUCCESS
-        ? theme.palette.token.component.chip_success
-        : theme.palette.token.component.chip_primary,
+    color: getColorToken("text", theme, color),
   },
-  "& .MuiChip-icon": {
-    marginLeft: "3px",
-    marginRight: 0,
+  "& .MuiChip-avatar": {
+    marginBlock: "3px",
+    marginLeft: "4px",
+    marginRight: "5px",
+    height: "14px",
+    width: "14px",
+    fontSize: "11px",
+    fontWeight: 500,
+    lineHeight: "16px",
+    display: "flex",
+    textAlign: "center",
+    alignItems: "center",
+    // TODO: Currently, the color names of Figma and Design system's color component's name don't match
+    // Need to be Fixed after the color system is completed
+    color: getColorToken("bg", theme, color),
+    backgroundColor: getColorToken("text", theme, color),
+  },
+
+  "& .MuiChip-deleteIcon": {
+    marginLeft: "4px",
+    marginRight: "3px",
+  },
+  "& .MuiChip-deleteIcon:hover": {
+    // TODO: Below is a temporary color until the hover color is completed in our Design system
+    color: theme.palette.token.core.hover,
   },
 }));

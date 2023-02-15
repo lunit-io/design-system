@@ -10,7 +10,7 @@ https://design-system-icons.d.lunit.io/
 
 ### Figma
 
-Lunit Design System Figma: https://www.figma.com/file/ygzUKBGrGxEYzkhUwoOC3U/Lunit-Design-System?node-id=4604%3A96681
+Lunit Design System Figma: https://www.figma.com/file/l2f0f9phsDwoz4sRr9kYXx/Lunit_Foundation?node-id=12135%3A6326&t=UkUMrZ7Wwkj92Wy6-1
 
 You can multi-select icons to export with [Select Layers plugin](https://www.figma.com/community/plugin/799648692768237063/Select-Layers).
 
@@ -21,9 +21,9 @@ You need [SVG Export plugin](https://www.figma.com/community/plugin/814345141907
 
 ### Build & Publish
 
-Webpack will detect all `src/**/index.tsx` and use them as entry.
+The `yarn build` command generates components and stores them in `generated/**/index.tsx` files. These files are then used as entry points by Webpack.
 
-You should move to `dist` after builds and run `npm publish --access public`.
+You can publish the package with `npm publish --access public`.
 
 ### Roadmap
 
@@ -31,7 +31,6 @@ You should move to `dist` after builds and run `npm publish --access public`.
 - [x] Publish Storybook docs
 - [x] Add all the design system icons
 - [x] Support basic variants(outlined, filled)
-- [ ] Support responsive icon(for less than 16px)
 - [ ] Support two-tone variant
 - [ ] Export SVGs directly
 - [ ] Automated visual test with the Figma project

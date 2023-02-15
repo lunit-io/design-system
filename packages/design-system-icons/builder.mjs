@@ -4,6 +4,7 @@ import { fileURLToPath } from "url";
 import globAsync from "fast-glob";
 import Mustache from "mustache";
 
+const deprecatedIcons = ["LunitLogo"];
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 /**
@@ -11,11 +12,13 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
  * @param {string} name
  * @returns {string} class name
  */
-export function getComponentName(name) {
+export function getComponentName(name, size) {
   const parts = name
     .split("_")
     .map((part) => part.charAt(0).toUpperCase() + part.substring(1));
-
+  if (size !== "20") {
+    parts.push(size);
+  }
   return parts.join("");
 }
 
@@ -32,25 +35,28 @@ export async function handler() {
 
   const icons = [];
   for await (let svgPath of svgPaths) {
-    const filePattern = /^src\/assets\/ic_(\w+)=(\w+)_20px.svg/;
+    const filePattern = /^src\/assets\/ic_(\w+)=(\w+)_(\d+)px.svg/;
     const found = svgPath.match(filePattern);
     if (!found) {
       continue;
     }
-    const [, name, variant] = found;
-    const componentName = getComponentName(name);
+    const [, name, variant, size] = found;
+    const componentName = getComponentName(name, size);
 
-    const iconIndex = icons.findIndex((icon) => icon.name === name);
+    const iconIndex = icons.findIndex(
+      (icon) => icon.componentName === componentName
+    );
     if (variant === "2tone") {
       continue;
     }
     if (iconIndex > -1) {
-      icons[iconIndex].variants.push({ variant, name });
+      icons[iconIndex].variants.push({ variant, name, size });
     } else {
       icons.push({
         name,
         componentName,
-        variants: [{ variant, name }],
+        variants: [{ variant, name, size }],
+        isDeprecated: deprecatedIcons.includes(componentName),
       });
     }
   }
@@ -69,12 +75,8 @@ export async function handler() {
   );
 
   for await (let icon of icons) {
-    const { name, componentName, variants } = icon;
-    const componentString = Mustache.render(componentTemplate, {
-      name,
-      componentName,
-      variants,
-    });
+    const { componentName } = icon;
+    const componentString = Mustache.render(componentTemplate, icon);
 
     await fse.mkdir(path.join(__dirname, "generated", componentName));
     await fse.writeFile(

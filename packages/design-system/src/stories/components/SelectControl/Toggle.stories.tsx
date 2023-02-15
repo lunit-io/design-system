@@ -1,41 +1,58 @@
-import React, { useState } from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import Toggle from '@/components/SelectControl/Toggle/Toggle';
-import { Box, Table, TableBody, TableCell, TableHead, TableRow, TextField } from '@mui/material';
-import ToggleFormLabel from '@/components/SelectControl/ToggleFormLabel/ToggleFormLabel';
-import { action } from '@storybook/addon-actions';
+import React, { useEffect, useState } from "react";
+import { ComponentStory, ComponentMeta } from "@storybook/react";
+import Toggle from "@/components/Toggle/Toggle";
+import {
+  Box,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+  TextField,
+} from "@mui/material";
+import FormLabel from "@/components/FormLabel";
+import { action } from "@storybook/addon-actions";
 
 export default {
-  title: 'Components/Toggle',
+  title: "Components/Toggle",
   component: Toggle,
   argTypes: {
     checked: {
       control: {
-        type: 'select',
+        type: "select",
       },
       options: [true, false, undefined],
-      description: "If `true`, the component is checked. Indeterminate state doesn't supported `checked` prop.",
+      description:
+        "If `true`, the component is checked. Indeterminate state doesn't supported `checked` prop.",
     },
     onChange: {
       control: {
-        type: 'select',
+        type: "select",
       },
-      options: ['function', undefined],
+      options: ["function", undefined],
       mapping: {
-        function: action('onChange'),
+        function: action("onChange"),
         undefined: undefined,
       },
-      description: '(() => void)',
+      description: "(() => void)",
+    },
+    disabled: {
+      control: {
+        type: "boolean",
+      },
+      description: "If `true`, the component is disabled.",
+      defaultValue: false,
+      options: [true, false],
     },
   },
   args: {
-    size: 'medium',
+    size: "medium",
     indeterminate: false,
+    disabled: false,
   },
   parameters: {
-    controls: { include: ['checked', 'size', 'indeterminate', 'onChange'] },
-    pseudo: {
-      focusWithin: ['.focus-test'],
+    controls: {
+      include: ["disabled", "checked", "size", "indeterminate", "onChange"],
     },
     docs: {
       description: {
@@ -45,36 +62,35 @@ export default {
       },
     },
   },
-  decorators: [
-    /**
-     * TODO
-     * Since Color Token system will be changed, below className should be changed accordingly
-     * Also, the hover color will be set again with the color token system completion
-     */
-    (Story) => <Box className="base90">{Story()}</Box>,
-  ],
 } as ComponentMeta<typeof Toggle>;
 
-const BaseTemplate: ComponentStory<typeof Toggle> = (args) => (
-  <Table>
-    <TableHead>
-      <TableRow>
-        <TableCell>DEFAULT</TableCell>
-        <TableCell>FOCUS</TableCell>
-      </TableRow>
-    </TableHead>
-    <TableBody>
-      <TableRow>
-        <TableCell>
-          <Toggle {...args} />
-        </TableCell>
-        <TableCell>
-          <Toggle className="focus-test" {...args} />
-        </TableCell>
-      </TableRow>
-    </TableBody>
-  </Table>
-);
+const BaseTemplate: ComponentStory<typeof Toggle> = (args) => {
+  const [checked, setChecked] = useState(false);
+  useEffect(() => {
+    setChecked(Boolean(args.checked));
+  }, [args.checked]);
+
+  return (
+    <Table>
+      <TableHead>
+        <TableRow>
+          <TableCell>DEFAULT</TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        <TableRow>
+          <TableCell>
+            <Toggle
+              {...args}
+              checked={checked}
+              onChange={() => setChecked(!checked)}
+            />
+          </TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+  );
+};
 
 const Template: ComponentStory<typeof Toggle> = (args) => (
   <Table>
@@ -192,29 +208,39 @@ const TemplateWithLabel: ComponentStory<typeof Toggle> = (args) => (
       <TableRow>
         <TableCell>MEDIUM DEFAULT</TableCell>
         <TableCell>
-          <ToggleFormLabel label="Label 1" control={<Toggle {...args} checked />} />
+          <FormLabel label="Label 1" control={<Toggle {...args} checked />} />
         </TableCell>
         <TableCell>
-          <ToggleFormLabel label={<input placeholder="Label 2" />} control={<Toggle {...args} indeterminate />} />
+          <FormLabel
+            label={<input placeholder="Label 2" />}
+            control={<Toggle {...args} indeterminate />}
+          />
         </TableCell>
         <TableCell>
-          <ToggleFormLabel label={<TextField placeholder="Label 3" />} control={<Toggle {...args} />} />
+          <FormLabel
+            label={<TextField placeholder="Label 3" />}
+            control={<Toggle {...args} />}
+          />
         </TableCell>
       </TableRow>
       <TableRow>
         <TableCell>MEDIUM FOCUS</TableCell>
         <TableCell>
-          <ToggleFormLabel className="focus-test" label="Label 1" control={<Toggle {...args} checked />} />
+          <FormLabel
+            className="focus-test"
+            label="Label 1"
+            control={<Toggle {...args} checked />}
+          />
         </TableCell>
         <TableCell>
-          <ToggleFormLabel
+          <FormLabel
             className="focus-test"
             label={<input placeholder="Label 2" />}
             control={<Toggle {...args} indeterminate />}
           />
         </TableCell>
         <TableCell>
-          <ToggleFormLabel
+          <FormLabel
             className="focus-test"
             label={<TextField placeholder="Label 3" />}
             control={<Toggle {...args} />}
@@ -224,32 +250,42 @@ const TemplateWithLabel: ComponentStory<typeof Toggle> = (args) => (
       <TableRow>
         <TableCell>LARGE DEFAULT</TableCell>
         <TableCell>
-          <ToggleFormLabel label="Label 1" control={<Toggle {...args} size="large" checked />} />
+          <FormLabel
+            label="Label 1"
+            control={<Toggle {...args} size="large" checked />}
+          />
         </TableCell>
         <TableCell>
-          <ToggleFormLabel
+          <FormLabel
             label={<input placeholder="Label 2" />}
             control={<Toggle {...args} size="large" indeterminate />}
           />
         </TableCell>
         <TableCell>
-          <ToggleFormLabel label={<TextField placeholder="Label 3" />} control={<Toggle {...args} size="large" />} />
+          <FormLabel
+            label={<TextField placeholder="Label 3" />}
+            control={<Toggle {...args} size="large" />}
+          />
         </TableCell>
       </TableRow>
       <TableRow>
         <TableCell>LARGE FOCUS</TableCell>
         <TableCell>
-          <ToggleFormLabel className="focus-test" label="Label 1" control={<Toggle {...args} size="large" checked />} />
+          <FormLabel
+            className="focus-test"
+            label="Label 1"
+            control={<Toggle {...args} size="large" checked />}
+          />
         </TableCell>
         <TableCell>
-          <ToggleFormLabel
+          <FormLabel
             className="focus-test"
             label={<input placeholder="Label 2" />}
             control={<Toggle {...args} size="large" indeterminate />}
           />
         </TableCell>
         <TableCell>
-          <ToggleFormLabel
+          <FormLabel
             className="focus-test"
             label={<TextField placeholder="Label 3" />}
             control={<Toggle {...args} size="large" />}
@@ -264,7 +300,7 @@ const IndeterminateTemplate: ComponentStory<typeof Toggle> = (args) => {
   const [checked, setChecked] = useState([true, false, false]);
 
   const handleChange1 = () => {
-    const result = !(checked[0] && checked[1])
+    const result = !(checked[0] && checked[1]);
     setChecked([result, result, result]);
   };
 
@@ -291,7 +327,7 @@ const IndeterminateTemplate: ComponentStory<typeof Toggle> = (args) => {
       <TableBody>
         <TableRow>
           <TableCell>
-            <ToggleFormLabel
+            <FormLabel
               label="Parent"
               control={
                 <Toggle
@@ -301,18 +337,30 @@ const IndeterminateTemplate: ComponentStory<typeof Toggle> = (args) => {
                 />
               }
             />
-            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-              <ToggleFormLabel label="Child 1" control={<Toggle checked={checked[0]} onChange={handleChange2} />} />
-              <ToggleFormLabel label="Child 2" control={<Toggle checked={checked[1]} onChange={handleChange3} />} />
-              <ToggleFormLabel
+            <Box sx={{ display: "flex", flexDirection: "column" }}>
+              <FormLabel
+                label="Child 1"
+                control={
+                  <Toggle checked={checked[0]} onChange={handleChange2} />
+                }
+              />
+              <FormLabel
+                label="Child 2"
+                control={
+                  <Toggle checked={checked[1]} onChange={handleChange3} />
+                }
+              />
+              <FormLabel
                 label="Child 3"
                 disabled
-                control={<Toggle checked={checked[2]} onChange={handleChange4} />}
+                control={
+                  <Toggle checked={checked[2]} onChange={handleChange4} />
+                }
               />
             </Box>
           </TableCell>
           <TableCell>
-            <ToggleFormLabel
+            <FormLabel
               label="Parent"
               control={
                 <Toggle
@@ -323,19 +371,37 @@ const IndeterminateTemplate: ComponentStory<typeof Toggle> = (args) => {
                 />
               }
             />
-            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-              <ToggleFormLabel
+            <Box sx={{ display: "flex", flexDirection: "column" }}>
+              <FormLabel
                 label="Child 1"
-                control={<Toggle size="large" checked={checked[0]} onChange={handleChange2} />}
+                control={
+                  <Toggle
+                    size="large"
+                    checked={checked[0]}
+                    onChange={handleChange2}
+                  />
+                }
               />
-              <ToggleFormLabel
+              <FormLabel
                 label="Child 2"
-                control={<Toggle size="large" checked={checked[1]} onChange={handleChange3} />}
+                control={
+                  <Toggle
+                    size="large"
+                    checked={checked[1]}
+                    onChange={handleChange3}
+                  />
+                }
               />
-              <ToggleFormLabel
+              <FormLabel
                 label="Child 3"
                 disabled
-                control={<Toggle size="large" checked={checked[2]} onChange={handleChange4} />}
+                control={
+                  <Toggle
+                    size="large"
+                    checked={checked[2]}
+                    onChange={handleChange4}
+                  />
+                }
               />
             </Box>
           </TableCell>
@@ -357,7 +423,7 @@ export const ToggleWithLabelAndIndeterminate = IndeterminateTemplate.bind({});
 ToggleWithLabelAndIndeterminate.parameters = {
   docs: {
     description: {
-      story: 'Usage is same with Toggle',
+      story: "Usage is same with Toggle",
     },
   },
 };
