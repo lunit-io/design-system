@@ -53,6 +53,13 @@ const commonStyle = ({ token }: { token: ColorToken }) => ({
     "&.Mui-disabled fieldset": {
       opacity: 0.38,
     },
+    "& input, textarea": {
+      textOverflow: "ellipsis",
+      "&::placeholder": {
+        color: token.core.text_medium,
+        opacity: 1,
+      },
+    },
     background: token.component.textfield_bg,
     overflow: "hidden",
     color: token.core.text_normal,
@@ -65,13 +72,6 @@ const commonStyle = ({ token }: { token: ColorToken }) => ({
     margin: 0,
     marginTop: "4px",
     paddingLeft: "4px",
-  },
-  "& input, textarea": {
-    textOverflow: "ellipsis",
-    "&::placeholder": {
-      color: token.core.text_medium,
-      opacity: 1,
-    },
   },
 });
 
@@ -90,16 +90,16 @@ const sizeStyle = ({
         hasLeftIcon,
         hasRightIcon,
       }),
-    },
-    "& input, textarea": {
-      padding: "4px 0px",
-      fontSize: "14px",
-    },
-    "& input": {
-      height: "20px",
-    },
-    "& textarea": {
-      minHeight: "92px",
+      "& input, textarea": {
+        padding: "4px 0px",
+        fontSize: "14px",
+      },
+      "& input": {
+        height: "20px",
+      },
+      "& textarea": {
+        minHeight: "92px",
+      },
     },
   }),
   ...(textFieldSize === "medium" && {
@@ -109,16 +109,16 @@ const sizeStyle = ({
         hasLeftIcon,
         hasRightIcon,
       }),
-    },
-    "& input, textarea": {
-      padding: "8px 0px",
-      fontSize: "14px",
-    },
-    "& input": {
-      height: "20px",
-    },
-    "& textarea": {
-      minHeight: "84px",
+      "& input, textarea": {
+        padding: "8px 0px",
+        fontSize: "14px",
+      },
+      "& input": {
+        height: "20px",
+      },
+      "& textarea": {
+        minHeight: "84px",
+      },
     },
   }),
   ...(textFieldSize === "large" && {
@@ -128,16 +128,16 @@ const sizeStyle = ({
         hasLeftIcon,
         hasRightIcon,
       }),
-    },
-    "& input, textarea": {
-      padding: "10px 0px",
-      fontSize: "16px",
-    },
-    "& input": {
-      height: "24px",
-    },
-    "& textarea": {
-      minHeight: "80px",
+      "& input, textarea": {
+        padding: "10px 0px",
+        fontSize: "16px",
+      },
+      "& input": {
+        height: "24px",
+      },
+      "& textarea": {
+        minHeight: "80px",
+      },
     },
   }),
 });
