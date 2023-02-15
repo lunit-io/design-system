@@ -71,7 +71,7 @@ export const StyledOutlinedChip = styled(MuiChip, {
   ...theme.typography.caption,
 
   color: getColorToken("text", theme, color),
-  borderColor: getColorToken("bg", theme, color),
+  borderColor: getColorToken("text", theme, color),
 }));
 
 export const StyledContainedChip = styled(MuiChip, {
