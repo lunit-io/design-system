@@ -51,7 +51,7 @@ const commonStyle = ({ token }: { token: ColorToken }) => ({
     "&.Mui-focused fieldset": {
       border: `1px solid ${token.core.focused}`,
     },
-    "&.Mui-disabled fieldset": {
+    "&.Mui-disabled": {
       opacity: 0.38,
     },
     "& input, textarea": {
@@ -65,14 +65,10 @@ const commonStyle = ({ token }: { token: ColorToken }) => ({
     overflow: "hidden",
     color: token.core.text_normal,
   },
-  "& .MuiFormHelperText-root": {
-    "&.Mui-error": {
-      color: token.core.text_error,
-    },
-  },
 });
 
 const sizeStyle = ({
+  token,
   textFieldSize,
   hasLeftIcon,
   hasRightIcon,
@@ -80,7 +76,7 @@ const sizeStyle = ({
 }: Pick<
   BaseTextFieldProps,
   "textFieldSize" | "hasLeftIcon" | "hasRightIcon"
-> & { typography: Typography }) => ({
+> & { token: ColorToken; typography: Typography }) => ({
   ...(textFieldSize === "small" && {
     "& .MuiInputBase-root": {
       padding: getTextFieldPaddingBySize({
@@ -104,6 +100,13 @@ const sizeStyle = ({
       margin: 0,
       marginTop: "4px",
       paddingLeft: "4px",
+
+      "&.Mui-disabled": {
+        opacity: 0.38,
+      },
+      "&.Mui-error": {
+        color: token.core.text_error,
+      },
     },
   }),
   ...(textFieldSize === "medium" && {
@@ -129,6 +132,13 @@ const sizeStyle = ({
       margin: 0,
       marginTop: "4px",
       paddingLeft: "4px",
+
+      "&.Mui-disabled": {
+        opacity: 0.38,
+      },
+      "&.Mui-error": {
+        color: token.core.text_error,
+      },
     },
   }),
   ...(textFieldSize === "large" && {
@@ -154,6 +164,13 @@ const sizeStyle = ({
       margin: 0,
       marginTop: "4px",
       paddingLeft: "4px",
+
+      "&.Mui-disabled": {
+        opacity: 0.38,
+      },
+      "&.Mui-error": {
+        color: token.core.text_error,
+      },
     },
   }),
 });
@@ -182,7 +199,13 @@ const BaseTextField = styled(MuiTextField, {
     hasRightIcon,
   }) => ({
     ...commonStyle({ token }),
-    ...sizeStyle({ textFieldSize, hasLeftIcon, hasRightIcon, typography }),
+    ...sizeStyle({
+      token,
+      textFieldSize,
+      hasLeftIcon,
+      hasRightIcon,
+      typography,
+    }),
   })
 );
 
