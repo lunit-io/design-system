@@ -53,7 +53,7 @@ const MultiTextField = ({ size, ...restProps }: MultiTextFieldProps) => {
 
 const TextField = (props: TextFieldProps) => {
   const {
-    rows = 1,
+    rows,
     size = "small",
     multiline = false,
     variant = "outlined",
@@ -61,7 +61,13 @@ const TextField = (props: TextFieldProps) => {
   } = props;
 
   return multiline ? (
-    <MultiTextField {...restProps} size={size} variant={variant} rows={rows} />
+    <MultiTextField
+      {...restProps}
+      maxRows={Infinity}
+      size={size}
+      variant={variant}
+      rows={rows}
+    />
   ) : (
     <SingleTextField {...restProps} size={size} variant={variant} />
   );

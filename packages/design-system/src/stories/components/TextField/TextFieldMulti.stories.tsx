@@ -38,12 +38,12 @@ export default {
     },
     rows: {
       type: "number",
-      defaultValue: 1,
+      defaultValue: undefined,
       description: `The number of rows to display when multiline option is set to "true"
         \n the rows default value is 3.`,
       table: {
-        defaultValue: { summary: "1" },
-        type: { summary: ["number", "string"] },
+        defaultValue: { summary: "undefined" },
+        type: { summary: ["number", "string", "undefined"] },
       },
     },
     placeholder: {

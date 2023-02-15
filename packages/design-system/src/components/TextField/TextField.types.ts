@@ -31,10 +31,7 @@ export interface SingleTextFieldProps extends BaseTextFieldProps {
 }
 
 export interface MultiTextFieldProps extends BaseTextFieldProps {
-  /**
-   * @default 1
-   */
-  rows: number | string;
+  rows?: number | string;
   size: TextFieldSize;
 }
 
