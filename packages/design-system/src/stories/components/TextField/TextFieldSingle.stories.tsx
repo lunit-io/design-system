@@ -130,7 +130,7 @@ const SingleWithIconTemplate: ComponentStory<typeof TextField> = (args) => (
           <TextField {...args} error leftIcon={<Bell />} />
         </TableCell>
         <TableCell>
-          <TextField {...args} focused />
+          <TextField {...args} focused leftIcon={<Bell />} />
         </TableCell>
         <TableCell>
           <TextField {...args} disabled leftIcon={<Bell />} />
