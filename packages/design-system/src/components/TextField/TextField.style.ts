@@ -65,6 +65,14 @@ const commonStyle = ({ token }: { token: ColorToken }) => ({
     overflow: "hidden",
     color: token.core.text_normal,
   },
+  "& .MuiFormHelperText-root": {
+    "&.Mui-disabled": {
+      opacity: 0.38,
+    },
+    "&.Mui-error": {
+      color: token.core.text_error,
+    },
+  },
 });
 
 const sizeStyle = ({
