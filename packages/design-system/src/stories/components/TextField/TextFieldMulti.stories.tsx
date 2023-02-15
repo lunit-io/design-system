@@ -87,7 +87,7 @@ const MultiTemplate: ComponentStory<typeof TextField> = (args) => (
       <TableRow>
         <TableCell>Default</TableCell>
         <TableCell>Error</TableCell>
-        <TableCell>focused</TableCell>
+        <TableCell>Focused</TableCell>
         <TableCell>Disabled</TableCell>
       </TableRow>
     </TableHead>
