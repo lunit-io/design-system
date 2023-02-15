@@ -39,6 +39,7 @@ const getTextFieldPaddingBySize = ({
 
 const commonStyle = ({ token }: { token: ColorToken }) => ({
   "& .MuiOutlinedInput-root": {
+    borderRadius: "8px",
     height: "100%",
     "& fieldset": {
       border: "none",
