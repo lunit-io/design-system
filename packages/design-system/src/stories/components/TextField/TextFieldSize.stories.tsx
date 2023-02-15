@@ -16,6 +16,15 @@ export default {
   title: "Components/TextField",
   component: TextField,
   argTypes: {
+    value: {
+      type: "string",
+      defaultValue: "",
+      description: "The value of the text field.",
+      table: {
+        defaultValue: { summary: "" },
+        type: { summary: "string" },
+      },
+    },
     size: {
       control: false,
       defaultValue: "small",
@@ -47,7 +56,7 @@ export default {
   },
   parameters: {
     controls: {
-      include: ["size", "helperText", "placeholder"],
+      include: ["value", "size", "helperText", "placeholder"],
     },
     docs: {
       description: {
