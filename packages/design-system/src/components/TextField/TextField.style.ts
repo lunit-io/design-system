@@ -105,6 +105,7 @@ const sizeStyle = ({
     },
     "& .MuiFormHelperText-root": {
       ...typography.body2_14_regular,
+      color: token.core.text_medium,
       margin: 0,
       marginTop: "4px",
       paddingLeft: "4px",
@@ -137,6 +138,7 @@ const sizeStyle = ({
     },
     "& .MuiFormHelperText-root": {
       ...typography.body2_14_regular,
+      color: token.core.text_medium,
       margin: 0,
       marginTop: "4px",
       paddingLeft: "4px",
@@ -169,6 +171,7 @@ const sizeStyle = ({
     },
     "& .MuiFormHelperText-root": {
       ...typography.body1_16_regular,
+      color: token.core.text_medium,
       margin: 0,
       marginTop: "4px",
       paddingLeft: "4px",
