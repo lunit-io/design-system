@@ -9,19 +9,40 @@ type BaseTextFieldProps = Omit<TextFieldProps, "size"> & {
   textFieldSize: TextFieldSize;
   hasLeftIcon?: boolean;
   hasRightIcon?: boolean;
+  hasScroll?: boolean;
 };
 
 interface GetTextFieldPaddingBySizeParams {
   size: TextFieldSize;
+  hasScroll?: boolean;
   hasLeftIcon?: boolean;
   hasRightIcon?: boolean;
 }
 
-const getTextFieldPaddingBySize = ({
+const getTextFieldPaddingByScrollAndSize = ({
+  size,
+  hasScroll,
+}: Pick<GetTextFieldPaddingBySizeParams, "size" | "hasScroll">) => {
+  switch (size) {
+    case "small": {
+      return `0px ${hasScroll ? "4px" : "12px"} 0px 12px`;
+    }
+
+    case "medium":
+    case "large": {
+      return `0px ${hasScroll ? "4px" : "16px"} 0px 16px`;
+    }
+  }
+};
+
+const getTextFieldPaddingByIconAndSize = ({
   size,
   hasLeftIcon,
   hasRightIcon,
-}: GetTextFieldPaddingBySizeParams) => {
+}: Pick<
+  GetTextFieldPaddingBySizeParams,
+  "size" | "hasLeftIcon" | "hasRightIcon"
+>) => {
   switch (size) {
     case "small":
       return `0px ${hasRightIcon ? "6px" : "12px"} 0px ${
@@ -36,6 +57,21 @@ const getTextFieldPaddingBySize = ({
         hasLeftIcon ? "10px" : "16px"
       }}`;
   }
+};
+
+const getTextFieldPaddingBySize = ({
+  size,
+  hasScroll,
+  hasLeftIcon,
+  hasRightIcon,
+}: GetTextFieldPaddingBySizeParams) => {
+  return hasScroll
+    ? getTextFieldPaddingByScrollAndSize({ size, hasScroll })
+    : getTextFieldPaddingByIconAndSize({
+        size,
+        hasLeftIcon,
+        hasRightIcon,
+      });
 };
 
 const commonStyle = ({ token }: { token: ColorToken }) => ({
@@ -81,9 +117,10 @@ const sizeStyle = ({
   hasLeftIcon,
   hasRightIcon,
   typography,
+  hasScroll,
 }: Pick<
   BaseTextFieldProps,
-  "textFieldSize" | "hasLeftIcon" | "hasRightIcon"
+  "textFieldSize" | "hasLeftIcon" | "hasRightIcon" | "hasScroll"
 > & { token: ColorToken; typography: Typography }) => ({
   ...(textFieldSize === "small" && {
     "& .MuiInputBase-root": {
@@ -91,6 +128,7 @@ const sizeStyle = ({
         size: textFieldSize,
         hasLeftIcon,
         hasRightIcon,
+        hasScroll,
       }),
       "& input, textarea": {
         padding: "4px 0px",
@@ -100,6 +138,12 @@ const sizeStyle = ({
         height: "20px",
       },
       "& textarea": {
+        /**
+         * If there is scrolling, the right padding will be different.
+         * However, the total length shouldn't change,
+         * so we adjust the padding right value as shown below.
+         */
+        paddingRight: hasScroll ? "8px" : "0px",
         minHeight: "92px",
       },
     },
@@ -124,6 +168,7 @@ const sizeStyle = ({
         size: textFieldSize,
         hasLeftIcon,
         hasRightIcon,
+        hasScroll,
       }),
       "& input, textarea": {
         padding: "8px 0px",
@@ -133,6 +178,7 @@ const sizeStyle = ({
         height: "20px",
       },
       "& textarea": {
+        paddingRight: hasScroll ? "12px" : "0px",
         minHeight: "84px",
       },
     },
@@ -157,6 +203,7 @@ const sizeStyle = ({
         size: textFieldSize,
         hasLeftIcon,
         hasRightIcon,
+        hasScroll,
       }),
       "& input, textarea": {
         padding: "10px 0px",
@@ -166,6 +213,7 @@ const sizeStyle = ({
         height: "24px",
       },
       "& textarea": {
+        paddingRight: hasScroll ? "12px" : "0px",
         minHeight: "80px",
       },
     },
@@ -189,6 +237,7 @@ const sizeStyle = ({
 const BaseTextField = styled(MuiTextField, {
   shouldForwardProp: (prop: string) =>
     ![
+      "hasScroll",
       "leftIconSx",
       "rightIconSx",
       "leftIcon",
@@ -205,6 +254,7 @@ const BaseTextField = styled(MuiTextField, {
       typography,
       palette: { token },
     },
+    hasScroll,
     textFieldSize,
     hasLeftIcon,
     hasRightIcon,
@@ -216,6 +266,7 @@ const BaseTextField = styled(MuiTextField, {
       hasLeftIcon,
       hasRightIcon,
       typography,
+      hasScroll,
     }),
   })
 );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 
 import TextFieldIcon from "./TextFieldIcon";
 import { BaseTextField } from "./TextField.style";
@@ -47,8 +47,33 @@ const SingleTextField = (props: SingleTextFieldProps) => {
   );
 };
 
-const MultiTextField = ({ size, ...restProps }: MultiTextFieldProps) => {
-  return <BaseTextField {...restProps} textFieldSize={size} multiline />;
+const MultiTextField = ({
+  size,
+  onChange,
+  ...restProps
+}: MultiTextFieldProps) => {
+  const inputRef = useRef<HTMLTextAreaElement>(null);
+  const [hasScroll, setHasScroll] = React.useState<boolean>(false);
+
+  const handleInputChange = () => {
+    if (!inputRef.current) return;
+
+    setHasScroll(inputRef.current.scrollHeight > inputRef.current.clientHeight);
+  };
+
+  return (
+    <BaseTextField
+      {...restProps}
+      hasScroll={hasScroll}
+      inputRef={inputRef}
+      onChange={(event) => {
+        handleInputChange();
+        onChange?.(event);
+      }}
+      textFieldSize={size}
+      multiline
+    />
+  );
 };
 
 const TextField = (props: TextFieldProps) => {
