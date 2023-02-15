@@ -2,6 +2,7 @@ import MuiTextField from "@mui/material/TextField";
 import { styled } from "@mui/material/styles";
 
 import type { ColorToken } from "@/foundation/colors/types";
+import type { Typography } from "@mui/material/styles/createTypography";
 import type { TextFieldProps, TextFieldSize } from "./TextField.types";
 
 type BaseTextFieldProps = Omit<TextFieldProps, "size"> & {
@@ -65,13 +66,9 @@ const commonStyle = ({ token }: { token: ColorToken }) => ({
     color: token.core.text_normal,
   },
   "& .MuiFormHelperText-root": {
-    color: token.core.text_medium,
     "&.Mui-error": {
       color: token.core.text_error,
     },
-    margin: 0,
-    marginTop: "4px",
-    paddingLeft: "4px",
   },
 });
 
@@ -79,10 +76,11 @@ const sizeStyle = ({
   textFieldSize,
   hasLeftIcon,
   hasRightIcon,
+  typography,
 }: Pick<
   BaseTextFieldProps,
   "textFieldSize" | "hasLeftIcon" | "hasRightIcon"
->) => ({
+> & { typography: Typography }) => ({
   ...(textFieldSize === "small" && {
     "& .MuiInputBase-root": {
       padding: getTextFieldPaddingBySize({
@@ -92,7 +90,7 @@ const sizeStyle = ({
       }),
       "& input, textarea": {
         padding: "4px 0px",
-        fontSize: "14px",
+        ...typography.body2_14_regular,
       },
       "& input": {
         height: "20px",
@@ -100,6 +98,12 @@ const sizeStyle = ({
       "& textarea": {
         minHeight: "92px",
       },
+    },
+    "& .MuiFormHelperText-root": {
+      ...typography.body2_14_regular,
+      margin: 0,
+      marginTop: "4px",
+      paddingLeft: "4px",
     },
   }),
   ...(textFieldSize === "medium" && {
@@ -111,7 +115,7 @@ const sizeStyle = ({
       }),
       "& input, textarea": {
         padding: "8px 0px",
-        fontSize: "14px",
+        ...typography.body2_14_regular,
       },
       "& input": {
         height: "20px",
@@ -119,6 +123,12 @@ const sizeStyle = ({
       "& textarea": {
         minHeight: "84px",
       },
+    },
+    "& .MuiFormHelperText-root": {
+      ...typography.body2_14_regular,
+      margin: 0,
+      marginTop: "4px",
+      paddingLeft: "4px",
     },
   }),
   ...(textFieldSize === "large" && {
@@ -130,7 +140,7 @@ const sizeStyle = ({
       }),
       "& input, textarea": {
         padding: "10px 0px",
-        fontSize: "16px",
+        ...typography.body1_16_regular,
       },
       "& input": {
         height: "24px",
@@ -138,6 +148,12 @@ const sizeStyle = ({
       "& textarea": {
         minHeight: "80px",
       },
+    },
+    "& .MuiFormHelperText-root": {
+      ...typography.body1_16_regular,
+      margin: 0,
+      marginTop: "4px",
+      paddingLeft: "4px",
     },
   }),
 });
@@ -158,6 +174,7 @@ const BaseTextField = styled(MuiTextField, {
 })<BaseTextFieldProps>(
   ({
     theme: {
+      typography,
       palette: { token },
     },
     textFieldSize,
@@ -165,7 +182,7 @@ const BaseTextField = styled(MuiTextField, {
     hasRightIcon,
   }) => ({
     ...commonStyle({ token }),
-    ...sizeStyle({ textFieldSize, hasLeftIcon, hasRightIcon }),
+    ...sizeStyle({ textFieldSize, hasLeftIcon, hasRightIcon, typography }),
   })
 );
 
