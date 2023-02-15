@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 
 import TextFieldIcon from "./TextFieldIcon";
 import { BaseTextField } from "./TextField.style";
@@ -61,6 +61,15 @@ const MultiTextField = ({
     setHasScroll(inputRef.current.scrollHeight > inputRef.current.clientHeight);
   };
 
+  /**
+   * To handle the case where the initial value causes a scroll,
+   * we run the following function on the first render with useEffect
+   * to check if there is a scroll.
+   */
+  useEffect(() => {
+    handleInputChange();
+  }, []);
+
   return (
     <BaseTextField
       {...restProps}
@@ -70,6 +79,7 @@ const MultiTextField = ({
         handleInputChange();
         onChange?.(event);
       }}
+      onInput={handleInputChange}
       textFieldSize={size}
       multiline
     />
