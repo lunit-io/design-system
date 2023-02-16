@@ -1,5 +1,5 @@
 # Workflow name
-name: "Chromatic Deployment - Design System"
+name: 'Chromatic Deployment - Design System'
 
 env:
   CHROMATIC_APP_ID: 62d7d1f2efc8a1e364b5e5e8
@@ -8,17 +8,17 @@ env:
 on:
   push:
     branches:
-      - "main"
+      - 'main'
     paths:
-      - ".github/workflows/chromatic.yml"
-      - "packages/design-system/**"
-      - "packages/design-system-icons/**"
+      - '.github/workflows/chromatic.yml'
+      - 'packages/design-system/**'
+      - 'packages/design-system-icons/**'
   pull_request:
     types: [opened, synchronize, reopened]
     paths:
-      - ".github/workflows/chromatic.yml"
-      - "packages/design-system/**"
-      - "packages/design-system-icons/**"
+      - '.github/workflows/chromatic.yml'
+      - 'packages/design-system/**'
+      - 'packages/design-system-icons/**'
 
 # List of jobs
 jobs:
@@ -47,7 +47,7 @@ jobs:
           echo "value=$(echo $BRANCH_NAME | tr '[:upper:]' '[:lower:]' | tr / -)" >> $GITHUB_OUTPUT
 
       - name: Install dependencies
-        run: npx lerna bootstrap --ci --use-workspaces
+        run: yarn
 
       - name: Build design-system package and its dependencies
         run: yarn build:design-system
@@ -68,6 +68,6 @@ jobs:
         if: ${{ github.event_name == 'pull_request' }}
         uses: NejcZdovc/comment-pr@v2.0.0
         with:
-          message: "preview: https://${{ env.CHROMATIC_BRANCH_NAME }}--${{ env.CHROMATIC_APP_ID }}.chromatic.com"
-          identifier: "PREVIEW_LINK_COMMENT"
+          message: 'preview: https://${{ env.CHROMATIC_BRANCH_NAME }}--${{ env.CHROMATIC_APP_ID }}.chromatic.com'
+          identifier: 'PREVIEW_LINK_COMMENT'
           github_token: ${{ secrets.GITHUB_TOKEN }}

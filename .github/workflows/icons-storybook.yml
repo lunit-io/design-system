@@ -1,4 +1,4 @@
-name: "Deploy the icons storybook"
+name: 'Deploy the icons storybook'
 
 on:
   push:
@@ -32,15 +32,13 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Install Packages
-        run: yarn install --prefer-offline --frozen-lockfile
+        run: yarn
 
       - name: Build package
-        run: yarn build
-        working-directory: ${{ env.WORKDIR }}
+        run: npx nx build @lunit/design-system-icons
 
       - name: Build storybook
-        run: yarn build-storybook
-        working-directory: ${{ env.WORKDIR }}
+        run: npx nx build-storybook @lunit/design-system-icons
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
