@@ -39,7 +39,7 @@ export const StyledToast = styled(Alert)(({ theme, severity }) => {
       marginRight: 0,
       "& .MuiButtonBase-root":{
         color: theme.palette.token.core.link_primary,
-        marginRight: "20px",
+        marginRight: "12px",
       },
       "& .MuiSvgIcon-root": {
         color: theme.palette.token.core.text_normal

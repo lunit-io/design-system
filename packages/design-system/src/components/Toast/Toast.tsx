@@ -5,7 +5,7 @@ import {
   Information,
   Close,
 } from "@lunit/design-system-icons";
-import { ButtonBase } from '@mui/material'
+import { ButtonBase, Typography } from '@mui/material'
 import React, { forwardRef } from 'react'
 
 import Button from '../Button'
@@ -30,9 +30,9 @@ const Toast = forwardRef<HTMLDivElement, ToastProps>((props, ref) => {
         }}
         action={
               (<>
-                {actionButtonText ? <ButtonBase disableRipple onClick={actionButtonHandler}>
+                {actionButtonText ? <Button kind="ghost" disableRipple onClick={actionButtonHandler}>
                   {actionButtonText}
-                </ButtonBase> : null}
+                </Button> : null}
                 {onClose ? <Button
                   icon={<Close />}
                   kind="ghost"
@@ -44,7 +44,14 @@ const Toast = forwardRef<HTMLDivElement, ToastProps>((props, ref) => {
         {...iconConfig}
         {...rest}
       >
+        <Typography
+          sx={{
+            whiteSpace: 'pre-line'
+          }}
+          variant="body2_14_regular"
+        >
         {children}
+        </Typography>
       </StyledToast>
     </StyledToastElevation>
   )
