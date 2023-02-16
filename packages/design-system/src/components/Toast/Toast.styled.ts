@@ -1,9 +1,9 @@
-import { Alert, styled } from "@mui/material";
+import { Alert, Box, styled } from "@mui/material";
 import { getIconColor } from "./Toast.utils";
 
 
 
-export const StyledAlert = styled(Alert)(({ theme, severity }) => {
+export const StyledToast = styled(Alert)(({ theme, severity }) => {
   return {
     'div[class*="MuiAlert"]':{
       display: "flex",
@@ -12,9 +12,9 @@ export const StyledAlert = styled(Alert)(({ theme, severity }) => {
     '&.MuiAlert-root': {
       color: theme.palette.token.core.text_normal,
       backgroundColor: theme.palette.token.core.bg_03,
-      borderRadius: '8px',
       padding: "8px 16px 8px 16px",
-      boxShadow: "0px 12px 24px 8px rgba(0, 0, 0, 0.12), 0px 12px 44px 3px rgba(0, 0, 0, 0.18)"
+      margin: 0,
+      boxShadow: "none"
     },
     "& .MuiAlert-icon": {
       height: "36px",
@@ -35,11 +35,21 @@ export const StyledAlert = styled(Alert)(({ theme, severity }) => {
     },
     "& .MuiAlert-action": {
       height: "36px",
-      padding: "0 64px 0 28px",
+      padding: "0 0px 0 28px",
       marginRight: 0,
       "& .MuiButtonBase-root":{
         color: theme.palette.token.core.link_primary,
+        marginRight: "20px",
+      },
+      "& .MuiSvgIcon-root": {
+        color: theme.palette.token.core.text_normal
       }
     }
   }
 })
+
+
+
+export const StyledToastElevation = styled(Box)(() => ({
+  borderRadius: "8px",
+}));

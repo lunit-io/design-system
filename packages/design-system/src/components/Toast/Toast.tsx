@@ -3,18 +3,24 @@ import {
   Error,
   Warning,
   Information,
+  Close,
 } from "@lunit/design-system-icons";
 import { ButtonBase } from '@mui/material'
 import React, { forwardRef } from 'react'
-import { StyledAlert } from './Toast.styled'
+
+import Button from '../Button'
+import { StyledToast, StyledToastElevation } from './Toast.styled'
 import type { ToastProps } from "./Toast.types";
 
 const Toast = forwardRef<HTMLDivElement, ToastProps>((props, ref) => {
-  const { severity, icon, actionButtonText, actionButtonHandler, children, ...rest } = props
+  const { severity, icon, actionButtonText, actionButtonHandler, onClose, children, sx, ...rest } = props
   const iconConfig = severity === undefined ? { icon: false } : { severity }
 
   return (
-      <StyledAlert
+    <StyledToastElevation
+    className="elevation2"
+    sx={sx}>
+      <StyledToast
         ref={ref}
         iconMapping={{
           success: <Success variant="filled" />,
@@ -23,17 +29,24 @@ const Toast = forwardRef<HTMLDivElement, ToastProps>((props, ref) => {
           error: <Error variant="filled" />,
         }}
         action={
-          actionButtonText
-            ? (<ButtonBase disableRipple onClick={actionButtonHandler}>
-                {actionButtonText}
-              </ButtonBase>)
-            : null
+              (<>
+                {actionButtonText ? <ButtonBase disableRipple onClick={actionButtonHandler}>
+                  {actionButtonText}
+                </ButtonBase> : null}
+                {onClose ? <Button
+                  icon={<Close />}
+                  kind="ghost"
+                  onClick={onClose}
+                  size="small"
+                /> : null}
+              </>)
         }
         {...iconConfig}
         {...rest}
       >
         {children}
-      </StyledAlert>
+      </StyledToast>
+    </StyledToastElevation>
   )
 })
 

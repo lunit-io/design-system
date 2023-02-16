@@ -1,14 +1,14 @@
-import { AlertProps as BaseAlertProps } from '@mui/material';
-
-interface AlertProps extends Omit<BaseAlertProps, "onClose"> {}
+import { AlertProps } from '@mui/material';
 
 interface ToastPropsWithAction extends AlertProps {
   actionButtonText: string
+  onClose: () => void
   actionButtonHandler: () => void
 }
 
 interface BaseToast extends AlertProps {
   actionButtonText?: never
+  onClose?: never
   actionButtonHandler?: never
 }
 
