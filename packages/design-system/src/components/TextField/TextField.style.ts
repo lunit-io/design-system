@@ -95,6 +95,7 @@ const commonStyle = ({ token }: { token: ColorToken }) => ({
       "&::placeholder": {
         color: token.core.text_medium,
         opacity: 1,
+        "-webkit-text-fill-color": token.core.text_medium,
       },
     },
     background: token.component.textfield_bg,
@@ -155,6 +156,7 @@ const sizeStyle = ({
       paddingLeft: "4px",
 
       "&.Mui-disabled": {
+        color: token.core.text_medium,
         opacity: 0.38,
       },
       "&.Mui-error": {
@@ -190,6 +192,7 @@ const sizeStyle = ({
       paddingLeft: "4px",
 
       "&.Mui-disabled": {
+        color: token.core.text_medium,
         opacity: 0.38,
       },
       "&.Mui-error": {
@@ -225,6 +228,7 @@ const sizeStyle = ({
       paddingLeft: "4px",
 
       "&.Mui-disabled": {
+        color: token.core.text_medium,
         opacity: 0.38,
       },
       "&.Mui-error": {
