@@ -2,8 +2,7 @@
   "name": "design-system",
   "private": true,
   "workspaces": [
-    "packages/*",
-    "docs"
+    "packages/*"
   ],
   "scripts": {
     "build:mui-theme": "lerna run --scope @lunit/mui-theme build",
