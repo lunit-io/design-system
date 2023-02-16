@@ -71,7 +71,7 @@ LunitAlert.args = {
   width: 620,
   title: "Danger alert title",
   children: (
-    <Typography variant="body2">
+    <Typography variant="body2_14_regular">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
       tempor incididunt ut <u>labore et dolore</u> magna aliqua. A diam
       sollicitudin tempor id eu nisl nunc mi. Auctor augue mauris augue neque
