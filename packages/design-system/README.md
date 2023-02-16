@@ -4,9 +4,7 @@
 
 - At `repository root` location
   - `yarn` : Install node modules and set lerna environment
-  - `yarn build:design-system` : Build dependencies packages to run for 'design-system'
-- At `repository root/packages/design-system` location
-  - `yarn storybook` : Runs [storybook](http://localhost:6006) local dev server on http://localhost:6006
+  - `yarn storybook:design-system` : Runs [storybook](http://localhost:6006) local dev server on http://localhost:6006
 
 ## Usage
 
