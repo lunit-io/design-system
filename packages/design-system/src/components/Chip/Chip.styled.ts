@@ -18,11 +18,6 @@ const COMMON_STYLES = {
     opacity: 1,
   },
   "& .MuiChip-label": {
-    height: "16px",
-    fontStyle: "normal",
-    fontWeight: 500,
-    fontSize: "12px",
-    lineHeight: "16px",
     display: "flex",
     alignItems: "center",
     textAlign: "center",
@@ -73,15 +68,17 @@ export const StyledOutlinedChip = styled(MuiChip, {
   shouldForwardProp: (prop) => !["color"].includes(prop.toString()),
 })<OutlinedChipProps>(({ theme, color }) => ({
   ...COMMON_STYLES,
+  ...theme.typography.caption,
 
   color: getColorToken("text", theme, color),
-  borderColor: getColorToken("bg", theme, color),
+  borderColor: getColorToken("text", theme, color),
 }));
 
 export const StyledContainedChip = styled(MuiChip, {
   shouldForwardProp: (prop) => !["color"].includes(prop.toString()),
 })<BaseContainedChipProps>(() => ({ theme, color }) => ({
   ...COMMON_STYLES,
+  ...theme.typography.caption,
 
   color: theme.palette.token.core.text_normal,
   backgroundColor: getColorToken("bg", theme, color),
