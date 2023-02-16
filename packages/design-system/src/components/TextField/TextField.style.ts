@@ -98,6 +98,9 @@ const commonStyle = ({ token }: { token: ColorToken }) => ({
         "-webkit-text-fill-color": token.core.text_medium,
       },
     },
+    "& textarea": {
+      overflow: "auto !important",
+    },
     background: token.component.textfield_bg,
     overflow: "hidden",
     color: token.core.text_normal,
