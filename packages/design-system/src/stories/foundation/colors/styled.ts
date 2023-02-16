@@ -1,4 +1,4 @@
-import { Box, styled } from "@mui/material";
+import { Box, styled, Typography } from "@mui/material";
 
 export const Container = styled(Box)({
   display: "flex",
@@ -31,3 +31,9 @@ export const Color = styled(Box)({
   alignItems: "center",
   border: "1px solid rgba(0, 0, 0, 0.03)",
 });
+
+export const StyledTypography = styled(Typography)(({ theme }) => ({
+  color: theme.palette.token.core.text_normal,
+  marginLeft: 8,
+  fontSize: "12px",
+}));
