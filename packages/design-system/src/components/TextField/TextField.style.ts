@@ -45,16 +45,16 @@ const getTextFieldPaddingByIconAndSize = ({
 >) => {
   switch (size) {
     case "small":
-      return `0px ${hasRightIcon ? "6px" : "12px"} 0px ${
-        hasLeftIcon ? "6px" : "12px"
+      return `0px ${hasRightIcon ? "8px" : "12px"} 0px ${
+        hasLeftIcon ? "8px" : "12px"
       }}`;
     case "medium":
-      return `0px ${hasRightIcon ? "10px" : "16px"} 0px ${
-        hasLeftIcon ? "10px" : "16px"
+      return `0px ${hasRightIcon ? "12px" : "16px"} 0px ${
+        hasLeftIcon ? "12px" : "16px"
       }}`;
     case "large":
-      return `0px ${hasRightIcon ? "10px" : "16px"} 0px ${
-        hasLeftIcon ? "10px" : "16px"
+      return `0px ${hasRightIcon ? "12px" : "16px"} 0px ${
+        hasLeftIcon ? "12px" : "16px"
       }}`;
   }
 };
