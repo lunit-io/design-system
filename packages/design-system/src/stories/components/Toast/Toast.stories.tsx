@@ -15,8 +15,8 @@ export default {
       description: `\`success\`, \`info\`, \`warning\`, \`error\`, \`undefined\``,
     },
     actionButtonText: {
-      control: "text",
-      defaultValue: "text",
+      control: "Button",
+      defaultValue: "Button",
     },
     actionButtonHandler: {
       control: {
@@ -67,20 +67,20 @@ export default {
 const Template: ComponentStory<typeof Toast> = (args) => <Toast {...args}>Test</Toast>;
 const Template2: ComponentStory<typeof Toast> = () => (
     <Box sx={{ display: "grid", gap: "10px"}}>
-      <Toast actionButtonText="Text" actionButtonHandler={() => {}} onClose={() => {}}>Lorem ipsum dolor sit amet, consectetur.</Toast>
-      <Toast severity="success" actionButtonText="Text" actionButtonHandler={() => {}} onClose={() => {}}>Lorem ipsum dolor sit amet, consectetur.</Toast>
-      <Toast severity="info" actionButtonText="Text" actionButtonHandler={() => {}} onClose={() => {}}>Lorem ipsum dolor sit amet, consectetur.</Toast>
-      <Toast severity="warning" actionButtonText="Text" actionButtonHandler={() => {}} onClose={() => {}}>Lorem ipsum dolor sit amet, consectetur.</Toast>
-      <Toast severity="error" actionButtonText="Text" actionButtonHandler={() => {}} onClose={() => {}}>Lorem ipsum dolor sit amet, consectetur.</Toast>
+      <Toast actionButtonText="Button" actionButtonHandler={() => {}} onClose={() => {}}>Lorem ipsum dolor sit amet, consectetur.</Toast>
+      <Toast severity="success" actionButtonText="Button" actionButtonHandler={() => {}} onClose={() => {}}>Lorem ipsum dolor sit amet, consectetur.</Toast>
+      <Toast severity="info" actionButtonText="Button" actionButtonHandler={() => {}} onClose={() => {}}>Lorem ipsum dolor sit amet, consectetur.</Toast>
+      <Toast severity="warning" actionButtonText="Button" actionButtonHandler={() => {}} onClose={() => {}}>Lorem ipsum dolor sit amet, consectetur.</Toast>
+      <Toast severity="error" actionButtonText="Button" actionButtonHandler={() => {}} onClose={() => {}}>Lorem ipsum dolor sit amet, consectetur.</Toast>
     </Box>
   )
   const Template3: ComponentStory<typeof Toast> = () => (
     <Box sx={{ display: "grid", gap: "10px"}}>
-      <Toast actionButtonText="Text" onClose={() => {}} actionButtonHandler={() => {}} sx={{ width: "340px" }}>Lorem ipsum dol</Toast>
-      <Toast actionButtonText="Text" onClose={() => {}} actionButtonHandler={() => {}} sx={{ width: "476px"}}>
+      <Toast actionButtonText="Button" onClose={() => {}} actionButtonHandler={() => {}} sx={{ width: "340px" }}>Lorem ipsum dol</Toast>
+      <Toast actionButtonText="Button" onClose={() => {}} actionButtonHandler={() => {}} sx={{ width: "476px"}}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Augue lorem in dictum vitae ut massa.
       </Toast>
-      <Toast actionButtonText="Text" onClose={() => {}} actionButtonHandler={() => {}} sx={{ width: "559px", height: "72px" }} >
+      <Toast actionButtonText="Button" onClose={() => {}} actionButtonHandler={() => {}} sx={{ width: "559px", height: "72px" }} >
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Augue lorem in dictum vitae ut massa.
       </Toast>
       <Toast sx={{width: "401px", height: "72px"}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Augue lorem in dictum vitae ut massa.</Toast>
