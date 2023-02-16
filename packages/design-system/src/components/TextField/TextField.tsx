@@ -30,14 +30,14 @@ const SingleTextField = (props: SingleTextFieldProps) => {
       InputProps={{
         startAdornment: leftIcon && (
           <TextFieldIcon
-            sx={leftIconSx}
+            sx={{ marginRight: "4px", ...leftIconSx }}
             icon={leftIcon}
             onIconClick={handleLeftIconClick}
           />
         ),
         endAdornment: rightIcon && (
           <TextFieldIcon
-            sx={rightIconSx}
+            sx={{ marginLeft: "4px", ...rightIconSx }}
             icon={rightIcon}
             onIconClick={handleRightIconClick}
           />

@@ -284,7 +284,6 @@ const IconWrapper = styled("div")(({ theme }) => ({
   justifyContent: "center",
   minWidth: "28px",
   minHeight: "28px",
-  marginRight: "2px",
 
   "& svg": {
     width: "20px",
