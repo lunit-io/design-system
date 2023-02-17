@@ -95,7 +95,7 @@ const commonStyle = ({ token }: { token: ColorToken }) => ({
       "&::placeholder": {
         color: token.core.text_medium,
         opacity: 1,
-        "-webkit-text-fill-color": token.core.text_medium,
+        WebkitTextFillColor: token.core.text_medium,
       },
     },
     "& textarea": {
