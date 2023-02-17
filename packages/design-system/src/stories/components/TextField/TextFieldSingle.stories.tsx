@@ -68,8 +68,8 @@ export default {
         "disabled",
         "helperText",
         "placeholder",
-        "handleLeftIconClick",
-        "handleRightIconClick",
+        "onLeftIconClick",
+        "onRightIconClick",
       ],
     },
     docs: {
@@ -185,12 +185,12 @@ const SingleWithIconTemplate: ComponentStory<typeof TextField> = (args) => (
 
 export const TextFieldWithSingle = SingleTemplate.bind({});
 TextFieldWithSingle.argTypes = {
-  handleLeftIconClick: {
+  onLeftIconClick: {
     control: false,
     defaultValue: "function",
     options: ["function", undefined],
     mapping: {
-      function: action("handleLeftIconClick"),
+      function: action("onLeftIconClick"),
       undefined: undefined,
     },
     description: "The left icon click event call back function.",
@@ -199,12 +199,12 @@ TextFieldWithSingle.argTypes = {
       type: { summary: "function" },
     },
   },
-  handleRightIconClick: {
+  onRightIconClick: {
     control: false,
     defaultValue: "function",
     options: ["function", undefined],
     mapping: {
-      function: action("handleRightIconClick"),
+      function: action("onRightIconClick"),
       undefined: undefined,
     },
     description: "The right icon click event call back function.",
@@ -218,14 +218,14 @@ TextFieldWithSingle.storyName = "Single Line";
 
 export const TextFieldWithIcon = SingleWithIconTemplate.bind({});
 TextFieldWithIcon.argTypes = {
-  handleLeftIconClick: {
+  onLeftIconClick: {
     control: {
       type: "select",
     },
     defaultValue: "function",
     options: ["function", undefined],
     mapping: {
-      function: action("handleLeftIconClick"),
+      function: action("onLeftIconClick"),
       undefined: undefined,
     },
     description: "The left icon click event call back function.",
@@ -234,14 +234,14 @@ TextFieldWithIcon.argTypes = {
       type: { summary: "function" },
     },
   },
-  handleRightIconClick: {
+  onRightIconClick: {
     control: {
       type: "select",
     },
     defaultValue: "function",
     options: ["function", undefined],
     mapping: {
-      function: action("handleRightIconClick"),
+      function: action("onRightIconClick"),
       undefined: undefined,
     },
     description: "The right icon click event call back function.",
