@@ -252,8 +252,8 @@ const BaseTextField = styled(MuiTextField, {
       "textFieldSize",
       "hasLeftIcon",
       "hasRightIcon",
-      "handleLeftIconClick",
-      "handleRightIconClick",
+      "onLeftIconClick",
+      "onRightIconClick",
     ].includes(prop),
 })<BaseTextFieldProps>(
   ({

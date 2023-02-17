@@ -26,8 +26,8 @@ export interface SingleTextFieldProps extends BaseTextFieldProps {
   rightIcon?: JSX.Element;
   leftIconSx?: SxProps;
   rightIconSx?: SxProps;
-  handleLeftIconClick?: () => void;
-  handleRightIconClick?: () => void;
+  onLeftIconClick?: () => void;
+  onRightIconClick?: () => void;
 }
 
 export interface MultiTextFieldProps extends BaseTextFieldProps {
