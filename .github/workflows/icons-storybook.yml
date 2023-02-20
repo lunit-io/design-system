@@ -1,4 +1,4 @@
-name: 'Deploy the icons storybook'
+name: "Deploy the icons storybook"
 
 on:
   push:
