@@ -38,9 +38,6 @@ export default {
         function: action("onClick"),
         undefined: undefined,
       },
-      if: {
-        arg: "contained",
-      },
     },
     onDelete: {
       description:
@@ -54,9 +51,6 @@ export default {
         undefined: undefined,
       },
       defaultValue: null,
-      if: {
-        arg: "contained",
-      },
     },
 
     thumbnail: {
@@ -93,9 +87,6 @@ export default {
         Information16Filled: <Information16 variant="filled" />,
         Warning16: <Warning16 />,
         Warning16Filled: <Warning16 variant="filled" />,
-      },
-      if: {
-        arg: "contained",
       },
     },
   },
@@ -173,10 +164,6 @@ ContainedWithClick.parameters = {
   controls: {
     exclude: ["onDelete", "deletable"],
   },
-  if: {
-    arg: "onDelete",
-    truthy: false,
-  },
 };
 
 export const ContainedWithDelete = Template.bind({});
@@ -193,10 +180,6 @@ ContainedWithDelete.parameters = {
   },
   controls: {
     exclude: ["onClick", "clickable"],
-  },
-  if: {
-    arg: "onClick",
-    truthy: false,
   },
 };
 
