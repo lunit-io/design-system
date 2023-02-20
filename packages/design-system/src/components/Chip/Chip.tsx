@@ -137,24 +137,7 @@ const DeletableContainedChip = (props: DeletableContainedChipProps) => {
     return (
       <>
         <Close16 />
-        <Close16
-          className={className}
-          sx={{
-            position: "absolute",
-            zIndex: 1000,
-            top: 0,
-            left: "auto",
-            right: 0,
-            bottom: 0,
-            opacity: 0,
-            // color: (theme) => theme.palette.token.core.text_warning,
-            color: (theme) => theme.palette.token.core.hover,
-            ":hover": {
-              cursor: "pointer",
-              opacity: 1,
-            },
-          }}
-        />
+        <Close16 className={`${className} delete-icon-hover-layer`} />
       </>
     );
   };

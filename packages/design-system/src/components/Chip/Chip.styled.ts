@@ -113,4 +113,19 @@ export const StyledContainedChip = styled(MuiChip, {
     marginLeft: "4px",
     marginRight: "3px",
   },
+
+  "& .delete-icon-hover-layer": {
+    position: "absolute",
+    zIndex: 1000,
+    top: 0,
+    left: "auto",
+    right: 0,
+    bottom: 0,
+    opacity: 0,
+    color: theme.palette.token.core.hover,
+    ":hover": {
+      cursor: "pointer",
+      opacity: 1,
+    },
+  },
 }));
