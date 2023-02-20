@@ -96,9 +96,6 @@ const EnableContainedChip = (props: EnableContainedChipProps) => {
          * allows the pseudo element(hover layer) to be rendered between the chip and the chip's children.
          */
         "&.MuiChip-root": {
-          height: "22px",
-          width: "auto",
-          minWidth: "22px",
           position: "relative",
           left: 0,
           right: 0,
@@ -133,7 +130,7 @@ const DeletableContainedChip = (props: DeletableContainedChipProps) => {
     sx,
     ...restProps
   } = props;
-  const DeleteIconWithHoverEffect = () => {
+  const DeleteIconWithHoverLayer = () => {
     return (
       <>
         <Close16 />
@@ -147,7 +144,7 @@ const DeletableContainedChip = (props: DeletableContainedChipProps) => {
       {...restProps}
       color={color}
       onDelete={onDelete}
-      deleteIcon={<DeleteIconWithHoverEffect />}
+      deleteIcon={<DeleteIconWithHoverLayer />}
       avatar={getAvatar(thumbnail)}
       icon={getIcon(thumbnail)}
       sx={{
