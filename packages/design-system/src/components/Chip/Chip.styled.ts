@@ -26,7 +26,7 @@ const COMMON_STYLES = {
   },
 };
 
-const getColorToken = (
+export const getColorToken = (
   token: "text" | "bg",
   theme: Theme,
   color?: ChipColor
@@ -112,9 +112,5 @@ export const StyledContainedChip = styled(MuiChip, {
   "& .MuiChip-deleteIcon": {
     marginLeft: "4px",
     marginRight: "3px",
-  },
-  "& .MuiChip-deleteIcon:hover": {
-    // TODO: Below is a temporary color until the hover color is completed in our Design system
-    color: theme.palette.token.core.hover,
   },
 }));

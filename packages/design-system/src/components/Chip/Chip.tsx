@@ -1,7 +1,11 @@
 import React from "react";
 import { Avatar } from "@mui/material";
 import { Close16 } from "@lunit/design-system-icons";
-import { StyledOutlinedChip, StyledContainedChip } from "./Chip.styled";
+import {
+  StyledOutlinedChip,
+  StyledContainedChip,
+  getColorToken,
+} from "./Chip.styled";
 
 import type {
   OutlinedChipProps,
@@ -87,9 +91,32 @@ const EnableContainedChip = (props: EnableContainedChipProps) => {
         "& .MuiChip-label": {
           ...getLabelMargin(thumbnail),
         },
+        /**
+         * Setting the z-index of the chip to 0 and the z-index of the pseudo element to -1
+         * allows the pseudo element(hover layer) to be rendered between the chip and the chip's children.
+         */
+        "&.MuiChip-root": {
+          height: "22px",
+          width: "auto",
+          minWidth: "22px",
+          position: "relative",
+          left: 0,
+          right: 0,
+          zIndex: 0,
+        },
         "&:hover": {
-          // TODO: Below is a temporary color until the hover color is completed in our Design system
+          backgroundColor: (theme) => getColorToken("bg", theme, color),
+        },
+        "&.MuiChip-root:hover::before": {
+          position: "absolute",
+          zIndex: -1,
+          content: '""',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
           backgroundColor: (theme) => theme.palette.token.core.hover,
+          borderRadius: "11px",
         },
         ...sx,
       }}
@@ -98,14 +125,46 @@ const EnableContainedChip = (props: EnableContainedChipProps) => {
 };
 
 const DeletableContainedChip = (props: DeletableContainedChipProps) => {
-  const { color = "primary", thumbnail, onDelete, sx, ...restProps } = props;
+  const {
+    color = "primary",
+    thumbnail,
+    onDelete,
+    className,
+    sx,
+    ...restProps
+  } = props;
+  const DeleteIconWithHoverEffect = () => {
+    return (
+      <>
+        <Close16 />
+        <Close16
+          className={className}
+          sx={{
+            position: "absolute",
+            zIndex: 1000,
+            top: 0,
+            left: "auto",
+            right: 0,
+            bottom: 0,
+            opacity: 0,
+            // color: (theme) => theme.palette.token.core.text_warning,
+            color: (theme) => theme.palette.token.core.hover,
+            ":hover": {
+              cursor: "pointer",
+              opacity: 1,
+            },
+          }}
+        />
+      </>
+    );
+  };
 
   return (
     <StyledContainedChip
       {...restProps}
       color={color}
       onDelete={onDelete}
-      deleteIcon={<Close16 />}
+      deleteIcon={<DeleteIconWithHoverEffect />}
       avatar={getAvatar(thumbnail)}
       icon={getIcon(thumbnail)}
       sx={{
