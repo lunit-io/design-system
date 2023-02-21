@@ -47,7 +47,7 @@ jobs:
           echo "value=$(echo $BRANCH_NAME | tr '[:upper:]' '[:lower:]' | tr / -)" >> $GITHUB_OUTPUT
 
       - name: Install dependencies
-        run: npx lerna bootstrap --ci --use-workspaces
+        run: yarn
 
       - name: Build design-system package and its dependencies
         run: yarn build:design-system

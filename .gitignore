@@ -1,23 +1,49 @@
-# Dependency directories
-node_modules
+# See http://help.github.com/ignore-files/ for more about ignoring files.
 
-# Output of 'npm pack'
-*.tgz
-
-# dotenv environment variable files
-.env
-.env.development.local
-.env.test.local
-.env.production.local
-.env.local
-
-# build output
-generated
+# compiled output
 dist
+tmp
+/out-tsc
 storybook-static
 
-# created logo files
+# dependencies
+node_modules
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# generated in icons
+packages/design-system-icons/generated
+
+# generated in logo
 packages/design-system-logo/src/components
 packages/design-system-logo/src/stories/logo
 
-.DS_Store
+.env.local
