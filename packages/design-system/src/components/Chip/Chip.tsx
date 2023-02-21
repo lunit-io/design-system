@@ -124,30 +124,23 @@ const EnableContainedChip = (props: EnableContainedChipProps) => {
   );
 };
 
+const DeleteIconWithHoverLayer = ({ onClick }: { onClick: () => void }) => {
+  return (
+    <>
+      <Close16 />
+      <Close16 className={`delete-icon-hover-layer`} onClick={onClick} />
+    </>
+  );
+};
 const DeletableContainedChip = (props: DeletableContainedChipProps) => {
-  const {
-    color = "primary",
-    thumbnail,
-    onDelete,
-    className,
-    sx,
-    ...restProps
-  } = props;
-  const DeleteIconWithHoverLayer = () => {
-    return (
-      <>
-        <Close16 />
-        <Close16 className={`${className} delete-icon-hover-layer`} />
-      </>
-    );
-  };
+  const { color = "primary", thumbnail, onDelete, sx, ...restProps } = props;
 
   return (
     <StyledContainedChip
       {...restProps}
       color={color}
       onDelete={onDelete}
-      deleteIcon={<DeleteIconWithHoverLayer />}
+      deleteIcon={<DeleteIconWithHoverLayer onClick={onDelete} />}
       avatar={getAvatar(thumbnail)}
       icon={getIcon(thumbnail)}
       sx={{
