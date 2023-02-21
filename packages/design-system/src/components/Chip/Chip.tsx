@@ -38,6 +38,9 @@ const OutlinedChip = (props: OutlinedChipProps) => {
   );
 };
 
+/**
+ * Conditional styling for contained chip
+ */
 const getAvatar = (thumbnail: ChipThumbnail | undefined) => {
   if (!thumbnail || typeof thumbnail !== "string") return;
   if (thumbnail.length === 0) return <Avatar />;
