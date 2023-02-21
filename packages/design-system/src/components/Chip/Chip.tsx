@@ -3,8 +3,9 @@ import { Avatar } from "@mui/material";
 import { Close16 } from "@lunit/design-system-icons";
 import {
   StyledOutlinedChip,
-  StyledContainedChip,
-  getColorToken,
+  StyledContainedChipBase,
+  StyledContainedChipEnable,
+  StyledContainedChipDeletable,
 } from "./Chip.styled";
 
 import type {
@@ -64,7 +65,7 @@ const ReadOnlyContainedChip = (props: ReadOnlyContainedChipProps) => {
   const { color = "primary", thumbnail, sx, ...restProps } = props;
 
   return (
-    <StyledContainedChip
+    <StyledContainedChipBase
       {...restProps}
       disabled
       avatar={getAvatar(thumbnail)}
@@ -84,7 +85,7 @@ const EnableContainedChip = (props: EnableContainedChipProps) => {
   const { color = "primary", thumbnail, onClick, sx, ...restProps } = props;
 
   return (
-    <StyledContainedChip
+    <StyledContainedChipEnable
       {...restProps}
       onClick={onClick}
       avatar={getAvatar(thumbnail)}
@@ -94,31 +95,6 @@ const EnableContainedChip = (props: EnableContainedChipProps) => {
         "& .MuiChip-label": {
           ...getLabelMargin(thumbnail),
         },
-        /**
-         * Setting the z-index of the chip to 0 and the z-index of the pseudo element to -1
-         * allows the pseudo element(hover layer) to be rendered between the chip and the chip's children.
-         */
-        "&.MuiChip-root": {
-          position: "relative",
-          left: 0,
-          right: 0,
-          zIndex: 0,
-        },
-        "&:hover": {
-          backgroundColor: (theme) => getColorToken("bg", theme, color),
-        },
-        "&.MuiChip-root:hover::before": {
-          position: "absolute",
-          zIndex: -1,
-          content: '""',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: (theme) => theme.palette.token.core.hover,
-          borderRadius: "11px",
-        },
-        ...sx,
       }}
     />
   );
@@ -136,7 +112,7 @@ const DeletableContainedChip = (props: DeletableContainedChipProps) => {
   const { color = "primary", thumbnail, onDelete, sx, ...restProps } = props;
 
   return (
-    <StyledContainedChip
+    <StyledContainedChipDeletable
       {...restProps}
       color={color}
       onDelete={onDelete}

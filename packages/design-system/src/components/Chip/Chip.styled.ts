@@ -26,7 +26,7 @@ const COMMON_STYLES = {
   },
 };
 
-export const getColorToken = (
+const getColorToken = (
   token: "text" | "bg",
   theme: Theme,
   color?: ChipColor
@@ -74,7 +74,7 @@ export const StyledOutlinedChip = styled(MuiChip, {
   borderColor: getColorToken("text", theme, color),
 }));
 
-export const StyledContainedChip = styled(MuiChip, {
+export const StyledContainedChipBase = styled(MuiChip, {
   shouldForwardProp: (prop) => !["color"].includes(prop.toString()),
 })<BaseContainedChipProps>(() => ({ theme, color }) => ({
   ...COMMON_STYLES,
@@ -106,7 +106,40 @@ export const StyledContainedChip = styled(MuiChip, {
     color: getColorToken("bg", theme, color),
     backgroundColor: getColorToken("text", theme, color),
   },
+}));
 
+export const StyledContainedChipEnable = styled(StyledContainedChipBase, {
+  shouldForwardProp: (prop) => !["color"].includes(prop.toString()),
+})<BaseContainedChipProps>(() => ({ theme, color }) => ({
+  /**
+   * Setting the z-index of the chip to 0 and the z-index of the pseudo element to -1
+   * allows the pseudo element(hover layer) to be rendered between the chip and the chip's children.
+   */
+  "&.MuiChip-root": {
+    position: "relative",
+    left: 0,
+    right: 0,
+    zIndex: 0,
+  },
+  "&:hover": {
+    backgroundColor: getColorToken("bg", theme, color),
+  },
+  "&.MuiChip-root:hover::before": {
+    position: "absolute",
+    zIndex: -1,
+    content: '""',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: theme.palette.token.core.hover,
+    borderRadius: "11px",
+  },
+}));
+
+export const StyledContainedChipDeletable = styled(StyledContainedChipBase, {
+  shouldForwardProp: (prop) => !["color"].includes(prop.toString()),
+})<BaseContainedChipProps>(() => ({ theme, color }) => ({
   "& .MuiChip-deleteIcon": {
     marginLeft: "4px",
     marginRight: "3px",
