@@ -104,7 +104,7 @@ const DeleteIconWithHoverLayer = ({ onClick }: { onClick: () => void }) => {
   return (
     <>
       <Close16 />
-      <Close16 className={`delete-icon-hover-layer`} onClick={onClick} />
+      <Close16 className="delete-icon-hover-layer" onClick={onClick} />
     </>
   );
 };
