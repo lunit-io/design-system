@@ -1,25 +1,8 @@
-const glob = require("glob");
 const path = require("path");
 const nodeExternals = require("webpack-node-externals");
 
 module.exports = {
   mode: "production",
-  // bundle all components excepts the root index.tsx
-  entry: glob.sync("./generated/*/index.tsx").reduce(function (obj, el) {
-    const name = el.substring(12 /* ./generated/ */, el.lastIndexOf("/"));
-    obj[name] = el;
-    return obj;
-  }, {}),
-  experiments: {
-    outputModule: true,
-  },
-  output: {
-    filename: "[name]/index.js",
-    path: path.resolve(__dirname, "dist"),
-    library: {
-      type: "module",
-    },
-  },
   // Enable sourcemaps for debugging webpack's output.
   devtool: "source-map",
   resolve: {
