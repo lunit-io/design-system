@@ -4,23 +4,21 @@ const nodeExternals = require("webpack-node-externals");
 
 module.exports = {
   mode: "production",
-  entry: glob.sync("./generated/*/index.tsx").reduce(
-    function (obj, el) {
-      const name = el.substring(12 /* ./generated/ */, el.lastIndexOf("/"));
-      obj[name] = el;
-      return obj;
-    },
-    { main: "./generated/index.ts" }
-  ),
+  // bundle all components excepts the root index.tsx
+  entry: glob.sync("./generated/*/index.tsx").reduce(function (obj, el) {
+    const name = el.substring(12 /* ./generated/ */, el.lastIndexOf("/"));
+    obj[name] = el;
+    return obj;
+  }, {}),
+  experiments: {
+    outputModule: true,
+  },
   output: {
-    filename: (pathData) => {
-      return pathData.chunk.name === "main" ? "index.js" : "[name]/index.js";
-    },
+    filename: "[name]/index.js",
     path: path.resolve(__dirname, "dist"),
     library: {
-      type: "commonjs-static",
+      type: "module",
     },
-    clean: true,
   },
   // Enable sourcemaps for debugging webpack's output.
   devtool: "source-map",
