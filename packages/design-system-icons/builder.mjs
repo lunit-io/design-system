@@ -24,7 +24,7 @@ export function getComponentName(name, size) {
 
 export async function handler() {
   const [svgPaths, componentTemplate, indexTemplate] = await Promise.all([
-    globAsync("src/assets/*.svg"),
+    globAsync("assets/*.svg"),
     fse.readFile(path.join(__dirname, "src/component.mustache"), {
       encoding: "utf8",
     }),
@@ -35,7 +35,7 @@ export async function handler() {
 
   const icons = [];
   for await (let svgPath of svgPaths) {
-    const filePattern = /^src\/assets\/ic_(\w+)=(\w+)_(\d+)px.svg/;
+    const filePattern = /^assets\/ic_(\w+)=(\w+)_(\d+)px.svg/;
     const found = svgPath.match(filePattern);
     if (!found) {
       continue;

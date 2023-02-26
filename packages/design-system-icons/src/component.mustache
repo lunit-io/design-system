@@ -1,7 +1,7 @@
 import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon";
 
 {{#variants}}
-import {{variant}} from "../../src/assets/ic_{{name}}={{variant}}_{{size}}px.svg";
+import {{variant}} from "../../assets/ic_{{name}}={{variant}}_{{size}}px.svg";
 {{/variants}}
 
 const variants = [{{#variants}}'{{variant}}', {{/variants}}] as const;
