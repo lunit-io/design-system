@@ -6,6 +6,8 @@ import Mustache from "mustache";
 
 const deprecatedIcons = ["LunitLogo"];
 const __dirname = dirname(fileURLToPath(import.meta.url));
+const sourceDir = path.join(__dirname, "src");
+const generatedDir = path.join(__dirname, "src", "generated");
 
 /**
  * Return Pascal-Cased component name.
@@ -24,18 +26,18 @@ export function getComponentName(name, size) {
 
 export async function handler() {
   const [svgPaths, componentTemplate, indexTemplate] = await Promise.all([
-    globAsync("assets/*.svg"),
-    fse.readFile(path.join(__dirname, "src/component.mustache"), {
+    globAsync("src/assets/*.svg"),
+    fse.readFile(path.join(sourceDir, "component.mustache"), {
       encoding: "utf8",
     }),
-    fse.readFile(path.join(__dirname, "src/index.mustache"), {
+    fse.readFile(path.join(sourceDir, "index.mustache"), {
       encoding: "utf8",
     }),
   ]);
 
   const icons = [];
   for await (let svgPath of svgPaths) {
-    const filePattern = /^assets\/ic_(\w+)=(\w+)_(\d+)px.svg/;
+    const filePattern = /^src\/assets\/ic_(\w+)=(\w+)_(\d+)px.svg/;
     const found = svgPath.match(filePattern);
     if (!found) {
       continue;
@@ -61,26 +63,23 @@ export async function handler() {
     }
   }
 
-  await fse.rm(path.join(__dirname, "generated"), {
+  await fse.rm(path.join(generatedDir), {
     recursive: true,
     force: true,
   });
-  await fse.mkdir(path.join(__dirname, "generated"));
+  await fse.mkdir(path.join(generatedDir));
   const indexString = Mustache.render(indexTemplate, {
     icons,
   });
-  await fse.writeFile(
-    path.join(__dirname, "generated", "index.ts"),
-    indexString
-  );
+  await fse.writeFile(path.join(generatedDir, "index.ts"), indexString);
 
   for await (let icon of icons) {
     const { componentName } = icon;
     const componentString = Mustache.render(componentTemplate, icon);
 
-    await fse.mkdir(path.join(__dirname, "generated", componentName));
+    await fse.mkdir(path.join(generatedDir, componentName));
     await fse.writeFile(
-      path.join(__dirname, "generated", componentName, `index.tsx`),
+      path.join(generatedDir, componentName, `index.tsx`),
       componentString
     );
   }

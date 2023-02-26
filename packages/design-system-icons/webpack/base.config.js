@@ -1,4 +1,3 @@
-const path = require("path");
 const nodeExternals = require("webpack-node-externals");
 
 module.exports = {
@@ -15,7 +14,6 @@ module.exports = {
       {
         test: /\.tsx?$/,
         loader: "ts-loader",
-        include: path.resolve(__dirname, "generated"),
         exclude: /node_modules/,
         options: {
           configFile: "tsconfig.build.json",

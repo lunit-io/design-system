@@ -39,9 +39,6 @@ testem.log
 .DS_Store
 Thumbs.db
 
-# generated in icons
-packages/design-system-icons/generated
-
 # generated in logo
 packages/design-system-logo/src/components
 packages/design-system-logo/src/stories/logo
