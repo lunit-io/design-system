@@ -1,7 +1,12 @@
 import React from "react";
 import { Avatar } from "@mui/material";
 import { Close16 } from "@lunit/design-system-icons";
-import { StyledOutlinedChip, StyledContainedChip } from "./Chip.styled";
+import {
+  StyledOutlinedChip,
+  StyledContainedChipBase,
+  StyledContainedChipEnable,
+  StyledContainedChipDeletable,
+} from "./Chip.styled";
 
 import type {
   OutlinedChipProps,
@@ -34,6 +39,9 @@ const OutlinedChip = (props: OutlinedChipProps) => {
   );
 };
 
+/**
+ * Conditional styling for contained chip
+ */
 const getAvatar = (thumbnail: ChipThumbnail | undefined) => {
   if (!thumbnail || typeof thumbnail !== "string") return;
   if (thumbnail.length === 0) return <Avatar />;
@@ -57,7 +65,7 @@ const ReadOnlyContainedChip = (props: ReadOnlyContainedChipProps) => {
   const { color = "primary", thumbnail, sx, ...restProps } = props;
 
   return (
-    <StyledContainedChip
+    <StyledContainedChipBase
       {...restProps}
       disabled
       avatar={getAvatar(thumbnail)}
@@ -77,7 +85,7 @@ const EnableContainedChip = (props: EnableContainedChipProps) => {
   const { color = "primary", thumbnail, onClick, sx, ...restProps } = props;
 
   return (
-    <StyledContainedChip
+    <StyledContainedChipEnable
       {...restProps}
       onClick={onClick}
       avatar={getAvatar(thumbnail)}
@@ -87,25 +95,28 @@ const EnableContainedChip = (props: EnableContainedChipProps) => {
         "& .MuiChip-label": {
           ...getLabelMargin(thumbnail),
         },
-        "&:hover": {
-          // TODO: Below is a temporary color until the hover color is completed in our Design system
-          backgroundColor: (theme) => theme.palette.token.core.hover,
-        },
-        ...sx,
       }}
     />
   );
 };
 
+const DeleteIconWithHoverLayer = ({ onClick }: { onClick: () => void }) => {
+  return (
+    <>
+      <Close16 />
+      <Close16 className="delete-icon-hover-layer" onClick={onClick} />
+    </>
+  );
+};
 const DeletableContainedChip = (props: DeletableContainedChipProps) => {
   const { color = "primary", thumbnail, onDelete, sx, ...restProps } = props;
 
   return (
-    <StyledContainedChip
+    <StyledContainedChipDeletable
       {...restProps}
       color={color}
       onDelete={onDelete}
-      deleteIcon={<Close16 />}
+      deleteIcon={<DeleteIconWithHoverLayer onClick={onDelete} />}
       avatar={getAvatar(thumbnail)}
       icon={getIcon(thumbnail)}
       sx={{
