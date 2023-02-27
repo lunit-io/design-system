@@ -1,24 +1,30 @@
 {
   "name": "@lunit/design-system-icons",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Icons for Lunit design system",
-  "main": "dist/index.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/index.js",
+  "sideEffects": false,
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/cjs/index.js",
+      "default": "./dist/cjs/index.js"
     },
     "./*": {
-      "types": "./dist/*/index.d.ts",
-      "default": "./dist/*/index.js"
+      "types": "./dist/types/*/index.d.ts",
+      "import": "./dist/*/index.js",
+      "require": "./dist/cjs/*/index.js",
+      "default": "./dist/cjs/*/index.js"
     }
   },
-  "types": "dist/index.d.ts",
+  "types": "dist/types/index.d.ts",
   "typesVersions": {
     "*": {
       "*": [
-        "dist/*/index.d.ts",
-        "dist/index.d.ts"
+        "dist/types/*/index.d.ts",
+        "dist/types/index.d.ts"
       ]
     }
   },
@@ -32,7 +38,10 @@
   "scripts": {
     "test": "jest",
     "dev": "node ./builder.mjs && webpack --watch & yarn storybook",
-    "build": "node ./builder.mjs && webpack",
+    "build:prepare": "node ./builder.mjs && tsc -p tsconfig.build.json",
+    "build:esm": "webpack -c webpack/esm.config.js",
+    "build:cjs": "webpack -c webpack/cjs.config.js",
+    "build": "yarn build:prepare && yarn build:esm && yarn build:cjs",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook --docs && npx -y storybook extract "
   },

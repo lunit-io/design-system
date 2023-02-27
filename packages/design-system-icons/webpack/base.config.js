@@ -1,27 +1,7 @@
-const glob = require("glob");
-const path = require("path");
 const nodeExternals = require("webpack-node-externals");
 
 module.exports = {
   mode: "production",
-  entry: glob.sync("./generated/*/index.tsx").reduce(
-    function (obj, el) {
-      const name = el.substring(12 /* ./generated/ */, el.lastIndexOf("/"));
-      obj[name] = el;
-      return obj;
-    },
-    { main: "./generated/index.ts" }
-  ),
-  output: {
-    filename: (pathData) => {
-      return pathData.chunk.name === "main" ? "index.js" : "[name]/index.js";
-    },
-    path: path.resolve(__dirname, "dist"),
-    library: {
-      type: "commonjs-static",
-    },
-    clean: true,
-  },
   // Enable sourcemaps for debugging webpack's output.
   devtool: "source-map",
   resolve: {
@@ -34,7 +14,6 @@ module.exports = {
       {
         test: /\.tsx?$/,
         loader: "ts-loader",
-        include: path.resolve(__dirname, "generated"),
         exclude: /node_modules/,
         options: {
           configFile: "tsconfig.build.json",
