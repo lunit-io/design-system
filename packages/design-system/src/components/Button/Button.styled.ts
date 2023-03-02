@@ -5,6 +5,7 @@ import { ColorToken } from "@/foundation/colors/types";
 import { PADDING_OF_FOCUS, OUTLINED_BORDER_WIDTH } from "./const";
 import { getButtonPaddingBySizeAndKind } from "./utils/getButtonPaddingBySizeAndKind";
 import { getIconButtonPaddingBySizeAndKind } from "./utils/getIconButtonPaddingBySizeAndKind";
+import getHoverStyle from "./utils/getHoverStyle";
 
 import type { ButtonProps } from "./Button.types";
 import type { ToggleButtonProps } from "../ToggleButton/ToggleButton.types";
@@ -23,12 +24,6 @@ type sizeStyleParams = Pick<
   Pick<ToggleButtonProps, "selected"> & { typography: Typography };
 
 const borderRadius = "8px";
-
-const hoverStyle = (backgroundColor: React.CSSProperties["color"]) => ({
-  position: "relative",
-  zIndex: 0,
-  backgroundColor,
-});
 
 export const sizeStyle = ({
   size,
@@ -75,7 +70,7 @@ export const kindStyle = ({ kind, color, token }: KindStyleParams) => ({
     color === "primary" && {
       color: token.component.btn_contained_primary_text,
       backgroundColor: token.component.btn_contained_primary_bg,
-      "&:hover": hoverStyle(token.component.btn_contained_primary_bg),
+      "&:hover": getHoverStyle(token.component.btn_contained_primary_bg),
       "&.Mui-disabled": {
         opacity: 0.38,
         border: "none",
@@ -87,7 +82,7 @@ export const kindStyle = ({ kind, color, token }: KindStyleParams) => ({
       color: token.component.btn_contained_secondary_text,
 
       backgroundColor: token.component.btn_contained_secondary_bg,
-      "&:hover": hoverStyle(token.component.btn_contained_secondary_bg),
+      "&:hover": getHoverStyle(token.component.btn_contained_secondary_bg),
       "&.Mui-disabled": {
         opacity: 0.38,
         border: "none",
@@ -98,7 +93,7 @@ export const kindStyle = ({ kind, color, token }: KindStyleParams) => ({
     color === "error" && {
       color: token.component.btn_contained_error_text,
       backgroundColor: token.component.btn_contained_error_bg,
-      "&:hover": hoverStyle(token.component.btn_contained_error_bg),
+      "&:hover": getHoverStyle(token.component.btn_contained_error_bg),
       "&.Mui-disabled": {
         opacity: 0.38,
         border: "none",
@@ -110,7 +105,7 @@ export const kindStyle = ({ kind, color, token }: KindStyleParams) => ({
     color === "primary" && {
       color: token.component.btn_ghost_primary_text,
       border: "none",
-      "&:hover": hoverStyle("none"),
+      "&:hover": getHoverStyle("none"),
       "&.Mui-disabled": {
         opacity: 0.38,
         border: "none",
@@ -121,7 +116,7 @@ export const kindStyle = ({ kind, color, token }: KindStyleParams) => ({
     color === "secondary" && {
       color: token.component.btn_ghost_secondary_text,
       border: "none",
-      "&:hover": hoverStyle("none"),
+      "&:hover": getHoverStyle("none"),
       "&.Mui-disabled": {
         opacity: 0.38,
         border: "none",
@@ -131,7 +126,7 @@ export const kindStyle = ({ kind, color, token }: KindStyleParams) => ({
   ...(kind === "ghost" &&
     color === "error" && {
       color: token.component.btn_ghost_error_text,
-      "&:hover": hoverStyle("none"),
+      "&:hover": getHoverStyle("none"),
       "&.Mui-disabled": {
         opacity: 0.38,
         border: "none",
@@ -143,7 +138,7 @@ export const kindStyle = ({ kind, color, token }: KindStyleParams) => ({
     color === "primary" && {
       color: token.component.btn_outlined_primary_text,
       border: `${OUTLINED_BORDER_WIDTH}px solid ${token.component.btn_outlined_primary_border}`,
-      "&:hover": hoverStyle("none"),
+      "&:hover": getHoverStyle("none"),
       "&:hover:before": {
         content: "''",
         position: "absolute",
