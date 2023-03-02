@@ -15,6 +15,6 @@ export interface AlertProps extends MuiAlertProps {
   action?: ReactNode;
   children: ReactNode;
   bottomAction?: ReactNode;
-  inSnackbar?: boolean;
+  isSnackbar?: boolean;
   onClose?: () => void;
 }

@@ -19,15 +19,16 @@ export const StyledAlertTitle = styled(MuiAlertTitle)(({ theme }) => ({
 }));
 
 export const StyledAlert = styled(MuiAlert)<AlertProps>(
-  ({ severity, width, inSnackbar }) => ({
+  ({ severity, width, isSnackbar }) => ({
     "&.MuiAlert-root": {
       width: width,
       padding: "16px",
       minWidth: "372px",
-      maxWidth: inSnackbar ? "512px" : "10000px",
+      maxWidth: isSnackbar ? "512px" : "10000px",
       borderRadius: "8px",
       border: `1px solid ${getBorderColor(severity)}`,
       backgroundColor: getBackgroundColor(severity),
+      boxShadow: "none",
     },
     "& .MuiAlert-icon": {
       padding: 0,

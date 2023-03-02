@@ -17,6 +17,9 @@ export default {
         min: 374,
       },
     },
+    isSnackbar: {
+      control: "boolean",
+    },
     elevation: {
       table: {
         disable: true,
