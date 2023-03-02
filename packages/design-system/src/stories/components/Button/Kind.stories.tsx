@@ -68,6 +68,17 @@ export default {
     controls: {
       include: ["onClick", "children", "color", "size", "disabled", "kind"],
     },
+    pseudo: {
+      hover: [
+        "#hover1",
+        "#hover2",
+        "#hover3",
+        "#hover4",
+        "#hover5",
+        "#hover6",
+        "#hover7",
+      ],
+    },
     docs: {
       description: {
         component: `It is a kind Button docs. For more details, please
@@ -190,17 +201,17 @@ const ContainedButtonTemplate: ComponentStory<typeof Button> = (args) => {
               Hover
             </TableCell>
             <TableCell>
-              <Button {...args} id="hover" kind="contained">
+              <Button {...args} id="hover1" kind="contained">
                 {args.children}
               </Button>
             </TableCell>
             <TableCell>
-              <Button {...args} id="hover" kind="contained" color="secondary">
+              <Button {...args} id="hover2" kind="contained" color="secondary">
                 {args.children}
               </Button>
             </TableCell>
             <TableCell>
-              <Button {...args} id="hover" kind="contained" color="error">
+              <Button {...args} id="hover3" kind="contained" color="error">
                 {args.children}
               </Button>
             </TableCell>
@@ -329,17 +340,17 @@ const GhostButtonTemplate: ComponentStory<typeof Button> = (args) => {
               Hover
             </TableCell>
             <TableCell>
-              <Button {...args} id="hover" kind="ghost">
+              <Button {...args} id="hover4" kind="ghost">
                 {args.children}
               </Button>
             </TableCell>
             <TableCell>
-              <Button {...args} id="hover" kind="ghost" color="secondary">
+              <Button {...args} id="hover5" kind="ghost" color="secondary">
                 {args.children}
               </Button>
             </TableCell>
             <TableCell>
-              <Button {...args} id="hover" kind="ghost" color="error">
+              <Button {...args} id="hover6" kind="ghost" color="error">
                 {args.children}
               </Button>
             </TableCell>
@@ -457,7 +468,7 @@ const OutlinedButtonTemplate: ComponentStory<typeof Button> = ({
               Hover
             </TableCell>
             <TableCell>
-              <Button {...restProps} id="hover" kind="outlined">
+              <Button {...restProps} id="hover7" kind="outlined">
                 Text
               </Button>
             </TableCell>

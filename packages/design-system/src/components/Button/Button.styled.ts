@@ -5,6 +5,7 @@ import { ColorToken } from "@/foundation/colors/types";
 import { PADDING_OF_FOCUS, OUTLINED_BORDER_WIDTH } from "./const";
 import { getButtonPaddingBySizeAndKind } from "./utils/getButtonPaddingBySizeAndKind";
 import { getIconButtonPaddingBySizeAndKind } from "./utils/getIconButtonPaddingBySizeAndKind";
+import getHoverStyle from "./utils/getHoverStyle";
 
 import type { ButtonProps } from "./Button.types";
 import type { ToggleButtonProps } from "../ToggleButton/ToggleButton.types";
@@ -21,6 +22,8 @@ type sizeStyleParams = Pick<
   "size" | "hasIconOnly" | "kind"
 > &
   Pick<ToggleButtonProps, "selected"> & { typography: Typography };
+
+const borderRadius = "8px";
 
 export const sizeStyle = ({
   size,
@@ -67,9 +70,7 @@ export const kindStyle = ({ kind, color, token }: KindStyleParams) => ({
     color === "primary" && {
       color: token.component.btn_contained_primary_text,
       backgroundColor: token.component.btn_contained_primary_bg,
-      "&:hover": {
-        backgroundColor: token.component.btn_contained_primary_bg,
-      },
+      "&:hover": getHoverStyle(token.component.btn_contained_primary_bg),
       "&.Mui-disabled": {
         opacity: 0.38,
         border: "none",
@@ -79,10 +80,9 @@ export const kindStyle = ({ kind, color, token }: KindStyleParams) => ({
   ...(kind === "contained" &&
     color === "secondary" && {
       color: token.component.btn_contained_secondary_text,
+
       backgroundColor: token.component.btn_contained_secondary_bg,
-      "&:hover": {
-        backgroundColor: token.component.btn_contained_secondary_bg,
-      },
+      "&:hover": getHoverStyle(token.component.btn_contained_secondary_bg),
       "&.Mui-disabled": {
         opacity: 0.38,
         border: "none",
@@ -93,9 +93,7 @@ export const kindStyle = ({ kind, color, token }: KindStyleParams) => ({
     color === "error" && {
       color: token.component.btn_contained_error_text,
       backgroundColor: token.component.btn_contained_error_bg,
-      "&:hover": {
-        backgroundColor: token.component.btn_contained_error_bg,
-      },
+      "&:hover": getHoverStyle(token.component.btn_contained_error_bg),
       "&.Mui-disabled": {
         opacity: 0.38,
         border: "none",
@@ -107,9 +105,7 @@ export const kindStyle = ({ kind, color, token }: KindStyleParams) => ({
     color === "primary" && {
       color: token.component.btn_ghost_primary_text,
       border: "none",
-      "&:hover": {
-        backgroundColor: "rgba(0, 0, 0, 0.06)",
-      },
+      "&:hover": getHoverStyle("none"),
       "&.Mui-disabled": {
         opacity: 0.38,
         border: "none",
@@ -120,9 +116,7 @@ export const kindStyle = ({ kind, color, token }: KindStyleParams) => ({
     color === "secondary" && {
       color: token.component.btn_ghost_secondary_text,
       border: "none",
-      "&:hover": {
-        backgroundColor: "rgba(0, 0, 0, 0.06)",
-      },
+      "&:hover": getHoverStyle("none"),
       "&.Mui-disabled": {
         opacity: 0.38,
         border: "none",
@@ -132,9 +126,7 @@ export const kindStyle = ({ kind, color, token }: KindStyleParams) => ({
   ...(kind === "ghost" &&
     color === "error" && {
       color: token.component.btn_ghost_error_text,
-      "&:hover": {
-        backgroundColor: "rgba(0, 0, 0, 0.06)",
-      },
+      "&:hover": getHoverStyle("none"),
       "&.Mui-disabled": {
         opacity: 0.38,
         border: "none",
@@ -146,8 +138,17 @@ export const kindStyle = ({ kind, color, token }: KindStyleParams) => ({
     color === "primary" && {
       color: token.component.btn_outlined_primary_text,
       border: `${OUTLINED_BORDER_WIDTH}px solid ${token.component.btn_outlined_primary_border}`,
-      "&:hover": {
-        backgroundColor: "rgba(0, 0, 0, 0.06)", // TODO: color util function 추가 후 변경
+      "&:hover": getHoverStyle("none"),
+      "&:hover:before": {
+        content: "''",
+        position: "absolute",
+        left: "-1px",
+        top: "-1px",
+        width: "calc(100% + 2px)",
+        height: "calc(100% + 2px)",
+        zIndex: -1,
+        backgroundColor: token.core.hover,
+        borderRadius,
       },
       "&.Mui-disabled": {
         opacity: 0.38,
@@ -159,7 +160,7 @@ export const kindStyle = ({ kind, color, token }: KindStyleParams) => ({
 export const commonStyle = ({ token }: { token: ColorToken }) =>
   ({
     fontWeight: "500",
-    borderRadius: "8px",
+    borderRadius,
     textTransform: "initial",
     "&.Mui-focusVisible": {
       "&::after": {
@@ -171,6 +172,17 @@ export const commonStyle = ({ token }: { token: ColorToken }) =>
         border: `1px solid ${token.core.focused}`,
         boxSizing: "border-box",
       },
+    },
+    "&:hover:before": {
+      content: "''",
+      position: "absolute",
+      left: 0,
+      top: 0,
+      width: "100%",
+      height: "100%",
+      zIndex: -1,
+      backgroundColor: token.core.hover,
+      borderRadius,
     },
   } as const);
 

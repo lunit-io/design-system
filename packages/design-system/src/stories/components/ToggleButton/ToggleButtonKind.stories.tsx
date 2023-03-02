@@ -124,6 +124,9 @@ export default {
 				see [Material-UI Toggle Button](https://mui.com/material-ui/react-toggle-button/).`,
       },
     },
+    pseudo: {
+      hover: ["#hover1", "#hover2", "#hover3"],
+    },
   },
 } as ComponentMeta<typeof ToggleButton>;
 
@@ -308,7 +311,7 @@ const ContainedTemplate: ComponentStory<typeof ToggleButton> = (args) => {
           <TableCell>
             <ToggleButton
               {...args}
-              id="hover"
+              id="hover1"
               kind="contained"
               value="hover"
               onChange={() => handleChange("primary", "hover")}
@@ -320,7 +323,7 @@ const ContainedTemplate: ComponentStory<typeof ToggleButton> = (args) => {
           <TableCell>
             <ToggleButton
               {...args}
-              id="hover"
+              id="hover2"
               kind="contained"
               color="secondary"
               value="hover"
@@ -477,7 +480,7 @@ const GhostTemplate: ComponentStory<typeof ToggleButton> = (args) => {
             <TableCell>
               <ToggleButton
                 {...args}
-                id="hover"
+                id="hover1"
                 kind="ghost"
                 value="hover"
                 onChange={() => handleChange("primary", "hover")}
@@ -489,7 +492,7 @@ const GhostTemplate: ComponentStory<typeof ToggleButton> = (args) => {
             <TableCell>
               <ToggleButton
                 {...args}
-                id="hover"
+                id="hover2"
                 kind="ghost"
                 color="secondary"
                 value="hover"
@@ -636,7 +639,7 @@ const OutlinedTemplate: ComponentStory<typeof ToggleButton> = ({
             <TableCell>
               <ToggleButton
                 {...restProps}
-                id="hover"
+                id="hover1"
                 kind="outlined"
                 value="hover"
                 onChange={() => handleChange("primary", "hover")}
