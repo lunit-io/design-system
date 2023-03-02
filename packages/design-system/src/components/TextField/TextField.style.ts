@@ -89,6 +89,9 @@ const commonStyle = ({ token }: { token: ColorToken }) => ({
     },
     "&.Mui-disabled": {
       opacity: 0.38,
+      "&:hover::before": {
+        backgroundColor: token.component.textfield_bg,
+      },
     },
     "& input, textarea": {
       textOverflow: "ellipsis",
