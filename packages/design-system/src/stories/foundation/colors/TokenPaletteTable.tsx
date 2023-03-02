@@ -16,6 +16,7 @@ import { tokenComponentColor } from "@/foundation/colors/token/component";
 import type { ColorToken } from "@/foundation/colors/types";
 import type { TokenComponentColorValue } from "@/foundation/colors/token/component";
 import type { ColorTokenValueBySurface } from "@/foundation/colors/token/types";
+import { light } from "@mui/material/styles/createPalette";
 
 interface TokenPaletteTableProps {
   token: keyof ColorToken;
@@ -23,6 +24,23 @@ interface TokenPaletteTableProps {
 
 const TokenPaletteTable = ({ token }: TokenPaletteTableProps) => {
   const theme = useTheme();
+
+  const COLOR_SURFACE: ColorTokenValueBySurface = {
+    light1: "var(--grey-0)",
+    light2: "var(--grey-10)",
+    dark1: "var(--grey-90)",
+    dark2: "var(--grey-85)",
+    dark3: "var(--grey-80)",
+    dark4: "var(--grey-70)",
+  } as const;
+
+  const COLOR_BOX_STYLE = {
+    borderTop: "1px solid",
+    borderBottom: "1px solid",
+    borderColor: "rgba(0, 0, 0, 0.12)",
+    height: "12px",
+  } as const;
+
   const colorTokenMap = Object.entries(
     token === "core" ? theme.palette.token.core : theme.palette.token.component
   );
@@ -32,13 +50,6 @@ const TokenPaletteTable = ({ token }: TokenPaletteTableProps) => {
   ].reduce((acc, cur) => {
     return { ...acc, ...cur };
   }, {});
-
-  const colorBoxStyle = {
-    borderTop: "1px solid",
-    borderBottom: "1px solid",
-    borderColor: "rgba(0, 0, 0, 0.12)",
-    height: "12px",
-  };
 
   return (
     <TableContainer>
@@ -85,7 +96,7 @@ const TokenPaletteTable = ({ token }: TokenPaletteTableProps) => {
                 <TableCell
                   className="light1"
                   sx={{
-                    background: "var(--grey-0)",
+                    background: COLOR_SURFACE["light1"],
                     padding: 0,
                   }}
                 >
@@ -93,7 +104,7 @@ const TokenPaletteTable = ({ token }: TokenPaletteTableProps) => {
                     sx={{
                       background: tokenColor,
                       borderLeft: "1px solid",
-                      ...colorBoxStyle,
+                      ...COLOR_BOX_STYLE,
                     }}
                   ></Box>
                   <StyledTypography>
@@ -103,14 +114,14 @@ const TokenPaletteTable = ({ token }: TokenPaletteTableProps) => {
                 <TableCell
                   className="light2"
                   sx={{
-                    background: "var(--grey-10)",
+                    background: COLOR_SURFACE["light2"],
                     padding: 0,
                   }}
                 >
                   <Box
                     sx={{
                       background: tokenColor,
-                      ...colorBoxStyle,
+                      ...COLOR_BOX_STYLE,
                     }}
                   ></Box>
                   <StyledTypography>
@@ -120,14 +131,14 @@ const TokenPaletteTable = ({ token }: TokenPaletteTableProps) => {
                 <TableCell
                   className="dark1"
                   sx={{
-                    background: "var(--grey-90)",
+                    background: COLOR_SURFACE["dark1"],
                     padding: 0,
                   }}
                 >
                   <Box
                     sx={{
                       background: tokenColor,
-                      ...colorBoxStyle,
+                      ...COLOR_BOX_STYLE,
                     }}
                   ></Box>
                   <StyledTypography>{tokenColorText["dark1"]}</StyledTypography>
@@ -135,14 +146,14 @@ const TokenPaletteTable = ({ token }: TokenPaletteTableProps) => {
                 <TableCell
                   className="dark2"
                   sx={{
-                    background: "var(--grey-85)",
+                    background: COLOR_SURFACE["dark2"],
                     padding: 0,
                   }}
                 >
                   <Box
                     sx={{
                       background: tokenColor,
-                      ...colorBoxStyle,
+                      ...COLOR_BOX_STYLE,
                     }}
                   ></Box>
                   <StyledTypography>{tokenColorText["dark2"]}</StyledTypography>
@@ -150,14 +161,14 @@ const TokenPaletteTable = ({ token }: TokenPaletteTableProps) => {
                 <TableCell
                   className="dark3"
                   sx={{
-                    background: "var(--grey-80)",
+                    background: COLOR_SURFACE["dark3"],
                     padding: 0,
                   }}
                 >
                   <Box
                     sx={{
                       background: tokenColor,
-                      ...colorBoxStyle,
+                      ...COLOR_BOX_STYLE,
                     }}
                   ></Box>
                   <StyledTypography>{tokenColorText["dark3"]}</StyledTypography>
@@ -165,14 +176,14 @@ const TokenPaletteTable = ({ token }: TokenPaletteTableProps) => {
                 <TableCell
                   className="dark4"
                   sx={{
-                    background: "var(--grey-70)",
+                    background: COLOR_SURFACE["dark4"],
                     padding: 0,
                   }}
                 >
                   <Box
                     sx={{
                       background: tokenColor,
-                      ...colorBoxStyle,
+                      ...COLOR_BOX_STYLE,
                     }}
                   ></Box>
                   <StyledTypography>{tokenColorText["dark4"]}</StyledTypography>
