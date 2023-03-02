@@ -87,10 +87,18 @@ const SingleTemplate: ComponentStory<typeof TextField> = (args) => (
   <Table>
     <TableHead>
       <TableRow>
-        <TableCell>Default</TableCell>
-        <TableCell>Error</TableCell>
-        <TableCell>Focused</TableCell>
-        <TableCell>Disabled</TableCell>
+        <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+          Default
+        </TableCell>
+        <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+          Error
+        </TableCell>
+        <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+          Focused
+        </TableCell>
+        <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+          Disabled
+        </TableCell>
       </TableRow>
     </TableHead>
     <TableBody>
@@ -117,15 +125,25 @@ const SingleWithIconTemplate: ComponentStory<typeof TextField> = (args) => (
     <TableHead>
       <TableRow>
         <TableCell></TableCell>
-        <TableCell>Default</TableCell>
-        <TableCell>Error</TableCell>
-        <TableCell>focused</TableCell>
-        <TableCell>Disabled</TableCell>
+        <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+          Default
+        </TableCell>
+        <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+          Error
+        </TableCell>
+        <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+          focused
+        </TableCell>
+        <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+          Disabled
+        </TableCell>
       </TableRow>
     </TableHead>
     <TableBody>
       <TableRow>
-        <TableCell>Left Icon</TableCell>
+        <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+          Left Icon
+        </TableCell>
         <TableCell>
           <TextField {...args} leftIcon={<Bell />} />
         </TableCell>
@@ -140,7 +158,9 @@ const SingleWithIconTemplate: ComponentStory<typeof TextField> = (args) => (
         </TableCell>
       </TableRow>
       <TableRow>
-        <TableCell>Right Icon</TableCell>
+        <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+          Right Icon
+        </TableCell>
         <TableCell>
           <TextField {...args} rightIcon={<Bell />} />
         </TableCell>
@@ -155,7 +175,9 @@ const SingleWithIconTemplate: ComponentStory<typeof TextField> = (args) => (
         </TableCell>
       </TableRow>
       <TableRow>
-        <TableCell>Left Right Both Icon</TableCell>
+        <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+          Left Right Both Icon
+        </TableCell>
         <TableCell>
           <TextField {...args} leftIcon={<Bell />} rightIcon={<Bell />} />
         </TableCell>

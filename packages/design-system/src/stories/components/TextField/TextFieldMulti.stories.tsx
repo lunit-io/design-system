@@ -104,10 +104,18 @@ const MultiTemplate: ComponentStory<typeof TextField> = (args) => (
   <Table>
     <TableHead>
       <TableRow>
-        <TableCell>Default</TableCell>
-        <TableCell>Error</TableCell>
-        <TableCell>Focused</TableCell>
-        <TableCell>Disabled</TableCell>
+        <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+          Default
+        </TableCell>
+        <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+          Error
+        </TableCell>
+        <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+          Focused
+        </TableCell>
+        <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+          Disabled
+        </TableCell>
       </TableRow>
     </TableHead>
     <TableBody>

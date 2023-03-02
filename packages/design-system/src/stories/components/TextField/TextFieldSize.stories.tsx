@@ -76,14 +76,25 @@ const TextFieldSizeTemplate: ComponentStory<typeof TextField> = (args) => (
     <TableHead>
       <TableRow>
         <TableCell></TableCell>
-        <TableCell>Small</TableCell>
-        <TableCell>Medium</TableCell>
-        <TableCell>Large</TableCell>
+        <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+          Small
+        </TableCell>
+        <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+          Medium
+        </TableCell>
+        <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+          Large
+        </TableCell>
       </TableRow>
     </TableHead>
     <TableBody>
       <TableRow>
-        <TableCell width={100}>Single line</TableCell>
+        <TableCell
+          sx={{ typography: "body2_14_medium", color: "inherit" }}
+          width={100}
+        >
+          Single line
+        </TableCell>
         <TableCell>
           <TextField {...args} />
         </TableCell>
@@ -95,7 +106,12 @@ const TextFieldSizeTemplate: ComponentStory<typeof TextField> = (args) => (
         </TableCell>
       </TableRow>
       <TableRow>
-        <TableCell width={50}>Multi line</TableCell>
+        <TableCell
+          sx={{ typography: "body2_14_medium", color: "inherit" }}
+          width={50}
+        >
+          Multi line
+        </TableCell>
         <TableCell>
           <TextField {...args} multiline />
         </TableCell>
