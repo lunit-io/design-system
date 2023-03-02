@@ -104,6 +104,21 @@ const commonStyle = ({ token }: { token: ColorToken }) => ({
     background: token.component.textfield_bg,
     overflow: "hidden",
     color: token.core.text_normal,
+    "&:hover": {
+      position: "relative",
+      zIndex: 0,
+      backgroundColor: token.component.textfield_bg,
+    },
+    "&:hover::before": {
+      content: '""',
+      position: "absolute",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+      zIndex: -1,
+      backgroundColor: token.core.hover,
+    },
   },
   "& .MuiFormHelperText-root": {
     "&.Mui-disabled": {
