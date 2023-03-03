@@ -46,13 +46,11 @@ type ColorKey = keyof typeof base;
 const createCSSVariables = () => {
   const cssVars: { [name: string]: string } = {};
   for (let color in base) {
-    if (base.hasOwnProperty(color)) {
-      const baseColors = base[color as ColorKey];
-      for (let key in baseColors) {
-        if (baseColors.hasOwnProperty(key)) {
-          const varName = `--${color}-${key}`;
-          cssVars[varName] = baseColors[Number(key) as keyof typeof baseColors];
-        }
+    const baseColors = base[color as ColorKey];
+    for (let key in baseColors) {
+      if (baseColors.hasOwnProperty(key)) {
+        const varName = `--${color}-${key}`;
+        cssVars[varName] = baseColors[Number(key) as keyof typeof baseColors];
       }
     }
   }
@@ -126,15 +124,12 @@ export const createColorCssBaseline = () => {
 const lunitColors: PaletteOptions["lunit"] = ((): PaletteOptions["lunit"] => {
   const ret: any = {};
   for (const colorKey in base) {
-    if (
-      Object.prototype.hasOwnProperty.call(base, colorKey) &&
-      base[`${colorKey}Text` as ColorKey]
-    ) {
+    if (base[`${colorKey}Text` as ColorKey]) {
       const baseColors = base[colorKey as ColorKey];
       const textColors = base[`${colorKey}Text` as ColorKey];
       ret[colorKey] = {};
       for (const key in baseColors) {
-        if (Object.prototype.hasOwnProperty.call(baseColors, key)) {
+        if (baseColors.hasOwnProperty(key)) {
           const color = baseColors[Number(key) as keyof typeof baseColors];
           const textColor = textColors[Number(key) as keyof typeof textColors];
           ret[colorKey][Number(key)] = {
