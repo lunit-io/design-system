@@ -42,8 +42,6 @@ export interface ReadOnlyContainedChipProps extends BaseContainedChipProps {
 export interface EnableContainedChipProps extends BaseContainedChipProps {
   onClick: () => void;
   onDelete?: never;
-  disableRipple: boolean;
-  disableFocusRipple: boolean;
 }
 export interface DeletableContainedChipProps extends BaseContainedChipProps {
   onClick?: never;

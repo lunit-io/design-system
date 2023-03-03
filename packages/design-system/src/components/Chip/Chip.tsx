@@ -91,8 +91,6 @@ const EnableContainedChip = (props: EnableContainedChipProps) => {
       avatar={getAvatar(thumbnail)}
       icon={getIcon(thumbnail)}
       color={color}
-      disableRipple
-      disableFocusRipple
       sx={{
         "& .MuiChip-label": {
           ...getLabelMargin(thumbnail),
