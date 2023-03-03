@@ -1,24 +1,30 @@
 {
   "name": "@lunit/design-system",
-  "version": "1.0.0-a.1",
+  "version": "1.0.0-a.2",
   "description": "Lunit Design System",
-  "main": "dist/index.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/index.js",
+  "sideEffects": false,
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/cjs/index.js",
+      "default": "./dist/cjs/index.js"
     },
     "./*": {
-      "types": "./dist/components/*/index.d.ts",
-      "default": "./dist/components/*/index.js"
+      "types": "./dist/types/components/*/index.d.ts",
+      "import": "./dist/components/*/index.js",
+      "require": "./dist/cjs/components/*/index.js",
+      "default": "./dist/cjs/components/*/index.js"
     }
   },
-  "types": "dist/index.d.ts",
+  "types": "dist/types/index.d.ts",
   "typesVersions": {
     "*": {
       "*": [
-        "dist/components/*/index.d.ts",
-        "dist/index.d.ts"
+        "dist/types/components/*/index.d.ts",
+        "dist/types/index.d.ts"
       ]
     }
   },
@@ -29,7 +35,9 @@
     "directory": "packages/design-system"
   },
   "scripts": {
-    "build": "webpack",
+    "build:prepare": "tsc -p tsconfig.build.json",
+    "build:cjs": "webpack -c webpack/cjs.config.js",
+    "build": "yarn build:prepare && yarn build:cjs",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "chromatic": "chromatic"
@@ -48,6 +56,7 @@
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
     "@mui/material": "^5.11.3",
+    "@mui/utils": "^5.11.3",
     "@mui/x-date-pickers": "^5.0.16",
     "@storybook/addon-actions": "^6.4.22",
     "@storybook/addon-essentials": "^6.4.22",
