@@ -9,9 +9,7 @@
   },
   "include": ["src/**/*", "generated/**/*"],
   "exclude": [
-    "src/**/*.stories.mdx",
-    "src/**/*.stories.ts",
-    "src/**/*.stories.tsx",
+    "src/stories/**",
     "src/**/__tests__/**/*.ts",
     "src/**/__tests__/**/*.tsx"
   ]
