@@ -14,9 +14,7 @@ import { tokenCoreColor } from "@/foundation/colors/token/core";
 import { tokenComponentColor } from "@/foundation/colors/token/component";
 
 import type { ColorToken } from "@/foundation/colors/types";
-import type { TokenComponentColorValue } from "@/foundation/colors/token/component";
 import type { ColorTokenValueBySurface } from "@/foundation/colors/token/types";
-import { light } from "@mui/material/styles/createPalette";
 
 interface TokenPaletteTableProps {
   token: keyof ColorToken;
@@ -45,11 +43,12 @@ const TokenPaletteTable = ({ token }: TokenPaletteTableProps) => {
     token === "core" ? theme.palette.token.core : theme.palette.token.component
   );
 
-  const tokenComponentColorFlatten = [
-    ...Object.values(tokenComponentColor),
-  ].reduce((acc, cur) => {
-    return { ...acc, ...cur };
-  }, {});
+  const tokenComponentColorFlatten = Object.values(tokenComponentColor).reduce(
+    (acc, cur) => {
+      return { ...acc, ...cur };
+    },
+    {}
+  );
 
   return (
     <TableContainer>
