@@ -5,6 +5,11 @@ import TokenPaletteTable from "./TokenPaletteTable";
 export default {
   title: "Foundation/Colors/ColorToken",
   component: TokenPaletteTable,
+  parameters: {
+    controls: {
+      exclude: /.*/g,
+    },
+  },
 } as ComponentMeta<typeof TokenPaletteTable>;
 
 const Template: ComponentStory<typeof TokenPaletteTable> = (args) => (
