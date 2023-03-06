@@ -131,6 +131,7 @@ Outlined.args = {
   color: "primary",
   kind: "outlined",
 };
+Outlined.storyName = "Kind: Outlined";
 
 export const Contained = Template.bind({});
 Contained.parameters = {
@@ -149,6 +150,7 @@ Contained.args = {
   color: "primary",
   kind: "contained",
 };
+Contained.storyName = "Kind: Contained / Read Only";
 
 export const ContainedWithClick = Template.bind({});
 ContainedWithClick.args = {
@@ -165,6 +167,7 @@ ContainedWithClick.parameters = {
     exclude: ["onDelete", "deletable"],
   },
 };
+ContainedWithClick.storyName = "Kind: Contained / Enable";
 
 export const ContainedWithDelete = Template.bind({});
 ContainedWithDelete.args = {
@@ -182,6 +185,7 @@ ContainedWithDelete.parameters = {
     exclude: ["onClick", "clickable"],
   },
 };
+ContainedWithDelete.storyName = "Kind: Contained / Deletable";
 
 export const ContainedWithThumbnail = Template.bind({});
 ContainedWithThumbnail.args = {
@@ -194,3 +198,4 @@ ContainedWithThumbnail.parameters = {
     },
   },
 };
+ContainedWithThumbnail.storyName = "Kind: Contained with Thumbnail";

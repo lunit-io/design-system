@@ -34,6 +34,11 @@ const theme = createTheme({
     MuiTypography: {
       defaultProps: typographyDefaultProps,
     },
+    MuiButtonBase: {
+      defaultProps: {
+        disableRipple: true, // No more ripple, on the whole application 💣!
+      },
+    },
     // @todo add any MUI components theme exported from ./components/index.ts
   },
 });

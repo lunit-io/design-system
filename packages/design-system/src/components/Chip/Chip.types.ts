@@ -1,9 +1,9 @@
 import { CHIP_COLORS } from "./consts";
 
-import type { ChipProps as MuiChipProps, SxProps } from "@mui/material";
+import type { ChipProps as MuiChipProps } from "@mui/material";
 
 type ColorKeys = keyof typeof CHIP_COLORS;
-export type ChipColor = typeof CHIP_COLORS[ColorKeys];
+export type ChipColor = (typeof CHIP_COLORS)[ColorKeys];
 export type ChipThumbnail = string | JSX.Element;
 
 /**

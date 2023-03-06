@@ -6,6 +6,9 @@ import type {
   ChipColor,
   OutlinedChipProps,
   BaseContainedChipProps,
+  ReadOnlyContainedChipProps,
+  EnableContainedChipProps,
+  DeletableContainedChipProps,
 } from "./Chip.types";
 
 const COMMON_STYLES = {
@@ -110,7 +113,7 @@ export const StyledContainedChipBase = styled(MuiChip, {
 
 export const StyledContainedChipEnable = styled(StyledContainedChipBase, {
   shouldForwardProp: (prop) => !["color"].includes(prop.toString()),
-})<BaseContainedChipProps>(() => ({ theme, color }) => ({
+})<EnableContainedChipProps>(() => ({ theme, color }) => ({
   /**
    * Setting the z-index of the chip to 0 and the z-index of the pseudo element to -1
    * allows the pseudo element(hover layer) to be rendered between the chip and the chip's children.
@@ -137,9 +140,9 @@ export const StyledContainedChipEnable = styled(StyledContainedChipBase, {
   },
 }));
 
-export const StyledContainedChipDeletable = styled(StyledContainedChipBase, {
-  shouldForwardProp: (prop) => !["color"].includes(prop.toString()),
-})<BaseContainedChipProps>(() => ({ theme, color }) => ({
+export const StyledContainedChipDeletable = styled(
+  StyledContainedChipBase
+)<BaseContainedChipProps>(() => ({ theme }) => ({
   "& .MuiChip-deleteIcon": {
     marginLeft: "4px",
     marginRight: "3px",

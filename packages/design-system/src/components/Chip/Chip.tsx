@@ -1,6 +1,6 @@
 import React from "react";
 import { Avatar } from "@mui/material";
-import { Close16 } from "@lunit/design-system-icons";
+import Close16 from "@lunit/design-system-icons/Close16";
 import {
   StyledOutlinedChip,
   StyledContainedChipBase,
