@@ -128,7 +128,6 @@ export const tokenCoreColor: TokenCoreColorValue = {
   },
   icon_success_02: {
     // TODO: sucess -> success 로 바뀌었으니 코드 내 사용되는 부분 확인해서 업데이트. 개발자들에게도 공지할것.
-    // TODO: 피그마에 오타 수정 요청한 상태. 확인되면 todo 지우기
     light1: "--green-40",
     light2: "--green-40",
     dark1: "--green-30",
@@ -154,12 +153,12 @@ export const tokenCoreColor: TokenCoreColorValue = {
   },
   hover: {
     // TODO: 알파값 적용 코드는 일단 하드코딩. 나중에 수정할것
-    light1: "rgba(0, 0, 0, 0.06)", // grey_100 6% // TODO: 10%로 수정 예정이라고 하니 다시 확인하기
-    light2: "rgba(0, 0, 0, 0.06)", // grey_100 6%
-    dark1: "rgba(255, 255, 255, 0.06)", // grey_00 6%
-    dark2: "rgba(255, 255, 255, 0.06)", // grey_00 6%
-    dark3: "rgba(255, 255, 255, 0.06)", // grey_00 6%
-    dark4: "rgba(255, 255, 255, 0.06)", // grey_00 6%
+    light1: "rgba(0, 0, 0, 0.1)", // grey_100 10%
+    light2: "rgba(0, 0, 0, 0.1)", // grey_100 10%
+    dark1: "rgba(0, 0, 0, 0.1)", // grey_100 10%
+    dark2: "rgba(0, 0, 0, 0.1)", // grey_100 10%
+    dark3: "rgba(0, 0, 0, 0.1)", // grey_100 10%
+    dark4: "rgba(0, 0, 0, 0.1)", // grey_100 10%
   },
   focused: {
     light1: "--lunitTeal-40",
@@ -168,6 +167,14 @@ export const tokenCoreColor: TokenCoreColorValue = {
     dark2: "--lunitTeal-40",
     dark3: "--lunitTeal-40",
     dark4: "--lunitTeal-40",
+  },
+  selected: {
+    light1: "--lunitTeal-10",
+    light2: "--lunitTeal-10",
+    dark1: "--lunitTeal-80",
+    dark2: "--lunitTeal-80",
+    dark3: "--lunitTeal-80",
+    dark4: "--lunitTeal-80",
   },
   shadow_01: {
     light1: "rgba(0, 0, 0, 0.12)", // "--grey-100 12%",

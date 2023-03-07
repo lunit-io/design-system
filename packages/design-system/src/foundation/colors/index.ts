@@ -169,6 +169,7 @@ const paletteOptions = {
       icon_info_02: "var(--icon_info_02)",
       hover: "var(--hover)",
       focused: "var(--focused)",
+      selected: "var(--selected)",
       shadow_01: "var(--shadow_01)",
       shadow_02: "var(--shadow_02)",
       shadow_03: "var(--shadow_03)",

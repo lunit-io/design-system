@@ -22,6 +22,7 @@ export interface ColorToken {
     icon_info_02: CSSPropertyColor;
     hover: CSSPropertyColor;
     focused: CSSPropertyColor;
+    selected: CSSPropertyColor;
     shadow_01: CSSPropertyColor;
     shadow_02: CSSPropertyColor;
     shadow_03: CSSPropertyColor;
