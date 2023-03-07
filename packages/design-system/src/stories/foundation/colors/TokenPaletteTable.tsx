@@ -95,7 +95,7 @@ const TokenPaletteTable = ({ kind }: TokenPaletteTableProps) => {
                 <TableCell
                   className="light1"
                   sx={{
-                    background: COLOR_SURFACE["light1"],
+                    background: theme.palette.token.core.bg_01,
                     padding: 0,
                   }}
                 >
@@ -113,7 +113,7 @@ const TokenPaletteTable = ({ kind }: TokenPaletteTableProps) => {
                 <TableCell
                   className="light2"
                   sx={{
-                    background: COLOR_SURFACE["light2"],
+                    background: theme.palette.token.core.bg_01,
                     padding: 0,
                   }}
                 >
@@ -130,7 +130,7 @@ const TokenPaletteTable = ({ kind }: TokenPaletteTableProps) => {
                 <TableCell
                   className="dark1"
                   sx={{
-                    background: COLOR_SURFACE["dark1"],
+                    background: theme.palette.token.core.bg_01,
                     padding: 0,
                   }}
                 >
@@ -145,7 +145,7 @@ const TokenPaletteTable = ({ kind }: TokenPaletteTableProps) => {
                 <TableCell
                   className="dark2"
                   sx={{
-                    background: COLOR_SURFACE["dark2"],
+                    background: theme.palette.token.core.bg_01,
                     padding: 0,
                   }}
                 >
@@ -160,7 +160,7 @@ const TokenPaletteTable = ({ kind }: TokenPaletteTableProps) => {
                 <TableCell
                   className="dark3"
                   sx={{
-                    background: COLOR_SURFACE["dark3"],
+                    background: theme.palette.token.core.bg_01,
                     padding: 0,
                   }}
                 >
@@ -175,7 +175,7 @@ const TokenPaletteTable = ({ kind }: TokenPaletteTableProps) => {
                 <TableCell
                   className="dark4"
                   sx={{
-                    background: COLOR_SURFACE["dark4"],
+                    background: theme.palette.token.core.bg_01,
                     padding: 0,
                   }}
                 >
