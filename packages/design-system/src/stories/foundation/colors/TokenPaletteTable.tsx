@@ -14,7 +14,6 @@ import { tokenCoreColor } from "@/foundation/colors/token/core";
 import { tokenComponentColor } from "@/foundation/colors/token/component";
 
 import type { ColorToken } from "@/foundation/colors/types";
-import type { ColorTokenValueBySurface } from "@/foundation/colors/token/types";
 
 interface TokenPaletteTableProps {
   kind: keyof ColorToken;
@@ -22,15 +21,6 @@ interface TokenPaletteTableProps {
 
 const TokenPaletteTable = ({ kind }: TokenPaletteTableProps) => {
   const theme = useTheme();
-
-  const COLOR_SURFACE: ColorTokenValueBySurface = {
-    light1: "var(--grey-0)",
-    light2: "var(--grey-10)",
-    dark1: "var(--grey-90)",
-    dark2: "var(--grey-85)",
-    dark3: "var(--grey-80)",
-    dark4: "var(--grey-70)",
-  } as const;
 
   const COLOR_BOX_STYLE = {
     borderTop: "1px solid",
