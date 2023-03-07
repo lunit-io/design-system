@@ -18,12 +18,12 @@ const Template: ComponentStory<typeof TokenPaletteTable> = (args) => (
 
 export const CoreTokens = Template.bind({});
 CoreTokens.args = {
-  token: "core",
+  kind: "core",
 };
 CoreTokens.storyName = "Palette: Core Tokens";
 
 export const ComponentTokens = Template.bind({});
 ComponentTokens.args = {
-  token: "component",
+  kind: "component",
 };
 ComponentTokens.storyName = "Palette: Component Tokens";

@@ -17,10 +17,10 @@ import type { ColorToken } from "@/foundation/colors/types";
 import type { ColorTokenValueBySurface } from "@/foundation/colors/token/types";
 
 interface TokenPaletteTableProps {
-  token: keyof ColorToken;
+  kind: keyof ColorToken;
 }
 
-const TokenPaletteTable = ({ token }: TokenPaletteTableProps) => {
+const TokenPaletteTable = ({ kind }: TokenPaletteTableProps) => {
   const theme = useTheme();
 
   const COLOR_SURFACE: ColorTokenValueBySurface = {
@@ -40,7 +40,7 @@ const TokenPaletteTable = ({ token }: TokenPaletteTableProps) => {
   } as const;
 
   const colorTokenMap = Object.entries(
-    token === "core" ? theme.palette.token.core : theme.palette.token.component
+    kind === "core" ? theme.palette.token.core : theme.palette.token.component
   );
 
   const tokenComponentColorFlatten = Object.values(tokenComponentColor).reduce(
@@ -72,7 +72,7 @@ const TokenPaletteTable = ({ token }: TokenPaletteTableProps) => {
         <TableBody>
           {colorTokenMap.map(([paletteKey, _colorVariable]) => {
             const tokenColor =
-              token === "core"
+              kind === "core"
                 ? theme.palette.token.core[
                     paletteKey as keyof ColorToken["core"]
                   ]
@@ -81,7 +81,7 @@ const TokenPaletteTable = ({ token }: TokenPaletteTableProps) => {
                   ];
 
             const tokenColorText =
-              token === "core"
+              kind === "core"
                 ? tokenCoreColor[paletteKey]
                 : tokenComponentColorFlatten[paletteKey];
 
@@ -89,7 +89,7 @@ const TokenPaletteTable = ({ token }: TokenPaletteTableProps) => {
               <TableRow key={paletteKey}>
                 <TableCell sx={{ height: "72px" }}>
                   <StyledTypography>
-                    {token}.{paletteKey}
+                    {kind}.{paletteKey}
                   </StyledTypography>
                 </TableCell>
                 <TableCell
