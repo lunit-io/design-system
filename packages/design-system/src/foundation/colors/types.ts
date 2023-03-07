@@ -50,10 +50,7 @@ export interface ColorToken {
     selectcontrol_handler_shadow: CSSPropertyColor;
     textfield_bg: CSSPropertyColor;
     textfield_border_error: CSSPropertyColor;
-    dropdown_option_selected: CSSPropertyColor;
     dropdown_divider_border: CSSPropertyColor;
-    dropdown_option_activatied: CSSPropertyColor;
-    datatable_cell_selected: CSSPropertyColor;
     datatable_border_01: CSSPropertyColor;
     datatable_border_02: CSSPropertyColor;
     datatable_zebra: CSSPropertyColor;
