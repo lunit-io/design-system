@@ -5,57 +5,58 @@ import {
   Information,
   Close,
 } from "@lunit/design-system-icons";
-import { ButtonBase, Typography } from '@mui/material'
-import React, { forwardRef } from 'react'
+import { Typography } from "@mui/material";
+import React, { forwardRef } from "react";
 
-import Button from '../Button'
-import { StyledToast, StyledToastElevation } from './Toast.styled'
+import Button from "../Button";
+import { StyledToast, StyledToastElevation } from "./Toast.styled";
 import type { ToastProps } from "./Toast.types";
 
+const MAPPED_ICON = {
+  success: <Success variant="filled" />,
+  info: <Information variant="filled" />,
+  warning: <Warning variant="filled" />,
+  error: <Error variant="filled" />,
+};
+
 const Toast = forwardRef<HTMLDivElement, ToastProps>((props, ref) => {
-  const { severity, icon, actionButtonText, actionButtonHandler, onClose, children, sx, ...rest } = props
-  const iconConfig = severity === undefined ? { icon: false } : { severity }
+  const { severity, icon, children, sx, action, onClose, ...rest } = props;
+  const iconConfig = severity === undefined ? { icon: false } : { severity };
 
   return (
-    <StyledToastElevation
-    className="elevation2"
-    sx={sx}>
+    <StyledToastElevation className="elevation2" sx={sx}>
       <StyledToast
         ref={ref}
-        iconMapping={{
-          success: <Success variant="filled" />,
-          info: <Information variant="filled" />,
-          warning: <Warning variant="filled" />,
-          error: <Error variant="filled" />,
-        }}
+        iconMapping={MAPPED_ICON}
         action={
-              (<>
-                {actionButtonText ? <Button kind="ghost" disableRipple onClick={actionButtonHandler}>
-                  {actionButtonText}
-                </Button> : null}
-                {onClose ? <Button
-                  icon={<Close />}
-                  kind="ghost"
-                  onClick={onClose}
-                  size="small"
-                /> : null}
-              </>)
+          <>
+            {action}
+            {onClose && (
+              <Button
+                icon={<Close />}
+                kind="ghost"
+                size="medium"
+                onClick={onClose}
+              />
+            )}
+          </>
         }
         {...iconConfig}
         {...rest}
       >
         <Typography
-          sx={{
-            whiteSpace: 'pre-line'
-          }}
+          className="Toast-message"
           variant="body2_14_regular"
+          sx={{
+            whiteSpace: "pre-line",
+          }}
         >
-        {children}
+          {children}
         </Typography>
       </StyledToast>
     </StyledToastElevation>
-  )
-})
+  );
+});
 
 // this forwardRef is required for using with Snackbar component
-export default Toast
+export default Toast;

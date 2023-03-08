@@ -1,20 +1,19 @@
 import { Alert, Box, styled } from "@mui/material";
 import { getIconColor } from "./Toast.utils";
 
-
-
 export const StyledToast = styled(Alert)(({ theme, severity }) => {
   return {
-    'div[class*="MuiAlert"]':{
+    'div[class*="MuiAlert"]': {
       display: "flex",
       alignItems: "center",
     },
-    '&.MuiAlert-root': {
+    "&.MuiAlert-root": {
       color: theme.palette.token.core.text_normal,
       backgroundColor: theme.palette.token.core.bg_03,
       padding: "8px 16px 8px 16px",
       margin: 0,
-      boxShadow: "none"
+      boxShadow: "none",
+      width: "auto",
     },
     "& .MuiAlert-icon": {
       height: "36px",
@@ -22,33 +21,33 @@ export const StyledToast = styled(Alert)(({ theme, severity }) => {
       fontSize: 20,
       color: `${getIconColor(severity)}`,
       "& .MuiSvgIcon-root": {
-        height: "14px",
-        width: "14px",
+        height: "16px",
+        width: "16px",
       },
     },
     "& .MuiAlert-message": {
+      // max length of toast message is 400px
+      maxWidth: "400px",
       minHeight: "28px",
       padding: "8px 0 8px 0",
       fontWeight: 400,
       fontSize: "14px",
       lineHeight: "20px",
+      "& .Toast-message": {
+        display: "block",
+      },
     },
     "& .MuiAlert-action": {
-      height: "36px",
-      padding: "0 0px 0 28px",
-      marginRight: 0,
-      "& .MuiButtonBase-root":{
-        color: theme.palette.token.core.link_primary,
-        marginRight: "12px",
-      },
+      alignSelf: "flex-start",
+      minHeight: "36px",
+      marginRight: "0px",
+      padding: 0,
       "& .MuiSvgIcon-root": {
-        color: theme.palette.token.core.text_normal
-      }
-    }
-  }
-})
-
-
+        color: theme.palette.token.core.text_normal,
+      },
+    },
+  };
+});
 
 export const StyledToastElevation = styled(Box)(() => ({
   borderRadius: "8px",

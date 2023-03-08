@@ -1,15 +1,6 @@
-import { AlertProps } from '@mui/material';
+import { AlertProps as BaseAlertProps } from "@mui/material";
 
-interface ToastPropsWithAction extends AlertProps {
-  actionButtonText: string
-  onClose: () => void
-  actionButtonHandler: () => void
-}
-
-interface BaseToast extends AlertProps {
-  actionButtonText?: never
-  onClose?: never
-  actionButtonHandler?: never
-}
-
-export type ToastProps = BaseToast | ToastPropsWithAction
+export type ToastProps = Omit<
+  BaseAlertProps,
+  "variant" | "slots" | "slotProps" | "components" | "componentsProps"
+>;
