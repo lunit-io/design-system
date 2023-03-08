@@ -21,8 +21,9 @@ export const StyledAlertTitle = styled(MuiAlertTitle)(({ theme }) => ({
 export const StyledAlert = styled(MuiAlert)<AlertProps>(
   ({ severity, width, isSnackbar }) => ({
     "&.MuiAlert-root": {
+      display: "flex",
       width: width,
-      padding: "16px",
+      padding: "15px",
       minWidth: "372px",
       maxWidth: isSnackbar ? "512px" : "10000px",
       borderRadius: "8px",
@@ -38,6 +39,8 @@ export const StyledAlert = styled(MuiAlert)<AlertProps>(
     },
     "& .MuiAlert-message": {
       padding: 0,
+      width: "100%",
+      minHeight: "28px",
     },
     "& .MuiAlert-action": {
       margin: 0,

@@ -4,7 +4,6 @@ import {
   StyledAlertTitle,
   StyledAlertChildren,
   StyledBottomAction,
-  StyledIconButton,
 } from "./Alert.styled";
 import { AlertProps } from "./Alert.types";
 import {
@@ -14,6 +13,7 @@ import {
   Warning,
   Information,
 } from "@lunit/design-system-icons";
+import Button from "../Button";
 
 const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
   const {
@@ -23,7 +23,7 @@ const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
     sx,
     bottomAction,
     width = 512,
-    isSnackbar = true,
+    isSnackbar = false,
     onClose,
   } = props;
   return (
@@ -39,13 +39,18 @@ const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
         warning: <Warning variant="filled" />,
         error: <Error variant="filled" />,
       }}
-      action={
-        onClose ? (
-          <StyledIconButton aria-label="close" onClick={() => onClose()}>
-            <Close />
-          </StyledIconButton>
-        ) : null
-      }
+      slots={{
+        closeButton: () => (
+          <Button
+            kind="ghost"
+            size="small"
+            color="secondary"
+            icon={<Close />}
+            onClick={onClose}
+          />
+        ),
+      }}
+      onClose={onClose}
     >
       {title && <StyledAlertTitle>{title}</StyledAlertTitle>}
       <StyledAlertChildren>{children}</StyledAlertChildren>
