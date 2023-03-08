@@ -11,15 +11,6 @@ import {
   Warning16,
 } from "@lunit/design-system-icons";
 
-import type {
-  OutlinedChipProps,
-  ReadOnlyContainedChipProps,
-  EnableContainedChipProps,
-  DeletableContainedChipProps,
-  ChipProps,
-  ChipThumbnail,
-} from "@/components/Chip/Chip.types";
-
 export default {
   title: "Components/Chips",
   component: Chip,
@@ -38,9 +29,6 @@ export default {
         function: action("onClick"),
         undefined: undefined,
       },
-      if: {
-        arg: "contained",
-      },
     },
     onDelete: {
       description:
@@ -54,9 +42,6 @@ export default {
         undefined: undefined,
       },
       defaultValue: null,
-      if: {
-        arg: "contained",
-      },
     },
 
     thumbnail: {
@@ -93,9 +78,6 @@ export default {
         Information16Filled: <Information16 variant="filled" />,
         Warning16: <Warning16 />,
         Warning16Filled: <Warning16 variant="filled" />,
-      },
-      if: {
-        arg: "contained",
       },
     },
   },
@@ -140,6 +122,7 @@ Outlined.args = {
   color: "primary",
   kind: "outlined",
 };
+Outlined.storyName = "Kind: Outlined";
 
 export const Contained = Template.bind({});
 Contained.parameters = {
@@ -158,6 +141,7 @@ Contained.args = {
   color: "primary",
   kind: "contained",
 };
+Contained.storyName = "Kind: Contained / Read Only";
 
 export const ContainedWithClick = Template.bind({});
 ContainedWithClick.args = {
@@ -173,11 +157,8 @@ ContainedWithClick.parameters = {
   controls: {
     exclude: ["onDelete", "deletable"],
   },
-  if: {
-    arg: "onDelete",
-    truthy: false,
-  },
 };
+ContainedWithClick.storyName = "Kind: Contained / Enable";
 
 export const ContainedWithDelete = Template.bind({});
 ContainedWithDelete.args = {
@@ -194,11 +175,8 @@ ContainedWithDelete.parameters = {
   controls: {
     exclude: ["onClick", "clickable"],
   },
-  if: {
-    arg: "onClick",
-    truthy: false,
-  },
 };
+ContainedWithDelete.storyName = "Kind: Contained / Deletable";
 
 export const ContainedWithThumbnail = Template.bind({});
 ContainedWithThumbnail.args = {
@@ -211,3 +189,4 @@ ContainedWithThumbnail.parameters = {
     },
   },
 };
+ContainedWithThumbnail.storyName = "Kind: Contained with Thumbnail";

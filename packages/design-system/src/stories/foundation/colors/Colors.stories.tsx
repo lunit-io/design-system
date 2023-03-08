@@ -60,5 +60,6 @@ export default {
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const BaseTemplate: ComponentStory<typeof BaseColors> = () => <BaseColors />;
 
-export const Base = BaseTemplate.bind({});
+export const GlobalColors = BaseTemplate.bind({});
+GlobalColors.storyName = "Palette: Global Colors";
 // More on args: https://storybook.js.org/docs/react/writing-stories/args

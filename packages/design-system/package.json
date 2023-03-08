@@ -16,6 +16,15 @@
     "build-storybook": "build-storybook",
     "chromatic": "chromatic"
   },
+  "nx": {
+    "targets": {
+      "storybook": {
+        "dependsOn": [
+          "^build"
+        ]
+      }
+    }
+  },
   "devDependencies": {
     "@babel/core": "^7.17.10",
     "@emotion/react": "^11.9.0",

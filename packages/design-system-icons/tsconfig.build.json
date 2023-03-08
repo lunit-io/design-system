@@ -1,8 +1,10 @@
 {
   "extends": "../../tsconfig.build.json",
   "compilerOptions": {
+    "target": "esnext",
     "outDir": "./dist",
     "declaration": true,
+    "declarationDir": "./dist/types",
     "jsx": "react-jsx"
   },
   "include": ["src/**/*", "generated/**/*"],

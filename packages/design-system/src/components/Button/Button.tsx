@@ -26,8 +26,6 @@ const Button = (props: Omit<ButtonProps, "hasIconOnly">) => {
           size={size}
           startIcon={icon}
           hasIconOnly={hasIconOnly}
-          disableRipple
-          disableFocusRipple
           {...buttonProps}
         >
           {!hasIconOnly && <>{children}</>}
@@ -40,8 +38,6 @@ const Button = (props: Omit<ButtonProps, "hasIconOnly">) => {
           size={size}
           startIcon={icon}
           hasIconOnly={hasIconOnly}
-          disableRipple
-          disableFocusRipple
           {...buttonProps}
         >
           {!hasIconOnly && <>{children}</>}
