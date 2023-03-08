@@ -6,9 +6,7 @@ import type {
   ChipColor,
   OutlinedChipProps,
   BaseContainedChipProps,
-  ReadOnlyContainedChipProps,
   EnableContainedChipProps,
-  DeletableContainedChipProps,
 } from "./Chip.types";
 
 const COMMON_STYLES = {
@@ -16,6 +14,7 @@ const COMMON_STYLES = {
     height: "22px",
     width: "auto",
     minWidth: "22px",
+    boxShadow: "none",
   },
   "&.Mui-disabled": {
     opacity: 1,

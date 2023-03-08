@@ -11,15 +11,6 @@ import {
   Warning16,
 } from "@lunit/design-system-icons";
 
-import type {
-  OutlinedChipProps,
-  ReadOnlyContainedChipProps,
-  EnableContainedChipProps,
-  DeletableContainedChipProps,
-  ChipProps,
-  ChipThumbnail,
-} from "@/components/Chip/Chip.types";
-
 export default {
   title: "Components/Chips",
   component: Chip,
