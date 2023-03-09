@@ -8,7 +8,7 @@ import { Typography } from "@mui/material";
 import React, { forwardRef } from "react";
 
 import Button from "../Button";
-import { StyledToast, StyledToastElevation } from "./Toast.styled";
+import { StyledToast } from "./Toast.styled";
 import type { ToastProps } from "./Toast.types";
 
 const MAPPED_ICON = {
@@ -19,41 +19,39 @@ const MAPPED_ICON = {
 };
 
 const Toast = forwardRef<HTMLDivElement, ToastProps>((props, ref) => {
-  const { severity, icon, children, sx, action, onClose, ...rest } = props;
+  const { severity, icon, children, action, onClose, ...rest } = props;
   const iconConfig = severity === undefined ? { icon: false } : { severity };
 
   return (
-    <StyledToastElevation className="elevation2" sx={sx}>
-      <StyledToast
-        ref={ref}
-        iconMapping={MAPPED_ICON}
-        action={
-          <>
-            {action}
-            {onClose && (
-              <Button
-                icon={<Close />}
-                kind="ghost"
-                size="medium"
-                onClick={onClose}
-              />
-            )}
-          </>
-        }
-        {...iconConfig}
-        {...rest}
+    <StyledToast
+      ref={ref}
+      iconMapping={MAPPED_ICON}
+      action={
+        <>
+          {action}
+          {onClose && (
+            <Button
+              icon={<Close />}
+              kind="ghost"
+              size="medium"
+              onClick={onClose}
+            />
+          )}
+        </>
+      }
+      {...iconConfig}
+      {...rest}
+    >
+      <Typography
+        className="Toast-message"
+        variant="body2_14_regular"
+        sx={{
+          whiteSpace: "pre-line",
+        }}
       >
-        <Typography
-          className="Toast-message"
-          variant="body2_14_regular"
-          sx={{
-            whiteSpace: "pre-line",
-          }}
-        >
-          {children}
-        </Typography>
-      </StyledToast>
-    </StyledToastElevation>
+        {children}
+      </Typography>
+    </StyledToast>
   );
 });
 

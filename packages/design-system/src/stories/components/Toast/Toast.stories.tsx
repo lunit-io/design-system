@@ -68,129 +68,140 @@ const Template: ComponentStory<typeof Toast> = (args) => (
 );
 const Template2: ComponentStory<typeof Toast> = () => (
   <Box sx={{ display: "grid", gap: "40px" }}>
-    <Box width="484px">
-      <Toast onClose={() => {}}>Lorem ipsum dolor sit amet, consectetur.</Toast>
-    </Box>
-    <Box width="584px">
-      <Toast
-        severity="error"
-        action={
-          <Button size="medium" kind="ghost" color="error">
-            Button
-          </Button>
-        }
-        onClose={() => {}}
-      >
-        Lorem ipsum dolor sit amet, consectetur.
-      </Toast>
-    </Box>
-    <Box width="584px">
-      <Toast
-        severity="success"
-        action={
-          <Button size="medium" kind="ghost">
-            Button
-          </Button>
-        }
-      >
-        Lorem ipsum dolor sit amet, consectetur.
-      </Toast>
-    </Box>
-    <Box width="584px">
-      <Toast
-        severity="info"
-        action={
-          <Button size="medium" kind="ghost" color="secondary">
-            Button
-          </Button>
-        }
-        onClose={() => {}}
-      >
-        Lorem ipsum dolor sit amet, consectetur.
-      </Toast>
-    </Box>
-    <Box width="516px">
-      <Toast severity="warning" onClose={() => {}}>
-        Lorem ipsum dolor sit amet, consectetur.
-      </Toast>
-    </Box>
+    <Toast onClose={() => {}} sx={{ width: "484px" }}>
+      Lorem ipsum dolor sit amet, consectetur.
+    </Toast>
+    <Toast
+      severity="error"
+      action={
+        <Button size="medium" kind="ghost" color="error">
+          Button
+        </Button>
+      }
+      onClose={() => {}}
+      sx={{
+        width: "584px",
+      }}
+    >
+      Lorem ipsum dolor sit amet, consectetur.
+    </Toast>
+    <Toast
+      severity="success"
+      action={
+        <Button size="medium" kind="ghost">
+          Button
+        </Button>
+      }
+      sx={{
+        width: "584px",
+      }}
+    >
+      Lorem ipsum dolor sit amet, consectetur.
+    </Toast>
+    <Toast
+      severity="info"
+      action={
+        <Button size="medium" kind="ghost" color="secondary">
+          Button
+        </Button>
+      }
+      onClose={() => {}}
+      sx={{
+        width: "584px",
+      }}
+    >
+      Lorem ipsum dolor sit amet, consectetur.
+    </Toast>
+    <Toast
+      severity="warning"
+      onClose={() => {}}
+      sx={{
+        width: "516px",
+      }}
+    >
+      Lorem ipsum dolor sit amet, consectetur.
+    </Toast>
   </Box>
 );
 
 const Template3: ComponentStory<typeof Toast> = () => (
   <Box sx={{ display: "grid", gap: "40px" }}>
-    <Box width="212px">
-      <Toast
-        sx={{
-          "& .Toast-message": {
-            width: "180px",
-          },
-        }}
-      >
-        Lorem ipsum dol
-      </Toast>
-    </Box>
-    <Box width="317px">
-      <Toast
-        sx={{
-          "& .Toast-message": {
-            width: "165px",
-          },
-        }}
-        onClose={() => {}}
-      >
-        Lorem ipsum dol
-      </Toast>
-    </Box>
-    <Box width="484px">
-      <Toast onClose={() => {}}>
-        Lorem ipsum dolor sit amet consectetur. Velit urna donec tortor egestas
-        donec laoreet porttitor phasellus imperdiet. Egestas leo pretium tempus
-        purus laoreet egestas habitant scelerisque non imperdiet.
-      </Toast>
-    </Box>
-    <Box width="464px">
-      <Toast severity="success">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Augue lorem in
-        dictum vitae ut massa.
-      </Toast>
-    </Box>
-    <Box width="548px">
-      <Toast
-        severity="info"
-        action={
-          <Button
-            size="medium"
-            kind="ghost"
-            color="secondary"
-            sx={{ width: "64px" }}
-          >
-            Button
-          </Button>
-        }
-      >
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Augue lorem in
-        dictum vitae ut massa.
-      </Toast>
-    </Box>
-    <Box width="584px">
-      <Toast
-        severity="error"
-        action={
-          <Button
-            size="medium"
-            kind="ghost"
-            color="error"
-            sx={{ width: "64px" }}
-          >
-            Button
-          </Button>
-        }
-        onClose={() => {}}
-      >
-        Lorem ipsum dolor sit amet consectetur. Velit urna donec tortor.
-      </Toast>
-    </Box>
+    <Toast
+      sx={{
+        width: "212px",
+        "& .Toast-message": {
+          width: "180px",
+        },
+      }}
+    >
+      Lorem ipsum dol
+    </Toast>
+
+    <Toast
+      sx={{
+        width: "317px",
+        "& .Toast-message": {
+          width: "165px",
+        },
+      }}
+      onClose={() => {}}
+    >
+      Lorem ipsum dol
+    </Toast>
+
+    <Toast
+      onClose={() => {}}
+      sx={{
+        width: "484px",
+      }}
+    >
+      Lorem ipsum dolor sit amet consectetur. Velit urna donec tortor egestas
+      donec laoreet porttitor phasellus imperdiet. Egestas leo pretium tempus
+      purus laoreet egestas habitant scelerisque non imperdiet.
+    </Toast>
+    <Toast
+      severity="success"
+      sx={{
+        width: "464px",
+      }}
+    >
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Augue lorem in
+      dictum vitae ut massa.
+    </Toast>
+
+    <Toast
+      severity="info"
+      action={
+        <Button
+          size="medium"
+          kind="ghost"
+          color="secondary"
+          sx={{ width: "64px" }}
+        >
+          Button
+        </Button>
+      }
+      sx={{
+        width: "548px",
+      }}
+    >
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Augue lorem in
+      dictum vitae ut massa.
+    </Toast>
+    <Toast
+      severity="error"
+      action={
+        <Button size="medium" kind="ghost" color="error" sx={{ width: "64px" }}>
+          Button
+        </Button>
+      }
+      onClose={() => {}}
+      sx={{
+        width: "584px",
+      }}
+    >
+      Lorem ipsum dolor sit amet consectetur. Velit urna donec tortor.
+    </Toast>
   </Box>
 );
 

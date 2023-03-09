@@ -1,4 +1,5 @@
-import { Alert, Box, styled } from "@mui/material";
+import { elevationOptions } from "@/foundation/Elevation";
+import { Alert, styled } from "@mui/material";
 import { getIconColor } from "./Toast.utils";
 
 export const StyledToast = styled(Alert)(({ theme, severity }) => {
@@ -8,12 +9,12 @@ export const StyledToast = styled(Alert)(({ theme, severity }) => {
       alignItems: "center",
     },
     "&.MuiAlert-root": {
-      color: theme.palette.token.core.text_normal,
-      backgroundColor: theme.palette.token.core.bg_03,
       padding: "8px 16px 8px 16px",
       margin: 0,
-      boxShadow: "none",
-      width: "auto",
+      color: theme.palette.token.core.text_normal,
+      backgroundColor: theme.palette.token.core.bg_03,
+      "--elevation-shadow": elevationOptions.elevation_02,
+      borderRadius: "8px",
     },
     "& .MuiAlert-icon": {
       height: "36px",
@@ -48,7 +49,3 @@ export const StyledToast = styled(Alert)(({ theme, severity }) => {
     },
   };
 });
-
-export const StyledToastElevation = styled(Box)(() => ({
-  borderRadius: "8px",
-}));
