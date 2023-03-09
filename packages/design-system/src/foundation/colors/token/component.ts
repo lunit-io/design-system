@@ -9,8 +9,8 @@ export interface TokenComponentColorValue {
 export const tokenComponentColor: TokenComponentColorValue = {
   btn: {
     btn_contained_primary_bg: {
-      light1: "--lunitTeal-40",
-      light2: "--lunitTeal-40",
+      light1: "--lunitTeal-30",
+      light2: "--lunitTeal-30",
       dark1: "--lunitTeal-40",
       dark2: "--lunitTeal-40",
       dark3: "--lunitTeal-40",
@@ -41,8 +41,8 @@ export const tokenComponentColor: TokenComponentColorValue = {
       dark4: "--grey-5",
     },
     btn_contained_error_bg: {
-      light1: "--red-40",
-      light2: "--red-40",
+      light1: "--red-30",
+      light2: "--red-30",
       dark1: "--red-40",
       dark2: "--red-40",
       dark3: "--red-40",
@@ -57,8 +57,8 @@ export const tokenComponentColor: TokenComponentColorValue = {
       dark4: "--grey-95",
     },
     btn_outlined_primary_border: {
-      light1: "--lunitTeal-50",
-      light2: "--lunitTeal-50",
+      light1: "--lunitTeal-40",
+      light2: "--lunitTeal-40",
       dark1: "--lunitTeal-40",
       dark2: "--lunitTeal-40",
       dark3: "--lunitTeal-40",
@@ -113,7 +113,6 @@ export const tokenComponentColor: TokenComponentColorValue = {
       dark4: "--lunitTeal-80",
     },
     btn_selected_secondary_bg: {
-      // TODO: 피그마에 작성된 코드와 색상의 값이 달라 확인중
       light1: "--lunitTeal-10",
       light2: "--lunitTeal-10",
       dark1: "--grey-80",
@@ -183,14 +182,6 @@ export const tokenComponentColor: TokenComponentColorValue = {
     },
   },
   dropdown: {
-    dropdown_option_selected: {
-      light1: "--lunitTeal-10",
-      light2: "--lunitTeal-10",
-      dark1: "--lunitTeal-80",
-      dark2: "--lunitTeal-80",
-      dark3: "--lunitTeal-80",
-      dark4: "--lunitTeal-80",
-    },
     dropdown_divider_border: {
       light1: "--grey-15",
       light2: "--grey-15",
@@ -199,25 +190,8 @@ export const tokenComponentColor: TokenComponentColorValue = {
       dark3: "--grey-60",
       dark4: "--grey-60",
     },
-    dropdown_option_activatied: {
-      // TODO: 오타 수정 요청 => activated. 피그마에 토큰이 없어서 사용하는지 여부 확인중
-      light1: "--lunitTeal-10",
-      light2: "--lunitTeal-10",
-      dark1: "--lunitTeal-80",
-      dark2: "--lunitTeal-80",
-      dark3: "--lunitTeal-80",
-      dark4: "--lunitTeal-80",
-    },
   },
   dataTable: {
-    datatable_cell_selected: {
-      light1: "--lunitTeal-10",
-      light2: "--lunitTeal-10",
-      dark1: "--lunitTeal-80",
-      dark2: "--lunitTeal-80",
-      dark3: "--lunitTeal-80",
-      dark4: "--lunitTeal-80",
-    },
     datatable_border_01: {
       light1: "--grey-20",
       light2: "--grey-30",
