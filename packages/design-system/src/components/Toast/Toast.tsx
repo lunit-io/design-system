@@ -1,10 +1,9 @@
-import {
-  Success,
-  Error,
-  Warning,
-  Information,
-  Close,
-} from "@lunit/design-system-icons";
+import Success from "@lunit/design-system-icons/Success16";
+import Error from "@lunit/design-system-icons/Error16";
+import Warning from "@lunit/design-system-icons/Warning16";
+import Information from "@lunit/design-system-icons/Information16";
+import Close from "@lunit/design-system-icons/Close";
+
 import { Typography } from "@mui/material";
 import React, { forwardRef } from "react";
 
