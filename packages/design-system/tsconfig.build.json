@@ -5,9 +5,13 @@
     "outDir": "./dist",
     "declaration": true,
     "declarationDir": "./dist/types",
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
-  "include": ["src/**/*", "generated/**/*"],
+  "include": ["src/**/*"],
   "exclude": [
     "src/stories/**",
     "src/**/__tests__/**/*.ts",
