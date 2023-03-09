@@ -1,4 +1,3 @@
-import { elevationOptions } from "@/foundation/Elevation";
 import { Alert, styled } from "@mui/material";
 import { getIconColor } from "./Toast.utils";
 
@@ -13,7 +12,6 @@ export const StyledToast = styled(Alert)(({ theme, severity }) => {
       margin: 0,
       color: theme.palette.token.core.text_normal,
       backgroundColor: theme.palette.token.core.bg_03,
-      "--elevation-shadow": elevationOptions.elevation_02,
       borderRadius: "8px",
     },
     "& .MuiAlert-icon": {
