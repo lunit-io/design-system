@@ -66,65 +66,8 @@ export default {
 const Template: ComponentStory<typeof Toast> = (args) => (
   <Toast {...args}>Test</Toast>
 );
-const Template2: ComponentStory<typeof Toast> = () => (
-  <Box sx={{ display: "grid", gap: "40px" }}>
-    <Toast onClose={() => {}} sx={{ width: "484px" }}>
-      Lorem ipsum dolor sit amet, consectetur.
-    </Toast>
-    <Toast
-      severity="error"
-      action={
-        <Button size="medium" kind="ghost" color="error">
-          Button
-        </Button>
-      }
-      onClose={() => {}}
-      sx={{
-        width: "584px",
-      }}
-    >
-      Lorem ipsum dolor sit amet, consectetur.
-    </Toast>
-    <Toast
-      severity="success"
-      action={
-        <Button size="medium" kind="ghost">
-          Button
-        </Button>
-      }
-      sx={{
-        width: "584px",
-      }}
-    >
-      Lorem ipsum dolor sit amet, consectetur.
-    </Toast>
-    <Toast
-      severity="info"
-      action={
-        <Button size="medium" kind="ghost" color="secondary">
-          Button
-        </Button>
-      }
-      onClose={() => {}}
-      sx={{
-        width: "584px",
-      }}
-    >
-      Lorem ipsum dolor sit amet, consectetur.
-    </Toast>
-    <Toast
-      severity="warning"
-      onClose={() => {}}
-      sx={{
-        width: "516px",
-      }}
-    >
-      Lorem ipsum dolor sit amet, consectetur.
-    </Toast>
-  </Box>
-);
 
-const Template3: ComponentStory<typeof Toast> = () => (
+const Template2: ComponentStory<typeof Toast> = () => (
   <Box sx={{ display: "grid", gap: "40px" }}>
     <Toast
       sx={{
@@ -206,5 +149,4 @@ const Template3: ComponentStory<typeof Toast> = () => (
 );
 
 export const ToastBase = Template.bind({});
-export const ToastWithText = Template2.bind({});
-export const ToastVariant = Template3.bind({});
+export const ToastVariant = Template2.bind({});
