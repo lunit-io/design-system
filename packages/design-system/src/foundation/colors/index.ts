@@ -49,7 +49,7 @@ const createCSSVariables = () => {
     const baseColors = base[color as ColorKey];
     for (let key in baseColors) {
       if (baseColors.hasOwnProperty(key)) {
-        const varName = `--${color}-${key}`;
+        const varName = `--${color}_${key}`;
         cssVars[varName] = baseColors[Number(key) as keyof typeof baseColors];
       }
     }
