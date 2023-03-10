@@ -15,8 +15,8 @@ declare module "@mui/material/styles/createPalette" {
       grey: GreyColor;
       blue: BaseColor;
       green: BaseColor;
-      lunitGreen: BaseColor;
-      lunitTeal: BaseColor;
+      lunit_green: BaseColor;
+      lunit_teal: BaseColor;
       magenta: BaseColor;
       orange: BaseColor;
       red: BaseColor;
@@ -30,8 +30,8 @@ declare module "@mui/material/styles/createPalette" {
       grey: GreyColor;
       blue: BaseColor;
       green: BaseColor;
-      lunitGreen: BaseColor;
-      lunitTeal: BaseColor;
+      lunit_green: BaseColor;
+      lunit_teal: BaseColor;
       magenta: BaseColor;
       orange: BaseColor;
       red: BaseColor;
