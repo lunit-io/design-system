@@ -121,6 +121,7 @@ export const createColorCssBaseline = () => {
   };
 };
 
+// TODO: TextColors 삭제하고 관련된 설정 수정하기
 const lunitColors: PaletteOptions["lunit"] = ((): PaletteOptions["lunit"] => {
   const ret: any = {};
   for (const colorKey in base) {
