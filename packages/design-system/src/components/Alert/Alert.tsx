@@ -15,30 +15,31 @@ import {
 } from "@lunit/design-system-icons";
 import Button from "../Button";
 
+const MAPPED_ICON = {
+  success: <Success variant="filled" />,
+  info: <Information variant="filled" />,
+  warning: <Warning variant="filled" />,
+  error: <Error variant="filled" />,
+};
+
 const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
   const {
     title,
     severity,
     children,
-    sx,
     bottomAction,
     width = 512,
     isSnackbar = false,
     onClose,
+    ...rest
   } = props;
   return (
     <StyledAlert
       ref={ref}
-      sx={{ ...sx }}
       width={width}
       severity={severity}
       isSnackbar={isSnackbar}
-      iconMapping={{
-        success: <Success variant="filled" />,
-        info: <Information variant="filled" />,
-        warning: <Warning variant="filled" />,
-        error: <Error variant="filled" />,
-      }}
+      iconMapping={MAPPED_ICON}
       slots={{
         closeButton: () => (
           <Button
@@ -51,6 +52,7 @@ const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
         ),
       }}
       onClose={onClose}
+      {...rest}
     >
       {title && <StyledAlertTitle>{title}</StyledAlertTitle>}
       <StyledAlertChildren>{children}</StyledAlertChildren>
