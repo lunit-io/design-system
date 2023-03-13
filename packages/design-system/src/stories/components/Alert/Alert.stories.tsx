@@ -12,15 +12,18 @@ export default {
   argTypes: {
     title: {
       control: "text",
-      description: "Used to represent the title of the alert. Optional",
+      description: "Used to represent the title of the alert.",
     },
     width: {
       control: {
         type: "number",
-        min: 374,
+        min: 364,
       },
-      description: `min size is 374px (text area 260px)
-      \nIf the Alert is in the Snackbar, the max size is 512px (text area 400px)`,
+      table: {
+        defaultValue: { summary: "512px" },
+      },
+      description: `min size is \`364px\` (text area \`260px\`)
+      \nIf the Alert is in the Snackbar, the max size is \`504px\` (text area \`400px\`)`,
     },
     severity: {
       control: "radio",
@@ -30,6 +33,14 @@ export default {
       },
       options: ["success", "info", "warning", "error", undefined],
       description: `\`success\`, \`info\`, \`warning\`, \`error\`, \`undefined\``,
+    },
+    isSnackbar: {
+      control: "boolean",
+      defaultValue: false,
+      table: {
+        defaultValue: { summary: "false" },
+      },
+      description: `Set to \`true\` if this component is used inside a snackbar.`,
     },
   },
   parameters: {
@@ -59,99 +70,69 @@ export default {
   ],
 } as ComponentMeta<typeof Alert>;
 
+const AlertChildrenVariant1 = () => {
+  return (
+    <Typography variant="body2_14_regular">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut{" "}
+      <u style={{ color: theme.palette.token.core.link_primary }}>
+        labore et dolore
+      </u>{" "}
+      magna aliqua. A diam sollicitudin tempor id eu nisl nunc mi. Auctor augue
+      mauris augue neque gravida in fermentum.
+    </Typography>
+  );
+};
+
+const AlertChildrenVariant2 = () => {
+  return (
+    <Typography variant="body2_14_regular">
+      Lorem ipsum dolor sit amet, consectetur adipiscin
+    </Typography>
+  );
+};
+
+const AlertBottomAction = () => {
+  return (
+    <Box sx={{ display: "flex", columnGap: "8px" }}>
+      <Button color="primary" kind="contained">
+        Button
+      </Button>
+      <Button color="secondary" kind="ghost">
+        Button
+      </Button>
+    </Box>
+  );
+};
+
 const Template: ComponentStory<typeof Alert> = (args) => (
   <>
+    <Alert {...args}>
+      <AlertChildrenVariant1 />
+    </Alert>
     <Alert
-      title="Alert title"
       width={args.width}
-      isSnackbar={true}
       severity={args.severity}
-      children={
-        <Typography variant="body2_14_regular">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut{" "}
-          <u style={{ color: theme.palette.token.core.link_primary }}>
-            labore et dolore
-          </u>{" "}
-          magna aliqua. A diam sollicitudin tempor id eu nisl nunc mi. Auctor
-          augue mauris augue neque gravida in fermentum.
-        </Typography>
-      }
-      bottomAction={
-        <>
-          <Button color="primary" kind="contained">
-            Button
-          </Button>
-          <Button color="secondary" kind="ghost">
-            Button
-          </Button>
-        </>
-      }
+      isSnackbar={args.isSnackbar}
       onClose={() => {}}
-    />
+    >
+      <AlertChildrenVariant1 />
+    </Alert>
     <Alert
-      title={args.title}
       width={args.width}
       severity={args.severity}
-      children={
-        <Typography variant="body2_14_regular">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut{" "}
-          <u style={{ color: theme.palette.token.core.link_primary }}>
-            labore et dolore
-          </u>{" "}
-          magna aliqua. A diam sollicitudin tempor id eu nisl nunc mi. Auctor
-          augue mauris augue neque gravida in fermentum.
-        </Typography>
-      }
-      bottomAction={
-        <>
-          <Button color="primary" kind="contained">
-            Button
-          </Button>
-          <Button color="secondary" kind="ghost">
-            Button
-          </Button>
-        </>
-      }
+      isSnackbar={args.isSnackbar}
       onClose={() => {}}
-    />
-    <Alert
-      width={args.width}
-      title={args.title}
-      severity={args.severity}
-      children={
-        <Typography variant="body2_14_regular">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut{" "}
-          <u style={{ color: theme.palette.token.core.link_primary }}>
-            labore et dolore
-          </u>{" "}
-          magna aliqua. A diam sollicitudin tempor id eu nisl nunc mi. Auctor
-          augue mauris augue neque gravida in fermentum.
-        </Typography>
-      }
-      onClose={() => {}}
-    />
-    <Alert
-      width={args.width}
-      onClose={() => {}}
-      severity={args.severity}
-      children={
-        <Typography variant="body2_14_regular">
-          Lorem ipsum dolor sit amet, consectetur adipiscin
-        </Typography>
-      }
-    />
+    >
+      <AlertChildrenVariant2 />
+    </Alert>
     <Alert
       width={args.width}
       severity={args.severity}
-      children={
-        <Typography variant="body2_14_regular">
-          Lorem ipsum dolor sit amet, consectetur adipiscin
-        </Typography>
-      }
-    />
+      isSnackbar={args.isSnackbar}
+    >
+      <AlertChildrenVariant2 />
+    </Alert>
   </>
 );
 
@@ -160,4 +141,7 @@ LunitAlert.args = {
   width: 620,
   title: "Alert title",
   severity: "success",
+  isSnackbar: false,
+  onClose: () => {},
+  bottomAction: <AlertBottomAction />,
 };
