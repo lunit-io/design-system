@@ -5,6 +5,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import Alert from "@/components/Alert";
 import Button from "@/components/Button";
 import theme from "@/theme";
+import { action } from "@storybook/addon-actions";
 
 export default {
   title: "Components/Alert",
@@ -42,10 +43,15 @@ export default {
       },
       description: `Set to \`true\` if this component is used inside a snackbar.`,
     },
+    onClose: {
+      control: "function",
+      description: `Callback fired when the component requests to be closed.
+        When provided, a close icon button is displayed that triggers the callback when clicked.`,
+    },
   },
   parameters: {
     controls: {
-      include: ["title", "width", "isSnackbar", "severity"],
+      include: ["title", "width", "isSnackbar", "severity", "onClose"],
     },
     docs: {
       description: {
@@ -106,6 +112,12 @@ const AlertBottomAction = () => {
 };
 
 const Template: ComponentStory<typeof Alert> = (args) => (
+  <Alert {...args}>
+    <AlertChildrenVariant1 />
+  </Alert>
+);
+
+const Template2: ComponentStory<typeof Alert> = (args) => (
   <>
     <Alert {...args}>
       <AlertChildrenVariant1 />
@@ -136,12 +148,22 @@ const Template: ComponentStory<typeof Alert> = (args) => (
   </>
 );
 
-export const LunitAlert = Template.bind({});
-LunitAlert.args = {
+export const AlertBase = Template.bind({});
+AlertBase.args = {
   width: 620,
   title: "Alert title",
   severity: "success",
   isSnackbar: false,
-  onClose: () => {},
+  onClose: action("Close Button is clicked"),
+  bottomAction: <AlertBottomAction />,
+};
+
+export const AlertVariant = Template2.bind({});
+AlertVariant.args = {
+  width: 620,
+  title: "Alert title",
+  severity: "success",
+  isSnackbar: false,
+  onClose: action("Close Button is clicked"),
   bottomAction: <AlertBottomAction />,
 };
