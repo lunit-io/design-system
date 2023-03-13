@@ -11,17 +11,6 @@ import {
   getIconColor,
 } from "./Alert.utils.";
 
-export const StyledAlertTitle = styled(MuiAlertTitle)(({ theme }) => ({
-  "&.MuiAlertTitle-root": {
-    marginTop: 0,
-    marginBottom: 8,
-    fontWeight: 700,
-    fontSize: "14px",
-    lineHeight: "20px",
-    color: theme.palette.token.core.text_normal,
-  },
-}));
-
 export const StyledAlert = styled(MuiAlert)<AlertProps>(
   ({ severity, width, isSnackbar }) => ({
     "&.MuiAlert-root": {
@@ -57,11 +46,15 @@ export const StyledAlert = styled(MuiAlert)<AlertProps>(
   })
 );
 
-export const StyledIconButton = styled(MuiIconButton)(({ theme }) => ({
-  height: "28px",
-  width: "28px",
-  marginLeft: "16px",
-  color: theme.palette.token.core.text_normal,
+export const StyledAlertTitle = styled(MuiAlertTitle)(({ theme }) => ({
+  "&.MuiAlertTitle-root": {
+    marginTop: 0,
+    marginBottom: 8,
+    fontWeight: 700,
+    fontSize: "14px",
+    lineHeight: "20px",
+    color: theme.palette.token.core.text_normal,
+  },
 }));
 
 export const StyledAlertChildren = styled("div")(({ theme }) => ({
