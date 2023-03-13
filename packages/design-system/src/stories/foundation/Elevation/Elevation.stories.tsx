@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { StoryFn, Meta } from "@storybook/react";
 import {
   Alert,
   Box,
@@ -248,17 +248,16 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof Elevation>;
+} as Meta<typeof Elevation>;
 
-const ElevationBase: ComponentStory<typeof Elevation> = (
-  args,
-  { globals: { theme } }
-) => <Elevation {...args} surface={theme} isBase />;
+export const Base = {
+  render: (args, { globals: { theme } }) => (
+    <Elevation {...args} surface={theme} isBase />
+  ),
+};
 
-const ElevationNesed: ComponentStory<typeof Elevation> = (
-  args,
-  { globals: { theme } }
-) => <Elevation {...args} surface={theme} />;
-
-export const Base = ElevationBase.bind({});
-export const Nested = ElevationNesed.bind({});
+export const Nested = {
+  render: (args, { globals: { theme } }) => (
+    <Elevation {...args} surface={theme} />
+  ),
+};

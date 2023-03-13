@@ -11,7 +11,7 @@ import { Bell } from "@lunit/design-system-icons";
 import ToggleButton from "@/components/ToggleButton";
 import ToggleButtonGroup from "@/components/ToggleButtonGroup";
 
-import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import type { StoryFn, Meta } from "@storybook/react";
 import type { ButtonProps } from "@/components/Button/Button.types";
 
 type Size = Pick<ButtonProps, "size">;
@@ -141,202 +141,202 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof ToggleButton>;
+} as Meta<typeof ToggleButton>;
 
-const BasicToggleButtonTemplate: ComponentStory<typeof ToggleButton> = (
-  arg
-) => {
-  const [selected, setSelected] = useState(false);
-  useEffect(() => {
-    setSelected(Boolean(arg.selected));
-  }, [arg.selected]);
+export const BasicToggleButton = {
+  render: (arg) => {
+    const [selected, setSelected] = useState(false);
+    useEffect(() => {
+      setSelected(Boolean(arg.selected));
+    }, [arg.selected]);
 
-  return (
-    <ToggleButton
-      {...arg}
-      value="test"
-      selected={selected}
-      onChange={() => setSelected(!selected)}
-    >
-      {arg.children}
-    </ToggleButton>
-  );
+    return (
+      <ToggleButton
+        {...arg}
+        value="test"
+        selected={selected}
+        onChange={() => setSelected(!selected)}
+      >
+        {arg.children}
+      </ToggleButton>
+    );
+  },
+
+  name: "Basic ToggleButton",
 };
 
-export const BasicToggleButton = BasicToggleButtonTemplate.bind({});
-BasicToggleButton.storyName = "Basic ToggleButton";
+export const Size = {
+  render: (args) => {
+    const [values, setValues] = React.useState({
+      small: "",
+      medium: "",
+      large: "",
+    });
 
-const SizeTemplate: ComponentStory<typeof ToggleButton> = (args) => {
-  const [values, setValues] = React.useState({
-    small: "",
-    medium: "",
-    large: "",
-  });
+    const handleChange = (value: string | null, size: SizeValues) => {
+      if (size) {
+        setValues({
+          ...values,
+          [size]: value,
+        });
+      }
+    };
 
-  const handleChange = (value: string | null, size: SizeValues) => {
-    if (size) {
-      setValues({
-        ...values,
-        [size]: value,
-      });
-    }
-  };
+    const group = sizeList.map((size) => {
+      if (size) {
+        return {
+          size: size,
+          handler: (_: React.MouseEvent<HTMLElement>, value: string | null) =>
+            handleChange(value, size),
+        };
+      }
+    });
 
-  const group = sizeList.map((size) => {
-    if (size) {
-      return {
-        size: size,
-        handler: (_: React.MouseEvent<HTMLElement>, value: string | null) =>
-          handleChange(value, size),
-      };
-    }
-  });
-
-  return (
-    <Table sx={{ width: 900 }}>
-      <TableHead>
-        <TableRow>
-          <TableCell
-            colSpan={3}
-            sx={{
-              typography: "body1_16_semibold",
-              color: "inherit",
-            }}
-          >
-            Size
-          </TableCell>
-        </TableRow>
-        <TableRow>
-          <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
-            Small
-          </TableCell>
-          <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
-            Medium
-          </TableCell>
-          <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
-            Large
-          </TableCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        <TableRow>
-          {group.map((item) => {
-            if (item) {
-              const { size, handler } = item;
-              return (
-                <TableCell
-                  key={size}
-                  sx={{ "& button": { marginRight: "10px" } }}
-                >
-                  <ToggleButtonGroup
-                    value={values[size]}
-                    exclusive
-                    onChange={handler}
-                    aria-label="text alignment"
-                    sx={{
-                      "& button": {
-                        marginRight: "7px",
-                      },
-                    }}
+    return (
+      <Table sx={{ width: 900 }}>
+        <TableHead>
+          <TableRow>
+            <TableCell
+              colSpan={3}
+              sx={{
+                typography: "body1_16_semibold",
+                color: "inherit",
+              }}
+            >
+              Size
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+              Small
+            </TableCell>
+            <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+              Medium
+            </TableCell>
+            <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+              Large
+            </TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          <TableRow>
+            {group.map((item) => {
+              if (item) {
+                const { size, handler } = item;
+                return (
+                  <TableCell
+                    key={size}
+                    sx={{ "& button": { marginRight: "10px" } }}
                   >
-                    <ToggleButton
-                      {...args}
-                      icon={<Bell />}
-                      size={size}
-                      value={String(size) + 1}
-                    />
-                    <ToggleButton
-                      {...args}
-                      size={size}
-                      value={String(size) + 2}
+                    <ToggleButtonGroup
+                      value={values[size]}
+                      exclusive
+                      onChange={handler}
+                      aria-label="text alignment"
+                      sx={{
+                        "& button": {
+                          marginRight: "7px",
+                        },
+                      }}
                     >
-                      {args.children}
-                    </ToggleButton>
-                    <ToggleButton
-                      {...args}
-                      icon={<Bell />}
-                      size={size}
-                      value={String(size) + 3}
-                    >
-                      {args.children}
-                    </ToggleButton>
-                  </ToggleButtonGroup>
-                </TableCell>
-              );
-            }
-          })}
-        </TableRow>
-      </TableBody>
-    </Table>
-  );
-};
+                      <ToggleButton
+                        {...args}
+                        icon={<Bell />}
+                        size={size}
+                        value={String(size) + 1}
+                      />
+                      <ToggleButton
+                        {...args}
+                        size={size}
+                        value={String(size) + 2}
+                      >
+                        {args.children}
+                      </ToggleButton>
+                      <ToggleButton
+                        {...args}
+                        icon={<Bell />}
+                        size={size}
+                        value={String(size) + 3}
+                      >
+                        {args.children}
+                      </ToggleButton>
+                    </ToggleButtonGroup>
+                  </TableCell>
+                );
+              }
+            })}
+          </TableRow>
+        </TableBody>
+      </Table>
+    );
+  },
 
-export const Size = SizeTemplate.bind({});
-Size.argTypes = {
-  size: {
-    control: false,
+  argTypes: {
+    size: {
+      control: false,
+    },
   },
 };
 
-const SelectedColorTemplate: ComponentStory<typeof ToggleButton> = (arg) => {
-  const [selected1, setSelected1] = useState(true);
-  const [selected2, setSelected2] = useState(true);
+export const SelectedColor = {
+  render: (arg) => {
+    const [selected1, setSelected1] = useState(true);
+    const [selected2, setSelected2] = useState(true);
 
-  return (
-    <Table sx={{ width: 330 }}>
-      <TableHead>
-        <TableRow>
-          <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
-            Selected color
-          </TableCell>
-          <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
-            Primary
-          </TableCell>
-          <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
-            Secondary
-          </TableCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        <TableRow>
-          <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
-            Selected
-          </TableCell>
-          <TableCell>
-            <ToggleButton
-              {...arg}
-              value="first"
-              selected={selected1}
-              onChange={() => setSelected1(!selected1)}
-            >
-              {arg.children}
-            </ToggleButton>
-          </TableCell>
-          <TableCell>
-            <ToggleButton
-              {...arg}
-              selectedColor="secondary"
-              value="second"
-              selected={selected2}
-              onChange={() => setSelected2(!selected2)}
-            >
-              {arg.children}
-            </ToggleButton>
-          </TableCell>
-        </TableRow>
-      </TableBody>
-    </Table>
-  );
-};
-
-export const SelectedColor = SelectedColorTemplate.bind({});
-
-SelectedColor.argTypes = {
-  selectedColor: {
-    control: false,
+    return (
+      <Table sx={{ width: 330 }}>
+        <TableHead>
+          <TableRow>
+            <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+              Selected color
+            </TableCell>
+            <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+              Primary
+            </TableCell>
+            <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+              Secondary
+            </TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          <TableRow>
+            <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+              Selected
+            </TableCell>
+            <TableCell>
+              <ToggleButton
+                {...arg}
+                value="first"
+                selected={selected1}
+                onChange={() => setSelected1(!selected1)}
+              >
+                {arg.children}
+              </ToggleButton>
+            </TableCell>
+            <TableCell>
+              <ToggleButton
+                {...arg}
+                selectedColor="secondary"
+                value="second"
+                selected={selected2}
+                onChange={() => setSelected2(!selected2)}
+              >
+                {arg.children}
+              </ToggleButton>
+            </TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+    );
   },
-};
 
-SelectedColor.args = {
-  selected: true,
+  argTypes: {
+    selectedColor: {
+      control: false,
+    },
+  },
+
+  args: {
+    selected: true,
+  },
 };

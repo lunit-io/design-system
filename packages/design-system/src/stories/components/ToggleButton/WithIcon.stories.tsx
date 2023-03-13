@@ -11,7 +11,7 @@ import { Bell } from "@lunit/design-system-icons";
 
 import ToggleButton from "@/components/ToggleButton";
 
-import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import type { StoryFn, Meta } from "@storybook/react";
 
 export default {
   title: "Components/ToggleButton",
@@ -148,146 +148,150 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof ToggleButton>;
+} as Meta<typeof ToggleButton>;
 
-const Template: ComponentStory<typeof ToggleButton> = (arg) => {
-  const [values, setValues] = useState({
-    primary: true,
-    secondary: true,
-  });
-
-  const handleChange = (value: keyof typeof values) => {
-    setValues({
-      ...values,
-      [value]: !values[value],
+export const IconStory = {
+  render: (arg) => {
+    const [values, setValues] = useState({
+      primary: true,
+      secondary: true,
     });
-  };
 
-  return (
-    <Table sx={{ width: 330 }}>
-      <TableHead>
-        <TableRow>
-          <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
-            Selected color
-          </TableCell>
-          <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
-            Primary
-          </TableCell>
-          <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
-            Secondary
-          </TableCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        <TableRow>
-          <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
-            Selected
-          </TableCell>
-          <TableCell>
-            <ToggleButton
-              {...arg}
-              icon={<Bell />}
-              value="primary"
-              onChange={() => handleChange("primary")}
-              selected={values.primary}
-            >
-              {arg.children}
-            </ToggleButton>
-          </TableCell>
-          <TableCell>
-            <ToggleButton
-              {...arg}
-              icon={<Bell />}
-              selectedColor="secondary"
-              value="secondary"
-              onChange={() => handleChange("secondary")}
-              selected={values.secondary}
-            >
-              {arg.children}
-            </ToggleButton>
-          </TableCell>
-        </TableRow>
-      </TableBody>
-    </Table>
-  );
-};
+    const handleChange = (value: keyof typeof values) => {
+      setValues({
+        ...values,
+        [value]: !values[value],
+      });
+    };
 
-export const IconStory = Template.bind({});
-IconStory.storyName = "Icon";
-IconStory.argTypes = {
-  children: {
-    type: "string",
-    defaultValue: "text",
+    return (
+      <Table sx={{ width: 330 }}>
+        <TableHead>
+          <TableRow>
+            <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+              Selected color
+            </TableCell>
+            <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+              Primary
+            </TableCell>
+            <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+              Secondary
+            </TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          <TableRow>
+            <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+              Selected
+            </TableCell>
+            <TableCell>
+              <ToggleButton
+                {...arg}
+                icon={<Bell />}
+                value="primary"
+                onChange={() => handleChange("primary")}
+                selected={values.primary}
+              >
+                {arg.children}
+              </ToggleButton>
+            </TableCell>
+            <TableCell>
+              <ToggleButton
+                {...arg}
+                icon={<Bell />}
+                selectedColor="secondary"
+                value="secondary"
+                onChange={() => handleChange("secondary")}
+                selected={values.secondary}
+              >
+                {arg.children}
+              </ToggleButton>
+            </TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+    );
+  },
+
+  name: "Icon",
+
+  argTypes: {
+    children: {
+      type: "string",
+      defaultValue: "text",
+    },
   },
 };
 
-const IconOnlyTemplate: ComponentStory<typeof ToggleButton> = (arg) => {
-  const [values, setValues] = useState({
-    primary: true,
-    secondary: true,
-  });
-
-  const handleChange = (value: keyof typeof values) => {
-    setValues({
-      ...values,
-      [value]: !values[value],
+export const WithIconOnlyStory = {
+  render: (arg) => {
+    const [values, setValues] = useState({
+      primary: true,
+      secondary: true,
     });
-  };
 
-  return (
-    <Table sx={{ width: 330 }}>
-      <TableHead>
-        <TableRow>
-          <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
-            Selected color
-          </TableCell>
-          <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
-            Primary
-          </TableCell>
-          <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
-            Secondary
-          </TableCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        <TableRow>
-          <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
-            Selected
-          </TableCell>
-          <TableCell>
-            <ToggleButton
-              {...arg}
-              icon={<Bell />}
-              value="primary"
-              onChange={() => handleChange("primary")}
-              selected={values.primary}
-            >
-              {arg.children}
-            </ToggleButton>
-          </TableCell>
-          <TableCell>
-            <ToggleButton
-              {...arg}
-              icon={<Bell />}
-              selectedColor="secondary"
-              value="secondary"
-              onChange={() => handleChange("secondary")}
-              selected={values.secondary}
-            >
-              {arg.children}
-            </ToggleButton>
-          </TableCell>
-        </TableRow>
-      </TableBody>
-    </Table>
-  );
-};
+    const handleChange = (value: keyof typeof values) => {
+      setValues({
+        ...values,
+        [value]: !values[value],
+      });
+    };
 
-export const WithIconOnlyStory = IconOnlyTemplate.bind({});
-WithIconOnlyStory.storyName = "Icon only";
-WithIconOnlyStory.argTypes = {
-  children: {
-    type: "string",
-    controls: false,
+    return (
+      <Table sx={{ width: 330 }}>
+        <TableHead>
+          <TableRow>
+            <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+              Selected color
+            </TableCell>
+            <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+              Primary
+            </TableCell>
+            <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+              Secondary
+            </TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          <TableRow>
+            <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+              Selected
+            </TableCell>
+            <TableCell>
+              <ToggleButton
+                {...arg}
+                icon={<Bell />}
+                value="primary"
+                onChange={() => handleChange("primary")}
+                selected={values.primary}
+              >
+                {arg.children}
+              </ToggleButton>
+            </TableCell>
+            <TableCell>
+              <ToggleButton
+                {...arg}
+                icon={<Bell />}
+                selectedColor="secondary"
+                value="secondary"
+                onChange={() => handleChange("secondary")}
+                selected={values.secondary}
+              >
+                {arg.children}
+              </ToggleButton>
+            </TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+    );
+  },
+
+  name: "Icon only",
+
+  argTypes: {
+    children: {
+      type: "string",
+      controls: false,
+    },
   },
 };

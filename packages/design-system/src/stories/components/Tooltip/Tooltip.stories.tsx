@@ -1,13 +1,13 @@
 import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { StoryFn, Meta } from "@storybook/react";
 
 import Tooltip from "@/components/Tooltip";
 
 export default {
   title: "Components/Tooltip",
   component: Tooltip,
-} as ComponentMeta<typeof Tooltip>;
+} as Meta<typeof Tooltip>;
 
-const Template: ComponentStory<typeof Tooltip> = () => <Tooltip />;
-
-export const LunitChip = Template.bind({});
+export const LunitChip = {
+  render: () => <Tooltip />,
+};

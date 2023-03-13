@@ -1,5 +1,5 @@
 import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Meta } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import Chip from "@/components/Chip";
 import {
@@ -95,98 +95,110 @@ export default {
       expanded: true,
     },
   },
-} as ComponentMeta<typeof Chip>;
+} as Meta<typeof Chip>;
 
-const Template: ComponentStory<typeof Chip> = (args) => <Chip {...args} />;
-
-export const Outlined = Template.bind({});
-
-Outlined.parameters = {
-  docs: {
-    description: {
-      story: `Outlined chip only contains label and shows the state of disabled.`,
+export const Outlined = {
+  parameters: {
+    docs: {
+      description: {
+        story: `Outlined chip only contains label and shows the state of disabled.`,
+      },
+    },
+    controls: {
+      exclude: [
+        "thumbnail",
+        "onClick",
+        "onDelete",
+        "disabled",
+        "clickable",
+        "skipFocusWhenDisabled",
+      ],
     },
   },
-  controls: {
-    exclude: [
-      "thumbnail",
-      "onClick",
-      "onDelete",
-      "disabled",
-      "clickable",
-      "skipFocusWhenDisabled",
-    ],
-  },
-};
-Outlined.args = {
-  color: "primary",
-  kind: "outlined",
-};
-Outlined.storyName = "Kind: Outlined";
 
-export const Contained = Template.bind({});
-Contained.parameters = {
-  controls: {
-    exclude: [
-      "thumbnail",
-      "onClick",
-      "onDelete",
-      "disabled",
-      "clickable",
-      "skipFocusWhenDisabled",
-    ],
+  args: {
+    color: "primary",
+    kind: "outlined",
   },
-};
-Contained.args = {
-  color: "primary",
-  kind: "contained",
-};
-Contained.storyName = "Kind: Contained / Read Only";
 
-export const ContainedWithClick = Template.bind({});
-ContainedWithClick.args = {
-  onClick: action("onClick"),
-  onDelete: undefined,
+  name: "Kind: Outlined",
 };
-ContainedWithClick.parameters = {
-  docs: {
-    description: {
-      story: `Contained chip can have onClick event. When Chip is clickable, onDelete is disabled.`,
+
+export const Contained = {
+  parameters: {
+    controls: {
+      exclude: [
+        "thumbnail",
+        "onClick",
+        "onDelete",
+        "disabled",
+        "clickable",
+        "skipFocusWhenDisabled",
+      ],
     },
   },
-  controls: {
-    exclude: ["onDelete", "deletable"],
-  },
-};
-ContainedWithClick.storyName = "Kind: Contained / Enable";
 
-export const ContainedWithDelete = Template.bind({});
-ContainedWithDelete.args = {
-  ...Contained.args,
-  onClick: undefined,
-  onDelete: action("onDelete"),
+  args: {
+    color: "primary",
+    kind: "contained",
+  },
+
+  name: "Kind: Contained / Read Only",
 };
-ContainedWithDelete.parameters = {
-  docs: {
-    description: {
-      story: `Contained chip can have delete button. When Chip is deletable, onClick is disabled.`,
+
+export const ContainedWithClick = {
+  args: {
+    onClick: action("onClick"),
+    onDelete: undefined,
+  },
+
+  parameters: {
+    docs: {
+      description: {
+        story: `Contained chip can have onClick event. When Chip is clickable, onDelete is disabled.`,
+      },
+    },
+    controls: {
+      exclude: ["onDelete", "deletable"],
     },
   },
-  controls: {
-    exclude: ["onClick", "clickable"],
-  },
-};
-ContainedWithDelete.storyName = "Kind: Contained / Deletable";
 
-export const ContainedWithThumbnail = Template.bind({});
-ContainedWithThumbnail.args = {
-  thumbnail: "Initial",
+  name: "Kind: Contained / Enable",
 };
-ContainedWithThumbnail.parameters = {
-  docs: {
-    description: {
-      story: `Contained chip can have thumbnail as "avatar", "logo", and lunit icons.`,
+
+export const ContainedWithDelete = {
+  args: {
+    ...Contained.args,
+    onClick: undefined,
+    onDelete: action("onDelete"),
+  },
+
+  parameters: {
+    docs: {
+      description: {
+        story: `Contained chip can have delete button. When Chip is deletable, onClick is disabled.`,
+      },
+    },
+    controls: {
+      exclude: ["onClick", "clickable"],
     },
   },
+
+  name: "Kind: Contained / Deletable",
 };
-ContainedWithThumbnail.storyName = "Kind: Contained with Thumbnail";
+
+export const ContainedWithThumbnail = {
+  args: {
+    thumbnail: "Initial",
+  },
+
+  parameters: {
+    docs: {
+      description: {
+        story: `Contained chip can have thumbnail as "avatar", "logo", and lunit icons.`,
+      },
+    },
+  },
+
+  name: "Kind: Contained with Thumbnail",
+};

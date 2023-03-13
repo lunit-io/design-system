@@ -1,13 +1,13 @@
 import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { StoryFn, Meta } from "@storybook/react";
 
 import Alert from "@/components/Alert";
 
 export default {
   title: "Components/Alert",
   component: Alert,
-} as ComponentMeta<typeof Alert>;
+} as Meta<typeof Alert>;
 
-const Template: ComponentStory<typeof Alert> = () => <Alert />;
-
-export const LunitAlert = Template.bind({});
+export const LunitAlert = {
+  render: () => <Alert />,
+};

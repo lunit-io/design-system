@@ -1,13 +1,13 @@
 import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { StoryFn, Meta } from "@storybook/react";
 
 import TextField from "@/components/TextField";
 
 export default {
   title: "Components/TextField",
   component: TextField,
-} as ComponentMeta<typeof TextField>;
+} as Meta<typeof TextField>;
 
-const Template: ComponentStory<typeof TextField> = () => <TextField />;
-
-export const LunitTextField = Template.bind({});
+export const LunitTextField = {
+  render: () => <TextField />,
+};

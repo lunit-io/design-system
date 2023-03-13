@@ -4,7 +4,7 @@ import { action } from "@storybook/addon-actions";
 
 import Button from "@/components/Button";
 
-import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import type { StoryFn, Meta } from "@storybook/react";
 
 export default {
   title: "Components/Button",
@@ -95,34 +95,44 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof Button>;
+} as Meta<typeof Button>;
 
-const IconButtonTemplate: ComponentStory<typeof Button> = (args) => (
-  <Button icon={<Bell />} {...args}>
-    {args.children}
-  </Button>
-);
+export const IconOnlyButton = {
+  render: (args) => (
+    <Button icon={<Bell />} {...args}>
+      {args.children}
+    </Button>
+  ),
 
-export const IconOnlyButton = IconButtonTemplate.bind({});
-IconOnlyButton.argTypes = {
-  children: {
-    control: false,
-    type: "string",
-    table: {
-      defaultValue: { summary: "undefined" },
+  argTypes: {
+    children: {
+      control: false,
+      type: "string",
+      table: {
+        defaultValue: { summary: "undefined" },
+      },
     },
   },
-};
-IconOnlyButton.storyName = "Icon only";
 
-export const IconWithTextButton = IconButtonTemplate.bind({});
-IconWithTextButton.argTypes = {
-  children: {
-    type: "string",
-    defaultValue: "Text",
-    table: {
-      defaultValue: { summary: "undefined" },
+  name: "Icon only",
+};
+
+export const IconWithTextButton = {
+  render: (args) => (
+    <Button icon={<Bell />} {...args}>
+      {args.children}
+    </Button>
+  ),
+
+  argTypes: {
+    children: {
+      type: "string",
+      defaultValue: "Text",
+      table: {
+        defaultValue: { summary: "undefined" },
+      },
     },
   },
+
+  name: "Icon",
 };
-IconWithTextButton.storyName = "Icon";

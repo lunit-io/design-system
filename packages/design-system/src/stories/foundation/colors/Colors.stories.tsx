@@ -1,5 +1,5 @@
 import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { StoryFn, Meta } from "@storybook/react";
 import { Typography, useTheme } from "@mui/material";
 import { Color, ColorContainer, Container, PaletteContainer } from "./styled";
 import map from "lodash/map";
@@ -55,11 +55,9 @@ export default {
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   title: "Foundation/Colors",
   component: BaseColors,
-} as ComponentMeta<typeof BaseColors>;
+} as Meta<typeof BaseColors>;
 
-// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const BaseTemplate: ComponentStory<typeof BaseColors> = () => <BaseColors />;
-
-export const GlobalColors = BaseTemplate.bind({});
-GlobalColors.storyName = "Palette: Global Colors";
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
+export const GlobalColors = {
+  render: () => <BaseColors />,
+  name: "Palette: Global Colors",
+};

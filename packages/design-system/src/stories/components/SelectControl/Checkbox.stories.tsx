@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import Checkbox from "@/components/Checkbox";
 import FormLabel from "@/components/FormLabel";
-import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 
 export default {
   title: "Components/Checkbox",
@@ -80,169 +80,169 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof Checkbox>;
+} as Meta<typeof Checkbox>;
 
-const BasicCheckboxTemplate: ComponentStory<typeof Checkbox> = (args) => {
-  const [checked, setChecked] = useState(false);
+export const BasicCheckbox = {
+  render: (args) => {
+    const [checked, setChecked] = useState(false);
 
-  useEffect(() => {
-    setChecked(Boolean(args.checked));
-  }, [args.checked]);
+    useEffect(() => {
+      setChecked(Boolean(args.checked));
+    }, [args.checked]);
 
-  return (
-    <Checkbox
-      {...args}
-      checked={checked}
-      onChange={() => setChecked(!checked)}
-    />
-  );
+    return (
+      <Checkbox
+        {...args}
+        checked={checked}
+        onChange={() => setChecked(!checked)}
+      />
+    );
+  },
 };
 
-export const BasicCheckbox = BasicCheckboxTemplate.bind({});
+export const Label = {
+  render: (args) => {
+    const [checked, setChecked] = useState(false);
+    useEffect(() => {
+      setChecked(Boolean(args.checked));
+    }, [args.checked]);
 
-const LabelTemplate: ComponentStory<typeof Checkbox> = (args) => {
-  const [checked, setChecked] = useState(false);
-  useEffect(() => {
-    setChecked(Boolean(args.checked));
-  }, [args.checked]);
+    return (
+      <FormLabel
+        label="with label"
+        control={
+          <Checkbox
+            {...args}
+            checked={checked}
+            onChange={() => setChecked(!checked)}
+          />
+        }
+      />
+    );
+  },
 
-  return (
-    <FormLabel
-      label="with label"
-      control={
-        <Checkbox
-          {...args}
-          checked={checked}
-          onChange={() => setChecked(!checked)}
-        />
-      }
-    />
-  );
-};
-
-export const Label = LabelTemplate.bind({});
-
-Label.parameters = {
-  docs: {
-    description: {
-      story: "You can use the `FormControlLabel` component to provide label.",
+  parameters: {
+    docs: {
+      description: {
+        story: "You can use the `FormControlLabel` component to provide label.",
+      },
     },
   },
 };
 
-const StatusTemplate: ComponentStory<typeof Checkbox> = (args) => (
-  <Table sx={{ width: 650 }}>
-    <TableHead>
-      <TableRow>
-        <TableCell></TableCell>
-        <TableCell>Enabled</TableCell>
-        <TableCell>Focuse</TableCell>
-        <TableCell>Disabled</TableCell>
-      </TableRow>
-    </TableHead>
-    <TableBody>
-      <TableRow>
-        <TableCell>On</TableCell>
-        <TableCell>
-          <Checkbox {...args} checked />
-        </TableCell>
-        <TableCell>
-          <Checkbox {...args} checked className="Mui-focusVisible" />
-        </TableCell>
-        <TableCell>
-          <Checkbox {...args} checked disabled />
-        </TableCell>
-      </TableRow>
-      <TableRow>
-        <TableCell>Off</TableCell>
-        <TableCell>
-          <Checkbox {...args} />
-        </TableCell>
-        <TableCell>
-          <Checkbox {...args} className="Mui-focusVisible" />
-        </TableCell>
-        <TableCell>
-          <Checkbox {...args} disabled />
-        </TableCell>
-      </TableRow>
-      <TableRow>
-        <TableCell>Indeterminate</TableCell>
-        <TableCell>
-          <Checkbox {...args} checked indeterminate />
-        </TableCell>
-        <TableCell>
-          <Checkbox
-            {...args}
-            checked
-            indeterminate
-            className="Mui-focusVisible"
-          />
-        </TableCell>
-        <TableCell>
-          <Checkbox {...args} checked indeterminate disabled />
-        </TableCell>
-      </TableRow>
-    </TableBody>
-  </Table>
-);
-
-export const Status = StatusTemplate.bind({});
-
-const IndeterminateTemplate: ComponentStory<typeof Checkbox> = (args) => {
-  const [checked, setChecked] = React.useState([true, false]);
-
-  const handleChange1 = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setChecked([event.target.checked, event.target.checked]);
-  };
-
-  const handleChange2 = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setChecked([event.target.checked, checked[1]]);
-  };
-
-  const handleChange3 = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setChecked([checked[0], event.target.checked]);
-  };
-
-  const children = (
-    <Box sx={{ display: "flex", flexDirection: "column", ml: 3 }}>
-      <FormLabel
-        label="Child 1"
-        control={<Checkbox checked={checked[0]} onChange={handleChange2} />}
-      />
-      <FormLabel
-        label="Child 2"
-        control={<Checkbox checked={checked[1]} onChange={handleChange3} />}
-      />
-    </Box>
-  );
-
-  return (
-    <div>
-      <FormLabel
-        label="Parent"
-        control={
-          <Checkbox
-            checked={checked[0] && checked[1]}
-            indeterminate={checked[0] !== checked[1]}
-            onChange={handleChange1}
-          />
-        }
-      />
-      {children}
-    </div>
-  );
+export const Status = {
+  render: (args) => (
+    <Table sx={{ width: 650 }}>
+      <TableHead>
+        <TableRow>
+          <TableCell></TableCell>
+          <TableCell>Enabled</TableCell>
+          <TableCell>Focuse</TableCell>
+          <TableCell>Disabled</TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        <TableRow>
+          <TableCell>On</TableCell>
+          <TableCell>
+            <Checkbox {...args} checked />
+          </TableCell>
+          <TableCell>
+            <Checkbox {...args} checked className="Mui-focusVisible" />
+          </TableCell>
+          <TableCell>
+            <Checkbox {...args} checked disabled />
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>Off</TableCell>
+          <TableCell>
+            <Checkbox {...args} />
+          </TableCell>
+          <TableCell>
+            <Checkbox {...args} className="Mui-focusVisible" />
+          </TableCell>
+          <TableCell>
+            <Checkbox {...args} disabled />
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>Indeterminate</TableCell>
+          <TableCell>
+            <Checkbox {...args} checked indeterminate />
+          </TableCell>
+          <TableCell>
+            <Checkbox
+              {...args}
+              checked
+              indeterminate
+              className="Mui-focusVisible"
+            />
+          </TableCell>
+          <TableCell>
+            <Checkbox {...args} checked indeterminate disabled />
+          </TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+  ),
 };
 
-export const Indeterminate = IndeterminateTemplate.bind({});
+export const Indeterminate = {
+  render: (args) => {
+    const [checked, setChecked] = React.useState([true, false]);
 
-Indeterminate.argTypes = {
-  disabled: {
-    control: false,
+    const handleChange1 = (event: React.ChangeEvent<HTMLInputElement>) => {
+      setChecked([event.target.checked, event.target.checked]);
+    };
+
+    const handleChange2 = (event: React.ChangeEvent<HTMLInputElement>) => {
+      setChecked([event.target.checked, checked[1]]);
+    };
+
+    const handleChange3 = (event: React.ChangeEvent<HTMLInputElement>) => {
+      setChecked([checked[0], event.target.checked]);
+    };
+
+    const children = (
+      <Box sx={{ display: "flex", flexDirection: "column", ml: 3 }}>
+        <FormLabel
+          label="Child 1"
+          control={<Checkbox checked={checked[0]} onChange={handleChange2} />}
+        />
+        <FormLabel
+          label="Child 2"
+          control={<Checkbox checked={checked[1]} onChange={handleChange3} />}
+        />
+      </Box>
+    );
+
+    return (
+      <div>
+        <FormLabel
+          label="Parent"
+          control={
+            <Checkbox
+              checked={checked[0] && checked[1]}
+              indeterminate={checked[0] !== checked[1]}
+              onChange={handleChange1}
+            />
+          }
+        />
+        {children}
+      </div>
+    );
   },
-  checked: {
-    control: false,
-  },
-  indeterminate: {
-    control: false,
+
+  argTypes: {
+    disabled: {
+      control: false,
+    },
+    checked: {
+      control: false,
+    },
+    indeterminate: {
+      control: false,
+    },
   },
 };

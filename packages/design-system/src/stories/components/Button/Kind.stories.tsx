@@ -11,7 +11,7 @@ import { action } from "@storybook/addon-actions";
 
 import Button from "@/components/Button";
 
-import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import type { StoryFn, Meta } from "@storybook/react";
 
 export default {
   title: "Components/Button",
@@ -86,440 +86,461 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof Button>;
+} as Meta<typeof Button>;
 
-const ButtonTemplate: ComponentStory<typeof Button> = ({
-  kind,
-  color,
-  children,
-  ...restProps
-}) => {
-  return (
-    <>
-      <Table sx={{ width: 600 }}>
-        <TableHead>
-          <TableRow>
-            <TableCell
-              colSpan={3}
-              sx={{
-                typography: "body1_16_semibold",
-                color: "inherit",
-              }}
-            >
-              Kind
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell
-              sx={{
-                width: "33.33333%",
-                typography: "body2_14_medium",
-                color: "inherit",
-              }}
-            >
-              Contained(default)
-            </TableCell>
-            <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
-              Outlined
-            </TableCell>
-            <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
-              Ghost
-            </TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          <TableRow>
-            <TableCell>
-              <Button color={color} {...restProps}>
-                {children}
-              </Button>
-            </TableCell>
-            <TableCell>
-              <Button kind="outlined" color="primary" {...restProps}>
-                {children}
-              </Button>
-            </TableCell>
-            <TableCell>
-              <Button kind="ghost" color={color} {...restProps}>
-                {children}
-              </Button>
-            </TableCell>
-          </TableRow>
-        </TableBody>
-      </Table>
-    </>
-  );
-};
-
-export const Kind = ButtonTemplate.bind({});
-
-const ContainedButtonTemplate: ComponentStory<typeof Button> = (args) => {
-  return (
-    <>
-      <Table sx={{ width: 650 }}>
-        <TableHead>
-          <TableRow>
-            <TableCell></TableCell>
-            <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
-              Contained Primary
-            </TableCell>
-            <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
-              Contained Secondary
-            </TableCell>
-            <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
-              Contained Error
-            </TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          <TableRow>
-            <TableCell
-              sx={{ typography: "body2_14_regular", color: "inherit" }}
-            >
-              Enable
-            </TableCell>
-            <TableCell>
-              <Button {...args} kind="contained">
-                {args.children}
-              </Button>
-            </TableCell>
-            <TableCell>
-              <Button {...args} kind="contained" color="secondary">
-                {args.children}
-              </Button>
-            </TableCell>
-            <TableCell>
-              <Button {...args} kind="contained" color="error">
-                {args.children}
-              </Button>
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell
-              sx={{ typography: "body2_14_regular", color: "inherit" }}
-            >
-              Hover
-            </TableCell>
-            <TableCell>
-              <Button {...args} id="hover1" kind="contained">
-                {args.children}
-              </Button>
-            </TableCell>
-            <TableCell>
-              <Button {...args} id="hover2" kind="contained" color="secondary">
-                {args.children}
-              </Button>
-            </TableCell>
-            <TableCell>
-              <Button {...args} id="hover3" kind="contained" color="error">
-                {args.children}
-              </Button>
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell
-              sx={{ typography: "body2_14_regular", color: "inherit" }}
-            >
-              Focus
-            </TableCell>
-            <TableCell>
-              <Button {...args} kind="contained" className="Mui-focusVisible">
-                {args.children}
-              </Button>
-            </TableCell>
-            <TableCell>
-              <Button
-                {...args}
-                kind="contained"
-                color="secondary"
-                className="Mui-focusVisible"
+export const Kind = {
+  render: ({ kind, color, children, ...restProps }) => {
+    return (
+      <>
+        <Table sx={{ width: 600 }}>
+          <TableHead>
+            <TableRow>
+              <TableCell
+                colSpan={3}
+                sx={{
+                  typography: "body1_16_semibold",
+                  color: "inherit",
+                }}
               >
-                {args.children}
-              </Button>
-            </TableCell>
-            <TableCell>
-              <Button
-                {...args}
-                kind="contained"
-                color="error"
-                className="Mui-focusVisible"
+                Kind
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell
+                sx={{
+                  width: "33.33333%",
+                  typography: "body2_14_medium",
+                  color: "inherit",
+                }}
               >
-                {args.children}
-              </Button>
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell
-              sx={{ typography: "body2_14_regular", color: "inherit" }}
-            >
-              Disabled
-            </TableCell>
-            <TableCell>
-              <Button {...args} kind="contained" disabled>
-                {args.children}
-              </Button>
-            </TableCell>
-            <TableCell>
-              <Button {...args} kind="contained" color="secondary" disabled>
-                {args.children}
-              </Button>
-            </TableCell>
-            <TableCell>
-              <Button {...args} kind="contained" color="error" disabled>
-                {args.children}
-              </Button>
-            </TableCell>
-          </TableRow>
-        </TableBody>
-      </Table>
-    </>
-  );
-};
-
-export const KindContained = ContainedButtonTemplate.bind({});
-KindContained.argTypes = {
-  color: {
-    control: "false",
-    options: ["primary", "secondary", "error"],
-    defaultValue: "primary",
-    description: `The color of the component.
-    \n It supports both default and custom theme colors,
-    \n which can be added as shown in the palette customization guide.`,
-    table: {
-      defaultValue: { summary: "primary" },
-    },
+                Contained(default)
+              </TableCell>
+              <TableCell
+                sx={{ typography: "body2_14_medium", color: "inherit" }}
+              >
+                Outlined
+              </TableCell>
+              <TableCell
+                sx={{ typography: "body2_14_medium", color: "inherit" }}
+              >
+                Ghost
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            <TableRow>
+              <TableCell>
+                <Button color={color} {...restProps}>
+                  {children}
+                </Button>
+              </TableCell>
+              <TableCell>
+                <Button kind="outlined" color="primary" {...restProps}>
+                  {children}
+                </Button>
+              </TableCell>
+              <TableCell>
+                <Button kind="ghost" color={color} {...restProps}>
+                  {children}
+                </Button>
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </>
+    );
   },
 };
-KindContained.storyName = "Kind: Contained";
 
-const GhostButtonTemplate: ComponentStory<typeof Button> = (args) => {
-  return (
-    <>
-      <Table sx={{ width: 650 }}>
-        <TableHead>
-          <TableRow>
-            <TableCell></TableCell>
-            <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
-              Ghost Primary
-            </TableCell>
-            <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
-              Ghost Secondary
-            </TableCell>
-            <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
-              Ghost Error
-            </TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          <TableRow>
-            <TableCell
-              sx={{ typography: "body2_14_regular", color: "inherit" }}
-            >
-              Enable
-            </TableCell>
-            <TableCell>
-              <Button {...args} kind="ghost">
-                {args.children}
-              </Button>
-            </TableCell>
-            <TableCell>
-              <Button {...args} kind="ghost" color="secondary">
-                {args.children}
-              </Button>
-            </TableCell>
-            <TableCell>
-              <Button {...args} kind="ghost" color="error">
-                {args.children}
-              </Button>
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell
-              sx={{ typography: "body2_14_regular", color: "inherit" }}
-            >
-              Hover
-            </TableCell>
-            <TableCell>
-              <Button {...args} id="hover4" kind="ghost">
-                {args.children}
-              </Button>
-            </TableCell>
-            <TableCell>
-              <Button {...args} id="hover5" kind="ghost" color="secondary">
-                {args.children}
-              </Button>
-            </TableCell>
-            <TableCell>
-              <Button {...args} id="hover6" kind="ghost" color="error">
-                {args.children}
-              </Button>
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell
-              sx={{ typography: "body2_14_regular", color: "inherit" }}
-            >
-              Focus
-            </TableCell>
-            <TableCell>
-              <Button {...args} kind="ghost" className="Mui-focusVisible">
-                {args.children}
-              </Button>
-            </TableCell>
-            <TableCell>
-              <Button
-                {...args}
-                kind="ghost"
-                color="secondary"
-                className="Mui-focusVisible"
+export const KindContained = {
+  render: (args) => {
+    return (
+      <>
+        <Table sx={{ width: 650 }}>
+          <TableHead>
+            <TableRow>
+              <TableCell></TableCell>
+              <TableCell
+                sx={{ typography: "body2_14_medium", color: "inherit" }}
               >
-                {args.children}
-              </Button>
-            </TableCell>
-            <TableCell>
-              <Button
-                {...args}
-                kind="ghost"
-                color="error"
-                className="Mui-focusVisible"
+                Contained Primary
+              </TableCell>
+              <TableCell
+                sx={{ typography: "body2_14_medium", color: "inherit" }}
               >
-                {args.children}
-              </Button>
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell
-              sx={{ typography: "body2_14_regular", color: "inherit" }}
-            >
-              Disabled
-            </TableCell>
-            <TableCell>
-              <Button {...args} kind="ghost" disabled>
-                {args.children}
-              </Button>
-            </TableCell>
-            <TableCell>
-              <Button {...args} kind="ghost" color="secondary" disabled>
-                {args.children}
-              </Button>
-            </TableCell>
-            <TableCell>
-              <Button {...args} kind="ghost" color="error" disabled>
-                {args.children}
-              </Button>
-            </TableCell>
-          </TableRow>
-        </TableBody>
-      </Table>
-      <br />
-      <br />
-    </>
-  );
-};
+                Contained Secondary
+              </TableCell>
+              <TableCell
+                sx={{ typography: "body2_14_medium", color: "inherit" }}
+              >
+                Contained Error
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            <TableRow>
+              <TableCell
+                sx={{ typography: "body2_14_regular", color: "inherit" }}
+              >
+                Enable
+              </TableCell>
+              <TableCell>
+                <Button {...args} kind="contained">
+                  {args.children}
+                </Button>
+              </TableCell>
+              <TableCell>
+                <Button {...args} kind="contained" color="secondary">
+                  {args.children}
+                </Button>
+              </TableCell>
+              <TableCell>
+                <Button {...args} kind="contained" color="error">
+                  {args.children}
+                </Button>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell
+                sx={{ typography: "body2_14_regular", color: "inherit" }}
+              >
+                Hover
+              </TableCell>
+              <TableCell>
+                <Button {...args} id="hover1" kind="contained">
+                  {args.children}
+                </Button>
+              </TableCell>
+              <TableCell>
+                <Button
+                  {...args}
+                  id="hover2"
+                  kind="contained"
+                  color="secondary"
+                >
+                  {args.children}
+                </Button>
+              </TableCell>
+              <TableCell>
+                <Button {...args} id="hover3" kind="contained" color="error">
+                  {args.children}
+                </Button>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell
+                sx={{ typography: "body2_14_regular", color: "inherit" }}
+              >
+                Focus
+              </TableCell>
+              <TableCell>
+                <Button {...args} kind="contained" className="Mui-focusVisible">
+                  {args.children}
+                </Button>
+              </TableCell>
+              <TableCell>
+                <Button
+                  {...args}
+                  kind="contained"
+                  color="secondary"
+                  className="Mui-focusVisible"
+                >
+                  {args.children}
+                </Button>
+              </TableCell>
+              <TableCell>
+                <Button
+                  {...args}
+                  kind="contained"
+                  color="error"
+                  className="Mui-focusVisible"
+                >
+                  {args.children}
+                </Button>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell
+                sx={{ typography: "body2_14_regular", color: "inherit" }}
+              >
+                Disabled
+              </TableCell>
+              <TableCell>
+                <Button {...args} kind="contained" disabled>
+                  {args.children}
+                </Button>
+              </TableCell>
+              <TableCell>
+                <Button {...args} kind="contained" color="secondary" disabled>
+                  {args.children}
+                </Button>
+              </TableCell>
+              <TableCell>
+                <Button {...args} kind="contained" color="error" disabled>
+                  {args.children}
+                </Button>
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </>
+    );
+  },
 
-export const KindGhost = GhostButtonTemplate.bind({});
-KindGhost.argTypes = {
-  color: {
-    control: "false",
-    options: ["primary", "secondary", "error"],
-    description: `The color of the component.
-    \n It supports both default and custom theme colors,
-    \n which can be added as shown in the palette customization guide.`,
-    defaultValue: "primary",
-    table: {
-      defaultValue: { summary: "primary" },
+  argTypes: {
+    color: {
+      control: "false",
+      options: ["primary", "secondary", "error"],
+      defaultValue: "primary",
+      description: `The color of the component.
+      \n It supports both default and custom theme colors,
+      \n which can be added as shown in the palette customization guide.`,
+      table: {
+        defaultValue: { summary: "primary" },
+      },
     },
   },
-};
-KindGhost.storyName = "Kind: Ghost";
 
-const OutlinedButtonTemplate: ComponentStory<typeof Button> = ({
-  color,
-  ...restProps
-}) => {
-  return (
-    <>
-      <Table sx={{ width: 250 }}>
-        <TableHead>
-          <TableRow>
-            <TableCell></TableCell>
-            <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
-              Outlined Primary
-            </TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          <TableRow>
-            <TableCell
-              sx={{ typography: "body2_14_regular", color: "inherit" }}
-            >
-              Enable
-            </TableCell>
-            <TableCell>
-              <Button {...restProps} kind="outlined">
-                Text
-              </Button>
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell
-              sx={{ typography: "body2_14_regular", color: "inherit" }}
-            >
-              Hover
-            </TableCell>
-            <TableCell>
-              <Button {...restProps} id="hover7" kind="outlined">
-                Text
-              </Button>
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell
-              sx={{ typography: "body2_14_regular", color: "inherit" }}
-            >
-              Focus
-            </TableCell>
-            <TableCell>
-              <Button
-                {...restProps}
-                kind="outlined"
-                className="Mui-focusVisible"
+  name: "Kind: Contained",
+};
+
+export const KindGhost = {
+  render: (args) => {
+    return (
+      <>
+        <Table sx={{ width: 650 }}>
+          <TableHead>
+            <TableRow>
+              <TableCell></TableCell>
+              <TableCell
+                sx={{ typography: "body2_14_medium", color: "inherit" }}
               >
-                Text
-              </Button>
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell
-              sx={{ typography: "body2_14_regular", color: "inherit" }}
-            >
-              Disabled
-            </TableCell>
-            <TableCell>
-              <Button {...restProps} kind="outlined" disabled>
-                Text
-              </Button>
-            </TableCell>
-          </TableRow>
-        </TableBody>
-      </Table>
-    </>
-  );
-};
+                Ghost Primary
+              </TableCell>
+              <TableCell
+                sx={{ typography: "body2_14_medium", color: "inherit" }}
+              >
+                Ghost Secondary
+              </TableCell>
+              <TableCell
+                sx={{ typography: "body2_14_medium", color: "inherit" }}
+              >
+                Ghost Error
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            <TableRow>
+              <TableCell
+                sx={{ typography: "body2_14_regular", color: "inherit" }}
+              >
+                Enable
+              </TableCell>
+              <TableCell>
+                <Button {...args} kind="ghost">
+                  {args.children}
+                </Button>
+              </TableCell>
+              <TableCell>
+                <Button {...args} kind="ghost" color="secondary">
+                  {args.children}
+                </Button>
+              </TableCell>
+              <TableCell>
+                <Button {...args} kind="ghost" color="error">
+                  {args.children}
+                </Button>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell
+                sx={{ typography: "body2_14_regular", color: "inherit" }}
+              >
+                Hover
+              </TableCell>
+              <TableCell>
+                <Button {...args} id="hover4" kind="ghost">
+                  {args.children}
+                </Button>
+              </TableCell>
+              <TableCell>
+                <Button {...args} id="hover5" kind="ghost" color="secondary">
+                  {args.children}
+                </Button>
+              </TableCell>
+              <TableCell>
+                <Button {...args} id="hover6" kind="ghost" color="error">
+                  {args.children}
+                </Button>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell
+                sx={{ typography: "body2_14_regular", color: "inherit" }}
+              >
+                Focus
+              </TableCell>
+              <TableCell>
+                <Button {...args} kind="ghost" className="Mui-focusVisible">
+                  {args.children}
+                </Button>
+              </TableCell>
+              <TableCell>
+                <Button
+                  {...args}
+                  kind="ghost"
+                  color="secondary"
+                  className="Mui-focusVisible"
+                >
+                  {args.children}
+                </Button>
+              </TableCell>
+              <TableCell>
+                <Button
+                  {...args}
+                  kind="ghost"
+                  color="error"
+                  className="Mui-focusVisible"
+                >
+                  {args.children}
+                </Button>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell
+                sx={{ typography: "body2_14_regular", color: "inherit" }}
+              >
+                Disabled
+              </TableCell>
+              <TableCell>
+                <Button {...args} kind="ghost" disabled>
+                  {args.children}
+                </Button>
+              </TableCell>
+              <TableCell>
+                <Button {...args} kind="ghost" color="secondary" disabled>
+                  {args.children}
+                </Button>
+              </TableCell>
+              <TableCell>
+                <Button {...args} kind="ghost" color="error" disabled>
+                  {args.children}
+                </Button>
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+        <br />
+        <br />
+      </>
+    );
+  },
 
-export const KindOutlined = OutlinedButtonTemplate.bind({});
-KindOutlined.argTypes = {
-  color: {
-    control: "false",
-    options: ["primary"],
-    defaultValue: "primary",
-    description: `The color of the component.
-    \n It supports both default and custom theme colors,
-    \n which can be added as shown in the palette customization guide.`,
-    table: {
-      type: { summary: "primary" },
-      defaultValue: { summary: "primary" },
+  argTypes: {
+    color: {
+      control: "false",
+      options: ["primary", "secondary", "error"],
+      description: `The color of the component.
+      \n It supports both default and custom theme colors,
+      \n which can be added as shown in the palette customization guide.`,
+      defaultValue: "primary",
+      table: {
+        defaultValue: { summary: "primary" },
+      },
     },
   },
+
+  name: "Kind: Ghost",
 };
-KindOutlined.storyName = "Kind: Outlined";
+
+export const KindOutlined = {
+  render: ({ color, ...restProps }) => {
+    return (
+      <>
+        <Table sx={{ width: 250 }}>
+          <TableHead>
+            <TableRow>
+              <TableCell></TableCell>
+              <TableCell
+                sx={{ typography: "body2_14_medium", color: "inherit" }}
+              >
+                Outlined Primary
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            <TableRow>
+              <TableCell
+                sx={{ typography: "body2_14_regular", color: "inherit" }}
+              >
+                Enable
+              </TableCell>
+              <TableCell>
+                <Button {...restProps} kind="outlined">
+                  Text
+                </Button>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell
+                sx={{ typography: "body2_14_regular", color: "inherit" }}
+              >
+                Hover
+              </TableCell>
+              <TableCell>
+                <Button {...restProps} id="hover7" kind="outlined">
+                  Text
+                </Button>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell
+                sx={{ typography: "body2_14_regular", color: "inherit" }}
+              >
+                Focus
+              </TableCell>
+              <TableCell>
+                <Button
+                  {...restProps}
+                  kind="outlined"
+                  className="Mui-focusVisible"
+                >
+                  Text
+                </Button>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell
+                sx={{ typography: "body2_14_regular", color: "inherit" }}
+              >
+                Disabled
+              </TableCell>
+              <TableCell>
+                <Button {...restProps} kind="outlined" disabled>
+                  Text
+                </Button>
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </>
+    );
+  },
+
+  argTypes: {
+    color: {
+      control: "false",
+      options: ["primary"],
+      defaultValue: "primary",
+      description: `The color of the component.
+      \n It supports both default and custom theme colors,
+      \n which can be added as shown in the palette customization guide.`,
+      table: {
+        type: { summary: "primary" },
+        defaultValue: { summary: "primary" },
+      },
+    },
+  },
+
+  name: "Kind: Outlined",
+};
