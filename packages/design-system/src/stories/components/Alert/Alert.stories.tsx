@@ -4,6 +4,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import Alert from "@/components/Alert";
 import Button from "@/components/Button";
+import theme from "@/theme";
 
 export default {
   title: "Components/Alert",
@@ -61,16 +62,19 @@ export default {
 const Template: ComponentStory<typeof Alert> = (args) => (
   <>
     <Alert
-      title="Danger alert title"
+      title="Alert title"
       width={args.width}
       isSnackbar={true}
       severity={args.severity}
       children={
         <Typography variant="body2_14_regular">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut <u>labore et dolore</u> magna aliqua. A
-          diam sollicitudin tempor id eu nisl nunc mi. Auctor augue mauris augue
-          neque gravida in fermentum.
+          eiusmod tempor incididunt ut{" "}
+          <u style={{ color: theme.palette.token.core.link_primary }}>
+            labore et dolore
+          </u>{" "}
+          magna aliqua. A diam sollicitudin tempor id eu nisl nunc mi. Auctor
+          augue mauris augue neque gravida in fermentum.
         </Typography>
       }
       bottomAction={
@@ -92,9 +96,12 @@ const Template: ComponentStory<typeof Alert> = (args) => (
       children={
         <Typography variant="body2_14_regular">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut <u>labore et dolore</u> magna aliqua. A
-          diam sollicitudin tempor id eu nisl nunc mi. Auctor augue mauris augue
-          neque gravida in fermentum.
+          eiusmod tempor incididunt ut{" "}
+          <u style={{ color: theme.palette.token.core.link_primary }}>
+            labore et dolore
+          </u>{" "}
+          magna aliqua. A diam sollicitudin tempor id eu nisl nunc mi. Auctor
+          augue mauris augue neque gravida in fermentum.
         </Typography>
       }
       bottomAction={
@@ -116,9 +123,12 @@ const Template: ComponentStory<typeof Alert> = (args) => (
       children={
         <Typography variant="body2_14_regular">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut <u>labore et dolore</u> magna aliqua. A
-          diam sollicitudin tempor id eu nisl nunc mi. Auctor augue mauris augue
-          neque gravida in fermentum.
+          eiusmod tempor incididunt ut{" "}
+          <u style={{ color: theme.palette.token.core.link_primary }}>
+            labore et dolore
+          </u>{" "}
+          magna aliqua. A diam sollicitudin tempor id eu nisl nunc mi. Auctor
+          augue mauris augue neque gravida in fermentum.
         </Typography>
       }
       onClose={() => {}}
@@ -148,6 +158,6 @@ const Template: ComponentStory<typeof Alert> = (args) => (
 export const LunitAlert = Template.bind({});
 LunitAlert.args = {
   width: 620,
-  title: "Danger alert title",
+  title: "Alert title",
   severity: "success",
 };
