@@ -23,8 +23,8 @@ export default {
       table: {
         defaultValue: { summary: "512px" },
       },
-      description: `min size is \`364px\` (text area \`260px\`)
-      \nIf the Alert is in the Snackbar, the max size is \`504px\` (text area \`400px\`)`,
+      description: `min size is \`364px\` (text area \`260px\`) If the Alert is in the Snackbar,
+        the max size is \`504px\` (text area \`400px\`)`,
     },
     severity: {
       control: "radio",
@@ -55,7 +55,8 @@ export default {
     },
     docs: {
       description: {
-        component: `An alert displays a short, important message in a way that attracts the user's attention without interrupting the user's task.
+        component: `An alert displays a short, important message in a way that attracts the
+        user's attention without interrupting the user's task.
         see [Material-UI Alert](https://mui.com/components/alert/)`,
       },
     },
