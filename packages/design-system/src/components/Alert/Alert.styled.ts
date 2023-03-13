@@ -5,7 +5,11 @@ import {
   styled,
 } from "@mui/material";
 import { AlertProps } from "./Alert.types";
-import { getBorderColor, getBackgroundColor, getIconColor } from "./consts";
+import {
+  getBorderColor,
+  getBackgroundColor,
+  getIconColor,
+} from "./Alert.utils.";
 
 export const StyledAlertTitle = styled(MuiAlertTitle)(({ theme }) => ({
   "&.MuiAlertTitle-root": {
@@ -24,21 +28,21 @@ export const StyledAlert = styled(MuiAlert)<AlertProps>(
       display: "flex",
       width: width,
       padding: "15px",
-      minWidth: "372px",
-      maxWidth: isSnackbar ? "512px" : "10000px",
+      minWidth: "364px",
+      maxWidth: isSnackbar ? "504px" : "10000px",
       borderRadius: "8px",
       border: `1px solid ${getBorderColor(severity)}`,
       backgroundColor: getBackgroundColor(severity),
       boxShadow: "none",
     },
     "& .MuiAlert-icon": {
-      padding: 0,
+      padding: "4px",
       fontSize: 20,
       marginRight: "16px",
       color: `${getIconColor(severity)} !important`,
     },
     "& .MuiAlert-message": {
-      padding: 0,
+      padding: "4px 0",
       width: "100%",
       minHeight: "28px",
     },
