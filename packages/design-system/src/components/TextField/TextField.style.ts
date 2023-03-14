@@ -25,12 +25,13 @@ const getTextFieldPaddingByScrollAndSize = ({
 }: Pick<GetTextFieldPaddingBySizeParams, "size" | "hasScroll">) => {
   switch (size) {
     case "small": {
-      return `0px ${hasScroll ? "4px" : "12px"} 0px 12px`;
+      return `4px ${hasScroll ? "4px" : "12px"} 4px 12px`;
     }
-
-    case "medium":
+    case "medium": {
+      return `8px ${hasScroll ? "4px" : "16px"} 8px 16px`;
+    }
     case "large": {
-      return `0px ${hasScroll ? "4px" : "16px"} 0px 16px`;
+      return `10px ${hasScroll ? "4px" : "16px"} 10px 16px`;
     }
   }
 };
@@ -45,15 +46,15 @@ const getTextFieldPaddingByIconAndSize = ({
 >) => {
   switch (size) {
     case "small":
-      return `0px ${hasRightIcon ? "8px" : "12px"} 0px ${
+      return `4px ${hasRightIcon ? "8px" : "12px"} 4px ${
         hasLeftIcon ? "8px" : "12px"
       }}`;
     case "medium":
-      return `0px ${hasRightIcon ? "12px" : "16px"} 0px ${
+      return `8px ${hasRightIcon ? "12px" : "16px"} 8px ${
         hasLeftIcon ? "12px" : "16px"
       }}`;
     case "large":
-      return `0px ${hasRightIcon ? "12px" : "16px"} 0px ${
+      return `10px ${hasRightIcon ? "12px" : "16px"} 10px ${
         hasLeftIcon ? "12px" : "16px"
       }}`;
   }
@@ -77,7 +78,8 @@ const getTextFieldPaddingBySize = ({
 const commonStyle = ({ token }: { token: ColorToken }) => ({
   "& .MuiOutlinedInput-root": {
     borderRadius: "8px",
-    height: "100%",
+    width: "100%",
+
     "& fieldset": {
       border: "none",
     },
@@ -94,6 +96,7 @@ const commonStyle = ({ token }: { token: ColorToken }) => ({
       },
     },
     "& input, textarea": {
+      padding: "0 !important",
       textOverflow: "ellipsis",
       "&::placeholder": {
         color: token.core.text_medium,
@@ -102,6 +105,7 @@ const commonStyle = ({ token }: { token: ColorToken }) => ({
       },
     },
     "& textarea": {
+      height: "100% !important",
       overflow: "auto !important",
     },
     background: token.component.textfield_bg,
@@ -153,7 +157,6 @@ const sizeStyle = ({
         hasScroll,
       }),
       "& input, textarea": {
-        padding: "4px 0px",
         ...typography.body2_14_regular,
       },
       "& input": {
@@ -167,6 +170,7 @@ const sizeStyle = ({
          */
         paddingRight: hasScroll ? "8px" : "0px",
         minHeight: "92px",
+        height: "100%",
       },
     },
     "& .MuiFormHelperText-root": {
@@ -194,7 +198,6 @@ const sizeStyle = ({
         hasScroll,
       }),
       "& input, textarea": {
-        padding: "8px 0px",
         ...typography.body2_14_regular,
       },
       "& input": {
@@ -230,7 +233,6 @@ const sizeStyle = ({
         hasScroll,
       }),
       "& input, textarea": {
-        padding: "10px 0px",
         ...typography.body1_16_regular,
       },
       "& input": {
@@ -302,6 +304,7 @@ const IconWrapper = styled("div")(({ theme }) => ({
   justifyContent: "center",
   minWidth: "28px",
   minHeight: "28px",
+  margin: "-4px 0",
 
   "& svg": {
     width: "20px",
