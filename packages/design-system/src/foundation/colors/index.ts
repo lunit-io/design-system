@@ -15,8 +15,8 @@ declare module "@mui/material/styles/createPalette" {
       grey: GreyColor;
       blue: BaseColor;
       green: BaseColor;
-      lunitGreen: BaseColor;
-      lunitTeal: BaseColor;
+      lunit_green: BaseColor;
+      lunit_teal: BaseColor;
       magenta: BaseColor;
       orange: BaseColor;
       red: BaseColor;
@@ -30,8 +30,8 @@ declare module "@mui/material/styles/createPalette" {
       grey: GreyColor;
       blue: BaseColor;
       green: BaseColor;
-      lunitGreen: BaseColor;
-      lunitTeal: BaseColor;
+      lunit_green: BaseColor;
+      lunit_teal: BaseColor;
       magenta: BaseColor;
       orange: BaseColor;
       red: BaseColor;
@@ -49,7 +49,7 @@ const createCSSVariables = () => {
     const baseColors = base[color as ColorKey];
     for (let key in baseColors) {
       if (baseColors.hasOwnProperty(key)) {
-        const varName = `--${color}-${key}`;
+        const varName = `--${color}_${key}`;
         cssVars[varName] = baseColors[Number(key) as keyof typeof baseColors];
       }
     }
@@ -121,6 +121,7 @@ export const createColorCssBaseline = () => {
   };
 };
 
+// TODO: TextColors 삭제하고 관련된 설정 수정하기
 const lunitColors: PaletteOptions["lunit"] = ((): PaletteOptions["lunit"] => {
   const ret: any = {};
   for (const colorKey in base) {

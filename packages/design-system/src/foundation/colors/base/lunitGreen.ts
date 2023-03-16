@@ -1,6 +1,6 @@
 import { grey } from "./grey";
 
-export const lunitGreen = {
+export const lunit_green = {
   5: "#F5FBE7",
   10: "#EFF8BC",
   20: "#E5F39E",
@@ -13,7 +13,7 @@ export const lunitGreen = {
   90: "#B1C953",
 };
 
-export const lunitGreenText = {
+export const lunit_greenText = {
   5: grey[95],
   10: grey[95],
   20: grey[95],
