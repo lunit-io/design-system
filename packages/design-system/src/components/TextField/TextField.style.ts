@@ -96,7 +96,7 @@ const commonStyle = ({ token }: { token: ColorToken }) => ({
       },
     },
     "& input, textarea": {
-      padding: "0 !important",
+      padding: 0,
       textOverflow: "ellipsis",
       "&::placeholder": {
         color: token.core.text_medium,
@@ -105,7 +105,6 @@ const commonStyle = ({ token }: { token: ColorToken }) => ({
       },
     },
     "& textarea": {
-      height: "100% !important",
       overflow: "auto !important",
     },
     background: token.component.textfield_bg,
