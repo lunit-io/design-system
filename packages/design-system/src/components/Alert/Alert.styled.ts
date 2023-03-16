@@ -4,7 +4,7 @@ import {
   IconButton as MuiIconButton,
   styled,
 } from "@mui/material";
-import { AlertProps } from "./Alert.types";
+import types { AlertProps } from "./Alert.types";
 import {
   getBorderColor,
   getBackgroundColor,
