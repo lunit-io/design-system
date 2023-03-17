@@ -231,4 +231,6 @@ const paletteOptions = {
   },
 };
 
+export { base };
+
 export default paletteOptions;
