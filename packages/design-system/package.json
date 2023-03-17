@@ -35,9 +35,9 @@
     "directory": "packages/design-system"
   },
   "scripts": {
-    "build:prepare": "tsc -p tsconfig.build.json",
+    "build:transpile": "tsc -p tsconfig.build.json",
     "build:cjs": "webpack -c webpack/cjs.config.js",
-    "build": "yarn build:prepare && yarn build:cjs",
+    "build": "yarn build:transpile && yarn build:cjs",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "chromatic": "chromatic"
