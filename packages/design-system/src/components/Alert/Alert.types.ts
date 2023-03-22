@@ -1,13 +1,5 @@
-import {
-  AlertColor,
-  IconProps,
-  AlertProps as MuiAlertProps,
-} from "@mui/material";
+import { AlertProps as MuiAlertProps } from "@mui/material";
 import { ReactNode } from "react";
-
-export interface AlertIconProps extends IconProps {
-  severity?: AlertColor;
-}
 
 export interface AlertProps extends MuiAlertProps {
   width?: number;
