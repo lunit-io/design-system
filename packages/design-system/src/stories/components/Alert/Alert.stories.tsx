@@ -15,17 +15,6 @@ export default {
       control: "text",
       description: "Used to represent the title of the alert.",
     },
-    width: {
-      control: {
-        type: "number",
-        min: 364,
-      },
-      table: {
-        defaultValue: { summary: "512px" },
-      },
-      description: `min size is \`364px\` (text area \`260px\`) If the Alert is in the Snackbar,
-        the max size is \`504px\` (text area \`400px\`)`,
-    },
     severity: {
       control: "radio",
       defaultValue: "success",
@@ -35,14 +24,6 @@ export default {
       options: ["success", "info", "warning", "error", undefined],
       description: `\`success\`, \`info\`, \`warning\`, \`error\`, \`undefined\``,
     },
-    isSnackbar: {
-      control: "boolean",
-      defaultValue: false,
-      table: {
-        defaultValue: { summary: "false" },
-      },
-      description: `Set to \`true\` if this component is used inside a snackbar.`,
-    },
     onClose: {
       control: "function",
       description: `Callback fired when the component requests to be closed.
@@ -51,7 +32,7 @@ export default {
   },
   parameters: {
     controls: {
-      include: ["title", "width", "isSnackbar", "severity", "onClose"],
+      include: ["title", "severity", "onClose"],
     },
     docs: {
       description: {
@@ -113,37 +94,23 @@ const AlertBottomAction = () => {
 };
 
 const Template: ComponentStory<typeof Alert> = (args) => (
-  <Alert {...args}>
+  <Alert sx={{ width: "620px" }} {...args}>
     <AlertChildrenVariant1 />
   </Alert>
 );
 
 const Template2: ComponentStory<typeof Alert> = (args) => (
   <>
-    <Alert {...args}>
+    <Alert sx={{ width: "504px" }} {...args}>
       <AlertChildrenVariant1 />
     </Alert>
-    <Alert
-      width={args.width}
-      severity={args.severity}
-      isSnackbar={args.isSnackbar}
-      onClose={() => {}}
-    >
+    <Alert sx={{ width: "620px" }} severity={args.severity} onClose={() => {}}>
       <AlertChildrenVariant1 />
     </Alert>
-    <Alert
-      width={args.width}
-      severity={args.severity}
-      isSnackbar={args.isSnackbar}
-      onClose={() => {}}
-    >
+    <Alert sx={{ width: "620px" }} severity={args.severity} onClose={() => {}}>
       <AlertChildrenVariant2 />
     </Alert>
-    <Alert
-      width={args.width}
-      severity={args.severity}
-      isSnackbar={args.isSnackbar}
-    >
+    <Alert sx={{ width: "620px" }} severity={args.severity}>
       <AlertChildrenVariant2 />
     </Alert>
   </>
@@ -151,20 +118,16 @@ const Template2: ComponentStory<typeof Alert> = (args) => (
 
 export const AlertBase = Template.bind({});
 AlertBase.args = {
-  width: 620,
   title: "Alert title",
   severity: "success",
-  isSnackbar: false,
   onClose: action("Close Button is clicked"),
   bottomAction: <AlertBottomAction />,
 };
 
 export const AlertVariant = Template2.bind({});
 AlertVariant.args = {
-  width: 620,
   title: "Alert title",
   severity: "success",
-  isSnackbar: false,
   onClose: action("Close Button is clicked"),
   bottomAction: <AlertBottomAction />,
 };

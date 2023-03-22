@@ -23,22 +23,11 @@ const MAPPED_ICON = {
 };
 
 const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
-  const {
-    title,
-    severity,
-    children,
-    bottomAction,
-    width = 512,
-    isSnackbar = false,
-    onClose,
-    ...rest
-  } = props;
+  const { title, severity, children, bottomAction, onClose, ...rest } = props;
   return (
     <StyledAlert
       ref={ref}
-      width={width}
       severity={severity}
-      isSnackbar={isSnackbar}
       iconMapping={MAPPED_ICON}
       slots={{
         closeButton: () => (

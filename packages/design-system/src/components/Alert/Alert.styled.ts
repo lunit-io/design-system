@@ -1,50 +1,44 @@
 import {
   Alert as MuiAlert,
   AlertTitle as MuiAlertTitle,
-  IconButton as MuiIconButton,
   styled,
 } from "@mui/material";
-import types { AlertProps } from "./Alert.types";
+import type { AlertProps } from "./Alert.types";
 import {
   getBorderColor,
   getBackgroundColor,
   getIconColor,
 } from "./Alert.utils.";
 
-export const StyledAlert = styled(MuiAlert)<AlertProps>(
-  ({ severity, width, isSnackbar }) => ({
-    "&.MuiAlert-root": {
-      display: "flex",
-      width: width,
-      padding: "15px",
-      minWidth: "364px",
-      maxWidth: isSnackbar ? "504px" : "10000px",
-      borderRadius: "8px",
-      border: `1px solid ${getBorderColor(severity)}`,
-      backgroundColor: getBackgroundColor(severity),
-      boxShadow: "none",
-    },
-    "& .MuiAlert-icon": {
-      padding: "4px",
-      fontSize: 20,
-      marginRight: "16px",
-      color: `${getIconColor(severity)} !important`,
-    },
-    "& .MuiAlert-message": {
-      padding: "4px 0",
-      width: "100%",
-      minHeight: "28px",
-    },
-    "& .MuiAlert-action": {
-      margin: 0,
-      padding: 0,
-    },
-    "& .MuiSvgIcon-root": {
-      height: "20px",
-      width: "20px",
-    },
-  })
-);
+export const StyledAlert = styled(MuiAlert)<AlertProps>(({ severity }) => ({
+  "&.MuiAlert-root": {
+    display: "flex",
+    padding: "15px",
+    borderRadius: "8px",
+    border: `1px solid ${getBorderColor(severity)}`,
+    backgroundColor: getBackgroundColor(severity),
+    boxShadow: "none",
+  },
+  "& .MuiAlert-icon": {
+    padding: "4px",
+    fontSize: "20px",
+    marginRight: "16px",
+    color: `${getIconColor(severity)} !important`,
+  },
+  "& .MuiAlert-message": {
+    padding: "4px 0",
+    width: "100%",
+    minHeight: "28px",
+  },
+  "& .MuiAlert-action": {
+    margin: 0,
+    padding: 0,
+  },
+  "& .MuiSvgIcon-root": {
+    height: "20px",
+    width: "20px",
+  },
+}));
 
 export const StyledAlertTitle = styled(MuiAlertTitle)(({ theme }) => ({
   "&.MuiAlertTitle-root": {
