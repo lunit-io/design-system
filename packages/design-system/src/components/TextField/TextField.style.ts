@@ -9,34 +9,16 @@ type BaseTextFieldProps = Omit<TextFieldProps, "size"> & {
   textFieldSize: TextFieldSize;
   hasLeftIcon?: boolean;
   hasRightIcon?: boolean;
-  hasScroll?: boolean;
 };
 
 interface GetTextFieldPaddingBySizeParams {
+  multiline?: boolean;
   size: TextFieldSize;
-  hasScroll?: boolean;
   hasLeftIcon?: boolean;
   hasRightIcon?: boolean;
 }
 
-const getTextFieldPaddingByScrollAndSize = ({
-  size,
-  hasScroll,
-}: Pick<GetTextFieldPaddingBySizeParams, "size" | "hasScroll">) => {
-  switch (size) {
-    case "small": {
-      return `4px ${hasScroll ? "4px" : "12px"} 4px 12px`;
-    }
-    case "medium": {
-      return `8px ${hasScroll ? "4px" : "16px"} 8px 16px`;
-    }
-    case "large": {
-      return `10px ${hasScroll ? "4px" : "16px"} 10px 16px`;
-    }
-  }
-};
-
-const getTextFieldPaddingByIconAndSize = ({
+const getSinglelineTextFieldPaddingByIconAndSize = ({
   size,
   hasLeftIcon,
   hasRightIcon,
@@ -60,15 +42,28 @@ const getTextFieldPaddingByIconAndSize = ({
   }
 };
 
+const getMultilineTextFieldPaddingByIconAndSize = ({
+  size,
+}: Pick<GetTextFieldPaddingBySizeParams, "size">) => {
+  switch (size) {
+    case "small":
+      return "4px 4px 4px 12px";
+    case "medium":
+      return "8px 4px 8px 16px";
+    case "large":
+      return "10px 4px 10px 16px";
+  }
+};
+
 const getTextFieldPaddingBySize = ({
   size,
-  hasScroll,
+  multiline,
   hasLeftIcon,
   hasRightIcon,
 }: GetTextFieldPaddingBySizeParams) => {
-  return hasScroll
-    ? getTextFieldPaddingByScrollAndSize({ size, hasScroll })
-    : getTextFieldPaddingByIconAndSize({
+  return multiline
+    ? getMultilineTextFieldPaddingByIconAndSize({ size })
+    : getSinglelineTextFieldPaddingByIconAndSize({
         size,
         hasLeftIcon,
         hasRightIcon,
@@ -105,7 +100,15 @@ const commonStyle = ({ token }: { token: ColorToken }) => ({
       },
     },
     "& textarea": {
-      overflow: "auto !important",
+      height: "100% !important",
+      overflowY: "scroll !important",
+      "&::-webkit-scrollbar": {
+        width: "6px",
+      },
+      "&::-webkit-scrollbar-thumb": {
+        borderRadius: "6px",
+        backgroundColor: token.component.scrollbars_bg,
+      },
     },
     background: token.component.textfield_bg,
     overflow: "hidden",
@@ -142,10 +145,10 @@ const sizeStyle = ({
   hasLeftIcon,
   hasRightIcon,
   typography,
-  hasScroll,
+  multiline,
 }: Pick<
   BaseTextFieldProps,
-  "textFieldSize" | "hasLeftIcon" | "hasRightIcon" | "hasScroll"
+  "textFieldSize" | "hasLeftIcon" | "hasRightIcon" | "multiline"
 > & { token: ColorToken; typography: Typography }) => ({
   ...(textFieldSize === "small" && {
     "& .MuiInputBase-root": {
@@ -153,7 +156,7 @@ const sizeStyle = ({
         size: textFieldSize,
         hasLeftIcon,
         hasRightIcon,
-        hasScroll,
+        multiline,
       }),
       "& input, textarea": {
         ...typography.body2_14_regular,
@@ -162,14 +165,8 @@ const sizeStyle = ({
         height: "20px",
       },
       "& textarea": {
-        /**
-         * If there is scrolling, the right padding will be different.
-         * However, the total length shouldn't change,
-         * so we adjust the padding right value as shown below.
-         */
-        paddingRight: hasScroll ? "8px" : "0px",
         minHeight: "92px",
-        height: "100%",
+        paddingRight: "2px",
       },
     },
     "& .MuiFormHelperText-root": {
@@ -194,7 +191,7 @@ const sizeStyle = ({
         size: textFieldSize,
         hasLeftIcon,
         hasRightIcon,
-        hasScroll,
+        multiline,
       }),
       "& input, textarea": {
         ...typography.body2_14_regular,
@@ -203,8 +200,8 @@ const sizeStyle = ({
         height: "20px",
       },
       "& textarea": {
-        paddingRight: hasScroll ? "12px" : "0px",
         minHeight: "84px",
+        paddingRight: "6px",
       },
     },
     "& .MuiFormHelperText-root": {
@@ -229,7 +226,7 @@ const sizeStyle = ({
         size: textFieldSize,
         hasLeftIcon,
         hasRightIcon,
-        hasScroll,
+        multiline,
       }),
       "& input, textarea": {
         ...typography.body1_16_regular,
@@ -238,8 +235,8 @@ const sizeStyle = ({
         height: "24px",
       },
       "& textarea": {
-        paddingRight: hasScroll ? "12px" : "0px",
         minHeight: "80px",
+        paddingRight: "6px",
       },
     },
     "& .MuiFormHelperText-root": {
@@ -263,7 +260,6 @@ const sizeStyle = ({
 const BaseTextField = styled(MuiTextField, {
   shouldForwardProp: (prop: string) =>
     ![
-      "hasScroll",
       "leftIconSx",
       "rightIconSx",
       "leftIcon",
@@ -280,7 +276,7 @@ const BaseTextField = styled(MuiTextField, {
       typography,
       palette: { token },
     },
-    hasScroll,
+    multiline,
     textFieldSize,
     hasLeftIcon,
     hasRightIcon,
@@ -292,7 +288,7 @@ const BaseTextField = styled(MuiTextField, {
       hasLeftIcon,
       hasRightIcon,
       typography,
-      hasScroll,
+      multiline,
     }),
   })
 );
