@@ -165,12 +165,12 @@ export const tokenComponentColor: TokenComponentColorValue = {
   },
   textFields: {
     textfield_bg: {
-      light1: "--grey-10",
-      light2: "--grey-0",
-      dark1: "--grey-80",
-      dark2: "--grey-75",
-      dark3: "--grey-70",
-      dark4: "--grey-75",
+      light1: "--grey_10",
+      light2: "--grey_0",
+      dark1: "--grey_80",
+      dark2: "--grey_75",
+      dark3: "--grey_70",
+      dark4: "--grey_75",
     },
     textfield_border_error: {
       light1: "--red_40",
