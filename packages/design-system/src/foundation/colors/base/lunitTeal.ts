@@ -1,6 +1,6 @@
 import { grey } from "./grey";
 
-export const lunitTeal = {
+export const lunit_teal = {
   5: "#EAFAFF",
   10: "#D1F7FF",
   20: "#96EDFF",
@@ -13,9 +13,9 @@ export const lunitTeal = {
   90: "#002930",
 };
 
-export const lunitTealText = {
-  5: lunitTeal[90],
-  10: lunitTeal[90],
+export const lunit_tealText = {
+  5: lunit_teal[90],
+  10: lunit_teal[90],
   20: grey[95],
   30: grey[95],
   40: grey[95],
@@ -23,5 +23,5 @@ export const lunitTealText = {
   60: grey[5],
   70: grey[5],
   80: grey[5],
-  90: lunitTeal[5],
+  90: lunit_teal[5],
 };

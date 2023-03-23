@@ -1,2 +1,5 @@
-generated
+.storybook
 storybook-static
+webpack
+src/stories
+src/__tests__

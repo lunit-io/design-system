@@ -15,8 +15,8 @@ declare module "@mui/material/styles/createPalette" {
       grey: GreyColor;
       blue: BaseColor;
       green: BaseColor;
-      lunitGreen: BaseColor;
-      lunitTeal: BaseColor;
+      lunit_green: BaseColor;
+      lunit_teal: BaseColor;
       magenta: BaseColor;
       orange: BaseColor;
       red: BaseColor;
@@ -30,8 +30,8 @@ declare module "@mui/material/styles/createPalette" {
       grey: GreyColor;
       blue: BaseColor;
       green: BaseColor;
-      lunitGreen: BaseColor;
-      lunitTeal: BaseColor;
+      lunit_green: BaseColor;
+      lunit_teal: BaseColor;
       magenta: BaseColor;
       orange: BaseColor;
       red: BaseColor;
@@ -46,13 +46,11 @@ type ColorKey = keyof typeof base;
 const createCSSVariables = () => {
   const cssVars: { [name: string]: string } = {};
   for (let color in base) {
-    if (base.hasOwnProperty(color)) {
-      const baseColors = base[color as ColorKey];
-      for (let key in baseColors) {
-        if (baseColors.hasOwnProperty(key)) {
-          const varName = `--${color}-${key}`;
-          cssVars[varName] = baseColors[Number(key) as keyof typeof baseColors];
-        }
+    const baseColors = base[color as ColorKey];
+    for (let key in baseColors) {
+      if (baseColors.hasOwnProperty(key)) {
+        const varName = `--${color}_${key}`;
+        cssVars[varName] = baseColors[Number(key) as keyof typeof baseColors];
       }
     }
   }
@@ -123,18 +121,16 @@ export const createColorCssBaseline = () => {
   };
 };
 
+// TODO: TextColors 삭제하고 관련된 설정 수정하기
 const lunitColors: PaletteOptions["lunit"] = ((): PaletteOptions["lunit"] => {
   const ret: any = {};
   for (const colorKey in base) {
-    if (
-      Object.prototype.hasOwnProperty.call(base, colorKey) &&
-      base[`${colorKey}Text` as ColorKey]
-    ) {
+    if (base[`${colorKey}Text` as ColorKey]) {
       const baseColors = base[colorKey as ColorKey];
       const textColors = base[`${colorKey}Text` as ColorKey];
       ret[colorKey] = {};
       for (const key in baseColors) {
-        if (Object.prototype.hasOwnProperty.call(baseColors, key)) {
+        if (baseColors.hasOwnProperty(key)) {
           const color = baseColors[Number(key) as keyof typeof baseColors];
           const textColor = textColors[Number(key) as keyof typeof textColors];
           ret[colorKey][Number(key)] = {
@@ -174,6 +170,7 @@ const paletteOptions = {
       icon_info_02: "var(--icon_info_02)",
       hover: "var(--hover)",
       focused: "var(--focused)",
+      selected: "var(--selected)",
       shadow_01: "var(--shadow_01)",
       shadow_02: "var(--shadow_02)",
       shadow_03: "var(--shadow_03)",
@@ -201,10 +198,7 @@ const paletteOptions = {
       selectcontrol_handler_shadow: "var(--selectcontrol_handler_shadow)",
       textfield_bg: "var(--textfield_bg)",
       textfield_border_error: "var(--textfield_border_error)",
-      dropdown_option_selected: "var(--dropdown_option_selected)",
       dropdown_divider_border: "var(--dropdown_divider_border)",
-      dropdown_option_activatied: "var(--dropdown_option_activatied)",
-      datatable_cell_selected: "var(--datatable_cell_selected)",
       datatable_border_01: "var(--datatable_border_01)",
       datatable_border_02: "var(--datatable_border_02)",
       datatable_zebra: "var(--datatable_zebra)",

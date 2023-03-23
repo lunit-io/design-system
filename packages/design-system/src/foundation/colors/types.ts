@@ -22,6 +22,7 @@ export interface ColorToken {
     icon_info_02: CSSPropertyColor;
     hover: CSSPropertyColor;
     focused: CSSPropertyColor;
+    selected: CSSPropertyColor;
     shadow_01: CSSPropertyColor;
     shadow_02: CSSPropertyColor;
     shadow_03: CSSPropertyColor;
@@ -49,10 +50,7 @@ export interface ColorToken {
     selectcontrol_handler_shadow: CSSPropertyColor;
     textfield_bg: CSSPropertyColor;
     textfield_border_error: CSSPropertyColor;
-    dropdown_option_selected: CSSPropertyColor;
     dropdown_divider_border: CSSPropertyColor;
-    dropdown_option_activatied: CSSPropertyColor;
-    datatable_cell_selected: CSSPropertyColor;
     datatable_border_01: CSSPropertyColor;
     datatable_border_02: CSSPropertyColor;
     datatable_zebra: CSSPropertyColor;

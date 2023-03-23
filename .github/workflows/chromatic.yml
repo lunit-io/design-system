@@ -32,6 +32,16 @@ jobs:
         with:
           fetch-depth: 0 # Required to retrieve git history
 
+      - uses: nrwl/nx-set-shas@v3
+
+      - name: Nx Cache
+        uses: actions/cache@v3
+        with:
+          path: node_modules/.cache/nx
+          key: ${{ github.repository }}-nx-${{ env.NX_BASE }}
+          restore-keys: |
+            ${{ github.repository }}-nx-
+
       - name: Get branch name
         env:
           BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
@@ -47,7 +57,7 @@ jobs:
           echo "value=$(echo $BRANCH_NAME | tr '[:upper:]' '[:lower:]' | tr / -)" >> $GITHUB_OUTPUT
 
       - name: Install dependencies
-        run: npx lerna bootstrap --ci --use-workspaces
+        run: yarn
 
       - name: Build design-system package and its dependencies
         run: yarn build:design-system

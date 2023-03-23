@@ -11,22 +11,43 @@ import {
   Warning16,
 } from "@lunit/design-system-icons";
 
-import type {
-  OutlinedChipProps,
-  ReadOnlyContainedChipProps,
-  EnableContainedChipProps,
-  DeletableContainedChipProps,
-  ChipProps,
-  ChipThumbnail,
-} from "@/components/Chip/Chip.types";
-
 export default {
   title: "Components/Chips",
   component: Chip,
   argTypes: {
+    kind: {
+      description: `Default status of Contained or Outlined Chip is readOnly. You can pass onClick, onDelete or thumbnail to Contained Chip only.`,
+    },
+    onClick: {
+      description: `Contained chip can have onClick event. When Chip is clickable, onDelete is disabled.`,
+      control: {
+        type: "select",
+        defaultValue: undefined,
+      },
+      options: ["function", undefined],
+      mapping: {
+        function: action("onClick"),
+        undefined: undefined,
+      },
+    },
+    onDelete: {
+      description:
+        "Contained chip can have onDelete event. When Chip is deletable, onClick is disabled.",
+      control: {
+        type: "select",
+      },
+      options: ["function", undefined],
+      mapping: {
+        function: action("onDelete"),
+        undefined: undefined,
+      },
+      defaultValue: null,
+    },
+
     thumbnail: {
       control: {
         type: "select",
+        defaultValue: "undefined",
       },
       options: [
         undefined,
@@ -59,27 +80,6 @@ export default {
         Warning16Filled: <Warning16 variant="filled" />,
       },
     },
-    onClick: {
-      control: {
-        type: "select",
-      },
-      options: ["function", undefined],
-      mapping: {
-        function: action("onClick"),
-        undefined: undefined,
-      },
-    },
-    onDelete: {
-      control: {
-        type: "select",
-      },
-      options: ["function", undefined],
-      mapping: {
-        function: action("onDelete"),
-        undefined: undefined,
-      },
-      defaultValue: null,
-    },
   },
   args: {
     kind: "contained",
@@ -90,6 +90,9 @@ export default {
       description: {
         component: `Chips are compact elements that represent an input, attribute, or action.`,
       },
+    },
+    controls: {
+      expanded: true,
     },
   },
 } as ComponentMeta<typeof Chip>;
@@ -104,72 +107,86 @@ Outlined.parameters = {
       story: `Outlined chip only contains label and shows the state of disabled.`,
     },
   },
+  controls: {
+    exclude: [
+      "thumbnail",
+      "onClick",
+      "onDelete",
+      "disabled",
+      "clickable",
+      "skipFocusWhenDisabled",
+    ],
+  },
 };
 Outlined.args = {
   color: "primary",
   kind: "outlined",
 };
+Outlined.storyName = "Kind: Outlined";
 
 export const Contained = Template.bind({});
+Contained.parameters = {
+  controls: {
+    exclude: [
+      "thumbnail",
+      "onClick",
+      "onDelete",
+      "disabled",
+      "clickable",
+      "skipFocusWhenDisabled",
+    ],
+  },
+};
 Contained.args = {
   color: "primary",
   kind: "contained",
 };
+Contained.storyName = "Kind: Contained / Read Only";
 
-export const ContainedWithAvatar = Template.bind({});
-ContainedWithAvatar.args = {
-  ...Contained.args,
-  thumbnail: "Initial",
+export const ContainedWithClick = Template.bind({});
+ContainedWithClick.args = {
+  onClick: action("onClick"),
+  onDelete: undefined,
 };
-ContainedWithAvatar.parameters = {
+ContainedWithClick.parameters = {
   docs: {
     description: {
-      story: `Contained chip can have thumbnail as "avatar".`,
+      story: `Contained chip can have onClick event. When Chip is clickable, onDelete is disabled.`,
     },
   },
+  controls: {
+    exclude: ["onDelete", "deletable"],
+  },
 };
+ContainedWithClick.storyName = "Kind: Contained / Enable";
 
-export const ContainedWithLogo = Template.bind({});
-ContainedWithLogo.parameters = {
-  docs: {
-    description: {
-      story: `Contained chip can have thumbnail as "logo"`,
-    },
-  },
-};
-ContainedWithLogo.args = {
+export const ContainedWithDelete = Template.bind({});
+ContainedWithDelete.args = {
   ...Contained.args,
-  thumbnail: <Logo16 />,
+  onClick: undefined,
+  onDelete: action("onDelete"),
 };
-
-export const ContainedWithIcon = Template.bind({});
-ContainedWithIcon.parameters = {
-  docs: {
-    description: {
-      story: `Contained chip can have icon thumbnails`,
-    },
-  },
-};
-ContainedWithIcon.args = {
-  ...Contained.args,
-  thumbnail: <Error16 />,
-};
-
-/**
- * Change args after storybook ver7 update
- */
-export const ContainedWithDelete: ComponentStory<typeof Chip> = (args) => (
-  <Chip
-    {...args}
-    kind="contained"
-    onClick={undefined}
-    onDelete={action("delete")}
-  />
-);
 ContainedWithDelete.parameters = {
   docs: {
     description: {
       story: `Contained chip can have delete button. When Chip is deletable, onClick is disabled.`,
     },
   },
+  controls: {
+    exclude: ["onClick", "clickable"],
+  },
 };
+ContainedWithDelete.storyName = "Kind: Contained / Deletable";
+
+export const ContainedWithThumbnail = Template.bind({});
+ContainedWithThumbnail.args = {
+  thumbnail: "Initial",
+};
+ContainedWithThumbnail.parameters = {
+  docs: {
+    description: {
+      story: `Contained chip can have thumbnail as "avatar", "logo", and lunit icons.`,
+    },
+  },
+};
+ContainedWithThumbnail.storyName = "Kind: Contained with Thumbnail";
