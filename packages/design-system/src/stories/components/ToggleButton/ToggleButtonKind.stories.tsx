@@ -5,7 +5,6 @@ import {
   TableRow,
   TableBody,
   TableCell,
-  Typography,
 } from "@mui/material";
 import { action } from "@storybook/addon-actions";
 

@@ -7,7 +7,7 @@ import {
   TableBody,
   TableCell,
 } from "@mui/material";
-import { Bell } from "@lunit/design-system-icons";
+import Bell from "@lunit/design-system-icons/Bell";
 
 import Button from "@/components/Button";
 
@@ -25,22 +25,10 @@ export default {
     icon: {
       control: false,
       description: `Use this prop when you want to add icon.
-        \n It is added to the left of the text criteria,
-        \n and only Icon can be checked when used with hasIconOnly.`,
+        \n It is added to the left of the text criteria`,
       table: {
         defaultValue: { summary: "undefined" },
         type: { summary: "React.ReactNode" },
-      },
-    },
-    hasIconOnly: {
-      control: {
-        type: "boolean",
-      },
-      description: `Option to handle so that only icons can be inserted
-          \n If set to false, you can add Text.`,
-      defaultValue: false,
-      table: {
-        defaultValue: { summary: "false" },
       },
     },
     children: {
@@ -112,7 +100,6 @@ export default {
         "kind",
         "color",
         "icon",
-        "hasIconOnly",
       ],
     },
     docs: {

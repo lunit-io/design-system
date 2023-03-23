@@ -13,8 +13,7 @@ export default {
     icon: {
       control: false,
       description: `Use this prop when you want to add icon.
-        \n It is added to the left of the text criteria,
-        \n and only Icon can be checked when used with hasIconOnly.`,
+        \n It is added to the left of the text criteria`,
       table: {
         defaultValue: { summary: "undefined" },
         type: { summary: "React.ReactNode" },
