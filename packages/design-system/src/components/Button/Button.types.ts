@@ -1,20 +1,20 @@
 import type { ButtonProps as MuiButtonProps } from "@mui/material";
 
-interface BaseButtonProps extends MuiButtonProps {
+interface BaseButtonProps extends Omit<MuiButtonProps, "variant"> {
   icon?: React.ReactNode;
 }
 
-interface ContainedButtonProps extends Omit<BaseButtonProps, "variant"> {
+interface ContainedButtonProps extends BaseButtonProps {
   kind?: "contained";
   color?: "primary" | "secondary" | "error";
 }
 
-interface GhostButtonProps extends Omit<BaseButtonProps, "variant"> {
+interface GhostButtonProps extends BaseButtonProps {
   kind?: "ghost";
   color?: "primary" | "secondary" | "error";
 }
 
-interface OutlinedButtonProps extends Omit<BaseButtonProps, "variant"> {
+interface OutlinedButtonProps extends BaseButtonProps {
   kind?: "outlined";
   color?: "primary";
 }
