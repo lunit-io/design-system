@@ -7,7 +7,7 @@ import {
   TableCell,
 } from "@mui/material";
 import { action } from "@storybook/addon-actions";
-import { Bell } from "@lunit/design-system-icons";
+import Bell from "@lunit/design-system-icons/Bell";
 
 import ToggleButton from "@/components/ToggleButton";
 
@@ -20,18 +20,10 @@ export default {
     icon: {
       control: false,
       description: `Use this prop when you want to add icon.
-        \n It is added to the left of the text criteria,
-        \n and only Icon can be checked when used with hasIconOnly.`,
+        \n It is added to the left of the text criteria`,
       table: {
         defaultValue: { summary: "undefined" },
         type: { summary: "React.ReactNode" },
-      },
-    },
-    hasIconOnly: {
-      description: `Option to handle so that only icons can be inserted
-          \n If set to false, you can add Text.`,
-      table: {
-        defaultValue: { summary: "false" },
       },
     },
     value: {

@@ -4,7 +4,7 @@ import { CustomButton } from "./Button.styled";
 
 import type { ButtonProps } from "./Button.types";
 
-const Button = (props: Omit<ButtonProps, "hasIconOnly">) => {
+const Button = (props: ButtonProps) => {
   const {
     kind = "contained",
     size = "small",
