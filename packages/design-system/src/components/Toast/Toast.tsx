@@ -20,7 +20,7 @@ const MAPPED_ICON = {
 
 const Toast = forwardRef<HTMLDivElement, ToastProps>((props, ref) => {
   const { severity, icon, children, action, onClose, ...rest } = props;
-  const iconConfig = severity === undefined ? { icon: false } : { severity };
+  const iconConfig = severity === "normal" ? { icon: false } : { severity };
 
   return (
     <StyledToast
