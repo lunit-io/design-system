@@ -10,5 +10,5 @@ export interface ToastProps
     | "componentsProps"
     | "severity"
   > {
-  severity: "success" | "info" | "warning" | "error" | "normal";
+  severity?: "success" | "info" | "warning" | "error" | "normal";
 }
