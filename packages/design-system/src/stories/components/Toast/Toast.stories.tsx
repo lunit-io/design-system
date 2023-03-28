@@ -118,12 +118,7 @@ const Template2: ComponentStory<typeof Toast> = () => (
     <Toast
       severity="info"
       action={
-        <Button
-          size="medium"
-          kind="outlined"
-          color="secondary"
-          sx={{ width: "64px" }}
-        >
+        <Button size="medium" kind="outlined" sx={{ width: "64px" }}>
           Button
         </Button>
       }
