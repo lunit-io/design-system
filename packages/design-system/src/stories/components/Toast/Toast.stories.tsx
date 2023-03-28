@@ -70,6 +70,7 @@ const Template: ComponentStory<typeof Toast> = (args) => (
 const Template2: ComponentStory<typeof Toast> = () => (
   <Box sx={{ display: "grid", gap: "40px" }}>
     <Toast
+      severity="normal"
       sx={{
         width: "212px",
         "& .Toast-message": {
@@ -81,6 +82,7 @@ const Template2: ComponentStory<typeof Toast> = () => (
     </Toast>
 
     <Toast
+      severity="normal"
       sx={{
         width: "317px",
         "& .Toast-message": {
@@ -93,6 +95,7 @@ const Template2: ComponentStory<typeof Toast> = () => (
     </Toast>
 
     <Toast
+      severity="normal"
       onClose={() => {}}
       sx={{
         width: "484px",
@@ -115,12 +118,7 @@ const Template2: ComponentStory<typeof Toast> = () => (
     <Toast
       severity="info"
       action={
-        <Button
-          size="medium"
-          kind="ghost"
-          color="secondary"
-          sx={{ width: "64px" }}
-        >
+        <Button size="medium" kind="outlined" sx={{ width: "64px" }}>
           Button
         </Button>
       }
