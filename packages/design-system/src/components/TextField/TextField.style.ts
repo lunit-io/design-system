@@ -128,6 +128,11 @@ const commonStyle = ({ token }: { token: ColorToken }) => ({
       zIndex: -1,
       backgroundColor: token.core.hover,
     },
+    "&.Mui-focused": {
+      "&:hover::before": {
+        backgroundColor: token.component.textfield_bg,
+      },
+    },
   },
   "& .MuiFormHelperText-root": {
     "&.Mui-disabled": {
