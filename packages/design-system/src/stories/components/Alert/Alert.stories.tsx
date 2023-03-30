@@ -58,7 +58,7 @@ export default {
   ],
 } as ComponentMeta<typeof Alert>;
 
-const AlertChildrenVariant1 = () => {
+const AlertChildrenContentLong = () => {
   return (
     <Typography variant="body2_14_regular">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -72,7 +72,7 @@ const AlertChildrenVariant1 = () => {
   );
 };
 
-const AlertChildrenVariant2 = () => {
+const AlertChildrenContentShort = () => {
   return (
     <Typography variant="body2_14_regular">
       Lorem ipsum dolor sit amet, consectetur adipiscin
@@ -95,23 +95,34 @@ const AlertBottomAction = () => {
 
 const Template: ComponentStory<typeof Alert> = (args) => (
   <Alert sx={{ width: "620px" }} {...args}>
-    <AlertChildrenVariant1 />
+    <AlertChildrenContentLong />
   </Alert>
 );
 
 const Template2: ComponentStory<typeof Alert> = (args) => (
   <>
     <Alert sx={{ width: "504px" }} {...args}>
-      <AlertChildrenVariant1 />
+      <AlertChildrenContentLong />
     </Alert>
     <Alert sx={{ width: "620px" }} severity={args.severity} onClose={() => {}}>
-      <AlertChildrenVariant1 />
+      <AlertChildrenContentLong />
     </Alert>
     <Alert sx={{ width: "620px" }} severity={args.severity} onClose={() => {}}>
-      <AlertChildrenVariant2 />
+      <AlertChildrenContentShort />
     </Alert>
     <Alert sx={{ width: "620px" }} severity={args.severity}>
-      <AlertChildrenVariant2 />
+      <AlertChildrenContentShort />
+    </Alert>
+  </>
+);
+const Template3: ComponentStory<typeof Alert> = (args) => (
+  <>
+    <Alert
+      sx={{ width: "504px" }}
+      bottomAction={<AlertBottomAction />}
+      {...args}
+    >
+      <AlertChildrenContentLong />
     </Alert>
   </>
 );
@@ -121,7 +132,6 @@ AlertBase.args = {
   title: "Alert title",
   severity: "success",
   onClose: action("Close Button is clicked"),
-  bottomAction: <AlertBottomAction />,
 };
 
 export const AlertVariant = Template2.bind({});
@@ -129,5 +139,11 @@ AlertVariant.args = {
   title: "Alert title",
   severity: "success",
   onClose: action("Close Button is clicked"),
-  bottomAction: <AlertBottomAction />,
+};
+
+export const AlertWithBottomAction = Template3.bind({});
+AlertWithBottomAction.args = {
+  title: "Alert title",
+  severity: "success",
+  onClose: action("Close Button is clicked"),
 };
