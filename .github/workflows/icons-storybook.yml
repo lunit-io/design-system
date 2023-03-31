@@ -10,7 +10,7 @@ on:
 
 jobs:
   deploy-staging:
-    runs-on: [csg-sd-runner, al2_x86_64]
+    runs-on: ubuntu-latest
     env:
       WORKDIR: ./packages/design-system-icons
       HOST: design-system-icons.d.lunit.io
@@ -47,3 +47,4 @@ jobs:
 
           # Optional
           build-path: ${{ env.WORKDIR }}/storybook-static
+          is-public-repo: true
