@@ -3202,7 +3202,7 @@
     "@storybook/client-logger" "7.0.6"
     "@storybook/manager-api" "7.0.6"
 
-"@storybook/blocks@7.0.6":
+"@storybook/blocks@7.0.6", "@storybook/blocks@^7.0.6":
   version "7.0.6"
   resolved "https://registry.yarnpkg.com/@storybook/blocks/-/blocks-7.0.6.tgz#e546356d465e117815e3c1342f88b057c824827f"
   integrity sha512-02B9sY8qrp6DCgyRWZEEd1X/+r7eaTXLOXlikqRmah5XMqtGpEasPXN4ETzzZKKRbSapkKfqxzsp9ZXfqXTNKQ==

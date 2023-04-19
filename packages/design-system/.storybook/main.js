@@ -10,7 +10,7 @@ module.exports = {
     // https://github.com/mui-org/material-ui/issues/24282#issuecomment-967747802
     emotionAlias: false
   },
-  stories: ["./Welcome/Welcome.stories.tsx", "../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
+  stories: ["./Welcome/Welcome.stories.tsx", "../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
   addons: ["@storybook/addon-links", "@storybook/addon-essentials", "@storybook/addon-interactions", "storybook-addon-pseudo-states", {
     name: "@storybook/addon-storysource",
     options: {
