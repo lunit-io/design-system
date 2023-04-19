@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import Checkbox from "@/components/Checkbox";
 import FormLabel from "@/components/FormLabel";
-import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 
 export default {
   title: "Components/Checkbox",
@@ -80,9 +80,9 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof Checkbox>;
+} as Meta<typeof Checkbox>;
 
-const BasicCheckboxTemplate: ComponentStory<typeof Checkbox> = (args) => {
+const BasicCheckboxTemplate: StoryFn<typeof Checkbox> = (args) => {
   const [checked, setChecked] = useState(false);
 
   useEffect(() => {
@@ -98,9 +98,11 @@ const BasicCheckboxTemplate: ComponentStory<typeof Checkbox> = (args) => {
   );
 };
 
-export const BasicCheckbox = BasicCheckboxTemplate.bind({});
+export const BasicCheckbox = {
+  render: BasicCheckboxTemplate,
+};
 
-const LabelTemplate: ComponentStory<typeof Checkbox> = (args) => {
+const LabelTemplate: StoryFn<typeof Checkbox> = (args) => {
   const [checked, setChecked] = useState(false);
   useEffect(() => {
     setChecked(Boolean(args.checked));
@@ -120,17 +122,19 @@ const LabelTemplate: ComponentStory<typeof Checkbox> = (args) => {
   );
 };
 
-export const Label = LabelTemplate.bind({});
+export const Label = {
+  render: LabelTemplate,
 
-Label.parameters = {
-  docs: {
-    description: {
-      story: "You can use the `FormControlLabel` component to provide label.",
+  parameters: {
+    docs: {
+      description: {
+        story: "You can use the `FormControlLabel` component to provide label.",
+      },
     },
   },
 };
 
-const StatusTemplate: ComponentStory<typeof Checkbox> = (args) => (
+const StatusTemplate: StoryFn<typeof Checkbox> = (args) => (
   <Table sx={{ width: 650 }}>
     <TableHead>
       <TableRow>
@@ -186,9 +190,11 @@ const StatusTemplate: ComponentStory<typeof Checkbox> = (args) => (
   </Table>
 );
 
-export const Status = StatusTemplate.bind({});
+export const Status = {
+  render: StatusTemplate,
+};
 
-const IndeterminateTemplate: ComponentStory<typeof Checkbox> = (args) => {
+const IndeterminateTemplate: StoryFn<typeof Checkbox> = (args) => {
   const [checked, setChecked] = React.useState([true, false]);
 
   const handleChange1 = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -233,16 +239,18 @@ const IndeterminateTemplate: ComponentStory<typeof Checkbox> = (args) => {
   );
 };
 
-export const Indeterminate = IndeterminateTemplate.bind({});
+export const Indeterminate = {
+  render: IndeterminateTemplate,
 
-Indeterminate.argTypes = {
-  disabled: {
-    control: false,
-  },
-  checked: {
-    control: false,
-  },
-  indeterminate: {
-    control: false,
+  argTypes: {
+    disabled: {
+      control: false,
+    },
+    checked: {
+      control: false,
+    },
+    indeterminate: {
+      control: false,
+    },
   },
 };

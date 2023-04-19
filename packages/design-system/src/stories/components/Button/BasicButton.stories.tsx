@@ -11,7 +11,7 @@ import Bell from "@lunit/design-system-icons/Bell";
 
 import Button from "@/components/Button";
 
-import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import type { StoryObj, StoryFn, Meta } from "@storybook/react";
 import type { ButtonProps } from "@/components/Button/Button.types";
 
 type Size = Pick<ButtonProps, "size">;
@@ -109,13 +109,13 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof Button>;
+} as Meta<typeof Button>;
 
-export const BasicButton: ComponentStory<typeof Button> = (args) => (
-  <Button {...args}>{args.children}</Button>
-);
+export const BasicButton: StoryObj<typeof Button> = {
+  render: (args) => <Button {...args}>{args.children}</Button>,
+};
 
-const SizeButtonTemplate: ComponentStory<typeof Button> = (args) => {
+const SizeButtonTemplate: StoryFn<typeof Button> = (args) => {
   return (
     <Table sx={{ width: 900 }}>
       <TableHead>
@@ -161,4 +161,6 @@ const SizeButtonTemplate: ComponentStory<typeof Button> = (args) => {
   );
 };
 
-export const Size = SizeButtonTemplate.bind({});
+export const Size = {
+  render: SizeButtonTemplate,
+};

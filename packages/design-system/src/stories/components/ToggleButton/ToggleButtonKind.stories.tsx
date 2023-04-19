@@ -10,7 +10,7 @@ import { action } from "@storybook/addon-actions";
 
 import ToggleButton from "@/components/ToggleButton";
 
-import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import type { StoryFn, Meta } from "@storybook/react";
 
 export default {
   title: "Components/ToggleButton",
@@ -127,9 +127,9 @@ export default {
       hover: ["#hover1", "#hover2", "#hover3"],
     },
   },
-} as ComponentMeta<typeof ToggleButton>;
+} as Meta<typeof ToggleButton>;
 
-const ButtonTemplate: ComponentStory<typeof ToggleButton> = ({
+const ButtonTemplate: StoryFn<typeof ToggleButton> = ({
   kind,
   color,
   children,
@@ -224,17 +224,19 @@ const ButtonTemplate: ComponentStory<typeof ToggleButton> = ({
   );
 };
 
-export const Kind = ButtonTemplate.bind({});
+export const Kind = {
+  render: ButtonTemplate,
 
-Kind.argTypes = {
-  color: {
-    control: {
-      type: "radio",
+  argTypes: {
+    color: {
+      control: {
+        type: "radio",
+      },
     },
   },
 };
 
-const ContainedTemplate: ComponentStory<typeof ToggleButton> = (args) => {
+const ContainedTemplate: StoryFn<typeof ToggleButton> = (args) => {
   const [values, setValues] = useState({
     primary: {
       enable: false,
@@ -250,7 +252,7 @@ const ContainedTemplate: ComponentStory<typeof ToggleButton> = (args) => {
 
   const handleChange = (
     color: keyof typeof values,
-    value: keyof typeof values[keyof typeof values]
+    value: keyof (typeof values)[keyof typeof values]
   ) => {
     setValues({
       ...values,
@@ -389,16 +391,18 @@ const ContainedTemplate: ComponentStory<typeof ToggleButton> = (args) => {
   );
 };
 
-export const KindContained = ContainedTemplate.bind({});
-KindContained.storyName = "Kind: Contained";
+export const KindContained = {
+  render: ContainedTemplate,
+  name: "Kind: Contained",
 
-KindContained.argTypes = {
-  color: {
-    control: false,
+  argTypes: {
+    color: {
+      control: false,
+    },
   },
 };
 
-const GhostTemplate: ComponentStory<typeof ToggleButton> = (args) => {
+const GhostTemplate: StoryFn<typeof ToggleButton> = (args) => {
   const [values, setValues] = useState({
     primary: {
       enable: false,
@@ -414,7 +418,7 @@ const GhostTemplate: ComponentStory<typeof ToggleButton> = (args) => {
 
   const handleChange = (
     color: keyof typeof values,
-    value: keyof typeof values[keyof typeof values]
+    value: keyof (typeof values)[keyof typeof values]
   ) => {
     setValues({
       ...values,
@@ -565,16 +569,18 @@ const GhostTemplate: ComponentStory<typeof ToggleButton> = (args) => {
   );
 };
 
-export const KindGhost = GhostTemplate.bind({});
-KindGhost.storyName = "Kind: Ghost";
+export const KindGhost = {
+  render: GhostTemplate,
+  name: "Kind: Ghost",
 
-KindGhost.argTypes = {
-  color: {
-    control: false,
+  argTypes: {
+    color: {
+      control: false,
+    },
   },
 };
 
-const OutlinedTemplate: ComponentStory<typeof ToggleButton> = ({
+const OutlinedTemplate: StoryFn<typeof ToggleButton> = ({
   color,
   ...restProps
 }) => {
@@ -588,7 +594,7 @@ const OutlinedTemplate: ComponentStory<typeof ToggleButton> = ({
 
   const handleChange = (
     color: keyof typeof values,
-    value: keyof typeof values[keyof typeof values]
+    value: keyof (typeof values)[keyof typeof values]
   ) => {
     setValues({
       ...values,
@@ -690,11 +696,13 @@ const OutlinedTemplate: ComponentStory<typeof ToggleButton> = ({
   );
 };
 
-export const KindOutlined = OutlinedTemplate.bind({});
-KindOutlined.storyName = "Kind: Outlined";
+export const KindOutlined = {
+  render: OutlinedTemplate,
+  name: "Kind: Outlined",
 
-KindOutlined.argTypes = {
-  color: {
-    control: false,
+  argTypes: {
+    color: {
+      control: false,
+    },
   },
 };

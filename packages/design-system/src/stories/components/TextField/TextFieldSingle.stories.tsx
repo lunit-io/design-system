@@ -12,7 +12,7 @@ import { Bell } from "@lunit/design-system-icons";
 
 import TextField from "@/components/TextField/TextField";
 
-import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import type { StoryFn, Meta } from "@storybook/react";
 
 export default {
   title: "Components/TextField",
@@ -81,9 +81,9 @@ export default {
     },
   },
   decorators: [(Story) => <Box className="base00">{Story()}</Box>],
-} as ComponentMeta<typeof TextField>;
+} as Meta<typeof TextField>;
 
-const SingleTemplate: ComponentStory<typeof TextField> = (args) => (
+const SingleTemplate: StoryFn<typeof TextField> = (args) => (
   <Table>
     <TableHead>
       <TableRow>
@@ -120,7 +120,7 @@ const SingleTemplate: ComponentStory<typeof TextField> = (args) => (
   </Table>
 );
 
-const SingleWithIconTemplate: ComponentStory<typeof TextField> = (args) => (
+const SingleWithIconTemplate: StoryFn<typeof TextField> = (args) => (
   <Table>
     <TableHead>
       <TableRow>
@@ -205,72 +205,80 @@ const SingleWithIconTemplate: ComponentStory<typeof TextField> = (args) => (
   </Table>
 );
 
-export const TextFieldWithSingle = SingleTemplate.bind({});
-TextFieldWithSingle.argTypes = {
-  onLeftIconClick: {
-    control: false,
-    defaultValue: "function",
-    options: ["function", undefined],
-    mapping: {
-      function: action("onLeftIconClick"),
-      undefined: undefined,
-    },
-    description: "The left icon click event call back function.",
-    table: {
-      defaultValue: { summary: "undefined" },
-      type: { summary: "function" },
-    },
-  },
-  onRightIconClick: {
-    control: false,
-    defaultValue: "function",
-    options: ["function", undefined],
-    mapping: {
-      function: action("onRightIconClick"),
-      undefined: undefined,
-    },
-    description: "The right icon click event call back function.",
-    table: {
-      defaultValue: { summary: "undefined" },
-      type: { summary: "function" },
-    },
-  },
-};
-TextFieldWithSingle.storyName = "Single Line";
+export const TextFieldWithSingle = {
+  render: SingleTemplate,
 
-export const TextFieldWithIcon = SingleWithIconTemplate.bind({});
-TextFieldWithIcon.argTypes = {
-  onLeftIconClick: {
-    control: {
-      type: "select",
+  argTypes: {
+    onLeftIconClick: {
+      control: false,
+      defaultValue: "function",
+      options: ["function", undefined],
+      mapping: {
+        function: action("onLeftIconClick"),
+        undefined: undefined,
+      },
+      description: "The left icon click event call back function.",
+      table: {
+        defaultValue: { summary: "undefined" },
+        type: { summary: "function" },
+      },
     },
-    defaultValue: "function",
-    options: ["function", undefined],
-    mapping: {
-      function: action("onLeftIconClick"),
-      undefined: undefined,
-    },
-    description: "The left icon click event call back function.",
-    table: {
-      defaultValue: { summary: "undefined" },
-      type: { summary: "function" },
-    },
-  },
-  onRightIconClick: {
-    control: {
-      type: "select",
-    },
-    defaultValue: "function",
-    options: ["function", undefined],
-    mapping: {
-      function: action("onRightIconClick"),
-      undefined: undefined,
-    },
-    description: "The right icon click event call back function.",
-    table: {
-      defaultValue: { summary: "undefined" },
-      type: { summary: "function" },
+    onRightIconClick: {
+      control: false,
+      defaultValue: "function",
+      options: ["function", undefined],
+      mapping: {
+        function: action("onRightIconClick"),
+        undefined: undefined,
+      },
+      description: "The right icon click event call back function.",
+      table: {
+        defaultValue: { summary: "undefined" },
+        type: { summary: "function" },
+      },
     },
   },
+
+  name: "Single Line",
 };
-TextFieldWithIcon.storyName = "With Icon";
+
+export const TextFieldWithIcon = {
+  render: SingleWithIconTemplate,
+
+  argTypes: {
+    onLeftIconClick: {
+      control: {
+        type: "select",
+      },
+      defaultValue: "function",
+      options: ["function", undefined],
+      mapping: {
+        function: action("onLeftIconClick"),
+        undefined: undefined,
+      },
+      description: "The left icon click event call back function.",
+      table: {
+        defaultValue: { summary: "undefined" },
+        type: { summary: "function" },
+      },
+    },
+    onRightIconClick: {
+      control: {
+        type: "select",
+      },
+      defaultValue: "function",
+      options: ["function", undefined],
+      mapping: {
+        function: action("onRightIconClick"),
+        undefined: undefined,
+      },
+      description: "The right icon click event call back function.",
+      table: {
+        defaultValue: { summary: "undefined" },
+        type: { summary: "function" },
+      },
+    },
+  },
+
+  name: "With Icon",
+};

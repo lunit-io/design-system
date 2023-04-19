@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
-import { Box } from "@mui/material";
 import Radio from "@/components/Radio";
 import RadioGroup from "@/components/RadioGroup";
 import FormLabel from "@/components/FormLabel";
-import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 
 export default {
   title: "Components/Radio",
@@ -35,9 +34,9 @@ export default {
       component: "This component is identical to the MUI RadioGroup component.",
     },
   },
-} as ComponentMeta<typeof RadioGroup>;
+} as Meta<typeof RadioGroup>;
 
-const RadioGroupTemplate: ComponentStory<typeof RadioGroup> = (args) => {
+const RadioGroupTemplate: StoryFn<typeof RadioGroup> = (args) => {
   const [value, setValue] = React.useState("On");
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue((event.target as HTMLInputElement).value);
@@ -64,4 +63,6 @@ const RadioGroupTemplate: ComponentStory<typeof RadioGroup> = (args) => {
   );
 };
 
-export const ControlledRadioGroup = RadioGroupTemplate.bind({});
+export const ControlledRadioGroup = {
+  render: RadioGroupTemplate,
+};

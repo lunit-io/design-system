@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { StoryFn, Meta } from "@storybook/react";
 
 import Alert from "@/components/Alert";
 import Button from "@/components/Button";
@@ -56,7 +56,7 @@ export default {
       </Box>
     ),
   ],
-} as ComponentMeta<typeof Alert>;
+} as Meta<typeof Alert>;
 
 const AlertChildrenContentLong = () => {
   return (
@@ -93,13 +93,13 @@ const AlertBottomAction = () => {
   );
 };
 
-const Template: ComponentStory<typeof Alert> = (args) => (
+const Template: StoryFn<typeof Alert> = (args) => (
   <Alert sx={{ width: "620px" }} {...args}>
     <AlertChildrenContentLong />
   </Alert>
 );
 
-const Template2: ComponentStory<typeof Alert> = (args) => (
+const Template2: StoryFn<typeof Alert> = (args) => (
   <>
     <Alert sx={{ width: "504px" }} {...args}>
       <AlertChildrenContentLong />
@@ -115,7 +115,7 @@ const Template2: ComponentStory<typeof Alert> = (args) => (
     </Alert>
   </>
 );
-const Template3: ComponentStory<typeof Alert> = (args) => (
+const Template3: StoryFn<typeof Alert> = (args) => (
   <>
     <Alert
       sx={{ width: "504px" }}
@@ -127,23 +127,32 @@ const Template3: ComponentStory<typeof Alert> = (args) => (
   </>
 );
 
-export const AlertBase = Template.bind({});
-AlertBase.args = {
-  title: "Alert title",
-  severity: "success",
-  onClose: action("Close Button is clicked"),
+export const AlertBase = {
+  render: Template,
+
+  args: {
+    title: "Alert title",
+    severity: "success",
+    onClose: action("Close Button is clicked"),
+  },
 };
 
-export const AlertVariant = Template2.bind({});
-AlertVariant.args = {
-  title: "Alert title",
-  severity: "success",
-  onClose: action("Close Button is clicked"),
+export const AlertVariant = {
+  render: Template2,
+
+  args: {
+    title: "Alert title",
+    severity: "success",
+    onClose: action("Close Button is clicked"),
+  },
 };
 
-export const AlertWithBottomAction = Template3.bind({});
-AlertWithBottomAction.args = {
-  title: "Alert title",
-  severity: "success",
-  onClose: action("Close Button is clicked"),
+export const AlertWithBottomAction = {
+  render: Template3,
+
+  args: {
+    title: "Alert title",
+    severity: "success",
+    onClose: action("Close Button is clicked"),
+  },
 };

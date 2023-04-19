@@ -11,7 +11,7 @@ import Bell from "@lunit/design-system-icons/Bell";
 
 import ToggleButton from "@/components/ToggleButton";
 
-import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import type { StoryFn, Meta } from "@storybook/react";
 
 export default {
   title: "Components/ToggleButton",
@@ -140,9 +140,9 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof ToggleButton>;
+} as Meta<typeof ToggleButton>;
 
-const Template: ComponentStory<typeof ToggleButton> = (arg) => {
+const Template: StoryFn<typeof ToggleButton> = (arg) => {
   const [values, setValues] = useState({
     primary: true,
     secondary: true,
@@ -204,16 +204,19 @@ const Template: ComponentStory<typeof ToggleButton> = (arg) => {
   );
 };
 
-export const IconStory = Template.bind({});
-IconStory.storyName = "Icon";
-IconStory.argTypes = {
-  children: {
-    type: "string",
-    defaultValue: "text",
+export const IconStory = {
+  render: Template,
+  name: "Icon",
+
+  argTypes: {
+    children: {
+      type: "string",
+      defaultValue: "text",
+    },
   },
 };
 
-const IconOnlyTemplate: ComponentStory<typeof ToggleButton> = (arg) => {
+const IconOnlyTemplate: StoryFn<typeof ToggleButton> = (arg) => {
   const [values, setValues] = useState({
     primary: true,
     secondary: true,
@@ -275,11 +278,14 @@ const IconOnlyTemplate: ComponentStory<typeof ToggleButton> = (arg) => {
   );
 };
 
-export const WithIconOnlyStory = IconOnlyTemplate.bind({});
-WithIconOnlyStory.storyName = "Icon only";
-WithIconOnlyStory.argTypes = {
-  children: {
-    type: "string",
-    controls: false,
+export const WithIconOnlyStory = {
+  render: IconOnlyTemplate,
+  name: "Icon only",
+
+  argTypes: {
+    children: {
+      type: "string",
+      controls: false,
+    },
   },
 };

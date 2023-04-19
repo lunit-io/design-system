@@ -10,7 +10,7 @@ import {
 
 import TextField from "@/components/TextField/TextField";
 
-import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import type { StoryFn, Meta } from "@storybook/react";
 
 export default {
   title: "Components/TextField",
@@ -98,9 +98,9 @@ export default {
     },
   },
   decorators: [(Story) => <Box className="base00">{Story()}</Box>],
-} as ComponentMeta<typeof TextField>;
+} as Meta<typeof TextField>;
 
-const MultiTemplate: ComponentStory<typeof TextField> = (args) => (
+const MultiTemplate: StoryFn<typeof TextField> = (args) => (
   <Table>
     <TableHead>
       <TableRow>
@@ -137,5 +137,7 @@ const MultiTemplate: ComponentStory<typeof TextField> = (args) => (
   </Table>
 );
 
-export const TextFieldWithMulti = MultiTemplate.bind({});
-TextFieldWithMulti.storyName = "Multi Line";
+export const TextFieldWithMulti = {
+  render: MultiTemplate,
+  name: "Multi Line",
+};

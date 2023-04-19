@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { ComponentMeta } from "@storybook/react";
+import { Meta } from "@storybook/react";
 import { Box, styled, TextField, Typography, useTheme } from "@mui/material";
 
 export const InComponentWithStyled = () => {
@@ -38,7 +38,7 @@ export default {
       </div>
     ),
   ],
-} as ComponentMeta<typeof InComponentWithStyled>;
+} as Meta<typeof InComponentWithStyled>;
 
 export const InComponentWithSx = () => {
   return (
