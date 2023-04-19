@@ -47,10 +47,11 @@ export const parameters = {
 
 export const globalTypes = {
   theme: {
-    title: "Theme",
-    description: "Global theme for components",
+    title: "Base",
+    description: "Global base for components",
     defaultValue: "light1",
     toolbar: {
+      title: "Base",
       icon: "contrast",
       dynamicTitle: true,
       items: ["light1", "light2", "dark1", "dark2", "dark3", "dark4"],
