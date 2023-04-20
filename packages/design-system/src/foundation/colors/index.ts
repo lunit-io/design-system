@@ -99,6 +99,7 @@ export const createColorCssBaseline = () => {
   return {
     ":root": {
       ...createCSSVariables(),
+      ...createTokenColorVariables("dark1"),
     },
     ".light1": {
       ...createTokenColorVariables("light1"),
