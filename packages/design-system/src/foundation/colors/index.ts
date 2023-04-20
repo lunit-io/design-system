@@ -148,6 +148,43 @@ const lunitColors: PaletteOptions["lunit"] = ((): PaletteOptions["lunit"] => {
 })();
 
 const paletteOptions = {
+  primary: {
+    light: "var(--lunit_teal_30)",
+    main: "var(--text_primary)",
+    dark: "var(--lunit_teal_50)",
+    contrastText: "var(--text_normal)",
+  },
+  secondary: {
+    light: "var(--grey_30)",
+    main: "var(--text_light)",
+    dark: "var(--text_medium)",
+    contrastText: "var(--text_normal)",
+  },
+  error: {
+    light: "var(--red_30)",
+    main: "var(--text_error)",
+    dark: "var(--red_50)",
+    contrastText: "var(--grey_100)",
+  },
+  warning: {
+    light: "var(--orange_30)",
+    main: "var(--text_warning)",
+    dark: "var(--orange_50)",
+    contrastText: "var(--grey_100)",
+  },
+  info: {
+    light: "var(--blue_30)",
+    main: "var(--text_info)",
+    dark: "var(--blue_50)",
+    contrastText: "var(--grey_100)",
+  },
+  success: {
+    light: "var(--green_30)",
+    main: "var(--text_success)",
+    dark: "var(--green_50)",
+    contrastText: "var(--grey_100)",
+  },
+  // grey,
   lunit: lunitColors,
   token: {
     core: {
