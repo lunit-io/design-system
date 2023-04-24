@@ -145,6 +145,7 @@ export const Contained = {
 
 export const ContainedWithClick = {
   args: {
+    ...Contained.args,
     onClick: action("onClick"),
     onDelete: undefined,
   },
@@ -186,7 +187,10 @@ export const ContainedWithDelete = {
 
 export const ContainedWithThumbnail = {
   args: {
+    ...Contained.args,
     thumbnail: "Initial",
+    onClick: undefined,
+    onDelete: undefined,
   },
 
   parameters: {
@@ -194,6 +198,9 @@ export const ContainedWithThumbnail = {
       description: {
         story: `Contained chip can have thumbnail as "avatar", "logo", and lunit icons.`,
       },
+    },
+    controls: {
+      exclude: ["onClick", "onDelete"],
     },
   },
 
