@@ -122,6 +122,10 @@ export const IconOnlyButton = {
 export const IconWithTextButton = {
   render: IconButtonTemplate,
 
+  args: {
+    children: "Text",
+  },
+
   argTypes: {
     children: {
       type: "string",
