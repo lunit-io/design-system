@@ -21,6 +21,14 @@ const sizeList: SizeValues[] = ["small", "medium", "large"];
 export default {
   title: "Components/ToggleButton",
   component: ToggleButton,
+  args: {
+    children: "Text",
+    kind: "contained",
+    color: "primary",
+    selectedColor: "primary",
+    size: "small",
+    disabled: false,
+  },
   argTypes: {
     icon: {
       control: false,

@@ -15,6 +15,14 @@ import type { StoryFn, Meta } from "@storybook/react";
 export default {
   title: "Components/ToggleButton",
   component: ToggleButton,
+  args: {
+    children: "Text",
+    kind: "contained",
+    color: "primary",
+    selectedColor: "primary",
+    size: "small",
+    disabled: false,
+  },
   argTypes: {
     value: {
       control: false,
