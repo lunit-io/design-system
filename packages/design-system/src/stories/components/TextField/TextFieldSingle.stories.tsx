@@ -21,7 +21,7 @@ export default {
     disabled: false,
     size: "small",
     placeholder: "Please typing...",
-    helperText: "Helper text",
+    helperText: "Helper Text",
     multiline: false,
   },
   argTypes: {
