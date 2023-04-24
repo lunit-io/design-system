@@ -32,7 +32,6 @@ export default {
       },
       options: ["contained", "outlined", "ghost"],
       description: "Button has three Kinds Contained, Outlined, Ghost",
-      defaultValue: "contained",
       table: {
         defaultValue: { summary: "contained" },
       },
@@ -42,7 +41,6 @@ export default {
         type: "radio",
       },
       options: ["primary", "secondary", "error"],
-      defaultValue: "primary",
       table: {
         defaultValue: { summary: "primary" },
       },
@@ -51,7 +49,6 @@ export default {
       control: {
         type: "boolean",
       },
-      defaultValue: false,
       table: {
         defaultValue: { summary: "false" },
       },
@@ -61,7 +58,6 @@ export default {
         type: "radio",
       },
       options: ["small", "medium", "large"],
-      defaultValue: "small",
       table: {
         defaultValue: { summary: "small" },
       },
@@ -76,7 +72,6 @@ export default {
         function: action("onClick"),
         undefined: undefined,
       },
-      defaultValue: "function",
       description:
         "It is a callback function that is called when the button is clicked.",
     },
@@ -130,7 +125,6 @@ export const IconWithTextButton = {
   argTypes: {
     children: {
       type: "string",
-      defaultValue: "Text",
       table: {
         defaultValue: { summary: "undefined" },
       },

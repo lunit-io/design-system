@@ -30,7 +30,6 @@ export default {
         type: "radio",
       },
       options: [true, false],
-      defaultValue: false,
       description: "If true, the text field will be disabled.",
       table: {
         defaultValue: { summary: false },
@@ -41,7 +40,6 @@ export default {
       control: {
         type: "radio",
       },
-      defaultValue: "small",
       description: "The size of the text field.",
       table: {
         defaultValue: { summary: "small" },
@@ -50,7 +48,6 @@ export default {
     },
     placeholder: {
       type: "string",
-      defaultValue: "Please typing...",
       description: "The placeholder content.",
       table: {
         defaultValue: { summary: "undefined" },
@@ -59,7 +56,6 @@ export default {
     },
     helperText: {
       type: "string",
-      defaultValue: "Helper Text",
       description:
         'The helper text content, use "error " or "sub text " to display helper text.',
       table: {

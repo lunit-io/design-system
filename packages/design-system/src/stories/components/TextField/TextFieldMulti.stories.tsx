@@ -28,7 +28,6 @@ export default {
         type: "radio",
       },
       options: [true, false],
-      defaultValue: false,
       description: "If true, the text field will be disabled.",
       table: {
         defaultValue: { summary: false },
@@ -39,7 +38,6 @@ export default {
       control: {
         type: "radio",
       },
-      defaultValue: "small",
       description: "The size of the text field.",
       table: {
         defaultValue: { summary: "small" },
@@ -48,7 +46,6 @@ export default {
     },
     rows: {
       type: "number",
-      defaultValue: undefined,
       description: `The number of rows to display when multiline option is set to "true"
         \n the rows default value is undefined.`,
       table: {
@@ -58,7 +55,6 @@ export default {
     },
     placeholder: {
       type: "string",
-      defaultValue: "Please typing...",
       description: "The placeholder content.",
       table: {
         defaultValue: { summary: "undefined" },
@@ -67,7 +63,6 @@ export default {
     },
     helperText: {
       type: "string",
-      defaultValue: "Helper Text",
       description:
         'The helper text content, use "error" or "sub text" to display helper text.',
       table: {
@@ -77,7 +72,6 @@ export default {
     },
     multiline: {
       type: "boolean",
-      defaultValue: false,
       description: "If true, a textarea element(multi line) will be rendered.",
       table: {
         defaultValue: { summary: "false" },
