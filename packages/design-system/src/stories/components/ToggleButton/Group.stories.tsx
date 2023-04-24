@@ -45,7 +45,6 @@ export default {
         type: "radio",
       },
       options: ["primary", "secondary"],
-      defaultValue: "primary",
       description: "Button has three Kinds Contained, Ghost",
       table: {
         defaultValue: { summary: "primary" },
@@ -56,20 +55,17 @@ export default {
         type: "radio",
       },
       options: ["contained", "outlined", "ghost"],
-      defaultValue: "contained",
       table: {
         defaultValue: { summary: "contained" },
       },
     },
     children: {
       type: "string",
-      defaultValue: "Text",
     },
     disabled: {
       control: {
         type: "boolean",
       },
-      defaultValue: false,
       table: {
         defaultValue: { summary: "false" },
       },
@@ -79,7 +75,6 @@ export default {
         type: "radio",
       },
       options: ["small", "medium", "large"],
-      defaultValue: "small",
       table: {
         defaultValue: { summary: "small" },
       },
@@ -92,7 +87,6 @@ export default {
         function: action("onChange"),
         undefined: undefined,
       },
-      defaultValue: "function",
     },
     onClick: {
       type: "function",
@@ -104,7 +98,6 @@ export default {
         function: action("onClick"),
         undefined: undefined,
       },
-      defaultValue: "function",
       description:
         "It is a callback function that is called when the button is clicked.",
     },

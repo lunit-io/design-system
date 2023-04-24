@@ -17,7 +17,6 @@ export default {
     },
     severity: {
       control: "radio",
-      defaultValue: "success",
       table: {
         defaultValue: { summary: "success" },
       },

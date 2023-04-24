@@ -41,7 +41,6 @@ export default {
         type: "boolean",
       },
       description: "If `true`, the component is disabled.",
-      defaultValue: false,
       options: [true, false],
     },
   },

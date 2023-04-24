@@ -28,13 +28,11 @@ export default {
     },
     children: {
       type: "string",
-      defaultValue: "Text",
     },
     disabled: {
       control: {
         type: "boolean",
       },
-      defaultValue: false,
       table: {
         defaultValue: { summary: "false" },
       },
@@ -44,7 +42,6 @@ export default {
         type: "radio",
       },
       options: ["small", "medium", "large"],
-      defaultValue: "small",
       table: {
         defaultValue: { summary: "small" },
       },
@@ -53,7 +50,6 @@ export default {
       control: {
         type: "radio",
       },
-      defaultValue: "primary",
       options: ["primary", "secondary"],
       description:
         "The color of the button when it is in an select state. It has nothing to do with active button",
@@ -69,7 +65,6 @@ export default {
         function: action("onChange"),
         undefined: undefined,
       },
-      defaultValue: "function",
     },
     onClick: {
       type: "function",
@@ -81,13 +76,11 @@ export default {
         function: action("onClick"),
         undefined: undefined,
       },
-      defaultValue: "function",
       description:
         "It is a callback function that is called when the button is clicked.",
     },
     color: {
       options: ["primary", "secondary"],
-      defaultValue: "primary",
       table: {
         defaultValue: { summary: "primary" },
       },
@@ -96,7 +89,6 @@ export default {
       control: false,
       options: ["contained", "outlined", "ghost"],
       description: "Button has three Kinds Contained, Outlined, Ghost",
-      defaultValue: "contained",
       table: {
         defaultValue: { summary: "contained" },
       },

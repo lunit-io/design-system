@@ -22,7 +22,6 @@ export default {
       description: `Contained chip can have onClick event. When Chip is clickable, onDelete is disabled.`,
       control: {
         type: "select",
-        defaultValue: undefined,
       },
       options: ["function", undefined],
       mapping: {
@@ -41,13 +40,11 @@ export default {
         function: action("onDelete"),
         undefined: undefined,
       },
-      defaultValue: null,
     },
 
     thumbnail: {
       control: {
         type: "select",
-        defaultValue: "undefined",
       },
       options: [
         undefined,
