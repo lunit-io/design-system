@@ -1,15 +1,15 @@
 module.exports = {
   features: {
     // https://github.com/mui-org/material-ui/issues/24282#issuecomment-967747802
-    emotionAlias: false
+    emotionAlias: false,
   },
-  stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
-  addons: ["@storybook/addon-links", "@storybook/addon-essentials", "@storybook/addon-mdx-gfm"],
+  stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
+  addons: ["@storybook/addon-links", "@storybook/addon-essentials"],
   framework: {
     name: "@storybook/react-webpack5",
-    options: {}
+    options: {},
   },
   docs: {
-    autodocs: true
-  }
+    autodocs: false,
+  },
 };
