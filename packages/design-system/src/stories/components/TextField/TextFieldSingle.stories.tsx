@@ -214,7 +214,6 @@ export const TextFieldWithSingle = {
   argTypes: {
     onLeftIconClick: {
       control: false,
-      defaultValue: "function",
       options: ["function", undefined],
       mapping: {
         function: action("onLeftIconClick"),
@@ -228,7 +227,6 @@ export const TextFieldWithSingle = {
     },
     onRightIconClick: {
       control: false,
-      defaultValue: "function",
       options: ["function", undefined],
       mapping: {
         function: action("onRightIconClick"),
@@ -253,7 +251,6 @@ export const TextFieldWithIcon = {
       control: {
         type: "select",
       },
-      defaultValue: "function",
       options: ["function", undefined],
       mapping: {
         function: action("onLeftIconClick"),
@@ -269,7 +266,6 @@ export const TextFieldWithIcon = {
       control: {
         type: "select",
       },
-      defaultValue: "function",
       options: ["function", undefined],
       mapping: {
         function: action("onRightIconClick"),
@@ -283,5 +279,5 @@ export const TextFieldWithIcon = {
     },
   },
 
-  name: "With Icon",
+  name: "With Icon(single-line only)",
 };
