@@ -15,6 +15,12 @@ import type { StoryFn, Meta } from "@storybook/react";
 export default {
   title: "Components/TextField",
   component: TextField,
+  args: {
+    disabled: false,
+    size: "small",
+    placeholder: "Please typing...",
+    helperText: "Helper text",
+  },
   argTypes: {
     disabled: {
       control: {
