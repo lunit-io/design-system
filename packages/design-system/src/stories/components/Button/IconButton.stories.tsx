@@ -9,6 +9,13 @@ import type { StoryFn, Meta } from "@storybook/react";
 export default {
   title: "Components/Button",
   component: Button,
+  args: {
+    kind: "contained",
+    color: "primary",
+    disabled: false,
+    size: "small",
+    onClick: action("onClick"),
+  },
   argTypes: {
     icon: {
       control: false,

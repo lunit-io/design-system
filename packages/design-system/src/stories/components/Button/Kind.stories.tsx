@@ -15,6 +15,13 @@ import type { StoryFn, Meta } from "@storybook/react";
 export default {
   title: "Components/Button",
   component: Button,
+  args: {
+    kind: "contained",
+    children: "Text",
+    disabled: false,
+    size: "small",
+    onClick: action("onClick"),
+  },
   argTypes: {
     children: {
       type: "string",

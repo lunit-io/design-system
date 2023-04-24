@@ -21,6 +21,14 @@ const sizeList: SizeValues[] = ["small", "medium", "large"];
 export default {
   title: "Components/Button",
   component: Button,
+  args: {
+    kind: "contained",
+    children: "Text",
+    color: "primary",
+    disabled: false,
+    size: "small",
+    onClick: action("onClick"),
+  },
   argTypes: {
     icon: {
       control: false,
@@ -33,7 +41,7 @@ export default {
     },
     children: {
       type: "string",
-      defaultValue: "Text",
+      defaultValue: "Text", // 먹히지 않음
     },
     kind: {
       control: {
