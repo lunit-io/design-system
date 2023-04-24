@@ -17,7 +17,6 @@ export default {
   title: "Components/ToggleButton",
   component: ToggleButton,
   args: {
-    children: "Text",
     kind: "contained",
     color: "primary",
     selectedColor: "primary",
@@ -205,6 +204,10 @@ const Template: StoryFn<typeof ToggleButton> = (arg) => {
 export const IconStory = {
   render: Template,
   name: "Icon",
+
+  args: {
+    children: "Text",
+  },
 
   argTypes: {
     children: {
