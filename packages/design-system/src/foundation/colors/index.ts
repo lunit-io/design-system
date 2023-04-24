@@ -184,7 +184,7 @@ const paletteOptions = {
     dark: "var(--green_50)",
     contrastText: "var(--grey_100)",
   },
-  // grey,
+  grey: base.grey,
   lunit: lunitColors,
   token: {
     core: {
