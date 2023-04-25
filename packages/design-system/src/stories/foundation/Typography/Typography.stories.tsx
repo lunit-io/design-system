@@ -1,6 +1,6 @@
 import React from "react";
 
-import { ComponentStory } from "@storybook/react";
+import { StoryFn } from "@storybook/react";
 import { Box, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
@@ -17,7 +17,7 @@ export default {
   },
 };
 
-const TypographyTemplate: ComponentStory<typeof Typography> = (args) => {
+const TypographyTemplate: StoryFn<typeof Typography> = (args) => {
   const { variant, children } = args;
   return (
     <Typography variant={variant} sx={{ whiteSpace: "pre-line" }}>
@@ -26,35 +26,41 @@ const TypographyTemplate: ComponentStory<typeof Typography> = (args) => {
   );
 };
 
-export const TypographyComponent = TypographyTemplate.bind({});
-TypographyComponent.args = {
-  variant: "body1_16_regular",
-  children:
-    "AI will be the new standard of care. 123456789\nBy Lunit. With AI, we aim to make data-driven medicine\nthe new standard of care.",
+export const TypographyComponent = {
+  render: TypographyTemplate,
+
+  args: {
+    variant: "body1_16_regular",
+    children:
+      "AI will be the new standard of care. 123456789\nBy Lunit. With AI, we aim to make data-driven medicine\nthe new standard of care.",
+  },
 };
 
-const SXTemplate: ComponentStory<typeof Typography> = (args) => {
+const SXTemplate: StoryFn<typeof Typography> = (args) => {
   const { variant, children } = args;
   return (
     <Box sx={{ typography: variant, whiteSpace: "pre-line" }}>{children}</Box>
   );
 };
 
-export const SXProps = SXTemplate.bind({});
-SXProps.args = {
-  variant: "body1_16_regular",
-  children:
-    "AI will be the new standard of care. 123456789\nBy Lunit. With AI, we aim to make data-driven medicine\nthe new standard of care.",
+export const SXProps = {
+  render: SXTemplate,
+
+  args: {
+    variant: "body1_16_regular",
+    children:
+      "AI will be the new standard of care. 123456789\nBy Lunit. With AI, we aim to make data-driven medicine\nthe new standard of care.",
+  },
 };
 
 const StyledBox = styled(Box, {
   shouldForwardProp: (prop) => !["variant"].includes(prop.toString()),
-})<{ variant: typeof variantArray[number] }>(({ theme, variant }) => ({
+})<{ variant: (typeof variantArray)[number] }>(({ theme, variant }) => ({
   ...theme.typography[variant],
   whiteSpace: "pre-line",
 }));
 
-const StyledTemplate: ComponentStory<typeof StyledBox> = (args) => {
+const StyledTemplate: StoryFn<typeof StyledBox> = (args) => {
   /**
 const StyledBox = styled(Box)(({ theme }) => ({
   ...theme.typography.body1_16_regular,
@@ -65,27 +71,31 @@ const StyledBox = styled(Box)(({ theme }) => ({
   return <StyledBox variant={variant}>{children}</StyledBox>;
 };
 
-export const Styled = StyledTemplate.bind({});
-Styled.args = {
-  variant: "body1_16_regular",
-  children:
-    "AI will be the new standard of care. 123456789\nBy Lunit. With AI, we aim to make data-driven medicine\nthe new standard of care.",
-};
-Styled.parameters = {
-  docs: {
-    source: {
-      code: `
-const StyledBox = styled(Box)(({ theme }) => ({
-  ...theme.typography.body1_16_regular,
-  whiteSpace: "pre-line",
-}));
-...
-return (
-  <StyledBox>AI will be the new standard of care. 123456789\nBy Lunit. With AI, we aim to make data-driven medicine\nthe new standard of care.</StyledBox>
-);
-      `,
-      language: "tsx",
-      type: "code",
+export const Styled = {
+  render: StyledTemplate,
+
+  args: {
+    variant: "body1_16_regular",
+    children:
+      "AI will be the new standard of care. 123456789\nBy Lunit. With AI, we aim to make data-driven medicine\nthe new standard of care.",
+  },
+
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  const StyledBox = styled(Box)(({ theme }) => ({
+    ...theme.typography.body1_16_regular,
+    whiteSpace: "pre-line",
+  }));
+  ...
+  return (
+    <StyledBox>AI will be the new standard of care. 123456789\nBy Lunit. With AI, we aim to make data-driven medicine\nthe new standard of care.</StyledBox>
+  );
+        `,
+        language: "tsx",
+        type: "code",
+      },
     },
   },
 };

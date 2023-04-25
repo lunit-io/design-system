@@ -11,11 +11,18 @@ import Bell from "@lunit/design-system-icons/Bell";
 
 import ToggleButton from "@/components/ToggleButton";
 
-import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import type { StoryFn, Meta } from "@storybook/react";
 
 export default {
   title: "Components/ToggleButton",
   component: ToggleButton,
+  args: {
+    kind: "contained",
+    color: "primary",
+    selectedColor: "primary",
+    size: "small",
+    disabled: false,
+  },
   argTypes: {
     icon: {
       control: false,
@@ -50,7 +57,6 @@ export default {
         type: "radio",
       },
       options: ["primary", "secondary"],
-      defaultValue: "primary",
       description: "Button has three Kinds Contained, Ghost",
       table: {
         defaultValue: { summary: "primary" },
@@ -61,7 +67,6 @@ export default {
         type: "radio",
       },
       options: ["contained", "outlined", "ghost"],
-      defaultValue: "contained",
       table: {
         defaultValue: { summary: "contained" },
       },
@@ -73,7 +78,6 @@ export default {
       control: {
         type: "boolean",
       },
-      defaultValue: false,
       table: {
         defaultValue: { summary: "false" },
       },
@@ -83,7 +87,6 @@ export default {
         type: "radio",
       },
       options: ["small", "medium", "large"],
-      defaultValue: "small",
       table: {
         defaultValue: { summary: "small" },
       },
@@ -98,7 +101,6 @@ export default {
         function: action("onClick"),
         undefined: undefined,
       },
-      defaultValue: "function",
       description:
         "It is a callback function that is called when the button is clicked.",
     },
@@ -110,12 +112,7 @@ export default {
         function: action("onChange"),
         undefined: undefined,
       },
-      defaultValue: "function",
     },
-  },
-  args: {
-    selected: true,
-    kind: "contained",
   },
   parameters: {
     controls: {
@@ -140,9 +137,9 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof ToggleButton>;
+} as Meta<typeof ToggleButton>;
 
-const Template: ComponentStory<typeof ToggleButton> = (arg) => {
+const Template: StoryFn<typeof ToggleButton> = (arg) => {
   const [values, setValues] = useState({
     primary: true,
     secondary: true,
@@ -204,16 +201,23 @@ const Template: ComponentStory<typeof ToggleButton> = (arg) => {
   );
 };
 
-export const IconStory = Template.bind({});
-IconStory.storyName = "Icon";
-IconStory.argTypes = {
-  children: {
-    type: "string",
-    defaultValue: "text",
+export const IconStory = {
+  render: Template,
+  name: "Icon",
+
+  args: {
+    children: "Text",
+  },
+
+  argTypes: {
+    children: {
+      type: "string",
+      defaultValue: "text",
+    },
   },
 };
 
-const IconOnlyTemplate: ComponentStory<typeof ToggleButton> = (arg) => {
+const IconOnlyTemplate: StoryFn<typeof ToggleButton> = (arg) => {
   const [values, setValues] = useState({
     primary: true,
     secondary: true,
@@ -275,11 +279,14 @@ const IconOnlyTemplate: ComponentStory<typeof ToggleButton> = (arg) => {
   );
 };
 
-export const WithIconOnlyStory = IconOnlyTemplate.bind({});
-WithIconOnlyStory.storyName = "Icon only";
-WithIconOnlyStory.argTypes = {
-  children: {
-    type: "string",
-    controls: false,
+export const WithIconOnlyStory = {
+  render: IconOnlyTemplate,
+  name: "Icon only",
+
+  argTypes: {
+    children: {
+      type: "string",
+      controls: false,
+    },
   },
 };

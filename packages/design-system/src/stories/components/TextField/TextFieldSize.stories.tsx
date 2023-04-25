@@ -10,18 +10,23 @@ import {
 
 import TextField from "@/components/TextField/TextField";
 
-import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import type { StoryFn, Meta } from "@storybook/react";
 
 export default {
   title: "Components/TextField",
   component: TextField,
+  args: {
+    disabled: false,
+    size: "small",
+    placeholder: "Please typing...",
+    helperText: "Helper Text",
+  },
   argTypes: {
     disabled: {
       control: {
         type: "radio",
       },
       options: [true, false],
-      defaultValue: false,
       description: "If true, the text field will be disabled.",
       table: {
         defaultValue: { summary: false },
@@ -30,7 +35,6 @@ export default {
     },
     size: {
       control: false,
-      defaultValue: "small",
       description: "The size of the text field.",
       table: {
         defaultValue: { summary: "small" },
@@ -39,7 +43,6 @@ export default {
     },
     placeholder: {
       type: "string",
-      defaultValue: "Please typing...",
       description: "The placeholder content.",
       table: {
         defaultValue: { summary: "undefined" },
@@ -48,7 +51,6 @@ export default {
     },
     helperText: {
       type: "string",
-      defaultValue: "Helper Text",
       description:
         'The helper text content, use "error " or "sub text " to display helper text.',
       table: {
@@ -69,9 +71,9 @@ export default {
     },
   },
   decorators: [(Story) => <Box className="base00">{Story()}</Box>],
-} as ComponentMeta<typeof TextField>;
+} as Meta<typeof TextField>;
 
-const TextFieldSizeTemplate: ComponentStory<typeof TextField> = (args) => (
+const TextFieldSizeTemplate: StoryFn<typeof TextField> = (args) => (
   <Table>
     <TableHead>
       <TableRow>
@@ -126,5 +128,7 @@ const TextFieldSizeTemplate: ComponentStory<typeof TextField> = (args) => (
   </Table>
 );
 
-export const TextFieldSize = TextFieldSizeTemplate.bind({});
-TextFieldSize.storyName = "Size";
+export const TextFieldSize = {
+  render: TextFieldSizeTemplate,
+  name: "Size",
+};

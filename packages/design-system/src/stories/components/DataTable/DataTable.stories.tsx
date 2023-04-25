@@ -1,13 +1,15 @@
 import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { StoryFn, Meta } from "@storybook/react";
 
 import DataTable from "@/components/DataTable";
 
 export default {
   title: "Components/DataTable",
   component: DataTable,
-} as ComponentMeta<typeof DataTable>;
+} as Meta<typeof DataTable>;
 
-const Template: ComponentStory<typeof DataTable> = () => <DataTable />;
+const Template: StoryFn<typeof DataTable> = () => <DataTable />;
 
-export const LunitDataTable = Template.bind({});
+export const LunitDataTable = {
+  render: Template,
+};

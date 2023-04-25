@@ -1,5 +1,4 @@
-import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Meta } from "@storybook/react";
 import TokenPaletteTable from "./TokenPaletteTable";
 
 export default {
@@ -10,20 +9,20 @@ export default {
       exclude: /.*/g,
     },
   },
-} as ComponentMeta<typeof TokenPaletteTable>;
+} as Meta<typeof TokenPaletteTable>;
 
-const Template: ComponentStory<typeof TokenPaletteTable> = (args) => (
-  <TokenPaletteTable {...args} />
-);
+export const CoreTokens = {
+  args: {
+    kind: "core",
+  },
 
-export const CoreTokens = Template.bind({});
-CoreTokens.args = {
-  kind: "core",
+  name: "Palette: Core Tokens",
 };
-CoreTokens.storyName = "Palette: Core Tokens";
 
-export const ComponentTokens = Template.bind({});
-ComponentTokens.args = {
-  kind: "component",
+export const ComponentTokens = {
+  args: {
+    kind: "component",
+  },
+
+  name: "Palette: Component Tokens",
 };
-ComponentTokens.storyName = "Palette: Component Tokens";

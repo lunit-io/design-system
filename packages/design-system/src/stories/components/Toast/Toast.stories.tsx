@@ -1,5 +1,5 @@
 import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { StoryFn, Meta } from "@storybook/react";
 import { Box } from "@mui/material";
 
 import Toast from "@/components/Toast/Toast";
@@ -61,13 +61,11 @@ export default {
       </Box>
     ),
   ],
-} as ComponentMeta<typeof Toast>;
+} as Meta<typeof Toast>;
 
-const Template: ComponentStory<typeof Toast> = (args) => (
-  <Toast {...args}>Test</Toast>
-);
+const Template: StoryFn<typeof Toast> = (args) => <Toast {...args}>Test</Toast>;
 
-const Template2: ComponentStory<typeof Toast> = () => (
+const Template2: StoryFn<typeof Toast> = () => (
   <Box sx={{ display: "grid", gap: "40px" }}>
     <Toast
       severity="normal"
@@ -146,5 +144,9 @@ const Template2: ComponentStory<typeof Toast> = () => (
   </Box>
 );
 
-export const ToastBase = Template.bind({});
-export const ToastVariant = Template2.bind({});
+export const ToastBase = {
+  render: Template,
+};
+export const ToastVariant = {
+  render: Template2,
+};

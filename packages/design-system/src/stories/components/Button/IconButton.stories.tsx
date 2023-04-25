@@ -4,11 +4,18 @@ import { action } from "@storybook/addon-actions";
 
 import Button from "@/components/Button";
 
-import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import type { StoryFn, Meta } from "@storybook/react";
 
 export default {
   title: "Components/Button",
   component: Button,
+  args: {
+    kind: "contained",
+    color: "primary",
+    disabled: false,
+    size: "small",
+    onClick: action("onClick"),
+  },
   argTypes: {
     icon: {
       control: false,
@@ -25,7 +32,6 @@ export default {
       },
       options: ["contained", "outlined", "ghost"],
       description: "Button has three Kinds Contained, Outlined, Ghost",
-      defaultValue: "contained",
       table: {
         defaultValue: { summary: "contained" },
       },
@@ -35,7 +41,6 @@ export default {
         type: "radio",
       },
       options: ["primary", "secondary", "error"],
-      defaultValue: "primary",
       table: {
         defaultValue: { summary: "primary" },
       },
@@ -44,7 +49,6 @@ export default {
       control: {
         type: "boolean",
       },
-      defaultValue: false,
       table: {
         defaultValue: { summary: "false" },
       },
@@ -54,7 +58,6 @@ export default {
         type: "radio",
       },
       options: ["small", "medium", "large"],
-      defaultValue: "small",
       table: {
         defaultValue: { summary: "small" },
       },
@@ -69,7 +72,6 @@ export default {
         function: action("onClick"),
         undefined: undefined,
       },
-      defaultValue: "function",
       description:
         "It is a callback function that is called when the button is clicked.",
     },
@@ -93,34 +95,45 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof Button>;
+} as Meta<typeof Button>;
 
-const IconButtonTemplate: ComponentStory<typeof Button> = (args) => (
+const IconButtonTemplate: StoryFn<typeof Button> = (args) => (
   <Button icon={<Bell />} {...args}>
     {args.children}
   </Button>
 );
 
-export const IconOnlyButton = IconButtonTemplate.bind({});
-IconOnlyButton.argTypes = {
-  children: {
-    control: false,
-    type: "string",
-    table: {
-      defaultValue: { summary: "undefined" },
-    },
-  },
-};
-IconOnlyButton.storyName = "Icon only";
+export const IconOnlyButton = {
+  render: IconButtonTemplate,
 
-export const IconWithTextButton = IconButtonTemplate.bind({});
-IconWithTextButton.argTypes = {
-  children: {
-    type: "string",
-    defaultValue: "Text",
-    table: {
-      defaultValue: { summary: "undefined" },
+  argTypes: {
+    children: {
+      control: false,
+      type: "string",
+      table: {
+        defaultValue: { summary: "undefined" },
+      },
     },
   },
+
+  name: "Icon only",
 };
-IconWithTextButton.storyName = "Icon";
+
+export const IconWithTextButton = {
+  render: IconButtonTemplate,
+
+  args: {
+    children: "Text",
+  },
+
+  argTypes: {
+    children: {
+      type: "string",
+      table: {
+        defaultValue: { summary: "undefined" },
+      },
+    },
+  },
+
+  name: "Icon",
+};

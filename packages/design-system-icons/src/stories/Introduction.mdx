@@ -1,4 +1,4 @@
-import { Canvas, Meta, Story } from "@storybook/addon-docs";
+import { Canvas, Meta, Story } from "@storybook/blocks";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -6,10 +6,10 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Typography from "@mui/material/Typography";
 import { pink } from "@mui/material/colors";
-import * as Icons from "../../dist";
-import SuccessIcon from "../../dist/Success";
+import * as Icons from "../..";
+import * as IconStories from "./Introduction.stories";
 
-<Meta title="Lunit Design System Icons" />
+<Meta of={IconStories} />
 
 # Lunit Design System Icons
 
@@ -51,12 +51,7 @@ The safest for bundle size is Option 1, but some developers prefer Option 2. Mak
 
 ### Variant
 
-<Canvas>
-  <Story name="variant">
-    <SuccessIcon variant="outlined" />
-    <SuccessIcon variant="filled" />
-  </Story>
-</Canvas>
+<Canvas of={IconStories.Variant} />
 
 ```tsx
 React.ComponentProps < typeof SuccessIcon > ["variant"]; // 'outlined' | 'filled'
@@ -69,26 +64,13 @@ The `outlined` is default if not set.
 ### Color
 
 <Canvas>
-  <Story name="color">
-    <SuccessIcon />
-    <SuccessIcon color="primary" />
-    <SuccessIcon color="secondary" />
-    <SuccessIcon color="success" />
-    <SuccessIcon color="action" />
-    <SuccessIcon color="disabled" />
-    <SuccessIcon sx={{ color: pink[500] }} />
-  </Story>
+  <Story of={IconStories.Color} />
 </Canvas>
 
 ### Size
 
 <Canvas>
-  <Story name="size">
-    <SuccessIcon fontSize="small" />
-    <SuccessIcon />
-    <SuccessIcon fontSize="large" />
-    <SuccessIcon sx={{ fontSize: 40 }} />
-  </Story>
+  <Story of={IconStories.Size} />
 </Canvas>
 
 ## Icons
@@ -125,13 +107,13 @@ Other icons in the design system are in progress.
 
 ## Roadmap
 
-- [x] Export [SvgIcon](https://mui.com/components/icons/#svgicon) wrapped components
-- [x] Publish Storybook docs
-- [x] Add all the design system icons
-- [x] Support basic variants(outlined, filled)
-- [ ] Support two-tone variant
-- [ ] Export SVGs directly
-- [ ] Automated visual test with the Figma project
+- \[x] Export [SvgIcon](https://mui.com/components/icons/#svgicon) wrapped components
+- \[x] Publish Storybook docs
+- \[x] Add all the design system icons
+- \[x] Support basic variants(outlined, filled)
+- \[ ] Support two-tone variant
+- \[ ] Export SVGs directly
+- \[ ] Automated visual test with the Figma project
 
 ## Support
 

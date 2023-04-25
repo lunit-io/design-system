@@ -8,7 +8,7 @@ import {
   TableCell,
 } from "@mui/material";
 import Radio from "@/components/Radio";
-import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 
 export default {
   title: "Components/Radio",
@@ -45,9 +45,9 @@ export default {
       component: "This component base is Material UI Radio component.",
     },
   },
-} as ComponentMeta<typeof Radio>;
+} as Meta<typeof Radio>;
 
-const RadioTemplate: ComponentStory<typeof Radio> = (args) => {
+const RadioTemplate: StoryFn<typeof Radio> = (args) => {
   return (
     <Table sx={{ width: 650 }}>
       <TableHead>
@@ -88,4 +88,6 @@ const RadioTemplate: ComponentStory<typeof Radio> = (args) => {
   );
 };
 
-export const Status = RadioTemplate.bind({});
+export const Status = {
+  render: RadioTemplate,
+};

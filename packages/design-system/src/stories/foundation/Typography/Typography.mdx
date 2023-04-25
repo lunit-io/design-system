@@ -1,4 +1,5 @@
-import { Meta, Canvas, Story } from "@storybook/addon-docs";
+import { Meta, Canvas, Story } from "@storybook/blocks";
+import * as TypographyStories from "./TypographyExamples.stories";
 
 import { Typography } from "@mui/material";
 
@@ -6,7 +7,7 @@ import { variants } from "./const";
 
 import TypographyGroup from "./TypographyGroup";
 
-<Meta title="Foundation/Typography/All Variants" component={Typography} />
+<Meta of={TypographyStories} />
 
 export const Template = (args) => <Typography {...args} />;
 
@@ -42,15 +43,15 @@ export const AllVariants = () => (
   </>
 );
 
-<Story name="all variants">
-  <AllVariants />
-</Story>
+<Story of={TypographyStories.AllVariants_} />
 
 ## Usage
 
 ### Typography component
 
 <Canvas>
+  {/* <Story id="foundation-typography--typography-component" /> is deprecated, please migrate it to <Story of={referenceToStory} /> see: https://storybook.js.org/migration-guides/7.0 */}
+
   <Story id="foundation-typography--typography-component" />
 </Canvas>
 
@@ -59,6 +60,8 @@ export const AllVariants = () => (
 In some situations you might not be able to use the Typography component. Hopefully, you might be able to take advantage of the [typography](https://mui.com/material-ui/react-typography/#theme) keys of the theme.
 
 <Canvas>
+  {/* <Story id="foundation-typography--styled" /> is deprecated, please migrate it to <Story of={referenceToStory} /> see: https://storybook.js.org/migration-guides/7.0 */}
+
   <Story id="foundation-typography--styled" />
 </Canvas>
 
@@ -67,5 +70,7 @@ In some situations you might not be able to use the Typography component. Hopefu
 You can use all the variants with [the `sx` props](https://mui.com/system/getting-started/the-sx-prop/#typography).
 
 <Canvas>
+  {/* <Story id="foundation-typography--sx-props" /> is deprecated, please migrate it to <Story of={referenceToStory} /> see: https://storybook.js.org/migration-guides/7.0 */}
+
   <Story id="foundation-typography--sx-props" />
 </Canvas>

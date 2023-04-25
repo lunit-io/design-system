@@ -11,7 +11,7 @@ import Bell from "@lunit/design-system-icons/Bell";
 import ToggleButton from "@/components/ToggleButton";
 import ToggleButtonGroup from "@/components/ToggleButtonGroup";
 
-import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import type { StoryFn, Meta } from "@storybook/react";
 import type { ButtonProps } from "@/components/Button/Button.types";
 
 type Size = Pick<ButtonProps, "size">;
@@ -21,6 +21,14 @@ const sizeList: SizeValues[] = ["small", "medium", "large"];
 export default {
   title: "Components/ToggleButton",
   component: ToggleButton,
+  args: {
+    children: "Text",
+    kind: "contained",
+    color: "primary",
+    selectedColor: "primary",
+    size: "small",
+    disabled: false,
+  },
   argTypes: {
     icon: {
       control: false,
@@ -37,7 +45,6 @@ export default {
     },
     children: {
       type: "string",
-      defaultValue: "Text",
     },
     selected: {
       control: false,
@@ -50,7 +57,6 @@ export default {
         type: "radio",
       },
       options: ["primary", "secondary"],
-      defaultValue: "primary",
       description:
         "The color of the button when it is in an select state. It has nothing to do with active button",
       table: {
@@ -63,7 +69,6 @@ export default {
       },
       options: ["contained", "outlined", "ghost"],
       description: "Button has three Kinds Contained, Outlined, Ghost",
-      defaultValue: "contained",
       table: {
         defaultValue: { summary: "contained" },
       },
@@ -73,7 +78,6 @@ export default {
         type: "radio",
       },
       options: ["primary", "secondary"],
-      defaultValue: "primary",
       table: {
         defaultValue: { summary: "primary" },
       },
@@ -82,14 +86,12 @@ export default {
       control: {
         type: "boolean",
       },
-      defaultValue: false,
       table: {
         defaultValue: { summary: "false" },
       },
     },
     size: {
       options: ["small", "medium", "large"],
-      defaultValue: "small",
       table: {
         defaultValue: { summary: "small" },
       },
@@ -102,7 +104,6 @@ export default {
         function: action("onChange"),
         undefined: undefined,
       },
-      defaultValue: "function",
     },
     onClick: {
       type: "function",
@@ -112,7 +113,6 @@ export default {
         function: action("onClick"),
         undefined: undefined,
       },
-      defaultValue: "function",
       description:
         "It is a callback function that is called when the button is clicked.",
     },
@@ -140,11 +140,9 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof ToggleButton>;
+} as Meta<typeof ToggleButton>;
 
-const BasicToggleButtonTemplate: ComponentStory<typeof ToggleButton> = (
-  arg
-) => {
+const BasicToggleButtonTemplate: StoryFn<typeof ToggleButton> = (arg) => {
   const [selected, setSelected] = useState(false);
   useEffect(() => {
     setSelected(Boolean(arg.selected));
@@ -162,10 +160,12 @@ const BasicToggleButtonTemplate: ComponentStory<typeof ToggleButton> = (
   );
 };
 
-export const BasicToggleButton = BasicToggleButtonTemplate.bind({});
-BasicToggleButton.storyName = "Basic ToggleButton";
+export const BasicToggleButton = {
+  render: BasicToggleButtonTemplate,
+  name: "Basic ToggleButton",
+};
 
-const SizeTemplate: ComponentStory<typeof ToggleButton> = (args) => {
+const SizeTemplate: StoryFn<typeof ToggleButton> = (args) => {
   const [values, setValues] = React.useState({
     small: "",
     medium: "",
@@ -270,14 +270,17 @@ const SizeTemplate: ComponentStory<typeof ToggleButton> = (args) => {
   );
 };
 
-export const Size = SizeTemplate.bind({});
-Size.argTypes = {
-  size: {
-    control: false,
+export const Size = {
+  render: SizeTemplate,
+
+  argTypes: {
+    size: {
+      control: false,
+    },
   },
 };
 
-const SelectedColorTemplate: ComponentStory<typeof ToggleButton> = (arg) => {
+const SelectedColorTemplate: StoryFn<typeof ToggleButton> = (arg) => {
   const [selected1, setSelected1] = useState(true);
   const [selected2, setSelected2] = useState(true);
 
@@ -328,14 +331,16 @@ const SelectedColorTemplate: ComponentStory<typeof ToggleButton> = (arg) => {
   );
 };
 
-export const SelectedColor = SelectedColorTemplate.bind({});
+export const SelectedColor = {
+  render: SelectedColorTemplate,
 
-SelectedColor.argTypes = {
-  selectedColor: {
-    control: false,
+  argTypes: {
+    selectedColor: {
+      control: false,
+    },
   },
-};
 
-SelectedColor.args = {
-  selected: true,
+  args: {
+    selected: true,
+  },
 };
