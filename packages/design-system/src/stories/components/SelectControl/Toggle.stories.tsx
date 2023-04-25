@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { StoryFn, Meta } from "@storybook/react";
 import Toggle from "@/components/Toggle/Toggle";
 import {
   Box,
@@ -41,7 +41,6 @@ export default {
         type: "boolean",
       },
       description: "If `true`, the component is disabled.",
-      defaultValue: false,
       options: [true, false],
     },
   },
@@ -62,9 +61,9 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof Toggle>;
+} as Meta<typeof Toggle>;
 
-const BaseTemplate: ComponentStory<typeof Toggle> = (args) => {
+const BaseTemplate: StoryFn<typeof Toggle> = (args) => {
   const [checked, setChecked] = useState(false);
   useEffect(() => {
     setChecked(Boolean(args.checked));
@@ -92,7 +91,7 @@ const BaseTemplate: ComponentStory<typeof Toggle> = (args) => {
   );
 };
 
-const Template: ComponentStory<typeof Toggle> = (args) => (
+const Template: StoryFn<typeof Toggle> = (args) => (
   <Table>
     <TableHead>
       <TableRow>
@@ -155,7 +154,7 @@ const Template: ComponentStory<typeof Toggle> = (args) => (
   </Table>
 );
 
-const DisabledTemplate: ComponentStory<typeof Toggle> = (args) => (
+const DisabledTemplate: StoryFn<typeof Toggle> = (args) => (
   <Table>
     <TableHead>
       <TableRow>
@@ -194,7 +193,7 @@ const DisabledTemplate: ComponentStory<typeof Toggle> = (args) => (
   </Table>
 );
 
-const TemplateWithLabel: ComponentStory<typeof Toggle> = (args) => (
+const TemplateWithLabel: StoryFn<typeof Toggle> = (args) => (
   <Table>
     <TableHead>
       <TableRow>
@@ -296,7 +295,7 @@ const TemplateWithLabel: ComponentStory<typeof Toggle> = (args) => (
   </Table>
 );
 
-const IndeterminateTemplate: ComponentStory<typeof Toggle> = (args) => {
+const IndeterminateTemplate: StoryFn<typeof Toggle> = (args) => {
   const [checked, setChecked] = useState([true, false, false]);
 
   const handleChange1 = () => {
@@ -411,19 +410,34 @@ const IndeterminateTemplate: ComponentStory<typeof Toggle> = (args) => {
   );
 };
 
-export const ToggleBase = BaseTemplate.bind({});
-export const ToggleEnabled = Template.bind({});
-export const ToggleDisabled = DisabledTemplate.bind({});
-ToggleDisabled.args = {
-  disabled: true,
+export const ToggleBase = {
+  render: BaseTemplate,
 };
 
-export const ToggleWithLabel = TemplateWithLabel.bind({});
-export const ToggleWithLabelAndIndeterminate = IndeterminateTemplate.bind({});
-ToggleWithLabelAndIndeterminate.parameters = {
-  docs: {
-    description: {
-      story: "Usage is same with Toggle",
+export const ToggleEnabled = {
+  render: Template,
+};
+
+export const ToggleDisabled = {
+  render: DisabledTemplate,
+
+  args: {
+    disabled: true,
+  },
+};
+
+export const ToggleWithLabel = {
+  render: TemplateWithLabel,
+};
+
+export const ToggleWithLabelAndIndeterminate = {
+  render: IndeterminateTemplate,
+
+  parameters: {
+    docs: {
+      description: {
+        story: "Usage is same with Toggle",
+      },
     },
   },
 };

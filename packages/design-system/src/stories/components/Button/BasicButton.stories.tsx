@@ -11,7 +11,7 @@ import Bell from "@lunit/design-system-icons/Bell";
 
 import Button from "@/components/Button";
 
-import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import type { StoryObj, StoryFn, Meta } from "@storybook/react";
 import type { ButtonProps } from "@/components/Button/Button.types";
 
 type Size = Pick<ButtonProps, "size">;
@@ -21,6 +21,14 @@ const sizeList: SizeValues[] = ["small", "medium", "large"];
 export default {
   title: "Components/Button",
   component: Button,
+  args: {
+    kind: "contained",
+    children: "Text",
+    color: "primary",
+    disabled: false,
+    size: "small",
+    onClick: action("onClick"),
+  },
   argTypes: {
     icon: {
       control: false,
@@ -33,7 +41,6 @@ export default {
     },
     children: {
       type: "string",
-      defaultValue: "Text",
     },
     kind: {
       control: {
@@ -41,7 +48,6 @@ export default {
       },
       options: ["contained", "outlined", "ghost"],
       description: "Button has three Kinds Contained, Outlined, Ghost",
-      defaultValue: "contained",
       table: {
         defaultValue: { summary: "contained" },
       },
@@ -51,7 +57,6 @@ export default {
         type: "radio",
       },
       options: ["primary", "secondary", "error"],
-      defaultValue: "primary",
       table: {
         defaultValue: { summary: "primary" },
       },
@@ -60,7 +65,6 @@ export default {
       control: {
         type: "boolean",
       },
-      defaultValue: false,
       table: {
         defaultValue: { summary: "false" },
       },
@@ -70,7 +74,6 @@ export default {
         type: "radio",
       },
       options: ["small", "medium", "large"],
-      defaultValue: "small",
       table: {
         defaultValue: { summary: "small" },
       },
@@ -85,7 +88,6 @@ export default {
         function: action("onClick"),
         undefined: undefined,
       },
-      defaultValue: "function",
       description:
         "It is a callback function that is called when the button is clicked.",
     },
@@ -109,13 +111,13 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof Button>;
+} as Meta<typeof Button>;
 
-export const BasicButton: ComponentStory<typeof Button> = (args) => (
-  <Button {...args}>{args.children}</Button>
-);
+export const BasicButton: StoryObj<typeof Button> = {
+  render: (args) => <Button {...args}>{args.children}</Button>,
+};
 
-const SizeButtonTemplate: ComponentStory<typeof Button> = (args) => {
+const SizeButtonTemplate: StoryFn<typeof Button> = (args) => {
   return (
     <Table sx={{ width: 900 }}>
       <TableHead>
@@ -161,4 +163,6 @@ const SizeButtonTemplate: ComponentStory<typeof Button> = (args) => {
   );
 };
 
-export const Size = SizeButtonTemplate.bind({});
+export const Size = {
+  render: SizeButtonTemplate,
+};

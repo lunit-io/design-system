@@ -10,18 +10,24 @@ import {
 
 import TextField from "@/components/TextField/TextField";
 
-import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import type { StoryFn, Meta } from "@storybook/react";
 
 export default {
   title: "Components/TextField",
   component: TextField,
+  args: {
+    disabled: false,
+    size: "small",
+    placeholder: "Please typing...",
+    helperText: "Helper Text",
+    multiline: true,
+  },
   argTypes: {
     disabled: {
       control: {
         type: "radio",
       },
       options: [true, false],
-      defaultValue: false,
       description: "If true, the text field will be disabled.",
       table: {
         defaultValue: { summary: false },
@@ -32,7 +38,6 @@ export default {
       control: {
         type: "radio",
       },
-      defaultValue: "small",
       description: "The size of the text field.",
       table: {
         defaultValue: { summary: "small" },
@@ -41,7 +46,6 @@ export default {
     },
     rows: {
       type: "number",
-      defaultValue: undefined,
       description: `The number of rows to display when multiline option is set to "true"
         \n the rows default value is undefined.`,
       table: {
@@ -51,7 +55,6 @@ export default {
     },
     placeholder: {
       type: "string",
-      defaultValue: "Please typing...",
       description: "The placeholder content.",
       table: {
         defaultValue: { summary: "undefined" },
@@ -60,7 +63,6 @@ export default {
     },
     helperText: {
       type: "string",
-      defaultValue: "Helper Text",
       description:
         'The helper text content, use "error" or "sub text" to display helper text.',
       table: {
@@ -70,7 +72,6 @@ export default {
     },
     multiline: {
       type: "boolean",
-      defaultValue: false,
       description: "If true, a textarea element(multi line) will be rendered.",
       table: {
         defaultValue: { summary: "false" },
@@ -80,14 +81,7 @@ export default {
   },
   parameters: {
     controls: {
-      include: [
-        "size",
-        "rows",
-        "disabled",
-        "multiline",
-        "helperText",
-        "placeholder",
-      ],
+      include: ["size", "rows", "disabled", "helperText", "placeholder"],
     },
     docs: {
       description: {
@@ -98,9 +92,9 @@ export default {
     },
   },
   decorators: [(Story) => <Box className="base00">{Story()}</Box>],
-} as ComponentMeta<typeof TextField>;
+} as Meta<typeof TextField>;
 
-const MultiTemplate: ComponentStory<typeof TextField> = (args) => (
+const MultiTemplate: StoryFn<typeof TextField> = (args) => (
   <Table>
     <TableHead>
       <TableRow>
@@ -137,5 +131,7 @@ const MultiTemplate: ComponentStory<typeof TextField> = (args) => (
   </Table>
 );
 
-export const TextFieldWithMulti = MultiTemplate.bind({});
-TextFieldWithMulti.storyName = "Multi Line";
+export const TextFieldWithMulti = {
+  render: MultiTemplate,
+  name: "Multi Line",
+};

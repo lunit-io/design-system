@@ -10,21 +10,26 @@ import { action } from "@storybook/addon-actions";
 
 import Button from "@/components/Button";
 
-import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import type { StoryFn, Meta } from "@storybook/react";
 
 export default {
   title: "Components/Button",
   component: Button,
+  args: {
+    kind: "contained",
+    children: "Text",
+    disabled: false,
+    size: "small",
+    onClick: action("onClick"),
+  },
   argTypes: {
     children: {
       type: "string",
-      defaultValue: "Text",
     },
     disabled: {
       control: {
         type: "boolean",
       },
-      defaultValue: false,
       table: {
         defaultValue: { summary: "false" },
       },
@@ -34,7 +39,6 @@ export default {
         type: "radio",
       },
       options: ["small", "medium", "large"],
-      defaultValue: "small",
       table: {
         defaultValue: { summary: "small" },
       },
@@ -49,7 +53,6 @@ export default {
         function: action("onClick"),
         undefined: undefined,
       },
-      defaultValue: "function",
       description:
         "It is a callback function that is called when the button is clicked.",
     },
@@ -57,7 +60,6 @@ export default {
       control: false,
       options: ["contained", "outlined", "ghost"],
       description: "Button has three Kinds Contained, Outlined, Ghost",
-      defaultValue: "contained",
       table: {
         defaultValue: { summary: "contained" },
       },
@@ -85,9 +87,9 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof Button>;
+} as Meta<typeof Button>;
 
-const ButtonTemplate: ComponentStory<typeof Button> = ({
+const ButtonTemplate: StoryFn<typeof Button> = ({
   kind,
   color,
   children,
@@ -150,9 +152,11 @@ const ButtonTemplate: ComponentStory<typeof Button> = ({
   );
 };
 
-export const Kind = ButtonTemplate.bind({});
+export const Kind = {
+  render: ButtonTemplate,
+};
 
-const ContainedButtonTemplate: ComponentStory<typeof Button> = (args) => {
+const ContainedButtonTemplate: StoryFn<typeof Button> = (args) => {
   return (
     <>
       <Table sx={{ width: 650 }}>
@@ -275,23 +279,27 @@ const ContainedButtonTemplate: ComponentStory<typeof Button> = (args) => {
   );
 };
 
-export const KindContained = ContainedButtonTemplate.bind({});
-KindContained.argTypes = {
-  color: {
-    control: "false",
-    options: ["primary", "secondary", "error"],
-    defaultValue: "primary",
-    description: `The color of the component.
-    \n It supports both default and custom theme colors,
-    \n which can be added as shown in the palette customization guide.`,
-    table: {
-      defaultValue: { summary: "primary" },
+export const KindContained = {
+  render: ContainedButtonTemplate,
+
+  argTypes: {
+    color: {
+      control: "false",
+      options: ["primary", "secondary", "error"],
+      defaultValue: "primary",
+      description: `The color of the component.
+      \n It supports both default and custom theme colors,
+      \n which can be added as shown in the palette customization guide.`,
+      table: {
+        defaultValue: { summary: "primary" },
+      },
     },
   },
-};
-KindContained.storyName = "Kind: Contained";
 
-const GhostButtonTemplate: ComponentStory<typeof Button> = (args) => {
+  name: "Kind: Contained",
+};
+
+const GhostButtonTemplate: StoryFn<typeof Button> = (args) => {
   return (
     <>
       <Table sx={{ width: 650 }}>
@@ -416,23 +424,27 @@ const GhostButtonTemplate: ComponentStory<typeof Button> = (args) => {
   );
 };
 
-export const KindGhost = GhostButtonTemplate.bind({});
-KindGhost.argTypes = {
-  color: {
-    control: "false",
-    options: ["primary", "secondary", "error"],
-    description: `The color of the component.
-    \n It supports both default and custom theme colors,
-    \n which can be added as shown in the palette customization guide.`,
-    defaultValue: "primary",
-    table: {
-      defaultValue: { summary: "primary" },
+export const KindGhost = {
+  render: GhostButtonTemplate,
+
+  argTypes: {
+    color: {
+      control: "false",
+      options: ["primary", "secondary", "error"],
+      description: `The color of the component.
+      \n It supports both default and custom theme colors,
+      \n which can be added as shown in the palette customization guide.`,
+      defaultValue: "primary",
+      table: {
+        defaultValue: { summary: "primary" },
+      },
     },
   },
-};
-KindGhost.storyName = "Kind: Ghost";
 
-const OutlinedButtonTemplate: ComponentStory<typeof Button> = ({
+  name: "Kind: Ghost",
+};
+
+const OutlinedButtonTemplate: StoryFn<typeof Button> = ({
   color,
   ...restProps
 }) => {
@@ -506,19 +518,23 @@ const OutlinedButtonTemplate: ComponentStory<typeof Button> = ({
   );
 };
 
-export const KindOutlined = OutlinedButtonTemplate.bind({});
-KindOutlined.argTypes = {
-  color: {
-    control: "false",
-    options: ["primary"],
-    defaultValue: "primary",
-    description: `The color of the component.
-    \n It supports both default and custom theme colors,
-    \n which can be added as shown in the palette customization guide.`,
-    table: {
-      type: { summary: "primary" },
-      defaultValue: { summary: "primary" },
+export const KindOutlined = {
+  render: OutlinedButtonTemplate,
+
+  argTypes: {
+    color: {
+      control: "false",
+      options: ["primary"],
+      defaultValue: "primary",
+      description: `The color of the component.
+      \n It supports both default and custom theme colors,
+      \n which can be added as shown in the palette customization guide.`,
+      table: {
+        type: { summary: "primary" },
+        defaultValue: { summary: "primary" },
+      },
     },
   },
+
+  name: "Kind: Outlined",
 };
-KindOutlined.storyName = "Kind: Outlined";
