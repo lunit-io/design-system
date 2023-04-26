@@ -149,40 +149,22 @@ const lunitColors: PaletteOptions["lunit"] = ((): PaletteOptions["lunit"] => {
 
 const paletteOptions = {
   primary: {
-    light: "var(--lunit_teal_30)",
-    main: "var(--text_primary)",
-    dark: "var(--lunit_teal_50)",
-    contrastText: "var(--text_normal)",
+    main: base.lunit_teal[40], // core.text_primary.dark1
   },
   secondary: {
-    light: "var(--grey_30)",
-    main: "var(--text_light)",
-    dark: "var(--text_medium)",
-    contrastText: "var(--text_normal)",
+    main: base.grey[50], // core.text_light.dark1
   },
   error: {
-    light: "var(--red_30)",
-    main: "var(--text_error)",
-    dark: "var(--red_50)",
-    contrastText: "var(--grey_100)",
+    main: base.red[40], // core.text_error.dark1
   },
   warning: {
-    light: "var(--orange_30)",
-    main: "var(--text_warning)",
-    dark: "var(--orange_50)",
-    contrastText: "var(--grey_100)",
+    main: base.orange[40], // core.text_warning.dark1
   },
   info: {
-    light: "var(--blue_30)",
-    main: "var(--text_info)",
-    dark: "var(--blue_50)",
-    contrastText: "var(--grey_100)",
+    main: base.blue[40], // core.text_info.dark1
   },
   success: {
-    light: "var(--green_30)",
-    main: "var(--text_success)",
-    dark: "var(--green_50)",
-    contrastText: "var(--grey_100)",
+    main: base.green[40], // core.text_success.dark1
   },
   grey: base.grey,
   lunit: lunitColors,
