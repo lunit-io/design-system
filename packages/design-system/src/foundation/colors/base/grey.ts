@@ -34,3 +34,20 @@ export const greyText = {
   95: grey[5],
   100: grey[5],
 };
+
+export const greyForMUI = {
+  50: grey[5],
+  100: grey[10],
+  200: grey[20],
+  300: grey[30],
+  400: grey[40],
+  500: grey[50],
+  600: grey[60],
+  700: grey[70],
+  800: grey[80],
+  900: grey[90],
+  A100: "#F3F3F3",
+  A200: "#C7C7C7",
+  A400: "#9A9A9A",
+  A700: "#4F4F4F",
+};

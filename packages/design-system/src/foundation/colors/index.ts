@@ -166,7 +166,7 @@ const paletteOptions = {
   success: {
     main: base.green[40], // core.text_success.dark1
   },
-  grey: base.grey,
+  grey: base.greyForMUI,
   lunit: lunitColors,
   token: {
     core: {
