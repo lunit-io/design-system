@@ -1,6 +1,6 @@
 {
   "name": "@lunit/design-system",
-  "version": "1.0.0-a.2",
+  "version": "1.0.0-a.3",
   "description": "Lunit Design System",
   "main": "dist/cjs/index.js",
   "module": "dist/index.js",
@@ -35,9 +35,9 @@
     "directory": "packages/design-system"
   },
   "scripts": {
-    "build:prepare": "tsc -p tsconfig.build.json",
+    "build:transpile": "tsc -p tsconfig.build.json",
     "build:cjs": "webpack -c webpack/cjs.config.js",
-    "build": "yarn build:prepare && yarn build:cjs",
+    "build": "yarn build:transpile && yarn build:cjs",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "chromatic": "chromatic"
@@ -58,6 +58,7 @@
     "@babel/preset-typescript": "^7.21.4",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
+    "@mui/icons-material": "^5.11.3",
     "@mui/material": "^5.11.3",
     "@mui/utils": "^5.11.3",
     "@mui/x-date-pickers": "^5.0.16",

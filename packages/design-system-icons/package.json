@@ -45,6 +45,16 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build --docs && npx -y storybook extract "
   },
+  "nx": {
+    "targets": {
+      "build": {
+        "outputs": [
+          "{projectRoot}/src/generated",
+          "{projectRoot}/dist"
+        ]
+      }
+    }
+  },
   "devDependencies": {
     "@babel/core": "^7.17.5",
     "@babel/preset-env": "^7.21.4",

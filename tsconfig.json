@@ -4,7 +4,7 @@
     "baseUrl": "./packages",
     "paths": {
       "@lunit/design-system": ["design-system/src"],
-      "@lunit/design-system-icons": ["design-system-icons/generated"],
+      "@lunit/design-system-icons": ["design-system-icons/src/generated"],
       "@lunit/design-system-logo": ["design-system-logo/src"],
       "@lunit/mui-theme": ["mui-theme/src"]
     }

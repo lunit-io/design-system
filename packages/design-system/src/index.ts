@@ -1,4 +1,5 @@
 export { default as theme } from "./theme";
+export { base as baseColors } from "./foundation/colors";
 
 export { default as Alert } from "./components/Alert";
 export { default as Button } from "./components/Button";
