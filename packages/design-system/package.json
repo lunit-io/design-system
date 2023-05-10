@@ -58,6 +58,7 @@
     "@babel/preset-typescript": "^7.21.4",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
+    "@mui/icons-material": "^5.11.3",
     "@mui/material": "^5.11.3",
     "@mui/utils": "^5.11.3",
     "@mui/x-date-pickers": "^5.0.16",
