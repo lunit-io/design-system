@@ -99,6 +99,7 @@ export const createColorCssBaseline = () => {
   return {
     ":root": {
       ...createCSSVariables(),
+      ...createTokenColorVariables("dark1"),
     },
     ".light1": {
       ...createTokenColorVariables("light1"),
@@ -147,6 +148,25 @@ const lunitColors: PaletteOptions["lunit"] = ((): PaletteOptions["lunit"] => {
 })();
 
 const paletteOptions = {
+  primary: {
+    main: base.lunit_teal[40], // core.text_primary.dark1
+  },
+  secondary: {
+    main: base.grey[50], // core.text_light.dark1
+  },
+  error: {
+    main: base.red[40], // core.text_error.dark1
+  },
+  warning: {
+    main: base.orange[40], // core.text_warning.dark1
+  },
+  info: {
+    main: base.blue[40], // core.text_info.dark1
+  },
+  success: {
+    main: base.green[40], // core.text_success.dark1
+  },
+  grey: base.greyForMUI,
   lunit: lunitColors,
   token: {
     core: {
