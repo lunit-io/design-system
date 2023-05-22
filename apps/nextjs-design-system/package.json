@@ -11,6 +11,7 @@
   "dependencies": {
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
+    "@lunit/design-system": "1.0.0-a.3",
     "@mui/material": "^5.13.1",
     "@types/node": "20.2.3",
     "@types/react": "18.2.6",
