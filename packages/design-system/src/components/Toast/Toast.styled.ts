@@ -18,7 +18,7 @@ export const StyledToast = styled(Alert)(({ theme, severity }) => {
       height: "36px",
       marginRight: "16px",
       fontSize: 20,
-      color: `${getIconColor(severity)}`,
+      color: `${getIconColor(theme, severity)}`,
       "& .MuiSvgIcon-root": {
         height: "16px",
         width: "16px",
