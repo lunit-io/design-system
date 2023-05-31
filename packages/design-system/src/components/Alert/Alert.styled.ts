@@ -29,7 +29,7 @@ export const StyledAlert = styled(MuiAlert)<AlertProps>(
     "& .MuiAlert-message": {
       width: "100%",
       minHeight: "28px",
-      padding: "4px 0",
+      padding: "4px 0 0",
       margin: "0 8px 0 8px",
     },
     "& .MuiAlert-action": {
