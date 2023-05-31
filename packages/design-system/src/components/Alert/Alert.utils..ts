@@ -1,7 +1,9 @@
-import theme from "@/theme";
-import { AlertColor } from "@mui/material";
+import { AlertColor, Theme } from "@mui/material";
 
-export const getBackgroundColor = (severity: AlertColor | undefined) => {
+export const getBackgroundColor = (
+  theme: Theme,
+  severity: AlertColor | undefined
+) => {
   switch (severity) {
     case "info":
       return theme.palette.token.component.alert_info_bg;
@@ -14,7 +16,10 @@ export const getBackgroundColor = (severity: AlertColor | undefined) => {
   }
 };
 
-export const getBorderColor = (severity: AlertColor | undefined) => {
+export const getBorderColor = (
+  theme: Theme,
+  severity: AlertColor | undefined
+) => {
   switch (severity) {
     case "info":
       return theme.palette.token.component.alert_info_border;
@@ -27,7 +32,10 @@ export const getBorderColor = (severity: AlertColor | undefined) => {
   }
 };
 
-export const getIconColor = (severity: AlertColor | undefined) => {
+export const getIconColor = (
+  theme: Theme,
+  severity: AlertColor | undefined
+) => {
   switch (severity) {
     case "info":
       return theme.palette.token.core.icon_info_02;

@@ -10,20 +10,20 @@ import {
   getIconColor,
 } from "./Alert.utils.";
 
-export const StyledAlert = styled(MuiAlert)<AlertProps>(({ severity }) => ({
+export const StyledAlert = styled(MuiAlert)<AlertProps>(({ severity, theme }) => ({
   "&.MuiAlert-root": {
     display: "flex",
     padding: "15px",
     borderRadius: "8px",
-    border: `1px solid ${getBorderColor(severity)}`,
-    backgroundColor: getBackgroundColor(severity),
+    border: `1px solid ${getBorderColor(theme, severity)}`,
+    backgroundColor: getBackgroundColor(theme, severity),
     boxShadow: "none",
   },
   "& .MuiAlert-icon": {
     padding: "4px",
     fontSize: "20px",
     marginRight: "16px",
-    color: `${getIconColor(severity)} !important`,
+    color: `${getIconColor(theme, severity)} !important`,
   },
   "& .MuiAlert-message": {
     padding: "4px 0",
