@@ -1,7 +1,9 @@
-import theme from "@/theme";
-import type { AlertColor } from "@mui/material";
+import type { AlertColor, Theme } from "@mui/material";
 
-export const getIconColor = (severity: AlertColor | undefined) => {
+export const getIconColor = (
+  theme: Theme,
+  severity: AlertColor | undefined
+) => {
   switch (severity) {
     case "info":
       return theme.palette.token.core.icon_info_02;
