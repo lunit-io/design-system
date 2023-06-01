@@ -2,6 +2,26 @@
   "name": "nextjs-design-system",
   "version": "0.1.0",
   "private": true,
+  "nx": {
+    "targets": {
+      "dev": {
+        "dependsOn": [
+          {
+            "target": "build",
+            "projects": "dependencies"
+          }
+        ]
+      },
+      "build": {
+        "dependsOn": [
+          {
+            "target": "build",
+            "projects": "dependencies"
+          }
+        ]
+      }
+    }
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
