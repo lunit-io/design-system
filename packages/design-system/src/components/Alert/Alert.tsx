@@ -1,3 +1,8 @@
+import Success from "@lunit/design-system-icons/Success16";
+import Error from "@lunit/design-system-icons/Error16";
+import Warning from "@lunit/design-system-icons/Warning16";
+import Information from "@lunit/design-system-icons/Information16";
+import Close from "@lunit/design-system-icons/Close";
 import React, { forwardRef } from "react";
 import {
   StyledAlert,
@@ -6,13 +11,6 @@ import {
   StyledBottomAction,
 } from "./Alert.styled";
 import { AlertProps } from "./Alert.types";
-import {
-  Close,
-  Success,
-  Error,
-  Warning,
-  Information,
-} from "@lunit/design-system-icons";
 import Button from "../Button";
 
 const MAPPED_ICON = {
