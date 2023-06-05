@@ -15,7 +15,10 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@lunit/design-system": ["../design-system/src"],
+      "@lunit/design-system-icons": ["../design-system-icons/src/generated"],
+      "@lunit/design-system-logo": ["../design-system-logo/src"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
