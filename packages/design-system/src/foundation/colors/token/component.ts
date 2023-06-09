@@ -8,7 +8,7 @@ export interface TokenComponentColorValue {
 
 export const tokenComponentColor: TokenComponentColorValue = {
   btn: {
-    btn_contained_primary_bg: {
+    btn_primary_bg: {
       light1: "--lunit_teal_30",
       light2: "--lunit_teal_30",
       dark1: "--lunit_teal_40",
@@ -16,15 +16,7 @@ export const tokenComponentColor: TokenComponentColorValue = {
       dark3: "--lunit_teal_40",
       dark4: "--lunit_teal_40",
     },
-    btn_contained_primary_text: {
-      light1: "--grey_95",
-      light2: "--grey_95",
-      dark1: "--grey_95",
-      dark2: "--grey_95",
-      dark3: "--grey_95",
-      dark4: "--grey_95",
-    },
-    btn_contained_secondary_bg: {
+    btn_secondary_bg: {
       light1: "--grey_15",
       light2: "--grey_15",
       dark1: "--grey_60",
@@ -32,15 +24,7 @@ export const tokenComponentColor: TokenComponentColorValue = {
       dark3: "--grey_60",
       dark4: "--grey_60",
     },
-    btn_contained_secondary_text: {
-      light1: "--grey_95",
-      light2: "--grey_95",
-      dark1: "--grey_5",
-      dark2: "--grey_5",
-      dark3: "--grey_5",
-      dark4: "--grey_5",
-    },
-    btn_contained_error_bg: {
+    btn_error_bg: {
       light1: "--red_30",
       light2: "--red_30",
       dark1: "--red_40",
@@ -48,15 +32,7 @@ export const tokenComponentColor: TokenComponentColorValue = {
       dark3: "--red_40",
       dark4: "--red_40",
     },
-    btn_contained_error_text: {
-      light1: "--grey_95",
-      light2: "--grey_95",
-      dark1: "--grey_95",
-      dark2: "--grey_95",
-      dark3: "--grey_95",
-      dark4: "--grey_95",
-    },
-    btn_outlined_primary_border: {
+    btn_primary_border: {
       light1: "--lunit_teal_40",
       light2: "--lunit_teal_40",
       dark1: "--lunit_teal_40",
@@ -64,7 +40,15 @@ export const tokenComponentColor: TokenComponentColorValue = {
       dark3: "--lunit_teal_40",
       dark4: "--lunit_teal_40",
     },
-    btn_outlined_primary_text: {
+    btn_secondary_border: {
+      light1: "--grey_15",
+      light2: "--grey_15",
+      dark1: "--grey_5",
+      dark2: "--grey_5",
+      dark3: "--grey_5",
+      dark4: "--grey_5",
+    },
+    btn_primary_text_1: {
       light1: "--lunit_teal_50",
       light2: "--lunit_teal_50",
       dark1: "--lunit_teal_40",
@@ -72,15 +56,15 @@ export const tokenComponentColor: TokenComponentColorValue = {
       dark3: "--lunit_teal_40",
       dark4: "--lunit_teal_40",
     },
-    btn_ghost_primary_text: {
-      light1: "--lunit_teal_50",
-      light2: "--lunit_teal_50",
-      dark1: "--lunit_teal_40",
-      dark2: "--lunit_teal_40",
-      dark3: "--lunit_teal_40",
-      dark4: "--lunit_teal_40",
+    btn_primary_text_2: {
+      light1: "--grey_95",
+      light2: "--grey_95",
+      dark1: "--grey_95",
+      dark2: "--grey_95",
+      dark3: "--grey_95",
+      dark4: "--grey_95",
     },
-    btn_ghost_secondary_text: {
+    btn_secondary_text: {
       light1: "--grey_95",
       light2: "--grey_95",
       dark1: "--grey_5",
@@ -88,7 +72,7 @@ export const tokenComponentColor: TokenComponentColorValue = {
       dark3: "--grey_5",
       dark4: "--grey_5",
     },
-    btn_ghost_error_text: {
+    btn_error_text: {
       light1: "--red_40",
       light2: "--red_40",
       dark1: "--red_40",
