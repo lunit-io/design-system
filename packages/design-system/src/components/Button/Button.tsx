@@ -18,11 +18,11 @@ const Button = (props: ButtonProps) => {
 
   return (
     <>
-      {kind === "contained" || kind === "ghost" ? (
+      {props.kind === "outlined" ? (
         <CustomButton
-          className={`${kind} ${className ? className : ""}`}
-          kind={kind}
-          color={color}
+          className={`outlined ${className ? className : ""}`}
+          kind="outlined"
+          color={props.color ?? "primary"}
           size={size}
           startIcon={icon}
           hasIconOnly={hasIconOnly}
@@ -32,9 +32,9 @@ const Button = (props: ButtonProps) => {
         </CustomButton>
       ) : (
         <CustomButton
-          className={`outlined ${className ? className : ""}`}
-          kind="outlined"
-          color="primary"
+          className={`${props.kind} ${className ? className : ""}`}
+          kind={props.kind}
+          color={color}
           size={size}
           startIcon={icon}
           hasIconOnly={hasIconOnly}
