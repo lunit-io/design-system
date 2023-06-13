@@ -154,6 +154,27 @@ export const kindStyle = ({ kind, color, token }: KindStyleParams) => ({
         color: token.component.btn_primary_text_1,
       },
     }),
+  ...(kind === "outlined" &&
+    color === "secondary" && {
+      color: token.component.btn_secondary_text,
+      border: `${OUTLINED_BORDER_WIDTH}px solid ${token.component.btn_secondary_border}`,
+      "&:hover": getHoverStyle("none"),
+      "&:hover:before": {
+        content: "''",
+        position: "absolute",
+        left: "-1px",
+        top: "-1px",
+        width: "calc(100% + 2px)",
+        height: "calc(100% + 2px)",
+        zIndex: -1,
+        backgroundColor: token.core.hover,
+        borderRadius,
+      },
+      "&.Mui-disabled": {
+        opacity: 0.38,
+        color: token.component.btn_secondary_text,
+      },
+    }),
 });
 
 export const commonStyle = ({ token }: { token: ColorToken }) =>
