@@ -457,6 +457,9 @@ const OutlinedButtonTemplate: StoryFn<typeof Button> = ({
             <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
               Outlined Primary
             </TableCell>
+            <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+              Outlined Secondary
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -471,6 +474,11 @@ const OutlinedButtonTemplate: StoryFn<typeof Button> = ({
                 Text
               </Button>
             </TableCell>
+            <TableCell>
+              <Button {...restProps} kind="outlined" color="secondary">
+                Text
+              </Button>
+            </TableCell>
           </TableRow>
           <TableRow>
             <TableCell
@@ -480,6 +488,16 @@ const OutlinedButtonTemplate: StoryFn<typeof Button> = ({
             </TableCell>
             <TableCell>
               <Button {...restProps} id="hover7" kind="outlined">
+                Text
+              </Button>
+            </TableCell>
+            <TableCell>
+              <Button
+                {...restProps}
+                id="hover7"
+                kind="outlined"
+                color="secondary"
+              >
                 Text
               </Button>
             </TableCell>
@@ -499,6 +517,16 @@ const OutlinedButtonTemplate: StoryFn<typeof Button> = ({
                 Text
               </Button>
             </TableCell>
+            <TableCell>
+              <Button
+                {...restProps}
+                kind="outlined"
+                color="secondary"
+                className="Mui-focusVisible"
+              >
+                Text
+              </Button>
+            </TableCell>
           </TableRow>
           <TableRow>
             <TableCell
@@ -508,6 +536,11 @@ const OutlinedButtonTemplate: StoryFn<typeof Button> = ({
             </TableCell>
             <TableCell>
               <Button {...restProps} kind="outlined" disabled>
+                Text
+              </Button>
+            </TableCell>
+            <TableCell>
+              <Button {...restProps} kind="outlined" color="secondary" disabled>
                 Text
               </Button>
             </TableCell>
