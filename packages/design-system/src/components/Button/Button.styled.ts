@@ -68,76 +68,75 @@ export const kindStyle = ({ kind, color, token }: KindStyleParams) => ({
   // kind: container
   ...(kind === "contained" &&
     color === "primary" && {
-      color: token.component.btn_contained_primary_text,
-      backgroundColor: token.component.btn_contained_primary_bg,
-      "&:hover": getHoverStyle(token.component.btn_contained_primary_bg),
+      color: token.component.btn_primary_text_2,
+      backgroundColor: token.component.btn_primary_bg,
+      "&:hover": getHoverStyle(token.component.btn_primary_bg),
       "&.Mui-disabled": {
         opacity: 0.38,
         border: "none",
-        color: token.component.btn_contained_primary_text,
+        color: token.component.btn_primary_text_2,
       },
     }),
   ...(kind === "contained" &&
     color === "secondary" && {
-      color: token.component.btn_contained_secondary_text,
-
-      backgroundColor: token.component.btn_contained_secondary_bg,
-      "&:hover": getHoverStyle(token.component.btn_contained_secondary_bg),
+      color: token.component.btn_secondary_text,
+      backgroundColor: token.component.btn_secondary_bg,
+      "&:hover": getHoverStyle(token.component.btn_secondary_bg),
       "&.Mui-disabled": {
         opacity: 0.38,
         border: "none",
-        color: token.component.btn_contained_secondary_text,
+        color: token.component.btn_secondary_text,
       },
     }),
   ...(kind === "contained" &&
     color === "error" && {
-      color: token.component.btn_contained_error_text,
-      backgroundColor: token.component.btn_contained_error_bg,
-      "&:hover": getHoverStyle(token.component.btn_contained_error_bg),
+      color: token.component.btn_primary_text_2,
+      backgroundColor: token.component.btn_error_bg,
+      "&:hover": getHoverStyle(token.component.btn_error_bg),
       "&.Mui-disabled": {
         opacity: 0.38,
         border: "none",
-        color: token.component.btn_contained_error_text,
+        color: token.component.btn_primary_text_2,
       },
     }),
   // kind: ghost
   ...(kind === "ghost" &&
     color === "primary" && {
-      color: token.component.btn_ghost_primary_text,
+      color: token.component.btn_primary_text_1,
       border: "none",
       "&:hover": getHoverStyle("none"),
       "&.Mui-disabled": {
         opacity: 0.38,
         border: "none",
-        color: token.component.btn_ghost_primary_text,
+        color: token.component.btn_primary_text_1,
       },
     }),
   ...(kind === "ghost" &&
     color === "secondary" && {
-      color: token.component.btn_ghost_secondary_text,
+      color: token.component.btn_secondary_text,
       border: "none",
       "&:hover": getHoverStyle("none"),
       "&.Mui-disabled": {
         opacity: 0.38,
         border: "none",
-        color: token.component.btn_ghost_secondary_text,
+        color: token.component.btn_secondary_text,
       },
     }),
   ...(kind === "ghost" &&
     color === "error" && {
-      color: token.component.btn_ghost_error_text,
+      color: token.component.btn_error_text,
       "&:hover": getHoverStyle("none"),
       "&.Mui-disabled": {
         opacity: 0.38,
         border: "none",
-        color: token.component.btn_ghost_error_text,
+        color: token.component.btn_error_text,
       },
     }),
   // kind: outlined
   ...(kind === "outlined" &&
     color === "primary" && {
-      color: token.component.btn_outlined_primary_text,
-      border: `${OUTLINED_BORDER_WIDTH}px solid ${token.component.btn_outlined_primary_border}`,
+      color: token.component.btn_primary_text_1,
+      border: `${OUTLINED_BORDER_WIDTH}px solid ${token.component.btn_primary_border}`,
       "&:hover": getHoverStyle("none"),
       "&:hover:before": {
         content: "''",
@@ -152,7 +151,7 @@ export const kindStyle = ({ kind, color, token }: KindStyleParams) => ({
       },
       "&.Mui-disabled": {
         opacity: 0.38,
-        color: token.component.btn_outlined_primary_text,
+        color: token.component.btn_primary_text_1,
       },
     }),
 });
