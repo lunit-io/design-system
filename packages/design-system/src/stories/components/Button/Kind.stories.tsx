@@ -450,12 +450,15 @@ const OutlinedButtonTemplate: StoryFn<typeof Button> = ({
 }) => {
   return (
     <>
-      <Table sx={{ width: 250 }}>
+      <Table sx={{ width: 600 }}>
         <TableHead>
           <TableRow>
             <TableCell></TableCell>
             <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
               Outlined Primary
+            </TableCell>
+            <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+              Outlined Secondary
             </TableCell>
           </TableRow>
         </TableHead>
@@ -468,7 +471,12 @@ const OutlinedButtonTemplate: StoryFn<typeof Button> = ({
             </TableCell>
             <TableCell>
               <Button {...restProps} kind="outlined">
-                Text
+                {restProps.children}
+              </Button>
+            </TableCell>
+            <TableCell>
+              <Button {...restProps} kind="outlined" color="secondary">
+                {restProps.children}
               </Button>
             </TableCell>
           </TableRow>
@@ -480,7 +488,17 @@ const OutlinedButtonTemplate: StoryFn<typeof Button> = ({
             </TableCell>
             <TableCell>
               <Button {...restProps} id="hover7" kind="outlined">
-                Text
+                {restProps.children}
+              </Button>
+            </TableCell>
+            <TableCell>
+              <Button
+                {...restProps}
+                id="hover7"
+                kind="outlined"
+                color="secondary"
+              >
+                {restProps.children}
               </Button>
             </TableCell>
           </TableRow>
@@ -496,7 +514,17 @@ const OutlinedButtonTemplate: StoryFn<typeof Button> = ({
                 kind="outlined"
                 className="Mui-focusVisible"
               >
-                Text
+                {restProps.children}
+              </Button>
+            </TableCell>
+            <TableCell>
+              <Button
+                {...restProps}
+                kind="outlined"
+                color="secondary"
+                className="Mui-focusVisible"
+              >
+                {restProps.children}
               </Button>
             </TableCell>
           </TableRow>
@@ -508,7 +536,12 @@ const OutlinedButtonTemplate: StoryFn<typeof Button> = ({
             </TableCell>
             <TableCell>
               <Button {...restProps} kind="outlined" disabled>
-                Text
+                {restProps.children}
+              </Button>
+            </TableCell>
+            <TableCell>
+              <Button {...restProps} kind="outlined" color="secondary" disabled>
+                {restProps.children}
               </Button>
             </TableCell>
           </TableRow>

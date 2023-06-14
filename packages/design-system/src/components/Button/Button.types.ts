@@ -16,7 +16,7 @@ interface GhostButtonProps extends BaseButtonProps {
 
 interface OutlinedButtonProps extends BaseButtonProps {
   kind?: "outlined";
-  color?: "primary";
+  color?: "primary" | "secondary";
 }
 
 export type ButtonProps =
