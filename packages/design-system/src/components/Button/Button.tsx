@@ -18,6 +18,7 @@ const Button = (props: ButtonProps) => {
 
   return (
     <>
+      {/** props.kind 사용 이유: props.color 내 타입 좁히기 활용을 위해 사용 */}
       {props.kind === "outlined" ? (
         <CustomButton
           className={`outlined ${className ? className : ""}`}
