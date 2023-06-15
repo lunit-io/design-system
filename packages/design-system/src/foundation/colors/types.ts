@@ -29,17 +29,15 @@ export interface ColorToken {
     shadow_04: CSSPropertyColor;
   };
   component: {
-    btn_contained_primary_bg: CSSPropertyColor;
-    btn_contained_primary_text: CSSPropertyColor;
-    btn_contained_secondary_bg: CSSPropertyColor;
-    btn_contained_secondary_text: CSSPropertyColor;
-    btn_contained_error_bg: CSSPropertyColor;
-    btn_contained_error_text: CSSPropertyColor;
-    btn_outlined_primary_border: CSSPropertyColor;
-    btn_outlined_primary_text: CSSPropertyColor;
-    btn_ghost_primary_text: CSSPropertyColor;
-    btn_ghost_secondary_text: CSSPropertyColor;
-    btn_ghost_error_text: CSSPropertyColor;
+    btn_primary_bg: CSSPropertyColor;
+    btn_secondary_bg: CSSPropertyColor;
+    btn_error_bg: CSSPropertyColor;
+    btn_primary_border: CSSPropertyColor;
+    btn_secondary_border: CSSPropertyColor;
+    btn_primary_text_1: CSSPropertyColor;
+    btn_primary_text_2: CSSPropertyColor;
+    btn_secondary_text: CSSPropertyColor;
+    btn_error_text: CSSPropertyColor;
     btn_selected_primary_bg: CSSPropertyColor;
     btn_selected_primary_text: CSSPropertyColor;
     btn_selected_secondary_bg: CSSPropertyColor;
