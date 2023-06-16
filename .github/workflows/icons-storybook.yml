@@ -18,19 +18,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Get Yarn cache directory
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-
-      - uses: actions/cache@v3
+      - uses: actions/setup-node@v3
         with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+          node-version: "18"
+          cache: "npm"
 
-      - name: Install Packages
-        run: yarn
+      - run: npm ci
 
       - name: Build package
         run: npx nx build @lunit/design-system-icons
@@ -39,12 +32,9 @@ jobs:
         run: npx nx build-storybook @lunit/design-system-icons
 
       - name: Deploy
-        uses: lunit-io/csg-sd-gitops/git-actions/preview-frontend-provider@v1.2.0
+        uses: lunit-io/csg-sd-gitops/git-actions/preview-frontend-provider@v1.3.0
         with:
-          git-token: ${{ secrets.GIT_TOKEN }}
           pfp-access-key: ${{ secrets.PFP_ACCESS_KEY }}
           pfp-secret-key: ${{ secrets.PFP_SECRET_KEY }}
-
-          # Optional
           build-path: ${{ env.WORKDIR }}/storybook-static
-          is-public-repo: true
+          use-public-runner: true
