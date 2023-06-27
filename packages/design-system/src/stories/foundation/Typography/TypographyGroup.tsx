@@ -1,12 +1,8 @@
 import React from "react";
 
-import {
-  Box,
-  Typography,
-  styled,
-  useTheme,
-  TypographyProps,
-} from "@mui/material";
+import { Box, styled, useTheme, TypographyProps } from "@mui/material";
+
+import Typography from "@/components/Typography";
 
 export const TypographyContent = styled(Box)({
   display: "flex",

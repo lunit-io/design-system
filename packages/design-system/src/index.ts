@@ -18,3 +18,4 @@ export { default as Toggle } from "./components/Toggle";
 export { default as ToggleButton } from "./components/ToggleButton";
 export { default as ToggleButtonGroup } from "./components/ToggleButtonGroup";
 export { default as Tooltip } from "./components/Tooltip";
+export { default as Typography } from "./components/Typography";

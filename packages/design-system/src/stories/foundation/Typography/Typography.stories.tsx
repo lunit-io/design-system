@@ -1,8 +1,10 @@
 import React from "react";
 
 import { StoryFn } from "@storybook/react";
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import { styled } from "@mui/material/styles";
+
+import Typography from "@/components/Typography";
 
 import { variantArray } from "./const";
 
