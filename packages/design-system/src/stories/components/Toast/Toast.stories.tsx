@@ -2,7 +2,7 @@ import React from "react";
 import { StoryFn, Meta } from "@storybook/react";
 import { Box } from "@mui/material";
 
-import Toast from "@/components/Toast/Toast";
+import Toast from "@/components/Toast";
 import { action } from "@storybook/addon-actions";
 import Button from "@/components/Button";
 

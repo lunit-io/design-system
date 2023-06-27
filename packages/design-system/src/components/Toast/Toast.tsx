@@ -18,6 +18,7 @@ const MAPPED_ICON = {
   error: <Error variant="filled" />,
 };
 
+// this forwardRef is required for using with Snackbar component
 const Toast = forwardRef<HTMLDivElement, ToastProps>((props, ref) => {
   const {
     severity = "normal",
@@ -62,5 +63,4 @@ const Toast = forwardRef<HTMLDivElement, ToastProps>((props, ref) => {
   );
 });
 
-// this forwardRef is required for using with Snackbar component
 export default Toast;
