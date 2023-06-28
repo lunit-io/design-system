@@ -9,7 +9,8 @@
   ],
   "scripts": {
     "build:design-system": "nx build @lunit/design-system",
-    "storybook:design-system": "nx storybook @lunit/design-system"
+    "storybook:design-system": "nx storybook @lunit/design-system",
+    "build-storybook:design-system": "nx build-storybook @lunit/design-system"
   },
   "devDependencies": {
     "@tsconfig/recommended": "^1.0.1",
