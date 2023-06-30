@@ -1,5 +1,4 @@
 import { ThemeProvider, CssBaseline, Box } from "@mui/material";
-import { ThemeProvider as EmotionThemeProvider } from "emotion-theming";
 
 import theme from "../src/theme";
 
@@ -8,19 +7,17 @@ export const decorators = [
     const surface = context.globals.theme;
 
     return (
-      <EmotionThemeProvider theme={theme}>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          <Box
-            className={surface}
-            bgcolor={theme.palette.token.core.bg_01}
-            color={theme.palette.token.core.text_normal}
-            sx={{ p: 2 }}
-          >
-            <Story />
-          </Box>
-        </ThemeProvider>
-      </EmotionThemeProvider>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Box
+          className={surface}
+          bgcolor={theme.palette.token.core.bg_01}
+          color={theme.palette.token.core.text_normal}
+          sx={{ p: 2 }}
+        >
+          <Story />
+        </Box>
+      </ThemeProvider>
     );
   },
 ];

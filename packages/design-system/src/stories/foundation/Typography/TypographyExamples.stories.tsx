@@ -1,8 +1,8 @@
 import React from "react";
-import { Typography } from "@mui/material";
+
+import Typography from "@/components/Typography";
 
 import { variants } from "./const";
-
 import TypographyGroup from "./TypographyGroup";
 
 const AllVariants = () => (
