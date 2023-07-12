@@ -92,8 +92,11 @@ The `outlined` is default if not set.
                 return 0;
               })
               .map((variant) => (
-                <span title={`${Icon.displayName} ${variant}`}>
-                  <Icon key={Icon.displayName + variant} variant={variant} />
+                <span
+                  key={Icon.displayName + variant}
+                  title={`${Icon.displayName} ${variant}`}
+                >
+                  <Icon variant={variant} />
                 </span>
               ))}
           </TableCell>
