@@ -37,7 +37,7 @@
   "scripts": {
     "build:transpile": "tsc -p tsconfig.build.json",
     "build:cjs": "webpack -c webpack/cjs.config.js",
-    "build": "yarn build:transpile && yarn build:cjs",
+    "build": "npm run build:transpile && npm run build:cjs",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "chromatic": "chromatic"
@@ -45,6 +45,11 @@
   "nx": {
     "targets": {
       "storybook": {
+        "dependsOn": [
+          "^build"
+        ]
+      },
+      "build-storybook": {
         "dependsOn": [
           "^build"
         ]
@@ -78,8 +83,8 @@
     "dayjs": "^1.11.7",
     "lodash": "^4.17.21",
     "mustache": "^4.2.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "storybook": "^7.0.21",
     "storybook-addon-pseudo-states": "^2.0.1",
     "ts-loader": "^9.3.0",
