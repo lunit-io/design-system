@@ -3,8 +3,8 @@
 ## Development
 
 - At `repository root` location
-  - `yarn` : Install node modules and set lerna environment
-  - `yarn storybook:design-system` : Runs [storybook](http://localhost:6006) local dev server on http://localhost:6006
+  - `npm i` : Install node modules and set Nx environment
+  - `nx storybook @lunit/design-system` : Runs [storybook](http://localhost:6006) local dev server on http://localhost:6006
 
 ## Usage
 

@@ -37,11 +37,11 @@
   "homepage": "https://design-system-icons.d.lunit.io/",
   "scripts": {
     "test": "jest",
-    "dev": "node ./builder.mjs && webpack --watch & yarn storybook",
+    "dev": "node ./builder.mjs && webpack --watch & npm run storybook",
     "build:prepare": "node ./builder.mjs && tsc -p tsconfig.build.json",
     "build:esm": "webpack -c webpack/esm.config.js",
     "build:cjs": "webpack -c webpack/cjs.config.js",
-    "build": "yarn build:prepare && yarn build:esm && yarn build:cjs",
+    "build": "npm run build:prepare && npm run build:esm && npm run build:cjs",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build --docs && npx -y storybook extract "
   },

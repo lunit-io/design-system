@@ -17,7 +17,7 @@
     "build": "node ./generator.mjs && webpack",
     "postbuild": "cp package.json README.md favicon.mjs dist && cp -r ./src/assets/favicon dist",
     "prepublishOnly": "[[ \"$PWD\" == *dist ]] || { exit 1; }",
-    "storybook": "yarn build && storybook dev -p 6006",
+    "storybook": "npm run build && storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
   "bin": "./favicon.mjs",
