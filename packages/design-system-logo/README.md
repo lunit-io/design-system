@@ -4,8 +4,9 @@ This package provides logos used in the Lunit projects.
 
 ## Development
 
-- `yarn dev`: Generates logo components and builds the logos.
-- `yarn storybook`: Running the storybook.
+At repository root:
+- `nx build @lunit/design-system-logo`: Generates logo components and builds the logos.
+- `nx storybook @lunit/design-system-logo`: Running the storybook.
 
 ## Installation
 

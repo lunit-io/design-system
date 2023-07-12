@@ -33,7 +33,7 @@
     "test": "jest",
     "dev": "node ./generator.mjs && webpack --watch",
     "build": "node ./generator.mjs && webpack",
-    "storybook": "yarn build && storybook dev -p 6006",
+    "storybook": "npm run build && storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
   "bin": "./favicon.mjs",

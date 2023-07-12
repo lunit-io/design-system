@@ -37,7 +37,7 @@
   "scripts": {
     "build:transpile": "tsc -p tsconfig.build.json",
     "build:cjs": "webpack -c webpack/cjs.config.js",
-    "build": "yarn build:transpile && yarn build:cjs",
+    "build": "npm run build:transpile && npm run build:cjs",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "chromatic": "chromatic"

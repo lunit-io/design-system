@@ -21,9 +21,9 @@ You need [SVG Export plugin](https://www.figma.com/community/plugin/814345141907
 
 ### Build & Publish
 
-The `yarn build` command generates components and stores them in `generated/**/index.tsx` files. These files are then used as entry points by Webpack.
+At repository root, the `nx build @lunit/design-system-icons` command generates components and stores them in `generated/**/index.tsx` files. These files are then used as entry points by Webpack.
 
-You can publish the package with `npm publish --access public`.
+You can publish the package with `cd packages/design-system-icons && npm publish --access public`.
 
 ### Roadmap
 
