@@ -11,10 +11,10 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const outputPath = "src/generated";
 
-function getComponentName(name, grey, isDark) {
-  let compoenentName = upperFirst(camelCase(name));
+function getComponentName(name, isDark) {
+  let componentName = upperFirst(camelCase(name));
 
-  compoenentName = compoenentName
+  componentName = componentName
     .replace("GatewayConfigurationManager", "GCM")
     .replace("ScopeIo", "ScopeIO")
     .replace("Dbt", "DBT")
@@ -25,14 +25,11 @@ function getComponentName(name, grey, isDark) {
     .replace("Her", "HER");
 
   if (isDark === "True") {
-    compoenentName = `${compoenentName}Dark`;
+    componentName = `${componentName}Dark`;
   }
-  if (grey === "On") {
-    compoenentName = `${compoenentName}grey`;
-  }
-  return compoenentName.includes("Lunit")
-    ? compoenentName
-    : `Lunit${compoenentName}`;
+  return componentName.includes("Lunit")
+    ? componentName
+    : `Lunit${componentName}`;
 }
 
 async function handler() {
@@ -57,10 +54,10 @@ async function handler() {
   for await (let svgPath of svgPaths) {
     // make logo components
     const filePattern =
-      /^src\/assets\/logo\/logo=([a-zA-Z0-9_-]+),(?: grey=(\w+),)? dark=(\w+).svg/;
-    const [_, logoName, grey, isDark] = svgPath.match(filePattern);
+      /^src\/assets\/logo\/Name=([a-zA-Z0-9_-]+), Dark=(\w+).svg/;
+    const [_, logoName, isDark] = svgPath.match(filePattern);
 
-    const componentName = getComponentName(logoName, grey, isDark);
+    const componentName = getComponentName(logoName, isDark);
 
     let svgContent = await fse.readFile(path.join(__dirname, svgPath), {
       encoding: "utf8",
@@ -83,7 +80,7 @@ async function handler() {
 
     logoList.push({
       componentName,
-      darkBg: grey === "On" || isDark === "True",
+      darkBg: isDark === "True",
     });
   }
 
