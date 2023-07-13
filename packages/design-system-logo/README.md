@@ -4,6 +4,10 @@ This package provides logos used in the Lunit projects.
 
 ## Development
 
+All assets(`src/assets/**`) should always be exported from Figma and up to date. If the Figma link below is incorrect, please contact the Product Design team.
+
+https://www.figma.com/file/tlomwt8dT0GWikKqzYH7TO/Lunit_Icons_v1.1.0?type=design&t=oKYnyZDasVPfCR4a-6
+
 At repository root:
 - `nx build @lunit/design-system-logo`: Generates logo components and builds the logos.
 - `nx storybook @lunit/design-system-logo`: Running the storybook.
