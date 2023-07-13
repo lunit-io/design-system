@@ -48,8 +48,4 @@ testem.log
 .DS_Store
 Thumbs.db
 
-# generated in logo
-packages/design-system-logo/src/components
-packages/design-system-logo/src/stories/logo
-
 .env.local

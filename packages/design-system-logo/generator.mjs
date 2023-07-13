@@ -9,6 +9,8 @@ import upperFirst from "lodash/upperFirst.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
+const outputPath = "src/generated";
+
 function getComponentName(name, grey, isDark) {
   let compoenentName = upperFirst(camelCase(name));
 
@@ -44,11 +46,11 @@ async function handler() {
     }),
   ]);
 
-  await fse.rm(path.join("src/components"), {
+  await fse.rm(path.join(outputPath), {
     recursive: true,
     force: true,
   });
-  await fse.mkdir(path.join("src/components"));
+  await fse.mkdir(path.join(outputPath));
 
   const logoList = [];
 
@@ -73,9 +75,9 @@ async function handler() {
       { componentName }
     );
 
-    await fse.mkdir(path.join("src/components", componentName));
+    await fse.mkdir(path.join(outputPath, componentName));
     await fse.writeFile(
-      path.join("src/components", componentName, "index.tsx"),
+      path.join(outputPath, componentName, "index.tsx"),
       componentString
     );
 
@@ -87,7 +89,7 @@ async function handler() {
 
   // make an index file
   const indexString = Mustache.render(indexTemplate, { logoList });
-  await fse.writeFile(path.join("src/components", "index.ts"), indexString);
+  await fse.writeFile(path.join(outputPath, "index.ts"), indexString);
 
   // make stories
   await fse.rm(path.join("src/stories/logo"), {

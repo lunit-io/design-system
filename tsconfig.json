@@ -5,7 +5,7 @@
     "paths": {
       "@lunit/design-system": ["design-system/src"],
       "@lunit/design-system-icons": ["design-system-icons/src/generated"],
-      "@lunit/design-system-logo": ["design-system-logo/src"]
+      "@lunit/design-system-logo": ["design-system-logo/src/generated"]
     }
   }
 }

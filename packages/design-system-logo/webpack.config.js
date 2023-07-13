@@ -4,14 +4,14 @@ const nodeExternals = require("webpack-node-externals");
 
 module.exports = {
   mode: "production",
-  entry: glob.sync("./src/components/*/index.tsx").reduce(
+  entry: glob.sync("./src/generated/*/index.tsx").reduce(
     function (obj, el) {
-      const filePattern = /^.\/src\/components\/([a-zA-Z0-9_-]+)\/index.tsx/;
+      const filePattern = /^.\/src\/generated\/([a-zA-Z0-9_-]+)\/index.tsx/;
       const [_, name] = el.match(filePattern);
       obj[name] = el;
       return obj;
     },
-    { main: "./src/components/index.ts" }
+    { main: "./src/generated/index.ts" }
   ),
   output: {
     filename: (pathData) => {
