@@ -13,7 +13,10 @@
     "build-storybook:design-system": "nx build-storybook @lunit/design-system",
     "build:design-system-logo": "nx build @lunit/design-system-logo",
     "storybook:design-system-logo": "nx storybook @lunit/design-system-logo",
-    "build-storybook:design-system-logo": "nx build-storybook @lunit/design-system-logo"
+    "build-storybook:design-system-logo": "nx build-storybook @lunit/design-system-logo",
+    "build:design-system-icons": "nx build @lunit/design-system-icons",
+    "storybook:design-system-icons": "nx storybook @lunit/design-system-icons",
+    "build-storybook:design-system-icons": "nx build-storybook @lunit/design-system-icons"
   },
   "devDependencies": {
     "@tsconfig/recommended": "^1.0.1",

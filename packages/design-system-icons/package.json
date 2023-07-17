@@ -43,7 +43,8 @@
     "build:cjs": "webpack -c webpack/cjs.config.js",
     "build": "npm run build:prepare && npm run build:esm && npm run build:cjs",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build --docs && npx -y storybook extract "
+    "build-storybook": "storybook build",
+    "chromatic": "chromatic"
   },
   "nx": {
     "targets": {
@@ -77,6 +78,7 @@
     "@types/fs-extra": "^9.0.13",
     "@types/jest": "^27.4.1",
     "babel-loader": "^8.2.3",
+    "chromatic": "^6.7.0",
     "fast-glob": "^3.2.11",
     "fs-extra": "^10.1.0",
     "mustache": "^4.2.0",
