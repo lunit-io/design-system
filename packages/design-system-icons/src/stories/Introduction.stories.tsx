@@ -28,7 +28,7 @@ export const Color = {
       <SuccessIcon color="success" />
       <SuccessIcon color="action" />
       <SuccessIcon color="disabled" />
-      <SuccessIcon sx={{ color: pink[500] }} />
+      <SuccessIcon sx={{ color: pink[600] }} />
     </>
   ),
 };
