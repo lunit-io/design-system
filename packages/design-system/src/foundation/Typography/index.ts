@@ -24,11 +24,7 @@ declare module "@mui/material/styles" {
   interface TypographyVariantsOptions extends Partial<DSVariantsType> {}
 }
 
-type TypographyPropsVariantOverridesType = Record<DSVariants, true>;
-declare module "@mui/material/Typography" {
-  interface TypographyPropsVariantOverrides
-    extends TypographyPropsVariantOverridesType {}
-}
+export type TypographyPropsVariantOverridesType = Record<DSVariants, true>;
 
 const fontFamily = [
   "Pretendard",
