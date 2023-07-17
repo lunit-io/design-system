@@ -64,6 +64,6 @@ jobs:
         if: ${{ github.event_name == 'pull_request' }}
         uses: NejcZdovc/comment-pr@v2.0.0
         with:
-          message: "Icons storybook: ${{ steps.chromatic.outputs.storybookUrl }}}}"
+          message: "Icons Storybook: ${{ steps.chromatic.outputs.storybookUrl }}"
           identifier: "ICONS_PREVIEW_LINK_COMMENT"
           github_token: ${{ secrets.GITHUB_TOKEN }}

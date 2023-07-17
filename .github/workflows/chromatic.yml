@@ -83,6 +83,6 @@ jobs:
         if: ${{ github.event_name == 'pull_request' }}
         uses: NejcZdovc/comment-pr@v2.0.0
         with:
-          message: "preview: https://${{ env.CHROMATIC_BRANCH_NAME }}--${{ env.CHROMATIC_APP_ID }}.chromatic.com"
+          message: "Design System Storybook: https://${{ env.CHROMATIC_BRANCH_NAME }}--${{ env.CHROMATIC_APP_ID }}.chromatic.com"
           identifier: "PREVIEW_LINK_COMMENT"
           github_token: ${{ secrets.GITHUB_TOKEN }}
