@@ -21,6 +21,7 @@ function Navigation() {
       <LunitDark width="5rem" />
       <Stack direction="row" alignItems="center" spacing="1rem">
         <ToggleButton
+          size="medium"
           selectedColor="secondary"
           selected
           icon={<RotationLeft />}
@@ -28,6 +29,7 @@ function Navigation() {
         >
           Dark Mode
         </ToggleButton>
+        {/* Below svg is Divider */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="2"
