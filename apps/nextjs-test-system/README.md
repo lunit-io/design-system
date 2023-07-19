@@ -10,7 +10,7 @@ First, run the development server:
 npm run dev
 
 # or in the root of monorepo(will build the related resources).
-nx dev nextjs-design-system
+nx dev nextjs-test-system
 ```
 
 ## Related Resources
