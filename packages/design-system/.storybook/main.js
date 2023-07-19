@@ -1,12 +1,7 @@
 const path = require("path");
 const alias = require("../config/alias");
 const { getBranchName, getChromaticBranchName } = require("./branch");
-const toPath = (filePath) => path.join(process.cwd(), filePath);
 module.exports = {
-  features: {
-    // https://github.com/mui-org/material-ui/issues/24282#issuecomment-967747802
-    emotionAlias: false,
-  },
   stories: [
     "./Welcome/Welcome.stories.tsx",
     "../src/**/*.mdx",

@@ -34,7 +34,8 @@
     "dev": "node ./generator.mjs && webpack --watch",
     "build": "node ./generator.mjs && webpack",
     "storybook": "npm run build && storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "chromatic": "chromatic"
   },
   "bin": "./favicon.mjs",
   "nx": {
@@ -72,6 +73,7 @@
     "@types/fs-extra": "^9.0.13",
     "@types/jest": "^27.4.1",
     "babel-loader": "^8.2.5",
+    "chromatic": "^6.7.0",
     "fast-glob": "^3.2.11",
     "fs-extra": "^10.1.0",
     "lodash": "^4.17.21",
