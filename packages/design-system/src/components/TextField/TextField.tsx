@@ -11,7 +11,7 @@ import type {
 
 const SingleTextField = (props: SingleTextFieldProps) => {
   const {
-    size,
+    size = "small",
     leftIcon,
     rightIcon,
     leftIconSx,
@@ -48,7 +48,7 @@ const SingleTextField = (props: SingleTextFieldProps) => {
 };
 
 const MultiTextField = ({
-  size,
+  size = "small",
   onChange,
   ...restProps
 }: MultiTextFieldProps) => {
@@ -58,7 +58,7 @@ const MultiTextField = ({
 const TextField = (props: TextFieldProps) => {
   const {
     rows,
-    size = "small",
+    size,
     multiline = false,
     variant = "outlined",
     ...restProps
