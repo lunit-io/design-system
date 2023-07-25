@@ -10,7 +10,7 @@ export interface BaseTextFieldProps
   /**
    * The design system TextField variable is outlined fixed.
    */
-  variant: "outlined";
+  variant?: "outlined";
   value?: string;
   helperText?: string;
 
@@ -21,7 +21,6 @@ export interface BaseTextFieldProps
 }
 
 export interface SingleTextFieldProps extends BaseTextFieldProps {
-  size: TextFieldSize;
   leftIcon?: JSX.Element;
   rightIcon?: JSX.Element;
   leftIconSx?: SxProps;
@@ -32,7 +31,6 @@ export interface SingleTextFieldProps extends BaseTextFieldProps {
 
 export interface MultiTextFieldProps extends BaseTextFieldProps {
   rows?: number | string;
-  size: TextFieldSize;
 }
 
 export type TextFieldProps = SingleTextFieldProps | MultiTextFieldProps;
