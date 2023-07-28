@@ -39,6 +39,7 @@ export const sizeStyle = ({
         ? getIconButtonPaddingBySizeAndKind({ kind, size, selected })
         : getButtonPaddingBySizeAndKind({ kind, size, selected })
     }`,
+    minWidth: "28px",
     minHeight: "28px",
   }),
   ...(size === "medium" && {
@@ -48,6 +49,7 @@ export const sizeStyle = ({
         ? getIconButtonPaddingBySizeAndKind({ kind, size, selected })
         : getButtonPaddingBySizeAndKind({ kind, size, selected })
     }`,
+    minWidth: "36px",
     minHeight: "36px",
   }),
   ...(size === "large" && {
@@ -57,6 +59,7 @@ export const sizeStyle = ({
         ? getIconButtonPaddingBySizeAndKind({ kind, size, selected })
         : getButtonPaddingBySizeAndKind({ kind, size, selected })
     }`,
+    minWidth: "44px",
     minHeight: "44px",
   }),
 });
@@ -176,7 +179,6 @@ export const kindStyle = ({ kind, color, token }: KindStyleParams) => ({
 
 export const commonStyle = ({ token }: { token: ColorToken }) =>
   ({
-    minWidth: "auto",
     fontWeight: "500",
     borderRadius,
     textTransform: "initial",
