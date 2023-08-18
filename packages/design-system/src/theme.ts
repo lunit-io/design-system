@@ -1,5 +1,5 @@
 import { deepmerge } from "@mui/utils";
-import { ComponentsOverrides, createTheme } from "@mui/material";
+import { createTheme, ThemeOptions } from "@mui/material";
 import {
   foundationCssBaseline,
   palette,
@@ -9,7 +9,7 @@ import {
 } from "./foundation";
 import { componentsCssBaseline } from "./components";
 
-const theme = createTheme({
+export const themeOptions: ThemeOptions = {
   typography,
   palette,
   spacing,
@@ -41,6 +41,8 @@ const theme = createTheme({
     },
     // @todo add any MUI components theme exported from ./components/index.ts
   },
-});
+};
+
+const theme = createTheme(themeOptions);
 
 export default theme;
