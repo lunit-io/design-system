@@ -13,7 +13,7 @@ const CustomRadio = styled(MuiRadio)(({ theme }) => ({
     display: "block",
     width: 24,
     height: 24,
-    backgroundColor: theme.palette.token.core.focused,
+    backgroundColor: theme.palette.lunit_token.core.focused,
     maskImage:
       "url(\"data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath" +
       " fill-rule='evenodd' clip-rule='evenodd' d='M12 23C18.0751 23 23 18.0751 23 12C23 5.92487 18.0751 1 12 1C5.92487 1 1 5.92487 1 12C1 18.0751 5.92487 23 12 23ZM12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 " +
@@ -28,7 +28,7 @@ const iconSize = {
 
 const DefaultIcon = styled("span")(({ theme }) => ({
   ...iconSize,
-  backgroundColor: theme.palette.token.component.selectcontrol_off,
+  backgroundColor: theme.palette.lunit_token.component.selectcontrol_off,
   maskImage:
     "url(\"data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath" +
     " fill-rule='evenodd' clip-rule='evenodd' d='M10 17.5C14.1421 17.5 17.5 14.1421 17.5 10C17.5 5.85786 14.1421 2.5 10 2.5C5.85786 2.5 2.5 5.85786 2.5 10C2.5 14.1421 5.85786 17.5 " +
@@ -37,7 +37,7 @@ const DefaultIcon = styled("span")(({ theme }) => ({
 
 const CheckedIcon = styled("span")(({ theme }) => ({
   ...iconSize,
-  backgroundColor: theme.palette.token.component.selectcontrol_on,
+  backgroundColor: theme.palette.lunit_token.component.selectcontrol_on,
   maskImage:
     "url(\"data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath" +
     " fill-rule='evenodd' clip-rule='evenodd' d='M10 15C12.7614 15 15 12.7614 15 10C15 7.23858 12.7614 5 10 5C7.23858 5 5" +
