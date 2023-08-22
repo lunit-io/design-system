@@ -50,12 +50,12 @@ export const StyledAlertTitle = styled(MuiAlertTitle)(({ theme }) => ({
     fontWeight: 700,
     fontSize: "14px",
     lineHeight: "20px",
-    color: theme.palette.token.core.text_normal,
+    color: theme.palette.lunit_token.core.text_normal,
   },
 }));
 
 export const StyledAlertChildren = styled("div")(({ theme }) => ({
-  color: theme.palette.token.core.text_normal,
+  color: theme.palette.lunit_token.core.text_normal,
 }));
 
 export const StyledBottomAction = styled("div")({
