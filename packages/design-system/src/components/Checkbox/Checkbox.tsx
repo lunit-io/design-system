@@ -15,7 +15,7 @@ const CustomCheckbox = styled(MuiCheckbox)(({ theme }) => ({
     position: "absolute",
     width: 24,
     height: 24,
-    border: `1px solid ${theme.palette.token.core.focused}`,
+    border: `1px solid ${theme.palette.lunit_token.core.focused}`,
     borderRadius: "7px",
   },
 }));
@@ -27,7 +27,7 @@ const iconSize = {
 
 const DefaultIcon = styled("span")(({ theme }) => ({
   ...iconSize,
-  backgroundColor: theme.palette.token.component.selectcontrol_off,
+  backgroundColor: theme.palette.lunit_token.component.selectcontrol_off,
   maskImage:
     "url(\"data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath" +
     " fill-rule='evenodd' clip-rule='evenodd' d='M14 1.5H4C2.61929 1.5 1.5 2.61929 1.5 4V14C1.5 15.3807 2.61929 16.5 4 16.5H14C15.3807 " +
@@ -36,7 +36,7 @@ const DefaultIcon = styled("span")(({ theme }) => ({
 
 const CheckedIcon = styled("span")(({ theme }) => ({
   ...iconSize,
-  backgroundColor: theme.palette.token.component.selectcontrol_on,
+  backgroundColor: theme.palette.lunit_token.component.selectcontrol_on,
   maskImage:
     "url(\"data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath" +
     " fill-rule='evenodd' clip-rule='evenodd' d='M4 0C1.79086 0 0 1.79086 0 4V14C0 16.2091 1.79086 18 4 18H14C16.2091 18 18 16.2091 18 14V4C18 1.79086 16.2091 0 14 0H4ZM14.2516 " +
@@ -45,7 +45,7 @@ const CheckedIcon = styled("span")(({ theme }) => ({
 
 const IndeterminateIcon = styled("span")(({ theme }) => ({
   ...iconSize,
-  backgroundColor: theme.palette.token.component.selectcontrol_on,
+  backgroundColor: theme.palette.lunit_token.component.selectcontrol_on,
   maskImage:
     "url(\"data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath" +
     " fill-rule='evenodd' clip-rule='evenodd' d='M4 0C1.79086 0 0 1.79086 0 4V14C0 16.2091 1.79086 18 4 18H14C16.2091 18 18 16.2091 18 14V4C18 1.79086 16.2091 0 " +
