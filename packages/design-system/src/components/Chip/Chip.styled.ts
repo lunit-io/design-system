@@ -36,32 +36,32 @@ const getColorToken = (
   if (token === "text") {
     switch (color) {
       case CHIP_COLORS.PRIMARY:
-        return theme.palette.token.component.chip_primary_text;
+        return theme.palette.lunit_token.component.chip_primary_text;
       case CHIP_COLORS.SECONDARY:
-        return theme.palette.token.component.chip_secondary_text;
+        return theme.palette.lunit_token.component.chip_secondary_text;
       case CHIP_COLORS.ERROR:
-        return theme.palette.token.component.chip_error_text;
+        return theme.palette.lunit_token.component.chip_error_text;
       case CHIP_COLORS.WARNING:
-        return theme.palette.token.component.chip_warning_text;
+        return theme.palette.lunit_token.component.chip_warning_text;
       case CHIP_COLORS.SUCCESS:
-        return theme.palette.token.component.chip_success_text;
+        return theme.palette.lunit_token.component.chip_success_text;
       default:
-        return theme.palette.token.component.chip_primary_text;
+        return theme.palette.lunit_token.component.chip_primary_text;
     }
   } else {
     switch (color) {
       case CHIP_COLORS.PRIMARY:
-        return theme.palette.token.component.chip_primary_bg;
+        return theme.palette.lunit_token.component.chip_primary_bg;
       case CHIP_COLORS.SECONDARY:
-        return theme.palette.token.component.chip_secondary_bg;
+        return theme.palette.lunit_token.component.chip_secondary_bg;
       case CHIP_COLORS.ERROR:
-        return theme.palette.token.component.chip_error_bg;
+        return theme.palette.lunit_token.component.chip_error_bg;
       case CHIP_COLORS.WARNING:
-        return theme.palette.token.component.chip_warning_bg;
+        return theme.palette.lunit_token.component.chip_warning_bg;
       case CHIP_COLORS.SUCCESS:
-        return theme.palette.token.component.chip_success_bg;
+        return theme.palette.lunit_token.component.chip_success_bg;
       default:
-        return theme.palette.token.component.chip_primary_bg;
+        return theme.palette.lunit_token.component.chip_primary_bg;
     }
   }
 };
@@ -82,7 +82,7 @@ export const StyledContainedChipBase = styled(MuiChip, {
   ...COMMON_STYLES,
   ...theme.typography.caption,
 
-  color: theme.palette.token.core.text_normal,
+  color: theme.palette.lunit_token.core.text_normal,
   backgroundColor: getColorToken("bg", theme, color),
 
   "& .MuiSvgIcon-root": {
@@ -134,7 +134,7 @@ export const StyledContainedChipEnable = styled(StyledContainedChipBase, {
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: theme.palette.token.core.hover,
+    backgroundColor: theme.palette.lunit_token.core.hover,
     borderRadius: "11px",
   },
 }));
@@ -155,7 +155,7 @@ export const StyledContainedChipDeletable = styled(
     right: 0,
     bottom: 0,
     opacity: 0,
-    color: theme.palette.token.core.hover,
+    color: theme.palette.lunit_token.core.hover,
     ":hover": {
       cursor: "pointer",
       opacity: 1,
