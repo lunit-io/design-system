@@ -70,7 +70,7 @@ const getTextFieldPaddingBySize = ({
       });
 };
 
-const commonStyle = ({ token }: { token: ColorToken }) => ({
+const commonStyle = ({ lunit_token }: { lunit_token: ColorToken }) => ({
   "&.MuiTextField-root": {
     width: "100%",
   },
@@ -82,24 +82,24 @@ const commonStyle = ({ token }: { token: ColorToken }) => ({
       border: "none",
     },
     "&.Mui-error fieldset": {
-      border: `1px solid ${token.component.textfield_border_error}`,
+      border: `1px solid ${lunit_token.component.textfield_border_error}`,
     },
     "&.Mui-focused fieldset": {
-      border: `1px solid ${token.core.focused}`,
+      border: `1px solid ${lunit_token.core.focused}`,
     },
     "&.Mui-disabled": {
       opacity: 0.38,
       "&:hover::before": {
-        backgroundColor: token.component.textfield_bg,
+        backgroundColor: lunit_token.component.textfield_bg,
       },
     },
     "& input, textarea": {
       padding: 0,
       textOverflow: "ellipsis",
       "&::placeholder": {
-        color: token.core.text_medium,
+        color: lunit_token.core.text_medium,
         opacity: 1,
-        WebkitTextFillColor: token.core.text_medium,
+        WebkitTextFillColor: lunit_token.core.text_medium,
       },
     },
     "& textarea": {
@@ -110,16 +110,16 @@ const commonStyle = ({ token }: { token: ColorToken }) => ({
       },
       "&::-webkit-scrollbar-thumb": {
         borderRadius: "6px",
-        backgroundColor: token.component.scrollbars_bg,
+        backgroundColor: lunit_token.component.scrollbars_bg,
       },
     },
-    background: token.component.textfield_bg,
+    background: lunit_token.component.textfield_bg,
     overflow: "hidden",
-    color: token.core.text_normal,
+    color: lunit_token.core.text_normal,
     "&:hover": {
       position: "relative",
       zIndex: 0,
-      backgroundColor: token.component.textfield_bg,
+      backgroundColor: lunit_token.component.textfield_bg,
     },
     "&:hover::before": {
       content: '""',
@@ -129,11 +129,11 @@ const commonStyle = ({ token }: { token: ColorToken }) => ({
       width: "100%",
       height: "100%",
       zIndex: -1,
-      backgroundColor: token.core.hover,
+      backgroundColor: lunit_token.core.hover,
     },
     "&.Mui-focused": {
       "&:hover::before": {
-        backgroundColor: token.component.textfield_bg,
+        backgroundColor: lunit_token.component.textfield_bg,
       },
     },
   },
@@ -142,13 +142,13 @@ const commonStyle = ({ token }: { token: ColorToken }) => ({
       opacity: 0.38,
     },
     "&.Mui-error": {
-      color: token.core.text_error,
+      color: lunit_token.core.text_error,
     },
   },
 });
 
 const sizeStyle = ({
-  token,
+  lunit_token,
   textFieldSize,
   hasLeftIcon,
   hasRightIcon,
@@ -157,7 +157,7 @@ const sizeStyle = ({
 }: Pick<
   BaseTextFieldProps,
   "textFieldSize" | "hasLeftIcon" | "hasRightIcon" | "multiline"
-> & { token: ColorToken; typography: Typography }) => ({
+> & { lunit_token: ColorToken; typography: Typography }) => ({
   ...(textFieldSize === "small" && {
     "& .MuiInputBase-root": {
       padding: getTextFieldPaddingBySize({
@@ -179,17 +179,17 @@ const sizeStyle = ({
     },
     "& .MuiFormHelperText-root": {
       ...typography.body2_14_regular,
-      color: token.core.text_medium,
+      color: lunit_token.core.text_medium,
       margin: 0,
       marginTop: "4px",
       paddingLeft: "4px",
 
       "&.Mui-disabled": {
-        color: token.core.text_medium,
+        color: lunit_token.core.text_medium,
         opacity: 0.38,
       },
       "&.Mui-error": {
-        color: token.core.text_error,
+        color: lunit_token.core.text_error,
       },
     },
   }),
@@ -214,17 +214,17 @@ const sizeStyle = ({
     },
     "& .MuiFormHelperText-root": {
       ...typography.body2_14_regular,
-      color: token.core.text_medium,
+      color: lunit_token.core.text_medium,
       margin: 0,
       marginTop: "4px",
       paddingLeft: "4px",
 
       "&.Mui-disabled": {
-        color: token.core.text_medium,
+        color: lunit_token.core.text_medium,
         opacity: 0.38,
       },
       "&.Mui-error": {
-        color: token.core.text_error,
+        color: lunit_token.core.text_error,
       },
     },
   }),
@@ -249,17 +249,17 @@ const sizeStyle = ({
     },
     "& .MuiFormHelperText-root": {
       ...typography.body1_16_regular,
-      color: token.core.text_medium,
+      color: lunit_token.core.text_medium,
       margin: 0,
       marginTop: "4px",
       paddingLeft: "4px",
 
       "&.Mui-disabled": {
-        color: token.core.text_medium,
+        color: lunit_token.core.text_medium,
         opacity: 0.38,
       },
       "&.Mui-error": {
-        color: token.core.text_error,
+        color: lunit_token.core.text_error,
       },
     },
   }),
@@ -282,16 +282,16 @@ const BaseTextField = styled(MuiTextField, {
   ({
     theme: {
       typography,
-      palette: { token },
+      palette: { lunit_token },
     },
     multiline,
     textFieldSize,
     hasLeftIcon,
     hasRightIcon,
   }) => ({
-    ...commonStyle({ token }),
+    ...commonStyle({ lunit_token }),
     ...sizeStyle({
-      token,
+      lunit_token,
       textFieldSize,
       hasLeftIcon,
       hasRightIcon,
@@ -312,7 +312,7 @@ const IconWrapper = styled("div")(({ theme }) => ({
   "& svg": {
     width: "20px",
     height: "20px",
-    color: theme.palette.token.core.text_normal,
+    color: theme.palette.lunit_token.core.text_normal,
   },
 }));
 
