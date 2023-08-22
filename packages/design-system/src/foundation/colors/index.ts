@@ -11,7 +11,7 @@ export type GreyColor = Record<keyof typeof base.grey, PaletteColor>;
 
 declare module "@mui/material/styles/createPalette" {
   interface PaletteOptions {
-    lunit?: {
+    lunit_global?: {
       grey: GreyColor;
       blue: BaseColor;
       green: BaseColor;
@@ -22,11 +22,11 @@ declare module "@mui/material/styles/createPalette" {
       red: BaseColor;
       yellow: BaseColor;
     };
-    token?: ColorToken;
+    lunit_token?: ColorToken;
   }
 
   interface Palette {
-    lunit: {
+    lunit_global: {
       grey: GreyColor;
       blue: BaseColor;
       green: BaseColor;
@@ -37,7 +37,7 @@ declare module "@mui/material/styles/createPalette" {
       red: BaseColor;
       yellow: BaseColor;
     };
-    token: ColorToken;
+    lunit_token: ColorToken;
   }
 }
 
@@ -123,6 +123,7 @@ export const createColorCssBaseline = () => {
 };
 
 // TODO: TextColors 삭제하고 관련된 설정 수정하기
+// TODO: opacity 글로벌 팔레트에 추가 여부 확인해서 작업하기
 const lunitColors: PaletteOptions["lunit"] = ((): PaletteOptions["lunit"] => {
   const ret: any = {};
   for (const colorKey in base) {
@@ -167,8 +168,8 @@ const paletteOptions = {
     main: base.green[40], // core.text_success.dark1
   },
   grey: base.greyForMUI,
-  lunit: lunitColors,
-  token: {
+  lunit_global: lunitColors,
+  lunit_token: {
     core: {
       bg_01: "var(--bg_01)",
       bg_02: "var(--bg_02)",
