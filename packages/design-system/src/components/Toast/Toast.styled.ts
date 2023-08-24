@@ -10,8 +10,8 @@ export const StyledToast = styled(Alert)(({ theme, severity }) => {
     "&.MuiAlert-root": {
       padding: "8px 16px 8px 16px",
       margin: 0,
-      color: theme.palette.token.core.text_normal,
-      backgroundColor: theme.palette.token.core.bg_03,
+      color: theme.palette.lunit_token.core.text_normal,
+      backgroundColor: theme.palette.lunit_token.core.bg_03,
       borderRadius: "8px",
     },
     "& .MuiAlert-icon": {
@@ -42,7 +42,7 @@ export const StyledToast = styled(Alert)(({ theme, severity }) => {
       marginRight: "0px",
       padding: 0,
       "& .MuiSvgIcon-root": {
-        color: theme.palette.token.core.text_normal,
+        color: theme.palette.lunit_token.core.text_normal,
       },
     },
   };
