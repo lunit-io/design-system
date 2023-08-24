@@ -2,10 +2,10 @@ import paletteOptions from "../colors";
 import { createCSSVarNames, createCSSVars } from "./utils";
 
 export const shadows = {
-  shadow1: `0px 4px 8px ${paletteOptions.token.core.shadow_01}`,
-  shadow2: `0px 3px 12px ${paletteOptions.token.core.shadow_02}`,
-  shadow3: `0px 12px 24px ${paletteOptions.token.core.shadow_03}`,
-  shadow4: `0px 12px 44px ${paletteOptions.token.core.shadow_04}`,
+  shadow1: `0px 4px 8px ${paletteOptions.lunit_token.core.shadow_01}`,
+  shadow2: `0px 3px 12px ${paletteOptions.lunit_token.core.shadow_02}`,
+  shadow3: `0px 12px 24px ${paletteOptions.lunit_token.core.shadow_03}`,
+  shadow4: `0px 12px 44px ${paletteOptions.lunit_token.core.shadow_04}`,
 };
 
 const shadowVars = createCSSVarNames(shadows);
