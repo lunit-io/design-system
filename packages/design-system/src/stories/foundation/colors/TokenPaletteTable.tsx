@@ -25,7 +25,9 @@ const TokenPaletteTable = ({ kind }: TokenPaletteTableProps) => {
   const theme = useTheme();
 
   const colorTokenMap = Object.entries(
-    kind === "core" ? theme.palette.token.core : theme.palette.token.component
+    kind === "core"
+      ? theme.palette.lunit_token.core
+      : theme.palette.lunit_token.component
   );
 
   const TokenPaletteCell = (props: {
@@ -43,8 +45,8 @@ const TokenPaletteTable = ({ kind }: TokenPaletteTableProps) => {
 
     const boxColorByToken =
       kind === "core"
-        ? theme.palette.token.core[paletteKey as keyof ColorToken["core"]]
-        : theme.palette.token.component[
+        ? theme.palette.lunit_token.core[paletteKey as keyof ColorToken["core"]]
+        : theme.palette.lunit_token.component[
             paletteKey as keyof ColorToken["component"]
           ];
 
@@ -57,7 +59,7 @@ const TokenPaletteTable = ({ kind }: TokenPaletteTableProps) => {
       <TableCell
         className={surface}
         sx={{
-          background: theme.palette.token.core.bg_01,
+          background: theme.palette.lunit_token.core.bg_01,
           padding: 0,
         }}
       >

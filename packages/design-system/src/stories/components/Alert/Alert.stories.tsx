@@ -62,7 +62,7 @@ const AlertChildrenContentLong = () => {
     <Typography variant="body2_14_regular">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
       tempor incididunt ut{" "}
-      <u style={{ color: theme.palette.token.core.link_primary }}>
+      <u style={{ color: theme.palette.lunit_token.core.link_primary }}>
         labore et dolore
       </u>{" "}
       magna aliqua. A diam sollicitudin tempor id eu nisl nunc mi. Auctor augue

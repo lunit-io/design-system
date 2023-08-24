@@ -33,7 +33,7 @@ export const Color = styled(Box)({
 });
 
 export const StyledTypography = styled(Typography)(({ theme }) => ({
-  color: theme.palette.token.core.text_normal,
+  color: theme.palette.lunit_token.core.text_normal,
   marginLeft: 8,
   fontSize: "12px",
 }));
