@@ -124,29 +124,31 @@ export const createColorCssBaseline = () => {
 
 // TODO: TextColors 삭제하고 관련된 설정 수정하기
 // TODO: opacity 글로벌 팔레트에 추가 여부 확인해서 작업하기
-const lunitColors: PaletteOptions["lunit"] = ((): PaletteOptions["lunit"] => {
-  const ret: any = {};
-  for (const colorKey in base) {
-    if (base[`${colorKey}Text` as ColorKey]) {
-      const baseColors = base[colorKey as ColorKey];
-      const textColors = base[`${colorKey}Text` as ColorKey];
-      ret[colorKey] = {};
-      for (const key in baseColors) {
-        if (baseColors.hasOwnProperty(key)) {
-          const color = baseColors[Number(key) as keyof typeof baseColors];
-          const textColor = textColors[Number(key) as keyof typeof textColors];
-          ret[colorKey][Number(key)] = {
-            light: color,
-            main: color,
-            dark: color,
-            contrastText: textColor,
-          };
+const lunitColors: PaletteOptions["lunit_global"] =
+  ((): PaletteOptions["lunit_global"] => {
+    const ret: any = {};
+    for (const colorKey in base) {
+      if (base[`${colorKey}Text` as ColorKey]) {
+        const baseColors = base[colorKey as ColorKey];
+        const textColors = base[`${colorKey}Text` as ColorKey];
+        ret[colorKey] = {};
+        for (const key in baseColors) {
+          if (baseColors.hasOwnProperty(key)) {
+            const color = baseColors[Number(key) as keyof typeof baseColors];
+            const textColor =
+              textColors[Number(key) as keyof typeof textColors];
+            ret[colorKey][Number(key)] = {
+              light: color,
+              main: color,
+              dark: color,
+              contrastText: textColor,
+            };
+          }
         }
       }
     }
-  }
-  return ret;
-})();
+    return ret;
+  })();
 
 const paletteOptions = {
   primary: {
