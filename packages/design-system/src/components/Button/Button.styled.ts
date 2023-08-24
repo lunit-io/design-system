@@ -12,7 +12,7 @@ import type { ToggleButtonProps } from "../ToggleButton/ToggleButton.types";
 import type { Typography } from "@mui/material/styles/createTypography";
 
 type KindStyleParams = Pick<ButtonProps, "kind" | "color"> & {
-  token: ColorToken;
+  lunit_token: ColorToken;
 };
 
 type CustomButtonProps = ButtonProps & { hasIconOnly: boolean };
@@ -64,79 +64,79 @@ export const sizeStyle = ({
   }),
 });
 
-export const kindStyle = ({ kind, color, token }: KindStyleParams) => ({
+export const kindStyle = ({ kind, color, lunit_token }: KindStyleParams) => ({
   // kind: container
   ...(kind === "contained" &&
     color === "primary" && {
-      color: token.component.btn_primary_text_2,
-      backgroundColor: token.component.btn_primary_bg,
-      "&:hover": getHoverStyle(token.component.btn_primary_bg),
+      color: lunit_token.component.btn_primary_text_2,
+      backgroundColor: lunit_token.component.btn_primary_bg,
+      "&:hover": getHoverStyle(lunit_token.component.btn_primary_bg),
       "&.Mui-disabled": {
         opacity: 0.38,
         border: "none",
-        color: token.component.btn_primary_text_2,
+        color: lunit_token.component.btn_primary_text_2,
       },
     }),
   ...(kind === "contained" &&
     color === "secondary" && {
-      color: token.component.btn_secondary_text,
-      backgroundColor: token.component.btn_secondary_bg,
-      "&:hover": getHoverStyle(token.component.btn_secondary_bg),
+      color: lunit_token.component.btn_secondary_text,
+      backgroundColor: lunit_token.component.btn_secondary_bg,
+      "&:hover": getHoverStyle(lunit_token.component.btn_secondary_bg),
       "&.Mui-disabled": {
         opacity: 0.38,
         border: "none",
-        color: token.component.btn_secondary_text,
+        color: lunit_token.component.btn_secondary_text,
       },
     }),
   ...(kind === "contained" &&
     color === "error" && {
-      color: token.component.btn_primary_text_2,
-      backgroundColor: token.component.btn_error_bg,
-      "&:hover": getHoverStyle(token.component.btn_error_bg),
+      color: lunit_token.component.btn_primary_text_2,
+      backgroundColor: lunit_token.component.btn_error_bg,
+      "&:hover": getHoverStyle(lunit_token.component.btn_error_bg),
       "&.Mui-disabled": {
         opacity: 0.38,
         border: "none",
-        color: token.component.btn_primary_text_2,
+        color: lunit_token.component.btn_primary_text_2,
       },
     }),
   // kind: ghost
   ...(kind === "ghost" &&
     color === "primary" && {
-      color: token.component.btn_primary_text_1,
+      color: lunit_token.component.btn_primary_text_1,
       border: "none",
       "&:hover": getHoverStyle("none"),
       "&.Mui-disabled": {
         opacity: 0.38,
         border: "none",
-        color: token.component.btn_primary_text_1,
+        color: lunit_token.component.btn_primary_text_1,
       },
     }),
   ...(kind === "ghost" &&
     color === "secondary" && {
-      color: token.component.btn_secondary_text,
+      color: lunit_token.component.btn_secondary_text,
       border: "none",
       "&:hover": getHoverStyle("none"),
       "&.Mui-disabled": {
         opacity: 0.38,
         border: "none",
-        color: token.component.btn_secondary_text,
+        color: lunit_token.component.btn_secondary_text,
       },
     }),
   ...(kind === "ghost" &&
     color === "error" && {
-      color: token.component.btn_error_text,
+      color: lunit_token.component.btn_error_text,
       "&:hover": getHoverStyle("none"),
       "&.Mui-disabled": {
         opacity: 0.38,
         border: "none",
-        color: token.component.btn_error_text,
+        color: lunit_token.component.btn_error_text,
       },
     }),
   // kind: outlined
   ...(kind === "outlined" &&
     color === "primary" && {
-      color: token.component.btn_primary_text_1,
-      border: `${OUTLINED_BORDER_WIDTH}px solid ${token.component.btn_primary_border}`,
+      color: lunit_token.component.btn_primary_text_1,
+      border: `${OUTLINED_BORDER_WIDTH}px solid ${lunit_token.component.btn_primary_border}`,
       "&:hover": getHoverStyle("none"),
       "&:hover:before": {
         content: "''",
@@ -146,18 +146,18 @@ export const kindStyle = ({ kind, color, token }: KindStyleParams) => ({
         width: "calc(100% + 2px)",
         height: "calc(100% + 2px)",
         zIndex: -1,
-        backgroundColor: token.core.hover,
+        backgroundColor: lunit_token.core.hover,
         borderRadius,
       },
       "&.Mui-disabled": {
         opacity: 0.38,
-        color: token.component.btn_primary_text_1,
+        color: lunit_token.component.btn_primary_text_1,
       },
     }),
   ...(kind === "outlined" &&
     color === "secondary" && {
-      color: token.component.btn_secondary_text,
-      border: `${OUTLINED_BORDER_WIDTH}px solid ${token.component.btn_secondary_border}`,
+      color: lunit_token.component.btn_secondary_text,
+      border: `${OUTLINED_BORDER_WIDTH}px solid ${lunit_token.component.btn_secondary_border}`,
       "&:hover": getHoverStyle("none"),
       "&:hover:before": {
         content: "''",
@@ -167,17 +167,17 @@ export const kindStyle = ({ kind, color, token }: KindStyleParams) => ({
         width: "calc(100% + 2px)",
         height: "calc(100% + 2px)",
         zIndex: -1,
-        backgroundColor: token.core.hover,
+        backgroundColor: lunit_token.core.hover,
         borderRadius,
       },
       "&.Mui-disabled": {
         opacity: 0.38,
-        color: token.component.btn_secondary_text,
+        color: lunit_token.component.btn_secondary_text,
       },
     }),
 });
 
-export const commonStyle = ({ token }: { token: ColorToken }) =>
+export const commonStyle = ({ lunit_token }: { lunit_token: ColorToken }) =>
   ({
     fontWeight: "500",
     borderRadius,
@@ -189,7 +189,7 @@ export const commonStyle = ({ token }: { token: ColorToken }) =>
         height: `calc(100% + ${PADDING_OF_FOCUS}px)`,
         content: '""',
         borderRadius: "11px",
-        border: `1px solid ${token.core.focused}`,
+        border: `1px solid ${lunit_token.core.focused}`,
         boxSizing: "border-box",
       },
     },
@@ -201,7 +201,7 @@ export const commonStyle = ({ token }: { token: ColorToken }) =>
       width: "100%",
       height: "100%",
       zIndex: -1,
-      backgroundColor: token.core.hover,
+      backgroundColor: lunit_token.core.hover,
       borderRadius,
     },
   } as const);
@@ -237,16 +237,16 @@ export const CustomButton = styled(MuiButton, {
   ({
     theme: {
       typography,
-      palette: { token },
+      palette: { lunit_token },
     },
     kind,
     size,
     color,
     hasIconOnly,
   }) => ({
-    ...commonStyle({ token }),
+    ...commonStyle({ lunit_token }),
     ...iconStyle({ size, hasIconOnly }),
     ...sizeStyle({ size, kind, hasIconOnly, typography }),
-    ...kindStyle({ kind, color, token }),
+    ...kindStyle({ kind, color, lunit_token }),
   })
 );
