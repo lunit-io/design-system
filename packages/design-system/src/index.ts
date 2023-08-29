@@ -1,4 +1,4 @@
-export { default as theme } from "./theme";
+export { default as theme, themeOptions } from "./theme";
 export { base as baseColors } from "./foundation/colors";
 
 export { default as Alert } from "./components/Alert";
