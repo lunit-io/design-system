@@ -20,6 +20,7 @@ const theme = createTheme(
     typography: {
       fontFamily: [
         pretendard.style.fontFamily,
+        "Pretendard Variable",
         "Pretendard",
         "-apple-system",
         "BlinkMacSystemFont",
