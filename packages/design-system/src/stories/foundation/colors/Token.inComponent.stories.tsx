@@ -153,13 +153,13 @@ const BaseBox = ({ theme, children }: BaseBoxProps) => {
       className={theme === "light" ? "light1" : "dark1"}
       width={500}
       height={200}
-      bgcolor={theme === "light" ? `lunit.grey.0.main` : `lunit.grey.80.main`}
+      bgcolor={(sxTheme) => sxTheme.palette.lunit_token.core.bg_01}
       border="1px solid"
       p={2}
     >
       <Typography
         variant="body1_16_semibold"
-        color={(theme) => theme.palette.lunit_token.core.text_normal}
+        color={(sxTheme) => sxTheme.palette.lunit_token.core.text_normal}
       >
         {theme === "light" ? "= light1 =" : "= dark1 ="}
       </Typography>
