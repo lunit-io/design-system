@@ -11,8 +11,8 @@ export const decorators = [
         <CssBaseline />
         <Box
           className={surface}
-          bgcolor={theme.palette.token.core.bg_01}
-          color={theme.palette.token.core.text_normal}
+          bgcolor={theme.palette.lunit_token.core.bg_01}
+          color={theme.palette.lunit_token.core.text_normal}
           sx={{ p: 2 }}
         >
           <Story />

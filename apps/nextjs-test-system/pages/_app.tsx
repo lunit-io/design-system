@@ -49,7 +49,7 @@ export default function App({ Component, pageProps }: AppProps) {
         maxWidth={false}
         disableGutters
         sx={{
-          backgroundColor: theme.palette.token.core.bg_01,
+          backgroundColor: theme.palette.lunit_token.core.bg_01,
           height: "100vh",
           overflow: "hidden",
         }}

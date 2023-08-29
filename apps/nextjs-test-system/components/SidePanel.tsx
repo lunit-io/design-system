@@ -45,7 +45,7 @@ function SidePanel() {
       component="form"
       sx={{
         flex: "0 0 500px",
-        backgroundColor: theme.palette.token.core.bg_03,
+        backgroundColor: theme.palette.lunit_token.core.bg_03,
         display: "flex",
         flexDirection: "column",
         gap: "1.25rem",
@@ -57,10 +57,10 @@ function SidePanel() {
         },
         "&::-webkit-scrollbar-thumb": {
           borderRadius: "0.375rem",
-          background: theme.palette.token.component.scrollbars_bg,
+          background: theme.palette.lunit_token.component.scrollbars_bg,
         },
         borderLeft: "1px solid #000",
-        color: theme.palette.token.core.text_normal,
+        color: theme.palette.lunit_token.core.text_normal,
       }}
     >
       <Box sx={{ display: "flex" }}>

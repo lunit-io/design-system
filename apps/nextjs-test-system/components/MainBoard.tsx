@@ -69,9 +69,9 @@ function MainBoard() {
         sx={{
           padding: "0.25rem 1.25rem",
           borderRadius: "0.75rem",
-          backgroundColor: theme.palette.token.core.bg_01,
+          backgroundColor: theme.palette.lunit_token.core.bg_01,
           marginBottom: "1.5rem",
-          color: theme.palette.token.core.text_normal,
+          color: theme.palette.lunit_token.core.text_normal,
           typography: "body2_14_regular",
         }}
       >
@@ -110,7 +110,7 @@ function MainBoard() {
           },
           "&::-webkit-scrollbar-thumb": {
             borderRadius: "0.375rem",
-            background: theme.palette.token.component.scrollbars_bg,
+            background: theme.palette.lunit_token.component.scrollbars_bg,
           },
         }}
       >

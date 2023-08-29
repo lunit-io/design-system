@@ -18,7 +18,7 @@ const BaseColors = () => {
   return (
     <Container>
       {map(
-        theme.palette.lunit,
+        theme.palette.lunit_global,
         (colors: BaseColor | GreyColor, paletteKey: string) => (
           <div key={paletteKey}>
             <Typography
@@ -34,8 +34,8 @@ const BaseColors = () => {
               {map(colors, (_: string, colorKey: string) => (
                 <ColorContainer key={colorKey}>
                   <Color
-                    color={`lunit.${paletteKey}.${colorKey}.contrastText`}
-                    bgcolor={`lunit.${paletteKey}.${colorKey}.main`}
+                    color={`lunit_global.${paletteKey}.${colorKey}.contrastText`}
+                    bgcolor={`lunit_global.${paletteKey}.${colorKey}.main`}
                   >
                     <Typography variant="h4">T</Typography>
                   </Color>

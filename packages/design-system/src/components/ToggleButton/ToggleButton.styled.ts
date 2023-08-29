@@ -19,7 +19,7 @@ export const CustomToggleButton = styled(MuiToggleButton, {
   ({
     theme: {
       typography,
-      palette: { token },
+      palette: { lunit_token },
     },
     kind,
     size,
@@ -30,22 +30,22 @@ export const CustomToggleButton = styled(MuiToggleButton, {
   }) => {
     return {
       border: "none",
-      ...commonStyle({ token }),
+      ...commonStyle({ lunit_token }),
       ...iconStyle({ size, hasIconOnly }),
       ...sizeStyle({ size, kind, hasIconOnly, selected, typography }),
-      ...kindStyle({ kind, color, token }),
+      ...kindStyle({ kind, color, lunit_token }),
       ...(selectedColor === "primary" && {
         "&.Mui-selected, &.Mui-selected:hover": {
           border: "none",
-          backgroundColor: token.component.btn_selected_primary_bg,
-          color: token.component.btn_selected_primary_text,
+          backgroundColor: lunit_token.component.btn_selected_primary_bg,
+          color: lunit_token.component.btn_selected_primary_text,
         },
       }),
       ...(selectedColor === "secondary" && {
         "&.Mui-selected, &.Mui-selected:hover": {
           border: "none",
-          backgroundColor: token.component.btn_selected_secondary_bg,
-          color: token.component.btn_selected_secondary_text,
+          backgroundColor: lunit_token.component.btn_selected_secondary_bg,
+          color: lunit_token.component.btn_selected_secondary_text,
         },
       }),
     };

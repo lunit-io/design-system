@@ -5,13 +5,13 @@ import { Box, styled, TextField, Typography, useTheme } from "@mui/material";
 export const InComponentWithStyled = () => {
   const StyledTextField = styled(TextField)(({ theme }) => ({
     "& .MuiInputBase-root": {
-      backgroundColor: theme.palette.token.component.textfield_bg,
-      color: theme.palette.token.core.text_normal,
+      backgroundColor: theme.palette.lunit_token.component.textfield_bg,
+      color: theme.palette.lunit_token.core.text_normal,
       "& .MuiInputBase-input": {
         padding: "8px 16px",
       },
       "&.Mui-focused fieldset": {
-        borderColor: theme.palette.token.core.focused,
+        borderColor: theme.palette.lunit_token.core.focused,
       },
     },
   }));
@@ -49,13 +49,13 @@ export const InComponentWithSx = () => {
           sx={{
             "& .MuiInputBase-root": {
               backgroundColor: (theme) =>
-                theme.palette.token.component.textfield_bg,
-              color: (theme) => theme.palette.token.core.text_normal,
+                theme.palette.lunit_token.component.textfield_bg,
+              color: (theme) => theme.palette.lunit_token.core.text_normal,
               "& .MuiInputBase-input": {
                 padding: "8px 16px",
               },
               "&.Mui-focused fieldset": {
-                borderColor: (theme) => theme.palette.token.core.focused,
+                borderColor: (theme) => theme.palette.lunit_token.core.focused,
               },
             },
           }}
@@ -65,10 +65,11 @@ export const InComponentWithSx = () => {
           <Box
             sx={{
               backgroundColor: (theme) =>
-                theme.palette.token.component.alert_info_bg,
-              color: (theme) => theme.palette.token.component.alert_info_border,
+                theme.palette.lunit_token.component.alert_info_bg,
+              color: (theme) =>
+                theme.palette.lunit_token.component.alert_info_border,
               boxShadow: (theme) =>
-                `20px -10px 5px ${theme.palette.token.core.shadow_01}`,
+                `20px -10px 5px ${theme.palette.lunit_token.core.shadow_01}`,
               width: 300,
               height: 80,
             }}
@@ -83,13 +84,13 @@ export const InComponentWithSx = () => {
           sx={{
             "& .MuiInputBase-root": {
               backgroundColor: (theme) =>
-                theme.palette.token.component.textfield_bg,
-              color: (theme) => theme.palette.token.core.text_normal,
+                theme.palette.lunit_token.component.textfield_bg,
+              color: (theme) => theme.palette.lunit_token.core.text_normal,
               "& .MuiInputBase-input": {
                 padding: "8px 16px",
               },
               "&.Mui-focused fieldset": {
-                borderColor: (theme) => theme.palette.token.core.focused,
+                borderColor: (theme) => theme.palette.lunit_token.core.focused,
               },
             },
           }}
@@ -99,10 +100,11 @@ export const InComponentWithSx = () => {
           <Box
             sx={{
               backgroundColor: (theme) =>
-                theme.palette.token.component.alert_info_bg,
-              color: (theme) => theme.palette.token.component.alert_info_border,
+                theme.palette.lunit_token.component.alert_info_bg,
+              color: (theme) =>
+                theme.palette.lunit_token.component.alert_info_border,
               boxShadow: (theme) =>
-                `20px -10px 5px ${theme.palette.token.core.shadow_01}`,
+                `20px -10px 5px ${theme.palette.lunit_token.core.shadow_01}`,
               width: 300,
               height: 80,
             }}
@@ -124,7 +126,7 @@ export const InComponentWithInlineStyle = () => {
         <TextField
           placeholder="Inline Styled Text Field"
           style={{
-            backgroundColor: theme.palette.token.component.textfield_bg,
+            backgroundColor: theme.palette.lunit_token.component.textfield_bg,
           }}
         />
       </BaseBox>
@@ -132,7 +134,7 @@ export const InComponentWithInlineStyle = () => {
         <TextField
           placeholder="Inline Styled Text Field"
           style={{
-            backgroundColor: theme.palette.token.component.textfield_bg,
+            backgroundColor: theme.palette.lunit_token.component.textfield_bg,
           }}
         />
       </BaseBox>
@@ -151,13 +153,13 @@ const BaseBox = ({ theme, children }: BaseBoxProps) => {
       className={theme === "light" ? "light1" : "dark1"}
       width={500}
       height={200}
-      bgcolor={theme === "light" ? `lunit.grey.0.main` : `lunit.grey.80.main`}
+      bgcolor={(sxTheme) => sxTheme.palette.lunit_token.core.bg_01}
       border="1px solid"
       p={2}
     >
       <Typography
         variant="body1_16_semibold"
-        color={(theme) => theme.palette.token.core.text_normal}
+        color={(sxTheme) => sxTheme.palette.lunit_token.core.text_normal}
       >
         {theme === "light" ? "= light1 =" : "= dark1 ="}
       </Typography>
