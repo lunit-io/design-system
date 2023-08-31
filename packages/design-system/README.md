@@ -4,7 +4,7 @@
 
 - At `repository root` location
   - `npm i` : Install node modules and set Nx environment
-  - `nx storybook @lunit/design-system` : Runs [storybook](http://localhost:6006) local dev server on http://localhost:6006
+  - `nx storybook @lunit/design-system` : Runs [storybook](https://storybook.js.org) local dev server on http://localhost:6006
 
 ## Usage
 

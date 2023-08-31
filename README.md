@@ -6,7 +6,7 @@
 
 ## Setup
 
-After `git clone`, run `yarn` from repository root.
+After `git clone`, run `npm i` from repository root.
 
 We recommend to install [Nx Console](https://marketplace.visualstudio.com/items?itemName=nrwl.angular-console) VSCode extension.
 
