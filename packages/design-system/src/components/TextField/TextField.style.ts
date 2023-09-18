@@ -97,9 +97,9 @@ const commonStyle = ({ lunit_token }: { lunit_token: ColorToken }) => ({
       padding: 0,
       textOverflow: "ellipsis",
       "&::placeholder": {
-        color: lunit_token.core.text_medium,
+        color: lunit_token.core.text_light,
         opacity: 1,
-        WebkitTextFillColor: lunit_token.core.text_medium,
+        WebkitTextFillColor: lunit_token.core.text_light,
       },
     },
     "& textarea": {
