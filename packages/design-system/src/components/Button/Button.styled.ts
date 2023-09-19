@@ -41,6 +41,7 @@ export const sizeStyle = ({
     }`,
     minWidth: "28px",
     minHeight: "28px",
+    height: "28px",
   }),
   ...(size === "medium" && {
     ...typography.button2,
@@ -51,6 +52,7 @@ export const sizeStyle = ({
     }`,
     minWidth: "36px",
     minHeight: "36px",
+    height: "36px",
   }),
   ...(size === "large" && {
     ...typography.button1,
@@ -61,6 +63,7 @@ export const sizeStyle = ({
     }`,
     minWidth: "44px",
     minHeight: "44px",
+    height: "44px",
   }),
 });
 
