@@ -5,7 +5,9 @@ import {
 } from "./ToggleButton.styled";
 import type { ToggleButtonProps } from "./ToggleButton.types";
 
-const ToggleButton = (props: ToggleButtonProps) => {
+const ToggleButton = <C extends React.ElementType>(
+  props: ToggleButtonProps & { component?: C }
+) => {
   const {
     kind = "contained",
     size = "small",
