@@ -1,5 +1,9 @@
 import type { ButtonProps as MuiButtonProps } from "@mui/material";
 
+/**
+ * TODO: Omit 을 사용할 경우 component prop 타입 추론이 안되는 이슈 발생
+ * https://github.com/lunit-io/design-system/pull/133#discussion_r1354277785
+ * */
 type BaseButtonProps<C extends React.ElementType> = Omit<
   MuiButtonProps<C, { component?: C }>,
   "variant"
