@@ -71,12 +71,8 @@ const getTextFieldPaddingBySize = ({
 };
 
 const commonStyle = ({ lunit_token }: { lunit_token: ColorToken }) => ({
-  "&.MuiTextField-root": {
-    width: "100%",
-  },
   "& .MuiOutlinedInput-root": {
     borderRadius: "8px",
-    width: "100%",
 
     "& fieldset": {
       border: "none",
