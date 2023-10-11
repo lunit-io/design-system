@@ -1,25 +1,30 @@
 import type { ButtonProps as MuiButtonProps } from "@mui/material";
 
-interface BaseButtonProps extends Omit<MuiButtonProps, "variant"> {
-  icon?: React.ReactNode;
-}
+/**
+ * TODO: Omit 을 사용할 경우 component prop 타입 추론이 안되는 이슈 발생
+ * https://github.com/lunit-io/design-system/pull/133#discussion_r1354277785
+ * */
+type BaseButtonProps<C extends React.ElementType> = Omit<
+  MuiButtonProps<C, { component?: C }>,
+  "variant"
+> & { icon?: React.ReactNode };
 
-interface ContainedButtonProps extends BaseButtonProps {
+type ContainedButtonProps<C extends React.ElementType> = BaseButtonProps<C> & {
   kind?: "contained";
   color?: "primary" | "secondary" | "error";
-}
+};
 
-interface GhostButtonProps extends BaseButtonProps {
+type GhostButtonProps<C extends React.ElementType> = BaseButtonProps<C> & {
   kind?: "ghost";
   color?: "primary" | "secondary" | "error";
-}
+};
 
-interface OutlinedButtonProps extends BaseButtonProps {
+type OutlinedButtonProps<C extends React.ElementType> = BaseButtonProps<C> & {
   kind?: "outlined";
   color?: "primary" | "secondary";
-}
+};
 
-export type ButtonProps =
-  | ContainedButtonProps
-  | GhostButtonProps
-  | OutlinedButtonProps;
+export type ButtonProps<C extends React.ElementType> =
+  | ContainedButtonProps<C>
+  | GhostButtonProps<C>
+  | OutlinedButtonProps<C>;

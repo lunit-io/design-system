@@ -12,10 +12,8 @@ import Bell from "@lunit/design-system-icons/Bell";
 import Button from "@/components/Button";
 
 import type { StoryObj, StoryFn, Meta } from "@storybook/react";
-import type { ButtonProps } from "@/components/Button/Button.types";
 
-type Size = Pick<ButtonProps, "size">;
-type SizeValues = Size[keyof Size];
+type SizeValues = "small" | "medium" | "large";
 const sizeList: SizeValues[] = ["small", "medium", "large"];
 
 export default {

@@ -3,7 +3,10 @@ import { OUTLINED_BORDER_WIDTH } from "../const";
 import type { ButtonProps } from "../Button.types";
 import { ToggleButtonProps } from "@/components/ToggleButton/ToggleButton.types";
 
-type GetButtonPaddingBySizeAndKindParams = Pick<ButtonProps, "kind" | "size"> &
+type GetButtonPaddingBySizeAndKindParams = Pick<
+  ButtonProps<"button">,
+  "kind" | "size"
+> &
   Pick<ToggleButtonProps, "selected">;
 
 /**
