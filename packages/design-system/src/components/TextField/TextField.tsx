@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 
 import TextFieldIcon from "./TextFieldIcon";
 import { BaseTextField } from "./TextField.style";
@@ -9,57 +9,60 @@ import type {
   SingleTextFieldProps,
 } from "./TextField.types";
 
-const SingleTextField = (props: SingleTextFieldProps) => {
-  const {
-    size = "small",
-    leftIcon,
-    rightIcon,
-    leftIconSx,
-    rightIconSx,
-    onLeftIconClick,
-    onRightIconClick,
-    InputProps,
-    ...restProps
-  } = props;
+const SingleTextField = forwardRef<HTMLDivElement, SingleTextFieldProps>(
+  (props, ref) => {
+    const {
+      size = "small",
+      leftIcon,
+      rightIcon,
+      leftIconSx,
+      rightIconSx,
+      onLeftIconClick,
+      onRightIconClick,
+      InputProps,
+      ...restProps
+    } = props;
 
-  return (
-    <BaseTextField
-      {...restProps}
-      textFieldSize={size}
-      hasLeftIcon={Boolean(leftIcon)}
-      hasRightIcon={Boolean(rightIcon)}
-      InputProps={{
-        ...{
-          startAdornment: leftIcon && (
-            <TextFieldIcon
-              sx={{ marginRight: "4px", ...leftIconSx }}
-              icon={leftIcon}
-              onIconClick={onLeftIconClick}
-            />
-          ),
-          endAdornment: rightIcon && (
-            <TextFieldIcon
-              sx={{ marginLeft: "4px", ...rightIconSx }}
-              icon={rightIcon}
-              onIconClick={onRightIconClick}
-            />
-          ),
-        },
-        ...InputProps,
-      }}
-    />
-  );
-};
+    return (
+      <BaseTextField
+        {...restProps}
+        ref={ref}
+        textFieldSize={size}
+        hasLeftIcon={Boolean(leftIcon)}
+        hasRightIcon={Boolean(rightIcon)}
+        InputProps={{
+          ...{
+            startAdornment: leftIcon && (
+              <TextFieldIcon
+                sx={{ marginRight: "4px", ...leftIconSx }}
+                icon={leftIcon}
+                onIconClick={onLeftIconClick}
+              />
+            ),
+            endAdornment: rightIcon && (
+              <TextFieldIcon
+                sx={{ marginLeft: "4px", ...rightIconSx }}
+                icon={rightIcon}
+                onIconClick={onRightIconClick}
+              />
+            ),
+          },
+          ...InputProps,
+        }}
+      />
+    );
+  }
+);
 
-const MultiTextField = ({
-  size = "small",
-  onChange,
-  ...restProps
-}: MultiTextFieldProps) => {
-  return <BaseTextField {...restProps} textFieldSize={size} multiline />;
-};
+const MultiTextField = forwardRef<HTMLDivElement, MultiTextFieldProps>(
+  ({ size = "small", onChange, ...restProps }, ref) => {
+    return (
+      <BaseTextField {...restProps} ref={ref} textFieldSize={size} multiline />
+    );
+  }
+);
 
-const TextField = (props: TextFieldProps) => {
+const TextField = forwardRef<HTMLDivElement, TextFieldProps>((props, ref) => {
   const {
     rows,
     size,
@@ -71,14 +74,15 @@ const TextField = (props: TextFieldProps) => {
   return multiline ? (
     <MultiTextField
       {...restProps}
+      ref={ref}
       maxRows={Infinity}
       size={size}
       variant={variant}
       rows={rows}
     />
   ) : (
-    <SingleTextField {...restProps} size={size} variant={variant} />
+    <SingleTextField {...restProps} ref={ref} size={size} variant={variant} />
   );
-};
+});
 
 export default TextField;
