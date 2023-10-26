@@ -14,10 +14,11 @@ import type {
   EnableContainedChipProps,
   DeletableContainedChipProps,
   ChipProps,
+  ChipType,
   ChipThumbnail,
 } from "./Chip.types";
 
-const Chip = <C extends React.ElementType>(props: ChipProps<C>) => {
+const Chip: ChipType = (props: ChipProps) => {
   const { kind, onDelete, onClick, ...restProps } = props;
   if (kind === "outlined") return <OutlinedChip {...props} />;
   else if (onClick) return <EnableContainedChip {...props} />;
@@ -26,9 +27,7 @@ const Chip = <C extends React.ElementType>(props: ChipProps<C>) => {
   return <ReadOnlyContainedChip {...restProps} />;
 };
 
-const OutlinedChip = <C extends React.ElementType>(
-  props: OutlinedChipProps<C>
-) => {
+const OutlinedChip = (props: OutlinedChipProps) => {
   const { color = "primary", ...restProps } = props;
 
   return (
@@ -63,9 +62,7 @@ const getLabelMargin = (
   };
 };
 
-const ReadOnlyContainedChip = <C extends React.ElementType>(
-  props: ReadOnlyContainedChipProps<C>
-) => {
+const ReadOnlyContainedChip = (props: ReadOnlyContainedChipProps) => {
   const { color = "primary", thumbnail, sx, ...restProps } = props;
 
   return (
@@ -85,9 +82,7 @@ const ReadOnlyContainedChip = <C extends React.ElementType>(
   );
 };
 
-const EnableContainedChip = <C extends React.ElementType>(
-  props: EnableContainedChipProps<C>
-) => {
+const EnableContainedChip = (props: EnableContainedChipProps) => {
   const {
     color = "primary",
     thumbnail,
@@ -121,9 +116,7 @@ const DeleteIconWithHoverLayer = ({ onClick }: { onClick: () => void }) => {
     </>
   );
 };
-const DeletableContainedChip = <C extends React.ElementType>(
-  props: DeletableContainedChipProps<C>
-) => {
+const DeletableContainedChip = (props: DeletableContainedChipProps) => {
   const { color = "primary", thumbnail, onDelete, sx, ...restProps } = props;
 
   return (
