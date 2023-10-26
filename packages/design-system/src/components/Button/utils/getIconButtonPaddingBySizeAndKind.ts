@@ -4,7 +4,7 @@ import type { ButtonProps } from "../Button.types";
 import { ToggleButtonProps } from "@/components/ToggleButton/ToggleButton.types";
 
 type GetIconButtonPaddingBySizeAndKindProps = Pick<
-  ButtonProps<"button">,
+  ButtonProps,
   "kind" | "size"
 > &
   Pick<ToggleButtonProps, "selected">;
