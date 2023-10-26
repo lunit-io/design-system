@@ -7,7 +7,7 @@ import type { ButtonProps as MuiButtonProps } from "@mui/material";
 type BaseButtonProps<C extends React.ElementType> = Omit<
   MuiButtonProps<C, { component?: C }>,
   "variant"
-> & { icon?: React.ReactNode };
+> & { icon?: React.ReactNode; component?: C };
 
 type ContainedButtonProps<C extends React.ElementType> = BaseButtonProps<C> & {
   kind?: "contained";
