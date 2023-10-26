@@ -9,48 +9,55 @@ export type ChipThumbnail = string | JSX.Element;
 /**
  * Mui Chip's variant is 'kind' in our design system
  */
-export interface BaseChipProps
+export interface BaseChipProps<C extends React.ElementType>
   extends Pick<
-    MuiChipProps,
-    "label" | "sx" | "style" | "classes" | "onDelete"
+    MuiChipProps<C, { component?: C }>,
+    "label" | "sx" | "style" | "classes" | "component"
   > {
   kind?: "outlined" | "contained";
   color?: ChipColor;
 }
 
-export interface OutlinedChipProps extends BaseChipProps {
+export interface OutlinedChipProps<C extends React.ElementType>
+  extends BaseChipProps<C> {
   kind?: "outlined";
   onClick?: never;
   onDelete?: never;
 }
 
-export interface BaseContainedChipProps
-  extends BaseChipProps,
-    Omit<
-      MuiChipProps,
-      "color" | "size" | "variant" | "avatar" | "deleteIcon" | "icon"
-    > {
+export interface BaseContainedChipProps<C extends React.ElementType>
+  extends Omit<
+    BaseChipProps<C>,
+    "size" | "variant" | "avatar" | "deleteIcon" | "icon"
+  > {
   kind?: "contained";
   thumbnail?: ChipThumbnail;
   onClick?: () => void;
 }
 
-export interface ReadOnlyContainedChipProps extends BaseContainedChipProps {
+export interface ReadOnlyContainedChipProps<C extends React.ElementType>
+  extends BaseContainedChipProps<C> {
   onClick?: never;
   onDelete?: never;
 }
-export interface EnableContainedChipProps extends BaseContainedChipProps {
+
+export interface EnableContainedChipProps<C extends React.ElementType>
+  extends BaseContainedChipProps<C> {
   onClick: () => void;
   onDelete?: never;
 }
-export interface DeletableContainedChipProps extends BaseContainedChipProps {
+
+export interface DeletableContainedChipProps<C extends React.ElementType>
+  extends BaseContainedChipProps<C> {
   onClick?: never;
   onDelete: () => void;
 }
 
-export type ContainedChipProps =
-  | EnableContainedChipProps
-  | ReadOnlyContainedChipProps
-  | DeletableContainedChipProps;
+export type ContainedChipProps<C extends React.ElementType> =
+  | EnableContainedChipProps<C>
+  | ReadOnlyContainedChipProps<C>
+  | DeletableContainedChipProps<C>;
 
-export type ChipProps = OutlinedChipProps | ContainedChipProps;
+export type ChipProps<C extends React.ElementType> =
+  | OutlinedChipProps<C>
+  | ContainedChipProps<C>;
