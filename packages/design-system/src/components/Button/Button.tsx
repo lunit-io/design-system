@@ -2,9 +2,9 @@ import React from "react";
 
 import { CustomButton } from "./Button.styled";
 
-import type { ButtonProps } from "./Button.types";
+import type { ButtonType, ButtonProps } from "./Button.types";
 
-const Button = <C extends React.ElementType>(props: ButtonProps<C>) => {
+const Button: ButtonType = (props: ButtonProps) => {
   const {
     size = "small",
     color = "primary",

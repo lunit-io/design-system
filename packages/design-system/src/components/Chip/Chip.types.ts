@@ -1,6 +1,10 @@
 import { CHIP_COLORS } from "./consts";
 
-import type { ChipProps as MuiChipProps } from "@mui/material";
+import type {
+  ChipProps as MuiChipProps,
+  ChipTypeMap as MuiChipTypeMap,
+} from "@mui/material";
+import type { OverridableComponent } from "@mui/material/OverridableComponent";
 
 type ColorKeys = keyof typeof CHIP_COLORS;
 export type ChipColor = (typeof CHIP_COLORS)[ColorKeys];
@@ -54,3 +58,13 @@ export type ContainedChipProps =
   | DeletableContainedChipProps;
 
 export type ChipProps = OutlinedChipProps | ContainedChipProps;
+
+export type ChipTypeMap<
+  P = {},
+  D extends React.ElementType = MuiChipTypeMap["defaultComponent"]
+> = {
+  props: P & ChipProps;
+  defaultComponent: D;
+};
+
+export type ChipType = OverridableComponent<ChipTypeMap>;

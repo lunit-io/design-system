@@ -11,11 +11,11 @@ import type { ButtonProps } from "./Button.types";
 import type { ToggleButtonProps } from "../ToggleButton/ToggleButton.types";
 import type { Typography } from "@mui/material/styles/createTypography";
 
-type KindStyleParams = Pick<ButtonProps<"button">, "kind" | "color"> & {
+type KindStyleParams = Pick<ButtonProps, "kind" | "color"> & {
   lunit_token: ColorToken;
 };
 
-type CustomButtonProps = ButtonProps<"button"> & { hasIconOnly: boolean };
+type CustomButtonProps = ButtonProps & { hasIconOnly: boolean };
 
 type sizeStyleParams = Pick<
   CustomButtonProps,

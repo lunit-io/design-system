@@ -14,10 +14,11 @@ import type {
   EnableContainedChipProps,
   DeletableContainedChipProps,
   ChipProps,
+  ChipType,
   ChipThumbnail,
 } from "./Chip.types";
 
-const Chip = (props: ChipProps) => {
+const Chip: ChipType = (props: ChipProps) => {
   const { kind, onDelete, onClick, ...restProps } = props;
   if (kind === "outlined") return <OutlinedChip {...props} />;
   else if (onClick) return <EnableContainedChip {...props} />;
@@ -82,7 +83,14 @@ const ReadOnlyContainedChip = (props: ReadOnlyContainedChipProps) => {
 };
 
 const EnableContainedChip = (props: EnableContainedChipProps) => {
-  const { color = "primary", thumbnail, onClick, sx, ...restProps } = props;
+  const {
+    color = "primary",
+    thumbnail,
+    onDelete,
+    onClick,
+    sx,
+    ...restProps
+  } = props;
 
   return (
     <StyledContainedChipEnable
