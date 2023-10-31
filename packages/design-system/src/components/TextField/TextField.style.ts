@@ -83,6 +83,9 @@ const commonStyle = ({ lunit_token }: { lunit_token: ColorToken }) => ({
     "&.Mui-focused fieldset": {
       border: `1px solid ${lunit_token.core.focused}`,
     },
+    "&.Mui-error.Mui-focused fieldset": {
+      border: `2px solid ${lunit_token.component.textfield_border_error}`,
+    },
     "&.Mui-disabled": {
       opacity: 0.38,
       "&:hover::before": {
