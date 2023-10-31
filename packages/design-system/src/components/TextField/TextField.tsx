@@ -18,6 +18,7 @@ const SingleTextField = (props: SingleTextFieldProps) => {
     rightIconSx,
     onLeftIconClick,
     onRightIconClick,
+    InputProps,
     ...restProps
   } = props;
 
@@ -28,20 +29,23 @@ const SingleTextField = (props: SingleTextFieldProps) => {
       hasLeftIcon={Boolean(leftIcon)}
       hasRightIcon={Boolean(rightIcon)}
       InputProps={{
-        startAdornment: leftIcon && (
-          <TextFieldIcon
-            sx={{ marginRight: "4px", ...leftIconSx }}
-            icon={leftIcon}
-            onIconClick={onLeftIconClick}
-          />
-        ),
-        endAdornment: rightIcon && (
-          <TextFieldIcon
-            sx={{ marginLeft: "4px", ...rightIconSx }}
-            icon={rightIcon}
-            onIconClick={onRightIconClick}
-          />
-        ),
+        ...{
+          startAdornment: leftIcon && (
+            <TextFieldIcon
+              sx={{ marginRight: "4px", ...leftIconSx }}
+              icon={leftIcon}
+              onIconClick={onLeftIconClick}
+            />
+          ),
+          endAdornment: rightIcon && (
+            <TextFieldIcon
+              sx={{ marginLeft: "4px", ...rightIconSx }}
+              icon={rightIcon}
+              onIconClick={onRightIconClick}
+            />
+          ),
+        },
+        ...InputProps,
       }}
     />
   );
