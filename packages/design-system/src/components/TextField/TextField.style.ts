@@ -113,7 +113,6 @@ const commonStyle = ({ lunit_token }: { lunit_token: ColorToken }) => ({
       },
     },
     background: lunit_token.component.textfield_bg,
-    overflow: "hidden",
     color: lunit_token.core.text_normal,
     "&:hover": {
       position: "relative",
