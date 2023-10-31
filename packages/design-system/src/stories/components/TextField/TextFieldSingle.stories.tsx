@@ -100,6 +100,9 @@ const SingleTemplate: StoryFn<typeof TextField> = (args) => (
           Focused
         </TableCell>
         <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+          Error Focused
+        </TableCell>
+        <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
           Disabled
         </TableCell>
       </TableRow>
@@ -114,6 +117,9 @@ const SingleTemplate: StoryFn<typeof TextField> = (args) => (
         </TableCell>
         <TableCell>
           <TextField {...args} focused />
+        </TableCell>
+        <TableCell>
+          <TextField {...args} error focused />
         </TableCell>
         <TableCell>
           <TextField {...args} disabled />
@@ -138,6 +144,9 @@ const SingleWithIconTemplate: StoryFn<typeof TextField> = (args) => (
           focused
         </TableCell>
         <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+          Error focused
+        </TableCell>
+        <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
           Disabled
         </TableCell>
       </TableRow>
@@ -157,6 +166,9 @@ const SingleWithIconTemplate: StoryFn<typeof TextField> = (args) => (
           <TextField {...args} focused leftIcon={<Bell />} />
         </TableCell>
         <TableCell>
+          <TextField {...args} error focused leftIcon={<Bell />} />
+        </TableCell>
+        <TableCell>
           <TextField {...args} disabled leftIcon={<Bell />} />
         </TableCell>
       </TableRow>
@@ -172,6 +184,9 @@ const SingleWithIconTemplate: StoryFn<typeof TextField> = (args) => (
         </TableCell>
         <TableCell>
           <TextField {...args} focused rightIcon={<Bell />} />
+        </TableCell>
+        <TableCell>
+          <TextField {...args} error focused rightIcon={<Bell />} />
         </TableCell>
         <TableCell>
           <TextField {...args} disabled rightIcon={<Bell />} />
@@ -190,6 +205,15 @@ const SingleWithIconTemplate: StoryFn<typeof TextField> = (args) => (
         <TableCell>
           <TextField
             {...args}
+            focused
+            leftIcon={<Bell />}
+            rightIcon={<Bell />}
+          />
+        </TableCell>
+        <TableCell>
+          <TextField
+            {...args}
+            error
             focused
             leftIcon={<Bell />}
             rightIcon={<Bell />}

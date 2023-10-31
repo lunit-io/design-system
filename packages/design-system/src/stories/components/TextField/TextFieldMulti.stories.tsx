@@ -108,6 +108,9 @@ const MultiTemplate: StoryFn<typeof TextField> = (args) => (
           Focused
         </TableCell>
         <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+          Error Focused
+        </TableCell>
+        <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
           Disabled
         </TableCell>
       </TableRow>
@@ -122,6 +125,9 @@ const MultiTemplate: StoryFn<typeof TextField> = (args) => (
         </TableCell>
         <TableCell>
           <TextField {...args} multiline focused />
+        </TableCell>
+        <TableCell>
+          <TextField {...args} multiline error focused />
         </TableCell>
         <TableCell>
           <TextField {...args} multiline disabled />
