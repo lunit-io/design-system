@@ -55,7 +55,7 @@ const SingleTextField = forwardRef<HTMLDivElement, SingleTextFieldProps>(
 );
 
 const MultiTextField = forwardRef<HTMLDivElement, MultiTextFieldProps>(
-  ({ size = "small", onChange, ...restProps }, ref) => {
+  ({ size = "small", ...restProps }, ref) => {
     return (
       <BaseTextField {...restProps} ref={ref} textFieldSize={size} multiline />
     );
