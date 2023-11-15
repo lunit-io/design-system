@@ -128,6 +128,7 @@ const commonStyle = ({ lunit_token }: { lunit_token: ColorToken }) => ({
       height: "100%",
       zIndex: -1,
       backgroundColor: lunit_token.core.hover,
+      borderRadius: "8px",
     },
     "&.Mui-focused": {
       "&:hover::before": {
