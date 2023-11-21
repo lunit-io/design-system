@@ -94,7 +94,7 @@ export const CommonToggle = styled(MuiSwitch, {
 
   return {
     ...toggleStyle.root,
-    display: "flex",
+
     padding: 0,
     overflow: "visible",
     backgroundColor: "transparent",
