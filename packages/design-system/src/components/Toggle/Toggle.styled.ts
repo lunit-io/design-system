@@ -1,10 +1,10 @@
 import { styled, Switch as MuiSwitch, SwitchProps } from "@mui/material";
 interface ToggleProps extends SwitchProps {
-  toggleSize: "medium" | "large";
+  toggleSize: "small" | "large";
 }
 
 const toggleStyles = {
-  medium: {
+  small: {
     root: {
       width: 28,
       height: 18,
@@ -65,7 +65,7 @@ const indeterminateStyles = {
       borderRadius: 2,
     },
   },
-  medium: {
+  small: {
     switchChecked: {
       top: 6,
       left: -4,

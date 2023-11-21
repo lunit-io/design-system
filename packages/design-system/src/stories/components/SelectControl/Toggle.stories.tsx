@@ -45,7 +45,7 @@ export default {
     },
   },
   args: {
-    size: "medium",
+    size: "small",
     indeterminate: false,
     disabled: false,
   },
@@ -103,7 +103,7 @@ const Template: StoryFn<typeof Toggle> = (args) => (
     </TableHead>
     <TableBody>
       <TableRow>
-        <TableCell>MEDIUM DEFAULT</TableCell>
+        <TableCell>SMALL DEFAULT</TableCell>
         <TableCell>
           <Toggle {...args} checked />
         </TableCell>
@@ -115,7 +115,7 @@ const Template: StoryFn<typeof Toggle> = (args) => (
         </TableCell>
       </TableRow>
       <TableRow>
-        <TableCell>MEDIUM FOCUS</TableCell>
+        <TableCell>SMALL FOCUS</TableCell>
         <TableCell>
           <Toggle {...args} className="focus-test" checked />
         </TableCell>
@@ -166,15 +166,15 @@ const DisabledTemplate: StoryFn<typeof Toggle> = (args) => (
     </TableHead>
     <TableBody>
       <TableRow>
-        <TableCell>MEDIUM DEFAULT</TableCell>
+        <TableCell>SMALL DEFAULT</TableCell>
         <TableCell>
-          <Toggle {...args} checked />
+          <Toggle {...args} size="small" checked />
         </TableCell>
         <TableCell>
-          <Toggle {...args} indeterminate />
+          <Toggle {...args} size="small" indeterminate />
         </TableCell>
         <TableCell>
-          <Toggle {...args} />
+          <Toggle {...args} size="small" />
         </TableCell>
       </TableRow>
       <TableRow>
@@ -205,7 +205,7 @@ const TemplateWithLabel: StoryFn<typeof Toggle> = (args) => (
     </TableHead>
     <TableBody>
       <TableRow>
-        <TableCell>MEDIUM DEFAULT</TableCell>
+        <TableCell>SMALL DEFAULT</TableCell>
         <TableCell>
           <FormLabel label="Label 1" control={<Toggle {...args} checked />} />
         </TableCell>
@@ -223,7 +223,7 @@ const TemplateWithLabel: StoryFn<typeof Toggle> = (args) => (
         </TableCell>
       </TableRow>
       <TableRow>
-        <TableCell>MEDIUM FOCUS</TableCell>
+        <TableCell>SMALL FOCUS</TableCell>
         <TableCell>
           <FormLabel
             className="focus-test"
@@ -319,7 +319,7 @@ const IndeterminateTemplate: StoryFn<typeof Toggle> = (args) => {
     <Table>
       <TableHead>
         <TableRow>
-          <TableCell>MEDIUM</TableCell>
+          <TableCell>SMALL</TableCell>
           <TableCell>LARGE</TableCell>
         </TableRow>
       </TableHead>
