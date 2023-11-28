@@ -1,0 +1,52 @@
+name: "Test system Deployment"
+
+on:
+  push:
+    branches:
+      - "main"
+    paths:
+      - "github/workflows/test-system-deploy.yml"
+      - "apps/nestjs-test-system/**"
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - "github/workflows/test-system-deploy.yml"
+      - "apps/nestjs-test-system/**"
+
+jobs:
+  test-system-deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: nx dev nextjs-test-system
+
+      - name: Build
+        run: npx next build apps/nextjs-test-system
+
+      - name: Set Preview by preview-frontend-provider
+        id: preview-frontend-provider
+        uses: lunit-io/csg-sd-gitops/git-actions/preview-frontend-provider@v1.3.0
+        with:
+          pfp-access-key: ${{ secrets.PFP_ACCESS_KEY }}
+          pfp-secret-key: ${{ secrets.PFP_SECRET_KEY }}
+          build-path: frontend/dist
+          use-public-runner: true
+
+      - name: Add Preivew Link
+        uses: NejcZdovc/comment-pr@v2
+        with:
+          message: |
+            ✅ Preview
+            ${{ steps.preview-frontend-provider.outputs.random-url }}
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
