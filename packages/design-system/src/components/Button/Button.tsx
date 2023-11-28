@@ -1,10 +1,10 @@
-import React from "react";
+import React, { forwardRef } from "react";
 
 import { CustomButton } from "./Button.styled";
 
-import type { ButtonType, ButtonProps } from "./Button.types";
+import type { ButtonProps } from "./Button.types";
 
-const Button: ButtonType = (props: ButtonProps) => {
+const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   const {
     size = "small",
     color = "primary",
@@ -21,6 +21,7 @@ const Button: ButtonType = (props: ButtonProps) => {
       {props.kind === "outlined" ? (
         <CustomButton
           {...buttonProps}
+          ref={ref}
           className={`outlined ${className ? className : ""}`}
           kind="outlined"
           color={props.color ?? "primary"}
@@ -33,6 +34,7 @@ const Button: ButtonType = (props: ButtonProps) => {
       ) : (
         <CustomButton
           {...buttonProps}
+          ref={ref}
           className={`${props.kind ?? "contained"} ${
             className ? className : ""
           }`}
@@ -47,6 +49,6 @@ const Button: ButtonType = (props: ButtonProps) => {
       )}
     </>
   );
-};
+});
 
 export default Button;
