@@ -56,7 +56,7 @@ const ToggleButton = forwardRef<HTMLButtonElement, ToggleButtonProps>(
               </>
             ) : (
               <IconWrapper size={size} hasIconOnly={hasIconOnly}>
-                icon
+                {icon}
               </IconWrapper>
             )}
           </CustomToggleButton>
