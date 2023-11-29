@@ -213,6 +213,7 @@ export const iconStyle = ({
   "& .MuiButton-startIcon": {
     width: "20px",
     height: "20px",
+    padding: "1px",
     margin: 0,
     marginRight: hasIconOnly ? "0px" : size === "large" ? "8px" : "4px",
 
@@ -222,8 +223,8 @@ export const iconStyle = ({
     },
   },
   svg: {
-    width: "20px",
-    height: "20px",
+    width: "18px",
+    height: "18px",
     margin: 0,
     marginRight: hasIconOnly ? "0px" : size === "large" ? "8px" : "4px",
   },
