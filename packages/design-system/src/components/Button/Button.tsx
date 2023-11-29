@@ -11,9 +11,10 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
     icon,
     className,
     children,
+    startIcon,
     ...buttonProps
   } = props;
-  const hasIconOnly = Boolean(icon && !children);
+  const hasIconOnly = Boolean((startIcon || icon) && !children);
 
   return (
     <>
@@ -26,7 +27,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
           kind="outlined"
           color={props.color ?? "primary"}
           size={size}
-          startIcon={icon}
+          startIcon={startIcon || icon}
           hasIconOnly={hasIconOnly}
         >
           {!hasIconOnly && <>{children}</>}
@@ -41,7 +42,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
           kind={props.kind ?? "contained"}
           color={props.color ?? "primary"}
           size={size}
-          startIcon={icon}
+          startIcon={startIcon || icon}
           hasIconOnly={hasIconOnly}
         >
           {!hasIconOnly && <>{children}</>}
