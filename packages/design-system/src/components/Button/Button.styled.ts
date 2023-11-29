@@ -217,16 +217,9 @@ export const iconStyle = ({
     margin: 0,
     marginRight: hasIconOnly ? "0px" : size === "large" ? "8px" : "4px",
 
-    // This style was added for Mui Button Svg Icon handling
     "*:nth-of-type(1)": {
-      fontSize: "20px",
+      fontSize: "18px",
     },
-  },
-  svg: {
-    width: "18px",
-    height: "18px",
-    margin: 0,
-    marginRight: hasIconOnly ? "0px" : size === "large" ? "8px" : "4px",
   },
 });
 
