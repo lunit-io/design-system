@@ -1,5 +1,6 @@
 import React, { forwardRef } from "react";
 import {
+  IconWrapper,
   CustomToggleButton,
   IconAndChildrenWrapper,
 } from "./ToggleButton.styled";
@@ -44,7 +45,9 @@ const ToggleButton = forwardRef<HTMLButtonElement, ToggleButtonProps>(
               <>
                 {icon ? (
                   <IconAndChildrenWrapper>
-                    {icon}
+                    <IconWrapper size={size} hasIconOnly={hasIconOnly}>
+                      {icon}
+                    </IconWrapper>
                     {children}
                   </IconAndChildrenWrapper>
                 ) : (
@@ -52,7 +55,9 @@ const ToggleButton = forwardRef<HTMLButtonElement, ToggleButtonProps>(
                 )}
               </>
             ) : (
-              icon
+              <IconWrapper size={size} hasIconOnly={hasIconOnly}>
+                icon
+              </IconWrapper>
             )}
           </CustomToggleButton>
         ) : (
@@ -73,7 +78,9 @@ const ToggleButton = forwardRef<HTMLButtonElement, ToggleButtonProps>(
               <>
                 {icon ? (
                   <IconAndChildrenWrapper>
-                    {icon}
+                    <IconWrapper size={size} hasIconOnly={hasIconOnly}>
+                      {icon}
+                    </IconWrapper>
                     {children}
                   </IconAndChildrenWrapper>
                 ) : (
@@ -81,7 +88,9 @@ const ToggleButton = forwardRef<HTMLButtonElement, ToggleButtonProps>(
                 )}
               </>
             ) : (
-              icon
+              <IconWrapper size={size} hasIconOnly={hasIconOnly}>
+                {icon}
+              </IconWrapper>
             )}
           </CustomToggleButton>
         )}
