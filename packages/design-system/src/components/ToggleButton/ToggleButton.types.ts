@@ -1,20 +1,21 @@
 import type { ToggleButtonProps as MuiToggleButtonProps } from "@mui/material";
 
-interface ToggleButtonBaseProps extends Omit<MuiToggleButtonProps, "variant"> {
+export interface ToggleButtonBaseProps
+  extends Omit<MuiToggleButtonProps, "variant"> {
   selectedColor?: "primary" | "secondary";
   icon?: React.ReactNode;
 }
-interface ContainedToggleButtonProps extends ToggleButtonBaseProps {
+export interface ContainedToggleButtonProps extends ToggleButtonBaseProps {
   kind?: "contained";
   color?: "primary" | "secondary";
 }
 
-interface GhostToggleButtonProps extends ToggleButtonBaseProps {
+export interface GhostToggleButtonProps extends ToggleButtonBaseProps {
   kind?: "ghost";
   color?: "primary" | "secondary";
 }
 
-interface OutlinedToggleButtonProps extends ToggleButtonBaseProps {
+export interface OutlinedToggleButtonProps extends ToggleButtonBaseProps {
   kind?: "outlined";
   color?: "primary";
 }
