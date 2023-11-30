@@ -2,12 +2,7 @@ import { styled } from "@mui/material/styles";
 import { ToggleButton as MuiToggleButton } from "@mui/material";
 
 import type { ToggleButtonProps } from "../ToggleButton/ToggleButton.types";
-import {
-  commonStyle,
-  sizeStyle,
-  kindStyle,
-  iconStyle,
-} from "../Button/Button.styled";
+import { commonStyle, sizeStyle, kindStyle } from "../Button/Button.styled";
 
 type CustomToggleButtonProps = ToggleButtonProps & { hasIconOnly: boolean };
 
@@ -31,7 +26,6 @@ export const CustomToggleButton = styled(MuiToggleButton, {
     return {
       border: "none",
       ...commonStyle({ lunit_token }),
-      ...iconStyle({ size, hasIconOnly }),
       ...sizeStyle({ size, kind, hasIconOnly, selected, typography }),
       ...kindStyle({ kind, color, lunit_token }),
       ...(selectedColor === "primary" && {
@@ -56,3 +50,17 @@ export const IconAndChildrenWrapper = styled("div")({
   display: "flex",
   alignItems: "center",
 });
+
+export const IconWrapper = styled("div")<{
+  hasIconOnly: boolean;
+  size: string;
+}>(({ hasIconOnly, size }) => ({
+  width: "20px",
+  height: "20px",
+  padding: "1px",
+  marginRight: hasIconOnly ? "0px" : size === "large" ? "8px" : "4px",
+
+  "*:nth-of-type(1)": {
+    fontSize: "18px",
+  },
+}));
