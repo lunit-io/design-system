@@ -70,7 +70,6 @@ export const tokenCoreColor: TokenCoreColorValue = {
     dark4: "--red_30",
   },
   text_success: {
-    // TODO: sucess -> success 로 바뀌었으니 코드 내 사용되는 부분 확인해서 업데이트. 개발자들에게도 공지할것.
     light1: "--green_40",
     light2: "--green_40",
     dark1: "--green_40",
@@ -127,7 +126,6 @@ export const tokenCoreColor: TokenCoreColorValue = {
     dark4: "--red_30",
   },
   icon_success_02: {
-    // TODO: sucess -> success 로 바뀌었으니 코드 내 사용되는 부분 확인해서 업데이트. 개발자들에게도 공지할것.
     light1: "--green_40",
     light2: "--green_40",
     dark1: "--green_30",
