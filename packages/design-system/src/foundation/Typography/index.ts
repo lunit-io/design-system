@@ -79,8 +79,8 @@ export const typographyDefaultProps = {
 
 export const createTypographyCssBaseline = () => {
   return {
-    html: {
-      fontFamily,
+    "*, *:before, *:after": {
+      // @font-face: font-feature-settings로 대체 가능하나, 브라우저 지원이 부족함 https://caniuse.com/mdn-css_at-rules_font-face_font-feature-settings
       fontFeatureSettings: `'tnum', 'ss01', 'ss02', 'ss08'`,
     },
     ":root": {
