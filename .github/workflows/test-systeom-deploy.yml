@@ -28,10 +28,10 @@ jobs:
           cache: "npm"
 
       - name: Install dependencies
-        run: nx dev nextjs-test-system
+        run: npm install
 
       - name: Build
-        run: npx next build apps/nextjs-test-system
+        run: nx build apps/nextjs-test-system
 
       - name: Set Preview by preview-frontend-provider
         id: preview-frontend-provider
@@ -39,7 +39,7 @@ jobs:
         with:
           pfp-access-key: ${{ secrets.PFP_ACCESS_KEY }}
           pfp-secret-key: ${{ secrets.PFP_SECRET_KEY }}
-          build-path: frontend/dist
+          build-path: apps/nextjs-test-system/out
           use-public-runner: true
 
       - name: Add Preivew Link
