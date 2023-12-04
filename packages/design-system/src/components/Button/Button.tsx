@@ -1,19 +1,20 @@
-import React from "react";
+import React, { forwardRef } from "react";
 
 import { CustomButton } from "./Button.styled";
 
 import type { ButtonType, ButtonProps } from "./Button.types";
 
-const Button: ButtonType = (props: ButtonProps) => {
+const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   const {
     size = "small",
     color = "primary",
     icon,
     className,
     children,
+    startIcon,
     ...buttonProps
   } = props;
-  const hasIconOnly = Boolean(icon && !children);
+  const hasIconOnly = Boolean((startIcon || icon) && !children);
 
   return (
     <>
@@ -21,11 +22,12 @@ const Button: ButtonType = (props: ButtonProps) => {
       {props.kind === "outlined" ? (
         <CustomButton
           {...buttonProps}
+          ref={ref}
           className={`outlined ${className ? className : ""}`}
           kind="outlined"
           color={props.color ?? "primary"}
           size={size}
-          startIcon={icon}
+          startIcon={startIcon || icon}
           hasIconOnly={hasIconOnly}
         >
           {!hasIconOnly && <>{children}</>}
@@ -33,13 +35,14 @@ const Button: ButtonType = (props: ButtonProps) => {
       ) : (
         <CustomButton
           {...buttonProps}
+          ref={ref}
           className={`${props.kind ?? "contained"} ${
             className ? className : ""
           }`}
           kind={props.kind ?? "contained"}
           color={props.color ?? "primary"}
           size={size}
-          startIcon={icon}
+          startIcon={startIcon || icon}
           hasIconOnly={hasIconOnly}
         >
           {!hasIconOnly && <>{children}</>}
@@ -47,6 +50,11 @@ const Button: ButtonType = (props: ButtonProps) => {
       )}
     </>
   );
-};
+  /**
+   * There is an issue between React 18, Mui's OverridableComponent type and the
+   * type coercion to temporarily fix it.
+   * https://github.com/lunit-io/design-system/pull/143#issuecomment-1831127232
+   */
+}) as ButtonType;
 
 export default Button;

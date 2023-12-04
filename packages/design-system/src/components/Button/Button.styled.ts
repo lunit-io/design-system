@@ -213,19 +213,13 @@ export const iconStyle = ({
   "& .MuiButton-startIcon": {
     width: "20px",
     height: "20px",
+    padding: "1px",
     margin: 0,
     marginRight: hasIconOnly ? "0px" : size === "large" ? "8px" : "4px",
 
-    // This style was added for Mui Button Svg Icon handling
     "*:nth-of-type(1)": {
-      fontSize: "20px",
+      fontSize: "18px",
     },
-  },
-  svg: {
-    width: "20px",
-    height: "20px",
-    margin: 0,
-    marginRight: hasIconOnly ? "0px" : size === "large" ? "8px" : "4px",
   },
 });
 
