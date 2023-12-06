@@ -50,6 +50,16 @@ export default {
         defaultValue: { summary: "contained" },
       },
     },
+    variant: {
+      control: {
+        type: "radio",
+      },
+      options: ["contained", "outlined", "text"],
+      description: "The variant is alias of kind.",
+      table: {
+        defaultValue: { summary: "contained" },
+      },
+    },
     color: {
       control: {
         type: "radio",
@@ -98,6 +108,7 @@ export default {
         "disabled",
         "size",
         "kind",
+        "variant",
         "color",
         "icon",
       ],
