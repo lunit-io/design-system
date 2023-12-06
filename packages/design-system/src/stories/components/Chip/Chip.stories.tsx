@@ -18,6 +18,13 @@ export default {
     kind: {
       description: `Default status of Contained or Outlined Chip is readOnly. You can pass onClick, onDelete or thumbnail to Contained Chip only.`,
     },
+    variant: {
+      description: `The variant is alias of kind. It is Filled or Outlined.`,
+      control: {
+        type: "select",
+      },
+      options: [undefined, "filled", "outlined"],
+    },
     onClick: {
       description: `Contained chip can have onClick event. When Chip is clickable, onDelete is disabled.`,
       control: {
@@ -80,6 +87,7 @@ export default {
   },
   args: {
     kind: "contained",
+    variant: "filled",
     label: "label@lunit.io",
   },
   parameters: {
@@ -116,9 +124,10 @@ export const Outlined = {
   args: {
     color: "primary",
     kind: "outlined",
+    variant: "outlined",
   },
 
-  name: "Kind: Outlined",
+  name: "Kind(Variant): Outlined",
 };
 
 export const Contained = {
@@ -138,9 +147,10 @@ export const Contained = {
   args: {
     color: "primary",
     kind: "contained",
+    variant: "filled",
   },
 
-  name: "Kind: Contained / Read Only",
+  name: "Kind(Variant): Contained / Read Only",
 };
 
 export const ContainedWithClick = {
@@ -161,7 +171,7 @@ export const ContainedWithClick = {
     },
   },
 
-  name: "Kind: Contained / Enable",
+  name: "Kind(Variant): Contained / Enable",
 };
 
 export const ContainedWithDelete = {
@@ -182,7 +192,7 @@ export const ContainedWithDelete = {
     },
   },
 
-  name: "Kind: Contained / Deletable",
+  name: "Kind(Variant): Contained / Deletable",
 };
 
 export const ContainedWithThumbnail = {
@@ -204,5 +214,5 @@ export const ContainedWithThumbnail = {
     },
   },
 
-  name: "Kind: Contained with Thumbnail",
+  name: "Kind(Variant): Contained with Thumbnail",
 };
