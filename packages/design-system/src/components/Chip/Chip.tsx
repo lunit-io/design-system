@@ -19,8 +19,11 @@ import type {
 } from "./Chip.types";
 
 const Chip: ChipType = (props: ChipProps) => {
-  const { kind, onDelete, onClick, ...restProps } = props;
-  if (kind === "outlined") return <OutlinedChip {...props} />;
+  const { kind, variant, onDelete, onClick, ...restProps } = props;
+
+  const isOutlined = kind === "outlined" || variant === "outlined";
+
+  if (isOutlined) return <OutlinedChip {...props} />;
   else if (onClick) return <EnableContainedChip {...props} />;
   else if (onDelete) return <DeletableContainedChip {...props} />;
 
