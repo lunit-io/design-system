@@ -1,5 +1,8 @@
 import type { SxProps } from "@mui/material";
-import type { OutlinedTextFieldProps } from "@mui/material/TextField";
+import type {
+  TextFieldProps as MuiTextFieldProps,
+  OutlinedTextFieldProps,
+} from "@mui/material/TextField";
 
 export type TextFieldSize = "small" | "medium" | "large";
 export interface BaseTextFieldProps
@@ -8,12 +11,16 @@ export interface BaseTextFieldProps
     "size" | "value" | "helperText" | "variant"
   > {
   /**
-   * The design system TextField variable is outlined fixed.
+   * The design system TextField has only on kind, which is "contained"
+    Below are all return same kind "contained"
+    <TextField variant="outlined" />
+    <TextField variant="contained" />
+    <TextField variant="filled" />
+    <TextField variant="standard" />
    */
-  variant?: "outlined";
+  variant?: MuiTextFieldProps["variant"];
   value?: string;
   helperText?: string;
-
   /**
    * @default "small"
    */

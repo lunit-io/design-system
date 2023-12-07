@@ -19,8 +19,11 @@ import type {
 } from "./Chip.types";
 
 const Chip: ChipType = (props: ChipProps) => {
-  const { kind, onDelete, onClick, ...restProps } = props;
-  if (kind === "outlined") return <OutlinedChip {...props} />;
+  const { kind, variant, onDelete, onClick, ...restProps } = props;
+
+  const isOutlined = kind === "outlined" || variant === "outlined";
+
+  if (isOutlined) return <OutlinedChip {...props} />;
   else if (onClick) return <EnableContainedChip {...props} />;
   else if (onDelete) return <DeletableContainedChip {...props} />;
 
@@ -63,7 +66,7 @@ const getLabelMargin = (
 };
 
 const ReadOnlyContainedChip = (props: ReadOnlyContainedChipProps) => {
-  const { color = "primary", thumbnail, sx, ...restProps } = props;
+  const { color = "primary", thumbnail, sx, variant, ...restProps } = props;
 
   return (
     <StyledContainedChipBase
@@ -89,6 +92,7 @@ const EnableContainedChip = (props: EnableContainedChipProps) => {
     onDelete,
     onClick,
     sx,
+    variant,
     ...restProps
   } = props;
 
@@ -117,7 +121,14 @@ const DeleteIconWithHoverLayer = ({ onClick }: { onClick: () => void }) => {
   );
 };
 const DeletableContainedChip = (props: DeletableContainedChipProps) => {
-  const { color = "primary", thumbnail, onDelete, sx, ...restProps } = props;
+  const {
+    color = "primary",
+    thumbnail,
+    onDelete,
+    sx,
+    variant,
+    ...restProps
+  } = props;
 
   return (
     <StyledContainedChipDeletable

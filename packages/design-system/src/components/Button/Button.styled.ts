@@ -225,7 +225,7 @@ export const iconStyle = ({
 
 export const CustomButton = styled(MuiButton, {
   shouldForwardProp: (prop: string) => {
-    return !["kind", "hasIconOnly"].includes(prop);
+    return !["kind", "hasIconOnly", "variant"].includes(prop);
   },
 })<CustomButtonProps>(
   ({

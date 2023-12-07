@@ -75,8 +75,8 @@ function SidePanel() {
       <Fieldset>
         <Legend>Name*</Legend>
         <TextField
-          size="medium"
           variant="outlined"
+          size="medium"
           placeholder="Youjinnnnnn*"
           sx={{
             width: "100%",
@@ -90,8 +90,8 @@ function SidePanel() {
       <Fieldset>
         <Legend>Study Description</Legend>
         <TextField
+          variant="filled"
           size="medium"
-          variant="outlined"
           multiline
           sx={{
             width: "100%",

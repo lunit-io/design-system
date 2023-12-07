@@ -25,6 +25,7 @@ const SingleTextField = forwardRef<HTMLDivElement, SingleTextFieldProps>(
 
     return (
       <BaseTextField
+        variant="outlined"
         {...restProps}
         ref={ref}
         textFieldSize={size}
@@ -57,19 +58,19 @@ const SingleTextField = forwardRef<HTMLDivElement, SingleTextFieldProps>(
 const MultiTextField = forwardRef<HTMLDivElement, MultiTextFieldProps>(
   ({ size = "small", ...restProps }, ref) => {
     return (
-      <BaseTextField {...restProps} ref={ref} textFieldSize={size} multiline />
+      <BaseTextField
+        variant="outlined"
+        {...restProps}
+        ref={ref}
+        textFieldSize={size}
+        multiline
+      />
     );
   }
 );
 
 const TextField = forwardRef<HTMLDivElement, TextFieldProps>((props, ref) => {
-  const {
-    rows,
-    size,
-    multiline = false,
-    variant = "outlined",
-    ...restProps
-  } = props;
+  const { rows, size, multiline = false, variant, ...restProps } = props;
 
   return multiline ? (
     <MultiTextField
@@ -77,11 +78,10 @@ const TextField = forwardRef<HTMLDivElement, TextFieldProps>((props, ref) => {
       ref={ref}
       maxRows={Infinity}
       size={size}
-      variant={variant}
       rows={rows}
     />
   ) : (
-    <SingleTextField {...restProps} ref={ref} size={size} variant={variant} />
+    <SingleTextField {...restProps} ref={ref} size={size} />
   );
 });
 
