@@ -70,7 +70,7 @@ const MultiTextField = forwardRef<HTMLDivElement, MultiTextFieldProps>(
 );
 
 const TextField = forwardRef<HTMLDivElement, TextFieldProps>((props, ref) => {
-  const { rows, size, multiline = false, ...restProps } = props;
+  const { rows, size, multiline = false, variant, ...restProps } = props;
 
   return multiline ? (
     <MultiTextField
