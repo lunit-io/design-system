@@ -64,10 +64,28 @@ export default {
         defaultValue: { summary: "contained" },
       },
     },
+    variant: {
+      control: {
+        type: "radio",
+      },
+      options: ["contained", "outlined", "text", "ghost"],
+      description: "The variant is alias of kind.",
+      table: {
+        defaultValue: { summary: "contained" },
+      },
+    },
   },
   parameters: {
     controls: {
-      include: ["onClick", "children", "color", "size", "disabled", "kind"],
+      include: [
+        "onClick",
+        "children",
+        "color",
+        "size",
+        "disabled",
+        "kind",
+        "variant",
+      ],
     },
     pseudo: {
       hover: [
@@ -92,6 +110,7 @@ export default {
 const ButtonTemplate: StoryFn<typeof Button> = ({
   kind,
   color,
+  variant,
   children,
   ...restProps
 }) => {
@@ -157,6 +176,7 @@ export const Kind = {
 };
 
 const ContainedButtonTemplate: StoryFn<typeof Button> = (args) => {
+  const { kind, variant, ...restProps } = args;
   return (
     <>
       <Table sx={{ width: 650 }}>
@@ -182,17 +202,17 @@ const ContainedButtonTemplate: StoryFn<typeof Button> = (args) => {
               Enable
             </TableCell>
             <TableCell>
-              <Button {...args} kind="contained">
+              <Button {...restProps} kind="contained">
                 {args.children}
               </Button>
             </TableCell>
             <TableCell>
-              <Button {...args} kind="contained" color="secondary">
+              <Button {...restProps} kind="contained" color="secondary">
                 {args.children}
               </Button>
             </TableCell>
             <TableCell>
-              <Button {...args} kind="contained" color="error">
+              <Button {...restProps} kind="contained" color="error">
                 {args.children}
               </Button>
             </TableCell>
@@ -204,17 +224,22 @@ const ContainedButtonTemplate: StoryFn<typeof Button> = (args) => {
               Hover
             </TableCell>
             <TableCell>
-              <Button {...args} id="hover1" kind="contained">
+              <Button {...restProps} id="hover1" kind="contained">
                 {args.children}
               </Button>
             </TableCell>
             <TableCell>
-              <Button {...args} id="hover2" kind="contained" color="secondary">
+              <Button
+                {...restProps}
+                id="hover2"
+                kind="contained"
+                color="secondary"
+              >
                 {args.children}
               </Button>
             </TableCell>
             <TableCell>
-              <Button {...args} id="hover3" kind="contained" color="error">
+              <Button {...restProps} id="hover3" kind="contained" color="error">
                 {args.children}
               </Button>
             </TableCell>
@@ -226,13 +251,17 @@ const ContainedButtonTemplate: StoryFn<typeof Button> = (args) => {
               Focus
             </TableCell>
             <TableCell>
-              <Button {...args} kind="contained" className="Mui-focusVisible">
+              <Button
+                {...restProps}
+                kind="contained"
+                className="Mui-focusVisible"
+              >
                 {args.children}
               </Button>
             </TableCell>
             <TableCell>
               <Button
-                {...args}
+                {...restProps}
                 kind="contained"
                 color="secondary"
                 className="Mui-focusVisible"
@@ -242,7 +271,7 @@ const ContainedButtonTemplate: StoryFn<typeof Button> = (args) => {
             </TableCell>
             <TableCell>
               <Button
-                {...args}
+                {...restProps}
                 kind="contained"
                 color="error"
                 className="Mui-focusVisible"
@@ -258,17 +287,22 @@ const ContainedButtonTemplate: StoryFn<typeof Button> = (args) => {
               Disabled
             </TableCell>
             <TableCell>
-              <Button {...args} kind="contained" disabled>
+              <Button {...restProps} kind="contained" disabled>
                 {args.children}
               </Button>
             </TableCell>
             <TableCell>
-              <Button {...args} kind="contained" color="secondary" disabled>
+              <Button
+                {...restProps}
+                kind="contained"
+                color="secondary"
+                disabled
+              >
                 {args.children}
               </Button>
             </TableCell>
             <TableCell>
-              <Button {...args} kind="contained" color="error" disabled>
+              <Button {...restProps} kind="contained" color="error" disabled>
                 {args.children}
               </Button>
             </TableCell>
@@ -300,6 +334,7 @@ export const KindContained = {
 };
 
 const GhostButtonTemplate: StoryFn<typeof Button> = (args) => {
+  const { kind, variant, ...restProps } = args;
   return (
     <>
       <Table sx={{ width: 650 }}>
@@ -325,17 +360,17 @@ const GhostButtonTemplate: StoryFn<typeof Button> = (args) => {
               Enable
             </TableCell>
             <TableCell>
-              <Button {...args} kind="ghost">
+              <Button {...restProps} kind="ghost">
                 {args.children}
               </Button>
             </TableCell>
             <TableCell>
-              <Button {...args} kind="ghost" color="secondary">
+              <Button {...restProps} kind="ghost" color="secondary">
                 {args.children}
               </Button>
             </TableCell>
             <TableCell>
-              <Button {...args} kind="ghost" color="error">
+              <Button {...restProps} kind="ghost" color="error">
                 {args.children}
               </Button>
             </TableCell>
@@ -347,17 +382,17 @@ const GhostButtonTemplate: StoryFn<typeof Button> = (args) => {
               Hover
             </TableCell>
             <TableCell>
-              <Button {...args} id="hover4" kind="ghost">
+              <Button {...restProps} id="hover4" kind="ghost">
                 {args.children}
               </Button>
             </TableCell>
             <TableCell>
-              <Button {...args} id="hover5" kind="ghost" color="secondary">
+              <Button {...restProps} id="hover5" kind="ghost" color="secondary">
                 {args.children}
               </Button>
             </TableCell>
             <TableCell>
-              <Button {...args} id="hover6" kind="ghost" color="error">
+              <Button {...restProps} id="hover6" kind="ghost" color="error">
                 {args.children}
               </Button>
             </TableCell>
@@ -369,13 +404,13 @@ const GhostButtonTemplate: StoryFn<typeof Button> = (args) => {
               Focus
             </TableCell>
             <TableCell>
-              <Button {...args} kind="ghost" className="Mui-focusVisible">
+              <Button {...restProps} kind="ghost" className="Mui-focusVisible">
                 {args.children}
               </Button>
             </TableCell>
             <TableCell>
               <Button
-                {...args}
+                {...restProps}
                 kind="ghost"
                 color="secondary"
                 className="Mui-focusVisible"
@@ -385,7 +420,7 @@ const GhostButtonTemplate: StoryFn<typeof Button> = (args) => {
             </TableCell>
             <TableCell>
               <Button
-                {...args}
+                {...restProps}
                 kind="ghost"
                 color="error"
                 className="Mui-focusVisible"
@@ -401,17 +436,17 @@ const GhostButtonTemplate: StoryFn<typeof Button> = (args) => {
               Disabled
             </TableCell>
             <TableCell>
-              <Button {...args} kind="ghost" disabled>
+              <Button {...restProps} kind="ghost" disabled>
                 {args.children}
               </Button>
             </TableCell>
             <TableCell>
-              <Button {...args} kind="ghost" color="secondary" disabled>
+              <Button {...restProps} kind="ghost" color="secondary" disabled>
                 {args.children}
               </Button>
             </TableCell>
             <TableCell>
-              <Button {...args} kind="ghost" color="error" disabled>
+              <Button {...restProps} kind="ghost" color="error" disabled>
                 {args.children}
               </Button>
             </TableCell>
@@ -445,6 +480,8 @@ export const KindGhost = {
 };
 
 const OutlinedButtonTemplate: StoryFn<typeof Button> = ({
+  kind,
+  variant,
   color,
   ...restProps
 }) => {
