@@ -18,7 +18,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
     return <OutlinedButton {...props} ref={ref} hasIconOnly={hasIconOnly} />;
   }
 
-  if (kind === "ghost" || variant === "text") {
+  if (kind === "ghost" || variant === "text" || variant === "ghost") {
     return <GhostButton {...props} ref={ref} hasIconOnly={hasIconOnly} />;
   }
 
