@@ -66,7 +66,7 @@ const getLabelMargin = (
 };
 
 const ReadOnlyContainedChip = (props: ReadOnlyContainedChipProps) => {
-  const { color = "primary", thumbnail, sx, ...restProps } = props;
+  const { color = "primary", thumbnail, sx, variant, ...restProps } = props;
 
   return (
     <StyledContainedChipBase
@@ -92,6 +92,7 @@ const EnableContainedChip = (props: EnableContainedChipProps) => {
     onDelete,
     onClick,
     sx,
+    variant,
     ...restProps
   } = props;
 
@@ -120,7 +121,14 @@ const DeleteIconWithHoverLayer = ({ onClick }: { onClick: () => void }) => {
   );
 };
 const DeletableContainedChip = (props: DeletableContainedChipProps) => {
-  const { color = "primary", thumbnail, onDelete, sx, ...restProps } = props;
+  const {
+    color = "primary",
+    thumbnail,
+    onDelete,
+    sx,
+    variant,
+    ...restProps
+  } = props;
 
   return (
     <StyledContainedChipDeletable
