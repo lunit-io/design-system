@@ -64,6 +64,16 @@ export default {
         defaultValue: { summary: "contained" },
       },
     },
+    variant: {
+      control: {
+        type: "radio",
+      },
+      options: ["contained", "outlined", "text", "ghost"],
+      description: "The variant is alias of kind.",
+      table: {
+        defaultValue: { summary: "contained" },
+      },
+    },
   },
   parameters: {
     controls: {

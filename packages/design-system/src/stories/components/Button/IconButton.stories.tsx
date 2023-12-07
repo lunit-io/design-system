@@ -40,7 +40,7 @@ export default {
       control: {
         type: "radio",
       },
-      options: ["contained", "outlined", "text"],
+      options: ["contained", "outlined", "text", "ghost"],
       description: "The variant is alias of kind.",
       table: {
         defaultValue: { summary: "contained" },
