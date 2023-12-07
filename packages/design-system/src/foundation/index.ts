@@ -9,7 +9,7 @@ import { createElevationCssBaseline, elevationOptions } from "./Elevation";
 
 export const foundationCssBaseline: Components<Theme>["MuiCssBaseline"] = {
   styleOverrides: deepmerge(
-    deepmerge(createTypographyCssBaseline(), createColorCssBaseline()),
+    deepmerge(createColorCssBaseline(), createTypographyCssBaseline()),
     createElevationCssBaseline()
   ),
 };

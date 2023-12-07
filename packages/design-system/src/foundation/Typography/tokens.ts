@@ -69,73 +69,61 @@ const fontVariants: Record<string, TypographyStyleOptions> = {
     fontWeight: "var(--headline1-font-weight)",
     fontSize: "var(--headline1-font-size)",
     lineHeight: "var(--headline1-line-height)",
-    color: "var(--text_normal)",
   },
   headline2: {
     fontWeight: "var(--headline2-font-weight)",
     fontSize: "var(--headline2-font-size)",
     lineHeight: "var(--headline2-line-height)",
-    color: "var(--text_normal)",
   },
   headline3: {
     fontWeight: "var(--headline3-font-weight)",
     fontSize: "var(--headline3-font-size)",
     lineHeight: "var(--headline3-line-height)",
-    color: "var(--text_normal)",
   },
   headline4: {
     fontWeight: "var(--headline4-font-weight)",
     fontSize: "var(--headline4-font-size)",
     lineHeight: "var(--headline4-line-height)",
-    color: "var(--text_normal)",
   },
   headline5: {
     fontWeight: "var(--headline5-font-weight)",
     fontSize: "var(--headline5-font-size)",
     lineHeight: "var(--headline5-line-height)",
-    color: "var(--text_normal)",
   },
   body1_16_semibold: {
     fontWeight: "var(--body1-16-semibold-font-weight)",
     fontSize: "var(--body1-16-semibold-font-size)",
     lineHeight: "var(--body1-16-semibold-line-height)",
-    color: "var(--text_normal)",
   },
   body1_16_regular: {
     fontWeight: "var(--body1-16-regular-font-weight)",
     fontSize: "var(--body1-16-regular-font-size)",
     lineHeight: "var(--body1-16-regular-line-height)",
-    color: "var(--text_normal)",
   },
   body2_14_bold: {
     fontWeight: "var(--body2-14-bold-font-weight)",
     fontSize: "var(--body2-14-bold-font-size)",
     lineHeight: "var(--body2-14-bold-line-height)",
-    color: "var(--text_normal)",
   },
   body2_14_medium: {
     fontWeight: "var(--body2-14-medium-font-weight)",
     fontSize: "var(--body2-14-medium-font-size)",
     lineHeight: "var(--body2-14-medium-line-height)",
-    color: "var(--text_normal)",
   },
   body2_14_regular: {
     fontWeight: "var(--body2-14-regular-font-weight)",
     fontSize: "var(--body2-14-regular-font-size)",
     lineHeight: "var(--body2-14-regular-line-height)",
-    color: "var(--text_normal)",
   },
   body3_12_semibold: {
     fontWeight: "var(--body3-12-semibold-font-weight)",
     fontSize: "var(--body3-12-semibold-font-size)",
     lineHeight: "var(--body3-12-semibold-line-height)",
-    color: "var(--text_normal)",
   },
   body3_12_regular: {
     fontWeight: "var(--body3-12-regular-font-weight)",
     fontSize: "var(--body3-12-regular-font-size)",
     lineHeight: "var(--body3-12-regular-line-height)",
-    color: "var(--text_normal)",
   },
   overline: {
     fontWeight: "var(--overline-font-weight)",
@@ -143,14 +131,12 @@ const fontVariants: Record<string, TypographyStyleOptions> = {
     lineHeight: "var(--overline-line-height)",
     letterSpacing: "1px",
     textTransform: "uppercase",
-    color: "var(--text_normal)",
   },
   button1: {
     fontWeight: "var(--button1-font-weight)",
     fontSize: "var(--button1-font-size)",
     lineHeight: "var(--button1-line-height)",
     textTransform: "capitalize",
-    color: "var(--text_normal)",
   },
   button2: {
     fontWeight: "var(--button2-font-weight)",
@@ -158,13 +144,11 @@ const fontVariants: Record<string, TypographyStyleOptions> = {
     lineHeight: "var(--button2-line-height)",
     letterSpacing: "0.2px",
     textTransform: "capitalize",
-    color: "var(--text_normal)",
   },
   caption: {
     fontWeight: "var(--caption-font-weight)",
     fontSize: "var(--caption-font-size)",
     lineHeight: "var(--caption-line-height)",
-    color: "var(--text_normal)",
   },
 };
 

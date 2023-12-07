@@ -172,6 +172,10 @@ const paletteOptions = {
     main: base.green[40], // core.text_success.dark1
   },
   grey: base.greyForMUI,
+  text: {
+    primary: base.grey[5], // core.text_normal.dark1
+    secondary: base.grey[40], // core.text_medium.dark1
+  },
   lunit_global: lunitColors,
   lunit_token: {
     core: {

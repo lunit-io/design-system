@@ -86,6 +86,24 @@ export const createTypographyCssBaseline = () => {
     ":root": {
       ...cssVariables,
     },
+    ".light1": {
+      color: "var(--text_normal)",
+    },
+    ".light2": {
+      color: "var(--text_normal)",
+    },
+    ".dark1": {
+      color: "var(--text_normal)",
+    },
+    ".dark2": {
+      color: "var(--text_normal)",
+    },
+    ".dark3": {
+      color: "var(--text_normal)",
+    },
+    ".dark4": {
+      color: "var(--text_normal)",
+    },
   };
 };
 
