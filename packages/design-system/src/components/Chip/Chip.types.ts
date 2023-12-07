@@ -6,7 +6,8 @@ import type {
 } from "@mui/material";
 import type { OverridableComponent } from "@mui/material/OverridableComponent";
 
-type ChipKind = "outlined" | "contained";
+type DesignSystemChipKind = "outlined" | "contained";
+type DesignSystemAndMuiContainedChipKind = "filled" | "contained";
 type ColorKeys = keyof typeof CHIP_COLORS;
 export type ChipColor = (typeof CHIP_COLORS)[ColorKeys];
 export type ChipThumbnail = string | JSX.Element;
@@ -17,10 +18,12 @@ export type ChipThumbnail = string | JSX.Element;
 export interface BaseChipProps
   extends Pick<
     MuiChipProps,
-    "label" | "sx" | "style" | "classes" | "onDelete" | "variant"
+    "label" | "sx" | "style" | "classes" | "onDelete"
   > {
   // either kind or variant
-  kind?: ChipKind;
+  kind?: DesignSystemChipKind;
+  variant?: "outlined" | DesignSystemAndMuiContainedChipKind;
+  // mui variant = outlined | "filled" | undefined
   color?: ChipColor;
 }
 
@@ -33,9 +36,12 @@ export interface OutlinedChipProps extends BaseChipProps {
 
 export interface BaseContainedChipProps
   extends BaseChipProps,
-    Omit<MuiChipProps, "color" | "size" | "avatar" | "deleteIcon" | "icon"> {
+    Omit<
+      MuiChipProps,
+      "color" | "size" | "avatar" | "deleteIcon" | "icon" | "variant"
+    > {
   kind?: "contained";
-  variant?: "filled";
+  variant?: DesignSystemAndMuiContainedChipKind;
   thumbnail?: ChipThumbnail;
   onClick?: () => void;
 }
