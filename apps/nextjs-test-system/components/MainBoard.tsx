@@ -71,7 +71,6 @@ function MainBoard() {
           borderRadius: "0.75rem",
           backgroundColor: theme.palette.lunit_token.core.bg_01,
           marginBottom: "1.5rem",
-          color: theme.palette.lunit_token.core.text_normal,
           typography: "body2_14_regular",
         }}
       >

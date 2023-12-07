@@ -60,7 +60,6 @@ function SidePanel() {
           background: theme.palette.lunit_token.component.scrollbars_bg,
         },
         borderLeft: "1px solid #000",
-        color: theme.palette.lunit_token.core.text_normal,
       }}
     >
       <Box sx={{ display: "flex" }}>
