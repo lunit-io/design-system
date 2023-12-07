@@ -10,7 +10,6 @@ import getHoverStyle from "./utils/getHoverStyle";
 import type { ButtonProps } from "./Button.types";
 import type { ToggleButtonProps } from "../ToggleButton/ToggleButton.types";
 import type { Typography } from "@mui/material/styles/createTypography";
-import type { StyledComponent } from "@emotion/styled";
 
 type KindStyleParams = Pick<ButtonProps, "kind" | "color"> & {
   lunit_token: ColorToken;
@@ -244,4 +243,4 @@ export const CustomButton = styled(MuiButton, {
     ...sizeStyle({ size, kind, hasIconOnly, typography }),
     ...kindStyle({ kind, color, lunit_token }),
   })
-) as StyledComponent<CustomButtonProps>;
+);
