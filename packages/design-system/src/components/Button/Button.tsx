@@ -50,11 +50,13 @@ const GhostButton = forwardRef<
     children,
     startIcon,
     hasIconOnly,
+    variant,
+    ...restProps
   } = props;
 
   return (
     <CustomButton
-      {...props}
+      {...restProps}
       ref={ref}
       className={`ghost ${className ? className : ""}`}
       kind="ghost"
@@ -79,11 +81,13 @@ const OutlinedButton = forwardRef<
     children,
     startIcon,
     hasIconOnly,
+    variant,
+    ...restProps
   } = props;
 
   return (
     <CustomButton
-      {...props}
+      {...restProps}
       ref={ref}
       className={`outlined ${className ? className : ""}`}
       kind="outlined"
@@ -108,11 +112,13 @@ const ContainedButton = forwardRef<
     children,
     startIcon,
     hasIconOnly,
+    variant,
+    ...restProps
   } = props;
 
   return (
     <CustomButton
-      {...props}
+      {...restProps}
       ref={ref}
       className={`${props.kind ?? "contained"} ${className ? className : ""}`}
       kind={props.kind ?? "contained"}
