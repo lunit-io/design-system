@@ -8,9 +8,9 @@ export interface BaseTextFieldProps
     "size" | "value" | "helperText" | "variant"
   > {
   /**
-   * The design system TextField variable is outlined fixed.
+   * The design system TextField has only on kind
    */
-  variant?: "outlined";
+  // kind?: "contained"
   value?: string;
   helperText?: string;
 
