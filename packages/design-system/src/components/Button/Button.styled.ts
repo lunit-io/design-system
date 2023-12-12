@@ -211,14 +211,11 @@ export const iconStyle = ({
   hasIconOnly,
 }: Pick<CustomButtonProps, "size" | "hasIconOnly">) => ({
   "& .MuiButton-startIcon": {
-    width: "20px",
-    height: "20px",
-    padding: "1px",
     margin: 0,
     marginRight: hasIconOnly ? "0px" : size === "large" ? "8px" : "4px",
 
     "*:nth-of-type(1)": {
-      fontSize: "18px",
+      fontSize: "20px",
     },
   },
 });

@@ -57,10 +57,9 @@ export const IconWrapper = styled("div")<{
 }>(({ hasIconOnly, size }) => ({
   width: "20px",
   height: "20px",
-  padding: "1px",
   marginRight: hasIconOnly ? "0px" : size === "large" ? "8px" : "4px",
 
   "*:nth-of-type(1)": {
-    fontSize: "18px",
+    fontSize: "20px",
   },
 }));
