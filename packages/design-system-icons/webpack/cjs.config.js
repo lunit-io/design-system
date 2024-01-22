@@ -1,5 +1,6 @@
 const glob = require("fast-glob");
 const path = require("path");
+const nodeExternals = require("webpack-node-externals");
 
 const base = require("./base.config");
 
@@ -24,4 +25,9 @@ module.exports = {
       type: "commonjs2",
     },
   },
+  externals: [
+    nodeExternals({
+      modulesFromFile: true,
+    }),
+  ],
 };
