@@ -115,12 +115,6 @@ export const createColorCssBaseline = () => {
     ".dark2": {
       ...createTokenColorVariables("dark2"),
     },
-    ".dark3": {
-      ...createTokenColorVariables("dark3"),
-    },
-    ".dark4": {
-      ...createTokenColorVariables("dark4"),
-    },
   };
 };
 
@@ -182,6 +176,7 @@ const paletteOptions = {
       bg_01: "var(--bg_01)",
       bg_02: "var(--bg_02)",
       bg_03: "var(--bg_03)",
+      layer_01: "var(--layer_01)",
       text_primary: "var(--text_primary)",
       text_normal: "var(--text_normal)",
       text_medium: "var(--text_medium)",

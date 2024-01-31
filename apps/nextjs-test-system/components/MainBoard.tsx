@@ -65,7 +65,7 @@ function MainBoard() {
       {/* FilteringBar */}
       <Stack
         direction="row"
-        className="dark3"
+        className="dark2"
         sx={{
           padding: "0.25rem 1.25rem",
           borderRadius: "0.75rem",
