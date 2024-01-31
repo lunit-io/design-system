@@ -51,7 +51,7 @@ export const globalTypes = {
       title: "Base",
       icon: "contrast",
       dynamicTitle: true,
-      items: ["light1", "light2", "dark1", "dark2", "dark3", "dark4"],
+      items: ["light1", "light2", "dark1", "dark2"],
     },
   },
 };

@@ -115,12 +115,6 @@ export const createColorCssBaseline = () => {
     ".dark2": {
       ...createTokenColorVariables("dark2"),
     },
-    ".dark3": {
-      ...createTokenColorVariables("dark3"),
-    },
-    ".dark4": {
-      ...createTokenColorVariables("dark4"),
-    },
   };
 };
 

@@ -24,7 +24,7 @@ export const elevationOptions = {
 export const createElevationCssBaseline = () => {
   return {
     // :root에 모든 theme이 정의되어 있지 않으므로 surface*에서 찾아야 함
-    ".light1, .light2, .dark1, .dark2, .dark3, .dark4": {
+    ".light1, .light2, .dark1, .dark2": {
       ...createCSSVars(shadows),
       ...createCSSVars(elevations),
       // `--elevation-shadow`가 정의되지 않아도 `box-shadow: var(--elevation-shadow)` 구문을 해석하려면 필요함

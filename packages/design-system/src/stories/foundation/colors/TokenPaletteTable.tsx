@@ -116,8 +116,6 @@ const TokenPaletteTable = ({ kind }: TokenPaletteTableProps) => {
               <TokenPaletteCell surface="light2" paletteKey={paletteKey} />
               <TokenPaletteCell surface="dark1" paletteKey={paletteKey} />
               <TokenPaletteCell surface="dark2" paletteKey={paletteKey} />
-              <TokenPaletteCell surface="dark3" paletteKey={paletteKey} />
-              <TokenPaletteCell surface="dark4" paletteKey={paletteKey} />
             </TableRow>
           ))}
         </TableBody>

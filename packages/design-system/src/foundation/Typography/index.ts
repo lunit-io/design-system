@@ -98,12 +98,6 @@ export const createTypographyCssBaseline = () => {
     ".dark2": {
       color: "var(--text_normal)",
     },
-    ".dark3": {
-      color: "var(--text_normal)",
-    },
-    ".dark4": {
-      color: "var(--text_normal)",
-    },
   };
 };
 
