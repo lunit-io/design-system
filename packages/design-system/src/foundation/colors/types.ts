@@ -5,6 +5,7 @@ export interface ColorToken {
     bg_01: CSSPropertyColor;
     bg_02: CSSPropertyColor;
     bg_03: CSSPropertyColor;
+    layer_01: CSSPropertyColor;
     text_primary: CSSPropertyColor;
     text_normal: CSSPropertyColor;
     text_medium: CSSPropertyColor;

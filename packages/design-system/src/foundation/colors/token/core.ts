@@ -23,6 +23,12 @@ export const tokenCoreColor: TokenCoreColorValue = {
     dark1: "--grey_85",
     dark2: "--grey_85",
   },
+  layer_01: {
+    light1: "--grey_5",
+    light2: "--grey_5",
+    dark1: "--grey_80",
+    dark2: "--grey_80",
+  },
   text_primary: {
     light1: "--lunit_teal_50",
     light2: "--lunit_teal_50",
