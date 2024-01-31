@@ -78,7 +78,7 @@ export const tokenComponentColor: TokenComponentColorValue = {
       light1: "--lunit_teal_10",
       light2: "--lunit_teal_10",
       dark1: "--grey_80",
-      dark2: "--grey_75",
+      dark2: "--grey_80",
     },
     btn_selected_secondary_text: {
       light1: "--grey_95",
@@ -118,7 +118,7 @@ export const tokenComponentColor: TokenComponentColorValue = {
       light1: "--grey_10",
       light2: "--grey_0",
       dark1: "--grey_80",
-      dark2: "--grey_75",
+      dark2: "--grey_70",
     },
     textfield_border_error: {
       light1: "--red_40",

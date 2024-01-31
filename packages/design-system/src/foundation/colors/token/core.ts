@@ -9,7 +9,7 @@ export const tokenCoreColor: TokenCoreColorValue = {
     light1: "--grey_0",
     light2: "--grey_10",
     dark1: "--grey_90",
-    dark2: "--grey_70",
+    dark2: "--grey_75",
   },
   bg_02: {
     light1: "--grey_0",
@@ -44,14 +44,14 @@ export const tokenCoreColor: TokenCoreColorValue = {
   text_medium: {
     light1: "--grey_60",
     light2: "--grey_60",
-    dark1: "--grey_40",
+    dark1: "--grey_30",
     dark2: "--grey_30",
   },
   text_light: {
     light1: "--grey_40",
     light2: "--grey_40",
     dark1: "--grey_50",
-    dark2: "--grey_40",
+    dark2: "--grey_50",
   },
   text_error: {
     light1: "--red_40",
