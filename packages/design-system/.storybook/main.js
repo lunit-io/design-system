@@ -7,6 +7,18 @@ module.exports = {
     "../src/**/*.mdx",
     "../src/**/*.stories.@(js|jsx|ts|tsx)",
   ],
+  refs: {
+    "design-system-icons": {
+      title: "Lunit Design System Icons",
+      url: "https://64b4f32d63020d515460103f-nhxqywufcq.chromatic.com/",
+      expanded: false,
+    },
+    "design-system-logo": {
+      title: "Lunit Design System Logo",
+      url: "https://64b4d554d4cabd071c377a49-zzkrprgqdh.chromatic.com/",
+      expanded: false,
+    },
+  },
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
