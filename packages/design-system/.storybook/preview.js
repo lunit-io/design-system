@@ -1,6 +1,7 @@
 import { ThemeProvider, CssBaseline, Box, createTheme } from "@mui/material";
+import { deepmerge } from "@mui/utils";
 
-import theme from "../src/theme";
+import { themeOptions } from "../src/theme";
 import * as baseColor from "../src/foundation/colors/base";
 
 export const decorators = [
@@ -10,41 +11,43 @@ export const decorators = [
     // MUI component의 기본 text 컬러가 dark1 테마로 설정되어 있으나,
     // modal과 같이 dom을 새로 생성하는 MUI 컴포넌트의 기본 배경색이 흰색이라 글자색이 보이지 않는 문제가 있어서
     // storybook 내 MUI component의 가독성을 위해 MUI 기본 palette 컬러를 light1 컬러로 재지정
-    const custom_theme = createTheme(theme, {
-      palette: {
-        primary: {
-          main: baseColor.lunit_teal[50], // core.text_primary.light1
+    const custom_theme = createTheme(
+      deepmerge(themeOptions, {
+        palette: {
+          primary: {
+            main: baseColor.lunit_teal[30], // component.btn_primary_bg.light1
+          },
+          secondary: {
+            main: baseColor.grey[15], // component.btn_secondary_bg.light1
+          },
+          error: {
+            main: baseColor.red[30], // component.btn_error_bg.light1
+          },
+          warning: {
+            main: baseColor.orange[20], // component.chip_warning_bg.light1
+          },
+          info: {
+            main: baseColor.blue[10], // component.alert_info_bg.light1 와 비슷한 색....
+          },
+          success: {
+            main: baseColor.green[20], // component.chip_success_bg.light1
+          },
+          grey: baseColor.greyForMUI,
+          text: {
+            primary: baseColor.grey[95], // core.text_normal.light1
+            secondary: baseColor.grey[60], // core.text_medium.light1
+          },
         },
-        secondary: {
-          main: baseColor.grey[40], // core.text_light.light1
-        },
-        error: {
-          main: baseColor.red[40], // core.text_error.light1
-        },
-        warning: {
-          main: baseColor.orange[40], // core.text_warning.light1
-        },
-        info: {
-          main: baseColor.blue[40], // core.text_info.light1
-        },
-        success: {
-          main: baseColor.green[40], // core.text_success.light1
-        },
-        grey: baseColor.greyForMUI,
-        text: {
-          primary: baseColor.grey[95], // core.text_normal.light1
-          secondary: baseColor.grey[60], // core.text_medium.light1
-        },
-      },
-    });
+      })
+    );
 
     return (
       <ThemeProvider theme={custom_theme}>
         <CssBaseline />
         <Box
           className={surface}
-          bgcolor={theme.palette.lunit_token.core.bg_01}
-          color={theme.palette.lunit_token.core.text_normal}
+          bgcolor={custom_theme.palette.lunit_token.core.bg_01}
+          color={custom_theme.palette.lunit_token.core.text_normal}
           sx={{ p: 2 }}
         >
           <Story />
