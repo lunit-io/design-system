@@ -38,6 +38,7 @@ export default {
       },
     },
     children: {
+      description: "The content of the component.",
       type: "string",
     },
     kind: {
@@ -64,6 +65,8 @@ export default {
       control: {
         type: "radio",
       },
+      description: `The color of the component. It supports both default and custom theme colors,
+        \nwhich can be added as shown in the palette customization guide.`,
       options: ["primary", "secondary", "error"],
       table: {
         defaultValue: { summary: "primary" },
@@ -73,6 +76,7 @@ export default {
       control: {
         type: "boolean",
       },
+      description: "If true, the button will be disabled.",
       table: {
         defaultValue: { summary: "false" },
       },
@@ -81,6 +85,7 @@ export default {
       control: {
         type: "radio",
       },
+      description: "The size of the button.",
       options: ["small", "medium", "large"],
       table: {
         defaultValue: { summary: "small" },
