@@ -37,14 +37,14 @@ Icons in this package is using [SvgIcon](https://mui.com/components/icons/#svgic
 // Option 1
 import SuccessIcon from "@lunit/design-system-icons/Success";
 // Option 2
-import { Success } from "@lunit/design-system-icons";
+import { Success as SuccessIcon } from "@lunit/design-system-icons";
 
-<Success />
+<SuccessIcon />
 // You can use any of SvgIcon props
-<Success color="primary" />
-<Success fontSize="large" />
+<SuccessIcon color="primary" />
+<SuccessIcon fontSize="large" />
 // You can choose one of variants with `variant` props
-<Success variant="filled" />
+<SuccessIcon variant="filled" />
 ```
 
 The safest for bundle size is Option 1, but some developers prefer Option 2. Make sure you follow the [minimizing bundle size guide](https://mui.com/material-ui/guides/minimizing-bundle-size/#option-2) before using the second approach.
