@@ -1,0 +1,260 @@
+import { Canvas, Stories, Controls, Meta, Story } from "@storybook/blocks";
+import Box from "@mui/material/Box";
+import Bell from "@lunit/design-system-icons/Bell";
+
+import Button from "@/components/Button";
+import * as ButtonStories from "./BasicButton.stories";
+
+<Meta of={ButtonStories} />
+
+# Button
+
+Buttons allow users to take actions, and make choices, with a single tap.
+
+### Basic Button
+
+importing the module:
+
+```ts
+import { Button } from "@lunit/design-system";
+// or
+import Button from "@lunit/design-system/Button";
+```
+
+Example:
+
+```tsx
+<Button>Button</Button>
+```
+
+### The Breaking Change between Mui and Lunit Design System
+
+- Mui 컴포넌트 상에서 사용하는 props 를 사용할 수 없는 케이스가 있는데, 이에 대한 기재가 필수
+
+### Usage
+
+<Canvas>
+  <Story of={ButtonStories.BasicButton} />
+</Canvas>
+
+<Controls />
+
+### Variant (kind)
+
+The Button have three variants: `contained`, `outlined`, and `text`.<br />
+In our design system Figma, we use `variant` and `kind` together, They are the **same concept**, and they work the **same way**.<br />
+Using the `variant` or `kind` prop, you can change the variant of the Button.<br />
+Default variant(kind) is `contained`.
+
+<Canvas>
+  <Button variant="contained">Contained</Button>
+  <Button variant="outlined">Outlined</Button>
+  <Button variant="text">Text</Button>
+</Canvas>
+
+```tsx
+<Button variant="contained">Contained</Button>
+<Button variant="outlined">Outlined</Button>
+<Button variant="text">Text</Button>
+
+// or (kind is the same as variant)
+
+<Button kind="contained">Contained</Button>
+<Button kind="outlined">Outlined</Button>
+<Button kind="text">Text</Button>
+```
+
+### Color
+
+The Button have three colors: `primary`, `secondary` and `error`.<br />
+Using the `color` prop, you can change the color of the Button.<br />
+Default color is `primary`.
+
+<Canvas>
+  <Box sx={{ display: "flex", flexDirection: "column", gap: 4 }}>
+    <Box>
+      <Button sx={{ mr: 2 }} variant="contained" color="primary">
+        Small
+      </Button>
+      <Button sx={{ mr: 2 }} variant="contained" color="secondary">
+        Medium
+      </Button>
+      <Button variant="contained" color="error">
+        Large
+      </Button>
+    </Box>
+    <Box>
+      <Button sx={{ mr: 2 }} variant="outlined" color="primary">
+        Small
+      </Button>
+      <Button sx={{ mr: 2 }} variant="outlined" color="secondary">
+        Medium
+      </Button>
+      <Button variant="outlined" color="error">
+        Large
+      </Button>
+    </Box>
+    <Box>
+      <Button sx={{ mr: 2 }} variant="text" color="primary">
+        Small
+      </Button>
+      <Button sx={{ mr: 2 }} variant="text" color="secondary">
+        Medium
+      </Button>
+      <Button variant="text" color="error">
+        Large
+      </Button>
+    </Box>
+  </Box>
+</Canvas>
+
+```tsx
+<Button color="primary">Primary</Button>
+<Button color="secondary">Secondary</Button>
+<Button color="error">Error</Button>
+```
+
+### Size
+
+The Button have three sizes: `small`, `medium` and `large`.<br />
+Using the `size` prop, you can change the size of the Button.<br />
+Default size is `small`.
+
+<Canvas>
+  <Box sx={{ display: "flex", flexDirection: "column", gap: 4 }}>
+    <Box>
+      <Button sx={{ mr: 2 }} variant="contained" size="small">
+        Small
+      </Button>
+      <Button sx={{ mr: 2 }} variant="contained" size="medium">
+        Medium
+      </Button>
+      <Button variant="contained" size="large">
+        Large
+      </Button>
+    </Box>
+    <Box>
+      <Button sx={{ mr: 2 }} variant="outlined" size="small">
+        Small
+      </Button>
+      <Button sx={{ mr: 2 }} variant="outlined" size="medium">
+        Medium
+      </Button>
+      <Button variant="outlined" size="large">
+        Large
+      </Button>
+    </Box>
+    <Box>
+      <Button sx={{ mr: 2 }} variant="text" size="small">
+        Small
+      </Button>
+      <Button sx={{ mr: 2 }} variant="text" size="medium">
+        Medium
+      </Button>
+      <Button variant="text" size="large">
+        Large
+      </Button>
+    </Box>
+  </Box>
+</Canvas>
+
+```tsx
+<Button size="small">Small</Button>
+<Button size="medium">Medium</Button>
+<Button size="large">Large</Button>
+```
+
+### With Icon and Text
+
+If you want to use an icon and text together, you can use the `icon` prop and `children` prop.
+
+<Canvas>
+  <Button variant="contained" icon={<Bell />}>
+    Text
+  </Button>
+  <Button variant="outlined" icon={<Bell />}>
+    Text
+  </Button>
+  <Button variant="text" icon={<Bell />}>
+    Text
+  </Button>
+</Canvas>
+
+```tsx
+import Button from "@lunit/design-system/Button";
+import Bell from "@lunit/design-system-icons/Bell";
+
+function Component() {
+  return <Button icon={<Bell />}>Text</Button>;
+}
+```
+
+### With Icon only
+
+If you want to use only an icon, you can use the `icon` prop.
+
+<Canvas>
+  <Button variant="contained" icon={<Bell />} />
+  <Button variant="outlined" icon={<Bell />} />
+  <Button variant="text" icon={<Bell />} />
+</Canvas>
+
+```tsx
+import Button from "@lunit/design-system/Button";
+import Bell from "@lunit/design-system-icons/Bell";
+
+function Component() {
+  return <Button icon={<Bell />} />;
+}
+```
+
+### Disabled
+
+If you want to disable the button, you can use the `disabled` prop.<br />
+Default disabled is `false`.
+
+<Canvas>
+  <Button variant="contained" disabled>
+    Contained
+  </Button>
+  <Button variant="outlined" disabled>
+    Outlined
+  </Button>
+  <Button variant="text" disabled>
+    Text
+  </Button>
+</Canvas>
+
+```tsx
+<Button disabled>Button</Button>
+```
+
+### OnClick
+
+If you want to add an event to the button, you can use the `onClick` prop.
+
+<Canvas>
+  <Button variant="contained" onClick={() => alert("Contained")}>
+    Contained
+  </Button>
+  <Button variant="outlined" onClick={() => alert("Outlined")}>
+    Outlined
+  </Button>
+  <Button variant="text" onClick={() => alert("Text")}>
+    Text
+  </Button>
+</Canvas>
+
+```tsx
+<Button onClick={() => alert("Button")}>Button</Button>
+```
+
+### Reference
+
+- [Material-UI Button](https://mui.com/material-ui/react-button/)
+- [Material-UI Button API](https://mui.com/api/button/)
+- [Lunit Design System Button Figma](https://www.figma.com/file/BSdRUpEPp7XiJ9YnEqpf6F/1.0.0_Components?type=design&node-id=284-3&mode=design&t=dM6Vnv02YvTzQ8vH-0)
+
+### Support
+
+XE Team / Lunit Inc.
