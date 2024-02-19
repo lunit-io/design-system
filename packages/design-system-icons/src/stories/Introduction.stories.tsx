@@ -6,9 +6,31 @@ const SuccessIcon = Icons.Success;
 const meta = {
   title: "Lunit Design System Icons",
   component: SuccessIcon,
+  argTypes: {
+    variant: {
+      options: ["outlined", "filled"],
+      control: "radio",
+    },
+    color: {
+      control: "text",
+    },
+    fontSize: {
+      options: ["small", "medium", "large"],
+      control: "select",
+    },
+  },
+  args: {
+    variant: "outlined",
+    color: "inherit",
+    fontSize: "medium",
+  },
 };
 
 export default meta;
+
+export const BasicIcon = {
+  component: SuccessIcon,
+};
 
 export const Variant = {
   render: () => (

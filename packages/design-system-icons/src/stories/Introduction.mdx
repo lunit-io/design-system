@@ -1,4 +1,4 @@
-import { Canvas, Meta, Story } from "@storybook/blocks";
+import { Canvas, Meta, Primary, Controls } from "@storybook/blocks";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -47,12 +47,16 @@ import { Success as SuccessIcon } from "@lunit/design-system-icons";
 
 The safest for bundle size is Option 1, but some developers prefer Option 2. Make sure you follow the [minimizing bundle size guide](https://mui.com/material-ui/guides/minimizing-bundle-size/#option-2) before using the second approach.
 
+<Primary />
+
+<Controls />
+
 ### Variant
 
 <Canvas of={IconStories.Variant} />
 
 ```tsx
-React.ComponentProps < typeof SuccessIcon > ["variant"]; // 'outlined' | 'filled'
+React.ComponentProps<typeof SuccessIcon>["variant"]; // 'outlined' | 'filled'
 
 SuccessIcon.variants; // ['outlined', 'filled']
 ```
@@ -100,7 +104,13 @@ The `outlined` is default if not set.
   </TableBody>
 </Table>
 
-Other icons in the design system are in progress.
+If the icon for the design system doesn't exist, let us know by opening an issue.
+
+### Reference
+
+- [Mui Icons](https://mui.com/components/icons/#svgicon)
+- [Mui SvgIcon API](https://mui.com/material-ui/api/svg-icon/)
+- [Icons Figma](https://www.figma.com/file/tlomwt8dT0GWikKqzYH7TO/Lunit_Icons_v1.1.0?node-id=12135%3A6066&mode=dev)
 
 ## Roadmap
 
@@ -114,4 +124,5 @@ Other icons in the design system are in progress.
 
 ## Support
 
-_SangYeob Yu(syyu@lunit.io)_
+- Github: [Create a new issue](https://github.com/lunit-io/design-system/issues/new)
+- Slack: #tf_design_system
