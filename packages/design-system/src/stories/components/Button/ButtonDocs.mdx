@@ -11,7 +11,7 @@ import * as ButtonStories from "./BasicButton.stories";
 
 Buttons allow users to take actions, and make choices, with a single tap.
 
-### Basic Button
+## Basic Button
 
 ```tsx
 import { Button } from "@lunit/design-system";
@@ -21,7 +21,7 @@ import Button from "@lunit/design-system/Button";
 <Button>Button</Button>;
 ```
 
-### Usage
+## Usage
 
 <Canvas>
   <Story of={ButtonStories.BasicButton} />
@@ -29,7 +29,7 @@ import Button from "@lunit/design-system/Button";
 
 <Controls />
 
-### Variant (kind)
+## Variant (kind)
 
 The Button have three variants: `contained`, `outlined`, and `text`.<br />
 In our design system Figma, we use `variant` and `kind` together, They are the **same concept**, and they work the **same way**.<br />
@@ -54,7 +54,7 @@ Default variant(kind) is `contained`.
 <Button kind="text">Text</Button>
 ```
 
-### Color
+## Color
 
 The Button have three colors: `primary`, `secondary` and `error`.<br />
 Using the `color` prop, you can change the color of the Button.<br />
@@ -104,7 +104,7 @@ Default color is `primary`.
 <Button color="error">Error</Button>
 ```
 
-### Size
+## Size
 
 The Button have three sizes: `small`, `medium` and `large`.<br />
 Using the `size` prop, you can change the size of the Button.<br />
@@ -154,7 +154,7 @@ Default size is `small`.
 <Button size="large">Large</Button>
 ```
 
-### With Icon and Text
+## With Icon and Text
 
 If you want to use an icon and text together, you can use the `icon` prop and `children` prop.
 
@@ -179,7 +179,7 @@ function Component() {
 }
 ```
 
-### With Icon only
+## With Icon only
 
 If you want to use only an icon, you can use the `icon` prop.
 
@@ -198,7 +198,7 @@ function Component() {
 }
 ```
 
-### Disabled
+## Disabled
 
 If you want to disable the button, you can use the `disabled` prop.<br />
 Default disabled is `false`.
@@ -219,7 +219,7 @@ Default disabled is `false`.
 <Button disabled>Button</Button>
 ```
 
-### OnClick
+## OnClick
 
 If you want to add an event to the button, you can use the `onClick` prop.
 
@@ -239,12 +239,12 @@ If you want to add an event to the button, you can use the `onClick` prop.
 <Button onClick={() => alert("Button")}>Button</Button>
 ```
 
-### Reference
+## Reference
 
 - [Material-UI Button](https://mui.com/material-ui/react-button/)
 - [Material-UI Button API](https://mui.com/api/button/)
 - [Lunit Design System Button Figma](https://www.figma.com/file/BSdRUpEPp7XiJ9YnEqpf6F/1.0.0_Components?type=design&node-id=284-3&mode=design&t=dM6Vnv02YvTzQ8vH-0)
 
-### Support
+## Support
 
 XE Team / Lunit Inc.
