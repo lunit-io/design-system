@@ -5,6 +5,7 @@ import Bell from "@lunit/design-system-icons/Bell";
 import Button from "@/components/Button";
 import * as ButtonStories from "./BasicButton.stories";
 import * as ButtonKindStories from "./Kind.stories";
+import * as ButtonColorStories from "./Color.stories";
 
 <Meta name="Button Docs" of={ButtonStories} />
 
@@ -24,7 +25,7 @@ import Button from "@lunit/design-system/Button";
 
 ## Usage
 
-<Canvas of={ButtonStories.BasicButton} />
+<Canvas of={ButtonStories.BasicButton} sourceState="none" />
 
 <Controls />
 
@@ -35,7 +36,11 @@ In our design system Figma, we use `variant` and `kind` together, They are the *
 Using the `variant` or `kind` prop, you can change the variant of the Button.<br />
 Default variant(kind) is `contained`.
 
-<Canvas of={ButtonKindStories.Kind} meta={ButtonKindStories} />
+<Canvas
+  of={ButtonKindStories.Kind}
+  meta={ButtonKindStories}
+  sourceState="none"
+/>
 
 ```tsx
 <Button variant="contained">Text</Button>
@@ -54,49 +59,28 @@ Default variant(kind) is `contained`.
 The Button have three colors: `primary`, `secondary` and `error`.<br />
 Using the `color` prop, you can change the color of the Button.<br />
 Default color is `primary`.
+Outline vairant does not have error color state.
 
-<Canvas>
-  <Box sx={{ display: "flex", flexDirection: "column", gap: 4 }}>
-    <Box>
-      <Button sx={{ mr: 2 }} variant="contained" color="primary">
-        Small
-      </Button>
-      <Button sx={{ mr: 2 }} variant="contained" color="secondary">
-        Medium
-      </Button>
-      <Button variant="contained" color="error">
-        Large
-      </Button>
-    </Box>
-    <Box>
-      <Button sx={{ mr: 2 }} variant="outlined" color="primary">
-        Small
-      </Button>
-      <Button sx={{ mr: 2 }} variant="outlined" color="secondary">
-        Medium
-      </Button>
-      <Button variant="outlined" color="error">
-        Large
-      </Button>
-    </Box>
-    <Box>
-      <Button sx={{ mr: 2 }} variant="text" color="primary">
-        Small
-      </Button>
-      <Button sx={{ mr: 2 }} variant="text" color="secondary">
-        Medium
-      </Button>
-      <Button variant="text" color="error">
-        Large
-      </Button>
-    </Box>
-  </Box>
-</Canvas>
+<Canvas
+  of={ButtonColorStories.Color}
+  meta={ButtonColorStories}
+  sourceState="none"
+/>
 
 ```tsx
-<Button color="primary">Primary</Button>
-<Button color="secondary">Secondary</Button>
-<Button color="error">Error</Button>
+// Contained
+<Button variant="contained" color="primary">Text</Button>
+<Button variant="contained" color="secondary">Text</Button>
+<Button variant="contained" color="error">Text</Button>
+
+// Outlined
+<Button variant="outlined" color="primary">Text</Button>
+<Button variant="outlined" color="secondary">Text</Button>
+
+// Ghost
+<Button variant="ghost" color="primary">Text</Button>
+<Button variant="ghost" color="secondary">Text</Button>
+<Button variant="ghost" color="error">Text</Button>
 ```
 
 ## Size
