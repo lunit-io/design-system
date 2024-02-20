@@ -147,40 +147,30 @@ If you want to use only an icon, you can use the `icon` prop.
 If you want to disable the button, you can use the `disabled` prop.<br />
 Default disabled is `false`.
 
-<Canvas>
-  <Button variant="contained" disabled>
-    Contained
-  </Button>
-  <Button variant="outlined" disabled>
-    Outlined
-  </Button>
-  <Button variant="text" disabled>
-    Text
-  </Button>
-</Canvas>
+<Canvas
+  of={ButtonStories.Disabled}
+  meta={ButtonIconStories}
+  sourceState="none"
+/>
 
 ```tsx
-<Button disabled>Button</Button>
+<Button variant="contained" disabled>Text</Button>
+<Button variant="outlined" disabled>Text</Button>
+<Button variant="ghost" disabled>Text</Button>
 ```
 
 ## OnClick
 
 If you want to add an event to the button, you can use the `onClick` prop.
 
-<Canvas>
-  <Button variant="contained" onClick={() => alert("Contained")}>
-    Contained
-  </Button>
-  <Button variant="outlined" onClick={() => alert("Outlined")}>
-    Outlined
-  </Button>
-  <Button variant="text" onClick={() => alert("Text")}>
-    Text
-  </Button>
-</Canvas>
+<Canvas
+  of={ButtonKindStories.Kind}
+  meta={ButtonKindStories}
+  sourceState="none"
+/>
 
 ```tsx
-<Button onClick={() => alert("Button")}>Button</Button>
+<Button onClick={() => console.log("onClick")}>Text</Button>
 ```
 
 ## Reference

@@ -20,7 +20,10 @@ export default {
     children: "Text",
     disabled: false,
     size: "small",
-    onClick: action("onClick"),
+    onClick: () => {
+      action("onClick")();
+      console.log("onClick");
+    },
   },
   argTypes: {
     children: {

@@ -1,21 +1,10 @@
 import React from "react";
 import { action } from "@storybook/addon-actions";
-import {
-  Table,
-  TableHead,
-  TableRow,
-  TableBody,
-  TableCell,
-  Box,
-} from "@mui/material";
-import Bell from "@lunit/design-system-icons/Bell";
+import { Box } from "@mui/material";
 
 import Button from "@/components/Button";
 
 import type { StoryObj, StoryFn, Meta } from "@storybook/react";
-
-type SizeValues = "small" | "medium" | "large";
-const sizeList: SizeValues[] = ["small", "medium", "large"];
 
 export default {
   title: "Components/Button",
@@ -130,6 +119,38 @@ export default {
 
 export const BasicButton: StoryObj<typeof Button> = {
   render: (args) => <Button {...args}>{args.children}</Button>,
+};
+
+const DisabledButtonTemplate: StoryFn<typeof Button> = (args) => {
+  const { children, kind, variant, ...restArgs } = args;
+
+  return (
+    <Box sx={{ display: "flex", gap: 2 }}>
+      <Button {...restArgs} disabled kind="contained">
+        {children}
+      </Button>
+      <Button
+        {...restArgs}
+        disabled
+        color={args.color === "error" ? "primary" : args.color}
+        kind="outlined"
+      >
+        {children}
+      </Button>
+      <Button {...restArgs} disabled kind="ghost">
+        {children}
+      </Button>
+    </Box>
+  );
+};
+
+export const Disabled: StoryObj<typeof Button> = {
+  render: DisabledButtonTemplate,
+  parameters: {
+    controls: {
+      include: ["onClick", "children", "size", "color"],
+    },
+  },
 };
 
 const SizeButtonTemplate: StoryFn<typeof Button> = (args) => {
