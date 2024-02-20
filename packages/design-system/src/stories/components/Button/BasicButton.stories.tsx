@@ -6,6 +6,7 @@ import {
   TableRow,
   TableBody,
   TableCell,
+  Box,
 } from "@mui/material";
 import Bell from "@lunit/design-system-icons/Bell";
 
@@ -132,51 +133,52 @@ export const BasicButton: StoryObj<typeof Button> = {
 };
 
 const SizeButtonTemplate: StoryFn<typeof Button> = (args) => {
+  const { children, kind, variant, color, ...restArgs } = args;
+
   return (
-    <Table sx={{ width: 900 }}>
-      <TableHead>
-        <TableRow>
-          <TableCell
-            colSpan={3}
-            sx={{
-              typography: "body1_16_semibold",
-              color: "inherit",
-            }}
-          >
-            Size
-          </TableCell>
-        </TableRow>
-        <TableRow>
-          <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
-            Small
-          </TableCell>
-          <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
-            Medium
-          </TableCell>
-          <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
-            Large
-          </TableCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        <TableRow>
-          {sizeList.map((size) => (
-            <TableCell key={size} sx={{ "& button": { marginRight: "10px" } }}>
-              <Button {...args} icon={<Bell />} size={size} />
-              <Button {...args} size={size}>
-                {args.children}
-              </Button>
-              <Button {...args} icon={<Bell />} size={size}>
-                {args.children}
-              </Button>
-            </TableCell>
-          ))}
-        </TableRow>
-      </TableBody>
-    </Table>
+    <Box sx={{ display: "flex", flexDirection: "column", gap: 4 }}>
+      <Box>
+        <Button sx={{ mr: 2 }} {...restArgs} variant="contained" size="small">
+          Small
+        </Button>
+        <Button sx={{ mr: 2 }} {...restArgs} variant="contained" size="medium">
+          Medium
+        </Button>
+        <Button {...restArgs} variant="contained" size="large">
+          Large
+        </Button>
+      </Box>
+      <Box>
+        <Button sx={{ mr: 2 }} {...restArgs} variant="outlined" size="small">
+          Small
+        </Button>
+        <Button sx={{ mr: 2 }} {...restArgs} variant="outlined" size="medium">
+          Medium
+        </Button>
+        <Button {...restArgs} variant="outlined" size="large">
+          Large
+        </Button>
+      </Box>
+      <Box>
+        <Button sx={{ mr: 2 }} {...restArgs} variant="text" size="small">
+          Small
+        </Button>
+        <Button sx={{ mr: 2 }} {...restArgs} variant="text" size="medium">
+          Medium
+        </Button>
+        <Button {...restArgs} variant="text" size="large">
+          Large
+        </Button>
+      </Box>
+    </Box>
   );
 };
 
 export const Size = {
   render: SizeButtonTemplate,
+  parameters: {
+    controls: {
+      include: ["onClick", "disabled", "icon"],
+    },
+  },
 };
