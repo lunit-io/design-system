@@ -5,12 +5,12 @@ import { action } from "@storybook/addon-actions";
 import Button from "@/components/Button";
 
 import type { StoryFn, Meta } from "@storybook/react";
+import { Box } from "@mui/material";
 
 export default {
   title: "Components/Button",
   component: Button,
   args: {
-    kind: "contained",
     color: "primary",
     disabled: false,
     size: "small",
@@ -24,26 +24,6 @@ export default {
       table: {
         defaultValue: { summary: "undefined" },
         type: { summary: "React.ReactNode" },
-      },
-    },
-    kind: {
-      control: {
-        type: "radio",
-      },
-      options: ["contained", "outlined", "ghost"],
-      description: "Button has three Kinds Contained, Outlined, Ghost",
-      table: {
-        defaultValue: { summary: "contained" },
-      },
-    },
-    variant: {
-      control: {
-        type: "radio",
-      },
-      options: ["contained", "outlined", "text", "ghost"],
-      description: "The variant is alias of kind.",
-      table: {
-        defaultValue: { summary: "contained" },
       },
     },
     color: {
@@ -89,7 +69,6 @@ export default {
   parameters: {
     controls: {
       include: [
-        "children",
         "icon",
         "onClick",
         "disabled",
@@ -108,15 +87,48 @@ export default {
   },
 } as Meta<typeof Button>;
 
-const IconButtonTemplate: StoryFn<typeof Button> = (args) => (
-  <Button icon={<Bell />} {...args}>
-    {args.children}
-  </Button>
-);
+const IconButtonTemplate: StoryFn<typeof Button> = (args) => {
+  const { variant, kind, ...restArgs } = args;
+
+  return (
+    <Box sx={{ display: "flex", gap: 2 }}>
+      <Button icon={<Bell />} {...restArgs} kind="contained">
+        Contained
+      </Button>
+      <Button
+        icon={<Bell />}
+        {...restArgs}
+        color={args.color === "error" ? "primary" : args.color}
+        kind="outlined"
+      >
+        Outlined
+      </Button>
+      <Button icon={<Bell />} {...restArgs} kind="ghost">
+        Ghost
+      </Button>
+    </Box>
+  );
+};
+
+const IconOnlyButtonTemplate: StoryFn<typeof Button> = (args) => {
+  const { variant, kind, ...restArgs } = args;
+
+  return (
+    <Box sx={{ display: "flex", gap: 2 }}>
+      <Button icon={<Bell />} {...restArgs} kind="contained" />
+      <Button
+        icon={<Bell />}
+        {...restArgs}
+        color={args.color === "error" ? "primary" : args.color}
+        kind="outlined"
+      />
+      <Button icon={<Bell />} {...restArgs} kind="ghost" />
+    </Box>
+  );
+};
 
 export const IconOnlyButton = {
-  render: IconButtonTemplate,
-
+  render: IconOnlyButtonTemplate,
   argTypes: {
     children: {
       control: false,
@@ -126,17 +138,11 @@ export const IconOnlyButton = {
       },
     },
   },
-
   name: "Icon only",
 };
 
 export const IconWithTextButton = {
   render: IconButtonTemplate,
-
-  args: {
-    children: "Text",
-  },
-
   argTypes: {
     children: {
       type: "string",

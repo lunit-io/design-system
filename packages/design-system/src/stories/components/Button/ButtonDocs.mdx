@@ -6,6 +6,7 @@ import Button from "@/components/Button";
 import * as ButtonStories from "./BasicButton.stories";
 import * as ButtonKindStories from "./Kind.stories";
 import * as ButtonColorStories from "./Color.stories";
+import * as ButtonIconStories from "./IconButton.stories";
 
 <Meta name="Button Docs" of={ButtonStories} />
 
@@ -113,44 +114,32 @@ Default size is `small`.
 
 If you want to use an icon and text together, you can use the `icon` prop and `children` prop.
 
-<Canvas>
-  <Button variant="contained" icon={<Bell />}>
-    Text
-  </Button>
-  <Button variant="outlined" icon={<Bell />}>
-    Text
-  </Button>
-  <Button variant="text" icon={<Bell />}>
-    Text
-  </Button>
-</Canvas>
+<Canvas
+  of={ButtonIconStories.IconWithTextButton}
+  meta={ButtonIconStories}
+  sourceState="none"
+/>
 
 ```tsx
-import Button from "@lunit/design-system/Button";
-import Bell from "@lunit/design-system-icons/Bell";
-
-function Component() {
-  return <Button icon={<Bell />}>Text</Button>;
-}
+<Button variant="contained" icon={<Bell />}>Contained</Button>
+<Button variant="outlined" icon={<Bell />}>Outlined</Button>
+<Button variant="ghost" icon={<Bell />}>Ghost</Button>
 ```
 
 ## With Icon only
 
 If you want to use only an icon, you can use the `icon` prop.
 
-<Canvas>
-  <Button variant="contained" icon={<Bell />} />
-  <Button variant="outlined" icon={<Bell />} />
-  <Button variant="text" icon={<Bell />} />
-</Canvas>
+<Canvas
+  of={ButtonIconStories.IconOnlyButton}
+  meta={ButtonIconStories}
+  sourceState="none"
+/>
 
 ```tsx
-import Button from "@lunit/design-system/Button";
-import Bell from "@lunit/design-system-icons/Bell";
-
-function Component() {
-  return <Button icon={<Bell />} />;
-}
+<Button variant="contained" icon={<Bell />} />
+<Button variant="outlined" icon={<Bell />} />
+<Button variant="ghost" icon={<Bell />} />
 ```
 
 ## Disabled
