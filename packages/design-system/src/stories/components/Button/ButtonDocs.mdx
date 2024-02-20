@@ -4,8 +4,9 @@ import Bell from "@lunit/design-system-icons/Bell";
 
 import Button from "@/components/Button";
 import * as ButtonStories from "./BasicButton.stories";
+import * as ButtonKindStories from "./Kind.stories";
 
-<Meta of={ButtonStories} />
+<Meta name="Button Docs" of={ButtonStories} />
 
 # Button
 
@@ -29,27 +30,23 @@ import Button from "@lunit/design-system/Button";
 
 ## Variant (kind)
 
-The Button have three variants: `contained`, `outlined`, and `text`.<br />
+The Button have three variants: `contained`, `outlined`, and `ghost`.<br />
 In our design system Figma, we use `variant` and `kind` together, They are the **same concept**, and they work the **same way**.<br />
 Using the `variant` or `kind` prop, you can change the variant of the Button.<br />
 Default variant(kind) is `contained`.
 
-<Canvas>
-  <Button variant="contained">Contained</Button>
-  <Button variant="outlined">Outlined</Button>
-  <Button variant="text">Text</Button>
-</Canvas>
+<Canvas of={ButtonKindStories.Kind} meta={ButtonKindStories} />
 
 ```tsx
-<Button variant="contained">Contained</Button>
-<Button variant="outlined">Outlined</Button>
-<Button variant="text">Text</Button>
+<Button variant="contained">Text</Button>
+<Button variant="outlined">Text</Button>
+<Button variant="ghost">Text</Button>
 
 // or (kind is the same as variant)
 
-<Button kind="contained">Contained</Button>
-<Button kind="outlined">Outlined</Button>
-<Button kind="text">Text</Button>
+<Button kind="contained">Text</Button>
+<Button kind="outlined">Text</Button>
+<Button kind="ghost">Text</Button>
 ```
 
 ## Color
