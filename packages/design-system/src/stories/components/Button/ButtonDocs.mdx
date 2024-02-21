@@ -1,0 +1,187 @@
+import { Canvas, Stories, Controls, Meta, Story } from "@storybook/blocks";
+import Box from "@mui/material/Box";
+import Bell from "@lunit/design-system-icons/Bell";
+
+import Button from "@/components/Button";
+import * as ButtonStories from "./BasicButton.stories";
+import * as ButtonKindStories from "./Kind.stories";
+import * as ButtonColorStories from "./Color.stories";
+import * as ButtonIconStories from "./IconButton.stories";
+
+<Meta name="Button Docs" of={ButtonStories} />
+
+# Button
+
+Buttons allow users to take actions, and make choices, with a single tap.
+
+## Usage
+
+### Basic Button
+
+```tsx
+import { Button } from "@lunit/design-system";
+// or
+import Button from "@lunit/design-system/Button";
+
+<Button>Button</Button>;
+```
+
+### Demo
+
+<Canvas of={ButtonStories.BasicButton} sourceState="none" />
+
+<Controls />
+
+### Variant (kind)
+
+The Button have three variants: `contained`, `outlined`, and `ghost`.<br />
+In our design system Figma, we use `variant` and `kind` together, They are the **same concept**, and they work the **same way**.<br />
+Using the `variant` or `kind` prop, you can change the variant of the Button.<br />
+Default variant(kind) is `contained`.
+
+<Canvas
+  of={ButtonKindStories.Kind}
+  meta={ButtonKindStories}
+  sourceState="none"
+/>
+
+```tsx
+<Button variant="contained">Text</Button>
+<Button variant="outlined">Text</Button>
+<Button variant="ghost">Text</Button>
+
+// or (kind is the same as variant)
+
+<Button kind="contained">Text</Button>
+<Button kind="outlined">Text</Button>
+<Button kind="ghost">Text</Button>
+```
+
+### Color
+
+The Button have three colors: `primary`, `secondary` and `error`.<br />
+Using the `color` prop, you can change the color of the Button.<br />
+Outline vairant does not have error color state.<br />
+Default color is `primary`.
+
+<Canvas
+  of={ButtonColorStories.Color}
+  meta={ButtonColorStories}
+  sourceState="none"
+/>
+
+```tsx
+// Contained
+<Button variant="contained" color="primary">Text</Button>
+<Button variant="contained" color="secondary">Text</Button>
+<Button variant="contained" color="error">Text</Button>
+
+// Outlined
+<Button variant="outlined" color="primary">Text</Button>
+<Button variant="outlined" color="secondary">Text</Button>
+
+// Ghost
+<Button variant="ghost" color="primary">Text</Button>
+<Button variant="ghost" color="secondary">Text</Button>
+<Button variant="ghost" color="error">Text</Button>
+```
+
+### Size
+
+The Button have three sizes: `small`, `medium` and `large`.<br />
+Using the `size` prop, you can change the size of the Button.<br />
+Default size is `small`.
+
+<Canvas of={ButtonStories.Size} sourceState="none" />
+
+```tsx
+// Contained
+<Button variant="contained" size="small">Small</Button>
+<Button variant="contained" size="medium">Medium</Button>
+<Button variant="contained" size="large">Large</Button>
+
+// Outlined
+<Button variant="outlined" size="small">Small</Button>
+<Button variant="outlined" size="medium">Medium</Button>
+<Button variant="outlined" size="large">Large</Button>
+
+// Ghost
+<Button variant="ghost" size="small">Small</Button>
+<Button variant="ghost" size="medium">Medium</Button>
+<Button variant="ghost" size="large">Large</Button>
+
+```
+
+### With Icon and Text
+
+If you want to use an icon and text together, you can use the `icon` prop and `children` prop.
+
+<Canvas
+  of={ButtonIconStories.IconWithTextButton}
+  meta={ButtonIconStories}
+  sourceState="none"
+/>
+
+```tsx
+<Button variant="contained" icon={<Bell />}>Contained</Button>
+<Button variant="outlined" icon={<Bell />}>Outlined</Button>
+<Button variant="ghost" icon={<Bell />}>Ghost</Button>
+```
+
+### With Icon only
+
+If you want to use only an icon, you can use the `icon` prop.
+
+<Canvas
+  of={ButtonIconStories.IconOnlyButton}
+  meta={ButtonIconStories}
+  sourceState="none"
+/>
+
+```tsx
+<Button variant="contained" icon={<Bell />} />
+<Button variant="outlined" icon={<Bell />} />
+<Button variant="ghost" icon={<Bell />} />
+```
+
+### Disabled
+
+If you want to disable the button, you can use the `disabled` prop.<br />
+Default disabled is `false`.
+
+<Canvas
+  of={ButtonStories.Disabled}
+  meta={ButtonIconStories}
+  sourceState="none"
+/>
+
+```tsx
+<Button variant="contained" disabled>Text</Button>
+<Button variant="outlined" disabled>Text</Button>
+<Button variant="ghost" disabled>Text</Button>
+```
+
+### OnClick
+
+If you want to add an event to the button, you can use the `onClick` prop.
+
+<Canvas
+  of={ButtonKindStories.Kind}
+  meta={ButtonKindStories}
+  sourceState="none"
+/>
+
+```tsx
+<Button onClick={() => console.log("onClick")}>Text</Button>
+```
+
+## Reference
+
+- [Material-UI Button](https://mui.com/material-ui/react-button/)
+- [Material-UI Button API](https://mui.com/api/button/)
+- [Lunit Design System Button Figma](https://www.figma.com/file/BSdRUpEPp7XiJ9YnEqpf6F/1.0.0_Components?type=design&node-id=284-3&mode=design&t=dM6Vnv02YvTzQ8vH-0)
+
+## Support
+
+- Github: [Create a new issue](https://github.com/lunit-io/design-system/issues/new)
+- Slack: #tf_design_system

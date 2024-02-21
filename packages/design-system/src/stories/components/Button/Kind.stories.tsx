@@ -20,7 +20,10 @@ export default {
     children: "Text",
     disabled: false,
     size: "small",
-    onClick: action("onClick"),
+    onClick: () => {
+      action("onClick")();
+      console.log("onClick");
+    },
   },
   argTypes: {
     children: {
@@ -116,57 +119,15 @@ const ButtonTemplate: StoryFn<typeof Button> = ({
 }) => {
   return (
     <>
-      <Table sx={{ width: 600 }}>
-        <TableHead>
-          <TableRow>
-            <TableCell
-              colSpan={3}
-              sx={{
-                typography: "body1_16_semibold",
-                color: "inherit",
-              }}
-            >
-              Kind
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell
-              sx={{
-                width: "33.33333%",
-                typography: "body2_14_medium",
-                color: "inherit",
-              }}
-            >
-              Contained(default)
-            </TableCell>
-            <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
-              Outlined
-            </TableCell>
-            <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
-              Ghost
-            </TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          <TableRow>
-            <TableCell>
-              <Button color={color} {...restProps}>
-                {children}
-              </Button>
-            </TableCell>
-            <TableCell>
-              <Button kind="outlined" color="primary" {...restProps}>
-                {children}
-              </Button>
-            </TableCell>
-            <TableCell>
-              <Button kind="ghost" color={color} {...restProps}>
-                {children}
-              </Button>
-            </TableCell>
-          </TableRow>
-        </TableBody>
-      </Table>
+      <Button color={color} {...restProps} sx={{ mr: 2 }}>
+        {children}
+      </Button>
+      <Button kind="outlined" color="primary" {...restProps} sx={{ mr: 2 }}>
+        {children}
+      </Button>
+      <Button kind="ghost" color={color} {...restProps}>
+        {children}
+      </Button>
     </>
   );
 };

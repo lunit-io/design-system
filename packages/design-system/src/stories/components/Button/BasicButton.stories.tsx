@@ -1,20 +1,10 @@
 import React from "react";
 import { action } from "@storybook/addon-actions";
-import {
-  Table,
-  TableHead,
-  TableRow,
-  TableBody,
-  TableCell,
-} from "@mui/material";
-import Bell from "@lunit/design-system-icons/Bell";
+import { Box } from "@mui/material";
 
 import Button from "@/components/Button";
 
 import type { StoryObj, StoryFn, Meta } from "@storybook/react";
-
-type SizeValues = "small" | "medium" | "large";
-const sizeList: SizeValues[] = ["small", "medium", "large"];
 
 export default {
   title: "Components/Button",
@@ -38,6 +28,7 @@ export default {
       },
     },
     children: {
+      description: "The content of the component.",
       type: "string",
     },
     kind: {
@@ -64,6 +55,8 @@ export default {
       control: {
         type: "radio",
       },
+      description: `The color of the component. It supports both default and custom theme colors,
+        \nwhich can be added as shown in the palette customization guide.`,
       options: ["primary", "secondary", "error"],
       table: {
         defaultValue: { summary: "primary" },
@@ -73,6 +66,7 @@ export default {
       control: {
         type: "boolean",
       },
+      description: "If true, the button will be disabled.",
       table: {
         defaultValue: { summary: "false" },
       },
@@ -81,6 +75,7 @@ export default {
       control: {
         type: "radio",
       },
+      description: "The size of the button.",
       options: ["small", "medium", "large"],
       table: {
         defaultValue: { summary: "small" },
@@ -126,52 +121,85 @@ export const BasicButton: StoryObj<typeof Button> = {
   render: (args) => <Button {...args}>{args.children}</Button>,
 };
 
-const SizeButtonTemplate: StoryFn<typeof Button> = (args) => {
+const DisabledButtonTemplate: StoryFn<typeof Button> = (args) => {
+  const { children, kind, variant, ...restArgs } = args;
+
   return (
-    <Table sx={{ width: 900 }}>
-      <TableHead>
-        <TableRow>
-          <TableCell
-            colSpan={3}
-            sx={{
-              typography: "body1_16_semibold",
-              color: "inherit",
-            }}
-          >
-            Size
-          </TableCell>
-        </TableRow>
-        <TableRow>
-          <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
-            Small
-          </TableCell>
-          <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
-            Medium
-          </TableCell>
-          <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
-            Large
-          </TableCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        <TableRow>
-          {sizeList.map((size) => (
-            <TableCell key={size} sx={{ "& button": { marginRight: "10px" } }}>
-              <Button {...args} icon={<Bell />} size={size} />
-              <Button {...args} size={size}>
-                {args.children}
-              </Button>
-              <Button {...args} icon={<Bell />} size={size}>
-                {args.children}
-              </Button>
-            </TableCell>
-          ))}
-        </TableRow>
-      </TableBody>
-    </Table>
+    <Box sx={{ display: "flex", gap: 2 }}>
+      <Button {...restArgs} disabled kind="contained">
+        {children}
+      </Button>
+      <Button
+        {...restArgs}
+        disabled
+        color={args.color === "error" ? "primary" : args.color}
+        kind="outlined"
+      >
+        {children}
+      </Button>
+      <Button {...restArgs} disabled kind="ghost">
+        {children}
+      </Button>
+    </Box>
+  );
+};
+
+export const Disabled: StoryObj<typeof Button> = {
+  render: DisabledButtonTemplate,
+  parameters: {
+    controls: {
+      include: ["onClick", "children", "size", "color"],
+    },
+  },
+};
+
+const SizeButtonTemplate: StoryFn<typeof Button> = (args) => {
+  const { children, kind, variant, color, ...restArgs } = args;
+
+  return (
+    <Box sx={{ display: "flex", flexDirection: "column", gap: 4 }}>
+      <Box>
+        <Button sx={{ mr: 2 }} {...restArgs} variant="contained" size="small">
+          Small
+        </Button>
+        <Button sx={{ mr: 2 }} {...restArgs} variant="contained" size="medium">
+          Medium
+        </Button>
+        <Button {...restArgs} variant="contained" size="large">
+          Large
+        </Button>
+      </Box>
+      <Box>
+        <Button sx={{ mr: 2 }} {...restArgs} variant="outlined" size="small">
+          Small
+        </Button>
+        <Button sx={{ mr: 2 }} {...restArgs} variant="outlined" size="medium">
+          Medium
+        </Button>
+        <Button {...restArgs} variant="outlined" size="large">
+          Large
+        </Button>
+      </Box>
+      <Box>
+        <Button sx={{ mr: 2 }} {...restArgs} variant="text" size="small">
+          Small
+        </Button>
+        <Button sx={{ mr: 2 }} {...restArgs} variant="text" size="medium">
+          Medium
+        </Button>
+        <Button {...restArgs} variant="text" size="large">
+          Large
+        </Button>
+      </Box>
+    </Box>
   );
 };
 
 export const Size = {
   render: SizeButtonTemplate,
+  parameters: {
+    controls: {
+      include: ["onClick", "disabled", "icon"],
+    },
+  },
 };

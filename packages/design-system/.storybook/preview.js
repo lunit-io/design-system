@@ -1,8 +1,27 @@
 import { ThemeProvider, CssBaseline, Box, createTheme } from "@mui/material";
 import { deepmerge } from "@mui/utils";
+import { DocsContainer } from "@storybook/blocks";
 
 import { themeOptions } from "../src/theme";
 import * as baseColor from "../src/foundation/colors/base";
+
+function DocsProvider(props) {
+  const theme = createTheme(themeOptions);
+
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Box
+        className="light1"
+        bgcolor={theme.palette.lunit_token.core.bg_01}
+        color={theme.palette.lunit_token.core.text_normal}
+        sx={{ p: 2 }}
+      >
+        <DocsContainer {...props} />
+      </Box>
+    </ThemeProvider>
+  );
+}
 
 export const decorators = [
   (Story, context) => {
@@ -74,6 +93,9 @@ export const parameters = {
     storySort: {
       order: ["Getting Started", "Foundation", "Components"],
     },
+  },
+  docs: {
+    container: DocsProvider,
   },
 };
 
