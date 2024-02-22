@@ -10,13 +10,33 @@ const meta = {
     variant: {
       options: ["outlined", "filled"],
       control: "radio",
+      default: "outlined",
+      description:
+        "Some icons are available in two variants: outlined and filled.",
     },
     color: {
-      control: "text",
+      options: [
+        "inherit",
+        "action",
+        "disabled",
+        "primary",
+        "secondary",
+        "error",
+        "info",
+        "success",
+        "warning",
+      ],
+      control: "select",
+      default: "inherit",
+      description:
+        "The color of the icon. It supports both default and custom theme colors.",
     },
     fontSize: {
-      options: ["small", "medium", "large"],
+      options: ["inherit", "small", "medium", "large"],
       control: "select",
+      default: "medium",
+      description:
+        "The fontSize applied to the icon. Defaults to 24px, but can be configure to inherit font size.",
     },
   },
   args: {
