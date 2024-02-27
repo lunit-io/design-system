@@ -33,11 +33,8 @@ function getComponentName(name, isDark) {
 }
 
 async function handler() {
-  const [svgPaths, storiesTemplate, indexTemplate] = await Promise.all([
+  const [svgPaths, indexTemplate] = await Promise.all([
     globAsync("src/assets/logo/*.svg"),
-    fse.readFile(path.join(__dirname, "src/logo.stories.mustache"), {
-      encoding: "utf8",
-    }),
     fse.readFile(path.join(__dirname, "src/logo.index.mustache"), {
       encoding: "utf8",
     }),
@@ -87,17 +84,5 @@ async function handler() {
   // make an index file
   const indexString = Mustache.render(indexTemplate, { logoList });
   await fse.writeFile(path.join(outputPath, "index.ts"), indexString);
-
-  // make stories
-  await fse.rm(path.join("src/stories/logo"), {
-    recursive: true,
-    force: true,
-  });
-  await fse.mkdir(path.join("src/stories/logo"), { recursive: true });
-  const storiesString = Mustache.render(storiesTemplate, { logoList });
-  await fse.writeFile(
-    path.join("src/stories/logo", "logo.stories.tsx"),
-    storiesString
-  );
 }
 handler();
