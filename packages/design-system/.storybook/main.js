@@ -1,6 +1,6 @@
 const path = require("path");
 const alias = require("../config/alias");
-const { getBranchName, getChromaticBranchName } = require("./branch");
+
 module.exports = {
   stories: [
     "./Welcome/Welcome.stories.tsx",
@@ -10,12 +10,12 @@ module.exports = {
   refs: {
     "design-system-icons": {
       title: "Lunit Design System Icons",
-      url: "https://64b4f32d63020d515460103f-nhxqywufcq.chromatic.com/",
+      url: "https://main--64b4f32d63020d515460103f.chromatic.com/",
       expanded: false,
     },
     "design-system-logo": {
       title: "Lunit Design System Logo",
-      url: "https://64b4d554d4cabd071c377a49-zzkrprgqdh.chromatic.com/",
+      url: "https://main--64b4d554d4cabd071c377a49.chromatic.com",
       expanded: false,
     },
   },
@@ -40,14 +40,6 @@ module.exports = {
       },
     },
   ],
-  env: (config) => ({
-    ...config,
-    BRANCH_NAME: process.env.BRANCH_NAME ?? getBranchName(),
-    CHROMATIC_APP_ID:
-      process.env.CHROMATIC_APP_ID ?? "62d7d1f2efc8a1e364b5e5e8",
-    CHROMATIC_BRANCH_NAME:
-      process.env.CHROMATIC_BRANCH_NAME ?? getChromaticBranchName(),
-  }),
   framework: {
     name: "@storybook/react-webpack5",
     options: {},
