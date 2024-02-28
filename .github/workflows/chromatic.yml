@@ -56,9 +56,7 @@ jobs:
 
       - name: Comment preview link
         if: ${{ github.event_name == 'pull_request' }}
-        uses: NejcZdovc/comment-pr@v2.0.0
+        uses: thollander/actions-comment-pull-request@v2
         with:
           message: "Design System Storybook: ${{ steps.chromatic.outputs.storybookUrl }}"
-          identifier: "PREVIEW_LINK_COMMENT"
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          comment_tag: "PREVIEW_LINK_COMMENT"
