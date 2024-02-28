@@ -10,12 +10,12 @@ module.exports = {
   refs: {
     "design-system-icons": {
       title: "Lunit Design System Icons",
-      url: "https://64b4f32d63020d515460103f-nhxqywufcq.chromatic.com/",
+      url: "https://main--64b4f32d63020d515460103f.chromatic.com/",
       expanded: false,
     },
     "design-system-logo": {
       title: "Lunit Design System Logo",
-      url: "https://64b4d554d4cabd071c377a49-zzkrprgqdh.chromatic.com/",
+      url: "https://main--64b4d554d4cabd071c377a49.chromatic.com",
       expanded: false,
     },
   },
