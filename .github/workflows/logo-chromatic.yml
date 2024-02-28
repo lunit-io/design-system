@@ -66,3 +66,5 @@ jobs:
         with:
           message: "Logo Storybook: ${{ steps.chromatic.outputs.storybookUrl }}"
           identifier: "LOGO_PREVIEW_LINK_COMMENT"
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}

@@ -60,3 +60,5 @@ jobs:
         with:
           message: "Design System Storybook: ${{ steps.chromatic.outputs.storybookUrl }}"
           identifier: "PREVIEW_LINK_COMMENT"
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
