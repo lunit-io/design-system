@@ -1,6 +1,6 @@
 const path = require("path");
 const alias = require("../config/alias");
-const { getBranchName, getChromaticBranchName } = require("./branch");
+
 module.exports = {
   stories: [
     "./Welcome/Welcome.stories.tsx",
@@ -40,14 +40,6 @@ module.exports = {
       },
     },
   ],
-  env: (config) => ({
-    ...config,
-    BRANCH_NAME: process.env.BRANCH_NAME ?? getBranchName(),
-    CHROMATIC_APP_ID:
-      process.env.CHROMATIC_APP_ID ?? "62d7d1f2efc8a1e364b5e5e8",
-    CHROMATIC_BRANCH_NAME:
-      process.env.CHROMATIC_BRANCH_NAME ?? getChromaticBranchName(),
-  }),
   framework: {
     name: "@storybook/react-webpack5",
     options: {},
