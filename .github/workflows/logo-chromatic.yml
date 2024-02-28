@@ -24,19 +24,19 @@ jobs:
     runs-on: ubuntu-latest
     # Job steps
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0 # Required to retrieve git history
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version: "18"
           cache: "npm"
 
-      - uses: nrwl/nx-set-shas@v3
+      - uses: nrwl/nx-set-shas@v4
 
       - name: Nx Cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: node_modules/.cache/nx
           key: ${{ github.repository }}-nx-${{ env.NX_BASE }}
@@ -53,7 +53,7 @@ jobs:
         # 👇 Adds Chromatic as a step in the workflow
       - id: chromatic
         name: Publish design-system-logo to Chromatic
-        uses: chromaui/action@v1
+        uses: chromaui/action@latest
         # Chromatic GitHub Action options
         with:
           # 👇 Chromatic projectToken, refer to the manage page to obtain it.
@@ -66,4 +66,3 @@ jobs:
         with:
           message: "Logo Storybook: ${{ steps.chromatic.outputs.storybookUrl }}"
           identifier: "LOGO_PREVIEW_LINK_COMMENT"
-          github_token: ${{ secrets.GITHUB_TOKEN }}
