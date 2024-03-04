@@ -1,0 +1,221 @@
+import { Canvas, Meta } from "@storybook/blocks";
+
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import ColorSystem from './ColorSystem';
+
+import * as ColorsStories from "./Colors.stories";
+import * as TokenInComponentStories from "./Token.inComponent.stories";
+
+<Meta of={ColorsStories} />
+
+# Color System & Token
+
+> 루닛 디자인 시스템에서는 일관된 색상 사용을 위해 미리 색상 팔레트를 구성하고, 이를 컴포넌트나 페이지에 쉽게 적용할 수 있도록 토큰화하여 제공한다.
+
+<br />
+<br />
+
+## Color System의 구조
+루닛의 색상 시스템은 다음과 같은 구조로 이루어져 있다.<br />
+색상 코드 값(ex: hex, rgb값) → Global Palette(ex: Red10, Blue40..) → Token(ex: bg_01, btn_text_primary)
+
+<ColorSystem />
+<br />
+<br />
+
+### Global Palette Color
+
+> [Global Palette Color의 종류(link)](?path=/story/foundation-colors--global-colors)
+- 루닛 디자인 시스템 안에서 사용할 색상을 종류와 음영으로 분류해 구성한 색의 모음.
+- 루닛 디자인 시스템에서는 이 팔레트 안에서만 색을 이용한다.
+- 색상 코드(hex값)와 1:1 대응.
+- Color Token 은 이 글로벌 팔레트 값과 연결된다.
+
+### Color Token
+
+> - [Core token의 종류(link)](?path=/story/foundation-colors--core-tokens)
+> - [Component token의 종류(link)](?path=/story/foundation-colors--component-tokens)
+
+- **Core Token** : background, text 와 같이 범용적으로 적용되는 UI 에서 사용하는 컬러 토큰
+- **Component Token** : button, chip 등과 같이 특정 컴포넌트 안에서만 사용하는 컬러 토큰
+- 색상 코드나 Global Color 대신 Color Token 을 이용하는 것을 권장
+- Color Token의 색상은 해당 컴포넌트를 둘러싸고 있는 Base Wrapper에 의해 결정
+- Token은 각각 4가지 테마(Light1,2, Dark1,2) 별 색상을 가지고 있음.
+
+<br />
+<br />
+
+## Color Token에 테마를 부여하는 Base Wrapper
+- Base Layer 라고도 부름
+- Color token 에 컨텍스트(테마)를 부여해주는 wrapper
+- Light1, 2, Dark1, 2 네 가지 종류
+- 해당 wrapper 의 하위 컬러 토큰은 wrapper 의 컨텍스트(테마)의 색상을 보여줌
+- wrapper 가 중첩되었을 때 컬러 토큰은 바로 상위 부모 wrapper 의 컨텍스트를 따라감
+    - ex)        
+      ```jsx
+      <div class='light1'>
+        <div class='dark1'>
+          // Button 의 배경 색상은 바로 상위 부모인 dark1 테마를 따라 dark1 테마 색상
+          <Button 
+            sx={{
+              backgroundColor: (theme) => 
+                theme.palette.lunit_token.component.btn_primary_bg
+            }}
+          /> 
+        </div>
+      </div>
+      ```
+        
+- base 를 지정하지 않을 시 기본 테마는 dark1
+
+<br />
+<br />
+
+## 기본 셋팅
+<del>- base wrapper 셋팅 방법</del>
+
+<br />
+<br />
+
+## 토큰 사용법
+- 디자인 시스템 컴포넌트는 이미 컬러 토큰을 사용해서 개발해 따로 커스텀이 필요없다면 base wrapper 만 설정하면 됨
+- mui 컴포넌트를 커스텀하거나 할 때 사용하게 될 것
+
+<del>- 피그마에서 컬러 토큰 확인 법</del>
+<del>- 자동완성기능 예제 → vscode 에서 어떻게 보이는지</del>
+<del>- core token 의 사용 예시를 좀 더 많이 보여주면 좋겠다</del>
+
+<br />
+
+### Styled 내에서 사용법
+
+<Canvas of={TokenInComponentStories.InComponentWithStyled} sourceState="none" />
+
+```jsx
+const InComponentWithStyled = () => {
+  const StyledTextField = styled(TextField)(({ theme }) => ({
+    "& .MuiInputBase-root": {
+      backgroundColor: theme.palette.lunit_token.component.textfield_bg,
+      color: theme.palette.lunit_token.core.text_normal,
+      "& .MuiInputBase-input": {
+        padding: "8px 16px",
+      },
+      "&.Mui-focused fieldset": {
+        borderColor: theme.palette.lunit_token.core.focused,
+      },
+    },
+  }));
+
+  return (
+    <>
+      <BaseBox theme="light">
+        <StyledTextField placeholder="Styled Text Field" />
+      </BaseBox>
+      <BaseBox theme="dark">
+        <StyledTextField placeholder="Styled Text Field" />
+      </BaseBox>
+    </>
+  );
+};
+```
+
+<br />
+
+### SX 내에서 사용법
+<Canvas of={TokenInComponentStories.InComponentWithSx} sourceState="none" />
+
+```jsx
+const InComponentWithSx = () => {
+  return (
+    <>
+      <BaseBox theme="light">
+        <TextField
+          placeholder="Text Field with SX"
+          sx={{
+            "& .MuiInputBase-root": {
+              backgroundColor: (theme) =>
+                theme.palette.lunit_token.component.textfield_bg,
+              color: (theme) => theme.palette.lunit_token.core.text_normal,
+              "& .MuiInputBase-input": {
+                padding: "8px 16px",
+              },
+              "&.Mui-focused fieldset": {
+                borderColor: (theme) => theme.palette.lunit_token.core.focused,
+              },
+            },
+          }}
+        />
+        <Box width={150} height={50} bgcolor="#DFDFE2" mt={3}>
+          Hello!
+          <Box
+            sx={{
+              backgroundColor: (theme) =>
+                theme.palette.lunit_token.component.alert_info_bg,
+              color: (theme) =>
+                theme.palette.lunit_token.component.alert_info_border,
+              boxShadow: (theme) =>
+                `20px -10px 5px ${theme.palette.lunit_token.core.shadow_01}`,
+              width: 300,
+              height: 80,
+            }}
+          >
+            - with alpha value
+          </Box>
+        </Box>
+      </BaseBox>
+    </>
+  );
+};
+```
+
+<br />
+
+### useTheme 이용해 inline style 내에서 사용법
+
+<Canvas of={TokenInComponentStories.InComponentWithInlineStyle} sourceState="none" />
+
+```jsx
+const InComponentWithInlineStyle = () => {
+  const theme = useTheme();
+
+  return (
+    <>
+      <BaseBox theme="light">
+        <TextField
+          placeholder="Inline Styled Text Field"
+          style={{
+            backgroundColor: theme.palette.lunit_token.component.textfield_bg,
+          }}
+        />
+      </BaseBox>
+      <BaseBox theme="dark">
+        <TextField
+          placeholder="Inline Styled Text Field"
+          style={{
+            backgroundColor: theme.palette.lunit_token.component.textfield_bg,
+          }}
+        />
+      </BaseBox>
+    </>
+  );
+};
+```
+
+<del>- global palette color 사용 예제</del>
+<del>- mui 기본 팔레트 컬러 설정값에 대한 설명</del>
+
+<br />
+<br />
+
+## Reference
+
+- [Lunit Design System Color Figma](https://www.figma.com/file/oh2WsSLBuX30Yp589gyliB/Design-System_1.0.7_Latest?type=design&node-id=14801-186914&mode=design&t=unSsZRlRhL3LrTRm-0)
+
+<br />
+
+## Support
+
+- Github: [Create a new issue](https://github.com/lunit-io/design-system/issues/new)
+- Slack: #tf_design_system
+
