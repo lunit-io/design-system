@@ -22,7 +22,7 @@ const DefaultIcon = styled("span")(({ theme }) => ({
   width: "18px",
   height: "18px",
   borderRadius: "50%",
-  border: `2px solid ${theme.palette.lunit_token.component.selectcontrol_off}`,
+  border: `1.5px solid ${theme.palette.lunit_token.component.selectcontrol_off}`,
   margin: "1px",
 }));
 
