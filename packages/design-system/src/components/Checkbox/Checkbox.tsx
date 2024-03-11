@@ -29,7 +29,6 @@ const DefaultIcon = styled("span")(({ theme }) => ({
   ...iconSize,
   borderRadius: "20%",
   boxShadow: `inset 0 0 0 1.5px ${theme.palette.lunit_token.component.selectcontrol_off}`,
-  backgroundColor: "white",
 }));
 
 const CheckedIcon = () => {
