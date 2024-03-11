@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Box,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-} from "@mui/material";
+import { Box } from "@mui/material";
 
 import TextField from "@/components/TextField/TextField";
 
@@ -74,58 +67,18 @@ export default {
 } as Meta<typeof TextField>;
 
 const TextFieldSizeTemplate: StoryFn<typeof TextField> = (args) => (
-  <Table>
-    <TableHead>
-      <TableRow>
-        <TableCell></TableCell>
-        <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
-          Small
-        </TableCell>
-        <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
-          Medium
-        </TableCell>
-        <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
-          Large
-        </TableCell>
-      </TableRow>
-    </TableHead>
-    <TableBody>
-      <TableRow>
-        <TableCell
-          sx={{ typography: "body2_14_medium", color: "inherit" }}
-          width={100}
-        >
-          Single line
-        </TableCell>
-        <TableCell>
-          <TextField {...args} />
-        </TableCell>
-        <TableCell>
-          <TextField {...args} size="medium" />
-        </TableCell>
-        <TableCell>
-          <TextField {...args} size="large" />
-        </TableCell>
-      </TableRow>
-      <TableRow>
-        <TableCell
-          sx={{ typography: "body2_14_medium", color: "inherit" }}
-          width={50}
-        >
-          Multi line
-        </TableCell>
-        <TableCell>
-          <TextField {...args} multiline />
-        </TableCell>
-        <TableCell>
-          <TextField {...args} size="medium" multiline />
-        </TableCell>
-        <TableCell>
-          <TextField {...args} size="large" multiline />
-        </TableCell>
-      </TableRow>
-    </TableBody>
-  </Table>
+  <Box sx={{ display: "flex", flexDirection: "column", gap: 4 }}>
+    <Box>
+      <TextField sx={{ mr: 4 }} {...args} />
+      <TextField sx={{ mr: 4 }} {...args} size="medium" />
+      <TextField {...args} size="large" />
+    </Box>
+    <Box>
+      <TextField sx={{ mr: 4 }} {...args} multiline />
+      <TextField sx={{ mr: 4 }} {...args} size="medium" multiline />
+      <TextField {...args} size="large" multiline />
+    </Box>
+  </Box>
 );
 
 export const TextFieldSize = {
