@@ -6,7 +6,7 @@ import type { CheckboxProps } from "@mui/material";
 const CustomCheckbox = styled(MuiCheckbox)(({ theme }) => ({
   width: 20,
   height: 20,
-  padding: 1,
+  padding: 0,
   "&.Mui-disabled": {
     opacity: 0.38,
   },
@@ -27,30 +27,47 @@ const iconSize = {
 
 const DefaultIcon = styled("span")(({ theme }) => ({
   ...iconSize,
-  backgroundColor: theme.palette.lunit_token.component.selectcontrol_off,
-  maskImage:
-    "url(\"data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath" +
-    " fill-rule='evenodd' clip-rule='evenodd' d='M14 1.5H4C2.61929 1.5 1.5 2.61929 1.5 4V14C1.5 15.3807 2.61929 16.5 4 16.5H14C15.3807 " +
-    "16.5 16.5 15.3807 16.5 14V4C16.5 2.61929 15.3807 1.5 14 1.5ZM4 0C1.79086 0 0 1.79086 0 4V14C0 16.2091 1.79086 18 4 18H14C16.2091 18 18 16.2091 18 14V4C18 1.79086 16.2091 0 14 0H4Z' /%3E%3C/svg%3E\")",
+  borderRadius: "20%",
+  boxShadow: `inset 0 0 0 1.5px ${theme.palette.lunit_token.component.selectcontrol_off}`,
 }));
 
-const CheckedIcon = styled("span")(({ theme }) => ({
-  ...iconSize,
-  backgroundColor: theme.palette.lunit_token.component.selectcontrol_on,
-  maskImage:
-    "url(\"data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath" +
-    " fill-rule='evenodd' clip-rule='evenodd' d='M4 0C1.79086 0 0 1.79086 0 4V14C0 16.2091 1.79086 18 4 18H14C16.2091 18 18 16.2091 18 14V4C18 1.79086 16.2091 0 14 0H4ZM14.2516 " +
-    "7.14413C14.6074 6.72168 14.5533 6.09083 14.1309 5.73508C13.7084 5.37933 13.0776 5.43341 12.7218 5.85586L8.31824 11.0851L5.14993 8.37556C4.7302 8.01661 4.09895 8.06588 3.74 8.48561C3.38105 8.90533 3.43032 9.53658 3.85005 9.89553L7.78416 13.26C7.98672 13.4332 8.25006 13.5184 8.51571 13.4967C8.78135 13.4749 9.02732 13.348 9.19901 13.1441L14.2516 7.14413Z' /%3E%3C/svg%3E\")",
-}));
+const CheckedIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+    >
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M5 1C2.79086 1 1 2.79086 1 5V15C1 17.2091 2.79086 19 5 19H15C17.2091 19 19 17.2091 19 15V5C19 2.79086 17.2091 1 15 1H5ZM15.2516 8.14413C15.6074 7.72168 15.5533 7.09083 15.1309 6.73508C14.7084 6.37933 14.0776 6.43341 13.7218 6.85586L9.31824 12.0851L6.14993 9.37556C5.7302 9.01661 5.09895 9.06588 4.74 9.48561C4.38105 9.90533 4.43032 10.5366 4.85005 10.8955L8.78416 14.26C8.98672 14.4332 9.25006 14.5184 9.51571 14.4967C9.78135 14.4749 10.0273 14.348 10.199 14.1441L15.2516 8.14413Z"
+        fill="#00C9EA"
+      />
+    </svg>
+  );
+};
 
-const IndeterminateIcon = styled("span")(({ theme }) => ({
-  ...iconSize,
-  backgroundColor: theme.palette.lunit_token.component.selectcontrol_on,
-  maskImage:
-    "url(\"data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath" +
-    " fill-rule='evenodd' clip-rule='evenodd' d='M4 0C1.79086 0 0 1.79086 0 4V14C0 16.2091 1.79086 18 4 18H14C16.2091 18 18 16.2091 18 14V4C18 1.79086 16.2091 0 " +
-    "14 0H4ZM4 8C3.44772 8 3 8.44771 3 9C3 9.5523 3.44771 10 4 10H14C14.5523 10 15 9.5523 15 9C15 8.44772 14.5523 8 14 8H4Z' /%3E%3C/svg%3E\")",
-}));
+const IndeterminateIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+    >
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M5 1C2.79086 1 1 2.79086 1 5V15C1 17.2091 2.79086 19 5 19H15C17.2091 19 19 17.2091 19 15V5C19 2.79086 17.2091 1 15 1H5ZM5 9C4.44772 9 4 9.44771 4 10C4 10.5523 4.44771 11 5 11L15 11C15.5523 11 16 10.5523 16 10C16 9.44772 15.5523 9 15 9L5 9Z"
+        fill="#00C9EA"
+      />
+    </svg>
+  );
+};
 
 const Checkbox = (props: CheckboxProps) => {
   return (
