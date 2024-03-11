@@ -1,0 +1,127 @@
+import { Canvas, Stories, Controls, Meta, Story } from "@storybook/blocks";
+import Box from "@mui/material/Box";
+
+import TextField from "@/components/TextField";
+import * as TextFieldStories from "./BasicTextField.stories";
+import * as TextFieldSizeStories from "./TextFieldSize.stories";
+
+<Meta name="TextField Docs" of={TextFieldStories} />
+
+# TextField
+
+Text Fields let users enter and edit text.
+
+## Usage
+
+### Basic TextField
+
+```tsx
+import { TextField } from "@lunit/design-system";
+// or
+import TextField from "@lunit/design-system/TextField";
+
+<TextField />;
+```
+
+### Demo
+
+<Canvas of={TextFieldStories.BasicTextField} sourceState="none" />
+
+<Controls />
+
+### MultiLine
+
+The multiline prop transforms the text field into a [TextareaAutosize](https://mui.com/material-ui/react-textarea-autosize/) element.<br />
+If multiline is undefined, it behaves the same as false.<br />
+Default multiline is `false`.
+
+<Canvas of={TextFieldStories.MultiAndSingle} sourceState="none" />
+
+```tsx
+<TextField />
+<TextField multiline />
+```
+
+### Size
+
+The TextField have three sizes: `small`, `medium` and `large`.<br />
+Using the `size` prop, you can change the size of the TextField.<br />
+Default size is `small`.
+
+<Canvas
+  of={TextFieldSizeStories.TextFieldSize}
+  meta={TextFieldSizeStories}
+  sourceState="none"
+/>
+
+```tsx
+// multiline is false or undefined
+<TextField size="small" />
+<TextField size="medium" />
+<TextField size="large" />
+
+// multiline is true
+<TextField multiline size="small" />
+<TextField multiline size="medium" />
+<TextField multiline size="large" />
+```
+
+### Disabled
+
+If you want to disable the TextField, you can use the `disabled` prop.<br />
+Default disabled is `false`.
+
+<Canvas of={TextFieldStories.Disabled} sourceState="none" />
+
+```tsx
+<TextField disabled />
+<TextField multiline disabled />
+```
+
+### Error
+
+The error prop toggles the error state.<br />
+The helperText prop can then be used to provide feedback to the user about the error.<br />
+Default error is `false`.
+
+<Canvas of={TextFieldStories.Error} sourceState="none" />
+
+```tsx
+<TextField {...args} error />
+<TextField {...args} error multiline={true} />
+```
+
+### Placeholder
+
+The placeholder attribute defines the text displayed in a form control when the control has no value.<br />
+The placeholder text should provide a brief hint to the user as to the expected type of data<br />
+that should be entered into the control.
+
+<Canvas of={TextFieldStories.Placeholder} sourceState="none" />
+
+```tsx
+<TextField placeholder="Please typing..." />
+<TextField multiline placeholder="Please typing..." />
+```
+
+### helperText
+
+The helper text content, use "error " or "sub text " to display helper text.
+
+<Canvas of={TextFieldStories.HelperText} sourceState="none" />
+
+```tsx
+<TextField helperText="helper text" />
+<TextField multiline helperText="helper text" />
+```
+
+## Reference
+
+- [Material-UI TextField](https://mui.com/material-ui/react-text-field/)
+- [Material-UI TextField API](https://mui.com/material-ui/api/text-field/)
+- [Lunit Design System TextField Figma](https://www.figma.com/file/BSdRUpEPp7XiJ9YnEqpf6F/1.0.0_Components?node-id=284%3A151&mode=dev)
+
+## Support
+
+- Github: [Create a new issue](https://github.com/lunit-io/design-system/issues/new)
+- Slack: #tf_design_system
