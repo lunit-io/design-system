@@ -102,6 +102,8 @@ export default {
   },
 } as Meta<typeof Chip>;
 
+export const Basic = {};
+
 export const Outlined = {
   parameters: {
     docs: {
@@ -215,4 +217,26 @@ export const ContainedWithThumbnail = {
   },
 
   name: "Kind(Variant): Contained with Thumbnail",
+};
+
+export const ContainedWithDeleteAndThumbnail = {
+  args: {
+    ...Contained.args,
+    thumbnail: "Initial",
+    onClick: undefined,
+    onDelete: action("onDelete"),
+  },
+
+  parameters: {
+    docs: {
+      description: {
+        story: `Contained chip can have thumbnail and delete button.`,
+      },
+    },
+    controls: {
+      exclude: ["onClick"],
+    },
+  },
+
+  name: "Kind(Variant): Contained with Thumbnail and Deletable",
 };
