@@ -1,0 +1,136 @@
+import { Canvas, Stories, Controls, Meta, Story } from "@storybook/blocks";
+import { Error } from "@lunit/design-system-icons";
+
+import Chip from "@/components/Chip";
+import * as ChipStories from "./Chip.stories";
+
+<Meta name="Chip Docs" of={ChipStories} />
+
+# Chip
+
+Chips are compact elements that represent an input, attribute, or action.
+
+## Usage
+
+### Basic Chip
+
+```tsx
+import { Chip } from "@lunit/design-system";
+// or
+import Chip from "@lunit/design-system/Chip";
+
+<Chip />;
+```
+
+### Demo
+
+<Canvas of={ChipStories.Basic} />
+
+<Controls />
+
+### Label
+
+The label is the text that will be displayed in the Chip.
+If the label is not provided, the Chip will be rendered as a circle.
+
+<Canvas of={ChipStories.Contained} meta={ChipStories.Contained.meta} />
+```tsx
+<Chip label="label@lunit.io" />
+````
+
+### Variant(kind)
+
+The Chip has 2 kinds of variants: `outlined` and `contained`. <br />
+(In the Lunit Design System, the variant and kind are used interchangeably. The kind is a fallback prop of the variant.) <br />
+You can change the variant of the Chip by using the `variant` or `kind` prop, and the outcome will be the same. <br />
+The default variant(kind) is `contained`, and it is read-only without the `onClick` prop. <br />
+
+<Canvas of={ChipStories.Contained} meta={ChipStories.Contained.meta} />
+```tsx
+<Chip label="label@lunit.io" />
+
+<Chip variant="contained" label="label@lunit.io" />
+<Chip variant="outlined" label="label@lunit.io" />
+// or (kind is a fallback prop of the variant)
+<Chip kind="contained" label="label@lunit.io" />
+<Chip kind="outlined" label="label@lunit.io" />
+````
+
+### Color
+
+The Chip has 5 kinds of colors: `primary`, `secondary`, `warning`, `error`, and `success`. <br />
+By using the color prop, you can change the color of the Chip. <br />
+The default color is `primary`.
+
+```tsx
+<Chip label="label@lunit.io" />
+
+<Chip color="primary" label="label@lunit.io" />
+<Chip color="secondary" label="label@lunit.io" />
+<Chip color="warning" label="label@lunit.io" />
+<Chip color="error" label="label@lunit.io" />
+<Chip color="success" label="label@lunit.io" />
+```
+
+### ReadOnly and Enable
+
+Chips without the `onClick` or `onDelete` are read-only. <br />
+The default status of chips is read-only and will have no hover/pressed effects. <br />
+The `outlined` variant is always considered as read-only. <br />
+
+<Canvas of={ChipStories.Outlined} />
+
+### Clickable(enable)
+
+Chips with the `onClick` are clickable. <br />
+You cannot pass the `onClick` prop to the Chip when its variant is `outlined`. <br />
+
+<Canvas of={ChipStories.ContainedWithClick} />
+```tsx
+<Chip label="label@lunit.io" onClick={() => console.log("onClick")} />
+
+````
+
+#### Deletable(enable)
+
+Chips with the `onDelete` are deletable. <br />
+You cannot pass the `onDelete` prop to the Chip when its variant is `outlined`. <br />
+The hover/pressed effects are only applied to the delete icon. <br />
+
+<Canvas of={ChipStories.ContainedWithDelete} />
+
+```tsx
+<Chip label="label@lunit.io" onDelete={() => console.log("onDelete")} />
+
+````
+
+### Thumbnail(logo, avatar, icon)
+
+Chips with the `thumbnail` prop can display a logo, avatar, or icon. <br />
+
+<Canvas of={ChipStories.ContainedWithThumbnail} />
+```tsx
+<Chip label="label@lunit.io" thumbnamil={<Error />} />
+
+````
+
+### Thumbnail and Deletable
+
+The Chip can have a thumbnail and be deletable. <br />
+The hover/pressed effects are only applied to the delete icon. <br />
+
+<Canvas of={ChipStories.ContainedWithDeleteAndThumbnail} />
+```tsx
+<Chip label="label@lunit.io" onDelete={() => console.log("onDelete")} thumbnamil={<Error />} />
+````
+
+## Reference
+
+- [Material-UI Chip](https://mui.com/material-ui/react-chip/)
+- [Material-UI Chip API](https://mui.com/material-ui/api/chip/)
+- [Lunit Design System Chip Figma](https://www.figma.com/file/oh2WsSLBuX30Yp589gyliB/Design-System_1.0.7_Latest?type=design&node-id=1887-7970&mode=design)
+
+## Support
+
+- Github: [Create a new issue](https://github.com/lunit-io/design-system/issues/new)
+- Slack: #tf_design_system
