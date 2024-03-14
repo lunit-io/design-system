@@ -43,7 +43,7 @@ If the label is not provided, the Chip will be rendered as a circle.
 The Chip has 2 kinds of variants: `outlined` and `contained`. <br />
 (In the Lunit Design System, the variant and kind are used interchangeably. The kind is a fallback prop of the variant.) <br />
 You can change the variant of the Chip by using the `variant` or `kind` prop, and the outcome will be the same. <br />
-The default variant(kind) is `contained`, and it is read-only without the `onClick` prop. <br />
+The default variant(kind) is `contained`. <br />
 
 <Canvas of={ChipStories.Contained} meta={ChipStories.Contained.meta} />
 ```tsx
@@ -91,7 +91,7 @@ You cannot pass the `onClick` prop to the Chip when its variant is `outlined`. <
 
 ````
 
-#### Deletable(enable)
+### Deletable(enable)
 
 Chips with the `onDelete` are deletable. <br />
 You cannot pass the `onDelete` prop to the Chip when its variant is `outlined`. <br />
