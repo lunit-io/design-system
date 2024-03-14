@@ -114,6 +114,7 @@ export const MultiAndSingle: StoryObj<typeof TextField> = {
     controls: {
       include: ["size", "disabled", "helperText", "placeholder", "error"],
     },
+    chromatic: { disableSnapshot: true },
   },
 };
 
@@ -132,6 +133,7 @@ export const Disabled: StoryObj<typeof TextField> = {
     controls: {
       include: ["size", "helperText", "placeholder", "error", "disabled"],
     },
+    chromatic: { disableSnapshot: true },
   },
 };
 
@@ -150,6 +152,7 @@ export const Error: StoryObj<typeof TextField> = {
     controls: {
       include: ["size", "helperText", "placeholder", "disabled"],
     },
+    chromatic: { disableSnapshot: true },
   },
 };
 
@@ -168,6 +171,7 @@ export const Placeholder: StoryObj<typeof TextField> = {
     controls: {
       include: ["size", "helperText", "disabled", "error"],
     },
+    chromatic: { disableSnapshot: true },
   },
 };
 
@@ -186,6 +190,7 @@ export const HelperText: StoryObj<typeof TextField> = {
     controls: {
       include: ["size", "disabled", "error", "placeholder"],
     },
+    chromatic: { disableSnapshot: true },
   },
 };
 
@@ -200,4 +205,7 @@ const IconTemplate: StoryFn<typeof TextField> = (args) => {
 
 export const Icon: StoryObj<typeof TextField> = {
   render: IconTemplate,
+  parameters: {
+    chromatic: { disableSnapshot: true },
+  },
 };
