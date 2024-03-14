@@ -17,6 +17,10 @@ export default {
   argTypes: {
     kind: {
       description: `Default status of Contained or Outlined Chip is readOnly. You can pass onClick, onDelete or thumbnail to Contained Chip only.`,
+      control: {
+        type: "select",
+      },
+      options: ["contained", "outlined"],
     },
     variant: {
       description: `The variant is alias of kind. It is Filled or Outlined.`,
