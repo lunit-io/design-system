@@ -1,5 +1,6 @@
 import React from "react";
 import { Box } from "@mui/material";
+import { Bell } from "@lunit/design-system-icons";
 
 import TextField from "@/components/TextField/TextField";
 
@@ -186,4 +187,17 @@ export const HelperText: StoryObj<typeof TextField> = {
       include: ["size", "disabled", "error", "placeholder"],
     },
   },
+};
+
+const IconTemplate: StoryFn<typeof TextField> = (args) => {
+  return (
+    <Box sx={{ display: "flex", gap: 2 }}>
+      <TextField {...args} leftIcon={<Bell />} />
+      <TextField {...args} rightIcon={<Bell />} />
+    </Box>
+  );
+};
+
+export const Icon: StoryObj<typeof TextField> = {
+  render: IconTemplate,
 };

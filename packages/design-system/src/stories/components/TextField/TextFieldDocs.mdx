@@ -115,6 +115,19 @@ The helper text content, use "error " or "sub text " to display helper text.
 <TextField multiline helperText="helper text" />
 ```
 
+### Icon
+
+TextField icons can be added to the left and right sides.<br />
+Use the leftIcon prop for the left side and the rightIcon prop for the right side. <br />
+Icon can only be used with a single TextField.
+
+<Canvas of={TextFieldStories.Icon} sourceState="none" />
+
+```tsx
+<TextField leftIcon={<Bell />} />
+<TextField rightIcon={<Bell />} />
+```
+
 ## Reference
 
 - [Material-UI TextField](https://mui.com/material-ui/react-text-field/)
