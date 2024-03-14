@@ -38,12 +38,13 @@ If the label is not provided, the Chip will be rendered as a circle.
 <Chip label="label@lunit.io" />
 ````
 
-### Variant(kind)
+### Kind(variant)
 
-The Chip has 2 kinds of variants: `outlined` and `contained`. <br />
-(In the Lunit Design System, the variant and kind are used interchangeably. The kind is a fallback prop of the variant.) <br />
-You can change the variant of the Chip by using the `variant` or `kind` prop, and the outcome will be the same. <br />
-The default variant(kind) is `contained`. <br />
+The Chip has 2 kinds of variants: outlined and contained. <br />
+(In the Lunit Design System, the variant and kind are used interchangeably. The variant is a fallback prop of the kind.) <br />
+You can change the kind of the Chip by using the kind or variant prop, and the outcome will be the same.
+The `contained` kind corresponds to the `filled` and `contained` variants of the MUI system. <br />
+The default kind(variant) is contained. <br />
 
 <Canvas of={ChipStories.Kind} meta={ChipStories.Contained.meta} />
 ```tsx
