@@ -45,10 +45,8 @@ The Chip has 2 kinds of variants: `outlined` and `contained`. <br />
 You can change the variant of the Chip by using the `variant` or `kind` prop, and the outcome will be the same. <br />
 The default variant(kind) is `contained`. <br />
 
-<Canvas of={ChipStories.Contained} meta={ChipStories.Contained.meta} />
+<Canvas of={ChipStories.Kind} meta={ChipStories.Contained.meta} />
 ```tsx
-<Chip label="label@lunit.io" />
-
 <Chip variant="contained" label="label@lunit.io" />
 <Chip variant="outlined" label="label@lunit.io" />
 // or (kind is a fallback prop of the variant)
@@ -62,9 +60,9 @@ The Chip has 5 kinds of colors: `primary`, `secondary`, `warning`, `error`, and 
 By using the color prop, you can change the color of the Chip. <br />
 The default color is `primary`.
 
-```tsx
-<Chip label="label@lunit.io" />
+<Canvas of={ChipStories.Color} meta={ChipStories.Contained.meta} />
 
+```tsx
 <Chip color="primary" label="label@lunit.io" />
 <Chip color="secondary" label="label@lunit.io" />
 <Chip color="warning" label="label@lunit.io" />
@@ -78,7 +76,18 @@ Chips without the `onClick` or `onDelete` are read-only. <br />
 The default status of chips is read-only and will have no hover/pressed effects. <br />
 The `outlined` variant is always considered as read-only. <br />
 
-<Canvas of={ChipStories.Outlined} />
+<Canvas of={ChipStories.ReadOnlyAndEnable} />
+```tsx
+
+// read-only
+
+<Chip label="label@lunit.io" />
+<Chip kind="outlined" label="label@lunit.io" />
+
+// enable with onClick
+
+<Chip label="label@lunit.io" onClick={() => console.log("onClick")} />
+```
 
 ### Clickable(enable)
 
@@ -104,15 +113,18 @@ The hover/pressed effects are only applied to the delete icon. <br />
 
 ````
 
-### Thumbnail(logo, avatar, icon)
+### Thumbnail(logo, avatar, icon, first letter)
 
 Chips with the thumbnail prop can display a logo, avatar, icon, or the first letter of a string.<br />
 The thumbnail replaces all the left side icons of MUI, so you cannot use the icon or avatar prop of the MUI system. <br />
 The thumbnail prop cannot be used when the kind (variant) is outlined.
 
-<Canvas of={ChipStories.ContainedWithThumbnail} />
+<Canvas of={ChipStories.Thumbnail} />
 ```tsx
-<Chip label="label@lunit.io" thumbnamil="W as initial" />
+<Chip thumbnail={<Logo16 />} label="label@lunit.io" />
+<Chip thumbnail={<Avatar16 />} label="label@lunit.io" />
+<Chip thumbnail={<Success16 />} label="label@lunit.io" />
+<Chip thumbnail="W as initial" label="label@lunit.io" />
 
 ````
 
