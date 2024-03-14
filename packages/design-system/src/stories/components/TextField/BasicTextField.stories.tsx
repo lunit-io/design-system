@@ -13,7 +13,7 @@ export default {
     size: "small",
     disabled: false,
     error: false,
-    placeholder: "",
+    placeholder: "Please typing...",
     helperText: "",
   },
   argTypes: {
