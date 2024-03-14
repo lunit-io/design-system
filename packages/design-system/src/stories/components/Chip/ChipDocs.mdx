@@ -106,7 +106,9 @@ The hover/pressed effects are only applied to the delete icon. <br />
 
 ### Thumbnail(logo, avatar, icon)
 
-Chips with the `thumbnail` prop can display a logo, avatar, or icon. <br />
+Chips with the thumbnail prop can display a logo, avatar, or icon. <br />
+The thumbnail replaces all the left side icons of MUI, so you cannot use the icon or avatar prop of the MUI system. <br />
+The thumbnail prop cannot be used when the kind (variant) is outlined.
 
 <Canvas of={ChipStories.ContainedWithThumbnail} />
 ```tsx
