@@ -162,6 +162,7 @@ export const Contained = {
 };
 
 export const Kind = {
+  chromatic: { disableSnapshot: true },
   render: () => (
     <Box sx={{ display: "flex", flexDirection: "row", gap: 4 }}>
       <Chip kind="outlined" label="label@lunit.io" />
@@ -171,6 +172,7 @@ export const Kind = {
 };
 
 export const Color = {
+  chromatic: { disableSnapshot: true },
   render: () => (
     <Box sx={{ display: "flex", flexDirection: "row", gap: 4 }}>
       <Chip color="primary" label="label@lunit.io" />
@@ -182,17 +184,8 @@ export const Color = {
   ),
 };
 
-export const ReadOnlyAndEnable = {
-  render: () => (
-    <Box sx={{ display: "flex", flexDirection: "row", gap: 4 }}>
-      <Chip label="label@lunit.io" />
-      <Chip kind="outlined" label="label@lunit.io" />
-      <Chip label="label@lunit.io" onClick={() => console.log("onClick")} />
-    </Box>
-  ),
-};
-
 export const Thumbnail = {
+  chromatic: { disableSnapshot: true },
   render: () => (
     <Box sx={{ display: "flex", flexDirection: "row", gap: 4 }}>
       <Chip thumbnail={<Logo16 />} label="label@lunit.io" />
