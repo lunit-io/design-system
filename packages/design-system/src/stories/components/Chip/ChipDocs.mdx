@@ -71,25 +71,6 @@ The default color is `primary`.
 <Chip color="success" label="label@lunit.io" />
 ```
 
-### ReadOnly and Enable
-
-Chips without the `onClick` or `onDelete` are read-only. <br />
-The default status of chips is read-only and will have no hover/pressed effects. <br />
-The `outlined` variant is always considered as read-only. <br />
-
-<Canvas of={ChipStories.ReadOnlyAndEnable} />
-```tsx
-
-// read-only
-
-<Chip label="label@lunit.io" />
-<Chip kind="outlined" label="label@lunit.io" />
-
-// enable with onClick
-
-<Chip label="label@lunit.io" onClick={() => console.log("onClick")} />
-```
-
 ### Clickable(enable)
 
 Chips with the `onClick` are clickable. <br />
