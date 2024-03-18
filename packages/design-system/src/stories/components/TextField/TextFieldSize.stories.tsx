@@ -2,8 +2,8 @@ import React from "react";
 import {
   Box,
   Table,
-  TableBody,
   TableCell,
+  TableBody,
   TableHead,
   TableRow,
 } from "@mui/material";
@@ -73,7 +73,7 @@ export default {
   decorators: [(Story) => <Box className="base00">{Story()}</Box>],
 } as Meta<typeof TextField>;
 
-const TextFieldSizeTemplate: StoryFn<typeof TextField> = (args) => (
+const TextFieldSizeWithTableTemplate: StoryFn<typeof TextField> = (args) => (
   <Table>
     <TableHead>
       <TableRow>
@@ -129,6 +129,29 @@ const TextFieldSizeTemplate: StoryFn<typeof TextField> = (args) => (
 );
 
 export const TextFieldSize = {
-  render: TextFieldSizeTemplate,
+  render: TextFieldSizeWithTableTemplate,
   name: "Size",
+};
+
+const TextFieldSizeTemplate: StoryFn<typeof TextField> = (args) => (
+  <Box sx={{ display: "flex", flexDirection: "column", gap: 4 }}>
+    <Box>
+      <TextField sx={{ mr: 4 }} {...args} />
+      <TextField sx={{ mr: 4 }} {...args} size="medium" />
+      <TextField {...args} size="large" />
+    </Box>
+    <Box>
+      <TextField sx={{ mr: 4 }} {...args} multiline />
+      <TextField sx={{ mr: 4 }} {...args} size="medium" multiline />
+      <TextField {...args} size="large" multiline />
+    </Box>
+  </Box>
+);
+
+export const TextFieldOnlySize = {
+  render: TextFieldSizeTemplate,
+  name: "Size Only",
+  parameters: {
+    chromatic: { disableSnapshot: true },
+  },
 };
