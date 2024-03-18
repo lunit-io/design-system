@@ -1,6 +1,8 @@
 import React from "react";
 import { Meta } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
+import { Box } from "@mui/system";
+
 import Chip from "@/components/Chip";
 import {
   Logo16,
@@ -17,6 +19,10 @@ export default {
   argTypes: {
     kind: {
       description: `Default status of Contained or Outlined Chip is readOnly. You can pass onClick, onDelete or thumbnail to Contained Chip only.`,
+      control: {
+        type: "select",
+      },
+      options: ["contained", "outlined"],
     },
     variant: {
       description: `The variant is alias of kind. It is Filled or Outlined.`,
@@ -102,6 +108,8 @@ export default {
   },
 } as Meta<typeof Chip>;
 
+export const Basic = {};
+
 export const Outlined = {
   parameters: {
     docs: {
@@ -151,6 +159,41 @@ export const Contained = {
   },
 
   name: "Kind(Variant): Contained / Read Only",
+};
+
+export const Kind = {
+  chromatic: { disableSnapshot: true },
+  render: () => (
+    <Box sx={{ display: "flex", flexDirection: "row", gap: 4 }}>
+      <Chip kind="outlined" label="label@lunit.io" />
+      <Chip kind="contained" label="label@lunit.io" />
+    </Box>
+  ),
+};
+
+export const Color = {
+  chromatic: { disableSnapshot: true },
+  render: () => (
+    <Box sx={{ display: "flex", flexDirection: "row", gap: 4 }}>
+      <Chip color="primary" label="label@lunit.io" />
+      <Chip color="secondary" label="label@lunit.io" />
+      <Chip color="warning" label="label@lunit.io" />
+      <Chip color="error" label="label@lunit.io" />
+      <Chip color="success" label="label@lunit.io" />
+    </Box>
+  ),
+};
+
+export const Thumbnail = {
+  chromatic: { disableSnapshot: true },
+  render: () => (
+    <Box sx={{ display: "flex", flexDirection: "row", gap: 4 }}>
+      <Chip thumbnail={<Logo16 />} label="label@lunit.io" />
+      <Chip thumbnail={<Avatar16 />} label="label@lunit.io" />
+      <Chip thumbnail={<Success16 />} label="label@lunit.io" />
+      <Chip thumbnail="W as initial" label="label@lunit.io" />
+    </Box>
+  ),
 };
 
 export const ContainedWithClick = {
@@ -215,4 +258,26 @@ export const ContainedWithThumbnail = {
   },
 
   name: "Kind(Variant): Contained with Thumbnail",
+};
+
+export const ContainedWithDeleteAndThumbnail = {
+  args: {
+    ...Contained.args,
+    thumbnail: "Initial",
+    onClick: undefined,
+    onDelete: action("onDelete"),
+  },
+
+  parameters: {
+    docs: {
+      description: {
+        story: `Contained chip can have thumbnail and delete button.`,
+      },
+    },
+    controls: {
+      exclude: ["onClick"],
+    },
+  },
+
+  name: "Kind(Variant): Contained with Thumbnail and Deletable",
 };
