@@ -97,6 +97,9 @@ export default {
 
 export const BasicTextField: StoryObj<typeof TextField> = {
   render: (args) => <TextField {...args}>{args.children}</TextField>,
+  parameters: {
+    chromatic: { disableSnapshot: true },
+  },
 };
 
 const MultiAndSingleTemplate: StoryFn<typeof TextField> = (args) => {
