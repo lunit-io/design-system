@@ -1,5 +1,12 @@
 import React from "react";
-import { Box } from "@mui/material";
+import {
+  Box,
+  Table,
+  TableCell,
+  TableBody,
+  TableHead,
+  TableRow,
+} from "@mui/material";
 
 import TextField from "@/components/TextField/TextField";
 
@@ -66,6 +73,66 @@ export default {
   decorators: [(Story) => <Box className="base00">{Story()}</Box>],
 } as Meta<typeof TextField>;
 
+const TextFieldSizeWithTableTemplate: StoryFn<typeof TextField> = (args) => (
+  <Table>
+    <TableHead>
+      <TableRow>
+        <TableCell></TableCell>
+        <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+          Small
+        </TableCell>
+        <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+          Medium
+        </TableCell>
+        <TableCell sx={{ typography: "body2_14_medium", color: "inherit" }}>
+          Large
+        </TableCell>
+      </TableRow>
+    </TableHead>
+    <TableBody>
+      <TableRow>
+        <TableCell
+          sx={{ typography: "body2_14_medium", color: "inherit" }}
+          width={100}
+        >
+          Single line
+        </TableCell>
+        <TableCell>
+          <TextField {...args} />
+        </TableCell>
+        <TableCell>
+          <TextField {...args} size="medium" />
+        </TableCell>
+        <TableCell>
+          <TextField {...args} size="large" />
+        </TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell
+          sx={{ typography: "body2_14_medium", color: "inherit" }}
+          width={50}
+        >
+          Multi line
+        </TableCell>
+        <TableCell>
+          <TextField {...args} multiline />
+        </TableCell>
+        <TableCell>
+          <TextField {...args} size="medium" multiline />
+        </TableCell>
+        <TableCell>
+          <TextField {...args} size="large" multiline />
+        </TableCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+);
+
+export const TextFieldSize = {
+  render: TextFieldSizeWithTableTemplate,
+  name: "Size",
+};
+
 const TextFieldSizeTemplate: StoryFn<typeof TextField> = (args) => (
   <Box sx={{ display: "flex", flexDirection: "column", gap: 4 }}>
     <Box>
@@ -81,7 +148,10 @@ const TextFieldSizeTemplate: StoryFn<typeof TextField> = (args) => (
   </Box>
 );
 
-export const TextFieldSize = {
+export const TextFieldOnlySize = {
   render: TextFieldSizeTemplate,
-  name: "Size",
+  name: "Size Only",
+  parameters: {
+    chromatic: { disableSnapshot: true },
+  },
 };
