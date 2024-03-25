@@ -47,13 +47,13 @@ import * as TokenInComponentStories from "./Token.inComponent.stories";
 - wrapper 가 중첩되었을 때 컬러 토큰은 바로 상위 부모 wrapper 의 컨텍스트를 따라감
     - ex)        
       ```jsx
-      <div class='light1'>
-        <div class='dark1'>
-          // Button 의 배경 색상은 바로 상위 부모인 dark1 테마를 따라 dark1 테마 색상
+      <div className='light1'>
+        <div className='dark1'>
           <Button 
             sx={{
               backgroundColor: (theme) => 
                 theme.palette.lunit_token.component.btn_primary_bg
+                // 바로 상위 부모의 테마가 dark1이기 때문에, 이 곳의 btn_primary_bg 색상은 dark1 테마 색상이 적용됨
             }}
           /> 
         </div>
@@ -62,16 +62,9 @@ import * as TokenInComponentStories from "./Token.inComponent.stories";
         
 - base 를 지정하지 않을 시 기본 테마는 dark1
 
-## 기본 셋팅
-<del>- base wrapper 셋팅 방법</del>
-
 ## 토큰 사용법
 - 디자인 시스템 컴포넌트는 이미 컬러 토큰을 사용해서 개발해 따로 커스텀이 필요없다면 base wrapper 만 설정하면 됨
 - mui 컴포넌트를 커스텀하거나 할 때 사용하게 될 것
-
-<del>- 피그마에서 컬러 토큰 확인 법</del>
-<del>- 자동완성기능 예제 → vscode 에서 어떻게 보이는지</del>
-<del>- core token 의 사용 예시를 좀 더 많이 보여주면 좋겠다</del>
 
 ### Styled 내에서 사용법
 
@@ -105,7 +98,7 @@ const InComponentWithStyled = () => {
 };
 ```
 
-### SX 내에서 사용법
+### sx 내에서 사용법
 <Canvas of={TokenInComponentStories.InComponentWithSx} sourceState="none" />
 
 ```jsx
@@ -182,9 +175,6 @@ const InComponentWithInlineStyle = () => {
   );
 };
 ```
-
-<del>- global palette color 사용 예제</del>
-<del>- mui 기본 팔레트 컬러 설정값에 대한 설명</del>
 
 ## Reference
 
