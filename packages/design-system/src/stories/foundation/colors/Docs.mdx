@@ -71,7 +71,6 @@ import * as TokenInComponentStories from "./Token.inComponent.stories";
 <Canvas of={TokenInComponentStories.InComponentWithStyled} sourceState="none" />
 
 ```jsx
-const InComponentWithStyled = () => {
   const StyledTextField = styled(TextField)(({ theme }) => ({
     "& .MuiInputBase-root": {
       backgroundColor: theme.palette.lunit_token.component.textfield_bg,
@@ -85,14 +84,15 @@ const InComponentWithStyled = () => {
     },
   }));
 
+const InComponentWithStyled = () => {
   return (
     <>
-      <BaseBox theme="light">
+      <div className='light1'>
         <StyledTextField placeholder="Styled Text Field" />
-      </BaseBox>
-      <BaseBox theme="dark">
+      </div>
+      <div className="dark1">
         <StyledTextField placeholder="Styled Text Field" />
-      </BaseBox>
+      </div>
     </>
   );
 };
@@ -105,7 +105,7 @@ const InComponentWithStyled = () => {
 const InComponentWithSx = () => {
   return (
     <>
-      <BaseBox theme="light">
+      <div className='light1'>
         <TextField
           placeholder="Text Field with SX"
           sx={{
@@ -139,7 +139,7 @@ const InComponentWithSx = () => {
             - with alpha value
           </Box>
         </Box>
-      </BaseBox>
+      </div>
     </>
   );
 };
@@ -155,22 +155,22 @@ const InComponentWithInlineStyle = () => {
 
   return (
     <>
-      <BaseBox theme="light">
+      <div className='light1'>
         <TextField
           placeholder="Inline Styled Text Field"
           style={{
             backgroundColor: theme.palette.lunit_token.component.textfield_bg,
           }}
         />
-      </BaseBox>
-      <BaseBox theme="dark">
+      </div>
+      <div className='dark1'>
         <TextField
           placeholder="Inline Styled Text Field"
           style={{
             backgroundColor: theme.palette.lunit_token.component.textfield_bg,
           }}
         />
-      </BaseBox>
+      </div>
     </>
   );
 };
