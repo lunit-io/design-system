@@ -3,7 +3,7 @@ import { Box, Grid } from "@mui/material";
 
 const ColorSystem = () => {
   return (
-    <Box>
+    <Box pb={10}>
       <Grid container spacing={2}>
         <Grid item xs={4}>
           <Box

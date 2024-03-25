@@ -13,16 +13,11 @@ import * as TokenInComponentStories from "./Token.inComponent.stories";
 
 > 루닛 디자인 시스템에서는 일관된 색상 사용을 위해 미리 색상 팔레트를 구성하고, 이를 컴포넌트나 페이지에 쉽게 적용할 수 있도록 토큰화하여 제공한다.
 
-<br />
-<br />
-
 ## Color System의 구조
 루닛의 색상 시스템은 다음과 같은 구조로 이루어져 있다.<br />
 색상 코드 값(ex: hex, rgb값) → Global Palette(ex: Red10, Blue40..) → Token(ex: bg_01, btn_text_primary)
 
 <ColorSystem />
-<br />
-<br />
 
 ### Global Palette Color
 
@@ -43,8 +38,6 @@ import * as TokenInComponentStories from "./Token.inComponent.stories";
 - Color Token의 색상은 해당 컴포넌트를 둘러싸고 있는 Base Wrapper에 의해 결정
 - Token은 각각 4가지 테마(Light1,2, Dark1,2) 별 색상을 가지고 있음.
 
-<br />
-<br />
 
 ## Color Token에 테마를 부여하는 Base Wrapper
 - Base Layer 라고도 부름
@@ -69,14 +62,8 @@ import * as TokenInComponentStories from "./Token.inComponent.stories";
         
 - base 를 지정하지 않을 시 기본 테마는 dark1
 
-<br />
-<br />
-
 ## 기본 셋팅
 <del>- base wrapper 셋팅 방법</del>
-
-<br />
-<br />
 
 ## 토큰 사용법
 - 디자인 시스템 컴포넌트는 이미 컬러 토큰을 사용해서 개발해 따로 커스텀이 필요없다면 base wrapper 만 설정하면 됨
@@ -85,8 +72,6 @@ import * as TokenInComponentStories from "./Token.inComponent.stories";
 <del>- 피그마에서 컬러 토큰 확인 법</del>
 <del>- 자동완성기능 예제 → vscode 에서 어떻게 보이는지</del>
 <del>- core token 의 사용 예시를 좀 더 많이 보여주면 좋겠다</del>
-
-<br />
 
 ### Styled 내에서 사용법
 
@@ -119,8 +104,6 @@ const InComponentWithStyled = () => {
   );
 };
 ```
-
-<br />
 
 ### SX 내에서 사용법
 <Canvas of={TokenInComponentStories.InComponentWithSx} sourceState="none" />
@@ -169,8 +152,6 @@ const InComponentWithSx = () => {
 };
 ```
 
-<br />
-
 ### useTheme 이용해 inline style 내에서 사용법
 
 <Canvas of={TokenInComponentStories.InComponentWithInlineStyle} sourceState="none" />
@@ -205,17 +186,11 @@ const InComponentWithInlineStyle = () => {
 <del>- global palette color 사용 예제</del>
 <del>- mui 기본 팔레트 컬러 설정값에 대한 설명</del>
 
-<br />
-<br />
-
 ## Reference
 
 - [Lunit Design System Color Figma](https://www.figma.com/file/oh2WsSLBuX30Yp589gyliB/Design-System_1.0.7_Latest?type=design&node-id=14801-186914&mode=design&t=unSsZRlRhL3LrTRm-0)
-
-<br />
 
 ## Support
 
 - Github: [Create a new issue](https://github.com/lunit-io/design-system/issues/new)
 - Slack: #tf_design_system
-
