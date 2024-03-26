@@ -4,7 +4,7 @@ import {  Meta } from '@storybook/blocks';
 
 # Lunit Design System Library
 
-Lunit Design System Library is a collection of reusable components and styles that are used to build Lunit's products. It is built on top of [Material-UI](https://mui.com/material-ui/getting-started/), a popular React UI framework.
+Lunit Design System Library is a collection of reusable components and styles that are used to build Lunit's products. It is built on top of [Material UI](https://mui.com/material-ui/getting-started/), a popular React UI framework.
 
 ## Installation
 
@@ -27,7 +27,7 @@ Material UI is peer dependency of Lunit Design System Library. You need to insta
 
 ### Theme
 
-This library is based on Material UI's themes feature, so it imports themes and puts them into the provider. We also recommend using the CssBaseline component.
+This library is based on Material UI's themes feature, so it imports themes and puts them into the provider. We also recommend using the `CssBaseline` component.
 
 ```tsx
 import {
@@ -55,7 +55,7 @@ https://mui.com/material-ui/customization/theming/#createtheme-options-args-them
 
 ### Fonts
 
-This library uses the `Pretendard` font by default. You can change the font by setting the `fontFamily` property in the theme.
+This library uses the `Pretendard` font-family by default. The [Pretendard font](https://github.com/orioncactus/pretendard) does not come with this library, so you will need to provide it yourself via Webfonts. You can change the font by setting the `fontFamily` property in the theme.
 
 ```tsx
 const theme = createTheme(
@@ -69,6 +69,14 @@ const theme = createTheme(
   })
 );
 ```
+
+## Foundation
+
+This library provides a set of foundational styles that are used in Lunit's products. Please refer Colors, Typography, and Elevation in the sidebar.
+
+## Components
+
+This library provides a variety of components that are used in Lunit's products. Please refer Components in the sidebar.
 
 ## Reference
 
