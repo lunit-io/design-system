@@ -1,0 +1,80 @@
+import {  Meta } from '@storybook/blocks';
+
+<Meta title="Getting Started/Overview" />
+
+# Lunit Design System Library
+
+Lunit Design System Library is a collection of reusable components and styles that are used to build Lunit's products. It is built on top of [Material-UI](https://mui.com/material-ui/getting-started/), a popular React UI framework.
+
+## Installation
+
+```bash
+npm install @lunit/design-system
+```
+
+Material UI is peer dependency of Lunit Design System Library. You need to install Material UI first.
+
+```json
+"peerDependencies": {
+  "@mui/material": "^5.0.0",
+  "@types/react": "^17.0.0 || ^18.0.0",
+  "react": "^17.0.0 || ^18.0.0",
+  "react-dom": "^17.0.0 || ^18.0.0"
+}
+```
+
+## Usage
+
+### Theme
+
+This library is based on Material UI's themes feature, so it imports themes and puts them into the provider. We also recommend using the CssBaseline component.
+
+```tsx
+import {
+  createTheme,
+  ThemeProvider,
+} from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import { themeOptions } from '@lunit/design-system';
+
+const theme = createTheme(themeOptions);
+
+const App = () => {
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <YourApp />
+    </ThemeProvider>
+  );
+};
+```
+
+If you want to customize the theme, use the `deepmerge` utility.
+
+https://mui.com/material-ui/customization/theming/#createtheme-options-args-theme
+
+### Fonts
+
+This library uses the `Pretendard` font by default. You can change the font by setting the `fontFamily` property in the theme.
+
+```tsx
+const theme = createTheme(
+  deepmerge(themeOptions, {
+    typography: {
+      fontFamily: [
+        'Pretendard Variable',
+        'sans-serif',
+      ]
+    }
+  })
+);
+```
+
+## Reference
+
+- [Lunit Design System Figma](https://www.figma.com/file/oh2WsSLBuX30Yp589gyliB/Design-System_1.0.7_Latest?node-id=0%3A1&mode=dev)
+
+## Support
+
+- Github: [Create a new issue](https://github.com/lunit-io/design-system/issues/new)
+- Slack: #tf_design_system
