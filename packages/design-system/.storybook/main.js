@@ -2,11 +2,7 @@ const path = require("path");
 const alias = require("../config/alias");
 
 module.exports = {
-  stories: [
-    "./Welcome/Welcome.stories.tsx",
-    "../src/**/*.mdx",
-    "../src/**/*.stories.@(js|jsx|ts|tsx)",
-  ],
+  stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
   refs: {
     "design-system-icons": {
       title: "Lunit Design System Icons",
