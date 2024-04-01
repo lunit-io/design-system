@@ -1,14 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  Box,
-  Table,
-  TableHead,
-  TableRow,
-  TableBody,
-  TableCell,
-  FormGroup,
-  FormControlLabel,
-} from "@mui/material";
+import { Box, FormControlLabel } from "@mui/material";
 import { action } from "@storybook/addon-actions";
 import Checkbox from "@/components/Checkbox";
 import FormLabel from "@/components/FormLabel";
