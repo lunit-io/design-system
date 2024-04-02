@@ -3,22 +3,22 @@ import Box from "@mui/material/Box";
 import Bell from "@lunit/design-system-icons/Bell";
 
 import Button from "@/components/Button";
-import * as BasicCheckBox from "./BasicCheckBox.stories";
+import * as BasicCheckbox from "./BasicCheckbox.stories";
 
 <Meta name="CheckBox Docs" of={BasicCheckBox} />
 
-# Button
+# Checkbox
 
 Checkboxes allow the user to select one or more items from a set.
 
 ## Usage
 
-### Basic Button
+### Basic Checkbox
 
 ```tsx
 import { Button } from "@lunit/design-system";
 // or
-import CheckBox from "@lunit/design-system/CheckBox";
+import Checkbox from "@lunit/design-system/Checkbox";
 
 <CheckBox />;
 ```
@@ -47,7 +47,7 @@ You can provide a label to the Checkbox thanks to the FormControlLabel component
 
 ### Indeterminate
 
-A checkbox input can only have two states in a form: checked or unchecked. It either submits its value or doesn't. Visually, there are three states a checkbox can be in: checked, unchecked, or indeterminate.
+A Checkbox input can only have two states in a form: checked or unchecked. It either submits its value or doesn't. Visually, there are three states a checkbox can be in: checked, unchecked, or indeterminate.
 
 <Canvas of={BasicCheckBox.Indeterminate} sourceState="none" />
 
