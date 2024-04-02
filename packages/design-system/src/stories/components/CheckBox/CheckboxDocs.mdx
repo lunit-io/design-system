@@ -5,27 +5,27 @@ import Bell from "@lunit/design-system-icons/Bell";
 import Button from "@/components/Button";
 import * as BasicCheckbox from "./BasicCheckbox.stories";
 
-<Meta name="CheckBox Docs" of={BasicCheckBox} />
+<Meta name="Checkbox Docs" of={BasicCheckbox} />
 
-# Checkbox
+# Button
 
 Checkboxes allow the user to select one or more items from a set.
 
 ## Usage
 
-### Basic Checkbox
+### Basic Button
 
 ```tsx
 import { Button } from "@lunit/design-system";
 // or
 import Checkbox from "@lunit/design-system/Checkbox";
 
-<CheckBox />;
+<Checkbox />;
 ```
 
 ### Demo
 
-<Canvas of={BasicCheckBox.BasicCheckbox} sourceState="none" />
+<Canvas of={BasicCheckbox.BasicCheckbox} sourceState="none" />
 
 <Controls />
 
@@ -33,7 +33,7 @@ import Checkbox from "@lunit/design-system/Checkbox";
 
 You can provide a label to the Checkbox thanks to the FormControlLabel component.
 
-<Canvas of={BasicCheckBox.Label} sourceState="none" />
+<Canvas of={BasicCheckbox.Label} sourceState="none" />
 
 ```tsx
 <FormGroup>
@@ -49,7 +49,7 @@ You can provide a label to the Checkbox thanks to the FormControlLabel component
 
 A Checkbox input can only have two states in a form: checked or unchecked. It either submits its value or doesn't. Visually, there are three states a checkbox can be in: checked, unchecked, or indeterminate.
 
-<Canvas of={BasicCheckBox.Indeterminate} sourceState="none" />
+<Canvas of={BasicCheckbox.Indeterminate} sourceState="none" />
 
 ```tsx
 <FormLabel
@@ -69,7 +69,7 @@ A Checkbox input can only have two states in a form: checked or unchecked. It ei
 If you want to disable the button, you can use the disabled prop.
 Default disabled is false.
 
-<Canvas of={BasicCheckBox.Disabled} sourceState="none" />
+<Canvas of={BasicCheckbox.Disabled} sourceState="none" />
 
 ```tsx
 <Checkbox checked disabed />
@@ -79,8 +79,8 @@ Default disabled is false.
 
 ## Reference
 
-- [Material-UI CheckBox](https://mui.com/material-ui/react-checkbox/)
-- [Material-UI CheckBox API](https://mui.com/material-ui/api/checkbox/)
+- [Material-UI Checkbox](https://mui.com/material-ui/react-checkbox/)
+- [Material-UI Checkbox API](https://mui.com/material-ui/api/checkbox/)
 - [Lunit Design System Button Figma](https://www.figma.com/file/BSdRUpEPp7XiJ9YnEqpf6F/1.0.0_Components?type=design&node-id=1923-6820&mode=design&t=0BjGJV6Ef9WjfuCD-0)
 
 ## Support
