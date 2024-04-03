@@ -1,0 +1,180 @@
+import { Canvas, Stories, Controls, Meta, Story } from "@storybook/blocks";
+import Box from "@mui/material/Box";
+import Bell from "@lunit/design-system-icons/Bell";
+
+import ToggleButton from "@/components/ToggleButton";
+import * as ToggleButtonStories from "./Basic.stories";
+import * as ToggleButtonKindStories from "./ToggleButtonKind.stories";
+import * as ToggleButtonIconStories from "./WithIcon.stories";
+
+<Meta name="Toggle Button Docs" of={ToggleButtonStories} />
+
+# ToggleButton
+
+A Toggle Button can be used to group related options.
+
+## Usage
+
+### Basic ToggleButton
+
+```tsx
+import { ToggleButton } from "@lunit/design-system";
+// or
+import ToggleButton from "@lunit/design-system/ToggleButton";
+
+<ToggleButton value="value">ToggleButton</ToggleButton>;
+```
+
+### Demo
+
+<Canvas of={ToggleButtonStories.BasicToggleButton} sourceState="none" />
+
+<Controls />
+
+### Value
+
+The value to associate with the button when selected in a ToggleButtonGroup.<br />
+Value prop is `requried`.
+
+<Canvas of={ToggleButtonStories.BasicToggleButton} sourceState="none" />
+
+```tsx
+<ToggleButton value="value">Text</ToggleButton>
+```
+
+### Kind
+
+The ToggleButton has 3 kinds of variants: `contained`, `outlined` and `outlined`. <br />
+Default kind is `contained`.
+
+<Canvas
+  of={ToggleButtonKindStories.KindDocs}
+  meta={ToggleButtonKindStories}
+  sourceState="none"
+/>
+
+```tsx
+<ToggleButton value="first" kind="contained">Text</ToggleButton>
+<ToggleButton value="secound" kind="outlined">Text</ToggleButton>
+<ToggleButton value="thrid" kind="ghost">Text</ToggleButton>
+```
+
+### Color
+
+The ToggleButton has two colors: `primary` and `secondary`.<br />
+Using the `color` prop, you can change the color of the ToggleButton.<br />
+`outlined` kind does not have `secondary` color state.<br />
+Default color is `primary`.
+
+<Canvas of={ToggleButtonStories.Color} sourceState="none" />
+
+```tsx
+// Contained
+<ToggleButton value="first" kind="contained" color="primary">Primary</ToggleButton>
+<ToggleButton value="second" kind="contained" color="secondary">Secondary</ToggleButton>
+
+// Outlined
+<ToggleButton value="first" kind="outlined" color="primary">Primary</ToggleButton>
+
+// ghost
+<ToggleButton value="first" kind="ghost" color="primary">Primary</ToggleButton>
+<ToggleButton value="second" kind="ghost" color="secondary">Secondary</ToggleButton>
+```
+
+### Selected
+
+If true, the ToggleButton is rendered in an active state.<br />
+Default Selected is `false`.
+
+<Canvas of={ToggleButtonStories.SelectedDocs} sourceState="none" />
+
+```tsx
+<ToggleButton selected={false} value="first">Not Selected</ToggleButton>
+<ToggleButton selected={true} value="second">Selected</ToggleButton>
+```
+
+### SelectedColor
+
+The ToggleButton has two selectedColor: `primary` and `secoundary`.<br />
+Using the `color` prop, you can change the color of the ToggleButton.<br />
+Default color is `primary`.
+
+<Canvas of={ToggleButtonStories.SelectedColorDocs} sourceState="none" />
+
+```tsx
+<ToggleButton value="first" selectedColor="primary" selected="true">Primary</ToggleButton>
+<ToggleButton value="second" selectedColor="secondary" selected="true">Secondary</ToggleButton>
+```
+
+### Size
+
+The ToggleButton has three sizes: `small`, `medium` and `large`.<br />
+Using the `size` prop, you can change the size of the ToggleButton.<br />
+Default size is `small`.
+
+<Canvas of={ToggleButtonStories.SizeDocs} sourceState="none" />
+
+```tsx
+// Contained
+<ToggleButton size="small" value="first" kind="contained">small</ToggleButton>
+<ToggleButton size="medium" value="second" kind="contained">medium</ToggleButton>
+<ToggleButton size="large" value="third" kind="contained">large</ToggleButton>
+
+// Outlined
+<ToggleButton size="small" value="first" kind="outlined">small</ToggleButton>
+<ToggleButton size="medium" value="second" kind="outlined">medium</ToggleButton>
+<ToggleButton size="large" value="third" kind="outlined">large</ToggleButton>
+
+// ghost
+<ToggleButton size="small" value="first" kind="ghost">small</ToggleButton>
+<ToggleButton size="medium" value="second" kind="ghost">medium</ToggleButton>
+<ToggleButton size="large" value="third" kind="ghost">large</ToggleButton>
+```
+
+### With Icon and Text
+
+If you want to use an icon and text together, you can use the `icon` prop and `children` prop.
+
+<Canvas of={ToggleButtonIconStories.IconDocs} sourceState="none" />
+
+```tsx
+<ToggleButton icon={<Bell />} value="first" kind="contained">Contained</ToggleButton>
+<ToggleButton icon={<Bell />} value="secound" kind="outlined">Outlined</ToggleButton>
+<ToggleButton icon={<Bell />} value="thrid" kind="ghost">Ghost</ToggleButton>
+```
+
+### With Icon only
+
+If you want to use only an icon, you can use the `icon` prop.
+
+<Canvas of={ToggleButtonIconStories.IconOnlyDocs} sourceState="none" />
+
+```tsx
+<ToggleButton icon={<Bell />} value="first" kind="contained" />
+<ToggleButton icon={<Bell />} value="secound" kind="outlined" />
+<ToggleButton icon={<Bell />} value="thrid" kind="ghost" />
+```
+
+### Disabled
+
+If you want to disable the ToggleButton, you can use the `disabled` prop.<br />
+Default disabled is `false`.
+
+<Canvas of={ToggleButtonStories.DisabledDocs} sourceState="none" />
+
+```tsx
+<ToggleButton disabled value="first" kind="contained" />
+<ToggleButton disabled value="secound" kind="outlined" />
+<ToggleButton disabled value="thrid" kind="ghost" />
+```
+
+## Reference
+
+- [Material-UI ToggleButton](https://mui.com/material-ui/react-toggle-button/)
+- [Material-UI ToggleButton API](https://mui.com/material-ui/api/toggle-button/)
+- [Lunit Design System ToggleButton Figma](https://www.figma.com/file/cvCwvrIV9Xo1iOLcbvD904/old_Components_Lunit-Design?type=design&node-id=284-3&mode=design&t=FaggRMVgOmnJveHg-0)
+
+## Support
+
+- Github: [Create a new issue](https://github.com/lunit-io/design-system/issues/new)
+- Slack: #tf_design_system
