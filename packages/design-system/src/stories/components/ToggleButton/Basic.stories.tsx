@@ -6,6 +6,7 @@ import {
   TableRow,
   TableBody,
   TableCell,
+  Box,
 } from "@mui/material";
 import Bell from "@lunit/design-system-icons/Bell";
 import ToggleButton from "@/components/ToggleButton";
@@ -163,6 +164,9 @@ const BasicToggleButtonTemplate: StoryFn<typeof ToggleButton> = (arg) => {
 export const BasicToggleButton = {
   render: BasicToggleButtonTemplate,
   name: "Basic ToggleButton",
+  parameters: {
+    chromatic: { disableSnapshot: true },
+  },
 };
 
 const SizeTemplate: StoryFn<typeof ToggleButton> = (args) => {
@@ -280,6 +284,186 @@ export const Size = {
   },
 };
 
+const SizeDocsTemplate: StoryFn<typeof ToggleButton> = (args) => {
+  const [values, setValues] = React.useState({
+    small: "",
+    medium: "",
+    large: "",
+  });
+
+  const handleChange = (value: string | null, size: SizeValues) => {
+    if (!size) return;
+
+    setValues({
+      ...values,
+      [size]: value,
+    });
+  };
+
+  return (
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        gap: 4,
+        "& button": {
+          marginRight: 2,
+        },
+      }}
+    >
+      <ToggleButtonGroup
+        sx={{
+          display: "flex",
+          alignItems: "center",
+        }}
+        value={values.small}
+        onChange={(_, value) => handleChange(value, "small")}
+      >
+        <ToggleButton {...args} value="small" size="small">
+          Small
+        </ToggleButton>
+        <ToggleButton {...args} value="medium" size="medium">
+          Medium
+        </ToggleButton>
+        <ToggleButton {...args} value="large" size="large">
+          Large
+        </ToggleButton>
+      </ToggleButtonGroup>
+      <ToggleButtonGroup
+        sx={{
+          display: "flex",
+          alignItems: "center",
+        }}
+        value={values.medium}
+        onChange={(_, value) => handleChange(value, "medium")}
+      >
+        <ToggleButton
+          {...args}
+          value="small"
+          kind="outlined"
+          color="primary"
+          size="small"
+        >
+          Small
+        </ToggleButton>
+        <ToggleButton
+          {...args}
+          value="medium"
+          kind="outlined"
+          color="primary"
+          size="medium"
+        >
+          Medium
+        </ToggleButton>
+        <ToggleButton
+          {...args}
+          value="large"
+          kind="outlined"
+          color="primary"
+          size="large"
+        >
+          Large
+        </ToggleButton>
+      </ToggleButtonGroup>
+      <ToggleButtonGroup
+        sx={{
+          display: "flex",
+          alignItems: "center",
+        }}
+        value={values.large}
+        onChange={(_, value) => handleChange(value, "large")}
+      >
+        <ToggleButton {...args} value="small" kind="ghost" size="small">
+          Small
+        </ToggleButton>
+        <ToggleButton {...args} value="medium" kind="ghost" size="medium">
+          Medium
+        </ToggleButton>
+        <ToggleButton {...args} value="large" kind="ghost" size="large">
+          Large
+        </ToggleButton>
+      </ToggleButtonGroup>
+    </Box>
+  );
+};
+
+export const SizeDocs = {
+  render: SizeDocsTemplate,
+  argTypes: {
+    size: {
+      control: false,
+    },
+  },
+  parameters: {
+    chromatic: { disableSnapshot: true },
+  },
+};
+
+const ColorTemplate: StoryFn<typeof ToggleButton> = (args) => {
+  return (
+    <Box sx={{ display: "flex", flexDirection: "column" }}>
+      <Box
+        sx={{
+          "& button": {
+            marginRight: 2,
+          },
+        }}
+      >
+        <ToggleButton {...args} value="first" kind="contained" color="primary">
+          Primary
+        </ToggleButton>
+        <ToggleButton
+          {...args}
+          value="first"
+          kind="contained"
+          color="secondary"
+        >
+          Secondary
+        </ToggleButton>
+      </Box>
+      <Box
+        sx={{
+          marginTop: 4,
+          "& button": {
+            marginRight: 2,
+          },
+        }}
+      >
+        <ToggleButton {...args} value="first" kind="outlined" color="primary">
+          Primary
+        </ToggleButton>
+      </Box>
+      <Box
+        sx={{
+          marginTop: 4,
+          "& button": {
+            marginRight: 2,
+          },
+        }}
+      >
+        <ToggleButton {...args} value="first" kind="ghost" color="primary">
+          Primary
+        </ToggleButton>
+        <ToggleButton {...args} value="first" kind="ghost" color="secondary">
+          Secondary
+        </ToggleButton>
+      </Box>
+    </Box>
+  );
+};
+
+export const Color = {
+  render: ColorTemplate,
+  argTypes: {
+    size: {
+      control: false,
+    },
+  },
+  parameters: {
+    chromatic: { disableSnapshot: true },
+  },
+};
+
 const SelectedColorTemplate: StoryFn<typeof ToggleButton> = (arg) => {
   const [selected1, setSelected1] = useState(true);
   const [selected2, setSelected2] = useState(true);
@@ -342,5 +526,116 @@ export const SelectedColor = {
 
   args: {
     selected: true,
+  },
+};
+
+const SelectedColorDocsTemplate: StoryFn<typeof ToggleButton> = (args) => {
+  const { kind, selectedColor, color, ...restProps } = args;
+  return (
+    <Box
+      sx={{
+        "& button": {
+          marginRight: 2,
+        },
+      }}
+    >
+      <ToggleButton {...restProps} value="first" selectedColor="primary">
+        Primary
+      </ToggleButton>
+      <ToggleButton {...restProps} value="second" selectedColor="secondary">
+        Secondary
+      </ToggleButton>
+    </Box>
+  );
+};
+
+export const SelectedColorDocs = {
+  render: SelectedColorDocsTemplate,
+  argTypes: {
+    selectedColor: {
+      control: false,
+    },
+  },
+  args: {
+    selected: true,
+  },
+  parameters: {
+    chromatic: { disableSnapshot: true },
+  },
+};
+
+const SelectedDocsTemplate: StoryFn<typeof ToggleButton> = (args) => {
+  const { kind, selectedColor, color, selected, ...restProps } = args;
+  return (
+    <Box
+      sx={{
+        "& button": {
+          marginRight: 2,
+        },
+      }}
+    >
+      <ToggleButton {...restProps} value="first">
+        Not Selected
+      </ToggleButton>
+      <ToggleButton {...restProps} value="second" selected={true}>
+        Selected
+      </ToggleButton>
+    </Box>
+  );
+};
+
+export const SelectedDocs = {
+  render: SelectedDocsTemplate,
+  argTypes: {
+    selectedColor: {
+      control: false,
+    },
+  },
+  parameters: {
+    chromatic: { disableSnapshot: true },
+    include: ["color", "size", "disabled", "selected", "kind"],
+  },
+};
+
+const DisabledTemplate: StoryFn<typeof ToggleButton> = (args) => {
+  return (
+    <Box
+      sx={{
+        "& button": {
+          marginRight: 2,
+        },
+      }}
+    >
+      <ToggleButton {...args} value="first" disabled>
+        Text
+      </ToggleButton>
+      <ToggleButton
+        {...args}
+        kind="outlined"
+        color="primary"
+        value="second"
+        disabled
+      >
+        Text
+      </ToggleButton>
+      <ToggleButton {...args} kind="ghost" value="second" disabled>
+        Text
+      </ToggleButton>
+    </Box>
+  );
+};
+
+export const DisabledDocs = {
+  render: DisabledTemplate,
+  argTypes: {
+    selectedColor: {
+      control: false,
+    },
+  },
+  args: {
+    selected: false,
+  },
+  parameters: {
+    chromatic: { disableSnapshot: true },
   },
 };

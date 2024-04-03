@@ -5,6 +5,7 @@ import {
   TableRow,
   TableBody,
   TableCell,
+  Box,
 } from "@mui/material";
 import { action } from "@storybook/addon-actions";
 import Bell from "@lunit/design-system-icons/Bell";
@@ -217,6 +218,76 @@ export const IconStory = {
   },
 };
 
+const IconDocsTemplate: StoryFn<typeof ToggleButton> = (arg) => {
+  const [values, setValues] = useState({
+    contained: false,
+    outlined: false,
+    ghost: false,
+  });
+
+  const handleChange = (value: keyof typeof values) => {
+    setValues({
+      ...values,
+      [value]: !values[value],
+    });
+  };
+
+  return (
+    <Box sx={{ "& button": { marginRight: 2 } }}>
+      <ToggleButton
+        {...arg}
+        icon={<Bell />}
+        value="contained"
+        onChange={() => handleChange("contained")}
+        selected={values.contained}
+      >
+        Contained
+      </ToggleButton>
+      <ToggleButton
+        {...arg}
+        icon={<Bell />}
+        kind="outlined"
+        color="primary"
+        value="outlined"
+        onChange={() => handleChange("outlined")}
+        selected={values.outlined}
+      >
+        Outlined
+      </ToggleButton>
+      <ToggleButton
+        {...arg}
+        icon={<Bell />}
+        kind="ghost"
+        value="ghost"
+        onChange={() => handleChange("ghost")}
+        selected={values.ghost}
+      >
+        Ghost
+      </ToggleButton>
+    </Box>
+  );
+};
+
+export const IconDocs = {
+  render: IconDocsTemplate,
+  name: "Icon Docs",
+  args: {
+    children: "Text",
+  },
+  argTypes: {
+    children: {
+      type: "string",
+      defaultValue: "text",
+    },
+  },
+  parameters: {
+    chromatic: { disableSnapshot: true },
+    controls: {
+      include: ["color", "size", "disabled", "children"],
+    },
+  },
+};
+
 const IconOnlyTemplate: StoryFn<typeof ToggleButton> = (arg) => {
   const [values, setValues] = useState({
     primary: true,
@@ -287,6 +358,73 @@ export const WithIconOnlyStory = {
     children: {
       type: "string",
       controls: false,
+    },
+  },
+};
+
+const IconOnlyDocsTemplate: StoryFn<typeof ToggleButton> = (arg) => {
+  const { children, ...restArg } = arg;
+
+  const [values, setValues] = useState({
+    contained: false,
+    outlined: false,
+    ghost: false,
+  });
+
+  const handleChange = (value: keyof typeof values) => {
+    setValues({
+      ...values,
+      [value]: !values[value],
+    });
+  };
+
+  return (
+    <Box sx={{ "& button": { marginRight: 2 } }}>
+      <ToggleButton
+        {...restArg}
+        icon={<Bell />}
+        value="contained"
+        onChange={() => handleChange("contained")}
+        selected={values.contained}
+      />
+      <ToggleButton
+        {...restArg}
+        icon={<Bell />}
+        kind="outlined"
+        color="primary"
+        value="outlined"
+        onChange={() => handleChange("outlined")}
+        selected={values.outlined}
+      />
+
+      <ToggleButton
+        {...restArg}
+        icon={<Bell />}
+        kind="ghost"
+        value="ghost"
+        onChange={() => handleChange("ghost")}
+        selected={values.ghost}
+      />
+    </Box>
+  );
+};
+
+export const IconOnlyDocs = {
+  render: IconOnlyDocsTemplate,
+  name: "Icon Only Docs",
+  args: {
+    children: "Text",
+  },
+  argTypes: {
+    children: {
+      type: "string",
+      defaultValue: "text",
+    },
+  },
+  parameters: {
+    chromatic: { disableSnapshot: true },
+    controls: {
+      include: ["color", "size", "disabled", "children"],
     },
   },
 };
