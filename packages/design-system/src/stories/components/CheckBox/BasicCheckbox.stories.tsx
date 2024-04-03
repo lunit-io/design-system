@@ -110,12 +110,39 @@ const LabelTemplate: StoryFn<typeof Checkbox> = (args) => {
   }, [args.checked]);
 
   return (
-    <Box>
+    <Box sx={{ display: "flex", gap: 4 }}>
       <FormControlLabel
         control={
           <Checkbox
             {...args}
             defaultChecked
+            checked={true}
+            onChange={(event) => {
+              args.onChange && args.onChange(event, checked);
+              setChecked((prev) => !prev);
+            }}
+          />
+        }
+        label="Label"
+      />
+      <FormControlLabel
+        control={
+          <Checkbox
+            {...args}
+            checked={checked}
+            onChange={(event) => {
+              args.onChange && args.onChange(event, checked);
+              setChecked((prev) => !prev);
+            }}
+          />
+        }
+        label="Label"
+      />
+      <FormControlLabel
+        control={
+          <Checkbox
+            {...args}
+            disabled
             checked={checked}
             onChange={(event) => {
               args.onChange && args.onChange(event, checked);
