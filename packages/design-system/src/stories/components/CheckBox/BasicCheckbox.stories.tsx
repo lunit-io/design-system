@@ -1,12 +1,6 @@
 import React, { useState, useEffect } from "react";
-import {
-  Box,
-  Table,
-  TableHead,
-  TableRow,
-  TableBody,
-  TableCell,
-} from "@mui/material";
+import { Box, FormControlLabel } from "@mui/material";
+import { action } from "@storybook/addon-actions";
 import Checkbox from "@/components/Checkbox";
 import FormLabel from "@/components/FormLabel";
 import { Meta, StoryFn } from "@storybook/react";
@@ -14,6 +8,11 @@ import { Meta, StoryFn } from "@storybook/react";
 export default {
   title: "Components/Checkbox",
   component: Checkbox,
+  args: {
+    checked: false,
+    disabled: false,
+    indeterminate: false,
+  },
   argTypes: {
     disabled: {
       control: "boolean",
@@ -26,6 +25,16 @@ export default {
       description: "If true, the component appears indeterminate.",
     },
     onChange: {
+      type: "function",
+      control: {
+        type: "radio",
+      },
+      options: ["function", undefined],
+      mapping: {
+        function: action("onChange"),
+        undefined: undefined,
+      },
+      defaultValue: "function",
       table: { type: { summary: "func" } },
       description:
         "Callback fired when the state is changed. Signature: `function(event: React.ChangeEvent<HTMLInputElement>) => void`",
@@ -42,23 +51,12 @@ export default {
       },
       description: "If true, the component is checked.",
     },
-    value: {
-      control: "text",
-      table: { type: { summary: "any" } },
-      description:
-        "The value of the component. The DOM API casts this to a string.",
-    },
     defaultChecked: {
       control: "boolean",
       table: { type: { summary: "bool" }, defaultValue: { summary: "false" } },
       description:
         "The default checked state. Use when the component is not controlled.",
     },
-  },
-  args: {
-    checked: false,
-    disabled: false,
-    indeterminate: false,
   },
   parameters: {
     controls: {
@@ -67,7 +65,6 @@ export default {
         "disabled",
         "indeterminate",
         "onChange",
-        "value",
         "required",
         "checked",
         "defaultChecked",
@@ -93,7 +90,10 @@ const BasicCheckboxTemplate: StoryFn<typeof Checkbox> = (args) => {
     <Checkbox
       {...args}
       checked={checked}
-      onChange={() => setChecked(!checked)}
+      onChange={(event) => {
+        args.onChange && args.onChange(event, checked);
+        setChecked((prev) => !prev);
+      }}
     />
   );
 };
@@ -103,28 +103,49 @@ export const BasicCheckbox = {
 };
 
 const LabelTemplate: StoryFn<typeof Checkbox> = (args) => {
-  const [checked, setChecked] = useState(false);
+  const [checked1, setChecked1] = useState(true);
+  const [checked2, setChecked2] = useState(false);
+
   useEffect(() => {
-    setChecked(Boolean(args.checked));
+    setChecked1(Boolean(args.checked));
+    setChecked2(Boolean(args.checked));
   }, [args.checked]);
 
+  const handleChange1 = (event: React.ChangeEvent<HTMLInputElement>) => {
+    args.onChange && args.onChange(event, checked1);
+    setChecked1((prev) => !prev);
+  };
+
+  const handleChange2 = (event: React.ChangeEvent<HTMLInputElement>) => {
+    args.onChange && args.onChange(event, checked2);
+    setChecked2((prev) => !prev);
+  };
+
   return (
-    <FormLabel
-      label="with label"
-      control={
-        <Checkbox
-          {...args}
-          checked={checked}
-          onChange={() => setChecked(!checked)}
-        />
-      }
-    />
+    <Box sx={{ display: "flex", gap: 4 }}>
+      <FormControlLabel
+        control={
+          <Checkbox {...args} checked={checked1} onChange={handleChange1} />
+        }
+        label="Label"
+      />
+      <FormControlLabel
+        control={
+          <Checkbox
+            {...args}
+            disabled
+            checked={checked2}
+            onChange={handleChange2}
+          />
+        }
+        label="Disabled Label"
+      />
+    </Box>
   );
 };
 
 export const Label = {
   render: LabelTemplate,
-
   parameters: {
     docs: {
       description: {
@@ -134,68 +155,9 @@ export const Label = {
   },
 };
 
-const StatusTemplate: StoryFn<typeof Checkbox> = (args) => (
-  <Table sx={{ width: 650 }}>
-    <TableHead>
-      <TableRow>
-        <TableCell></TableCell>
-        <TableCell>Enabled</TableCell>
-        <TableCell>Focuse</TableCell>
-        <TableCell>Disabled</TableCell>
-      </TableRow>
-    </TableHead>
-    <TableBody>
-      <TableRow>
-        <TableCell>On</TableCell>
-        <TableCell>
-          <Checkbox {...args} checked />
-        </TableCell>
-        <TableCell>
-          <Checkbox {...args} checked className="Mui-focusVisible" />
-        </TableCell>
-        <TableCell>
-          <Checkbox {...args} checked disabled />
-        </TableCell>
-      </TableRow>
-      <TableRow>
-        <TableCell>Off</TableCell>
-        <TableCell>
-          <Checkbox {...args} />
-        </TableCell>
-        <TableCell>
-          <Checkbox {...args} className="Mui-focusVisible" />
-        </TableCell>
-        <TableCell>
-          <Checkbox {...args} disabled />
-        </TableCell>
-      </TableRow>
-      <TableRow>
-        <TableCell>Indeterminate</TableCell>
-        <TableCell>
-          <Checkbox {...args} checked indeterminate />
-        </TableCell>
-        <TableCell>
-          <Checkbox
-            {...args}
-            checked
-            indeterminate
-            className="Mui-focusVisible"
-          />
-        </TableCell>
-        <TableCell>
-          <Checkbox {...args} checked indeterminate disabled />
-        </TableCell>
-      </TableRow>
-    </TableBody>
-  </Table>
-);
-
-export const Status = {
-  render: StatusTemplate,
-};
-
 const IndeterminateTemplate: StoryFn<typeof Checkbox> = (args) => {
   const [checked, setChecked] = React.useState([true, false]);
+  const { disabled } = args;
 
   const handleChange1 = (event: React.ChangeEvent<HTMLInputElement>) => {
     setChecked([event.target.checked, event.target.checked]);
@@ -223,7 +185,7 @@ const IndeterminateTemplate: StoryFn<typeof Checkbox> = (args) => {
   );
 
   return (
-    <div>
+    <Box>
       <FormLabel
         label="Parent"
         control={
@@ -231,26 +193,43 @@ const IndeterminateTemplate: StoryFn<typeof Checkbox> = (args) => {
             checked={checked[0] && checked[1]}
             indeterminate={checked[0] !== checked[1]}
             onChange={handleChange1}
+            disabled={disabled}
           />
         }
       />
       {children}
-    </div>
+    </Box>
   );
 };
 
 export const Indeterminate = {
   render: IndeterminateTemplate,
+  parameters: {
+    docs: {
+      description: {
+        story: "You can use the `FormControlLabel` component to provide label.",
+      },
+    },
+  },
+};
 
-  argTypes: {
-    disabled: {
-      control: false,
-    },
-    checked: {
-      control: false,
-    },
-    indeterminate: {
-      control: false,
+const DisabledTemplate: StoryFn<typeof Checkbox> = (args) => {
+  return (
+    <Box sx={{ display: "flex", gap: 4 }}>
+      <Checkbox {...args} disabled checked />
+      <Checkbox {...args} indeterminate disabled />
+      <Checkbox {...args} disabled />
+    </Box>
+  );
+};
+
+export const Disabled = {
+  render: DisabledTemplate,
+  parameters: {
+    docs: {
+      description: {
+        story: "You can use the `FormControlLabel` component to provide label.",
+      },
     },
   },
 };
