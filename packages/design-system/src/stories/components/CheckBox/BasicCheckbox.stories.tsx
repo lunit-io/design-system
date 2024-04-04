@@ -103,38 +103,29 @@ export const BasicCheckbox = {
 };
 
 const LabelTemplate: StoryFn<typeof Checkbox> = (args) => {
-  const [checked, setChecked] = useState(false);
+  const [checked1, setChecked1] = useState(true);
+  const [checked2, setChecked2] = useState(false);
 
   useEffect(() => {
-    setChecked(Boolean(args.checked));
+    setChecked1(Boolean(args.checked));
+    setChecked2(Boolean(args.checked));
   }, [args.checked]);
+
+  const handleChange1 = (event: React.ChangeEvent<HTMLInputElement>) => {
+    args.onChange && args.onChange(event, checked1);
+    setChecked1((prev) => !prev);
+  };
+
+  const handleChange2 = (event: React.ChangeEvent<HTMLInputElement>) => {
+    args.onChange && args.onChange(event, checked2);
+    setChecked2((prev) => !prev);
+  };
 
   return (
     <Box sx={{ display: "flex", gap: 4 }}>
       <FormControlLabel
         control={
-          <Checkbox
-            {...args}
-            defaultChecked
-            checked={true}
-            onChange={(event) => {
-              args.onChange && args.onChange(event, checked);
-              setChecked((prev) => !prev);
-            }}
-          />
-        }
-        label="Label"
-      />
-      <FormControlLabel
-        control={
-          <Checkbox
-            {...args}
-            checked={checked}
-            onChange={(event) => {
-              args.onChange && args.onChange(event, checked);
-              setChecked((prev) => !prev);
-            }}
-          />
+          <Checkbox {...args} checked={checked1} onChange={handleChange1} />
         }
         label="Label"
       />
@@ -143,14 +134,11 @@ const LabelTemplate: StoryFn<typeof Checkbox> = (args) => {
           <Checkbox
             {...args}
             disabled
-            checked={checked}
-            onChange={(event) => {
-              args.onChange && args.onChange(event, checked);
-              setChecked((prev) => !prev);
-            }}
+            checked={checked2}
+            onChange={handleChange2}
           />
         }
-        label="Label"
+        label="Disabled Label"
       />
     </Box>
   );
