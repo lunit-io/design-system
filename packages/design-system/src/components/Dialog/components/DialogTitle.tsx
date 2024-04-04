@@ -48,7 +48,6 @@ export function DialogTitle(props: DialogTitleProps) {
       {onClose && (
         <Button
           id="dialog-title-close-button"
-          className="light2"
           data-testid="dialog-title-close-button"
           kind="ghost"
           color="secondary"
