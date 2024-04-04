@@ -43,13 +43,15 @@ function ErrorIcon(props: SvgIconProps) {
 
 export const PassiveModal: Story = {
   name: "Type: passive modal",
-  render: function PassiveModalRender() {
+  render: function PassiveModalRender(_Story, context) {
+    const classNameFromGlobal = context.globals.theme;
     const [target, setTarget] = useState<HTMLDivElement | null>(null);
 
     return (
       <div style={{ width: "100vw", height: "100vh" }}>
         <div ref={(ref) => setTarget(ref)} />
         <Dialog
+          className={classNameFromGlobal}
           isOpen={Boolean(target)}
           onClose={close}
           modalType="passive"
@@ -68,13 +70,15 @@ export const PassiveModal: Story = {
 
 export const ActionModal: Story = {
   name: "Type: action modal",
-  render: function ActionModalRender() {
+  render: function ActionModalRender(_Story, context) {
+    const classNameFromGlobal = context.globals.theme;
     const [target, setTarget] = useState<HTMLDivElement | null>(null);
 
     return (
       <div style={{ width: "100vw", height: "100vh" }}>
         <div ref={(ref) => setTarget(ref)} />
         <Dialog
+          className={classNameFromGlobal}
           isOpen={Boolean(target)}
           onClose={close}
           isSmall
@@ -86,7 +90,6 @@ export const ActionModal: Story = {
                 color="secondary"
                 size="medium"
                 onClick={close}
-                className="light2"
               >
                 Cancel
               </Button>
@@ -109,7 +112,8 @@ export const ActionModal: Story = {
 
 export const NonModal: Story = {
   name: "Type: non modal",
-  render: function NonModalRender() {
+  render: function NonModalRender(_Story, context) {
+    const classNameFromGlobal = context.globals.theme;
     const { isOpen, open, close } = useDialog();
 
     return (
@@ -124,6 +128,7 @@ export const NonModal: Story = {
         </Box>
 
         <Dialog
+          className={classNameFromGlobal}
           isOpen={isOpen}
           isSmall
           onClose={close}
@@ -134,7 +139,6 @@ export const NonModal: Story = {
                 color="secondary"
                 size="medium"
                 onClick={close}
-                className="light2"
               >
                 Cancel
               </Button>
@@ -157,13 +161,19 @@ export const NonModal: Story = {
 
 export const SmallFalse: Story = {
   name: "Option: small false",
-  render: function SmallFalseRender() {
+  render: function SmallFalseRender(_Story, context) {
+    const classNameFromGlobal = context.globals.theme;
     const [target, setTarget] = useState<HTMLDivElement | null>(null);
 
     return (
       <div style={{ width: "100vw", height: "100vh" }}>
         <div ref={(ref) => setTarget(ref)} />
-        <Dialog isOpen={Boolean(target)} modalType="passive" onClose={close}>
+        <Dialog
+          className={classNameFromGlobal}
+          isOpen={Boolean(target)}
+          modalType="passive"
+          onClose={close}
+        >
           <DialogTitle title="Title area" onClose={close} />
           <DialogContent>
             Lorem Ipsum is simply dummy text of the a printing and typesetting
@@ -177,13 +187,15 @@ export const SmallFalse: Story = {
 
 export const WithTitleIcon: Story = {
   name: "Option: title icon",
-  render: function WithTitleIconRender() {
+  render: function WithTitleIconRender(_Story, context) {
+    const classNameFromGlobal = context.globals.theme;
     const [target, setTarget] = useState<HTMLDivElement | null>(null);
 
     return (
       <div style={{ width: "100vw", height: "100vh" }}>
         <div ref={(ref) => setTarget(ref)} />
         <Dialog
+          className={classNameFromGlobal}
           isOpen={Boolean(target)}
           isSmall
           modalType="action"
@@ -195,7 +207,6 @@ export const WithTitleIcon: Story = {
                 color="secondary"
                 size="medium"
                 onClick={close}
-                className="light2"
               >
                 Cancel
               </Button>
@@ -223,13 +234,15 @@ export const WithTitleIcon: Story = {
 
 export const WithCustomStyle: Story = {
   name: "Option: custom style",
-  render: function WithCustomStyleRender() {
+  render: function WithCustomStyleRender(_Story, context) {
+    const classNameFromGlobal = context.globals.theme;
     const [target, setTarget] = useState<HTMLDivElement | null>(null);
 
     return (
       <div style={{ width: "100vw", height: "100vh" }}>
         <div ref={(ref) => setTarget(ref)} />
         <Dialog
+          className={classNameFromGlobal}
           isOpen={Boolean(target)}
           isSmall
           modalType="passive"
@@ -255,13 +268,15 @@ export const WithCustomStyle: Story = {
 
 export const WithScroll: Story = {
   name: "Option: with scroll",
-  render: function WithScrollRender() {
+  render: function WithScrollRender(_Story, context) {
+    const classNameFromGlobal = context.globals.theme;
     const [target, setTarget] = useState<HTMLDivElement | null>(null);
 
     return (
       <div style={{ width: "100vw", height: "100vh" }}>
         <div ref={(ref) => setTarget(ref)} />
         <Dialog
+          className={classNameFromGlobal}
           isOpen={Boolean(target)}
           isSmall
           modalType="action"
@@ -273,7 +288,6 @@ export const WithScroll: Story = {
                 color="secondary"
                 size="medium"
                 onClick={close}
-                className="light2"
               >
                 Cancel
               </Button>
