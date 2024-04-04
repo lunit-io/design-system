@@ -95,8 +95,8 @@ export const StyledDialog = styled("div")<DialogStyle>(
     flexDirection: "column",
     boxSizing: "border-box",
     borderRadius: "10px",
-    backgroundColor: theme.palette.common.white,
-    color: theme.palette.text.primary,
+    backgroundColor: theme.palette.lunit_token.core.bg_03,
+    color: theme.palette.lunit_token.core.text_normal,
 
     ...DIALOG_WRAPPER_STYLE[isSmall ? "small" : "medium"],
     ...DIALOG_WRAPPER_STYLE[modalType ? "modal" : "nonModal"],
