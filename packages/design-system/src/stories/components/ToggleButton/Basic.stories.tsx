@@ -400,54 +400,64 @@ export const SizeDocs = {
 };
 
 const ColorTemplate: StoryFn<typeof ToggleButton> = (args) => {
+  const [contained, setContained] = useState("");
+  const [outlined, setOutlined] = useState("");
+  const [ghost, setGhost] = useState("");
+
   return (
     <Box sx={{ display: "flex", flexDirection: "column" }}>
-      <Box
+      <ToggleButtonGroup
         sx={{
           "& button": {
             marginRight: 2,
           },
         }}
+        value={contained}
+        onChange={(_, value) => setContained(value)}
       >
         <ToggleButton {...args} value="first" kind="contained" color="primary">
           Primary
         </ToggleButton>
         <ToggleButton
           {...args}
-          value="first"
+          value="second"
           kind="contained"
           color="secondary"
         >
           Secondary
         </ToggleButton>
-      </Box>
-      <Box
+      </ToggleButtonGroup>
+      <ToggleButtonGroup
         sx={{
           marginTop: 4,
           "& button": {
             marginRight: 2,
           },
         }}
+        value={outlined}
+        onChange={(_, value) => setOutlined(value)}
       >
         <ToggleButton {...args} value="first" kind="outlined" color="primary">
           Primary
         </ToggleButton>
-      </Box>
-      <Box
+      </ToggleButtonGroup>
+      <ToggleButtonGroup
         sx={{
           marginTop: 4,
           "& button": {
             marginRight: 2,
           },
         }}
+        value={ghost}
+        onChange={(_, value) => setGhost(value)}
       >
         <ToggleButton {...args} value="first" kind="ghost" color="primary">
           Primary
         </ToggleButton>
-        <ToggleButton {...args} value="first" kind="ghost" color="secondary">
+        <ToggleButton {...args} value="second" kind="ghost" color="secondary">
           Secondary
         </ToggleButton>
-      </Box>
+      </ToggleButtonGroup>
     </Box>
   );
 };
