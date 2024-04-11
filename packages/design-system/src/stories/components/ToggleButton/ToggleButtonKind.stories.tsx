@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {
+  Box,
   Table,
   TableHead,
   TableRow,
@@ -233,6 +234,70 @@ export const Kind = {
         type: "radio",
       },
     },
+  },
+};
+
+const ToggleButtonDocsTemplate: StoryFn<typeof ToggleButton> = ({
+  kind,
+  color,
+  children,
+  ...restProps
+}) => {
+  const [values, setValues] = useState({
+    contained: false,
+    outlined: false,
+    ghost: false,
+  });
+
+  const handleChange = (value: keyof typeof values) => {
+    setValues({ ...values, [value]: !values[value] });
+  };
+
+  return (
+    <Box
+      sx={{
+        "& button": {
+          marginRight: "7px",
+        },
+      }}
+    >
+      <ToggleButton
+        color={color}
+        {...restProps}
+        value="contained"
+        onChange={() => handleChange("contained")}
+        selected={values.contained}
+      >
+        {children}
+      </ToggleButton>
+      <ToggleButton
+        kind="outlined"
+        color="primary"
+        {...restProps}
+        value="outlined"
+        onChange={() => handleChange("outlined")}
+        selected={values.outlined}
+      >
+        {children}
+      </ToggleButton>
+      <ToggleButton
+        kind="ghost"
+        color={color}
+        {...restProps}
+        value="ghost"
+        onChange={() => handleChange("ghost")}
+        selected={values.ghost}
+      >
+        {children}
+      </ToggleButton>
+    </Box>
+  );
+};
+
+export const KindDocs = {
+  render: ToggleButtonDocsTemplate,
+  parameters: {
+    chromatic: { disableSnapshot: true },
   },
 };
 
