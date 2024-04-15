@@ -9,7 +9,7 @@ import type { SxProps } from "@mui/material/styles";
 export interface DialogPropsBase {
   isOpen: boolean;
   isSmall?: boolean;
-  modalType?: "passive" | "action";
+  modalType: "passive" | "action" | "nonModal";
   onClose(): void;
   children: React.ReactNode;
   sx?: SxProps;
@@ -31,7 +31,7 @@ export interface ActionModalProps extends DialogPropsBase {
 export type ModalProps = PassiveModalProps | ActionModalProps;
 
 export interface NonModalProps extends DialogPropsBase {
-  modalType?: undefined;
+  modalType: "nonModal";
   actions: React.ReactNode;
 }
 
@@ -40,7 +40,7 @@ export type DialogProps = ModalProps | NonModalProps;
 function Dialog(props: DialogProps) {
   const { isOpen, modalType, onClose } = props;
 
-  const nonModal = !modalType;
+  const nonModal = modalType === "nonModal";
   const isActionModal = modalType === "action";
   const isPassiveModal = modalType === "passive";
 
