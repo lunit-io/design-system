@@ -9,7 +9,6 @@ export { default as DataTable } from "./components/DataTable";
 export { default as DatePicker } from "./components/DatePicker";
 export { default as Dropdown } from "./components/Dropdown";
 export { default as FormLabel } from "./components/FormLabel";
-export { default as Modal } from "./components/Modal";
 export { default as Radio } from "./components/Radio";
 export { default as RadioGroup } from "./components/RadioGroup";
 export { default as TextField } from "./components/TextField";
