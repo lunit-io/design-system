@@ -99,7 +99,7 @@ export const StyledDialog = styled("div")<DialogStyle>(
     color: theme.palette.lunit_token.core.text_normal,
 
     ...DIALOG_WRAPPER_STYLE[isSmall ? "small" : "medium"],
-    ...DIALOG_WRAPPER_STYLE[modalType ? "modal" : "nonModal"],
+    ...DIALOG_WRAPPER_STYLE[modalType === "nonModal" ? "nonModal" : "modal"],
 
     "& #dialog-title": {
       ...DIALOG_TITLE_STYLE[isSmall ? "small" : "medium"],
