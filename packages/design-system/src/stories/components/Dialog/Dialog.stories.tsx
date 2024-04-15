@@ -3,12 +3,7 @@ import { Box, SvgIcon } from "@mui/material";
 
 import Button from "../../../components/Button";
 
-import {
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  useDialog,
-} from "../../../components/Dialog";
+import { Dialog, DialogTitle, DialogContent } from "../../../components/Dialog";
 
 import type { Meta, StoryObj } from "@storybook/react";
 import type { SvgIconProps } from "@mui/material";
@@ -114,7 +109,10 @@ export const NonModal: Story = {
   name: "Type: non modal",
   render: function NonModalRender(_Story, context) {
     const classNameFromGlobal = context.globals.theme;
-    const { isOpen, open, close } = useDialog();
+    const [isOpen, setIsOpen] = useState(false);
+    function open() {
+      setIsOpen(true);
+    }
 
     return (
       <>
