@@ -10,18 +10,18 @@ import * as TokenInComponentStories from "./Token.inComponent.stories";
 <Meta of={ColorsStories} />
 
 # Color System & Token
-> _To make it easier to understand the system, we provide explanations in both Korean and English within the Color System document._  
+> _For the color documents, we provide both Korean and English to ensure understanding of our unique color system and tokens._  
 > _시스템의 이해를 돕기 위해 Color System 문서만 한국어와 영어를 병기하여 설명합니다._
 
-In the Lunit design system, we pre-configure a color palette to ensure consistent use of colors.  
-We tokenize this palette to make it easy for developers to apply to components or pages.  
-_루닛 디자인 시스템에서는 일관된 색상 사용을 위해 미리 색상 팔레트를 구성하고, 이를 컴포넌트나 페이지에 쉽게 적용할 수 있도록 토큰화하여 제공한다._
+The Lunit Design System defines a color palette to ensure explicit and consistent color usage.  
+Pre-configured palettes are provided in token form, allowing for easy application within components or pages.  
+_루닛 디자인 시스템은 명시적이고 일관된 색상 사용을 보장하기 위해 색상 팔레트를 정의한다.  
+사전 구성된 팔레트는 토큰 형태로 제공되므로 컴포넌트나 페이지 단에서 쉽게 적용 가능하다._
 
 
 ## Structure of Color system
 The color system in Lunit is structured as follows.    
 _루닛의 색상 시스템은 다음과 같은 구조로 이루어져 있다._  
-- **색상 코드 값** (ex: hex, rgb값) → **Global Palette** (ex: Red10, Blue40..) → **Token** (ex: bg_01, btn_text_primary)
 
 <ColorSystem />
 
@@ -29,9 +29,9 @@ _루닛의 색상 시스템은 다음과 같은 구조로 이루어져 있다._
 
 > [Global Palette Color의 종류(link)](?path=/story/foundation-colors--global-colors)
 - A collection of colors organized by type and shade to be used within the AK design system.  
-  _루닛 디자인 시스템 안에서 사용할 색상을 종류와 음영으로 분류해 구성한 색상의 모음._  
-- Within the Lunit design system, colors are only utilized from this palette, and colors outside of the palette are preferably avoided.  
-  _루닛 디자인 시스템에서는 이 팔레트 안에서만 색을 이용하고, 팔레트 이외의 색상은 가급적 사용하지 않는다._  
+  _루닛 디자인 시스템 안에서 사용할 색상을 종류와 밝기로 분류해 구성한 색상의 모음._  
+- The components and foundations provided by the lunit design system only utilize colors from this palette.  
+  _루닛 디자인 시스템에서 제공하는 컴포넌트와 파운데이션은 이 팔레트의 색상만을 이용하고 있다._  
 - Each item in the Global Palette corresponds 1:1 with a color code (hex value).  
   _Global Palette의 각 항목은 색상 코드(hex값)와 1:1 대응한다._  
 - Color Tokens are linked to these values in the Global Palette.  
@@ -42,14 +42,14 @@ _루닛의 색상 시스템은 다음과 같은 구조로 이루어져 있다._
 > [Core token의 종류(link)](?path=/story/foundation-colors--core-tokens) <br />
 > [Component token의 종류(link)](?path=/story/foundation-colors--component-tokens)
 
-- **Core Token**: Color tokens used universally in UI elements such as background and text colors.  
+- **Core Token**: These are color tokens universally used in UI elements, including background and text colors.  
   _**Core Token** : background, text 색상과 같이 범용적으로 적용되는 UI 에서 사용하는 컬러 토큰_  
-- **Component Token**: Color tokens used specifically within certain components like buttons and chips.  
+- **Component Token**: These are color tokens specifically utilized for certain components, such as buttons and chips.  
  _**Component Token** : button, chip 등과 같이 특정 컴포넌트 안에서만 사용하는 컬러 토큰_  
 - It is recommended to use **Color Tokens** instead of color codes or Global Colors.  
   _색상 코드나 Global Color 대신 **Color Token** 을 이용하는 것 을 권장한다._  
 - Color Tokens have colors for four themes (Light1,2, Dark1,2), and the theme **is determined by the Base Wrapper surrounding the respective component**.  
-  _Color Token은 4가지 테마(Light1,2, Dark1,2) 별 색상을 가지고 있고, **해당 컴포넌트를 둘러싸고 있는 Base Wrapper** 에 의해 테마가 결정된다._  
+  _Color Token은 4가지 테마(Light1,2, Dark1,2) 별 색상을 가지고 있고, **해당 컴포넌트를 둘러싸고 있는 Base Wrapper[Base Wrapper](#what-is-base-wrapper)** 에 의해 테마가 결정된다._  
 
 ## What is Base Wrapper?
 - The wrapper that assigns themes to color tokens is also known as the Base Layer.  
