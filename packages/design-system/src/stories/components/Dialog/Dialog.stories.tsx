@@ -94,7 +94,7 @@ export const ActionModal: Story = {
             </>
           }
         >
-          <DialogTitle title="Title area" onClose={close} />
+          <DialogTitle title="Title area" />
           <DialogContent>
             Lorem Ipsum is simply dummy text of the a printing and typesetting
             industry
@@ -112,6 +112,10 @@ export const NonModal: Story = {
     const [isOpen, setIsOpen] = useState(false);
     function open() {
       setIsOpen(true);
+    }
+
+    function close() {
+      setIsOpen(false);
     }
 
     return (
@@ -146,7 +150,7 @@ export const NonModal: Story = {
             </>
           }
         >
-          <DialogTitle title="Title area" onClose={close} />
+          <DialogTitle title="Title area" />
           <DialogContent>
             Lorem Ipsum is simply dummy text of the a printing and typesetting
             industry
