@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.4.0] - 2024-04-18
+
+### Added
+
+- Link
+- HintT1
+- HintT2
+
 ## [1.3.2] - 2024-01-22
 
 ### Fixed
