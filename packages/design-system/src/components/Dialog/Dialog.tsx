@@ -22,7 +22,7 @@ export interface DialogBase {
   titleIcon?: React.ReactNode;
   titleVariant?: TypographyProps["variant"];
   children: React.ReactNode;
-  isModal?: boolean; // default true
+  nonModal?: boolean; // default false
   isSmall?: boolean; // default true
   sx?: SxProps;
   style?: React.CSSProperties;
@@ -49,18 +49,18 @@ export interface ActionDialogType extends DialogTypeBase {
 }
 
 export interface PassiveModalProps extends PassiveDialogType {
-  isModal?: true;
+  NonModal?: false;
 }
 export interface ActionModalProps extends ActionDialogType {
-  isModal?: true;
+  NonModal?: false;
 }
 export type ModalProps = PassiveModalProps | ActionModalProps;
 
 export interface PassiveNonModalProps extends PassiveDialogType {
-  isModal?: false;
+  NonModal?: true;
 }
 export interface ActionNonModalProps extends ActionDialogType {
-  isModal?: false;
+  NonModal?: true;
   enableBackdropClose?: false;
 }
 export type NonModalProps = PassiveNonModalProps | ActionNonModalProps;
@@ -68,11 +68,11 @@ export type NonModalProps = PassiveNonModalProps | ActionNonModalProps;
 export type DialogProps = ModalProps | NonModalProps;
 
 function Dialog(props: DialogProps) {
-  const { isOpen, type, isModal = true, onClose } = props;
+  const { isOpen, type, nonModal = false, onClose } = props;
 
-  const isActionModal = type === "action" && isModal;
-  const isPassiveModal = type === "passive" && isModal;
-  const isActionNonModal = type === "action" && !isModal;
+  const isActionModal = type === "action" && !nonModal;
+  const isPassiveModal = type === "passive" && !nonModal;
+  const isActionNonModal = type === "action" && nonModal;
 
   function handleBackdropClose(e: React.MouseEvent<HTMLDivElement>) {
     const isClosable =
@@ -111,7 +111,7 @@ function Dialog(props: DialogProps) {
 
   if (!isOpen) return null;
   return createPortal(
-    !isModal ? (
+    nonModal ? (
       <DialogBase dialogProps={{ ...props }} />
     ) : (
       <StyledBackdrop
@@ -128,7 +128,7 @@ function Dialog(props: DialogProps) {
 
 function DialogBase({ dialogProps }: { dialogProps: DialogTypeBase }) {
   const {
-    isModal = true,
+    nonModal = false,
     onClose,
     title,
     titleIcon,
@@ -147,7 +147,7 @@ function DialogBase({ dialogProps }: { dialogProps: DialogTypeBase }) {
       role="dialog"
       aria-labelledby="dialog-title"
       isSmall={isSmall}
-      isModal={isModal}
+      nonModal={nonModal}
       type={type}
       sx={{
         ...sx,

@@ -120,7 +120,7 @@ export const NonModal: Story = {
         <Dialog
           className={classNameFromGlobal}
           isOpen={isOpen}
-          isModal={false}
+          nonModal
           type="action"
           isSmall
           onClose={close}

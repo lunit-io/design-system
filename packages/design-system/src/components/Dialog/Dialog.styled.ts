@@ -7,7 +7,7 @@ export interface DialogElementStyle {
   [key: string]: CSSObject;
 }
 
-export type DialogStyle = Pick<DialogTypeBase, "isSmall" | "type" | "isModal">;
+export type DialogStyle = Pick<DialogTypeBase, "isSmall" | "type" | "nonModal">;
 
 const DIALOG_WRAPPER_STYLE: DialogElementStyle = {
   small: {
@@ -88,7 +88,7 @@ export const StyledBackdrop = styled("div")({
 });
 
 export const StyledDialog = styled("div")<DialogStyle>(
-  ({ theme, isSmall, isModal, type }) => ({
+  ({ theme, isSmall, nonModal, type }) => ({
     zIndex: 1001,
     maxHeight: "80vh",
     display: "flex",
@@ -99,7 +99,7 @@ export const StyledDialog = styled("div")<DialogStyle>(
     color: theme.palette.lunit_token.core.text_normal,
 
     ...DIALOG_WRAPPER_STYLE[isSmall ? "small" : "medium"],
-    ...DIALOG_WRAPPER_STYLE[isModal ? "modal" : "nonModal"],
+    ...DIALOG_WRAPPER_STYLE[nonModal ? "nonModal" : "modal"],
 
     "& #dialog-title": {
       ...DIALOG_TITLE_STYLE[isSmall ? "small" : "medium"],
