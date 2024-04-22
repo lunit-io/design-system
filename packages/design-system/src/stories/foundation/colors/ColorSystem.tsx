@@ -31,7 +31,7 @@ const ColorSystem = () => {
           }}
         >
           <BlockBox>
-            <Box>색상 코드 값</Box>
+            <Box>Color Hex Value</Box>
             <ColorBox bgcolor="#FFFFFF">#FFFFFF</ColorBox>
             <ColorBox bgcolor="#00C9EA">#00C9EA</ColorBox>
             <ColorBox bgcolor="#FFB3B8">#FFB3B8</ColorBox>
