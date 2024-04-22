@@ -27,7 +27,7 @@ _루닛의 색상 시스템은 다음과 같은 구조로 이루어져 있다._
 
 ### Global Palette Color
 
-> [Global Palette Color의 종류(link)](?path=/story/foundation-colors--global-colors)
+> [Browse all the Global Palette Colors(link)](?path=/story/foundation-colors--global-colors)
 - A collection of colors organized by type and shade to be used within the AK design system.  
   _루닛 디자인 시스템 안에서 사용할 색상을 종류와 밝기로 분류해 구성한 색상의 모음._  
 - The components and foundations provided by the lunit design system only utilize colors from this palette.  
@@ -39,8 +39,8 @@ _루닛의 색상 시스템은 다음과 같은 구조로 이루어져 있다._
 
 ### Color Token
 
-> [Core token의 종류(link)](?path=/story/foundation-colors--core-tokens) <br />
-> [Component token의 종류(link)](?path=/story/foundation-colors--component-tokens)
+> [Browse all the Core tokens(link)](?path=/story/foundation-colors--core-tokens) <br />
+> [Browse all the Component tokens(link)](?path=/story/foundation-colors--component-tokens)
 
 - **Core Token**: These are color tokens universally used in UI elements, including background and text colors.  
   _**Core Token** : background, text 색상과 같이 범용적으로 적용되는 UI 에서 사용하는 컬러 토큰_  
@@ -48,44 +48,60 @@ _루닛의 색상 시스템은 다음과 같은 구조로 이루어져 있다._
  _**Component Token** : button, chip 등과 같이 특정 컴포넌트 안에서만 사용하는 컬러 토큰_  
 - It is recommended to use **Color Tokens** instead of color codes or Global Colors.  
   _색상 코드나 Global Color 대신 **Color Token** 을 이용하는 것 을 권장한다._  
-- Color Tokens have colors for four themes (Light1,2, Dark1,2), and the theme **is determined by the Base Wrapper surrounding the respective component**.  
-  _Color Token은 4가지 테마(Light1,2, Dark1,2) 별 색상을 가지고 있고, **해당 컴포넌트를 둘러싸고 있는 Base Wrapper[Base Wrapper](#what-is-base-wrapper)** 에 의해 테마가 결정된다._  
+- Color Tokens have colors for four themes (Light1, 2, Dark1, 2). Themes can be set using the className of the component itself or the parent element surrounding it.  
+  _Color Token은 4가지 테마(Light1,2, Dark1,2) 별 색상을 가지고 있다. 테마는 해당 컴포넌트, 혹은 컴포넌트를 둘러싸고 있는 부모 엘리먼트의 className을 이용해 설정할 수 있다._  
 
-## What is Base Wrapper?
-- The wrapper that assigns themes to color tokens is also known as the Base Layer.  
-  _Color token에 테마를 부여해주는 wrapper로, Base Layer 라고도 부른다._  
-- Setting the Base Wrapper involves **adding the theme name to the component's className**.  
-  _Base Wrapper 설정은 **컴포넌트 className에 테마 이름을 추가하는 방식** 으로 이루어진다._  
-  - ex) `<div className='light1'>`, `<Box className='dark2'>`
+## How to set themes
 - Types of themes: light1, light2, dark1, dark2  
   _테마의 종류 : light1, light2, dark1, dark2_  
-- Color tokens apply colors corresponding to the theme set in the Base Wrapper.  
-  _Color token은 Base Wrapper에서 설정한 테마에 해당하는 색이 적용된다._  
-- If no Base Wrapper is set, Color Tokens default to the Dark1 theme.  
-  _Base Wrapper를 설정하지 않으면, Color Token은 기본적으로 Dark1 테마가 적용된다._  
-- When Base Wrappers are nested, Color Tokens follow the theme of **the immediate parent** Wrapper.  
-  _Base Wrapper가 중첩되었을 때 Color Token은 **바로 상위 부모** Wrapper의 테마를 따른다._  
+- The method to set themes : To assign a theme, add the theme name to the className of either the component you want to style or its surrounding parent element.  
+  _테마를 설정하는 방법 : 테마를 부여하고 싶은 컴포넌트나 해당 컴포넌트를 둘러싸고 있는 부모 엘리먼트의 className에 테마 이름을 추가한다._  
   - ex)        
-    ```jsx
-      <div className='light1'>
-        <div className='dark1'>
-          <Button 
-            sx={{
-              backgroundColor: (theme) => 
-                theme.palette.lunit_token.component.btn_primary_bg
-                // Due to the theme of the immediate parent being dark1, 
-                // the color of btn_primary_bg here will be applied as the dark1 theme color.
-                // 바로 상위 부모의 테마가 dark1이기 때문에, 이 곳의 btn_primary_bg 색상은 dark1 테마 색상이 적용됨
-            }}
-          /> 
-        </div>
-      </div>  
-    ```  
+  ```jsx
+    <div className='light1'>
+      <Button 
+        sx={{
+          backgroundColor: (theme) => 
+            theme.palette.lunit_token.component.btn_primary_bg // light1 theme color
+        }}
+      /> 
+    </div>  
+    <div className='dark2'>
+      <Button 
+        sx={{
+          backgroundColor: (theme) => 
+            theme.palette.lunit_token.component.btn_primary_bg // dark2 theme color
+        }}
+      /> 
+    </div>  
+  ```  
+- If no theme is set, Color Tokens default to the Dark1 theme.  
+  _테마를 설정하지 않으면, Color Token은 기본적으로 Dark1 테마가 적용된다._  
+- When themes are nested, Color Tokens follow the theme set at the closest level.  
+  _테마 설정이 중첩되었을 때 Color Token은 가장 가까운 위치에서 설정한 테마를 따른다._  
+  - ex)        
+  ```jsx
+    <div className='light1'>
+      <div className='dark1'>
+        <Button 
+          sx={{
+            backgroundColor: (theme) => 
+              theme.palette.lunit_token.component.btn_primary_bg
+              // Since the closest theme set is dark1, 
+              // the color of btn_primary_bg here will be applied as the dark1 theme color.
+              // 가장 가까운 곳에서 설정된 테마가 dark1이기 때문에, 이 곳의 btn_primary_bg 색상은 dark1 테마 색상이 적용됨
+          }}
+        /> 
+      </div>
+    </div>  
+  ```  
+
+
 
 ## Usage
-The components in the Lunit design system are already developed using Color Tokens. If no custom styling is needed, you just need to set the base wrapper around the component.  
+The components in the Lunit design system are already developed using Color Tokens. If no custom styling is needed, simply set the theme to be used in the component.
 Color Tokens are implemented based on the MUI theme, so the usage is similar to utilizing the MUI theme.  
-_루닛 디자인 시스템의 컴포넌트는 이미 Color Token을 이용해 개발되어 있다. 따로 스타일 커스텀이 필요없다면 컴포넌트를 감싸는 base wrapper만 설정하면 된다._  
+_루닛 디자인 시스템의 컴포넌트는 이미 Color Token을 이용해 개발되어 있다. 따로 스타일 커스텀이 필요없다면 컴포넌트에서 사용할 테마만 설정하면 된다._  
 _Color Token은 MUI theme 기반으로 구현되어, 사용법도 MUI theme를 이용하는 방식과 비슷하다._  
 
 ### With Styled Components
