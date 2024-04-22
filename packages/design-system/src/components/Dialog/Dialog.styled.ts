@@ -1,13 +1,13 @@
 import { styled } from "@mui/material/styles";
 
-import type { DialogPropsBase } from "./Dialog";
+import type { DialogTypeBase } from "./Dialog";
 import type { CSSObject } from "@mui/material/styles";
 
 export interface DialogElementStyle {
   [key: string]: CSSObject;
 }
 
-export type DialogStyle = Pick<DialogPropsBase, "isSmall" | "modalType">;
+export type DialogStyle = Pick<DialogTypeBase, "isSmall" | "type" | "isModal">;
 
 const DIALOG_WRAPPER_STYLE: DialogElementStyle = {
   small: {
@@ -88,7 +88,7 @@ export const StyledBackdrop = styled("div")({
 });
 
 export const StyledDialog = styled("div")<DialogStyle>(
-  ({ theme, isSmall, modalType }) => ({
+  ({ theme, isSmall, isModal, type }) => ({
     zIndex: 1001,
     maxHeight: "80vh",
     display: "flex",
@@ -99,7 +99,7 @@ export const StyledDialog = styled("div")<DialogStyle>(
     color: theme.palette.lunit_token.core.text_normal,
 
     ...DIALOG_WRAPPER_STYLE[isSmall ? "small" : "medium"],
-    ...DIALOG_WRAPPER_STYLE[modalType === "nonModal" ? "nonModal" : "modal"],
+    ...DIALOG_WRAPPER_STYLE[isModal ? "modal" : "nonModal"],
 
     "& #dialog-title": {
       ...DIALOG_TITLE_STYLE[isSmall ? "small" : "medium"],
@@ -107,11 +107,11 @@ export const StyledDialog = styled("div")<DialogStyle>(
 
     "& #dialog-content": {
       ...DIALOG_CONTENT_STYLE[
-        isSmall && modalType !== "passive"
+        isSmall && type !== "passive"
           ? "smallAction"
           : isSmall
           ? "small"
-          : !isSmall && modalType !== "passive"
+          : !isSmall && type !== "passive"
           ? "mediumAction"
           : "medium"
       ],
@@ -139,3 +139,21 @@ export const StyledDialog = styled("div")<DialogStyle>(
     },
   })
 );
+
+export const StyledDialogTitle = styled("header")({
+  display: "flex",
+  width: "100%",
+  flex: "0 0 auto",
+  alignItems: "center",
+  justifyContent: "flex-start",
+  gap: "8px",
+});
+
+export const StyledDialogTitleIconWrapper = styled("div")({
+  display: "flex",
+  justifyContent: "center",
+  width: "20px",
+  height: "20px",
+  position: "relative",
+  marginBottom: "1px",
+});

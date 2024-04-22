@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import { Box, SvgIcon } from "@mui/material";
+import { Box } from "@mui/material";
+import Error from "@lunit/design-system-icons/Error";
 
 import Button from "../../../components/Button";
 
-import { Dialog, DialogTitle, DialogContent } from "../../../components/Dialog";
+import { Dialog, DialogContent } from "../../../components/Dialog";
 
 import type { Meta, StoryObj } from "@storybook/react";
-import type { SvgIconProps } from "@mui/material";
+import { variants } from "../../foundation/Typography/const";
 
 const meta: Meta<typeof Dialog> = {
   title: "components/Dialog",
@@ -23,19 +24,6 @@ const meta: Meta<typeof Dialog> = {
 export default meta;
 type Story = StoryObj<typeof Dialog>;
 
-function ErrorIcon(props: SvgIconProps) {
-  return (
-    <SvgIcon {...props}>
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M8.69511 0.760553C9.26962 -0.253521 10.7304 -0.253515 11.3049 0.760555L19.8029 15.7604C20.3694 16.7604 19.6472 18 18.498 18H1.50202C0.352832 18 -0.369418 16.7604 0.197127 15.7604L8.69511 0.760553ZM9.99507 5.99975C10.4092 5.99975 10.745 6.33555 10.745 6.74979V11.2501C10.745 11.6643 10.4092 12.0001 9.99507 12.0001C9.5809 12.0001 9.24516 11.6643 9.24516 11.2501V6.74979C9.24516 6.33555 9.5809 5.99975 9.99507 5.99975ZM10.9919 13.9997C10.9919 14.5521 10.5442 14.9998 9.99202 14.9998C9.4398 14.9998 8.99214 14.5521 8.99214 13.9997C8.99214 13.4474 9.4398 12.9997 9.99202 12.9997C10.5442 12.9997 10.9919 13.4474 10.9919 13.9997Z"
-        fill="#FA464F"
-      />
-    </SvgIcon>
-  );
-}
-
 export const PassiveModal: Story = {
   name: "Type: passive modal",
   render: function PassiveModalRender(_Story, context) {
@@ -49,10 +37,10 @@ export const PassiveModal: Story = {
           className={classNameFromGlobal}
           isOpen={Boolean(target)}
           onClose={close}
-          modalType="passive"
+          type="passive"
+          title="Title area"
           isSmall
         >
-          <DialogTitle title="Title area" onClose={close} />
           <DialogContent>
             Lorem Ipsum is simply dummy text of the a printing and typesetting
             industry
@@ -77,7 +65,8 @@ export const ActionModal: Story = {
           isOpen={Boolean(target)}
           onClose={close}
           isSmall
-          modalType="action"
+          type="action"
+          title="Title area"
           actions={
             <>
               <Button
@@ -94,7 +83,6 @@ export const ActionModal: Story = {
             </>
           }
         >
-          <DialogTitle title="Title area" />
           <DialogContent>
             Lorem Ipsum is simply dummy text of the a printing and typesetting
             industry
@@ -131,10 +119,12 @@ export const NonModal: Story = {
 
         <Dialog
           className={classNameFromGlobal}
-          modalType="nonModal"
           isOpen={isOpen}
+          isModal={false}
+          type="action"
           isSmall
           onClose={close}
+          title="Title area"
           actions={
             <>
               <Button
@@ -151,7 +141,6 @@ export const NonModal: Story = {
             </>
           }
         >
-          <DialogTitle title="Title area" />
           <DialogContent>
             Lorem Ipsum is simply dummy text of the a printing and typesetting
             industry
@@ -174,10 +163,11 @@ export const SmallFalse: Story = {
         <Dialog
           className={classNameFromGlobal}
           isOpen={Boolean(target)}
-          modalType="passive"
+          type="passive"
           onClose={close}
+          title="Title area"
+          isSmall={false}
         >
-          <DialogTitle title="Title area" onClose={close} />
           <DialogContent>
             Lorem Ipsum is simply dummy text of the a printing and typesetting
             industry
@@ -201,8 +191,10 @@ export const WithTitleIcon: Story = {
           className={classNameFromGlobal}
           isOpen={Boolean(target)}
           isSmall
-          modalType="action"
+          type="action"
           onClose={close}
+          title="Title area"
+          titleIcon={<Error color="error" variant="filled" />}
           actions={
             <>
               <Button
@@ -224,7 +216,6 @@ export const WithTitleIcon: Story = {
             </>
           }
         >
-          <DialogTitle title="Title area" icon={<ErrorIcon />} />
           <DialogContent>
             Lorem Ipsum is simply dummy text of the a printing and typesetting
             industry
@@ -248,8 +239,9 @@ export const WithCustomStyle: Story = {
           className={classNameFromGlobal}
           isOpen={Boolean(target)}
           isSmall
-          modalType="passive"
+          type="passive"
           onClose={close}
+          title="Title area"
           sx={{
             "& .dialog-title-wrapper": {
               border: "4px dashed red",
@@ -258,7 +250,6 @@ export const WithCustomStyle: Story = {
             },
           }}
         >
-          <DialogTitle title="Title area" onClose={close} />
           <DialogContent>
             Lorem Ipsum is simply dummy text of the a printing and typesetting
             industry
@@ -282,8 +273,9 @@ export const WithScroll: Story = {
           className={classNameFromGlobal}
           isOpen={Boolean(target)}
           isSmall
-          modalType="action"
+          type="action"
           onClose={close}
+          title="Title area"
           actions={
             <>
               <Button
@@ -305,7 +297,6 @@ export const WithScroll: Story = {
             </>
           }
         >
-          <DialogTitle title="Title area" />
           <DialogContent>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis,
             suscipit at. Atque enim, hic architecto sequi libero deserunt

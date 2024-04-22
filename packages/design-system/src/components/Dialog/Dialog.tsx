@@ -1,59 +1,98 @@
 import React, { useEffect } from "react";
 import { createPortal } from "react-dom";
+import { Close } from "@lunit/design-system-icons";
 
 import { DialogAction } from "./components/DialogAction";
-import { StyledBackdrop, StyledDialog } from "./Dialog.styled";
+import {
+  StyledBackdrop,
+  StyledDialog,
+  StyledDialogTitle,
+  StyledDialogTitleIconWrapper,
+} from "./Dialog.styled";
+import Button from "../Button";
+import Typography from "../Typography";
 
 import type { SxProps } from "@mui/material/styles";
+import type { TypographyProps } from "@mui/material";
 
-export interface DialogPropsBase {
+export interface DialogBase {
   isOpen: boolean;
-  isSmall?: boolean;
-  modalType: "passive" | "action" | "nonModal";
   onClose(): void;
+  title: string;
+  titleIcon?: React.ReactNode;
+  titleVariant?: TypographyProps["variant"];
   children: React.ReactNode;
+  isModal?: boolean; // default true
+  isSmall?: boolean; // default true
   sx?: SxProps;
   style?: React.CSSProperties;
   className?: string;
 }
 
-export interface PassiveModalProps extends DialogPropsBase {
-  modalType: "passive";
-  actions?: undefined;
+export interface DialogTypeBase extends DialogBase {
+  type?: "passive" | "action"; // default passive
+  actions?: React.ReactNode;
+  enableBackButtonClose?: boolean;
+  enableBackdropClose?: boolean;
 }
-
-export interface ActionModalProps extends DialogPropsBase {
-  modalType: "action";
+export interface PassiveDialogType extends DialogTypeBase {
+  type: "passive";
+  actions?: undefined;
+  enableBackButtonClose?: true;
+  enableBackdropClose?: true;
+}
+export interface ActionDialogType extends DialogTypeBase {
+  type: "action";
   actions: React.ReactNode;
+  enableBackButtonClose?: boolean;
   enableBackdropClose?: boolean;
 }
 
+export interface PassiveModalProps extends PassiveDialogType {
+  isModal?: true;
+}
+export interface ActionModalProps extends ActionDialogType {
+  isModal?: true;
+}
 export type ModalProps = PassiveModalProps | ActionModalProps;
 
-export interface NonModalProps extends DialogPropsBase {
-  modalType: "nonModal";
-  actions: React.ReactNode;
+export interface PassiveNonModalProps extends PassiveDialogType {
+  isModal?: false;
 }
+export interface ActionNonModalProps extends ActionDialogType {
+  isModal?: false;
+  enableBackdropClose?: false;
+}
+export type NonModalProps = PassiveNonModalProps | ActionNonModalProps;
 
 export type DialogProps = ModalProps | NonModalProps;
 
 function Dialog(props: DialogProps) {
-  const { isOpen, modalType, onClose } = props;
+  const { isOpen, type, isModal = true, onClose } = props;
 
-  const nonModal = modalType === "nonModal";
-  const isActionModal = modalType === "action";
-  const isPassiveModal = modalType === "passive";
+  const isActionModal = type === "action" && isModal;
+  const isPassiveModal = type === "passive" && isModal;
+  const isActionNonModal = type === "action" && !isModal;
 
   function handleBackdropClose(e: React.MouseEvent<HTMLDivElement>) {
-    if (e.target !== e.currentTarget) return;
-    const enableBackdropClose =
+    const isClosable =
       isPassiveModal || (isActionModal && props.enableBackdropClose);
 
-    if (!enableBackdropClose) return;
+    if (!isClosable) return;
+    if (e.target !== e.currentTarget) return;
+
     onClose();
   }
 
   useEffect(() => {
+    const isClosable =
+      isOpen &&
+      (isPassiveModal ||
+        (isActionModal && props.enableBackdropClose) ||
+        (isActionNonModal && props.enableBackButtonClose));
+
+    if (!isClosable) return;
+
     function handleEscClose(event: KeyboardEvent) {
       if (event.key === "Escape") onClose();
     }
@@ -61,10 +100,9 @@ function Dialog(props: DialogProps) {
       if (event.key === "Backspace") onClose();
     }
 
-    if (isOpen && isPassiveModal) {
-      document.addEventListener("keydown", handleEscClose);
-      document.addEventListener("keydown", handleBackButtonClose);
-    }
+    document.addEventListener("keydown", handleEscClose);
+    document.addEventListener("keydown", handleBackButtonClose);
+
     return () => {
       document.removeEventListener("keydown", handleEscClose);
       document.removeEventListener("keydown", handleBackButtonClose);
@@ -73,14 +111,14 @@ function Dialog(props: DialogProps) {
 
   if (!isOpen) return null;
   return createPortal(
-    nonModal ? (
-      <DialogBase dialogProps={{ ...props, isActionModal, nonModal }} />
+    !isModal ? (
+      <DialogBase dialogProps={{ ...props }} />
     ) : (
       <StyledBackdrop
         onClick={handleBackdropClose}
         data-testid="dialog-backdrop"
       >
-        <DialogBase dialogProps={{ ...props, isActionModal, nonModal }} />
+        <DialogBase dialogProps={{ ...props }} />
       </StyledBackdrop>
     ),
 
@@ -88,22 +126,20 @@ function Dialog(props: DialogProps) {
   );
 }
 
-type BaseProps = DialogProps & {
-  isActionModal: boolean;
-  nonModal: boolean;
-};
-
-function DialogBase({ dialogProps }: { dialogProps: BaseProps }) {
+function DialogBase({ dialogProps }: { dialogProps: DialogTypeBase }) {
   const {
-    modalType,
-    isSmall = false,
+    isModal = true,
+    onClose,
+    title,
+    titleIcon,
+    titleVariant = "headline5",
     children,
     actions,
+    type,
+    isSmall = false,
     sx,
     style,
     className,
-    isActionModal,
-    nonModal,
   } = dialogProps;
 
   return (
@@ -111,17 +147,44 @@ function DialogBase({ dialogProps }: { dialogProps: BaseProps }) {
       role="dialog"
       aria-labelledby="dialog-title"
       isSmall={isSmall}
-      modalType={modalType}
+      isModal={isModal}
+      type={type}
       sx={{
         ...sx,
       }}
       style={style}
-      className={`light1 dialog ${className ?? ""}`}
+      className={`dialog ${className ?? ""}`}
     >
+      <StyledDialogTitle id="dialog-title" className="dialog-title-wrapper">
+        {titleIcon && (
+          <StyledDialogTitleIconWrapper className="dialog-title-icon">
+            {titleIcon}
+          </StyledDialogTitleIconWrapper>
+        )}
+        <Typography
+          component="h2"
+          id="dialog-title-text"
+          variant={titleVariant}
+        >
+          {title}
+        </Typography>
+        {type === "passive" && (
+          <Button
+            id="dialog-title-close-button"
+            data-testid="dialog-title-close-button"
+            kind="ghost"
+            color="secondary"
+            icon={<Close />}
+            onClick={onClose}
+            sx={{
+              marginRight: 0,
+              marginLeft: "auto",
+            }}
+          />
+        )}
+      </StyledDialogTitle>
       {children}
-      {(isActionModal || nonModal) && !!actions ? ( // TODO: Action 부분도 unmount 되는 과정이 필요할 때가 있어 dialog props 에 넣지 않고 사용하는 방법 생각해보기. 현재는 node 가 null 이 아닐 때 렌더링 되도록 조건 수정.
-        <DialogAction>{actions}</DialogAction>
-      ) : null}
+      {type === "action" ? <DialogAction>{actions}</DialogAction> : null}
     </StyledDialog>
   );
 }
