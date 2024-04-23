@@ -49,18 +49,18 @@ export interface ActionDialogType extends DialogTypeBase {
 }
 
 export interface PassiveModalProps extends PassiveDialogType {
-  NonModal?: false;
+  nonModal?: false;
 }
 export interface ActionModalProps extends ActionDialogType {
-  NonModal?: false;
+  nonModal?: false;
 }
 export type ModalProps = PassiveModalProps | ActionModalProps;
 
 export interface PassiveNonModalProps extends PassiveDialogType {
-  NonModal?: true;
+  nonModal?: true;
 }
 export interface ActionNonModalProps extends ActionDialogType {
-  NonModal?: true;
+  nonModal?: true;
   enableBackdropClose?: false;
 }
 export type NonModalProps = PassiveNonModalProps | ActionNonModalProps;
