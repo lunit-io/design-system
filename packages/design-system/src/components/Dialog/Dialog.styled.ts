@@ -157,3 +157,9 @@ export const StyledDialogTitleIconWrapper = styled("div")({
   position: "relative",
   marginBottom: "1px",
 });
+
+export const StyledDialogContent = styled("div")(({ theme }) => ({
+  ...theme.typography.body2_14_regular,
+  flex: "1 1 auto",
+  overflowY: "scroll",
+}));

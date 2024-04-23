@@ -1,5 +1,4 @@
 export { default as Dialog } from "./Dialog";
-export { default as DialogContent } from "./components/DialogContent";
 
 export type {
   DialogBase,

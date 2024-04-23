@@ -4,10 +4,9 @@ import Error from "@lunit/design-system-icons/Error";
 
 import Button from "../../../components/Button";
 
-import { Dialog, DialogContent } from "../../../components/Dialog";
+import { Dialog } from "../../../components/Dialog";
 
 import type { Meta, StoryObj } from "@storybook/react";
-import { variants } from "../../foundation/Typography/const";
 
 const meta: Meta<typeof Dialog> = {
   title: "components/Dialog",
@@ -41,10 +40,8 @@ export const PassiveModal: Story = {
           title="Title area"
           isSmall
         >
-          <DialogContent>
-            Lorem Ipsum is simply dummy text of the a printing and typesetting
-            industry
-          </DialogContent>
+          Lorem Ipsum is simply dummy text of the a printing and typesetting
+          industry
         </Dialog>
       </div>
     );
@@ -83,10 +80,8 @@ export const ActionModal: Story = {
             </>
           }
         >
-          <DialogContent>
-            Lorem Ipsum is simply dummy text of the a printing and typesetting
-            industry
-          </DialogContent>
+          Lorem Ipsum is simply dummy text of the a printing and typesetting
+          industry
         </Dialog>
       </div>
     );
@@ -141,10 +136,8 @@ export const NonModal: Story = {
             </>
           }
         >
-          <DialogContent>
-            Lorem Ipsum is simply dummy text of the a printing and typesetting
-            industry
-          </DialogContent>
+          Lorem Ipsum is simply dummy text of the a printing and typesetting
+          industry
         </Dialog>
       </>
     );
@@ -168,10 +161,8 @@ export const SmallFalse: Story = {
           title="Title area"
           isSmall={false}
         >
-          <DialogContent>
-            Lorem Ipsum is simply dummy text of the a printing and typesetting
-            industry
-          </DialogContent>
+          Lorem Ipsum is simply dummy text of the a printing and typesetting
+          industry
         </Dialog>
       </div>
     );
@@ -216,10 +207,8 @@ export const WithTitleIcon: Story = {
             </>
           }
         >
-          <DialogContent>
-            Lorem Ipsum is simply dummy text of the a printing and typesetting
-            industry
-          </DialogContent>
+          Lorem Ipsum is simply dummy text of the a printing and typesetting
+          industry
         </Dialog>
       </div>
     );
@@ -250,10 +239,8 @@ export const WithCustomStyle: Story = {
             },
           }}
         >
-          <DialogContent>
-            Lorem Ipsum is simply dummy text of the a printing and typesetting
-            industry
-          </DialogContent>
+          Lorem Ipsum is simply dummy text of the a printing and typesetting
+          industry
         </Dialog>
       </div>
     );
@@ -297,45 +284,42 @@ export const WithScroll: Story = {
             </>
           }
         >
-          <DialogContent>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis,
-            suscipit at. Atque enim, hic architecto sequi libero deserunt
-            dolores omnis, cumque dignissimos ab animi. Recusandae saepe facere
-            error tempore quasi. Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Consectetur eius commodi deserunt reiciendis.
-            Officia veniam consequuntur doloribus debitis numquam ipsum autem,
-            eos repellendus eligendi esse voluptatum natus, cum optio? Unde!
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
-            praesentium incidunt tempora quam aut nulla corrupti ipsa voluptatem
-            vitae soluta ex officia, explicabo, voluptate porro. Eius mollitia
-            veritatis corporis neque. Lorem Ipsum is simply dummy text of the a
-            printing and typesetting industry Lorem ipsum dolor sit amet
-            consectetur Lorem ipsum dolor sit amet consectetur, adipisicing
-            elit. Quis, suscipit at. Atque enim, hic architecto sequi libero
-            deserunt dolores omnis, cumque dignissimos ab animi. Recusandae
-            saepe facere error tempore quasi. Lorem ipsum dolor sit amet
-            consectetur adipisicing elit. Consectetur eius commodi deserunt
-            reiciendis. Officia veniam consequuntur doloribus debitis numquam
-            ipsum autem, eos repellendus eligendi esse voluptatum natus, cum
-            optio? Unde! Lorem ipsum dolor sit amet consectetur adipisicing
-            elit. Quibusdam praesentium incidunt tempora quam aut nulla corrupti
-            ipsa voluptatem vitae soluta ex officia, explicabo, voluptate porro.
-            Eius mollitia veritatis corporis neque. Lorem Ipsum is simply dummy
-            text of the a printing and typesetting industry Lorem ipsum dolor
-            sit amet consectetur Lorem ipsum dolor sit amet consectetur,
-            adipisicing elit. Quis, suscipit at. Atque enim, hic architecto
-            sequi libero deserunt dolores omnis, cumque dignissimos ab animi.
-            Recusandae saepe facere error tempore quasi. Lorem ipsum dolor sit
-            amet consectetur adipisicing elit. Consectetur eius commodi deserunt
-            reiciendis. Officia veniam consequuntur doloribus debitis numquam
-            ipsum autem, eos repellendus eligendi esse voluptatum natus, cum
-            optio? Unde! Lorem ipsum dolor sit amet consectetur adipisicing
-            elit. Quibusdam praesentium incidunt tempora quam aut nulla corrupti
-            ipsa voluptatem vitae soluta ex officia, explicabo, voluptate porro.
-            Eius mollitia veritatis corporis neque. Lorem Ipsum is simply dummy
-            text of the a printing and typesetting industry Lorem ipsum dolor
-            sit amet consectetur
-          </DialogContent>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis,
+          suscipit at. Atque enim, hic architecto sequi libero deserunt dolores
+          omnis, cumque dignissimos ab animi. Recusandae saepe facere error
+          tempore quasi. Lorem ipsum dolor sit amet consectetur adipisicing
+          elit. Consectetur eius commodi deserunt reiciendis. Officia veniam
+          consequuntur doloribus debitis numquam ipsum autem, eos repellendus
+          eligendi esse voluptatum natus, cum optio? Unde! Lorem ipsum dolor sit
+          amet consectetur adipisicing elit. Quibusdam praesentium incidunt
+          tempora quam aut nulla corrupti ipsa voluptatem vitae soluta ex
+          officia, explicabo, voluptate porro. Eius mollitia veritatis corporis
+          neque. Lorem Ipsum is simply dummy text of the a printing and
+          typesetting industry Lorem ipsum dolor sit amet consectetur Lorem
+          ipsum dolor sit amet consectetur, adipisicing elit. Quis, suscipit at.
+          Atque enim, hic architecto sequi libero deserunt dolores omnis, cumque
+          dignissimos ab animi. Recusandae saepe facere error tempore quasi.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur
+          eius commodi deserunt reiciendis. Officia veniam consequuntur
+          doloribus debitis numquam ipsum autem, eos repellendus eligendi esse
+          voluptatum natus, cum optio? Unde! Lorem ipsum dolor sit amet
+          consectetur adipisicing elit. Quibusdam praesentium incidunt tempora
+          quam aut nulla corrupti ipsa voluptatem vitae soluta ex officia,
+          explicabo, voluptate porro. Eius mollitia veritatis corporis neque.
+          Lorem Ipsum is simply dummy text of the a printing and typesetting
+          industry Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor sit
+          amet consectetur, adipisicing elit. Quis, suscipit at. Atque enim, hic
+          architecto sequi libero deserunt dolores omnis, cumque dignissimos ab
+          animi. Recusandae saepe facere error tempore quasi. Lorem ipsum dolor
+          sit amet consectetur adipisicing elit. Consectetur eius commodi
+          deserunt reiciendis. Officia veniam consequuntur doloribus debitis
+          numquam ipsum autem, eos repellendus eligendi esse voluptatum natus,
+          cum optio? Unde! Lorem ipsum dolor sit amet consectetur adipisicing
+          elit. Quibusdam praesentium incidunt tempora quam aut nulla corrupti
+          ipsa voluptatem vitae soluta ex officia, explicabo, voluptate porro.
+          Eius mollitia veritatis corporis neque. Lorem Ipsum is simply dummy
+          text of the a printing and typesetting industry Lorem ipsum dolor sit
+          amet consectetur
         </Dialog>
       </div>
     );

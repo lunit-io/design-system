@@ -6,6 +6,7 @@ import { DialogAction } from "./components/DialogAction";
 import {
   StyledBackdrop,
   StyledDialog,
+  StyledDialogContent,
   StyledDialogTitle,
   StyledDialogTitleIconWrapper,
 } from "./Dialog.styled";
@@ -183,7 +184,7 @@ function DialogBase({ dialogProps }: { dialogProps: DialogTypeBase }) {
           />
         )}
       </StyledDialogTitle>
-      {children}
+      <StyledDialogContent id="dialog-content">{children}</StyledDialogContent>
       {type === "action" && actions !== null ? (
         // `actions !== null` is used to not render DialogAction when actions is undefined
         // There was a case when actions is undefined, but DialogAction is rendered with null children
