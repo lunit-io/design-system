@@ -184,7 +184,11 @@ function DialogBase({ dialogProps }: { dialogProps: DialogTypeBase }) {
         )}
       </StyledDialogTitle>
       {children}
-      {type === "action" ? <DialogAction>{actions}</DialogAction> : null}
+      {type === "action" && actions !== null ? (
+        // `actions !== null` is used to not render DialogAction when actions is undefined
+        // There was a case when actions is undefined, but DialogAction is rendered with null children
+        <DialogAction>{actions}</DialogAction>
+      ) : null}
     </StyledDialog>
   );
 }
