@@ -19,30 +19,28 @@ import type { TypographyProps } from "@mui/material";
 export interface DialogBase {
   isOpen: boolean;
   onClose(): void;
+  type?: "passive" | "action"; // default passive
+  nonModal?: boolean; // default false
   title: string;
   titleIcon?: React.ReactNode;
   titleVariant?: TypographyProps["variant"];
   children: React.ReactNode;
-  nonModal?: boolean; // default false
+  actions?: React.ReactNode;
+  enableBackButtonClose?: boolean;
+  enableBackdropClose?: boolean;
   isSmall?: boolean; // default true
   sx?: SxProps;
   style?: React.CSSProperties;
   className?: string;
 }
 
-export interface DialogTypeBase extends DialogBase {
-  type?: "passive" | "action"; // default passive
-  actions?: React.ReactNode;
-  enableBackButtonClose?: boolean;
-  enableBackdropClose?: boolean;
-}
-export interface PassiveDialogType extends DialogTypeBase {
+export interface PassiveDialogType extends DialogBase {
   type: "passive";
   actions?: undefined;
   enableBackButtonClose?: true;
   enableBackdropClose?: true;
 }
-export interface ActionDialogType extends DialogTypeBase {
+export interface ActionDialogType extends DialogBase {
   type: "action";
   actions: React.ReactNode;
   enableBackButtonClose?: boolean;
@@ -127,7 +125,7 @@ function Dialog(props: DialogProps) {
   );
 }
 
-function DialogBase({ dialogProps }: { dialogProps: DialogTypeBase }) {
+function DialogBase({ dialogProps }: { dialogProps: DialogBase }) {
   const {
     nonModal = false,
     onClose,

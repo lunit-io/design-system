@@ -2,7 +2,6 @@ export { default as Dialog } from "./Dialog";
 
 export type {
   DialogBase,
-  DialogTypeBase,
   PassiveDialogType,
   ActionDialogType,
   PassiveModalProps,

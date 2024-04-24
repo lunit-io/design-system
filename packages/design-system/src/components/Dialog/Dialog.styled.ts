@@ -1,13 +1,13 @@
 import { styled } from "@mui/material/styles";
 
-import type { DialogTypeBase } from "./Dialog";
+import type { DialogBase } from "./Dialog";
 import type { CSSObject } from "@mui/material/styles";
 
 export interface DialogElementStyle {
   [key: string]: CSSObject;
 }
 
-export type DialogStyle = Pick<DialogTypeBase, "isSmall" | "type" | "nonModal">;
+export type DialogStyle = Pick<DialogBase, "isSmall" | "type" | "nonModal">;
 
 const DIALOG_WRAPPER_STYLE: DialogElementStyle = {
   small: {
