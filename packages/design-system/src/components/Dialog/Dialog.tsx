@@ -28,7 +28,7 @@ export interface DialogBase {
   actions?: React.ReactNode;
   enableBackButtonClose?: boolean;
   enableBackdropClose?: boolean;
-  isSmall?: boolean; // default true
+  size?: "small" | "medium"; // default "small"
   sx?: SxProps;
   style?: React.CSSProperties;
   className?: string;
@@ -135,7 +135,7 @@ function DialogBase({ dialogProps }: { dialogProps: DialogBase }) {
     children,
     actions,
     type,
-    isSmall = false,
+    size = "small",
     sx,
     style,
     className,
@@ -145,7 +145,7 @@ function DialogBase({ dialogProps }: { dialogProps: DialogBase }) {
     <StyledDialog
       role="dialog"
       aria-labelledby="dialog-title"
-      isSmall={isSmall}
+      size={size}
       nonModal={nonModal}
       type={type}
       sx={{

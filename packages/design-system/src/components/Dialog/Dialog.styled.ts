@@ -7,7 +7,7 @@ export interface DialogElementStyle {
   [key: string]: CSSObject;
 }
 
-export type DialogStyle = Pick<DialogBase, "isSmall" | "type" | "nonModal">;
+export type DialogStyle = Pick<DialogBase, "size" | "type" | "nonModal">;
 
 const DIALOG_WRAPPER_STYLE: DialogElementStyle = {
   small: {
@@ -88,7 +88,7 @@ export const StyledBackdrop = styled("div")({
 });
 
 export const StyledDialog = styled("div")<DialogStyle>(
-  ({ theme, isSmall, nonModal, type }) => ({
+  ({ theme, size, nonModal, type }) => ({
     zIndex: 1001,
     maxHeight: "80vh",
     display: "flex",
@@ -98,27 +98,27 @@ export const StyledDialog = styled("div")<DialogStyle>(
     backgroundColor: theme.palette.lunit_token.core.bg_03,
     color: theme.palette.lunit_token.core.text_normal,
 
-    ...DIALOG_WRAPPER_STYLE[isSmall ? "small" : "medium"],
+    ...DIALOG_WRAPPER_STYLE[size === "small" ? "small" : "medium"],
     ...DIALOG_WRAPPER_STYLE[nonModal ? "nonModal" : "modal"],
 
     "& #dialog-title": {
-      ...DIALOG_TITLE_STYLE[isSmall ? "small" : "medium"],
+      ...DIALOG_TITLE_STYLE[size === "small" ? "small" : "medium"],
     },
 
     "& #dialog-content": {
       ...DIALOG_CONTENT_STYLE[
-        isSmall && type !== "passive"
+        size === "small" && type !== "passive"
           ? "smallAction"
-          : isSmall
+          : size === "small"
           ? "small"
-          : !isSmall && type !== "passive"
+          : size === "medium" && type !== "passive"
           ? "mediumAction"
           : "medium"
       ],
 
       scrollbarGutter: "stable",
       "::-webkit-scrollbar": {
-        width: isSmall ? "10px" : "14px",
+        width: size === "small" ? "10px" : "14px",
       },
       "::webkit-scrollbar-track": {
         background: "transparent",
@@ -135,7 +135,7 @@ export const StyledDialog = styled("div")<DialogStyle>(
     },
 
     "& #dialog-action": {
-      ...DIALOG_ACTION_STYLE[isSmall ? "small" : "medium"],
+      ...DIALOG_ACTION_STYLE[size === "small" ? "small" : "medium"],
     },
   })
 );

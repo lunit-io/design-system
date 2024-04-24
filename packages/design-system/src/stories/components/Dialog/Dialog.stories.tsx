@@ -38,7 +38,6 @@ export const PassiveModal: Story = {
           onClose={close}
           type="passive"
           title="Title area"
-          isSmall
         >
           Lorem Ipsum is simply dummy text of the a printing and typesetting
           industry
@@ -61,7 +60,6 @@ export const ActionModal: Story = {
           className={classNameFromGlobal}
           isOpen={Boolean(target)}
           onClose={close}
-          isSmall
           type="action"
           title="Title area"
           actions={
@@ -117,7 +115,6 @@ export const NonModal: Story = {
           isOpen={isOpen}
           nonModal
           type="action"
-          isSmall
           onClose={close}
           title="Title area"
           actions={
@@ -159,7 +156,7 @@ export const SmallFalse: Story = {
           type="passive"
           onClose={close}
           title="Title area"
-          isSmall={false}
+          size="medium"
         >
           Lorem Ipsum is simply dummy text of the a printing and typesetting
           industry
@@ -181,7 +178,6 @@ export const WithTitleIcon: Story = {
         <Dialog
           className={classNameFromGlobal}
           isOpen={Boolean(target)}
-          isSmall
           type="action"
           onClose={close}
           title="Title area"
@@ -227,7 +223,6 @@ export const WithCustomStyle: Story = {
         <Dialog
           className={classNameFromGlobal}
           isOpen={Boolean(target)}
-          isSmall
           type="passive"
           onClose={close}
           title="Title area"
@@ -259,7 +254,6 @@ export const WithScroll: Story = {
         <Dialog
           className={classNameFromGlobal}
           isOpen={Boolean(target)}
-          isSmall
           type="action"
           onClose={close}
           title="Title area"
