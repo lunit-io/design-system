@@ -5,6 +5,7 @@ export { default as Alert } from "./components/Alert";
 export { default as Button } from "./components/Button";
 export { default as Chip } from "./components/Chip";
 export { default as Checkbox } from "./components/Checkbox";
+export { default as Dialog } from "./components/Dialog";
 export { default as DataTable } from "./components/DataTable";
 export { default as DatePicker } from "./components/DatePicker";
 export { default as Dropdown } from "./components/Dropdown";

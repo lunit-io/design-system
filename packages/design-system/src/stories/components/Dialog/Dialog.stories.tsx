@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import { Box } from "@mui/material";
 import Error from "@lunit/design-system-icons/Error";
 
-import Button from "../../../components/Button";
-
-import { Dialog } from "../../../components/Dialog";
+import Button from "@/components/Button";
+import Dialog from "@/components/Dialog";
 
 import type { Meta, StoryObj } from "@storybook/react";
 
