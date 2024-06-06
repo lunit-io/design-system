@@ -1,5 +1,5 @@
 import { Meta, Canvas, Story } from "@storybook/blocks";
-import * as TypographyStories from "./TypographyExamples.stories";
+import * as TypographyStories from "./Typography.stories";
 
 import Typography from "@/components/Typography";
 
@@ -7,70 +7,55 @@ import { variants } from "./const";
 
 import TypographyGroup from "./TypographyGroup";
 
-<Meta of={TypographyStories} />
+<Meta name="Typography Docs" of={TypographyStories} />
 
 export const Template = (args) => <Typography {...args} />;
 
-## Types
+# Typography
 
-The typography component comes with variants below:
+Use typography to present your design and content as clearly and efficiently as possible.
 
-export const AllVariants = () => (
-  <>
-    <TypographyGroup
-      heading="Headline"
-      dummy="Headline 123456789"
-      variants={variants.headline}
-    />
-    <TypographyGroup
-      heading="Body"
-      dummy={
-        <>
-          AI will be the new standard of care. 123456789
-          <br />
-          By Lunit. With AI, we aim to make data-driven medicine
-          <br />
-          the new standard of care.
-        </>
-      }
-      variants={variants.body}
-    />
-    <TypographyGroup
-      heading="etc"
-      dummy="NEWS & UPDATE 71456"
-      variants={variants.etc}
-    />
-  </>
-);
-
-<Story of={TypographyStories.AllVariants_} />
 
 ## Usage
 
-### Typography component
+### Basic Typography
 
-<Canvas>
-  {/* <Story id="foundation-typography--typography-component" /> is deprecated, please migrate it to <Story of={referenceToStory} /> see: https://storybook.js.org/migration-guides/7.0 */}
+```tsx
+import { Typography } from "@lunit/design-system";
+// or
+import Typography from "@lunit/design-system/Typography";
 
-  <Story id="foundation-typography--typography-component" />
-</Canvas>
+<Typography>AI will be the new standard of care. 123456789</Typography>;
+```
+### Variant
+
+The typography component comes with variants below:
+
+<Canvas
+  of={TypographyStories.AllVariants}
+  sourceState="none" />
 
 ### With styled utility
 
 In some situations you might not be able to use the Typography component. Hopefully, you might be able to take advantage of the [typography](https://mui.com/material-ui/react-typography/#theme) keys of the theme.
 
-<Canvas>
-  {/* <Story id="foundation-typography--styled" /> is deprecated, please migrate it to <Story of={referenceToStory} /> see: https://storybook.js.org/migration-guides/7.0 */}
+<Canvas of={TypographyStories.Styled} />
 
-  <Story id="foundation-typography--styled" />
-</Canvas>
 
 ### With the sx props
 
 You can use all the variants with [the `sx` props](https://mui.com/system/getting-started/the-sx-prop/#typography).
 
-<Canvas>
-  {/* <Story id="foundation-typography--sx-props" /> is deprecated, please migrate it to <Story of={referenceToStory} /> see: https://storybook.js.org/migration-guides/7.0 */}
+<Canvas of={TypographyStories.SXProps} />
 
-  <Story id="foundation-typography--sx-props" />
-</Canvas>
+
+## Reference
+
+- [Material-UI Typography](https://mui.com/material-ui/react-typography/)
+- [Material-UI Typography API](https://mui.com/material-ui/api/typography/)
+- [Lunit Design System Typography Figma](https://www.figma.com/design/oh2WsSLBuX30Yp589gyliB/Design-System_1.0.7?node-id=14801-193458&m=dev)
+
+## Support
+
+- Github: [Create a new issue](https://github.com/lunit-io/design-system/issues/new)
+- Slack: #tf_design_system

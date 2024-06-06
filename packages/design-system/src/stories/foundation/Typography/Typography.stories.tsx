@@ -6,7 +6,36 @@ import { styled } from "@mui/material/styles";
 
 import Typography from "@/components/Typography";
 
-import { variantArray } from "./const";
+import { variantArray, variants } from "./const";
+import TypographyGroup from "./TypographyGroup";
+
+export const AllVariants = () => (
+  <>
+    <TypographyGroup
+      heading="Headline"
+      dummy="Headline 123456789"
+      variants={variants.headline}
+    />
+    <TypographyGroup
+      heading="Body"
+      dummy={
+        <>
+          AI will be the new standard of care. 123456789
+          <br />
+          By Lunit. With AI, we aim to make data-driven medicine
+          <br />
+          the new standard of care.
+        </>
+      }
+      variants={variants.body}
+    />
+    <TypographyGroup
+      heading="etc"
+      dummy="NEWS & UPDATE 71456"
+      variants={variants.etc}
+    />
+  </>
+);
 
 export default {
   title: "Foundation/Typography",
