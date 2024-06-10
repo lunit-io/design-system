@@ -199,6 +199,8 @@ const paletteOptions = {
       shadow_02: "var(--shadow_02)",
       shadow_03: "var(--shadow_03)",
       shadow_04: "var(--shadow_04)",
+      border_light: "var(--border_light)",
+      border_medium: "var(--border_medium)",
     },
     component: {
       btn_primary_bg: "var(--btn_primary_bg)",
@@ -214,6 +216,8 @@ const paletteOptions = {
       btn_selected_primary_text: "var(--btn_selected_primary_text)",
       btn_selected_secondary_bg: "var(--btn_selected_secondary_bg)",
       btn_selected_secondary_text: "var(--btn_selected_secondary_text)",
+      btn_selected_tertiary_bg: "var(--btn_selected_tertiary_bg)",
+      btn_selected_tertiary_text: "var(--btn_selected_tertiary_text)",
       selectcontrol_on: "var(--selectcontrol_on)",
       selectcontrol_off: "var(--selectcontrol_off)",
       selectcontrol_handler: "var(--selectcontrol_handler)",

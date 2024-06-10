@@ -86,6 +86,18 @@ export const tokenComponentColor: TokenComponentColorValue = {
       dark1: "--lunit_teal_30",
       dark2: "--lunit_teal_30",
     },
+    btn_selected_tertiary_bg: {
+      light1: "--grey_95",
+      light2: "--grey_95",
+      dark1: "--grey_0",
+      dark2: "--grey_0",
+    },
+    btn_selected_tertiary_text: {
+      light1: "--grey_0",
+      light2: "--grey_0",
+      dark1: "--grey_100",
+      dark2: "--grey_100",
+    },
   },
   selectControl: {
     selectcontrol_on: {

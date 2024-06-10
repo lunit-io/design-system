@@ -162,4 +162,16 @@ export const tokenCoreColor: TokenCoreColorValue = {
     dark1: "rgba(0, 0, 0, 0.48)", // "--grey_100 48%",
     dark2: "rgba(0, 0, 0, 0.48)", // "--grey_100 48%",
   },
+  border_light: {
+    light1: "rgba(0, 0, 0, 0.12)", // "--grey_100 12%",
+    light2: "rgba(0, 0, 0, 0.12)", // "--grey_100 12%",
+    dark1: "rgba(255, 255, 255, 0.12)", // "--grey_0 12%",
+    dark2: "rgba(255, 255, 255, 0.12)", // "--grey_0 12%",
+  },
+  border_medium: {
+    light1: "rgba(0, 0, 0, 0.24)", // "--grey_100 24%",
+    light2: "rgba(0, 0, 0, 0.24)", // "--grey_100 24%",
+    dark1: "rgba(255, 255, 255, 0.24)", // "--grey_0 24%",
+    dark2: "rgba(255, 255, 255, 0.24)", // "--grey_0 24%",
+  },
 };
