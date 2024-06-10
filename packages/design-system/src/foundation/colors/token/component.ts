@@ -15,8 +15,8 @@ export const tokenComponentColor: TokenComponentColorValue = {
       dark2: "--lunit_teal_40",
     },
     btn_secondary_bg: {
-      light1: "--grey_15",
-      light2: "--grey_15",
+      light1: "--grey_10",
+      light2: "--grey_00",
       dark1: "--grey_60",
       dark2: "--grey_60",
     },
@@ -81,8 +81,8 @@ export const tokenComponentColor: TokenComponentColorValue = {
       dark2: "--grey_80",
     },
     btn_selected_secondary_text: {
-      light1: "--grey_95",
-      light2: "--grey_95",
+      light1: "--lunit_teal_70",
+      light2: "--lunit_teal_70",
       dark1: "--lunit_teal_30",
       dark2: "--lunit_teal_30",
     },

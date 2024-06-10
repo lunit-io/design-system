@@ -80,19 +80,19 @@ export const tokenCoreColor: TokenCoreColorValue = {
   link_primary: {
     light1: "--blue_40",
     light2: "--blue_40",
-    dark1: "--blue_40",
+    dark1: "--blue_30",
     dark2: "--blue_30",
   },
   link_hover: {
     light1: "--blue_50",
     light2: "--blue_50",
-    dark1: "--blue_50",
+    dark1: "--blue_40",
     dark2: "--blue_40",
   },
   link_visited: {
     light1: "--purple_50",
     light2: "--purple_50",
-    dark1: "--purple_50",
+    dark1: "--purple_40",
     dark2: "--purple_40",
   },
   icon_error_02: {
@@ -121,10 +121,10 @@ export const tokenCoreColor: TokenCoreColorValue = {
   },
   hover: {
     // TODO: 알파값 적용 코드는 일단 하드코딩. 나중에 수정할것
-    light1: "rgba(0, 0, 0, 0.1)", // grey_100 10%
-    light2: "rgba(0, 0, 0, 0.1)", // grey_100 10%
-    dark1: "rgba(0, 0, 0, 0.1)", // grey_100 10%
-    dark2: "rgba(0, 0, 0, 0.1)", // grey_100 10%
+    light1: "rgba(0, 0, 0, 0.12)", // "--grey_100 12%",
+    light2: "rgba(0, 0, 0, 0.12)", // "--grey_100 12%",
+    dark1: "rgba(255, 255, 255, 0.12)", // "--grey_0 12%",
+    dark2: "rgba(255, 255, 255, 0.12)", // "--grey_0 12%",
   },
   focused: {
     light1: "--lunit_teal_40",
