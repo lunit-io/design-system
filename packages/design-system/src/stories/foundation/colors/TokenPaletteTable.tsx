@@ -85,7 +85,7 @@ const TokenPaletteTable = ({ kind }: TokenPaletteTableProps) => {
           <TableRow>
             <TableCell colSpan={2}> </TableCell>
             <TableCell colSpan={2}>Light</TableCell>
-            <TableCell colSpan={4}>Dark</TableCell>
+            <TableCell colSpan={2}>Dark</TableCell>
           </TableRow>
           <TableRow>
             <TableCell>Token name</TableCell>
@@ -93,8 +93,6 @@ const TokenPaletteTable = ({ kind }: TokenPaletteTableProps) => {
             <TableCell>Light 2</TableCell>
             <TableCell>Dark 1</TableCell>
             <TableCell>Dark 2</TableCell>
-            <TableCell>Dark 3</TableCell>
-            <TableCell>Dark 4</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
