@@ -157,7 +157,7 @@ export const kindStyle = ({ kind, color, lunit_token }: KindStyleParams) => ({
   ...(kind === "outlined" &&
     color === "secondary" && {
       color: lunit_token.component.btn_secondary_text,
-      border: `${OUTLINED_BORDER_WIDTH}px solid ${lunit_token.component.btn_secondary_border}`,
+      border: `${OUTLINED_BORDER_WIDTH}px solid ${lunit_token.core.border_medium}`,
       "&:hover": getHoverStyle("none"),
       "&:hover:before": {
         content: "''",
