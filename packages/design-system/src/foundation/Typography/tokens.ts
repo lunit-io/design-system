@@ -16,7 +16,7 @@ const headline = {
   "--headline2-line-height": "65px",
   "--headline3-font-weight": "var(--font-weight-semibold)",
   "--headline3-font-size": "24px",
-  "--headline3-line-height": "57px",
+  "--headline3-line-height": "29px",
   "--headline4-font-weight": "var(--font-weight-semibold)",
   "--headline4-font-size": "20px",
   "--headline4-line-height": "28px",
