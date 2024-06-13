@@ -26,6 +26,8 @@ export interface ColorToken {
     shadow_02: string;
     shadow_03: string;
     shadow_04: string;
+    border_light: string;
+    border_medium: string;
   };
   component: {
     btn_primary_bg: string;
@@ -41,6 +43,8 @@ export interface ColorToken {
     btn_selected_primary_text: string;
     btn_selected_secondary_bg: string;
     btn_selected_secondary_text: string;
+    btn_selected_tertiary_bg: string;
+    btn_selected_tertiary_text: string;
     selectcontrol_on: string;
     selectcontrol_off: string;
     selectcontrol_handler: string;

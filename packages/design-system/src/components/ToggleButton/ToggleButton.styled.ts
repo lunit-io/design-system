@@ -38,7 +38,7 @@ export const CustomToggleButton = styled(MuiToggleButton, {
       ...(selectedColor === "secondary" && {
         "&.Mui-selected, &.Mui-selected:hover": {
           border: "none",
-          backgroundColor: lunit_token.component.btn_selected_secondary_bg,
+          backgroundColor: lunit_token.component.btn_secondary_bg,
           color: lunit_token.component.btn_selected_secondary_text,
         },
       }),

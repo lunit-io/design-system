@@ -423,6 +423,7 @@ const ColorTemplate: StoryFn<typeof ToggleButton> = (args) => {
           value="second"
           kind="contained"
           color="secondary"
+          selectedColor="secondary"
         >
           Secondary
         </ToggleButton>
@@ -454,7 +455,13 @@ const ColorTemplate: StoryFn<typeof ToggleButton> = (args) => {
         <ToggleButton {...args} value="first" kind="ghost" color="primary">
           Primary
         </ToggleButton>
-        <ToggleButton {...args} value="second" kind="ghost" color="secondary">
+        <ToggleButton
+          {...args}
+          value="second"
+          kind="ghost"
+          color="secondary"
+          selectedColor="secondary"
+        >
           Secondary
         </ToggleButton>
       </ToggleButtonGroup>
