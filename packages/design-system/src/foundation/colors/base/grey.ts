@@ -3,7 +3,7 @@ export const grey = {
   5: "#FAFAFB",
   10: "#F1F1F4",
   15: "#DFDFE2",
-  20: "#C6C6C8",
+  20: "#CFCFD1",
   30: "#AFAFB1",
   40: "#99999B",
   50: "#747477",
