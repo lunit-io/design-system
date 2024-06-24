@@ -154,8 +154,13 @@ export const StyledDialogTitleIconWrapper = styled("div")({
   justifyContent: "center",
   width: "20px",
   height: "20px",
-  position: "relative",
-  marginBottom: "1px",
+  "& .MuiSvgIcon-root": {
+    display: "flex",
+    justifyContent: "center",
+    width: "20px",
+    height: "20px",
+    fontSize: "20px",
+  },
 });
 
 export const StyledDialogContent = styled("div")(({ theme }) => ({
