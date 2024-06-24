@@ -32,7 +32,7 @@ const DIALOG_TITLE_STYLE: DialogElementStyle = {
   small: {
     height: "52px",
     maxHeight: "100%",
-    padding: "20px 20px 8px 20px",
+    padding: "20px 20px 4px 20px",
   },
   medium: {
     height: "64px",
@@ -44,19 +44,21 @@ const DIALOG_TITLE_STYLE: DialogElementStyle = {
 const DIALOG_CONTENT_STYLE: DialogElementStyle = {
   small: {
     paddingInline: "20px calc(20px - 10px)",
+    paddingTop: "8px",
     paddingBottom: "28px",
   },
   smallAction: {
     paddingInline: "20px calc(20px - 10px)",
-    paddingBottom: "8px",
+    paddingBlock: "8px",
   },
   medium: {
     paddingInline: "32px calc(32px - 14px)",
+    paddingTop: "16px",
     paddingBottom: "32px",
   },
   mediumAction: {
     paddingInline: "32px calc(32px - 14px)",
-    paddingBottom: "16px",
+    paddingBlock: "16px",
   },
 };
 
