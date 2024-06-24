@@ -152,7 +152,7 @@ function DialogBase({ dialogProps }: { dialogProps: DialogBase }) {
         ...sx,
       }}
       style={style}
-      className={`dialog ${className ?? ""}`}
+      className={`dialog elevation2 ${className ?? ""}`}
     >
       <StyledDialogTitle id="dialog-title" className="dialog-title-wrapper">
         {titleIcon && (

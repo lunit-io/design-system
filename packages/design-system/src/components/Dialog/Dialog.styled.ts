@@ -20,15 +20,11 @@ const DIALOG_WRAPPER_STYLE: DialogElementStyle = {
   },
   modal: {
     position: "relative",
-    boxShadow:
-      "0px 12px 24px 8px rgba(0, 0, 0, 0.12), 0px 12px 44px 3px rgba(0, 0, 0, 0.18)",
   },
   nonModal: {
     position: "fixed",
     top: "30px",
     right: "30px",
-    boxShadow:
-      "0px 12px 24px 8px rgba(0, 0, 0, 0.36), 0px 12px 44px 3px rgba(0, 0, 0, 0.48)",
   },
 };
 
