@@ -32,12 +32,22 @@ const DIALOG_TITLE_STYLE: DialogElementStyle = {
   small: {
     height: "52px",
     maxHeight: "100%",
-    padding: "20px 20px 4px 20px",
+    padding: "20px 20px 4px 20px", // Title's X button pluses 2px to paddingTop and Bottom
+  },
+  smallAction: {
+    height: "52px",
+    maxHeight: "100%",
+    padding: "22px 20px 6px 20px",
   },
   medium: {
     height: "64px",
     maxHeight: "100%",
-    padding: "30px 32px 6px 32px",
+    padding: "30px 32px 6px 32px", // Title's X button pluses 2px to paddingTop and Bottom
+  },
+  mediumAction: {
+    height: "64px",
+    maxHeight: "100%",
+    padding: "32px 32px 8px 32px",
   },
 };
 
@@ -100,7 +110,15 @@ export const StyledDialog = styled("div")<DialogStyle>(
     ...DIALOG_WRAPPER_STYLE[nonModal ? "nonModal" : "modal"],
 
     "& #dialog-title": {
-      ...DIALOG_TITLE_STYLE[size === "small" ? "small" : "medium"],
+      ...DIALOG_TITLE_STYLE[
+        size === "small" && type !== "passive"
+          ? "smallAction"
+          : size === "small"
+          ? "small"
+          : size === "medium" && type !== "passive"
+          ? "mediumAction"
+          : "medium"
+      ],
     },
 
     "& #dialog-content": {
