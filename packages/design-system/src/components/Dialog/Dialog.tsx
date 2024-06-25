@@ -26,7 +26,7 @@ export interface DialogBase {
   titleVariant?: TypographyProps["variant"];
   children: React.ReactNode;
   actions?: React.ReactNode;
-  enableBackButtonClose?: boolean;
+  enableBackButtonClose?: boolean; // only for passive dialog
   enableBackdropClose?: boolean;
   size?: "small" | "medium"; // default "small"
   sx?: SxProps;
@@ -43,7 +43,7 @@ export interface PassiveDialogType extends DialogBase {
 export interface ActionDialogType extends DialogBase {
   type: "action";
   actions: React.ReactNode;
-  enableBackButtonClose?: boolean;
+  enableBackButtonClose?: false;
   enableBackdropClose?: boolean;
 }
 
@@ -84,12 +84,7 @@ function Dialog(props: DialogProps) {
   }
 
   useEffect(() => {
-    const isClosable =
-      isOpen &&
-      (isPassiveModal ||
-        (isActionModal && props.enableBackdropClose) ||
-        (isActionNonModal && props.enableBackButtonClose));
-
+    const isClosable = isOpen && isPassiveModal;
     if (!isClosable) return;
 
     function handleEscClose(event: KeyboardEvent) {
