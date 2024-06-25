@@ -20,47 +20,49 @@ const DIALOG_WRAPPER_STYLE: DialogElementStyle = {
   },
   modal: {
     position: "relative",
-    boxShadow:
-      "0px 12px 24px 8px rgba(0, 0, 0, 0.12), 0px 12px 44px 3px rgba(0, 0, 0, 0.18)",
   },
   nonModal: {
     position: "fixed",
     top: "30px",
     right: "30px",
-    boxShadow:
-      "0px 12px 24px 8px rgba(0, 0, 0, 0.36), 0px 12px 44px 3px rgba(0, 0, 0, 0.48)",
   },
 };
 
 const DIALOG_TITLE_STYLE: DialogElementStyle = {
   small: {
+    display: "flex",
+    alignItems: "center",
     height: "52px",
     maxHeight: "100%",
-    padding: "20px 20px 8px 20px",
+    padding: "20px 20px 4px 20px", // Title's X button pluses 2px to paddingTop and Bottom
   },
   medium: {
+    display: "flex",
+    alignItems: "center",
     height: "64px",
     maxHeight: "100%",
-    padding: "30px 32px 6px 32px",
+    padding: "30px 32px 6px 32px", // Title's X button pluses 2px to paddingTop and Bottom
   },
 };
 
 const DIALOG_CONTENT_STYLE: DialogElementStyle = {
   small: {
     paddingInline: "20px calc(20px - 10px)",
+    paddingTop: "8px",
     paddingBottom: "28px",
   },
   smallAction: {
     paddingInline: "20px calc(20px - 10px)",
-    paddingBottom: "8px",
+    paddingBlock: "8px",
   },
   medium: {
     paddingInline: "32px calc(32px - 14px)",
+    paddingTop: "16px",
     paddingBottom: "32px",
   },
   mediumAction: {
     paddingInline: "32px calc(32px - 14px)",
-    paddingBottom: "16px",
+    paddingBlock: "16px",
   },
 };
 
@@ -154,8 +156,13 @@ export const StyledDialogTitleIconWrapper = styled("div")({
   justifyContent: "center",
   width: "20px",
   height: "20px",
-  position: "relative",
-  marginBottom: "1px",
+  "& .MuiSvgIcon-root": {
+    display: "flex",
+    justifyContent: "center",
+    width: "20px",
+    height: "20px",
+    fontSize: "20px",
+  },
 });
 
 export const StyledDialogContent = styled("div")(({ theme }) => ({

@@ -12,7 +12,7 @@ const StyledDialogActions = styled("div")({
   flex: "0 0 auto",
   alignItems: "center",
   justifyContent: "flex-end",
-  gap: 8,
+  gap: 12,
 });
 
 export function DialogAction(props: DialogActionProps) {
