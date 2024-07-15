@@ -1,0 +1,181 @@
+import { Canvas, Stories, Controls, Meta, Story } from "@storybook/blocks";
+import { Error } from "@lunit/design-system-icons";
+
+import Dialog from "@/components/Dialog";
+import * as DialogStories from "./Dialog.stories";
+
+<Meta name="Dialog Docs" of={DialogStories} />
+
+# Dialog
+
+Dialogs inform users about a task and can contain critical information, require decisions, or involve multiple tasks.
+Dialogs are rendered in a [Portal](https://react.dev/reference/react-dom/createPortal) and are not affected by the z-index of the parent component.
+
+## Usage
+
+### Basic Dialog
+
+```tsx
+import { Dialog } from "@lunit/design-system";
+// or
+import Dialog from "@lunit/design-system/Dialog";
+
+<Dialog />;
+```
+
+### Demo
+
+The Dialog demo cannot be seen in the mdx canvas since it is rendered in a [Portal](https://react.dev/reference/react-dom/createPortal).
+Please go to the stories to see the demo.
+
+<Controls />
+
+### IsOpen
+
+The `isOpen` prop is used to control the render of the Dialog. <br />
+If it is set to `false`, the Dialog will not be rendered in the DOM.
+
+```tsx
+<Dialog isOpen={true} onClose={close} type="passive" title="Title area">
+  Lorem Ipsum is simply dummy text of the a printing and typesetting industry
+</Dialog>
+```
+
+### Dismiss(onClose, enableBackButtonClose, enableBackdropClick)
+
+The `onClose` prop is used to close the Dialog. You can pass a function to the prop to close the Dialog. <br />
+If the `enableBackButtonClick` prop is set to `true`, the Dialog will be closed when the back button(escape/backspace key) is pressed. <br />
+If the `enableBackdropClose` prop is set to `true`, the Dialog will be closed when the backdrop(outside of the dialog area) is clicked. <br />
+
+<br />
+The `enableBackButtonClick` is awalys `true` in Passive Modal, but it is optional
+in Action Modal. <br />
+The `enableBackdropClose` is awalys `true` only in Passive Modal.
+
+```tsx
+<Dialog isOpen={true} onClose={close} type="passive" title="Title area">
+  Lorem Ipsum is simply dummy text of the a printing and typesetting industry
+</Dialog>
+<Dialog isOpen={true} onClose={close} type="action" title="Title area" actions={actionsChildren} enableBackButtonClick>
+  Lorem Ipsum is simply dummy text of the a printing and typesetting industry
+</Dialog>
+```
+
+### Type
+
+The Dialog Modal has 2 types: passive and action. <br />
+Passive modals are persistent until dismissed in one of the ways mentioned above. <br />
+Action modals must have actions and are dismissed when the user clicks on one of the actions (backdrop close is also optional). <br />
+
+```tsx
+<Dialog isOpen={true} onClose={close} type="passive" title="Title area">
+  Lorem Ipsum is simply dummy text of the a printing and typesetting industry
+</Dialog>
+<Dialog isOpen={true} onClose={close} type="action" title="Title area" actions={actionsChildren}>
+  Lorem Ipsum is simply dummy text of the a printing and typesetting industry
+</Dialog>
+
+```
+
+### NonModal
+
+The nonModal prop renders the Dialog as a non-modal Dialog. <br />
+Non-modal Dialogs provide non-critical information and do not block the user's interaction with the rest of the application. <br />
+Non-modal Dialogs have an action type only. <br />
+
+```tsx
+<Dialog
+  isOpen={true}
+  onClose={close}
+  nonModal
+  type="action"
+  title="Title area"
+  actions={actionsChildren}
+>
+  Lorem Ipsum is simply dummy text of the a printing and typesetting industry
+</Dialog>
+```
+
+### Title(Title, titleIcon, titleVariant)
+
+The `title` prop sets the title of the Dialog. <br />
+The `titleIcon` prop sets the icon of the title. <br />
+The `titleVariant` prop sets the variant of the title icon. <br />
+
+```tsx
+<Dialog
+  isOpen={true}
+  onClose={close}
+  type="passive"
+  title="Title area"
+  titleIcon={<Error color="error" variant="filled" />}
+  titleVariant="error"
+>
+  Lorem Ipsum is simply dummy text of the a printing and typesetting industry
+</Dialog>
+```
+
+### Children
+
+The `children` prop sets the content of the Dialog. <br />
+You can pass any component to the children prop.
+
+```tsx
+<Dialog isOpen={true} onClose={close} type="passive" title="Title area">
+  Lorem Ipsum is simply dummy text of the a printing and typesetting industry
+</Dialog>
+```
+
+### Actions
+
+The `actions` prop sets the actions of the Dialog. <br />
+You can pass any component to the actions prop only when the type of the modal is action.
+
+```tsx
+<Dialog
+  isOpen={true}
+  onClose={close}
+  type="action"
+  title="Title area"
+  actions={actionsChildren}
+>
+  Lorem Ipsum is simply dummy text of the a printing and typesetting industry
+</Dialog>
+```
+
+### Size
+
+The Dialog has 3 sizes: `small` and `medium`.
+
+```tsx
+<Dialog
+  isOpen={true}
+  onClose={close}
+  type="passive"
+  title="Title area"
+  size="small"
+>
+  Lorem Ipsum is simply dummy text of the a printing and typesetting industry
+</Dialog>
+
+<Dialog
+  isOpen={true}
+  onClose={close}
+  type="passive"
+  title="Title area"
+  size="medium"
+>
+  Lorem Ipsum is simply dummy text of the a printing and typesetting industry
+</Dialog>
+```
+
+## Reference
+
+- [Material-UI Dialog](https://mui.com/material-ui/react-dialog/)
+- [Material-UI Dialog API](https://mui.com/material-ui/api/dialog/)
+- [Lunit Design System Dialog Figma](https://www.figma.com/design/9CoirIDPof6exynJosiGXi/Design-System_2.0.0_Latest?node-id=474-56088&m=dev)
+
+## Support
+
+- Github: [Create a new issue](https://github.com/lunit-io/design-system/issues/new)
+- Slack: #tf_design_system

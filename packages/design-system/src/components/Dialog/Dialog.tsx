@@ -71,7 +71,6 @@ function Dialog(props: DialogProps) {
 
   const isActionModal = type === "action" && !nonModal;
   const isPassiveModal = type === "passive" && !nonModal;
-  const isActionNonModal = type === "action" && nonModal;
 
   function handleBackdropClose(e: React.MouseEvent<HTMLDivElement>) {
     const isClosable =
