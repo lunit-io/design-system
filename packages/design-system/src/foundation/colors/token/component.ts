@@ -16,7 +16,7 @@ export const tokenComponentColor: TokenComponentColorValue = {
     },
     btn_secondary_bg: {
       light1: "--grey_10",
-      light2: "--grey_00",
+      light2: "--grey_0",
       dark1: "--grey_60",
       dark2: "--grey_60",
     },
@@ -163,8 +163,8 @@ export const tokenComponentColor: TokenComponentColorValue = {
     datatable_zebra: {
       light1: "rgba(0, 0, 0, 0.03)", // "--grey_100 3%",
       light2: "rgba(0, 0, 0, 0.03)", // "--grey_100 3%",
-      dark1: "rgba(255, 255, 255, 0.03)", // "--grey_00 3%",
-      dark2: "rgba(255, 255, 255, 0.03)", // "--grey_00 3%",
+      dark1: "rgba(255, 255, 255, 0.03)", // "--grey_0 3%",
+      dark2: "rgba(255, 255, 255, 0.03)", // "--grey_0 3%",
     },
   },
   scrollbars: {
