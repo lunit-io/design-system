@@ -1,6 +1,6 @@
 {
   "name": "@lunit/design-system",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Lunit Design System",
   "main": "dist/cjs/index.js",
   "module": "dist/index.js",
