@@ -10,14 +10,14 @@ https://design-system-icons.d.lunit.io/
 
 ### Figma
 
-Lunit Design System Figma: https://www.figma.com/file/l2f0f9phsDwoz4sRr9kYXx/Lunit_Foundation?node-id=12135%3A6326&t=UkUMrZ7Wwkj92Wy6-1
+Lunit Icons Figma: https://www.figma.com/design/tlomwt8dT0GWikKqzYH7TO/Lunit_Icons_v2.0.0?node-id=12135-6066
 
-You can multi-select icons to export with [Select Layers plugin](https://www.figma.com/community/plugin/799648692768237063/Select-Layers).
-
-You need [SVG Export plugin](https://www.figma.com/community/plugin/814345141907543603/SVG-Export) to export SVGs with proper settings.
+You can use [SVG Export plugin](https://www.figma.com/community/plugin/814345141907543603/SVG-Export) to export SVGs with proper settings( `Monochrome` preset will fulfill it).
 
 - `<svg>` tag must not have any dimensions(width, height) to support `fontSize` props.
 - Any elements inside `<svg>` (like `<path>`) must not have own `fill` to support `color` props.
+
+`twotone` is not supported currently.
 
 ### Build & Publish
 
