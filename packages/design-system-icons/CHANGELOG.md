@@ -7,6 +7,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.1.0] - 2024-09-03
+
+### Added
+
+- Bar Graph Horizontal
+- Bar Graph Vertical
+- Comparison
+- Line Graph T1
+- Line Graph T2
+- Lung Left T1
+- Lung Left T2
+- Lung Right T1
+- Lung Right T2
+- Monitoring AI
+- Monitoring System
+- Monitoring Task
+- Monitoring Trend
+- Pause T3
+- Play T2
+- User Management
+
 ## [2.0.0] - 2024-04-18
 
 ### Breaking changes
