@@ -30,15 +30,15 @@ const getSinglelineTextFieldPaddingByIconAndSize = ({
     case "small":
       return `4px ${hasRightIcon ? "8px" : "12px"} 4px ${
         hasLeftIcon ? "8px" : "12px"
-      }}`;
+      }`;
     case "medium":
       return `8px ${hasRightIcon ? "12px" : "16px"} 8px ${
         hasLeftIcon ? "12px" : "16px"
-      }}`;
+      }`;
     case "large":
       return `10px ${hasRightIcon ? "12px" : "16px"} 10px ${
         hasLeftIcon ? "12px" : "16px"
-      }}`;
+      }`;
   }
 };
 
